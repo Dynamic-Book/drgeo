@@ -1,13 +1,13 @@
 Instructions to install Dr. Geo in a Cuis-Smalltalk developer environment.
 
-# 1. Set-up
+# Set-up
 Set up your Cuis-Smalltalk dev environment:
 ```bash
 mkdir Cuis
 cd Cuis
 ```
 
-# Cuis-Smalltalk
+## Cuis-Smalltalk code
 Fetch and install Cuis-Smalltalk images and packages
 ```bash
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev.git
@@ -20,7 +20,7 @@ cd Cuis-Smalltalk-Dev
 ./pullAllRepos.sh
 ```
 
-# 2. VM
+## VM
 Install virtual machine
 
 ```bash
@@ -29,7 +29,7 @@ tar -zxvf cogspur.tgz
 mv ./sqcogspur64linuxht ./cogspur
 ```
 
-# 3. Dr. Geo
+## Dr. Geo code
 
 Fetch the Dr. Geo repository, with source and script
 
@@ -38,7 +38,7 @@ cd Cuis/Cuis-Smalltalk-Dev
 git clone --depth 1 https://github.com/hilaire/drgeo.git
 ```
 
-# 4. Dr. Geo IDE
+## Dr. Geo IDE
 
 Run the Dr. Geo IDE script. It installs DrGeo code and realted
 packages into its development environment.
