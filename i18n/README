@@ -1,0 +1,10 @@
+From DrGeo image, with Gettext package installed, execute:
+
+     TextDomainManager registerCategoryPrefix: 'DrGeo' domain: 'drgeo'.
+     GetTextExporter exportTemplate.
+
+At user root directory (on Linux), a po/ folder is created containing the drgeo.pot
+file with the up to date message.
+
+Beware, carriage return (CR) are \r in the messages, keep it like
+this.

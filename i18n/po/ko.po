@@ -1,0 +1,1507 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pharo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-18 18:22+0000\n"
+"PO-Revision-Date: 2016-03-03 14:19+0000\n"
+"Last-Translator: HwaJong Oh <hwajongoh@me.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2023-11-24 06:28+0000\n"
+"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
+"Language: \n"
+"X-Pharo-Domain: DrGeoII\n"
+"X-Pharo-SystemVersion: Pharo1.4 of 18 April 2012 update 14438\n"
+
+#: DrGeo-Core-Builders,DrGAngleBisectorBuilder_class>>description
+msgid ""
+"Angle bisector defined by three points or an angle defined by three points."
+msgstr "세 점으로 정의된 각도 이등분선 혹은 세 점으로 정의된 각도"
+
+#: DrGeo-Core-Builders,DrGAngleBisectorBuilder_class>>title
+msgid "Angle bisector"
+msgstr "각도 이등분선"
+
+#: DrGeo-Core-Builders,DrGAngleGeometricBuilder_class>>description
+msgid ""
+"Geometric angle defined by three points, the second point is the vertex. Its "
+"measure belongs to [0 ; 180]."
+msgstr ""
+
+#: DrGeo-Core-Builders,DrGAngleGeometricBuilder_class>>title
+msgid "Geometric angle"
+msgstr ""
+
+#: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>description
+msgid ""
+"Oriented angle defined by three points or two vectors. When defined from "
+"three points, the second point is the vertex. Its measure belongs to [0 ; "
+"360[ or ]-180 ; 180]. "
+msgstr ""
+
+#: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>title
+msgid "Oriented angle"
+msgstr ""
+
+#: DrGeo-Core-Builders,DrGArcBuilder_class>>description
+msgid "Arc defined by three points."
+msgstr "세 점으로 정의된 호"
+
+#: DrGeo-Core-Builders,DrGArcBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "호"
+
+#: DrGeo-Core-Builders,DrGArcCenterBuilder_class>>description
+msgid "Arc defined by its center and two points."
+msgstr "중심점과 두 점으로 정의된 호"
+
+#: DrGeo-Core-Builders,DrGArcCenterBuilder_class>>title
+msgid "Arc (center)"
+msgstr "호"
+
+#: DrGeo-Core-Builders,DrGBitmapBuilder_class>>description
+msgid ""
+"Picture: drag and drop a picture in the canvas. It can be moved and scaled."
+msgstr "그림: 그림을 캔버스에 끌어다 놓으세요. 그림은 이동되거나 크기조절될 수 있습니다."
+
+#: DrGeo-Core-Builders,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
+msgid "Picture"
+msgstr "그림"
+
+#: DrGeo-Core-Builders,DrGCircleBuilder_class>>description
+msgid ""
+"Circle defined by its center and a point or by its center and radius, a "
+"value."
+msgstr "중심과 점으로 정의되거나 중심과 반지름으로 정의된 원"
+
+#: DrGeo-Core-Builders,DrGCircleBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "원"
+
+#: DrGeo-Core-Builders,DrGCoordinatesBuilder_class>>description
+msgid "Vector or point coordinates, circle or line equation."
+msgstr "벡터 혹은 점 좌표, 원 혹은 선 방정식"
+
+#: DrGeo-Core-Builders,DrGCoordinatesBuilder_class>>title
+msgid "Coordinates, equation"
+msgstr "좌표, 등식"
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>description
+msgid ""
+"Click to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr "점을 생성하려면 클릭하세요: 배경이나 곡선, 혹은 곡선의 교점 위에 자유점을 만듭니다."
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>description
+msgid ""
+"Tap to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr "탭하여 점을 만드세요: 그냥 자유점, 하나의 곡선 위의 자유점, 두 곡선의 교점"
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "점"
+
+#: DrGeo-Core-Builders,DrGHomothetyBuilder_class>>description
+msgid ""
+"Homothety: select a center, a value and a geometric object. The first "
+"selected point is the homothety center."
+msgstr "닮음변환: 중심점, 값, 기하객체를 선택합니다. 첫번째 선택한 점이 닮음변환의 중심점입니다."
+
+#: DrGeo-Core-Builders,DrGHomothetyBuilder_class>>title
+msgid "Homothety (scale)"
+msgstr "닮음변환"
+
+#: DrGeo-Core-Builders,DrGLineBuilder_class>>description
+msgid "Line defined by two points"
+msgstr "두 개의 점으로 정의된 직선"
+
+#: DrGeo-Core-Builders,DrGLineBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "직선"
+
+#: DrGeo-Core-Builders,DrGLocusBuilder_class>>description
+msgid "Locus defined by a free point on a curve and a relative point."
+msgstr "곡선 위의 자유점이나 상대적인 점으로 정의된 궤적"
+
+#: DrGeo-Core-Builders,DrGLocusBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "궤적"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "입력 항목과 출력 항목으로 매크로를 만듭니다."
+
+#: DrGeo-Core-Builders,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "매크로 만들기"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "입력과 출력 항목이 맞지 않습니다."
+
+#: DrGeo-Core-Builders,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "적절한 제목과 설명을 입력하세요."
+
+#: DrGeo-Core-Builders,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"선택된 항목들에 대한 미리 만들어진 매크로를 실행한다. 매크로 기술을 편집하기 위해서, 그것의 텍스트를 편집하고 [alt/ctrl]+s "
+"단축키로 적용시키라."
+
+#: DrGeo-Core-Builders,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "매크로를 편집/실행하라"
+
+#: DrGeo-Core-Builders,DrGMiddleBuilder_class>>description
+msgid "The midpoint of a segment or between two points."
+msgstr "선분이나 두 점의 중간에 있는 점"
+
+#: DrGeo-Core-Builders,DrGMiddleBuilder_class>>title
+msgid "Middle"
+msgstr "중점"
+
+#: DrGeo-Core-Builders,DrGParallelBuilder_class>>description
+msgid ""
+"Line passing through one point and parallel to a line, half-line, etc."
+msgstr "직선, 반직선 등에 평행하고 어떤 점을 지나는 직선"
+
+#: DrGeo-Core-Builders,DrGParallelBuilder_class>>title
+msgid "Parallel"
+msgstr "평행"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBisectorBuilder_class>>description
+msgid "Perpendicular bisector defined by a segment or two points."
+msgstr "선분이나 두 점으로 정의된 수직이등분선"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBisectorBuilder_class>>title
+msgid "Perpendicular bisector"
+msgstr "수직 이등분선"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBuilder_class>>description
+msgid ""
+"Line passing through one point and orthogonal to a line, half-line, etc."
+msgstr "한 점을 지나고, 직선이나 반직선 등에 수직하는 직선"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBuilder_class>>title
+msgid "Perpendicular"
+msgstr "수직"
+
+#: DrGeo-Core-Builders,DrGPointByCoordinatesBuilder_class>>description
+msgid ""
+"Point given its coordinates: select two numbers or a point coordinates (@)."
+msgstr "좌표로 결정되는 점: 두 수나 점좌표(@)를 선택하세요."
+
+#: DrGeo-Core-Builders,DrGPointByCoordinatesBuilder_class>>title
+msgid "Coordinates"
+msgstr "좌표"
+
+#: DrGeo-Core-Builders,DrGPointIntersectionBuilder_class>>description
+msgid "Intersection(s) of two curves."
+msgstr "두 곡선의 교점"
+
+#: DrGeo-Core-Builders,DrGPointIntersectionBuilder_class>>title
+msgid "Intersection"
+msgstr "교점"
+
+#: DrGeo-Core-Builders,DrGPolygonBuilder_class>>description
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
+msgstr "n 개의 점에 의한 다각형:  끝내려면 마지막 점은 첫번째 점과 같아야합니다."
+
+#: DrGeo-Core-Builders,DrGPolygonBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "다각형"
+
+#: DrGeo-Core-Builders,DrGPolygonRegularBuilder_class>>description
+msgid "Regular polygon defined by its center, a vertex and its sides number."
+msgstr "중심점과 한 점과 모서리의 개수로 정의되는 정다각형"
+
+#: DrGeo-Core-Builders,DrGPolygonRegularBuilder_class>>title
+msgid "Regular polygon"
+msgstr "정다각형"
+
+#: DrGeo-Core-Builders,DrGRayBuilder_class>>description
+msgid ""
+"Half-Line defined by two points, the first selected point is the origin."
+msgstr "두 점으로 정의된 반직선 (첫번째로 선택된 점이 원점입니다)"
+
+#: DrGeo-Core-Builders,DrGRayBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "빛"
+
+#: DrGeo-Core-Builders,DrGReflectionBuilder_class>>description
+msgid ""
+"Reflexion: select a line and a geometric object. Reflexion axe is the first "
+"selected line."
+msgstr "반사: 직선과 기하학적 객체를 선택하세요. 처음 선택된 직선이 반사의 축이 됩니다."
+
+#: DrGeo-Core-Builders,DrGReflectionBuilder_class>>title
+msgid "Reflection"
+msgstr "반사"
+
+#: DrGeo-Core-Builders,DrGRotationBuilder_class>>description
+msgid ""
+"Rotation: select a point, a value and a geometric object. The first selected "
+"point is the rotation center."
+msgstr "회전: 점, 값, 기하 객체를 선택합니다. 선택된 점은 회전의 중심입니다."
+
+#: DrGeo-Core-Builders,DrGRotationBuilder_class>>title
+msgid "Rotation"
+msgstr "회전"
+
+#: DrGeo-Core-Builders,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "그리기 영역에 스몰토크 스크립트를 삽입하세요."
+
+#: DrGeo-Core-Builders,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "스크립트 사용하기"
+
+#: DrGeo-Core-Builders,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr "설명이 없습니다. 이 스크립트의 설명 메소드에 설명을 작성하세요"
+
+#: DrGeo-Core-Builders,DrGSegmentBuilder_class>>description
+msgid "Segment defined by two points."
+msgstr "두 개의 점으로 정의된 선분"
+
+#: DrGeo-Core-Builders,DrGSymmetryBuilder_class>>description
+msgid ""
+"Symmetry: select a point and a geometric object. The first selected point is "
+"the symmetry center."
+msgstr "대칭: 점과 기하객체를 선택하세요. 처음 선택된 점은 대칭의 중심이 됩니다."
+
+#: DrGeo-Core-Builders,DrGSymmetryBuilder_class>>title
+msgid "Symmetry"
+msgstr "대칭"
+
+#: DrGeo-Core-Builders,DrGTextBuilder_class>>description
+msgid "Free text you can edit and move around."
+msgstr "편집하고 이리저리 옮길 수 있는 자유로운 글"
+
+#: DrGeo-Core-Builders,DrGTextBuilder_class>>title
+msgid "Text"
+msgstr "글"
+
+#: DrGeo-Core-Builders,DrGTranslationBuilder_class>>description
+msgid "Translation: select a vector and a geometric object."
+msgstr "평행이동: 벡터와 기하객체를 선택하세요."
+
+#: DrGeo-Core-Builders,DrGTranslationBuilder_class>>title
+msgid "Translation"
+msgstr "평행이동"
+
+#: DrGeo-Core-Builders,DrGValueBuilder_class>>description
+msgid "Distance between objects, curve length, free value."
+msgstr "객체들 사이의 거리, 곡선 길이, 자유값"
+
+#: DrGeo-Core-Builders,DrGValueBuilder_class>>title
+msgid "Distance, length, value"
+msgstr "거리, 길이, 값"
+
+#: DrGeo-Core-Builders,DrGVectorBuilder_class>>description
+msgid "Vector defined by two points."
+msgstr "두 개의 점으로 정의된 벡터"
+
+#: DrGeo-Core-File,DrGeoXml>>parseFigureFrom:
+msgid "no name"
+msgstr "이름 없음"
+
+#: DrGeo-Core-Tools,DrGAnimateTool_class>>description
+msgid "Select a free point on a curve to animate it."
+msgstr "그것을 애니메이트하기 위해 자유점을 선택하라."
+
+#: DrGeo-Core-Tools,DrGAnimateTool_class>>title,DrGUIMinimalControlsManager>>mainMenu
+msgid "Animate"
+msgstr "애니메이트"
+
+#: DrGeo-Core-Tools,DrGDeleteTool_class>>description
+msgid "Erase an object and all its depedencies."
+msgstr "객체와 그에 의존하는 모든 것 지우기"
+
+#: DrGeo-Core-Tools,DrGDeleteTool_class>>title
+msgid "Eraser"
+msgstr "지우개"
+
+#: DrGeo-Core-Tools,DrGFlyPointBuildToolState>>handleMouseAt:
+msgid "This intersection"
+msgstr "이 교점"
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on the plane."
+msgstr "평면의 자유점처럼 바꾸기"
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on this curve."
+msgstr "이 곡선의 자유점으로 바꾸기"
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as this intersection."
+msgstr "이 교점으로 바꾸기"
+
+#: DrGeo-Core-Tools,DrGPropertyTool_class>>description
+msgid "Edit an item's property"
+msgstr "항목의 속성 편집"
+
+#: DrGeo-Core-Tools,DrGPropertyTool_class>>title
+msgid "Property"
+msgstr "속성"
+
+#: DrGeo-Core-Tools,DrGSelectTool_class>>description
+msgid "Select and move an object."
+msgstr "객체를 선택하고 움직이기"
+
+#: DrGeo-Core-Tools,DrGSelectTool_class>>title
+msgid "Select and Move"
+msgstr "선택하고 이동시키라"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateDragged>>handleStillPress:
+msgid "Select a point to merge with"
+msgstr "통합할 점을 선택하라"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Drag this point to change its nature."
+msgstr "점을 끌어 그것의 성질을 바꾸기"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid ""
+"Pressing down the [Shift] key you can drag and change the nature of free "
+"point or intersection point."
+msgstr "[Shift]키를 누르고 있으면, 자유점이나 교점의 위치를 바꾸거나 성질을 바꿀 수 있습니다."
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
+msgstr "여러 객체들이 선택될 수 있습니다. 클릭하여 선택하세요."
+
+#: DrGeo-Core-Tools,DrGStyleTool_class>>description
+msgid "Edit an object style."
+msgstr "객체 스타일 편집"
+
+#: DrGeo-Core-Tools,DrGStyleTool_class>>title
+msgid "Edit Style"
+msgstr "스타일 편집"
+
+#: DrGeo-Core-Tools,DrGTool>>chooseMorph:
+msgid "Select an object"
+msgstr "객체 선택"
+
+#: DrGeo-Core-Tools,DrGToolState>>handleMouseAt:
+msgid "Several objects can be selected. Please, choose one."
+msgstr "여러 객체들이 선택될 수 있습니다. 하나를 선택하세요."
+
+#: DrGeo-Item-Models,DrGAngle3ptsItem>>adaptiveDescriptiveName
+msgid "This geometric angle %1"
+msgstr "기하학적인 각도 %1"
+
+#: DrGeo-Item-Models,DrGAngleBisector3ptsItem>>adaptiveDescriptiveName,DrGLineAngleBisectorItem>>adaptiveDescriptiveName
+msgid "This angle bisector %1"
+msgstr "각이등분선 %1"
+
+#: DrGeo-Item-Models,DrGAngleItem>>adaptiveDescriptiveName
+msgid "This oriented angle %1"
+msgstr "방향있는 각도 %1"
+
+#: DrGeo-Item-Models,DrGArcItem>>adaptiveDescriptiveName
+msgid "This Arc Circle %1"
+msgstr "원호 %1"
+
+#: DrGeo-Item-Models,DrGBitmapItem>>adaptiveDescriptiveName
+msgid "This picture"
+msgstr "이 그림"
+
+#: DrGeo-Item-Models,DrGCircleItem>>adaptiveDescriptiveName
+msgid "This circle %1"
+msgstr "원 %1"
+
+#: DrGeo-Item-Models,DrGCompositeItem>>adaptiveDescriptiveName
+msgid "This composite object %1"
+msgstr "이 구성 객체 %1"
+
+#: DrGeo-Item-Models,DrGEquationItem>>adaptiveDescriptiveName
+msgid "This equation %1"
+msgstr "등식 %1"
+
+#: DrGeo-Item-Models,DrGEquationItem>>printOn:
+msgid "Equation"
+msgstr "방정식"
+
+#: DrGeo-Item-Models,DrGLineItem>>adaptiveDescriptiveName
+msgid "This line %1"
+msgstr "직선 %1"
+
+#: DrGeo-Item-Models,DrGLineParallelItem>>adaptiveDescriptiveName
+msgid "This parallel line %1"
+msgstr "평행선 %1"
+
+#: DrGeo-Item-Models,DrGLinePerpendicularBisector2ptsItem>>adaptiveDescriptiveName,DrGPerpendicularBisectorItem>>adaptiveDescriptiveName
+msgid "This perpendicular bisector %1"
+msgstr "수직이등분선 %1"
+
+#: DrGeo-Item-Models,DrGLinePerpendicularItem>>adaptiveDescriptiveName
+msgid "This perpendicular line %1"
+msgstr "수직선 %1"
+
+#: DrGeo-Item-Models,DrGLocus2ptsItem>>adaptiveDescriptiveName
+msgid "This locus %1"
+msgstr "궤적 %1"
+
+#: DrGeo-Item-Models,DrGMathItem>>adaptiveDescriptiveName
+msgid "This math item %1"
+msgstr "수학 항목 %1"
+
+#: DrGeo-Item-Models,DrGPointCoordinateItem>>editPropertyIn:,DrGPointFreeItem>>editPropertyIn:
+msgid "Edit the coordinates"
+msgstr "좌표 편집하기"
+
+#: DrGeo-Item-Models,DrGPointItem>>adaptiveDescriptiveName
+msgid "This point %1"
+msgstr "점 %1"
+
+#: DrGeo-Item-Models,DrGPointOncurveItem>>editPropertyIn:
+msgid "Edit this curvilinear abscissa in [0;1]"
+msgstr "휜격자의 독립변수를 편집하기"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This polygon %1"
+msgstr "다각형 %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This quadrilateral %1"
+msgstr "사각형 %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This triangle %1"
+msgstr "삼각형 %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>printOn:
+msgid " edges="
+msgstr " 모서리들="
+
+#: DrGeo-Item-Models,DrGRayItem>>adaptiveDescriptiveName
+msgid "This half-line %1"
+msgstr "반직선 %1"
+
+#: DrGeo-Item-Models,DrGSegmentItem>>adaptiveDescriptiveName
+msgid "This segment %1"
+msgstr "선분 %1"
+
+#: DrGeo-Item-Models,DrGTextItem>>adaptiveDescriptiveName
+msgid "This text"
+msgstr "글"
+
+#: DrGeo-Item-Models,DrGTextItem>>editPropertyIn:
+msgid "Edit this text"
+msgstr "텍스트 편집하기"
+
+#: DrGeo-Item-Models,DrGTextItem>>initialize
+msgid "Edit me"
+msgstr "나를 편집하세요."
+
+#: DrGeo-Item-Models,DrGValueArclengthItem>>adaptiveDescriptiveName
+msgid "This arc length %1"
+msgstr "원호의 길이 %1"
+
+#: DrGeo-Item-Models,DrGValueCircleperimeterItem>>adaptiveDescriptiveName
+msgid "This circle perimeter %1"
+msgstr "원둘레 %1"
+
+#: DrGeo-Item-Models,DrGValueDistance2ptsItem>>adaptiveDescriptiveName
+msgid "This distance between two points %1"
+msgstr "두 점 사이의 거리 %1"
+
+#: DrGeo-Item-Models,DrGValueDistanceptlineItem>>adaptiveDescriptiveName
+msgid "This point-line distance %1"
+msgstr "점-직선 거리 %1"
+
+#: DrGeo-Item-Models,DrGValueItem>>adaptiveDescriptiveName
+msgid "This value %1"
+msgstr "값 %1"
+
+#: DrGeo-Item-Models,DrGValueItem>>printNameOn:
+msgid "Value "
+msgstr "값 "
+
+#: DrGeo-Item-Models,DrGValuePolygonperimeterItem>>adaptiveDescriptiveName
+msgid "This polygon perimeter %1"
+msgstr "이 다각형의 둘레 %1"
+
+#: DrGeo-Item-Models,DrGValuePtabscissaItem>>adaptiveDescriptiveName
+msgid "This point abscissa %1"
+msgstr "점 독립변수 %1"
+
+#: DrGeo-Item-Models,DrGValuePtordinateItem>>adaptiveDescriptiveName
+msgid "This point ordinate %1"
+msgstr "점 종속변수 %1"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\""
+msgstr "이 스크립트 \"{1}\""
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with argument: %2"
+msgstr "이 스크립트 \"{1}\" 인자: %2"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with arguments: %2"
+msgstr "이 스크립트 \"{1}\" 인자들: %2"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>printNameOn:
+msgid "Script "
+msgstr "스크립트 "
+
+#: DrGeo-Item-Models,DrGValueSegmentlengthItem>>adaptiveDescriptiveName
+msgid "This segment length %1"
+msgstr "선분 길이 %1"
+
+#: DrGeo-Item-Models,DrGValueSlopeItem>>adaptiveDescriptiveName
+msgid "This line slope %1"
+msgstr "직선의 경사 %1"
+
+#: DrGeo-Item-Models,DrGValueValueItem>>editPropertyIn:
+msgid "Edit this value"
+msgstr "값 편집하기"
+
+#: DrGeo-Item-Models,DrGValueVectorabscissaItem>>adaptiveDescriptiveName
+msgid "This vector abscissa %1"
+msgstr "벡터 독립변수 %1"
+
+#: DrGeo-Item-Models,DrGValueVectornormItem>>adaptiveDescriptiveName
+msgid "This Vector's norm %1"
+msgstr "벡터의 노름(norm) %1"
+
+#: DrGeo-Item-Models,DrGValueVectorordinateItem>>adaptiveDescriptiveName
+msgid "This vector ordinate %1"
+msgstr "벡터 종속변수 %1"
+
+#: DrGeo-Item-Models,DrGVectorItem>>adaptiveDescriptiveName
+msgid "This vector %1"
+msgstr "벡터 %1"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>lineWidget
+msgid "Set the style of the line."
+msgstr "직선 스타일 정하기"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>lineWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Style"
+msgstr "스타일"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>thicknessWidget
+msgid "Set the thickness of the line."
+msgstr "직선의 두께 결정하기"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>thicknessWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Thickness"
+msgstr "두께"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>fillWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Fill"
+msgstr "채우기"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>fillWidget
+msgid "Toggle to fill the object."
+msgstr "객체 채우기 토글"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>translucentWidget
+msgid "Toggle the translucency of the object."
+msgstr "객체 투명도 토글"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>translucentWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Translucent"
+msgstr "반투명"
+
+#: DrGeo-Item-Styles,DrGFinitCurveStyle>>arrowWidget,DrGPlatform>>arcPreferences,DrGPlatform>>segmentPreferences
+msgid "Arrow"
+msgstr "화살표"
+
+#: DrGeo-Item-Styles,DrGFinitCurveStyle>>arrowWidget
+msgid "Set arrow(s) to the line."
+msgstr "직선에 화살표 넣기"
+
+#: DrGeo-Item-Styles,DrGPointStyle>>shapeWidget
+msgid "Set the shape of the point."
+msgstr "점 모양 지정하기"
+
+#: DrGeo-Item-Styles,DrGPointStyle>>sizeWidget
+msgid "Set the size of the point."
+msgstr "점 크기 지정하기"
+
+#: DrGeo-Item-Styles,DrGSegmentStyle>>markWidget
+msgid "Set a mark to the segment."
+msgstr "선부에 표시 붙이기"
+
+#: DrGeo-Item-Styles,DrGStyle>>colorWidget
+msgid "Set the colour."
+msgstr "색깔 지정"
+
+#: DrGeo-Item-Styles,DrGStyle>>feedbackWidget
+msgid "Feedback"
+msgstr "피드백"
+
+#: DrGeo-Item-Styles,DrGStyle>>feedbackWidget
+msgid ""
+"Toggle to provide feedback and interaction when the mouse cursor is over the "
+"object."
+msgstr "마우스 커서가 객체 위에 있을 때 피드백이나 상호작용 기능 토글"
+
+#: DrGeo-Item-Styles,DrGStyle>>hiddenWidget
+msgid "Hide"
+msgstr "숨기기"
+
+#: DrGeo-Item-Styles,DrGStyle>>hiddenWidget
+msgid "Toggle to hide the object."
+msgstr "객체 숨김 전환하기"
+
+#: DrGeo-Item-Styles,DrGStyle>>lockedWidget
+msgid "Lock"
+msgstr "잠금"
+
+#: DrGeo-Item-Styles,DrGStyle>>lockedWidget
+msgid "Toggle to lock the object to its position."
+msgstr "객체의 위치를 고정하기 토글"
+
+#: DrGeo-Item-Styles,DrGStyle>>nameWidget
+msgid "Rename this object."
+msgstr "객체의 이름 바꾸기"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>backgroundWidget
+msgid "Set the background colour."
+msgstr "배경색을 바꾸세요"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>borderWidget
+msgid "Set the border colour."
+msgstr "테두리 색깔 바꾸기"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>fontSizeWidget
+msgid "Font size"
+msgstr "폰트 크기"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>fontSizeWidget
+msgid "Set the font size."
+msgstr "폰트 크기 설정"
+
+#: DrGeo-Item-Styles,DrGValueStyle>>rename,DrGValueStyle>>rename
+msgid "Name this value"
+msgstr "이 값의 이름 짓기"
+
+#: DrGeo-Item-Styles,DrGValueStyle>>rename,DrGValueStyle>>rename
+msgid "Rename this value"
+msgstr "값 이름 바꾸기"
+
+#: DrGeo-Main,DrGeo_class>>drgeoInformationString
+msgid ""
+"Dr. Geo is about interactive geometry and programming.\n"
+"{1}\n"
+"\n"
+"It allows one to create geometric figure plus the interactive manipulation \n"
+"It is usable in teaching situation, in mathematics, physics and\n"
+"programming, with students from primary school to university levels.\n"
+"\n"
+"It is simple and effective with some unique features as Smalltalk scripts \n"
+"and programmed interactive sketches. \n"
+"\n"
+"{2}\n"
+"\n"
+"LICENSE: GPL"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>drgeoVersion
+msgid "Installed version: "
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "그림.- "
+
+#: DrGeo-Main,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>macrosArray
+msgid "Macro - "
+msgstr "매크로 - "
+
+#: DrGeo-Main,DrGeo_class>>quit
+msgid ""
+"There is unsaved data! \n"
+"Are you sure to quit Dr. Geo environment?"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A source code browser to view, edit and save Dr. Geo code. I open the "
+"browser on the DrGeoSketch class you can study to design your own Smalltalk "
+"sketch."
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A tool to browse and to test both system and personal Smalltalk Sketches."
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
+"can be entered, stored, edited, and evaluated."
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "An editor to write and to test new Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Browse"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Browse Smalltalk Sketches"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Edit Smalltalk Sketch"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Open a file"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Open the filer on your personal sketches collection."
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Save session"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Save this Dr. Geo session."
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Smalltalk Sketch Editor"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "System Browser"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+msgid "Tools"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Workspace"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "About"
+msgstr "이것은..."
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Dr. Geo Preferences"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "New sketch"
+msgstr "새로운 스케치"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Quit"
+msgstr "끝내기"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Settings"
+msgstr "설정"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Toggle full screen mode"
+msgstr ""
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Turn full screen mode on when it is off, off when it is on."
+msgstr ""
+
+#: DrGeo-Main,DrGeoMiniView>>label
+msgid "A Dr. Geo sketch"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>askForImageToExport
+msgid "Name the bitmap to export:"
+msgstr "내보내려는 비트맵의 이름을 정해주세요:"
+
+#: DrGeo-Main,DrGeoPresenter>>axesWording
+msgid "<no> Axes"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>axesWording
+msgid "<yes> Axes"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>createMultipleModeWording
+msgid "<no> Create Multiple"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>createMultipleModeWording
+msgid "<yes> Create Multiple"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>createScript
+msgid "Build a new script"
+msgstr "새로운 스크립트를 만들어라"
+
+#: DrGeo-Main,DrGeoPresenter>>editScript,DrGeoPresenter>>editScript:
+msgid "Edit or create scripts"
+msgstr "스크립트 편집 혹은 생성하기"
+
+#: DrGeo-Main,DrGeoPresenter>>exportToImageAs
+msgid "Name the image to keep."
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>gridWording
+msgid "<no> Grid"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>gridWording
+msgid "<yes> Grid"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>magneticGridWording
+msgid "<no> Magnetic Grid"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>magneticGridWording
+msgid "<yes> Magnetic Grid"
+msgstr ""
+
+#: DrGeo-Main,DrGeoPresenter>>save,DrGeoPresenter>>saveWithinLimitedTime:
+msgid ""
+"I can't save the sketch.\n"
+"Check the local resource or the server."
+msgstr ""
+
+#: DrGeo-Script-Sketch,DrGeoSketch>>canTransform:
+msgid "Only geometric object can be transformed."
+msgstr "기하객체만이 변형될 수 있습니다."
+
+#: DrGeo-Script-User,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "나는 스크립트의 설명입니다. 나를 편집해 주세요."
+
+#: DrGeo-Script-User,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "스크립트"
+
+#: DrGeo-System,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>pointPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>textPreferences,DrGPlatform>>valuePreferences,DrGPlatform>>vectorPreferences,DrGStyle>>colorWidget
+msgid "Colour"
+msgstr "색깔"
+
+#: DrGeo-System,DrGPlatform>>arcPreferences
+msgid "arc"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>circlePreferences
+msgid "circle"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>linePreferences
+msgid "line"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>locusPreferences
+msgid "locus"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>miscPreferences
+msgid "Autoname new object"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>miscPreferences
+msgid ""
+"Path for user created resources as sketches, Smalltalk sketches, exported "
+"image. An empty path locates these resources in the Dr. Geo application "
+"folder. Relative path accepted, home/user directory is then prepended"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>miscPreferences
+msgid "miscellaneous"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>shapeWidget
+msgid "Shape"
+msgstr "모양"
+
+#: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>sizeWidget
+msgid "Size"
+msgstr "크기"
+
+#: DrGeo-System,DrGPlatform>>pointPreferences
+msgid "point"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>polygonPreferences
+msgid "polygon"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Code completion on"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "programming"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>rayPreferences
+msgid "ray"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>segmentPreferences,DrGSegmentStyle>>markWidget
+msgid "Mark"
+msgstr "표시"
+
+#: DrGeo-System,DrGPlatform>>segmentPreferences
+msgid "segment"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>textPreferences,DrGTextStyle>>backgroundWidget
+msgid "Background"
+msgstr "배경"
+
+#: DrGeo-System,DrGPlatform>>textPreferences,DrGTextStyle>>borderWidget
+msgid "Border"
+msgstr "테두리"
+
+#: DrGeo-System,DrGPlatform>>textPreferences
+msgid "text"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>valuePreferences
+msgid "Number of decimal"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>valuePreferences
+msgid "value"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>vectorPreferences
+msgid "vector"
+msgstr ""
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate1ButtonData
+msgid "Animate at speed 1."
+msgstr "속력 1로 애니메이션한다."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate1ButtonData
+msgid "Animate x1"
+msgstr "애니메이트 x1"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate2ButtonData
+msgid "Animate at speed 2."
+msgstr "속력 2로 애니메이션한다."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate2ButtonData
+msgid "Animate x2"
+msgstr "애니메이트 x2"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate3ButtonData
+msgid "Animate at speed 3."
+msgstr "속력 3로 애니메이션한다."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate3ButtonData
+msgid "Animate x3"
+msgstr "애니메이트 x3"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate4ButtonData
+msgid "Animate at speed 4."
+msgstr "속력 4로 애니메이션한다."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate4ButtonData
+msgid "Animate x4"
+msgstr "애니메이트 x4"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>axesButtonData
+msgid "Show or hide the ox and oy axes."
+msgstr "ox축과 oy축을 보이거나 숨기기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>exportImageButtonData
+msgid "Export this sketch as SVG image."
+msgstr ""
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>exportImageButtonData
+msgid "Save as image"
+msgstr ""
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>gridButtonData
+msgid "Show or hide grid."
+msgstr "모눈 보이거나 숨기기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>keepButtonData
+msgid "Keep this sketch permanently."
+msgstr "이 스케치를 영구적으로 보관하라."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>keepButtonData
+msgid "Save"
+msgstr "저장"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>macroDeleteButtonData
+msgid "Delete a macro-construction from the registry."
+msgstr "매크로를 등록해제하기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>macroDeleteButtonData
+msgid "Delete macro"
+msgstr "매크로 삭제"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>magneticGridButtonData
+msgid "Snap to grid."
+msgstr "모눈에 맞추기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>menuButtonData
+msgid "An unobtrusive menu with all Dr. Geo tools."
+msgstr "모든 geo박사 도구를 사용하여 눈에 거슬리지 않은 메뉴 ."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>menuButtonData
+msgid "Menu"
+msgstr "메뉴"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>multipleModeButtonData
+msgid ""
+"Toggle between the build of several geometric objects and the build of one "
+"geometric object then move it."
+msgstr "여러 기하객체 만들기 / 하나의 기하객체 만든 후 옮기기 설정 전환하기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>newButtonData
+msgid "New"
+msgstr "새로 만들기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>newButtonData
+msgid "Open a new blank sketch."
+msgstr "새 스케치 열기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>openButtonData
+msgid "Open a sketch."
+msgstr "스케치 열기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>redoButtonData
+msgid "Redo"
+msgstr "되무르기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>redoButtonData
+msgid "Redo last action."
+msgstr "최근 작업 되무르기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptCreateButtonData
+msgid "Create a Smalltalk script."
+msgstr "스몰토크 스크립트 만들기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptCreateButtonData
+msgid "Create a script"
+msgstr "스크립트 만들기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptEditButtonData
+msgid "Edit a Smalltalk script."
+msgstr "스몰토크 스크립트 편집"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptEditButtonData
+msgid "Edit a script"
+msgstr "스크립트 편집하기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>stylerFor:
+msgid "Edit style"
+msgstr ""
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>treeButtonData
+msgid "Construction tree"
+msgstr "건설 트리"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>treeButtonData
+msgid "The hierarchy tree presenting the visible constructed items."
+msgstr "눈에 보이는 구성 항목을 제시하는 계층 트리 ."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>undoButtonData
+msgid "Undo"
+msgstr "무르기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>undoButtonData
+msgid "Undo last action"
+msgstr "최근 작업 무르기"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelXButtonData
+msgid "A wheel to move horizontally the sketch."
+msgstr "휠은 스케치를 수평으로 이동합니다."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelXButtonData
+msgid "Horizontal wheel"
+msgstr "수평 휠"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelYButtonData
+msgid "A wheel to move vertically the sketch."
+msgstr "휠은 수직으로 스케치 이동합니다."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelYButtonData
+msgid "Vertical wheel"
+msgstr "수직 휠"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelZButtonData
+msgid "A wheel to zoom in, zoom out the sketch."
+msgstr "스케치를 휠로 줌인,줌아웃"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelZButtonData
+msgid "Zoom wheel"
+msgstr "휠 줌"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>editMenu
+msgid "Copy"
+msgstr ""
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr ""
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr "스케치를 다른 이름으로 보관하라."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Open at..."
+msgstr "...에 열어라"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "다른 이름으로 저장..."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "곡선 위의 자유점을 애니메이트하라."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr "매크로를 생성하거나 실행합니다. 매크로는 스케치 영역에 있는 아이템들에 적용될 수 있는 건설 템플릿입니다."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr "다른 곡선 종류를 생성하기: 직선, 반직선, 선분, 벡터, 원, ..."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "점들을 생성: 자유, 곡선 위, 교점 혹은 중간점"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr "여러 숫자 객체를 만들어라: 자유로운 값, 거리, 길이, 각도, 좌표, 등식, 글"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "항목들의 스타일과 속성을 지우거나 편집합니다."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "File"
+msgstr "파일"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Lines"
+msgstr "직선"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Dr. Geo의 도형을 읽거나, 저장하거나, 내보냅니다."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "매크로 만들기"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "숫자와 글"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Points"
+msgstr "점"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Script"
+msgstr "스크립트"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr "스크립트: 스크립트를 사용하거나 편집하거나 생성하여 스케치에 끼워넣는다."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr "기하학적 변환으로 객체를 변환합니다: 대칭, 반사, 회전, 평행이동, 닮음변환(크기)"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "변환"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph_class>>open,DrGeo_class>>worldMenu:
+msgid "Open a sketch"
+msgstr "스케치 열기"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "예제"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGUIControlsManager>>openButtonData
+msgid "Open"
+msgstr "열기"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "각도"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr "아무거나 자료형"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr "방향"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses,DrGSegmentBuilder_class>>title
+msgid "Segment"
+msgstr "선분"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr "값"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses,DrGVectorBuilder_class>>title
+msgid "Vector"
+msgstr "벡터"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr "스크립트 인자를 제거하라."
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr "스크립트에 인자를 추가하기."
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add argument"
+msgstr "인자 추가"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "만들기"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+"스크립트에 대한 설명입니다. 사용자를 돕기 위해서, 스크립트가 어떤 일을 하는지 그리고 입력 인자들은 어때야 하는지 잘 설명하세요."
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "인자들"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "설명"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGStyle>>nameWidget
+msgid "Name"
+msgstr "이름"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "스크립트의 이름"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea,DrGUIMinimalControlsManager>>mainMenu
+msgid "Edit"
+msgstr "편집"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>debugWindowSketch
+msgid "Execute step by step"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>keepSketch,DrGeoPresenter>>saveSketchAs
+msgid "Name the sketch to keep."
+msgstr "보관할 스케치의 이름을 정해주세요."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "매크로 생성 빌드하기"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage
+msgid "Description:"
+msgstr "설명:"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "이름과 설명을 넣어 주세요."
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage
+msgid "Title:"
+msgstr "제목:"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "입력 매개변수를 선택하세요."
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "출력 매개변수를 선택하세요."
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "매크로 생성 실행하기"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "매크로 만들기를 선택하고 형태 항목을 선택하세요."
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr "스케치에 있는 스크립트를 사용"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "Script name"
+msgstr "스크립트 이름"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr "스크립트를 선택하고 스케치에 있는 항목을 선택하세요"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr ""

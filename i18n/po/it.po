@@ -1,0 +1,1614 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pharo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-18 18:22+0000\n"
+"PO-Revision-Date: 2023-05-19 19:20+0000\n"
+"Last-Translator: Gianfranco Frisani <gfrisani@libero.it>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2023-11-24 06:28+0000\n"
+"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
+"Language: \n"
+"X-Pharo-Domain: DrGeoII\n"
+"X-Pharo-SystemVersion: Pharo1.3 of 5 July 2011 update 13267\n"
+
+#: DrGeo-Core-Builders,DrGAngleBisectorBuilder_class>>description
+msgid ""
+"Angle bisector defined by three points or an angle defined by three points."
+msgstr ""
+"Bisettrice dell'angolo definita da tre punti o un angolo definito da tre "
+"punti."
+
+#: DrGeo-Core-Builders,DrGAngleBisectorBuilder_class>>title
+msgid "Angle bisector"
+msgstr "Bisettrice dell'angolo"
+
+#: DrGeo-Core-Builders,DrGAngleGeometricBuilder_class>>description
+msgid ""
+"Geometric angle defined by three points, the second point is the vertex. Its "
+"measure belongs to [0 ; 180]."
+msgstr ""
+"Angolo geometrico definito da tre punti, il secondo indica il vertice. La "
+"sua misura rientra nell'intervallo [0 ; 180]."
+
+#: DrGeo-Core-Builders,DrGAngleGeometricBuilder_class>>title
+msgid "Geometric angle"
+msgstr "Angolo geometrico"
+
+#: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>description
+msgid ""
+"Oriented angle defined by three points or two vectors. When defined from "
+"three points, the second point is the vertex. Its measure belongs to [0 ; "
+"360[ or ]-180 ; 180]. "
+msgstr ""
+"Angolo geometrico definito da tre punti o da due vettori. Quando è definito "
+"da tre punti, , il secondo indica il vertice. La sua misura rientra negli "
+"intervalli [0 ; 360] o [-180 ; 180]. "
+
+#: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>title
+msgid "Oriented angle"
+msgstr "Angolo orientato"
+
+#: DrGeo-Core-Builders,DrGArcBuilder_class>>description
+msgid "Arc defined by three points."
+msgstr "Arco definito da tre punti."
+
+#: DrGeo-Core-Builders,DrGArcBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "Arco"
+
+#: DrGeo-Core-Builders,DrGArcCenterBuilder_class>>description
+msgid "Arc defined by its center and two points."
+msgstr "Arco definito dal suo centro e da due punti."
+
+#: DrGeo-Core-Builders,DrGArcCenterBuilder_class>>title
+msgid "Arc (center)"
+msgstr "Arco (centro)"
+
+#: DrGeo-Core-Builders,DrGBitmapBuilder_class>>description
+msgid ""
+"Picture: drag and drop a picture in the canvas. It can be moved and scaled."
+msgstr ""
+"Immagine: trascina e lascia un'immagine nel canovaccio; è possibile "
+"spostarla e modificarla in scala."
+
+#: DrGeo-Core-Builders,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
+msgid "Picture"
+msgstr "Immagine"
+
+#: DrGeo-Core-Builders,DrGCircleBuilder_class>>description
+msgid ""
+"Circle defined by its center and a point or by its center and radius, a "
+"value."
+msgstr ""
+"Crea un cerchio per mezzo del centro e un punto o per mezzo del centro e il "
+"valore del raggio."
+
+#: DrGeo-Core-Builders,DrGCircleBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "Cerchio"
+
+#: DrGeo-Core-Builders,DrGCoordinatesBuilder_class>>description
+msgid "Vector or point coordinates, circle or line equation."
+msgstr ""
+"Coordinate di un punto o di un vettore, equazione di una retta o di un "
+"cerchio."
+
+#: DrGeo-Core-Builders,DrGCoordinatesBuilder_class>>title
+msgid "Coordinates, equation"
+msgstr "Coordinate, equazione"
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>description
+msgid ""
+"Click to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"Fai clic per creare un punto: un punto libero sullo sfondo, o su una curva o "
+"sull'intersezione di due curve."
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>description
+msgid ""
+"Tap to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"Seleziona per creare un punto: un punto libero sullo sfondo, su una curva o "
+"sull'intersezione di due curve."
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "Punto"
+
+#: DrGeo-Core-Builders,DrGHomothetyBuilder_class>>description
+msgid ""
+"Homothety: select a center, a value and a geometric object. The first "
+"selected point is the homothety center."
+msgstr ""
+"Omotetia: seleziona il centro, un valore e un oggetto geometrico. Il primo "
+"punto selezionato è il centro omotetico."
+
+#: DrGeo-Core-Builders,DrGHomothetyBuilder_class>>title
+msgid "Homothety (scale)"
+msgstr "Omotetia (scala)"
+
+#: DrGeo-Core-Builders,DrGLineBuilder_class>>description
+msgid "Line defined by two points"
+msgstr "Crea una linea definita da due punti."
+
+#: DrGeo-Core-Builders,DrGLineBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "Linea"
+
+#: DrGeo-Core-Builders,DrGLocusBuilder_class>>description
+msgid "Locus defined by a free point on a curve and a relative point."
+msgstr "Luogo definito da un punto libero e da un punto relativo."
+
+#: DrGeo-Core-Builders,DrGLocusBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "Luogo"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "Costruisci una macro-costuzione con parametri di input e di output."
+
+#: DrGeo-Core-Builders,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "Genera una macro"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "I parametri di input e di output non corrispondono"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "Digita un nome e la descrizione"
+
+#: DrGeo-Core-Builders,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"Esegui una macro-costruzione precostruita sui parametri di input "
+"selezionati. Per modificare una descrizione di macro, modifica il suo testo "
+"e confermalo con i tasti [alt/ctrl]+s."
+
+#: DrGeo-Core-Builders,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "Esegui/modifica una macro"
+
+#: DrGeo-Core-Builders,DrGMiddleBuilder_class>>description
+msgid "The midpoint of a segment or between two points."
+msgstr "Punto medio di un segmento o tra due punti."
+
+#: DrGeo-Core-Builders,DrGMiddleBuilder_class>>title
+msgid "Middle"
+msgstr "Centro"
+
+#: DrGeo-Core-Builders,DrGParallelBuilder_class>>description
+msgid ""
+"Line passing through one point and parallel to a line, half-line, etc."
+msgstr "Retta per un punto e parallela a una retta, semiretta, ecc."
+
+#: DrGeo-Core-Builders,DrGParallelBuilder_class>>title
+msgid "Parallel"
+msgstr "Parallela"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBisectorBuilder_class>>description
+msgid "Perpendicular bisector defined by a segment or two points."
+msgstr "Bisettrice perpendicolare definita da un segmento o da due punti."
+
+#: DrGeo-Core-Builders,DrGPerpendicularBisectorBuilder_class>>title
+msgid "Perpendicular bisector"
+msgstr "Bisettrice perpendicolare"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBuilder_class>>description
+msgid ""
+"Line passing through one point and orthogonal to a line, half-line, etc."
+msgstr ""
+"Retta passante per un punto e perpendicolare a una retta, semiretta, ecc."
+
+#: DrGeo-Core-Builders,DrGPerpendicularBuilder_class>>title
+msgid "Perpendicular"
+msgstr "Perpendicolare"
+
+#: DrGeo-Core-Builders,DrGPointByCoordinatesBuilder_class>>description
+msgid ""
+"Point given its coordinates: select two numbers or a point coordinates (@)."
+msgstr ""
+"Crea un punto tramite le sue coordinate: seleziona due numeri o le "
+"coordinate di un punto (@)."
+
+#: DrGeo-Core-Builders,DrGPointByCoordinatesBuilder_class>>title
+msgid "Coordinates"
+msgstr "Coordinate"
+
+#: DrGeo-Core-Builders,DrGPointIntersectionBuilder_class>>description
+msgid "Intersection(s) of two curves."
+msgstr "Una o più intersezioni di due curve"
+
+#: DrGeo-Core-Builders,DrGPointIntersectionBuilder_class>>title
+msgid "Intersection"
+msgstr "Intersezione"
+
+#: DrGeo-Core-Builders,DrGPolygonBuilder_class>>description
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
+msgstr ""
+"Poligono definito da n vertici: per completare la costruzione scegli il "
+"vertice iniziale."
+
+#: DrGeo-Core-Builders,DrGPolygonBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "Poligono"
+
+#: DrGeo-Core-Builders,DrGPolygonRegularBuilder_class>>description
+msgid "Regular polygon defined by its center, a vertex and its sides number."
+msgstr ""
+"Poligono regolare definito dal centro, da un vertice e dal numero di lati."
+
+#: DrGeo-Core-Builders,DrGPolygonRegularBuilder_class>>title
+msgid "Regular polygon"
+msgstr "Poligono regolare"
+
+#: DrGeo-Core-Builders,DrGRayBuilder_class>>description
+msgid ""
+"Half-Line defined by two points, the first selected point is the origin."
+msgstr "Semiretta definita da due punti, il primo è l'origine."
+
+#: DrGeo-Core-Builders,DrGRayBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "Raggio"
+
+#: DrGeo-Core-Builders,DrGReflectionBuilder_class>>description
+msgid ""
+"Reflexion: select a line and a geometric object. Reflexion axe is the first "
+"selected line."
+msgstr ""
+"Riflessione: seleziona una retta e un oggetto geometrico. L'asse di "
+"riflessione è la prima retta selezionata."
+
+#: DrGeo-Core-Builders,DrGReflectionBuilder_class>>title
+msgid "Reflection"
+msgstr "Riflessione"
+
+#: DrGeo-Core-Builders,DrGRotationBuilder_class>>description
+msgid ""
+"Rotation: select a point, a value and a geometric object. The first selected "
+"point is the rotation center."
+msgstr ""
+"Rotazione: seleziona un punto, un valore e un oggetto geometrico. Il primo "
+"punto selezionato è il centro di rotazione."
+
+#: DrGeo-Core-Builders,DrGRotationBuilder_class>>title
+msgid "Rotation"
+msgstr "Rotazione"
+
+#: DrGeo-Core-Builders,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "Inserisci uno script Smalltalk nell'area di disegno."
+
+#: DrGeo-Core-Builders,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "Usa uno script"
+
+#: DrGeo-Core-Builders,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr ""
+"Nessuna descrizione, scrivine una nel metodo descrizione di questo script."
+
+#: DrGeo-Core-Builders,DrGSegmentBuilder_class>>description
+msgid "Segment defined by two points."
+msgstr "Segmento definito da due punti."
+
+#: DrGeo-Core-Builders,DrGSymmetryBuilder_class>>description
+msgid ""
+"Symmetry: select a point and a geometric object. The first selected point is "
+"the symmetry center."
+msgstr ""
+"Simmetria: seleziona un punto e un oggetto geometrico. Il primo punto "
+"selezionato è il centro di simmetria."
+
+#: DrGeo-Core-Builders,DrGSymmetryBuilder_class>>title
+msgid "Symmetry"
+msgstr "Simmetria"
+
+#: DrGeo-Core-Builders,DrGTextBuilder_class>>description
+msgid "Free text you can edit and move around."
+msgstr "Testo libero che può essere modificato e spostato."
+
+#: DrGeo-Core-Builders,DrGTextBuilder_class>>title
+msgid "Text"
+msgstr "Testo"
+
+#: DrGeo-Core-Builders,DrGTranslationBuilder_class>>description
+msgid "Translation: select a vector and a geometric object."
+msgstr "Traslazione: seleziona un vettore e un oggetto geometrico."
+
+#: DrGeo-Core-Builders,DrGTranslationBuilder_class>>title
+msgid "Translation"
+msgstr "Traslazione"
+
+#: DrGeo-Core-Builders,DrGValueBuilder_class>>description
+msgid "Distance between objects, curve length, free value."
+msgstr "Distanza fra oggetti, lunghezza della curva, valore libero."
+
+#: DrGeo-Core-Builders,DrGValueBuilder_class>>title
+msgid "Distance, length, value"
+msgstr "Distanza, lunghezza, valore"
+
+#: DrGeo-Core-Builders,DrGVectorBuilder_class>>description
+msgid "Vector defined by two points."
+msgstr "Vettore definito da due punti."
+
+#: DrGeo-Core-File,DrGeoXml>>parseFigureFrom:
+msgid "no name"
+msgstr "nessun nome"
+
+#: DrGeo-Core-Tools,DrGAnimateTool_class>>description
+msgid "Select a free point on a curve to animate it."
+msgstr "Seleziona un punto libero su una curva per inserire un'animazione."
+
+#: DrGeo-Core-Tools,DrGAnimateTool_class>>title,DrGUIMinimalControlsManager>>mainMenu
+msgid "Animate"
+msgstr "Animazione"
+
+#: DrGeo-Core-Tools,DrGDeleteTool_class>>description
+msgid "Erase an object and all its depedencies."
+msgstr "Cancella un oggetto e tutte le sue dipendenze."
+
+#: DrGeo-Core-Tools,DrGDeleteTool_class>>title
+msgid "Eraser"
+msgstr "Cancella"
+
+#: DrGeo-Core-Tools,DrGFlyPointBuildToolState>>handleMouseAt:
+msgid "This intersection"
+msgstr "Questa intersezione"
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on the plane."
+msgstr "Modifica come punto libero sul piano."
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on this curve."
+msgstr "Modifica come punto libero su questa curva."
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as this intersection."
+msgstr "Modifica come questa intersezione."
+
+#: DrGeo-Core-Tools,DrGPropertyTool_class>>description
+msgid "Edit an item's property"
+msgstr "Modifica le proprietà di un oggetto"
+
+#: DrGeo-Core-Tools,DrGPropertyTool_class>>title
+msgid "Property"
+msgstr "Proprietà"
+
+#: DrGeo-Core-Tools,DrGSelectTool_class>>description
+msgid "Select and move an object."
+msgstr "Seleziona e sposta un oggetto."
+
+#: DrGeo-Core-Tools,DrGSelectTool_class>>title
+msgid "Select and Move"
+msgstr "Seleziona e sposta"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateDragged>>handleStillPress:
+msgid "Select a point to merge with"
+msgstr "Seleziona un punto di unione"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Drag this point to change its nature."
+msgstr "Trascina questo punto per modificare la sua natura."
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid ""
+"Pressing down the [Shift] key you can drag and change the nature of free "
+"point or intersection point."
+msgstr ""
+"Premi il tasto [Maiusc] per trascinare e modificare la natura di un punto "
+"libero o di un punto intersezione."
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
+msgstr ""
+"Possono essere selezionati diversi oggetti. Selezionane uno con un clic del "
+"mouse."
+
+#: DrGeo-Core-Tools,DrGStyleTool_class>>description
+msgid "Edit an object style."
+msgstr "Modifica lo stile di un oggetto."
+
+#: DrGeo-Core-Tools,DrGStyleTool_class>>title
+msgid "Edit Style"
+msgstr "Modifica stile"
+
+#: DrGeo-Core-Tools,DrGTool>>chooseMorph:
+msgid "Select an object"
+msgstr "Seleziona un oggetto"
+
+#: DrGeo-Core-Tools,DrGToolState>>handleMouseAt:
+msgid "Several objects can be selected. Please, choose one."
+msgstr "Puoi selezionare diversi oggetti: scegline uno."
+
+#: DrGeo-Item-Models,DrGAngle3ptsItem>>adaptiveDescriptiveName
+msgid "This geometric angle %1"
+msgstr "Questo angolo geometrico %1"
+
+#: DrGeo-Item-Models,DrGAngleBisector3ptsItem>>adaptiveDescriptiveName,DrGLineAngleBisectorItem>>adaptiveDescriptiveName
+msgid "This angle bisector %1"
+msgstr "Questa bisettrice dell'angolo %1"
+
+#: DrGeo-Item-Models,DrGAngleItem>>adaptiveDescriptiveName
+msgid "This oriented angle %1"
+msgstr "Questo angolo orientato %1"
+
+#: DrGeo-Item-Models,DrGArcItem>>adaptiveDescriptiveName
+msgid "This Arc Circle %1"
+msgstr "Questo arco di circonferenza %1"
+
+#: DrGeo-Item-Models,DrGBitmapItem>>adaptiveDescriptiveName
+msgid "This picture"
+msgstr "Questa immagine"
+
+#: DrGeo-Item-Models,DrGCircleItem>>adaptiveDescriptiveName
+msgid "This circle %1"
+msgstr "Questo cerchio %1"
+
+#: DrGeo-Item-Models,DrGCompositeItem>>adaptiveDescriptiveName
+msgid "This composite object %1"
+msgstr "Questo oggetto composto %1"
+
+#: DrGeo-Item-Models,DrGEquationItem>>adaptiveDescriptiveName
+msgid "This equation %1"
+msgstr "Questa equazione %1"
+
+#: DrGeo-Item-Models,DrGEquationItem>>printOn:
+msgid "Equation"
+msgstr "Equazione"
+
+#: DrGeo-Item-Models,DrGLineItem>>adaptiveDescriptiveName
+msgid "This line %1"
+msgstr "Questa retta %1"
+
+#: DrGeo-Item-Models,DrGLineParallelItem>>adaptiveDescriptiveName
+msgid "This parallel line %1"
+msgstr "Questa retta parallela %1"
+
+#: DrGeo-Item-Models,DrGLinePerpendicularBisector2ptsItem>>adaptiveDescriptiveName,DrGPerpendicularBisectorItem>>adaptiveDescriptiveName
+msgid "This perpendicular bisector %1"
+msgstr "Questa bisettrice perpendicolare %1"
+
+#: DrGeo-Item-Models,DrGLinePerpendicularItem>>adaptiveDescriptiveName
+msgid "This perpendicular line %1"
+msgstr "Questa retta perpendicolare %1"
+
+#: DrGeo-Item-Models,DrGLocus2ptsItem>>adaptiveDescriptiveName
+msgid "This locus %1"
+msgstr "Questo luogo %1"
+
+#: DrGeo-Item-Models,DrGMathItem>>adaptiveDescriptiveName
+msgid "This math item %1"
+msgstr "Questo oggetto matematico %1"
+
+#: DrGeo-Item-Models,DrGPointCoordinateItem>>editPropertyIn:,DrGPointFreeItem>>editPropertyIn:
+msgid "Edit the coordinates"
+msgstr "Modifica le coordinate"
+
+#: DrGeo-Item-Models,DrGPointItem>>adaptiveDescriptiveName
+msgid "This point %1"
+msgstr "Questo punto %1"
+
+#: DrGeo-Item-Models,DrGPointOncurveItem>>editPropertyIn:
+msgid "Edit this curvilinear abscissa in [0;1]"
+msgstr "Modifica questa ascissa curvilinea in [0;1]"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This polygon %1"
+msgstr "Questo poligono %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This quadrilateral %1"
+msgstr "Questo quadrilatero %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This triangle %1"
+msgstr "Questo triangolo %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>printOn:
+msgid " edges="
+msgstr " margini="
+
+#: DrGeo-Item-Models,DrGRayItem>>adaptiveDescriptiveName
+msgid "This half-line %1"
+msgstr "Questa semiretta %1"
+
+#: DrGeo-Item-Models,DrGSegmentItem>>adaptiveDescriptiveName
+msgid "This segment %1"
+msgstr "Questo segmento %1"
+
+#: DrGeo-Item-Models,DrGTextItem>>adaptiveDescriptiveName
+msgid "This text"
+msgstr "Questo testo"
+
+#: DrGeo-Item-Models,DrGTextItem>>editPropertyIn:
+msgid "Edit this text"
+msgstr "Modifica questo testo"
+
+#: DrGeo-Item-Models,DrGTextItem>>initialize
+msgid "Edit me"
+msgstr "Modificami"
+
+#: DrGeo-Item-Models,DrGValueArclengthItem>>adaptiveDescriptiveName
+msgid "This arc length %1"
+msgstr "Questa lunghezza di arco %1"
+
+#: DrGeo-Item-Models,DrGValueCircleperimeterItem>>adaptiveDescriptiveName
+msgid "This circle perimeter %1"
+msgstr "Questa circonferenza %1"
+
+#: DrGeo-Item-Models,DrGValueDistance2ptsItem>>adaptiveDescriptiveName
+msgid "This distance between two points %1"
+msgstr "Questa distanza tra due punti %1"
+
+#: DrGeo-Item-Models,DrGValueDistanceptlineItem>>adaptiveDescriptiveName
+msgid "This point-line distance %1"
+msgstr "Questa distanza tra un punto e una linea %1"
+
+#: DrGeo-Item-Models,DrGValueItem>>adaptiveDescriptiveName
+msgid "This value %1"
+msgstr "Questo valore %1"
+
+#: DrGeo-Item-Models,DrGValueItem>>printNameOn:
+msgid "Value "
+msgstr "Valore "
+
+#: DrGeo-Item-Models,DrGValuePolygonperimeterItem>>adaptiveDescriptiveName
+msgid "This polygon perimeter %1"
+msgstr "Perimetro di questo poligono %1"
+
+#: DrGeo-Item-Models,DrGValuePtabscissaItem>>adaptiveDescriptiveName
+msgid "This point abscissa %1"
+msgstr "Questo punto di ascissa %1"
+
+#: DrGeo-Item-Models,DrGValuePtordinateItem>>adaptiveDescriptiveName
+msgid "This point ordinate %1"
+msgstr "Questo punto di ordinata %1"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\""
+msgstr "Questo script \"{1}\""
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with argument: %2"
+msgstr "Questo script \"{1}\" con argomento: %2"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with arguments: %2"
+msgstr "Questo script \"{1}\" con argomenti: %2"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>printNameOn:
+msgid "Script "
+msgstr "Script "
+
+#: DrGeo-Item-Models,DrGValueSegmentlengthItem>>adaptiveDescriptiveName
+msgid "This segment length %1"
+msgstr "Questa lunghezza di segmento %1"
+
+#: DrGeo-Item-Models,DrGValueSlopeItem>>adaptiveDescriptiveName
+msgid "This line slope %1"
+msgstr "Questa inclinazione di retta %1"
+
+#: DrGeo-Item-Models,DrGValueValueItem>>editPropertyIn:
+msgid "Edit this value"
+msgstr "Modifica questo valore"
+
+#: DrGeo-Item-Models,DrGValueVectorabscissaItem>>adaptiveDescriptiveName
+msgid "This vector abscissa %1"
+msgstr "Questa ascissa vettoriale %1"
+
+#: DrGeo-Item-Models,DrGValueVectornormItem>>adaptiveDescriptiveName
+msgid "This Vector's norm %1"
+msgstr "Questa norma del vettore %1"
+
+#: DrGeo-Item-Models,DrGValueVectorordinateItem>>adaptiveDescriptiveName
+msgid "This vector ordinate %1"
+msgstr "Questa ordinata vettoriale %1"
+
+#: DrGeo-Item-Models,DrGVectorItem>>adaptiveDescriptiveName
+msgid "This vector %1"
+msgstr "Questo vettore %1"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>lineWidget
+msgid "Set the style of the line."
+msgstr "Imposta lo stile della retta."
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>lineWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Style"
+msgstr "Stile"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>thicknessWidget
+msgid "Set the thickness of the line."
+msgstr "Imposta lo spessore della retta."
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>thicknessWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Thickness"
+msgstr "Spessore"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>fillWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Fill"
+msgstr "Riempi"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>fillWidget
+msgid "Toggle to fill the object."
+msgstr "Attiva per riempire l'oggetto."
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>translucentWidget
+msgid "Toggle the translucency of the object."
+msgstr "Attiva la trasparenza dell'oggetto."
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>translucentWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Translucent"
+msgstr "Trasparente"
+
+#: DrGeo-Item-Styles,DrGFinitCurveStyle>>arrowWidget,DrGPlatform>>arcPreferences,DrGPlatform>>segmentPreferences
+msgid "Arrow"
+msgstr "Freccia"
+
+#: DrGeo-Item-Styles,DrGFinitCurveStyle>>arrowWidget
+msgid "Set arrow(s) to the line."
+msgstr "Imposta una o più frecce sulla retta."
+
+#: DrGeo-Item-Styles,DrGPointStyle>>shapeWidget
+msgid "Set the shape of the point."
+msgstr "Imposta la forma del punto."
+
+#: DrGeo-Item-Styles,DrGPointStyle>>sizeWidget
+msgid "Set the size of the point."
+msgstr "Imposta la dimensione del punto."
+
+#: DrGeo-Item-Styles,DrGSegmentStyle>>markWidget
+msgid "Set a mark to the segment."
+msgstr "Contrassegna il segmento."
+
+#: DrGeo-Item-Styles,DrGStyle>>colorWidget
+msgid "Set the colour."
+msgstr "Imposta il colore."
+
+#: DrGeo-Item-Styles,DrGStyle>>feedbackWidget
+msgid "Feedback"
+msgstr "Commenti"
+
+#: DrGeo-Item-Styles,DrGStyle>>feedbackWidget
+msgid ""
+"Toggle to provide feedback and interaction when the mouse cursor is over the "
+"object."
+msgstr ""
+"Attiva per fornire commenti e interazione quando il cursore del mouse si "
+"trova sull'oggetto."
+
+#: DrGeo-Item-Styles,DrGStyle>>hiddenWidget
+msgid "Hide"
+msgstr "Nascondi"
+
+#: DrGeo-Item-Styles,DrGStyle>>hiddenWidget
+msgid "Toggle to hide the object."
+msgstr "Attiva per nascondere l'oggetto."
+
+#: DrGeo-Item-Styles,DrGStyle>>lockedWidget
+msgid "Lock"
+msgstr "Blocca"
+
+#: DrGeo-Item-Styles,DrGStyle>>lockedWidget
+msgid "Toggle to lock the object to its position."
+msgstr "Attiva per bloccare l'oggetto nella sua posizione."
+
+#: DrGeo-Item-Styles,DrGStyle>>nameWidget
+msgid "Rename this object."
+msgstr "Rinomina questo oggetto."
+
+#: DrGeo-Item-Styles,DrGTextStyle>>backgroundWidget
+msgid "Set the background colour."
+msgstr "Imposta il colore dello sfondo"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>borderWidget
+msgid "Set the border colour."
+msgstr "Imposta il colore del bordo."
+
+#: DrGeo-Item-Styles,DrGTextStyle>>fontSizeWidget
+msgid "Font size"
+msgstr "Dimensione del carattere"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>fontSizeWidget
+msgid "Set the font size."
+msgstr "Imposta la dimensione del carattere."
+
+#: DrGeo-Item-Styles,DrGValueStyle>>rename,DrGValueStyle>>rename
+msgid "Name this value"
+msgstr "Assegna un nome a questo valore"
+
+#: DrGeo-Item-Styles,DrGValueStyle>>rename,DrGValueStyle>>rename
+msgid "Rename this value"
+msgstr "Rinomina questo valore"
+
+#: DrGeo-Main,DrGeo_class>>drgeoInformationString
+msgid ""
+"Dr. Geo is about interactive geometry and programming.\n"
+"{1}\n"
+"\n"
+"It allows one to create geometric figure plus the interactive manipulation \n"
+"It is usable in teaching situation, in mathematics, physics and\n"
+"programming, with students from primary school to university levels.\n"
+"\n"
+"It is simple and effective with some unique features as Smalltalk scripts \n"
+"and programmed interactive sketches. \n"
+"\n"
+"{2}\n"
+"\n"
+"LICENSE: GPL"
+msgstr ""
+"Dr. Geo tratta la geometria interattiva e la programmazione.\n"
+"{1}\n"
+"\n"
+"Consente di creare figure geometriche ed aggiunge la manipolazione "
+"interattiva \n"
+"Si può utilizzare nella didattica, in matematica, fisica e \n"
+"programmazione, con studenti che vanno dalla scuola primaria fino a livello "
+"universitario. \n"
+"\n"
+"È semplice ed efficace, con alcune caratteristiche uniche come gli script "
+"Smalltalk \n"
+"e disegni interattivi programmati. \n"
+"\n"
+"{2}\n"
+"\n"
+"LICENZA: GPL"
+
+#: DrGeo-Main,DrGeo_class>>drgeoVersion
+msgid "Installed version: "
+msgstr "versione installata: "
+
+#: DrGeo-Main,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "Fig. - "
+
+#: DrGeo-Main,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr "Menù di sistema"
+
+#: DrGeo-Main,DrGeo_class>>macrosArray
+msgid "Macro - "
+msgstr "Macro - "
+
+#: DrGeo-Main,DrGeo_class>>quit
+msgid ""
+"There is unsaved data! \n"
+"Are you sure to quit Dr. Geo environment?"
+msgstr ""
+"Ci sono dati non salvati! \n"
+"Chiudere Dr. Geo?"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A source code browser to view, edit and save Dr. Geo code. I open the "
+"browser on the DrGeoSketch class you can study to design your own Smalltalk "
+"sketch."
+msgstr ""
+"Un browser di codice sorgente per visualizzare, modificare e salvare il "
+"codice di Dr. Geo. Se si apre il browser nella classe DrGeoSketch si può "
+"progettare il proprio disegno Smalltalk."
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A tool to browse and to test both system and personal Smalltalk Sketches."
+msgstr ""
+"Uno strumento per navigare e provare i disegni Smalltalk sia personali che "
+"di sistema."
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
+"can be entered, stored, edited, and evaluated."
+msgstr ""
+"Una finestra usata come area per appunti dove immettere, memorizzare, "
+"modificare e valutare frammenti del codice Cuis-Smalltalk"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "An editor to write and to test new Smalltalk sketch."
+msgstr "Un editor per scrivere e provare nuovi disegni Smalltalk."
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Browse"
+msgstr "Sfoglia"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Browse Smalltalk Sketches"
+msgstr "Sfoglia Disegni Smalltalk"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Edit Smalltalk Sketch"
+msgstr "Modifica un Disegno Smalltalk"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Open a file"
+msgstr "Apri un file"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Open the filer on your personal sketches collection."
+msgstr "Apri il file nella collezione personale di disegni."
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Save session"
+msgstr "Salva la sessione"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Save this Dr. Geo session."
+msgstr "Salva questa sessione di Dr. Geo."
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Smalltalk Sketch Editor"
+msgstr "Editor di Disegni Smalltalk"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "System Browser"
+msgstr "Browser di sistema"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+msgid "Tools"
+msgstr "Strumenti"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Workspace"
+msgstr "Spazio di lavoro"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "About"
+msgstr "A proposito"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Dr. Geo Preferences"
+msgstr "Preferenze di Dr. Geo"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "New sketch"
+msgstr "Nuovo disegno"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Quit"
+msgstr "Esci"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Toggle full screen mode"
+msgstr "Modalità di attivazione schermo intero"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Turn full screen mode on when it is off, off when it is on."
+msgstr ""
+"Attiva la modalità schermo intero quando è spento, la disattiva quando è "
+"acceso."
+
+#: DrGeo-Main,DrGeoMiniView>>label
+msgid "A Dr. Geo sketch"
+msgstr "Un disegno Dr. Geo"
+
+#: DrGeo-Main,DrGeoPresenter>>askForImageToExport
+msgid "Name the bitmap to export:"
+msgstr "Indica il nome del file bitmap da esportare:"
+
+#: DrGeo-Main,DrGeoPresenter>>axesWording
+msgid "<no> Axes"
+msgstr "<no> Assi"
+
+#: DrGeo-Main,DrGeoPresenter>>axesWording
+msgid "<yes> Axes"
+msgstr "<yes> Assi"
+
+#: DrGeo-Main,DrGeoPresenter>>createMultipleModeWording
+msgid "<no> Create Multiple"
+msgstr "<no> Crea Multipli"
+
+#: DrGeo-Main,DrGeoPresenter>>createMultipleModeWording
+msgid "<yes> Create Multiple"
+msgstr "<yes> Crea Multipli"
+
+#: DrGeo-Main,DrGeoPresenter>>createScript
+msgid "Build a new script"
+msgstr "Genera un nuovo script"
+
+#: DrGeo-Main,DrGeoPresenter>>editScript,DrGeoPresenter>>editScript:
+msgid "Edit or create scripts"
+msgstr "Modifica o crea script"
+
+#: DrGeo-Main,DrGeoPresenter>>exportToImageAs
+msgid "Name the image to keep."
+msgstr "Dai un nome all'immagine da conservare"
+
+#: DrGeo-Main,DrGeoPresenter>>gridWording
+msgid "<no> Grid"
+msgstr "<no> Griglia"
+
+#: DrGeo-Main,DrGeoPresenter>>gridWording
+msgid "<yes> Grid"
+msgstr "<yes> Griglia"
+
+#: DrGeo-Main,DrGeoPresenter>>magneticGridWording
+msgid "<no> Magnetic Grid"
+msgstr "<no> Griglia Magnetica"
+
+#: DrGeo-Main,DrGeoPresenter>>magneticGridWording
+msgid "<yes> Magnetic Grid"
+msgstr "<yes> Griglia Magnetica"
+
+#: DrGeo-Main,DrGeoPresenter>>save,DrGeoPresenter>>saveWithinLimitedTime:
+msgid ""
+"I can't save the sketch.\n"
+"Check the local resource or the server."
+msgstr ""
+"Non è possibile salvare il disegno.\n"
+"Controllare la risorsa locale o il server."
+
+#: DrGeo-Script-Sketch,DrGeoSketch>>canTransform:
+msgid "Only geometric object can be transformed."
+msgstr "Solo gli oggetti geometrici possono essere trasformati."
+
+#: DrGeo-Script-User,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "Sono la descrizione di questo script, modificami."
+
+#: DrGeo-Script-User,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "Uno script"
+
+#: DrGeo-System,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>pointPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>textPreferences,DrGPlatform>>valuePreferences,DrGPlatform>>vectorPreferences,DrGStyle>>colorWidget
+msgid "Colour"
+msgstr "Colore"
+
+#: DrGeo-System,DrGPlatform>>arcPreferences
+msgid "arc"
+msgstr "arco"
+
+#: DrGeo-System,DrGPlatform>>circlePreferences
+msgid "circle"
+msgstr "cerchio"
+
+#: DrGeo-System,DrGPlatform>>linePreferences
+msgid "line"
+msgstr "riga"
+
+#: DrGeo-System,DrGPlatform>>locusPreferences
+msgid "locus"
+msgstr "luogo"
+
+#: DrGeo-System,DrGPlatform>>miscPreferences
+msgid "Autoname new object"
+msgstr "Dare automaticamente un nome al nuovo oggetto"
+
+#: DrGeo-System,DrGPlatform>>miscPreferences
+msgid ""
+"Path for user created resources as sketches, Smalltalk sketches, exported "
+"image. An empty path locates these resources in the Dr. Geo application "
+"folder. Relative path accepted, home/user directory is then prepended"
+msgstr ""
+"Percorso creato dall'utente per risorse quali disegni, disegni Smalltalk, "
+"immagini esportate. Un percorso vuoto posiziona queste risorse nella "
+"cartella del programma Dr.Geo. Accettato il relativo percorso, viene "
+"preposta la directory home/utente"
+
+#: DrGeo-System,DrGPlatform>>miscPreferences
+msgid "miscellaneous"
+msgstr "miscellanea"
+
+#: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>shapeWidget
+msgid "Shape"
+msgstr "Forma"
+
+#: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>sizeWidget
+msgid "Size"
+msgstr "Dimensione"
+
+#: DrGeo-System,DrGPlatform>>pointPreferences
+msgid "point"
+msgstr "punto"
+
+#: DrGeo-System,DrGPlatform>>polygonPreferences
+msgid "polygon"
+msgstr "poligono"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Code completion on"
+msgstr "Completamento del codice attivo"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "programming"
+msgstr "programmazione"
+
+#: DrGeo-System,DrGPlatform>>rayPreferences
+msgid "ray"
+msgstr "raggio"
+
+#: DrGeo-System,DrGPlatform>>segmentPreferences,DrGSegmentStyle>>markWidget
+msgid "Mark"
+msgstr "Contrassegna"
+
+#: DrGeo-System,DrGPlatform>>segmentPreferences
+msgid "segment"
+msgstr "segmento"
+
+#: DrGeo-System,DrGPlatform>>textPreferences,DrGTextStyle>>backgroundWidget
+msgid "Background"
+msgstr "Sfondo"
+
+#: DrGeo-System,DrGPlatform>>textPreferences,DrGTextStyle>>borderWidget
+msgid "Border"
+msgstr "Bordo"
+
+#: DrGeo-System,DrGPlatform>>textPreferences
+msgid "text"
+msgstr "testo"
+
+#: DrGeo-System,DrGPlatform>>valuePreferences
+msgid "Number of decimal"
+msgstr "Numero di decimali"
+
+#: DrGeo-System,DrGPlatform>>valuePreferences
+msgid "value"
+msgstr "valore"
+
+#: DrGeo-System,DrGPlatform>>vectorPreferences
+msgid "vector"
+msgstr "vettore"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate1ButtonData
+msgid "Animate at speed 1."
+msgstr "Animazione a velocità 1"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate1ButtonData
+msgid "Animate x1"
+msgstr "Animazione x1"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate2ButtonData
+msgid "Animate at speed 2."
+msgstr "Animazione a velocità 2"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate2ButtonData
+msgid "Animate x2"
+msgstr "Animazione x2"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate3ButtonData
+msgid "Animate at speed 3."
+msgstr "Animazione a velocità 3"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate3ButtonData
+msgid "Animate x3"
+msgstr "Animazione x3"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate4ButtonData
+msgid "Animate at speed 4."
+msgstr "Animazione a velocità 4"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate4ButtonData
+msgid "Animate x4"
+msgstr "Animazione x4"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>axesButtonData
+msgid "Show or hide the ox and oy axes."
+msgstr "Visualizza o nasconde gli assi ox e oy."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>exportImageButtonData
+msgid "Export this sketch as SVG image."
+msgstr "Esporta questo disegno come immagine SVG"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>exportImageButtonData
+msgid "Save as image"
+msgstr "Salva come immagine"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>gridButtonData
+msgid "Show or hide grid."
+msgstr "Mostra o nascondi la griglia."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>keepButtonData
+msgid "Keep this sketch permanently."
+msgstr "Conserva permanentemente questo disegno."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>keepButtonData
+msgid "Save"
+msgstr "Salva"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>macroDeleteButtonData
+msgid "Delete a macro-construction from the registry."
+msgstr "Elimina una macro-costruzione dal registro."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>macroDeleteButtonData
+msgid "Delete macro"
+msgstr "Elimina una macro"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>magneticGridButtonData
+msgid "Snap to grid."
+msgstr "Allinea alla griglia."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>menuButtonData
+msgid "An unobtrusive menu with all Dr. Geo tools."
+msgstr "Un discreto menù con tutti gli strumenti di Dr. Geo."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>menuButtonData
+msgid "Menu"
+msgstr "Menù"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>multipleModeButtonData
+msgid ""
+"Toggle between the build of several geometric objects and the build of one "
+"geometric object then move it."
+msgstr ""
+"Alterna tra la generazione di diversi oggetti geometrici e la generazione di "
+"un solo oggetto e quindi spostalo."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>newButtonData
+msgid "New"
+msgstr "Nuovo"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>newButtonData
+msgid "Open a new blank sketch."
+msgstr "Apri un nuovo disegno vuoto."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>openButtonData
+msgid "Open a sketch."
+msgstr "Apri un disegno"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>redoButtonData
+msgid "Redo"
+msgstr "Ripeti"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>redoButtonData
+msgid "Redo last action."
+msgstr "Ripeti l'ultima azione."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptCreateButtonData
+msgid "Create a Smalltalk script."
+msgstr "Crea uno script Smalltalk."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptCreateButtonData
+msgid "Create a script"
+msgstr "Crea uno script"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptEditButtonData
+msgid "Edit a Smalltalk script."
+msgstr "Modifica uno script Smalltalk."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptEditButtonData
+msgid "Edit a script"
+msgstr "Modifica uno script"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>stylerFor:
+msgid "Edit style"
+msgstr "Modifica stile"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>treeButtonData
+msgid "Construction tree"
+msgstr "Albero di costruzione"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>treeButtonData
+msgid "The hierarchy tree presenting the visible constructed items."
+msgstr ""
+"L'albero che presenta in ordine gerarchico gli oggetti visibili costruiti."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>undoButtonData
+msgid "Undo"
+msgstr "Annulla"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>undoButtonData
+msgid "Undo last action"
+msgstr "Annulla l'ultima azione"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelXButtonData
+msgid "A wheel to move horizontally the sketch."
+msgstr "Una ruota che sposta orizzontalmente il disegno."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelXButtonData
+msgid "Horizontal wheel"
+msgstr "Ruota orizzontale"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelYButtonData
+msgid "A wheel to move vertically the sketch."
+msgstr "Una ruota che sposta verticalmente il disegno."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelYButtonData
+msgid "Vertical wheel"
+msgstr "Ruota verticale"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelZButtonData
+msgid "A wheel to zoom in, zoom out the sketch."
+msgstr "Una ruota per aumentare o diminuire l'ingrandimento del disegno."
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelZButtonData
+msgid "Zoom wheel"
+msgstr "Ruota dell'ingrandimento"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>editMenu
+msgid "Copy"
+msgstr "Copia"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr "Copia con trasparenza"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr "Conserva questo disegno con un nome diverso."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Open at..."
+msgstr "Apri in..."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "Salva come..."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "Inserisci animazione in un punto libero su una curva."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"Genera o esegui macro-costruzioni. Una macro è un modello di costruzione che "
+"può essere applicato agli elementi nell'area di disegno."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr ""
+"Crea diversi tipi di curve: rette, semirette, segmenti, vettori, "
+"circonferenze..."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr ""
+"Crea punti: liberi, su una curva, in una intersezione o in un punto medio."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"Crea diversi oggetti numerici: valore libero, distanza, lunghezza, angolo, "
+"coordinate, equazione e testo."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "Cancella o modifica lo stile e le proprietà di elementi."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "File"
+msgstr "File"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Lines"
+msgstr "Rette"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Carica, salva o esporta figure di Dr. Geo."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "Macro-costruzione"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "Oggetti numerici & Testo"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Points"
+msgstr "Punti"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Script"
+msgstr "Script"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr "Script: usa, modifica o genera uno script da collegare al disegno."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"Trasforma un oggetto con una trasformazione geometrica: simmetria, "
+"riflessione, rotazione, traslazione o omotetia (scala)."
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "Trasformazioni"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr "Esegui il codice fino alla posizione del cursore"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr "Esegui il messaggio corrente e passa a quello successivo"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr "Riavvia"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr "Riavvia l'esecuzione passo-passo dall'inizio"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr "Esegui fino al cursore"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr "Passo"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr "Entra"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr "Entra in un blocco."
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph_class>>open,DrGeo_class>>worldMenu:
+msgid "Open a sketch"
+msgstr "Apri un disegno"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr "Annulla"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "Esempi"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr "I miei Disegni"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGUIControlsManager>>openButtonData
+msgid "Open"
+msgstr "Apri"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "Angolo"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr "Qualsiasi tipo"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr "Direzione"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses,DrGSegmentBuilder_class>>title
+msgid "Segment"
+msgstr "Segmento"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr "Valore"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses,DrGVectorBuilder_class>>title
+msgid "Vector"
+msgstr "Vettore"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr "Rimuovi questo argomento delle script."
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr "Aggiungi un argomento a questo script."
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add argument"
+msgstr "Aggiungi un argomento"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "Genera"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr "Crea uno script con queste impostazioni."
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+"Una descrizione dello script. Per aiutare l'utente, descrivi accuratamente "
+"cosa fa lo script e gli argomenti di input da selezionare per usarlo."
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "Argomenti"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "Descrizione"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGStyle>>nameWidget
+msgid "Name"
+msgstr "Nome"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "Il nome dello script."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr "Elimina"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr "Cancella definitivamente questo Disegno Smalltalk dal disco."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea,DrGUIMinimalControlsManager>>mainMenu
+msgid "Edit"
+msgstr "Modifica"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr "Codice"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr "Selezione un disegno Smalltalk"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>debugWindowSketch
+msgid "Execute step by step"
+msgstr "Esegui passo-passo"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>keepSketch,DrGeoPresenter>>saveSketchAs
+msgid "Name the sketch to keep."
+msgstr "Indica il nome del disegno da conservare:"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr "Fai il debug del disegno Smalltalk."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr "Tutorial di Dr. Geo"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr "Modifica un disegno Smalltalk."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr "Esegui il disegno Smalltalk."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr "Salva questo disegno Smalltalk."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr "Ferma l'esecuzione del disegno Smalltalk."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr "Metti in pausa il disegno Smalltalk."
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr "Riavvia il disegno Smalltalk."
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "Genera una macro-costruzione"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+"Per creare una macro-costruzione,\n"
+"\n"
+" 1. Per prima cosa seleziona i parametri di input,\n"
+" 2. Quindi seleziona i parametri dell'output,\n"
+" 3. Scegli quindi un nome e una descrizione,\n"
+" 4. Infine conferma la selezione."
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage
+msgid "Description:"
+msgstr "Descrizione:"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "Digita un nome e una descrizione"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage
+msgid "Title:"
+msgstr "Titolo:"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "Seleziona i parametri di input"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "Seleziona i parametri di output"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "Esegui una macro-costruzione"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+"Per eseguire una macro-costruzione,\n"
+"\n"
+" 1. Per prima cosa seleziona una macro-costruzione dall'elenco,\n"
+" 2. Seleziona gli elementi della figura. Si possono selezionare solo\n"
+" solo gli elementi rilevanti per la macro-costruzione selezionata.\n"
+" Una volta che sono stati selezionati sufficienti elementi, la macro\n"
+" viene eseguita automaticamente.\n"
+" Per iniziare premi il pulsante \"avanti\"."
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr "Seleziona una macro-costruzione e quindi gli elementi della figura"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+"Per usare uno script,\n"
+"\n"
+" 1. Per prima cosa seleziona uno script nell'elenco,\n"
+" 2. Seleziona elementi nel disegno,\n"
+" 3. Fai clic da qualche parte nello sfondo. \n"
+" Quando sono stati selezionati sufficienti elementi, lo script viene\n"
+" inserito nel disegno, nella posizione selezionata dall'utente.\n"
+" Per iniziare premi il pulsante \"avanti\""
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr "Usa uno script nel disegno"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "Script name"
+msgstr "Nome dello script"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr "Seleziona uno script, poi i parametri nel disegno"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr "L'argomento accettato da questo script"

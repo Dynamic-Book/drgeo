@@ -1,0 +1,22 @@
+# Turkish translation for drgeo
+# Copyright (c) 2023 Rosetta Contributors and Canonical Ltd 2023
+# This file is distributed under the same license as the drgeo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drgeo\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-02-23 11:53+0000\n"
+"PO-Revision-Date: 2023-12-04 12:06+0000\n"
+"Last-Translator: Necdet Yucel <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2023-12-05 04:43+0000\n"
+"X-Generator: Launchpad (build 886068b1e1d10de444fbd53b0c7d3f6d4fb3e658)\n"
+
+#: Erudite-Morphic,MorphicEruditeDocRenderer>>renderCodeWithDrGeoActions:
+msgid "Copy to the code editor."
+msgstr "Kod editörüne kopyala."

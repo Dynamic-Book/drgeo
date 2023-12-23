@@ -1,0 +1,1577 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pharo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-23 11:53-0000\n"
+"PO-Revision-Date: 2022-12-11 04:57+0000\n"
+"Last-Translator: makoto <makoto@kobe-u.ac.jp>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2023-02-23 06:46+0000\n"
+"X-Generator: Launchpad (build 52801192b28ad0671c389c12f496685086687189)\n"
+"X-Etoys-SystemVersion: etoys4.1 of 29 April 2010 update 2384\n"
+"X-Etoys-Domain: DrGeoII-Core\n"
+
+#: DrGeo-Core-Builders,DrGAngleBisectorBuilder_class>>description
+msgid ""
+"Angle bisector defined by three points or an angle defined by three points."
+msgstr "角の二等分線：3点で定まる角の二等分線"
+
+#: DrGeo-Core-Builders,DrGAngleBisectorBuilder_class>>title
+msgid "Angle bisector"
+msgstr "角の二等分線"
+
+#: DrGeo-Core-Builders,DrGAngleGeometricBuilder_class>>description
+msgid ""
+"Geometric angle defined by three points, the second point is the vertex. Its "
+"measure belongs to [0 ; 180]."
+msgstr "3つの点（2番目に指定した点が頂点）で定まる0から180度の間の角度"
+
+#: DrGeo-Core-Builders,DrGAngleGeometricBuilder_class>>title
+msgid "Geometric angle"
+msgstr "角度"
+
+#: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>description
+msgid ""
+"Oriented angle defined by three points or two vectors. When defined from "
+"three points, the second point is the vertex. Its measure belongs to [0 ; "
+"360[ or ]-180 ; 180]. "
+msgstr ""
+"3つの点または二つのベクトルで決まる有向角．3点で決める場合は2番目の点が頂点に"
+"なる．有向角は0度から360度または-180度から180度までの値をとる． "
+
+#: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>title
+msgid "Oriented angle"
+msgstr "回転角"
+
+#: DrGeo-Core-Builders,DrGArcBuilder_class>>description
+msgid "Arc defined by three points."
+msgstr "円弧：3点により定まる円弧"
+
+#: DrGeo-Core-Builders,DrGArcBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Arc"
+msgstr "円弧"
+
+#: DrGeo-Core-Builders,DrGArcCenterBuilder_class>>description
+msgid "Arc defined by its center and two points."
+msgstr "円弧：中心と2点により定まる円弧"
+
+#: DrGeo-Core-Builders,DrGArcCenterBuilder_class>>title
+msgid "Arc (center)"
+msgstr "円弧（中心）"
+
+#: DrGeo-Core-Builders,DrGBitmapBuilder_class>>description
+msgid ""
+"Picture: drag and drop a picture in the canvas. It can be moved and scaled."
+msgstr ""
+"図形：キャンバスに図形をドラッグアンドドロップします。移動や大きさの変更がで"
+"きます。"
+
+#: DrGeo-Core-Builders,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
+msgid "Picture"
+msgstr "図形"
+
+#: DrGeo-Core-Builders,DrGCircleBuilder_class>>description
+msgid ""
+"Circle defined by its center and a point or by its center and radius, a "
+"value."
+msgstr "円：中心と一点、または中心と線分（動径）で定まる円"
+
+#: DrGeo-Core-Builders,DrGCircleBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Circle"
+msgstr "円"
+
+#: DrGeo-Core-Builders,DrGCoordinatesBuilder_class>>description
+msgid "Vector or point coordinates, circle or line equation."
+msgstr "ベクトルまたは点の座標，円あるいは直線の式"
+
+#: DrGeo-Core-Builders,DrGCoordinatesBuilder_class>>title
+msgid "Coordinates, equation"
+msgstr "座標，式"
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>description
+msgid ""
+"Click to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"クリックすると点（描画領域上の自由点，線上の自由点，２つの線の交点）を作成し"
+"ます．"
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>description
+msgid ""
+"Tap to create a point: free point on the background, on a curve or on two "
+"curves intersection."
+msgstr ""
+"タップして点を作成：描画領域や曲線上に自由点あるいは二つの曲線の交点を作成し"
+"ます．"
+
+#: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Point"
+msgstr "点"
+
+#: DrGeo-Core-Builders,DrGHomothetyBuilder_class>>description
+msgid ""
+"Homothety: select a center, a value and a geometric object. The first "
+"selected point is the homothety center."
+msgstr ""
+"相似拡大: 点、値、幾何オブジェクトを選択してください．最初に選択した点が、相"
+"似拡大の中心になります．"
+
+#: DrGeo-Core-Builders,DrGHomothetyBuilder_class>>title
+msgid "Homothety (scale)"
+msgstr "相似拡大（縮小）"
+
+#: DrGeo-Core-Builders,DrGLineBuilder_class>>description
+msgid "Line defined by two points"
+msgstr "直線：2点を通る直線"
+
+#: DrGeo-Core-Builders,DrGLineBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Line"
+msgstr "直線"
+
+#: DrGeo-Core-Builders,DrGLocusBuilder_class>>description
+msgid "Locus defined by a free point on a curve and a relative point."
+msgstr "軌跡：曲線上の自由点とそれに依存する点で定まる軌跡"
+
+#: DrGeo-Core-Builders,DrGLocusBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Locus"
+msgstr "軌跡"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder_class>>description
+msgid "Construct a macro-construction with input and output items."
+msgstr "入力と出力項目から作図マクロを作成します．"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder_class>>title
+msgid "Build macro"
+msgstr "マクロを作成"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder>>apply
+msgid "Input and output items don't match"
+msgstr "入出力の項目が対応しません"
+
+#: DrGeo-Core-Builders,DrGMacroBuilder>>apply
+msgid "Please, enter a proper title and description"
+msgstr "適切な表題と説明を入力してください"
+
+#: DrGeo-Core-Builders,DrGMacroPlayer_class>>description
+msgid ""
+"Execute a pre-built macro-construction on selected input items. To edit a "
+"macro description, edit its text and apply with the keys [alt/ctrl]+s."
+msgstr ""
+"選択された入力項目に対して予めビルトされた作図マクロを実行します．マクロ記述"
+"を編集するには，マクロが定義されているテキストを編集後，キーボートから[alt/"
+"ctrl]+s を押して適用してください．"
+
+#: DrGeo-Core-Builders,DrGMacroPlayer_class>>title
+msgid "Execute/edit macro"
+msgstr "マクロの実行／編集"
+
+#: DrGeo-Core-Builders,DrGMiddleBuilder_class>>description
+msgid "The midpoint of a segment or between two points."
+msgstr "線分や2点の中点"
+
+#: DrGeo-Core-Builders,DrGMiddleBuilder_class>>title
+msgid "Middle"
+msgstr "中点"
+
+#: DrGeo-Core-Builders,DrGParallelBuilder_class>>description
+msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgstr "平行線：一点を通り，他の直線や半直線などに平行な直線"
+
+#: DrGeo-Core-Builders,DrGParallelBuilder_class>>title
+msgid "Parallel"
+msgstr "平行線"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBisectorBuilder_class>>description
+msgid "Perpendicular bisector defined by a segment or two points."
+msgstr ""
+"垂直二等分線：線分の垂直二等分線または2点（で定まる線分）の垂直二等分線"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBisectorBuilder_class>>title
+msgid "Perpendicular bisector"
+msgstr "垂直二等分線"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBuilder_class>>description
+msgid ""
+"Line passing through one point and orthogonal to a line, half-line, etc."
+msgstr "垂線：一点を通り，他の直線や半直線などに垂直な直線"
+
+#: DrGeo-Core-Builders,DrGPerpendicularBuilder_class>>title
+msgid "Perpendicular"
+msgstr "垂線"
+
+#: DrGeo-Core-Builders,DrGPointByCoordinatesBuilder_class>>description
+msgid ""
+"Point given its coordinates: select two numbers or a point coordinates (@)."
+msgstr "座標で定まる点：2つの数値か座標(@)を選択します．"
+
+#: DrGeo-Core-Builders,DrGPointByCoordinatesBuilder_class>>title
+msgid "Coordinates"
+msgstr "座標"
+
+#: DrGeo-Core-Builders,DrGPointIntersectionBuilder_class>>description
+msgid "Intersection(s) of two curves."
+msgstr "2つの曲線の交点"
+
+#: DrGeo-Core-Builders,DrGPointIntersectionBuilder_class>>title
+msgid "Intersection"
+msgstr "交点"
+
+#: DrGeo-Core-Builders,DrGPolygonBuilder_class>>description
+msgid "Polygon by n points: last point must be the initial point to terminate."
+msgstr "多角形：n個の点で定まる多角形．最後に最初の点を選択すると終了します．"
+
+#: DrGeo-Core-Builders,DrGPolygonBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Polygon"
+msgstr "多角形"
+
+#: DrGeo-Core-Builders,DrGPolygonRegularBuilder_class>>description
+msgid "Regular polygon defined by its center, a vertex and its sides number."
+msgstr "中心と頂点と辺の数で定まる正多角形"
+
+#: DrGeo-Core-Builders,DrGPolygonRegularBuilder_class>>title
+msgid "Regular polygon"
+msgstr "正多角形"
+
+#: DrGeo-Core-Builders,DrGRayBuilder_class>>description
+msgid ""
+"Half-Line defined by two points, the first selected point is the origin."
+msgstr "半直線：二点で定まる半直線．最初に選択された点が始点になります．"
+
+#: DrGeo-Core-Builders,DrGRayBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Ray"
+msgstr "半直線"
+
+#: DrGeo-Core-Builders,DrGReflectionBuilder_class>>description
+msgid ""
+"Reflexion: select a line and a geometric object. Reflexion axe is the first "
+"selected line."
+msgstr ""
+"鏡映（反射）：線と幾何オブジェクトを選択してください．最初に選択した線が対称"
+"軸になります．"
+
+#: DrGeo-Core-Builders,DrGReflectionBuilder_class>>title
+msgid "Reflection"
+msgstr "鏡映"
+
+#: DrGeo-Core-Builders,DrGRotationBuilder_class>>description
+msgid ""
+"Rotation: select a point, a value and a geometric object. The first selected "
+"point is the rotation center."
+msgstr ""
+"回転：点，角度と幾何オブジェクトを選択して下さい．最初に選んだ点が回転の中心"
+"になります．"
+
+#: DrGeo-Core-Builders,DrGRotationBuilder_class>>title
+msgid "Rotation"
+msgstr "回転"
+
+#: DrGeo-Core-Builders,DrGScriptPlayer_class>>description
+msgid "Insert a Smalltalk script in the drawing area."
+msgstr "描画領域にSmalltalkのスクリプトを埋め込みます．"
+
+#: DrGeo-Core-Builders,DrGScriptPlayer_class>>title
+msgid "Use a script"
+msgstr "スクリプトを使う"
+
+#: DrGeo-Core-Builders,DrGScriptPlayer>>description
+msgid "No description, write one in the description method of this script."
+msgstr "説明がありません．このスクリプトの説明を書いて下さい。"
+
+#: DrGeo-Core-Builders,DrGSegmentBuilder_class>>description
+msgid "Segment defined by two points."
+msgstr "線分：2点で定まる線分"
+
+#: DrGeo-Core-Builders,DrGSymmetryBuilder_class>>description
+msgid ""
+"Symmetry: select a point and a geometric object. The first selected point is "
+"the symmetry center."
+msgstr ""
+"点対称：点と幾何オブジェクトを選択して下さい．最初に選んだ点が対称の中心にな"
+"ります．"
+
+#: DrGeo-Core-Builders,DrGSymmetryBuilder_class>>title
+msgid "Symmetry"
+msgstr "点対称"
+
+#: DrGeo-Core-Builders,DrGTextBuilder_class>>description
+msgid "Free text you can edit and move around."
+msgstr "テキスト：編集や移動が自由にできるテキスト"
+
+#: DrGeo-Core-Builders,DrGTextBuilder_class>>title
+msgid "Text"
+msgstr "テキスト"
+
+#: DrGeo-Core-Builders,DrGTranslationBuilder_class>>description
+msgid "Translation: select a vector and a geometric object."
+msgstr "平行移動：ベクトルと幾何オブジェクトを選んで下さい．"
+
+#: DrGeo-Core-Builders,DrGTranslationBuilder_class>>title
+msgid "Translation"
+msgstr "平行移動"
+
+#: DrGeo-Core-Builders,DrGValueBuilder_class>>description
+msgid "Distance between objects, curve length, free value."
+msgstr "オブジェクト間の距離，曲線の長さ，自由値"
+
+#: DrGeo-Core-Builders,DrGValueBuilder_class>>title
+msgid "Distance, length, value"
+msgstr "距離，長さ，値"
+
+#: DrGeo-Core-Builders,DrGVectorBuilder_class>>description
+msgid "Vector defined by two points."
+msgstr "ベクトル：2点で定まるベクトル"
+
+#: DrGeo-Core-Tools,DrGAnimateTool_class>>description
+msgid "Select a free point on a curve to animate it."
+msgstr "アニメーションする曲線上の点を選択してください．"
+
+#: DrGeo-Core-Tools,DrGAnimateTool_class>>title,DrGUIMinimalControlsManager>>mainMenu
+msgid "Animate"
+msgstr "アニメーション"
+
+#: DrGeo-Core-Tools,DrGDeleteTool_class>>description
+msgid "Erase an object and all its depedencies."
+msgstr "オブジェクトと依存しているものをすべて消去します．"
+
+#: DrGeo-Core-Tools,DrGDeleteTool_class>>title
+msgid "Eraser"
+msgstr "消しゴム"
+
+#: DrGeo-Core-Tools,DrGFlyPointBuildToolState>>handleMouseAt:
+msgid "This intersection"
+msgstr "この交点"
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on the plane."
+msgstr "平面上の自由点に変更します．"
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as a free point on this curve."
+msgstr "この曲線上の自由点に変更します．"
+
+#: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
+msgid "Change as this intersection."
+msgstr "この交点に変更します．"
+
+#: DrGeo-Core-Tools,DrGPropertyTool_class>>description
+msgid "Edit an item's property"
+msgstr "項目の属性を編集します．"
+
+#: DrGeo-Core-Tools,DrGPropertyTool_class>>title
+msgid "Property"
+msgstr "属性"
+
+#: DrGeo-Core-Tools,DrGSelectTool_class>>description
+msgid "Select and move an object."
+msgstr "オブジェクトを選択して移動します．"
+
+#: DrGeo-Core-Tools,DrGSelectTool_class>>title
+msgid "Select and Move"
+msgstr "選択と移動"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateDragged>>handleStillPress:
+msgid "Select a point to merge with"
+msgstr "統合する点を選択してください"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Drag this point to change its nature."
+msgstr "この点をドラッグすると特性が変わります．"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid ""
+"Pressing down the [Shift] key you can drag and change the nature of free "
+"point or intersection point."
+msgstr ""
+"[shift]キーを押しながら自由点や交点をドラッグするとその点の特性を変更できま"
+"す．"
+
+#: DrGeo-Core-Tools,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
+msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgstr "いろんなオブジェクトを選択できます．クリックして選択してください．"
+
+#: DrGeo-Core-Tools,DrGStyleTool_class>>description
+msgid "Edit an object style."
+msgstr "オブジェクトのスタイルを編集します．"
+
+#: DrGeo-Core-Tools,DrGStyleTool_class>>title
+msgid "Edit Style"
+msgstr "スタイルを編集"
+
+#: DrGeo-Core-Tools,DrGTool>>chooseMorph:
+msgid "Select an object"
+msgstr "オブジェクトを選択"
+
+#: DrGeo-Core-Tools,DrGToolState>>handleMouseAt:
+msgid "Several objects can be selected. Please, choose one."
+msgstr "複数のオブジェクトが選択されています．どれか１つを選んで下さい．"
+
+#: DrGeo-Item-Models,DrGAngle3ptsItem>>adaptiveDescriptiveName
+msgid "This geometric angle %1"
+msgstr "この幾何的角度 %1"
+
+#: DrGeo-Item-Models,DrGAngleBisector3ptsItem>>adaptiveDescriptiveName,DrGLineAngleBisectorItem>>adaptiveDescriptiveName
+msgid "This angle bisector %1"
+msgstr "この角の2等分線 %1"
+
+#: DrGeo-Item-Models,DrGAngleItem>>adaptiveDescriptiveName
+msgid "This oriented angle %1"
+msgstr "この相対角度 %1"
+
+#: DrGeo-Item-Models,DrGArcItem>>adaptiveDescriptiveName
+msgid "This Arc Circle %1"
+msgstr "この円弧 %1"
+
+#: DrGeo-Item-Models,DrGBitmapItem>>adaptiveDescriptiveName
+msgid "This picture"
+msgstr "この図形"
+
+#: DrGeo-Item-Models,DrGCircleItem>>adaptiveDescriptiveName
+msgid "This circle %1"
+msgstr "この円 %1"
+
+#: DrGeo-Item-Models,DrGCompositeItem>>adaptiveDescriptiveName
+msgid "This composite object %1"
+msgstr "この複合オブジェクト %1"
+
+#: DrGeo-Item-Models,DrGEquationItem>>adaptiveDescriptiveName
+msgid "This equation %1"
+msgstr "この式 %1"
+
+#: DrGeo-Item-Models,DrGEquationItem>>printOn:
+msgid "Equation"
+msgstr "方程式"
+
+#: DrGeo-Item-Models,DrGLineItem>>adaptiveDescriptiveName
+msgid "This line %1"
+msgstr "この直線 %1"
+
+#: DrGeo-Item-Models,DrGLineParallelItem>>adaptiveDescriptiveName
+msgid "This parallel line %1"
+msgstr "この平行線 %1"
+
+#: DrGeo-Item-Models,DrGLinePerpendicularBisector2ptsItem>>adaptiveDescriptiveName,DrGPerpendicularBisectorItem>>adaptiveDescriptiveName
+msgid "This perpendicular bisector %1"
+msgstr "この垂直2等分線 %1"
+
+#: DrGeo-Item-Models,DrGLinePerpendicularItem>>adaptiveDescriptiveName
+msgid "This perpendicular line %1"
+msgstr "この垂線 %1"
+
+#: DrGeo-Item-Models,DrGLocus2ptsItem>>adaptiveDescriptiveName
+msgid "This locus %1"
+msgstr "この軌跡 %1"
+
+#: DrGeo-Item-Models,DrGMathItem>>adaptiveDescriptiveName
+msgid "This math item %1"
+msgstr "この数学項目 %1"
+
+#: DrGeo-Item-Models,DrGPointCoordinateItem>>editPropertyIn:,DrGPointFreeItem>>editPropertyIn:
+msgid "Edit the coordinates"
+msgstr "座標を編集"
+
+#: DrGeo-Item-Models,DrGPointItem>>adaptiveDescriptiveName
+msgid "This point %1"
+msgstr "この点 %1"
+
+#: DrGeo-Item-Models,DrGPointOncurveItem>>editPropertyIn:
+msgid "Edit this curvilinear abscissa in [0;1]"
+msgstr "[0;1]区間でのこの曲線横座標を編集"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This polygon %1"
+msgstr "この多角形 %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This quadrilateral %1"
+msgstr "この四角形 %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
+msgid "This triangle %1"
+msgstr "この三角形 %1"
+
+#: DrGeo-Item-Models,DrGPolygonItem>>printOn:
+msgid " edges="
+msgstr " 辺="
+
+#: DrGeo-Item-Models,DrGRayItem>>adaptiveDescriptiveName
+msgid "This half-line %1"
+msgstr "この半直線 %1"
+
+#: DrGeo-Item-Models,DrGSegmentItem>>adaptiveDescriptiveName
+msgid "This segment %1"
+msgstr "この線分 %1"
+
+#: DrGeo-Item-Models,DrGTextItem>>adaptiveDescriptiveName
+msgid "This text"
+msgstr "このテキスト"
+
+#: DrGeo-Item-Models,DrGTextItem>>editPropertyIn:
+msgid "Edit this text"
+msgstr "このテキストを編集する"
+
+#: DrGeo-Item-Models,DrGTextItem>>initialize
+msgid "Edit me"
+msgstr "編集してください"
+
+#: DrGeo-Item-Models,DrGValueArclengthItem>>adaptiveDescriptiveName
+msgid "This arc length %1"
+msgstr "この円弧の長さ %1"
+
+#: DrGeo-Item-Models,DrGValueCircleperimeterItem>>adaptiveDescriptiveName
+msgid "This circle perimeter %1"
+msgstr "この円周 %1"
+
+#: DrGeo-Item-Models,DrGValueDistance2ptsItem>>adaptiveDescriptiveName
+msgid "This distance between two points %1"
+msgstr "この二点間の距離 %1"
+
+#: DrGeo-Item-Models,DrGValueDistanceptlineItem>>adaptiveDescriptiveName
+msgid "This point-line distance %1"
+msgstr "この点-直線間の距離 %1"
+
+#: DrGeo-Item-Models,DrGValueItem>>adaptiveDescriptiveName
+msgid "This value %1"
+msgstr "この値 %1"
+
+#: DrGeo-Item-Models,DrGValueItem>>printNameOn:
+msgid "Value "
+msgstr "数値 "
+
+#: DrGeo-Item-Models,DrGValuePolygonperimeterItem>>adaptiveDescriptiveName
+msgid "This polygon perimeter %1"
+msgstr "この多角形の周長 %1"
+
+#: DrGeo-Item-Models,DrGValuePtabscissaItem>>adaptiveDescriptiveName
+msgid "This point abscissa %1"
+msgstr "この点のx座標 %1"
+
+#: DrGeo-Item-Models,DrGValuePtordinateItem>>adaptiveDescriptiveName
+msgid "This point ordinate %1"
+msgstr "この点のy座標 %1"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\""
+msgstr "このスクリプト\"{1}\""
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with argument: %2"
+msgstr "1つの引数を持つこのスクリプト\"{1}\"，引数: %2"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
+msgid "This script \"{1}\" with arguments: %2"
+msgstr "複数の引数を持つこのスクリプト\"{1}\"，引数: %2"
+
+#: DrGeo-Item-Models,DrGValueScriptItem>>printNameOn:
+msgid "Script "
+msgstr "スクリプト "
+
+#: DrGeo-Item-Models,DrGValueSegmentlengthItem>>adaptiveDescriptiveName
+msgid "This segment length %1"
+msgstr "この線分の長さ %1"
+
+#: DrGeo-Item-Models,DrGValueSlopeItem>>adaptiveDescriptiveName
+msgid "This line slope %1"
+msgstr "この直線の傾き %1"
+
+#: DrGeo-Item-Models,DrGValueValueItem>>editPropertyIn:
+msgid "Edit this value"
+msgstr "この値を編集"
+
+#: DrGeo-Item-Models,DrGValueVectorabscissaItem>>adaptiveDescriptiveName
+msgid "This vector abscissa %1"
+msgstr "このベクトルの横成分 %1"
+
+#: DrGeo-Item-Models,DrGValueVectornormItem>>adaptiveDescriptiveName
+msgid "This Vector's norm %1"
+msgstr "このベクトルのノルム %1"
+
+#: DrGeo-Item-Models,DrGValueVectorordinateItem>>adaptiveDescriptiveName
+msgid "This vector ordinate %1"
+msgstr "このベクトルの縦成分 %1"
+
+#: DrGeo-Item-Models,DrGVectorItem>>adaptiveDescriptiveName
+msgid "This vector %1"
+msgstr "このベクトル %1"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>lineWidget
+msgid "Set the style of the line."
+msgstr "線のスタイルを設定します．"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>lineWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Style"
+msgstr "スタイル"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>thicknessWidget
+msgid "Set the thickness of the line."
+msgstr "線の太さを設定します"
+
+#: DrGeo-Item-Styles,DrGCurveStyle>>thicknessWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
+msgid "Thickness"
+msgstr "太さ"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>fillWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Fill"
+msgstr "塗りつぶし"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>fillWidget
+msgid "Toggle to fill the object."
+msgstr "塗りつぶしをするかしないか変更します．"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>translucentWidget
+msgid "Toggle the translucency of the object."
+msgstr "透明・不透明の変更をします．"
+
+#: DrGeo-Item-Styles,DrGFilledStyle>>translucentWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
+msgid "Translucent"
+msgstr "透明"
+
+#: DrGeo-Item-Styles,DrGFinitCurveStyle>>arrowWidget,DrGPlatform>>arcPreferences,DrGPlatform>>segmentPreferences
+msgid "Arrow"
+msgstr "矢印"
+
+#: DrGeo-Item-Styles,DrGFinitCurveStyle>>arrowWidget
+msgid "Set arrow(s) to the line."
+msgstr "線に矢印を設定します．"
+
+#: DrGeo-Item-Styles,DrGPointStyle>>shapeWidget
+msgid "Set the shape of the point."
+msgstr "点の形を設定します．"
+
+#: DrGeo-Item-Styles,DrGPointStyle>>sizeWidget
+msgid "Set the size of the point."
+msgstr "点の大きさを設定します．"
+
+#: DrGeo-Item-Styles,DrGSegmentStyle>>markWidget
+msgid "Set a mark to the segment."
+msgstr "線分にマークをつけます．"
+
+#: DrGeo-Item-Styles,DrGStyle>>colorWidget
+msgid "Set the colour."
+msgstr "色を選択してください．"
+
+#: DrGeo-Item-Styles,DrGStyle>>feedbackWidget
+msgid "Feedback"
+msgstr "フィードバック"
+
+#: DrGeo-Item-Styles,DrGStyle>>feedbackWidget
+msgid ""
+"Toggle to provide feedback and interaction when the mouse cursor is over the "
+"object."
+msgstr ""
+"マウスカーソルが対象上にあるときにフィードバックを得たり相互作用を実行するた"
+"めの機能に切り替えます．"
+
+#: DrGeo-Item-Styles,DrGStyle>>hiddenWidget
+msgid "Hide"
+msgstr "隠す"
+
+#: DrGeo-Item-Styles,DrGStyle>>hiddenWidget
+msgid "Toggle to hide the object."
+msgstr "オブジェクトを表示するか隠すか変更します．"
+
+#: DrGeo-Item-Styles,DrGStyle>>lockedWidget
+msgid "Lock"
+msgstr "ロック"
+
+#: DrGeo-Item-Styles,DrGStyle>>lockedWidget
+msgid "Toggle to lock the object to its position."
+msgstr "オブジェクトのその位置で固定するかしないかを変更します．"
+
+#: DrGeo-Item-Styles,DrGStyle>>nameWidget
+msgid "Rename this object."
+msgstr "このオブジェクトの名前を変更します．"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>backgroundWidget
+msgid "Set the background colour."
+msgstr "背景色を設定する"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>borderWidget
+msgid "Set the border colour."
+msgstr "枠線の色を設定する．"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>fontSizeWidget
+msgid "Font size"
+msgstr "フォントサイズ"
+
+#: DrGeo-Item-Styles,DrGTextStyle>>fontSizeWidget
+msgid "Set the font size."
+msgstr "フォントサイズを設定します．"
+
+#: DrGeo-Item-Styles,DrGValueStyle>>rename,DrGValueStyle>>rename
+msgid "Name this value"
+msgstr "この値に名前をつける"
+
+#: DrGeo-Item-Styles,DrGValueStyle>>rename,DrGValueStyle>>rename
+msgid "Rename this value"
+msgstr "この値の名前を変更する"
+
+#: DrGeo-Main,DrGeo_class>>drgeoInformationString
+msgid ""
+"Dr. Geo is about interactive geometry and programming.\n"
+"{1}\n"
+"\n"
+"It allows one to create geometric figure plus the interactive manipulation \n"
+"It is usable in teaching situation, in mathematics, physics and\n"
+"programming, with students from primary school to university levels.\n"
+"\n"
+"It is simple and effective with some unique features as Smalltalk scripts \n"
+"and programmed interactive sketches. \n"
+"\n"
+"{2}\n"
+"\n"
+"LICENSE: GPL"
+msgstr ""
+"Dr. Geoの目的はインタラクティブな幾何学とプログラミングです。\n"
+"(1)\n"
+"\n"
+"幾何学的な図形を作成することができ、さらにインタラクティブな操作が可能で"
+"す。 \n"
+"数学、物理、プログラミングなどの教育現場で\n"
+"小学生から大学生のレベルまで利用できます。\n"
+"\n"
+"Smalltalkスクリプトやプログラムされたインタラクティブなスケッチなど \n"
+"の特有な機能もあり、シンプルで効果的です。 \n"
+"\n"
+" (2)\n"
+" \n"
+" ライセンス:GPL"
+
+#: DrGeo-Main,DrGeo_class>>drgeoVersion
+msgid "Installed version: "
+msgstr "インストールされているバージョン "
+
+#: DrGeo-Main,DrGeo_class>>figuresArray
+msgid "Fig. - "
+msgstr "図- "
+
+#: DrGeo-Main,DrGeo_class>>getMenuIn:at:
+msgid "System menu"
+msgstr "システムメニュー"
+
+#: DrGeo-Main,DrGeo_class>>macrosArray
+msgid "Macro - "
+msgstr "マクロ- "
+
+#: DrGeo-Main,DrGeo_class>>quit
+msgid ""
+"There is unsaved data! \n"
+"Are you sure to quit Dr. Geo environment?"
+msgstr ""
+"保存していないデータがあります。 \n"
+"このままDr. Geoを終了してよろしいですか。"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A source code browser to view, edit and save Dr. Geo code. I open the "
+"browser on the DrGeoSketch class you can study to design your own Smalltalk "
+"sketch."
+msgstr ""
+"Dr.Geoのコードを表示、編集、保存するためのソースコードブラウザです。"
+"DrGeoSketchクラス上でこのブラウザを開くことで，あなた自身のSmalltalkスケッチ"
+"を設計するための勉強ができます。"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A tool to browse and to test both system and personal Smalltalk Sketches."
+msgstr ""
+"システム用や個人用のSmalltalkスケッチを閲覧したりテストするためのツール"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
+"can be entered, stored, edited, and evaluated."
+msgstr ""
+"Cuis-Smalltalkのコードの一部を入力、保存、編集、評価できるスクラッチパッド領"
+"域として使用されるウィンドウ。"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "An editor to write and to test new Smalltalk sketch."
+msgstr "新しいSmalltalkスケッチを書いて試すためのエディター"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Browse"
+msgstr "閲覧"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Browse Smalltalk Sketches"
+msgstr "Smalltalkスケッチを閲覧する"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Edit Smalltalk Sketch"
+msgstr "Smalltalkスケッチの編集"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Open a file"
+msgstr "ファイルを開く"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Open the filer on your personal sketches collection."
+msgstr "個人で作成したスケッチのためのファイラーを開く"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Save session"
+msgstr "セッションを保存"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Save this Dr. Geo session."
+msgstr "このDr. Geoセッションを保存"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Smalltalk Sketch Editor"
+msgstr "Smalltalkスケッチエディター"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "System Browser"
+msgstr "システムブラウザー"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+msgid "Tools"
+msgstr "ツール"
+
+#: DrGeo-Main,DrGeo_class>>toolsMenu:
+msgid "Workspace"
+msgstr "ワークスペース"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "About"
+msgstr "Dr.Geo IIについて"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Dr. Geo Preferences"
+msgstr "Dr. Geoの設定"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "New sketch"
+msgstr "新しいスケッチ"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Quit"
+msgstr "終了"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Settings"
+msgstr "設定"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Toggle full screen mode"
+msgstr "フルスクリーンモードにする"
+
+#: DrGeo-Main,DrGeo_class>>worldMenu:
+msgid "Turn full screen mode on when it is off, off when it is on."
+msgstr "フルスクリーンモードのオン・オフを切り替える"
+
+#: DrGeo-Main,DrGeoMiniView>>label
+msgid "A Dr. Geo sketch"
+msgstr "Dr.Geo スケッチ"
+
+#: DrGeo-Main,DrGeoPresenter>>askForBitmapToExport
+msgid "Name the bitmap to export:"
+msgstr "ビットマップ出力名："
+
+#: DrGeo-Main,DrGeoPresenter>>axesWording
+msgid "<no> Axes"
+msgstr "<no>軸"
+
+#: DrGeo-Main,DrGeoPresenter>>axesWording
+msgid "<yes> Axes"
+msgstr "<yes>軸"
+
+#: DrGeo-Main,DrGeoPresenter>>createMultipleModeWording
+msgid "<no> Create Multiple"
+msgstr "<no>複数を作成"
+
+#: DrGeo-Main,DrGeoPresenter>>createMultipleModeWording
+msgid "<yes> Create Multiple"
+msgstr "<yes>複数を作成"
+
+#: DrGeo-Main,DrGeoPresenter>>createScript
+msgid "Build a new script"
+msgstr "新しいスクリプトをビルド"
+
+#: DrGeo-Main,DrGeoPresenter>>editScript,DrGeoPresenter>>editScript:
+msgid "Edit or create scripts"
+msgstr "スクリプトを編集または作成"
+
+#: DrGeo-Main,DrGeoPresenter>>gridWording
+msgid "<no> Grid"
+msgstr "<no>グリッド"
+
+#: DrGeo-Main,DrGeoPresenter>>gridWording
+msgid "<yes> Grid"
+msgstr "<yes>グリッド"
+
+#: DrGeo-Main,DrGeoPresenter>>magneticGridWording
+msgid "<no> Magnetic Grid"
+msgstr "<no>マグネチックグリッド"
+
+#: DrGeo-Main,DrGeoPresenter>>magneticGridWording
+msgid "<yes> Magnetic Grid"
+msgstr "<yes>マグネチックグリッド"
+
+#: DrGeo-Main,DrGeoPresenter>>save,DrGeoPresenter>>saveWithinLimitedTime:
+msgid ""
+"I can't save the sketch.\n"
+"Check the local resource or the server."
+msgstr ""
+"スケッチを保存できません。\n"
+"ローカルの環境あるいはサーバーを確認してください。"
+
+#: DrGeo-Main,DrGeoXml>>parseFigureFrom:
+msgid "no name"
+msgstr "名前なし"
+
+#: DrGeo-Script-Sketch,DrGeoSketch>>canTransform:
+msgid "Only geometric object can be transformed."
+msgstr "幾何図形のみ変換できます．"
+
+#: DrGeo-Script-User,DrGeoUserScript_class>>description
+msgid "I am the description of this script. Please edit me."
+msgstr "このスクリプトの説明です．編集して下さい．"
+
+#: DrGeo-Script-User,DrGeoUserScript_class>>scriptName
+msgid "A script"
+msgstr "スクリプト"
+
+#: DrGeo-System,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>pointPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>textPreferences,DrGPlatform>>valuePreferences,DrGPlatform>>vectorPreferences,DrGStyle>>colorWidget
+msgid "Colour"
+msgstr "色"
+
+#: DrGeo-System,DrGPlatform>>arcPreferences
+msgid "arc"
+msgstr "弧"
+
+#: DrGeo-System,DrGPlatform>>circlePreferences
+msgid "circle"
+msgstr "円"
+
+#: DrGeo-System,DrGPlatform>>linePreferences
+msgid "line"
+msgstr "直線"
+
+#: DrGeo-System,DrGPlatform>>locusPreferences
+msgid "locus"
+msgstr "軌跡"
+
+#: DrGeo-System,DrGPlatform>>miscPreferences
+msgid ""
+"Path for user created resources as sketches, Smalltalk sketches, exported "
+"image. An empty path locates these resources in the Dr. Geo application "
+"folder"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>miscPreferences
+msgid "miscellaneous"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>shapeWidget
+msgid "Shape"
+msgstr "形"
+
+#: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>sizeWidget
+msgid "Size"
+msgstr "大きさ"
+
+#: DrGeo-System,DrGPlatform>>pointPreferences
+msgid "point"
+msgstr "点"
+
+#: DrGeo-System,DrGPlatform>>polygonPreferences
+msgid "polygon"
+msgstr "多角形"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Code completion on"
+msgstr "コード補完"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "programming"
+msgstr "プログラミング"
+
+#: DrGeo-System,DrGPlatform>>rayPreferences
+msgid "ray"
+msgstr "光線"
+
+#: DrGeo-System,DrGPlatform>>segmentPreferences,DrGSegmentStyle>>markWidget
+msgid "Mark"
+msgstr "マーク"
+
+#: DrGeo-System,DrGPlatform>>segmentPreferences
+msgid "segment"
+msgstr "線分"
+
+#: DrGeo-System,DrGPlatform>>textPreferences,DrGTextStyle>>backgroundWidget
+msgid "Background"
+msgstr "背景"
+
+#: DrGeo-System,DrGPlatform>>textPreferences,DrGTextStyle>>borderWidget
+msgid "Border"
+msgstr "枠線"
+
+#: DrGeo-System,DrGPlatform>>textPreferences
+msgid "text"
+msgstr "テキスト"
+
+#: DrGeo-System,DrGPlatform>>valuePreferences
+msgid "Number of decimal"
+msgstr "小数点以下の桁数"
+
+#: DrGeo-System,DrGPlatform>>valuePreferences
+msgid "value"
+msgstr "値"
+
+#: DrGeo-System,DrGPlatform>>vectorPreferences
+msgid "vector"
+msgstr "ベクトル"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate1ButtonData
+msgid "Animate at speed 1."
+msgstr "速さ1でアニメーション．"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate1ButtonData
+msgid "Animate x1"
+msgstr "通常速度でアニメーション"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate2ButtonData
+msgid "Animate at speed 2."
+msgstr "速さ2でアニメーション"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate2ButtonData
+msgid "Animate x2"
+msgstr "倍速でアニメーション"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate3ButtonData
+msgid "Animate at speed 3."
+msgstr "速さ3でアニメーション"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate3ButtonData
+msgid "Animate x3"
+msgstr "3倍速でアニメーション"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate4ButtonData
+msgid "Animate at speed 4."
+msgstr "速さ4でアニメーション"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>animate4ButtonData
+msgid "Animate x4"
+msgstr "4倍速でアニメーション"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>axesButtonData
+msgid "Show or hide the ox and oy axes."
+msgstr "座標軸(oxとoy)を表示する／隠す。"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>exportBitmapButtonData
+msgid "Export this sketch as PNG picture."
+msgstr "このスケッチをPNG画像形式で書き出す．"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>exportBitmapButtonData
+msgid "Save as picture"
+msgstr "画像として保存"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>gridButtonData
+msgid "Show or hide grid."
+msgstr "グリッドの表示・非表示"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>keepButtonData
+msgid "Keep this sketch permanently."
+msgstr "このスケッチを永続的に維持します．"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>keepButtonData
+msgid "Save"
+msgstr "保存"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>macroDeleteButtonData
+msgid "Delete a macro-construction from the registry."
+msgstr "登録した作図マクロを削除します．"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>macroDeleteButtonData
+msgid "Delete macro"
+msgstr "マクロを削除"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>magneticGridButtonData
+msgid "Snap to grid."
+msgstr "グリッドにあわせる"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>menuButtonData
+msgid "An unobtrusive menu with all Dr. Geo tools."
+msgstr "Dr.Geoのすべてのツールをもつ簡易メニュー"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>menuButtonData
+msgid "Menu"
+msgstr "メニュー"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>multipleModeButtonData
+msgid ""
+"Toggle between the build of several geometric objects and the build of one "
+"geometric object then move it."
+msgstr ""
+"オブジェクトを続けて作成する機能とオブジェクトを１つ作成して動かす機能を切り"
+"替えます．"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>newButtonData
+msgid "New"
+msgstr "新規作成"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>newButtonData
+msgid "Open a new blank sketch."
+msgstr "新しい空のスケッチを開く．．"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>openButtonData
+msgid "Open a sketch."
+msgstr "スケッチを開く"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>redoButtonData
+msgid "Redo"
+msgstr "やり直し"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>redoButtonData
+msgid "Redo last action."
+msgstr "最後の操作をやり直します．"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptCreateButtonData
+msgid "Create a Smalltalk script."
+msgstr "Smalltalkのスクリプトを作成"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptCreateButtonData
+msgid "Create a script"
+msgstr "スクリプトを作成"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptEditButtonData
+msgid "Edit a Smalltalk script."
+msgstr "Smalltalkのスクリプトを編集"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>scriptEditButtonData
+msgid "Edit a script"
+msgstr "スクリプトを編集"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>stylerFor:
+msgid "Edit style"
+msgstr "編集スタイル"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>treeButtonData
+msgid "Construction tree"
+msgstr "構成木"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>treeButtonData
+msgid "The hierarchy tree presenting the visible constructed items."
+msgstr "作成した項目を表すための階層木"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>undoButtonData
+msgid "Undo"
+msgstr "取り消し"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>undoButtonData
+msgid "Undo last action"
+msgstr "最後の操作を取り消します．"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelXButtonData
+msgid "A wheel to move horizontally the sketch."
+msgstr "スケッチを水平に動かすためのダイアル"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelXButtonData
+msgid "Horizontal wheel"
+msgstr "水平方向ダイアル"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelYButtonData
+msgid "A wheel to move vertically the sketch."
+msgstr "作品を垂直方向に動かすダイアル"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelYButtonData
+msgid "Vertical wheel"
+msgstr "垂直方向ダイアル"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelZButtonData
+msgid "A wheel to zoom in, zoom out the sketch."
+msgstr "作品をズームイン，ズームアウトさせるダイアル"
+
+#: DrGeo-UI-Data,DrGUIControlsManager>>wheelZButtonData
+msgid "Zoom wheel"
+msgstr "ズームダイアル"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>editMenu
+msgid "Copy"
+msgstr "コピー"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>editMenu
+msgid "Copy with transparency"
+msgstr "透明度を保持したコピー"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Keep this sketch under a different name."
+msgstr "このスケッチを異なる名前で保存します．"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Open at..."
+msgstr "...から開く"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
+msgid "Save as..."
+msgstr "名前を付けて保存"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Animate a free point on curve."
+msgstr "曲線上の自由点の動きをアニメーションする．"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Build or execute macro-construction. A macro is a construction template you "
+"can apply to items in the sketch area."
+msgstr ""
+"作図マクロを作成あるいは実行します．マクロは作図のためのテンプレートで，図中"
+"の項目に対して適用します．"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Create different curve types: line, half-line, segment, vector, circle..."
+msgstr ""
+"いろいろなタイプの曲線（直線，半直線，線分，ベクトル，円など）を作成する．"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Create points: free, on curve, intersection or middle point."
+msgstr "点の作成：自由点，曲線上の点，交点，中点"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Create several numeric objects: free value, distance, length, angle, "
+"coordinates, equation and text."
+msgstr ""
+"様々な数値オブジェクト（自由値，距離，長さ，角度，座標，等式及びテキスト）を"
+"作成"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Erase or edit style and properties of items."
+msgstr "項目を削除したり，スタイルやプロパティを編集します．"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "File"
+msgstr "ファイル"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Lines"
+msgstr "線"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Load, save or export Dr. Geo figure."
+msgstr "Dr.Geo図形の読み込み，保存，書き出しをします．"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Macro-construction"
+msgstr "作図マクロ"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Numerics & Text"
+msgstr "数値とテキスト"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Points"
+msgstr "点"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Script"
+msgstr "スクリプト"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Script: use, edit or create script to plug in the sketch."
+msgstr "スクリプト：スケッチ中に組み込むために作成，使用，編集する．"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid ""
+"Transform an object with a geometric transformation: symmetry, reflexion, "
+"rotation, translation or homothety (scale)."
+msgstr ""
+"オブジェクトを幾何的変換（点対称，鏡映，回転，平行移動，相似拡大）により変換"
+"します．"
+
+#: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
+msgid "Transformations"
+msgstr "変換"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the code up to the cursor position."
+msgstr "カーソルの位置までコードを実行"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Execute the current message and go to the next message."
+msgstr "このメッセージを実行して次のメッセージに移行"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart"
+msgstr "再起動"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Restart the step by step execution from its start."
+msgstr "最初からステップバイステップ実行でやり直す"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Run to Cursor"
+msgstr "カーソル位置まで実行"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step"
+msgstr "ステップ"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into"
+msgstr "ステップ実行"
+
+#: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
+msgid "Step into a block."
+msgstr "ブロックに入る"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph_class>>open,DrGeo_class>>worldMenu:
+msgid "Open a sketch"
+msgstr "スケッチを開く"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Examples"
+msgstr "作図例"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "My Sketches"
+msgstr "自分のスケッチ"
+
+#: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGUIControlsManager>>openButtonData
+msgid "Open"
+msgstr "開く"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Angle"
+msgstr "角度"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Any type"
+msgstr "任意のタイプ"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Direction"
+msgstr "向き"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses,DrGSegmentBuilder_class>>title
+msgid "Segment"
+msgstr "線分"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
+msgid "Value"
+msgstr "値"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses,DrGVectorBuilder_class>>title
+msgid "Vector"
+msgstr "ベクトル"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>addArgument
+msgid "Remove this script argument."
+msgstr "このスクリプトの引数を削除"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add an argument to this script."
+msgstr "このスクリプトに引数を追加"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newAddArgumentButton
+msgid "Add argument"
+msgstr "引数の追加"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build"
+msgstr "ビルド"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newButtonArea
+msgid "Build a script with these settings."
+msgstr "これらの設定の下でスクリプトをビルドする"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newDescriptionMorph
+msgid ""
+"A description of the script. To help the user, describe carefully what the "
+"script does and the input arguments to select to use it."
+msgstr ""
+"このスクリプトの説明．ユーザのために，このスクリプトがどのようなものである"
+"か，またスクリプトを使用するために必要な引数の入力について注意深く記述してく"
+"ださい．"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Arguments"
+msgstr "引数"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
+msgid "Description"
+msgstr "説明"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGStyle>>nameWidget
+msgid "Name"
+msgstr "名前"
+
+#: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newScriptNameMorph
+msgid "The name of the script."
+msgstr "スクリプトの名前"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete"
+msgstr "削除"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea
+msgid "Delete permanently this Smalltalk Sketch from disk."
+msgstr "ディスクからこのSmalltalkスケッチを削除する"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea,DrGUIMinimalControlsManager>>mainMenu
+msgid "Edit"
+msgstr "編集"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newSketchesColumn
+msgid "Code"
+msgstr "コー​​ド"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>browseSketches
+msgid "Select a Smalltalk sketch"
+msgstr "Smalltalkスケッチを選択する"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>debugWindowSketch
+msgid "Execute step by step"
+msgstr "ステップバイステップで実行"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>keepSketch,DrGeoPresenter>>saveSketchAs
+msgid "Name the sketch to keep."
+msgstr "このスケッチに名前をつけてください．"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Debug the Smalltalk sketch."
+msgstr "Smalltalkスケッチのデバッグ"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Dr. Geo tutorial"
+msgstr "Dr. Geo チュートリアル"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Edit a Smalltalk sketch."
+msgstr "Smalltalkスケッチを編集する。"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
+msgid "Play the Smalltalk sketch."
+msgstr "Smalltalkスケッチを実行する。"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Save this Smalltalk sketch."
+msgstr "Smalltalkスケッチを保存する。"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
+msgid "Stop the execution of the Smalltalk sketch."
+msgstr "Smalltalkスケッチの実行を停止する。"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>switchToPauseButton
+msgid "Pause the Smalltalk sketch."
+msgstr "Smalltalkスケッチを一時停止する。"
+
+#: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>switchToResumeButton
+msgid "Resume the Smalltalk sketch."
+msgstr "Smalltalkスケッチを再開する。"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>firstPage
+msgid "Build a macro-construction"
+msgstr "作図マクロの作成"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>firstPage
+msgid ""
+"To build a macro-construction,\n"
+"\n"
+" 1. First select the input paramaters,\n"
+" 2. Next select the output parameters,\n"
+" 3. Next chose a name and a description,\n"
+" 4. Last apply the selection."
+msgstr ""
+"作図マクロを作成するには，\n"
+"\n"
+" 1. 最初に入力パラメータを選択し，\n"
+" 2. 次に出力パラメータを選択し，\n"
+" 3. 次に名前を説明を選んで，\n"
+" 4. 最後に選択を適用します。"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage
+msgid "Description:"
+msgstr "説明:"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage
+msgid "Give a name and a description"
+msgstr "名前と説明を指定してください"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage
+msgid "Title:"
+msgstr "表題:"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>secondPage
+msgid "Select input parameters"
+msgstr "入力パラメータを選択してください"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroBuild>>thirdPage
+msgid "Select output parameters"
+msgstr "出力パラメータを選択してください"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>firstPage
+msgid "Execute a macro-construction"
+msgstr "作図マクロを実行"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>firstPage
+msgid ""
+"To execute a macro-construction,\n"
+"\n"
+" 1. First select a macro-construction from the list,\n"
+" 2. Select items on the figure. Only items relevant\n"
+" to the selected macro-construction are selectable.\n"
+" Once enough items are selected, the macro is\n"
+" automaticly executed.\n"
+" To start press the 'next' button."
+msgstr ""
+"作図マクロを実行するには，\n"
+"\n"
+" 1. 最初にリストからマクロ作図を選択し，\n"
+" 2. 図形上の項目を選択します。選択された\n"
+" 作図マクロに関連する項目のみが選択可能です。\n"
+" 十分な数の項目が選択されると、マクロは\n"
+" 自動的に実行されます。\n"
+" 開始するには、'次' ボタンを押してください。"
+
+#: DrGeo-UI-Widgets,DrGWizardMacroPlay>>secondPage
+msgid "Select a macro-construction then the figure items"
+msgstr ""
+"作図マクロを選択し、次に入力パラメータとなる図中のオブジェクトを選択してくだ"
+"さい"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>firstPage
+msgid ""
+"To use a script,\n"
+"\n"
+" 1. First select a script from the list,\n"
+" 2. Select items in the sketch,\n"
+" 3. Click somewhere in the background. \n"
+" Once enough items are selected, the script is\n"
+" inserted in the sketch, at the user selected position.\n"
+" To start press the 'next' button."
+msgstr ""
+"スクリプトを使用するには，\n"
+"\n"
+"  1. 最初にリストからスクリプトを選択し，\n"
+"  2. スクリプトの項目を選択し，\n"
+"  3. 背景のどこかをクリックします。\n"
+" 十分な数の項目が選択されると、スクリプトがスケッチに挿入され、\n"
+" ユーザが選択した位置に表示されます。\n"
+" 開始するには、'次' ボタンを押してください。"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>firstPage
+msgid "Use a script in the sketch"
+msgstr "スケッチ内でスクリプトを使用"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "Script name"
+msgstr "スクリプト名"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "Select a script then items in the sketch"
+msgstr "スクリプトとスケッチの項目を選択"
+
+#: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
+msgid "The arguments accepted by this script."
+msgstr "このスクリプトが受け取る引数。"

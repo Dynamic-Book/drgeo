@@ -1,0 +1,22 @@
+# Chinese (Traditional) translation for drgeo
+# Copyright (c) 2022 Rosetta Contributors and Canonical Ltd 2022
+# This file is distributed under the same license as the drgeo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: drgeo\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-02-23 11:53+0000\n"
+"PO-Revision-Date: 2022-12-20 13:38+0000\n"
+"Last-Translator: Chao-Kuei Hung <ckhung0@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2023-11-24 06:29+0000\n"
+"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
+
+#: Erudite-Morphic,MorphicEruditeDocRenderer>>renderCodeWithDrGeoActions:
+msgid "Copy to the code editor."
+msgstr "複製到程式碼編輯器"
