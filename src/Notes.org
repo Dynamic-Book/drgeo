@@ -1,0 +1,16 @@
+* Handling of Cuis stock image
+Never save the stock Cuis image, alternatively save it with a different name. 
+`git status` should always be "clean".
+
+** To resync with stock image
+Just doing `git pull` should be enough.
+In case the stock image is dirty do:
+git checkout Cuis6.0.xxxx.changes
+git pull
+then git status should be clean
+
+If dirty clone the repo again and start fresh
+
+* Copy to clipboard
+LibreOffice, need it to be copied by uri:
+echo "file://`pwd`/resources/MyExports/testL.svg" |  xclip -i -selection "CLIPBOARD" -t text/uri-list

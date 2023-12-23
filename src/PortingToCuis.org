@@ -1,0 +1,122 @@
+* Porting DrGeo
+** Packages
+The packages to move from Pharo to Cuis
+- [X] DrGeoII-Core-Item
+- [X] DrGeoII-UI-Costume
+- [X] DrGeoII-UI-Style
+- [X] DrGeoII-UI-Item-Widget
+- [X] DrGeoII-Core-Script
+- [X] DrGeoII-Core-App
+- [X] DrGeoII-System
+- [X] DrGeoII-UI-Widget
+- [X] DrGeoII-Core-Command
+- [X] DrGeoII-Core-Factory
+- [X] DrGeoII-Core-Tool
+- [X] DrGeoII-Core-Macro 
+- [X] DrGeoII-Core-Builder
+- [X] DrGeoII-UI-Window>>DrGeoWindow
+- [X] DrGeoII-UI-Data
+- [ ] DrGeoII-French
+- [X] DrGeoII-Core-
+- [ ] DrGeoII-Test
+- [ ] DrGeoII-XP
+- [X] Locale plugin
+- [X] Gettext package
+
+** Dependencies packages
+- Graphics-Files-Additional
+- Wheel
+- WaitSpinner (ancinnement Loader)
+- Gettext
+- Locale-System
+
+** Code conversion
+- [X] Dedicated system menu
+- [X] Preference browser
+- [X] Macro core
+- [X] wizard to define a macro
+- [X] wizard to play a macro
+- [X] wizard to create a script
+- [X] wizard to play a script
+  - [X] dedicated browser to edit a script
+- [X] dedicated to load/save/edit a Smalltalk sketch
+  - [X] Browser
+  - [X] Editor
+- [X] horizontal toolbar with a selection of tools
+- [X] load/save format. xml? object ref?
+  - [X] open sketch with a script
+  - [X] open sketch without script
+- [X] dialog to edit an object style
+- [X] dialog to edit an object property
+- [X] dialog to save a sketch
+- [X] save operation of a sketch
+- [X] dialog to load a sketch with file preview
+- [X] left pane with tree
+- [X] left pane with styling tools
+
+** Installer
+- [X] makeDrGeo.sh Bash build script
+- [X] Start up sequence
+- [X] Font handling
+- [X] Path to ressources
+- [ ] documentation integration (Erudite?)
+- [ ] Message translation
+
+* Porting InteractionEssentials
+C'est le framework d'animation d'interface graphique, successeur du
+paquet Animation (porté, en grande parti fonctionnel)
+** Dépendances 
+- Opal et Refactoring browser
+- dépendances brocantes: RBVisitor
+
+* New icons
+David designed a set of SVG icons, they come in one file. 
+
+Bellow a few options to edit the icons with Inkscape:
+
+*Calques.* Calque>Calques to edit/remove the background, select the
+black background frame model on the left, then select its color X for
+none. When Exporting each icon in one file, all but the 'illus' one
+calque should be removed.
+
+*Palettes.* Affichage>Palettes to change the color of illustration
+line. It is a model too, so changing for one icon changes it for all
+icons.
+
+Optimise with Ctrl-L to simplifiy straigh line (remove uncessary
+nodes)
+
+Converte to path for better compatibility Chemin>Objet/Contour en
+chemin
+
+* Tools
+** Conversion du format de fichier
+*** Conversion de cr en lf
+Lorsque le code vient de Squeak ou Pharo, le character de fin de ligne
+doit être convertit.
+
+   tr '\r' '\n' < Item-Widget.st > Item-Widget2.st
+
+*** Conversion de := en _
+   sed s/:=/_/ Item-Widget2.st/g > Item-Widget3.st
+** Installation de paquets
+Pour démarrer Cuis avec installation de DrGeo:
+./squeak cuis.image -d"Feature require: 'DrGeo'"
+
+ou encore mieux:
+./squeak cuis.image -rDrGeo
+
+** Git
+Guide de survie avec 
+*** Récupérer un fichier sur le dépôt maître (local)
+git checkout nomDuFichier
+*** Syncing a fork
+git fetch upstream
+git checkout master
+git merge upstream/master
+
+Pour enregistrer les modifcations en cas d'echec au merge
+git stash 
+
+
+
