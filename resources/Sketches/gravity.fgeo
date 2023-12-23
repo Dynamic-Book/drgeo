@@ -1,0 +1,172 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo axes="True" custom_controls="False" grid="False" gridded="False" name="Gravity" origin_x="2.6499999999999875" origin_y="0.40000000000000147" scale="69.0">
+<controls wheelX="True" wheelY="True" wheelZ="True"/> 
+<point color="Red" delta="(7@7)" feedback="True" id="1052327417" locked="True" masked="True" name="HA" style="Round" thickness="Dashed" type="Free">
+<x>-15</x>
+<y>0</y></point>
+<point color="Red" delta="(7@7)" feedback="True" id="826720775" locked="True" masked="True" name="HB" style="Round" thickness="Dashed" type="Free">
+<x>15</x>
+<y>0</y></point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="222804569" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="1052327417"/> 
+<parent ref="826720775"/> </line>
+<point color="Red" delta="(7@7)" feedback="True" id="250639986" locked="True" masked="False" name="O" style="Round" thickness="Dashed" type="On_curve">
+<parent ref="222804569"/> 
+<value>0.9788106953650536</value></point>
+<point color="Blue" delta="(7@7)" feedback="True" id="219830204" locked="False" masked="False" name="Speed" style="Cross" thickness="Thick" type="On_curve">
+<parent ref="222804569"/> 
+<value>0.9813253962295132</value></point>
+<circle anchor="0.5" color="Blue" delta="(7@7)" feedback="True" fill="False" id="155803245" masked="False" name="" style="dash" thickness="small" translucent="True" type="2pts">
+<parent ref="250639986"/> 
+<parent ref="219830204"/> </circle>
+<value color="Black" delta="(7@7)" feedback="True" id="573704472" locked="False" masked="True" name="g_scale" type="value">
+<value>0.25</value>
+<x>0.9260509764978584</x>
+<y>-3.6335650446871908</y></value>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="10894141" masked="False" name="" style="plain" thickness="small" type="perpendicular">
+<parent ref="222804569"/> 
+<parent ref="250639986"/> </line>
+<point color="Blue" delta="(7@7)" feedback="True" id="89549701" locked="False" masked="False" name="Gravity Handle" style="Round" thickness="Dashed" type="On_curve">
+<parent ref="10894141"/> 
+<value>0.12341059282573108</value></point>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Blue" delta="(7@7)" feedback="True" id="45858337" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="250639986"/> 
+<parent ref="89549701"/> </segment>
+<point color="Red" delta="(7@7)" feedback="True" id="150381521" masked="True" name="g" style="Round" thickness="Thick" type="Scale">
+<parent ref="89549701"/> 
+<parent ref="250639986"/> 
+<parent ref="573704472"/> </point>
+<point color="Blue" delta="(7@7)" feedback="True" id="55008731" locked="False" masked="False" name=" " style="Round" thickness="Dashed" type="On_curve">
+<parent ref="155803245"/> 
+<value>0.16280656847090377</value></point>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Blue" delta="(7@7)" feedback="True" id="48892995" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="250639986"/> 
+<parent ref="55008731"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="44829417" masked="True" name="LV0x" style="dash" thickness="small" type="parallel">
+<parent ref="10894141"/> 
+<parent ref="55008731"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="79757677" masked="True" name="LV0y" style="dash" thickness="small" type="parallel">
+<parent ref="222804569"/> 
+<parent ref="55008731"/> </line>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-105429416" masked="False" name="V0y" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="10894141"/> 
+<parent ref="79757677"/> </point>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-162652736" masked="False" name="V0x" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="44829417"/> 
+<parent ref="222804569"/> </point>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Red" delta="(7@7)" feedback="True" id="218369824" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="250639986"/> 
+<parent ref="-162652736"/> </segment>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Red" delta="(7@7)" feedback="True" id="73525400" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="250639986"/> 
+<parent ref="-105429416"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="125672580" masked="True" name="Lf1" style="dash" thickness="small" type="2pts">
+<parent ref="250639986"/> 
+<parent ref="55008731"/> </line>
+<point color="Red" delta="(7@7)" feedback="True" id="189614835" masked="True" name="GH'" style="Round" thickness="Dashed" type="Reflexion">
+<parent ref="89549701"/> 
+<parent ref="125672580"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="243109328" masked="True" name="Lf2" style="dash" thickness="small" type="2pts">
+<parent ref="189614835"/> 
+<parent ref="250639986"/> </line>
+<point color="Red" delta="(7@7)" feedback="True" id="243260419" masked="True" name="-g" style="Round" thickness="Dashed" type="Symmetry">
+<parent ref="150381521"/> 
+<parent ref="250639986"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="91350878" masked="True" name="Ld1" style="dash" thickness="small" type="2pts">
+<parent ref="243260419"/> 
+<parent ref="-162652736"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="197009419" masked="True" name="Ld2" style="dash" thickness="small" type="parallel">
+<parent ref="91350878"/> 
+<parent ref="-105429416"/> </line>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-62273954" masked="True" name=" " style="Round" thickness="Dashed" type="Intersection">
+<parent ref="197009419"/> 
+<parent ref="222804569"/> </point>
+<line anchor="0.5" color="Green" delta="(7@7)" feedback="True" id="131451953" masked="False" name="Axis" style="dash" thickness="small" type="perpendicular">
+<parent ref="222804569"/> 
+<parent ref="-62273954"/> </line>
+<point color="Green" delta="(7@7)" extra="0" feedback="True" id="-173819265" masked="False" name="Focus" style="Rectangular" thickness="Thick" type="Intersection">
+<parent ref="131451953"/> 
+<parent ref="243109328"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="32699869" masked="True" name="Lh1" style="dash" thickness="small" type="2pts">
+<parent ref="-162652736"/> 
+<parent ref="-105429416"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="65357350" masked="True" name="Lh2" style="dash" thickness="small" type="parallel">
+<parent ref="32699869"/> 
+<parent ref="-62273954"/> </line>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-63666503" masked="True" name="2h" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="65357350"/> 
+<parent ref="10894141"/> </point>
+<point color="Red" delta="(7@7)" feedback="True" id="104030502" masked="True" name="h" style="Round" thickness="Dashed" type="Middle_2pts">
+<parent ref="-63666503"/> 
+<parent ref="250639986"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="111285282" masked="True" name="Lv" style="dash" thickness="small" type="parallel">
+<parent ref="222804569"/> 
+<parent ref="104030502"/> </line>
+<point color="Green" delta="(7@7)" extra="0" feedback="True" id="-33408123" masked="False" name="Vertex" style="Rectangular" thickness="Thick" type="Intersection">
+<parent ref="131451953"/> 
+<parent ref="111285282"/> </point>
+<point color="Red" delta="(7@7)" feedback="True" id="10594648" masked="True" name=" " style="Round" thickness="Dashed" type="Symmetry">
+<parent ref="-173819265"/> 
+<parent ref="-33408123"/> </point>
+<line anchor="0.5" color="Green" delta="(7@7)" feedback="True" id="199470516" masked="False" name="Directrix" style="dash" thickness="small" type="parallel">
+<parent ref="222804569"/> 
+<parent ref="10594648"/> </line>
+<point color="Blue" delta="(7@7)" feedback="True" id="184708592" locked="False" masked="False" name="P" style="Cross" thickness="Thick" type="On_curve">
+<parent ref="222804569"/> 
+<value>0.9832953021494297</value></point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="4881991" masked="True" name="" style="dash" thickness="small" type="perpendicular">
+<parent ref="222804569"/> 
+<parent ref="184708592"/> </line>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-143143175" masked="True" name=" " style="Round" thickness="Dashed" type="Intersection">
+<parent ref="199470516"/> 
+<parent ref="4881991"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" id="121246710" mark="none" masked="True" name="base" style="dash" thickness="small" type="2pts">
+<parent ref="-143143175"/> 
+<parent ref="-173819265"/> </segment>
+<point color="Red" delta="(7@7)" feedback="True" id="220754605" masked="True" name=" " style="Round" thickness="Dashed" type="Middle_segment">
+<parent ref="121246710"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="152706457" masked="True" name="tangent" style="dash" thickness="small" type="perpendicular">
+<parent ref="121246710"/> 
+<parent ref="220754605"/> </line>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-21628918" masked="False" name=" " style="Round" thickness="Dashed" type="Intersection">
+<parent ref="152706457"/> 
+<parent ref="4881991"/> </point>
+<locus anchor="0.5" color="Red" delta="(7@7)" feedback="True" id="196214737" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="184708592"/> 
+<parent ref="-21628918"/> </locus>
+<vector anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="1918902" masked="True" name="D" origin="(-4.911683675032507@ -0.34605842181109964)" style="dash" thickness="small" type="2pts">
+<parent ref="250639986"/> 
+<parent ref="-21628918"/> </vector>
+<point color="Red" delta="(5.0@2.0)" feedback="True" id="229751079" masked="False" name="VPx" style="Round" thickness="Dashed" type="Translation">
+<parent ref="-162652736"/> 
+<parent ref="1918902"/> </point>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Red" delta="(7@7)" feedback="True" id="188900535" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="-21628918"/> 
+<parent ref="229751079"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="4380247" masked="True" name="" style="dash" thickness="small" type="parallel">
+<parent ref="4881991"/> 
+<parent ref="229751079"/> </line>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-40633438" masked="False" name=" " style="Round" thickness="Dashed" type="Intersection">
+<parent ref="4380247"/> 
+<parent ref="152706457"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="171005046" masked="True" name="" style="dash" thickness="small" type="parallel">
+<parent ref="222804569"/> 
+<parent ref="-40633438"/> </line>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-133632181" masked="False" name="VPy" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="4881991"/> 
+<parent ref="171005046"/> </point>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Red" delta="(7@7)" feedback="True" id="197557323" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="-21628918"/> 
+<parent ref="-133632181"/> </segment>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Red" delta="(7@7)" feedback="True" id="138513142" mark="none" masked="False" name="Vp" style="plain" thickness="medium" type="2pts">
+<parent ref="-21628918"/> 
+<parent ref="-40633438"/> </segment>
+<text background="White" border="Transparent" color="Black" delta="(7@7)" feedback="True" fontSize="16" id="248507279" locked="False" masked="False" name="" type="free">
+<contents>Parabolic Trajectory under Gravity</contents>
+<x>3.852648240466115</x>
+<y>-1.9329789024210684</y></text>
+<text background="White" border="Transparent" color="Black" delta="(7@7)" feedback="True" fontSize="12" id="256397944" locked="False" masked="False" name="" type="free">
+<contents>(Please drag blue objects)</contents>
+<x>3.8384341936433732</x>
+<y>-2.4213889064176186</y></text></drgeo></drgenius>

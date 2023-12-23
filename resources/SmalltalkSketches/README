@@ -1,0 +1,24 @@
+These Smalltalk code examples describe interactive sketches defined
+with the Smalltalk programming language.  
+
+With the Dr. Geo Smalltalk API, the users can fully describe a
+geometric construction and even much more as shown in the examples.
+
+To open and to execute these Smalltalk sketches:
+
+   From the Dr. Geo background menu, go to the submenu "Tools" and
+   select "Browse Smalltalk Sketches".
+
+Alternatively, with the Smalltalk sketch editor you can edit and play
+with these sketches :
+
+1. From the Dr. Geo background menu, go to the submenu "Tools" and
+   select "Smalltalk Sketch Editor".
+
+2. Click on the first button "Edit a Smalltalk sketch.' 
+
+3. In the new dialog window, select the sketch you want to play with
+and click the button "Edit", on the bottom of the dialog.
+
+3. Modify the code of the sketch and have fun
+

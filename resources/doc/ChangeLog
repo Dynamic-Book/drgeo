@@ -1,0 +1,726 @@
+2023-12-01  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 23.12a beta
+	* Code reorganisation for better understanding of the classes
+	responsibilities
+	* Translation in Spanish of the Dr. Geo DSL, to write Smalltalk
+	Sketch in Spanish.
+	* Include appropriate font for Japanese characters.
+	* #2020185 Crash when very long lines
+	* #2020712 Numerous registered events
+	* #2043737 Provide archive of the sources
+	* #2044348 Preview error
+	* #2028042 Status bar heigh too narrow
+	* #2029422 Cannot validate macro
+	* #2043856 DrGSmalltalkSketchBrowser window slightly too large
+	* #2044393 SVG export and LibreOffice
+	* #2020700 Export SVG sketch with paragraph and line break
+	* #2025020 checkForPath called too early 
+
+2023-05-18  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 23.06a beta
+	* Updated translation
+	* #2023435 Dash line style
+	* #2020690 Border for text
+	* #1515189 Font size for numeric object
+	* #2020185 Crash when very long lines
+	* #2019469 Unclosed dynamic array in Smalltalk sketch
+	* #2009265 Mouse over detection on cricle, arc, locus
+	* #2012723 Key in Smalltalk sketch name with accent ^
+	* #1862314 Rotation with angle in degrees
+	* #2018634 loading invalid Smalltalk Sketch
+	* #2018635 Sending #points: to DrGeoSketch
+	* #2011475 Keyboard focus
+	* #1337540 Export sketch as SVG file
+	* #1697725 Autoname option
+	* #2020120 Polygon fill
+
+2023-02-23  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 23.03b beta
+	* #2007588 Race condition between Smalltalk sketch browser and
+	editor
+	* #2007724 Hangs when debugging empty code or literal
+	* #2007725 Segment bissector with identical point
+	* #2007723 Circle as line
+	* #2002549 User data path 
+
+2023-02-12  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 23.03a beta
+	* #2002914 Doubled accent character
+	* #2002915 No code in Smalltalk sketch editor
+	* #2002913 Collapsed window
+
+2023-01-09  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 23.01 beta
+	* Fixes related to file operations on geometric sketch
+	* Application packages for GNU/Linux and Windows
+	
+2022-12-15  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 22.12 beta
+	* Move to beta status (please, report bugs)
+	* A lot of improvments to the Smalltalk sketch editor tools
+	* Tutorial guide (French only for now) integrated to the Smalltalk
+	sketch editor
+	* Speed up starting time for European languages (Use the Deja Vu
+	font instead of the more general Wen Quan Yi Zen unicode font)
+
+2022-09-10 Hilaire Fernandes <hilaire@gnu.org>
+
+	* Release 22.10 alpha
+	* Initial version on Cuis-Smalltalk
+	
+
+2019-08-05  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 19.09a
+	* #1836768 Locus need some optimization
+	* #1836732 Ruler slow down when printing the value
+	* #1832980 echelleDe:selonCentre:etFacteur:
+	* #1824625 pointOnCurve
+	* #1837745 Corrupted sketch file when Chinese content
+	
+
+2019-05-27  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 19.06a
+	* #1515174 Adjust the number of decimal
+	* #1821501 Playground Windows extent
+	* #1821049 Object name does not appear after loading a sketch
+	* #1824623 Value hidden by default
+	* #1697417 Export bitmap with optional transparency
+	* #1697418 Export bitmap to clipboard
+	* #1824625 pointOnCurve
+	* #1761420 Rendering time of Point Morph
+	* #1831277 Merging point not operative on toolbarless view
+
+
+ 2019-03-07  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 19.03b
+	* Build with Pharo image 7.0.2. OS X build should work properly.
+	* #1818804 method selectPathName: deprecated in Pharo 7
+
+
+2019-02-02  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 19.03a Bug fixes and newer virtual machines for
+	GNU/Linux and Windows.
+	* #1780822 Command line --script option does not work
+	* #1791045 Gridding issue with non free point object
+	* #1779573 Messages "point x" sent to point confusing
+	* #1791488 Reduce detection of point
+	* #1795049 Dr. Geo window without decorations and tools
+	* #1795054 Export to PNG by code
+	* #1796560 How do I control the labeling of a segment?
+	* #1801497 French DSL
+	* #1816659 Macro player, selection list
+	* #1466626 Typos in the French docs
+	* #1815928 Geometric and oriented angles
+	* #1187667 Arc of given radius and length
+	* #1018280 Need chinese input method
+	* #1815909 Angle arc should be colored
+	* #1775247 Flipping 180 degrees angle
+	* #1717278 Name a script
+	* #1817270 [Shift] + [mouse wheels] not working
+	* #1816711 Creating a script method
+	* #1470513 When feedback off on an object, user should be able to
+	interact with it
+	* #1401049 Crash when building Dr.Geo
+	* #1333523 Creating a circle with a given radius
+	* #1490148 Arc by center shoud be oriented
+	* #1813655 Startup error with Windows 10
+	* #1800104 method to show first quadrant of the coordinate system
+	* #1798606 DrGCirlceItem>>intersectionWith:flag: needs
+	clarification
+	* #1796662 Documentation conceptual index: zoom factor for canvas
+
+	
+2018-04-20  Hilaire Fernandes  <hilaire@gnu.org>
+	* Release 18.06a
+	* This release was focused on porting to Pharo7 image and virtual
+	machines.  Porting Dr. Geo to Pharo 7 raised many issues; still
+	there are a few additions as dedicated browsers to edit scripts,
+	optimization in Smalltalk sketch rendering time and usability
+	improvements.
+	* #1763682 Error in script Fathauer.st
+	* #1763680 Error in script Durer.st
+	* #1698807 Fix commands and icons in tool menu
+	* #1761148 Check boundaries with unfilled polygon
+	* #1702359 Community world menu
+	* #1699148 Zoom at a fixed cursor position
+	* #1337849 Dedicated code browser
+	* #1698589 Alternate color on tree
+	* #1698587 Wheels can't get raised border working
+	* #1764769 Bisection script fail
+	* #1699113 The File Thumbnail Dialog focus
+	* #1698588 Mouse rotating wheel does not work on canvas
+	* #1698585 Canvas is grey not white
+	* #1698584 Menu items with icon
+	* #1761073 Preview in the file dialog
+	* #1698615 #buildScript raises an error
+	* #1698590 #editScript raises an error
+	* #1760596 Tools>system browser error
+	* #1760595 World menu>About error
+	* #1760594 Smalltalk sketch window does not open
+	* #1761420 Rendering time of Point Morph
+	* #1698582 Canvas over clipped
+	* #1760597 Tools>Update Dr. Geo
+	* #1701460 Integration with Playground/Spotter
+	* #1760600 Access to icons
+	* #1763677 Use all the Smalltalk sketches for testing
+	* #1766096 Windows system command window
+	* #1699162 With Dark graphic theme, label are printed in white on
+	white
+	* #1529031 Save a Smalltalk sketch from a workspace or Playground
+	* #1768836 Zooming mismatch between the z-wheel and mouse-wheel
+	* #1769460 Local area network share
+	* #1770980 Setting to switch between dark and bright graphic
+	themes
+	* #1771795 Automatic name for value
+	* #1772147 Full screen option
+	* #1771794 Dr. Geo windows canvas should open in the foreground
+	* #1771795 Automatically name value
+	* #1772147 Full screen option
+	* #1775546 Macro construction UI white text on white background
+	* #1776193 Error when teacher share is empty
+	* #1776904 No automatic Dr. Geo window
+	* #1767063 FileStream to become obsolete
+
+2017-06-05  Hilaire Fernandes  <hilaire@gnu.org>
+	* Release 17.07a
+	* #1652432 Installing new version may result in lost files
+	* #1556588 Hash collision
+	* #1498379 Access to script costume
+	* #1652495 Axe should be renamed axis
+	* #1654021 API spelling error
+	* #1498487 A script instance should access to the domain
+
+2016-09-8 Hilaire Fernandes <hilaire@gnu.org>
+	* Release 16.10a
+	
+	* #1580052 Clicking twice on a point when creating a polygon
+	* #1577134 hash value not set in PointBlockItem
+	* #1577131 Catch exception on point defined by block
+	* #1621397 Translate programming interface in French
+	* #1589843 Point by block without argument
+	* #1594367 Default name when saving as a picture
+	* #1594379 Filled circle	
+
+2016-02-19 Hilaire Fernandes <hilaire@gnu.org>
+	* Release 16.03c
+	
+	* #1556588 Hash collision
+	* #1537322 Color selected when obj is hidden is not remembered
+	* #1531232 Implement freeValue:at: method
+	* #1543892 Locus extent too short
+	* #1540066 Incomplete API
+	* #1536891 More cautious file-saving behaviors and menu hints
+	* #1531252 DrGeoValueItem>>move:
+	* #1530865 Point by block specific compare method
+	* #1530838 Rehahs interesection point in the k: setter
+	* #1529224 Infinite loop
+	* #1529133 Wrong hashing for PointOnCurve 
+	* #1529028 Axes without graduation
+	* #1495205 Optimize compare of item in the factory
+	* #1331562 Infinite circle
+	* #1546338 Rotation missing from Transformation menu
+	* #1539835 Cannot open the attached .fgeo file
+	* #1532409 Dr. Geo VM crash with Cherry Tree script
+	* #1529125 Secure point intersection creation
+	* #1018281 Edit macro description afterwards
+
+2015-11-24  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 15.12a
+	
+	* Mismatch in the translation domain
+	* Can not load font when path with accent
+	* Annoying code browser behaviour
+	* Perimeter of polygon
+	* Preference style for locus colour
+	* Optimize finding of costume given its model
+	* Optimize compare of item in the factory
+	* Activate axes from canvas
+	* Ruler is too big when zooming
+	* Do an update all items after creating a new item
+	* DrGTextItem should implement #closestPointTo:
+	* plot:from:to: should return the locus
+	* Adapted interface for wheels
+
+2015-08-29 Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 15.09a
+	
+	* Translation update
+	* Toggle for text feedback
+	* Rename 'export to bitmap' message
+	* When feedback off on an object, user should be able to 
+	interact with it
+	* Frame for text
+	* Turn mouse cursor as a hand when dragging
+	* Add button to export as bitmap in custom user interface
+
+2015-06-16  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 15.07a
+
+	* Translation update
+	* Slow down of TextMorph
+	* Display script output in a TextMorph
+	* Add 32/64bits instructions in the README file
+	* Intersection between polygon and line
+	* Edit property only on visible items
+	* Custom user interface
+	* Bitmap style color to nil
+	* Unfilled polygon style preference
+	* Change the font size on the canvas
+	* Tree view only for visible items
+
+2015-03-31  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 15.04a
+
+	* Translation for Dr. Geo 15.04
+	* AnObsoleteDrGeoScriptXXXX error
+	* CommandLine handler and UTF8 path
+	* Extend Settings browser 
+	* Open a sketch by drag and drop
+	* Make ox oy axises optional
+	* Reduce feedback noise
+	* DrGLabelMorph fail for Pharo3 
+
+2014-12-13  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 14.12b
+
+	* Start up problem under Mac OSX
+	* Updated Korean and Spanish translations.
+
+2014-12-10  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 14.12a -- https://launchpad.net/drgeo/+milestone/14.12
+
+	* Flipping drawing
+	* 'This script {1} with argument: {2}' untranslated
+	* Edit item style from a script
+	* Redesign script examples
+	* Script presented in alphabetical order
+	* Open sketch from command line
+	* Closing from host window
+	* ZeroDivide error
+
+2014-09-17  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 14.10 -- https://launchpad.net/drgeo/+milestone/14.10
+	* Saving a session with a bitmap on canvas crash at startup
+	* Unexpected UI dialog in Smalltalk Sketch
+	* Setter for free value item
+	* No free text for Smalltalk sketch
+	* Missing ^
+	* Script in the side bar hierarchy tree
+	* Sketch exported as bitmap are not nice
+	* Sampling rate not optimal
+	* Unused attribute in DrGeoPresenter
+	* Get back the rolling update
+
+2014-06-21  hilaire  <hilaire@gnu.org>
+
+	* Release 14.07
+	* Ported Dr. Geo to Pharo 3 and its new Athens Canvas.
+	Thanks to report bugs at http://bugs.gnu.org
+
+	New features
+	* None
+
+2013-09-18  hilaire  <hilaire@gnu.org>
+
+	* Release 13.10
+
+	New features
+	* Cloning a circle defined by its radius
+	* Create a circle by center and segment
+
+	Bugs fixes
+	* Keeping a sketch on network may not work
+	* Loaded macro does not show up in menu
+	* Error when submiting an emptry share name
+	* Error when deleting item constructed by macro
+	* Broken API
+	* Error when saving silently a remote sketch
+	* Network share only work from France
+	* WrappedPoint missing in several method of the API
+	* Segment width not properly saved or loaded
+
+
+2013-07-06  hilaire  <hilaire@gnu.org>
+
+	* Release 13.08
+
+	New features
+	* Attach a value
+	* Opaque polygon
+	* Input text in a dialog
+	* Text formatted in several lines
+
+	Bugs fixes
+	* Tap and not click
+	* Label uneasy to select and move
+	* Slow when creating numerous items
+	* Moving in gridded mode without the grid
+	* Text formatted in several lines
+
+
+2013-05-05  hilaire  <hilaire@gnu.org>
+
+	* Release 13.06
+
+	New features
+	* Nice string representation for math item
+	* Side bar with the object hierarchy
+	* Animate button
+	* Save a sketch anywhere in the harddisk
+
+	Bugs fixes
+	* Locus sampling sub-optimal at the extremities
+	* Low quality of the sketch preview
+	* Only bitmap can be dropped in a Dr. Geo canvas
+	* When magnet activated, gridding is not correct
+	* Naming point on the fly
+
+2013-04-01  hilaire  <hilaire@gnu.org>
+
+	* Release 13.04
+
+	New features
+	* #1045035 Bitmap Image integration
+	* #1034295 Transformation on locus
+	* #1152903 Limit imported bitmap to a given size
+	* #1017101 Clone item
+	* #1032945 Grid with x-axis and y-axis
+	* #1034347 Regular polygon
+	* #1034369 Point on polygon
+	* #1066459 Menu with macro list
+	* #1153487 Merge points
+	* #1132373 Popup menu should be transparent
+
+	Bugs fixes
+	* #924270 Unfixed Z layer with image
+	* #1108866 Keyboard does not appear when tapping on the Text
+	object in Korean version
+
+2012-12-29  hilaire  <hilaire@gnu.org>
+
+	* Release 12.12
+
+	New features
+	* #1051168 Share sketch by network
+	* #1061160 Background for text
+	* #1073620 Duplicate screen area under finger
+	* #1073624 Highlight item when browsing in pop up
+	* #1080632 Descriptive name for several items
+
+	Bugs fixes
+	* #1047640 Message #arctTan2: sent to Integer
+	* #1051206 In eraser mode, no smart point selection
+	* #1053064 Long hint cut off on the status bar
+	* #1071804 Flying costume not updated when canvas moved
+	* #1073622 Enlarge point sensibility zone
+	* #1080095 Unvisible item selectable
+	* #1047645 Pressure sensitive stylus and arc creation
+
+
+2012-09-08  hilaire  <hilaire@gnu.org>
+
+	* Release 12.10
+
+	New features
+	* Experimental new user interface to layout the construction
+	tools. This new UI design gives us a lot of freedom regarding the
+	widget to use. Work great for both Desktop and Tablet version.
+	* New tools: arc defined by its center, angle and segment
+	bisectors, coordinates
+	* Refactoring of the flyingMathItem feature. It will be easier to
+	use this feature for the additional tools to come.
+	* #1016722, #1016815, #924272, #924274
+
+	Bugs fixes
+	* #1019219, #1029779, #1029780, #1029778, #1019474, #1038457,
+	#1040459
+
+2012-07-02  Hilaire Fernandes  <hilaire@gnu.org>
+
+	* Release 12.07
+
+	New features
+	* A long click on a button toolbar open the whole buttons list.
+	* Cache the uncompressed icons to build UI. This reduce by a
+	factor of 2 the Dr. Geo user interface building time.
+	* Android method to show/hide virtual keyboard.
+	* Improved user interface to edit the style of the object.
+	* From a programmed canvas we can now: set center, scale, grid and
+	full screen.
+	* Implement or improve #100795, #1003279.
+	* New translations Asturian (partial), Catalan,
+	Chinese (traditional), Danish (partial), Italian, Korean,
+	Japanese (partial), Polish (partial), Portuguese (partial),
+	Russian, Ukrainian, Vietnamese.
+
+	Bugs fixes
+	* Better position of the printed angle value (3 points defined).
+	* Angle defined by three points is unlockable.
+	* We don't rename free text.
+	* Add morph back when loading preview, avoid flickering.
+	* Faster finger sliding in the preview dialog.
+	* Sort the preview in alphabetical order.
+	* Fixed path for resources under Sugar plateform.
+	* Open virtual keyboard when providing the name of a sketch to
+	keep.
+	* Fix #924271, #1019310, #1016403, #1002659, #100484, #1008405,
+	#1006901.
+	* Fix in the text icon button.
+
+2012-04-15  Hilaire Fernandes  <hilaire@gnu.org>
+
+	New features
+	* Splash screen at start up
+	* Dr. Geo is now shipped with the new COG Virtual Machines for
+	Linux, Mac OSX and Windows. It is much faster. Note: with this VM,
+	keypad does not work under GNU/Linux right now.
+
+	Bugs fixes
+	* Rehash items before saving a sketch to a file, otherwise it may
+	produce a corrupted file.
+	* Dr. Geo started with an error at startup from a Windows PC. It
+	is a problem of the underneath Pharo Smalltalk 1.4, still in beta.
+	* Catch error when user input an incorrect value.
+
+2012-04-13  Hilaire Fernandes  <hilaire@gnu.org>
+
+	New features
+	* Numerous improvements for a better experience with tablet and
+	interactive board.
+	* Sketches can be deleted from the preview dialog
+	* Removed windows decorations and borders grip in the Sugar theme
+	* Remanaged menus
+	* Improved canvas view for programmed sketches
+	* Various optimizations
+	* Handle connection error for remote sketches
+	* Sketches can be loaded and saved on a server (FTP only now)
+	* Dr. Geo settings to set the server account for remote sketch
+	* Animated loader for time consuming operation
+
+	Bugs fixes
+	* A few messages from the Pharo Smalltalk are also localized now
+	* Uninitialized segment mark caused a save error
+	* Fixes when creating middle point
+	* #13787 Macro construction player, order mater
+
+2011-11-26  Hilaire Fernandes  <hilaire@gnu.org>
+
+	New features
+	* #13612 Export to bitmap
+	* #13607 Mark symbol for segment
+	* #13589 Mutuate point feature
+	* #13583 Move figure with Mouse right button
+	* #13582 Zoom figure with mouse wheel
+	* #13551 Lock free item
+	* #11989 Neat way of labelling up a diagram
+	* More examples from Mounir Azouzi about lines in the triangle
+	* #13510 Add the intersection tool
+	* Build a circle by its center and a segment length.
+	* #13509 Implement property tool for free point, free value and
+	script (Included in the command system for undo/redo)
+
+	Bugs fixes
+	* #13620 Move up MySketches and Exemples dir
+	* #13466 Zero divide error with arc
+	* Faster loading time. Thanks to Xavi for his huge sketch example.
+	* When in Eraser mode, the hidden items are correctly drawn
+	* #13482 Undo when doing a construction
+	* Updated French and Spanish translations: multiple lines messages
+	were not correctly handled.
+
+2011-08-06  Hilaire Fernandes  <hilaire@ofset.org>
+
+	* Release 11.08 - Thanks to the Pharo Smalltlak community for its
+	continuous support - Special greating to Henrik.
+
+	* #2929 Simplify the way to load a sketch: now the user selects
+	the sketch to open from a preview list
+
+	* User can open sketch from an examples repository or from its own
+	'MySketches' repository. Change accordingly the load and save file
+	operation.
+	
+	* In the toolbar, new icon button to create a blank sketch, keep
+	or open an existing sketch
+
+	* DrGeo is now touchpad friendly for a better user experience on
+	tablet PC
+
+	* #13010 Secure the edited free value
+
+	* #12785 undo/redo angle: lost arc
+
+	* #12782 Use smaller font to print 3 points angle
+
+	* #12786 label sould be selectable first
+
+	* #12784 Assist to name object
+
+	* Rendering speed improvements 
+
+	* Properly save sketch as UTF-8 file
+
+
+2011-05-22  Hilaire Fernandes  <hilaire@ofset.org>
+
+	* #12654 buggy item after undo
+
+	* #10960 Largely improved locus sampler: faster and more
+	accurate. Not yet perfect when tiny sampling step is
+	needed. Nevertheless good comprimise with speed.  
+
+	* #12304 Working start script for Linux 64bits architecture
+	
+	* #10959 "multiple creation" mode need to apply to eraser as well
+	
+	* #12419 Number uncorrectly rounded. Now the behavior is: 1) float
+	are printed rounded to 2 decimals 2)Fraction are still presented
+	as Fraction
+	
+	* #12091 Locus label postion does not udpate
+
+	* Associate an icon to the drgeo.sh start script for linux.
+	
+	* In the DrGeo world menu, a menu entry to open an arbitrary
+	file (text, picture, script)
+	
+	* #10954 Need of information bar in the bottom of DrGeo
+	
+	* #10899 Toggle Construct and Move mode
+	
+	* Implement unicity on Polygon defined by n points
+	
+	* Smalltalk written sketch, when possible the user can enter
+	direct point coordinates, value or vector coordinates, DrGeo will
+	turn these as math item in the canvas, for example you can define
+	a segment with canvas segment: 0@0 to: 1@1 or canvas
+	segment: (canvas point: 0@0 to: (canvas point: 1@1). In the first
+	case the point are instantiated but hidden. See the updated
+	documentation for more examples.
+
+	New features documented in the user guide:
+
+	* DrGWrappedPoint>>coordinates
+
+	* DrGeoCanvas>>segment:to accept point as well (Wrapped point are
+	created on the fly), it covers all curves instantiation, and place
+	where vectors and values arguments are used.
+
+	* DrGeoCanvas>>update to update the canvas after a set of items
+	was modified
+	
+	* DrGWrappedItem>>moveTo: move the item to a given point position
+	whenever it is meaningful
+	
+	
+2011-02-17  Hilaire Fernandes  <hilaire@ofset.org>
+
+	* Release 11.03
+
+	* #12009: Polygon closestPointTo: mismatch
+	* #11633: Implement closestPointTo: for Point mathItem
+	* Updated Spanish translation
+	* #11877: In Smalltalk programmed figure, define a point position
+	with a block closure.
+	* #11634: wrong sent message in DrGWrappedCurve
+	* #11879: Error with slopeOf: message, wrong assignment
+	* #11635: Missing method in DrGeoCanvas
+	* #11631: Add dev tool in the DrGeo world menu
+	* Transformation class name incorrectly constructed prevented the
+	use of any transformation in programmed figure
+
+2010-11-13  Hilaire Fernandes  <hilaire@ofset.org>
+
+	* Release 10.12
+
+	* #10951: "undo" should restore the object's name. Create a point,
+	rename it, erase it, and undo. The point is restored but its name
+	is no longer displayed. DrGeo seems to remember the name but it
+	forgets to redisplay it. It is now fixed.
+	* #11146: Invisible items in the style menu. With the Sugar Theme,
+	some items of the style menu are invisible: line size and line
+	style are by default black with a black background. Solution:
+	force to a white background in the menu.
+	* #11285: Remove duplicated methods basicType and
+	nodeName. basicType and nodeName methods from the MathItem class
+	should be merged. It is a duplication for historical reason
+	related to the xml save format. These attributes are identical
+	except for: arc - arcCircle; ray - halfLine; value -
+	numeric. nodeName should be removed. It makes some code (macro
+	loading from a xml description) unnecessary complicated.
+	* #10882: Extent file format. Extent the current file format to
+	support: DrGeo Smalltalk scripting; DrGeo macro and extended
+	style. Now Macro and script can be saved/load; moreover the XML
+	format is extended to support label and vector positioning and
+	extended style.
+	* #10957: Creating a circle from segment and point. When creating
+	a circle by selecting a segment first, there is a an error. I
+	decided to remove this mechanism to create circle. I have hiatus
+	because when creating circle, I am using the FlyPointXXXBuilder to
+	create on the fly point and to get a live moving circle (we do not
+	have this feature in DrGeo 1.1).
+	* #10941: The macro and script dialogs now stay on the foreground.
+	* #10952: Wrong message in script dialog.
+	* #10881: Preview in the file widget. With the file dialog, we
+	should have a preview of the user selected DrGeo file.
+	* #10880: Icon to quit DrGeo. Currently, to quit the application,
+	the user must access to the world Pharo menu then select quit
+	without saving. We should have on a the task bar a button to quit
+	directly DrGeo. I implemented a DrGreo world menu with the even
+	more options: new figure; open a DrGeo file; quit the DrGeo
+	environment. It can be extended in the future with more menu
+	entries.
+	* #11366: Creating a math item already existing but hidden. When
+	the user defines an item already existing but hidden, DrGeo
+	factory prevents a duplicated definition, so the user will fell
+	DrGeo refuses to create the wished item. However the user does not
+	have a chance to realize his item is not created because it is
+	already defined but hidden. In this case, DrGeo should just
+	unhidden the existing item, so the user got the expected feedback.
+
+2008-09-20  Hilaire Fernandes  <hilaire@ofset.org>
+
+	* New bundle based on source code version 148.
+
+2008-02-01  Hilaire Fernandes  <hilaire@ofset.org>
+
+	* activity/activity.info (activity_version): update to version
+	114, missing string to translate.
+
+2008-02-01  Hilaire Fernandes  <hilaire [AT] ofset.org>
+
+	* Add a table morph with buttons to open the .fgeo files in the
+	examples folder.
+
+2008-01-31  Hilaire Fernandes  <hilaire [AT] ofset.org>
+
+	* DrGeoII.pr: Source must come with proper TextDomain
+	intialization (TextDomainManager registerCategoryPrefix: 'DrGeoII'
+	domain: 'DrGeoII'
+
+	* DrGeoII.sh: the file should be executable. Fix error on argument.
+
+2008-01-30  Hilaire Fernandes  <hilaire [AT] ofset.org>
+
+	* Include messages catalog.
+
+	* Add LICENSE and ChangeLog.
+	
+

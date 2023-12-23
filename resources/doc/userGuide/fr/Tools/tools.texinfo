@@ -1,0 +1,459 @@
+@c Outils du développeur divers
+@node Outils du développeur
+@chapter Outils du développeur
+
+@menu
+* Espace de travail::           Éditer et compiler le code source d'une figure
+* Profileur::                   Optimiser le temps d'exécution d'un programme
+* Débogueur::                   Mettre au point un programme
+* Inspecteur::                  Examiner les attributs d'un objet
+* Chercheur::                   Trouver comment effectuer un traitement donné
+* Spotter::                     Faire une recherche dans Dr.Geo
+@end menu
+
+Du fait de son intégration dans l'environnement Pharo,
+@drgeo{} recèle quelques génies, nombres de ceux-ci sont cachés à la vue
+de l'utilisateur. Ce n'est pas tant le souhait d'en restreindre
+l'accès mais plutôt le souci d'alléger la charge cognitive avec une
+interface simple. Comme nous allons le voir dans les sections
+suivantes, ces génies s'invoquent par raccourcis clavier, commandes de
+menu ou codes Pharo.
+
+Dans cette section nous présentons quelques outils à utiliser lors de
+l'écriture de scripts ou de figures programmées@tie{}: l'espace de
+travail, le débogueur, l'inspecteur, etc.
+
+@node Espace de travail
+@section Espace de travail
+@cindex espace de travail
+@anchor{workspace}
+
+@subheading Exécuter le code d'une figure
+Pour l'afficher ...@clicksequence{Clic arrière-plan @click{} Outils
+@click{} Espace de travail}...  ou cliquer sur l'arrière-plan et faire
+@kbd{Alt-k}@footnote{Selon votre système d'exploitation, remplacer
+@kbd{Alt} par @kbd{Ctrl}.}.
+
+@cindex espace de travail, coller le code d'une figure
+
+Un espace de travail -- @emph{Playground} -- ressemble à s'y méprendre
+à un éditeur de texte. Mais c'est en fait une console d'édition de
+code Pharo@tie{}: pour écrire, compiler et exécuter du code
+source, il est bien sûr possible d'y coller un code copié
+ailleurs. Après l'invocation d'un espace de
+travail@footnote{Contrairement aux génies, vous pouvez invoquer
+plusieurs espaces de travail.}, y coller le code source de la figure
+programmée ci-dessous@footnote{Pour coller un texte, essayer avec le
+raccourci clavier @kbd{Ctrl-v} ou depuis le menu contextuel de
+l'espace de travail (clic droit de souris).}@tie{}:
+
+@example
+| figure fonction p integrale sommets |
+fonction := [:x | x * x ].
+sommets := OrderedCollection new.
+figure := DrGeoSketch new.
+p := figure point: -1 @@ 0.
+p hide.
+sommets add: p.
+-1 to: 1 by: 0.1 do: [:x |
+   p := figure point: x @@ (fonction value: x).
+   sommets add: p hide].
+p := figure point: 1 @@ 0.
+sommets add: p hide.
+integrale := figure polygon: sommets.
+integrale color: Color blue.
+@end example
+
+@drgeoFigure{Votre espace de travail avec le code source collé et son
+menu contextuel,fig52,10}
+
+@cindex espace de travail, compiler le code d'une figure
+
+Pour compiler et exécuter ce code source, il suffit de le sélectionner
+à la souris et d'invoquer @emph{Do it(d)} dans le menu contextuel. Ces
+deux opérations se font également au clavier par un @kbd{Ctrl-a} suivi
+d'un @kbd{Ctrl-d}. Vous obtenez alors immédiatement le résultat de
+cette figure programmée, sous la forme d'une figure interactive dans
+un canevas @drgeo{}.
+
+@drgeoFigure{Résultat de l'exécution du code source@tie{}: intégrale
+  de la fonction sur [-1@tie{};@tie{}1],fig53,7}
+
+@subheading Exécuter et inspecter une figure
+@cindex espace de travail, inspecter une figure
+Depuis l'espace de travail, il existe une autre façon d'exécuter le
+code d'une figure et de compléter celle-ci pas à pas. Dans un espace
+de travail vide saisir ce code@tie{}:
+
+@example
+| figure |
+figure := DrGeoSketch new.
+figure point: 0@@0.
+figure
+@end example
+
+Cette fois-ci, pour l'exécuter utiliser le bouton vert de lecture, en
+haut à droite, ou son raccourci @kbd{Ctrl-Shift-g}. Cette commande
+s'appelle @emph{Do it and go}, pour aller où@tie{}? Elle exécute le
+code de la figure et en plus ouvre un inspecteur sur le dernier objet
+du code, ici @code{figure}. Un inspecteur est un outil pour scruter
+les attributs d'un objet -- ses variables -- et naviguer dans
+ceux-ci@tie{}; l'inspecteur comprend un mini éditeur de code, en bas,
+pour exécuter des instructions sur l'objet inspecter.
+
+Dans l'inspecteur à droite, en bas, il est alors possible de saisir et
+d'exécuter du code pour compléter la figure. Dans ce code, la figure
+est désignée par @code{self}, littéralement elle-même. Par exemple,
+pour afficher la grille, créer une droite et un point supplémentaire,
+saisir@footnote{"a DrGeoSketch" est un commentaire, inutile de le
+saisir@tie{}; il est dans l'exemple car l'inspecteur l'affiche dans
+son panneau en bas, cela permet de vous repérer.} @tie{}:
+@example
+"a DrGeoSketch"
+self axesOn.
+self line: 0@@0 to: 1@@0.
+self point: 1@@1
+@end example
+
+Ce code s'exécute par la combinaison de touches @kbd{Ctrl-a} puis
+@kbd{Ctrl-d} ou avec la souris comme expliqué précédemment.
+
+@drgeoFigure{Exécution du code@comma{} inspection de l'objet
+@code{figure} et exécution d'instructions supplémentaires depuis
+l'inspecteur,DoAndGo,11}
+
+
+@subheading Sauver et charger 
+@cindex espace de travail, sauver/charger du code
+L'espace de travail sauvegarde automatiquement le code du script
+édité. Il se recharge avec le bouton @emph{Play pages} à droite de la
+fenêtre. Pour information, le code est sauvé dans un sous dossier de
+@file{DrGeo/Contents/Resources}.
+
+@cindex espace de travail, nommer
+Il est possible de nommer un script@tie{} de l'espace de
+travail@tie{}: double cliquer sur l'onglet @emph{Page} à gauche en
+haut de l'espace de travail, éditer le nom du script puis valider par
+@kbd{Enter}. Pour retrouver ultérieurement le script, écrire son nom
+dans l'outil @emph{Spotter}@tie{}: @kbd{Shift-Enter} pour invoquer
+@emph{Spotter}, écrire le nom du script, il apparaît alors, le
+sélectionner et valider par @kbd{Enter}.
+
+
+@cindex espace de travail, partager du code sur Internet
+Le code d'une figure se partage également sur Internet, de façon
+confidentielle. Sven Van Caekenberghe, un développeur de la communauté
+Pharo, propose un service de partage sur le @emph{cloud}. Depuis
+l'espace de travail cliquer sur le bouton @emph{Remote publish} à
+droite, une @acronym{URL} unique est alors copiée dans l'espace tampon
+du système d'exploitation hôte. Coller celle-ci dans tout document
+pour partager le code.
+
+@cindex spotter
+Pour charger dans @drgeo{} un code publié sur le @emph{cloud}, le plus
+simple est d'utiliser l'outil de recherche @emph{Spotter}@tie{}:
+@kbd{Shift-Enter} puis @kbd{Ctrl-v} pour coller l'@acronym{URL}, puis
+@kbd{Enter} ouvrira un espace de travail avec ce code. L'essayer avec
+cette ressource @url{http://ws.stfx.eu/8I4GUN1B5W7K}.
+
+@node Profileur
+@section Profileur
+@cindex profileur
+
+Lors de l'exécution d'un code source complexe, exécuter celui-ci par
+l'intermédiaire du @emph{Profileur} aide à trouver les portions de
+code consommatrice en temps de calcul. Pour ce faire, dans le menu
+contextuel de l'espace de travail exécuter le code en invoquant
+@emph{Profile it}. Le code source est exécuté, le canevas @drgeo{}
+affiché et en plus la fenêtre du profileur informe l'utilisateur sur
+le temps d'exécution du code et des méthodes invoquées. C'est un outil
+remarquable pour naviguer dans l'arbre d'exécution du code et afficher
+les méthodes consommatrice en temps machine.
+
+Testé avec la code du début de section, le profileur montre que
+@drgeo{} prend plus de temps à construire la fenêtre que la
+figure@tie{}:
+
+@verbatim
+86.3% {109ms} UndefinedObject>>DoIt
+  71.0% {89ms} DrGeoSketch class(Behavior)>>new
+  6.5% {8ms} DrGWrappedPoint(DrGWrappedItem)>>hide
+  5.6% {7ms} DrGeoSketch>>point:
+  1.6% {2ms} DrGeoSketch>>polygon:
+  1.6% {2ms} primitives
+@end verbatim
+
+En revanche sur une figure plus complexe, récursive par exemple, le
+profileur montre que le code consomme davantage de temps lors de la
+construction elle-même.
+
+Copier-coller dans un espace de travail ce code qui construit la
+courbe de Sierpinski@tie{}:
+
+@drgeoFigure{Courbe interactive de Sierpinski,SierpinskiCurve,3}
+
+@smallexample
+| canvas dragon |
+canvas := DrGeoSketch new. 
+dragon := [  ].
+dragon := [ :a :b :k | | c m n |
+   k > 0 ifTrue: [ 
+      c := canvas 
+         altIntersectionOf: (canvas circleCenter: a to: b) hide
+         and: (canvas circleCenter: b to: a) hide.
+      c hide.
+      m := (canvas middleOf: a and: c) hide.
+      n := (canvas middleOf: b and: c) hide.
+      dragon value: m value: a value: k - 1.	
+      dragon value: m value: n value: k - 1.	
+      dragon value: b value: n value: k - 1].
+   k = 0 ifTrue: [ canvas segment: a to: b ].
+].	
+canvas text: 'Sierpinski Dragon' at: 0@@0.
+dragon
+   value: (canvas point: -4@@1.5)
+   value: (canvas point: 4@@1.5)
+   value: 5
+@end smallexample
+
+
+
+Puis le sélectionner afin de l'exécuter avec le profileur. Davantage
+de temps est utilisé pour la construction des côtés de la courbe --
+méthode @code{segment:to:} -- mais aussi d'autres éléments non
+visibles comme des intersections entre lignes.
+
+@drgeoFigure{Le profileur @drgeo{} à l'issue de la construction de la
+courbe de Sierpinski,fig54,11}
+
+@node Débogueur
+@section Débogueur
+@cindex déboguer une figure codée
+
+Dernier raffinement@tie{}: l'exécution en mode pas à pas du code
+source. Cela se fait en l'exécutant avec le débogueur, dans le menu
+contextuel choisir la commande @emph{Debug it}. Le débogueur est
+invoqué sur la première ligne, le code s'exécute pas à pas avec le
+bouton @emph{Over}. Dans la partie basse à droite, les variables
+locales et leur contenu est consultable et modifiable.
+
+@drgeoFigure{Le débogueur @drgeo{},fig56,10}
+
+Quelques précisions concernant l'interface du débogueur
+s'imposent@tie{}:
+
+@itemize
+
+ @item @b{Stack.} Ce panneau indique la pile d'exécution des objets
+ invoqués. Ce n'est pas utile lors de l'écriture du code source d'une
+ figure depuis un espace de travail.
+
+ @item @b{Proceed.} Ce bouton permet de reprendre l'exécution normale
+ du code.
+
+ @item @b{Restart.} Pour reprendre l'exécution pas à pas du programme
+ depuis le début de la méthode, c'est à dire le début du code source
+ de la figure.
+
+ @item @b{Into.} Exécuter l'instruction mise en évidence, et suivre le
+ message envoyé dans la méthode invoquée.
+
+ @item @b{Over.} Exécuter l'instruction mise en évidence, et reprendre
+ le contrôle après le message envoyé, c'est à dire à l'instruction
+ suivante.
+
+ @item @b{Through.} Exécuter l'instruction suivante, ne pas suivre le
+ message envoyé mais exécuter pas à pas les éventuels blocs de code en
+ arguments du message. Utile par suivre l'exécution dans un bloc de
+ code.
+
+ @item @b{Source.} Ce panneau contient le code source exécuté avec
+ mise en évidence de l'instruction suivante à exécuter. Il offre
+ également un menu contextuel avec quelques fonctions intéressantes
+ comme ``Run to here'' pour exécuter le programme jusqu'à la ligne où
+ aura été placé le curseur d'insertion textuelle.
+
+@end itemize
+
+Comme montré dans une section précédente, le débogueur permet
+l'exécution en mode pas à pas. Il s'invoque aussi à n'importe quel
+moment avec le raccourci clavier @kbd{Alt-.} (Alt + point).
+
+En outre, le débogueur s'enclenche également par programmation,
+directement dans le code source en ajoutant une ligne @code{self
+halt.} Dans notre exemple précédent, nous pouvons modifier le code
+source comme suit@tie{}:
+
+@example
+...
+p:=figure point: -1 @@ 0.
+p hide.
+sommets add: p.
+@b{self halt.}
+-1 to: 1 by: 0.1 do: [ :x |
+   p:=figure point: x @@ (fonction value: x).
+   sommets add: p hide].
+...
+@end example
+
+Lorsque ce code est compilé et exécuté, le programme est stoppé. Dans
+la fenêtre qui s'affiche alors, il est demandé de faire un
+choix@tie{}:
+
+@itemize
+
+ @item @b{Proceed.} Reprendre l'exécution du programme à partir de
+ l'instruction suivante
+
+ @item @b{Abandon.} Stopper l'exécution du programme
+
+ @item @b{Debug.} Invoquer le débogueur, une fenêtre identique à la
+ figure précédente s'affiche alors pour exécuter pas à pas le
+ programme et examiner les objets du programme.
+
+@end itemize
+
+
+
+@node Inspecteur
+@section Inspecteur
+@cindex inspecter un objet
+
+Avec l'inspecteur, l'utilisateur consulte les attributs d'une instance
+ou bien le contenu d'une variable.
+
+Dans notre exemple, supposons que nous souhaitions voir le contenu de
+la collection @var{sommets}. Dans ce cas rien de plus simple, nous
+ajoutons une ligne de code où nous envoyons le message
+@code{inspect} à @var{sommets}, l'emplacement où se fait cette
+invocation n'est pas très important car nous n'avons ni point d'arrêt,
+ni exécution en mode pas à pas@tie{}:
+@example
+...
+p:=figure point: -1 @@ 0.
+p hide.
+sommets add: p.
+@b{sommets inspect.}
+-1 to: 1 by: 0.1 do: [ :x |
+   p:=figure point: x @@ (fonction value: x).
+   sommets add: p hide].
+...
+@end example
+
+@drgeoFigure{L'inspecteur sur la variable @var{sommets},fig57,9}
+
+Un inspecteur est capable d'examiner autre chose que des attributs
+d'un objet, par exemple le contenu d'un dossier. @drgeo{} utilise
+cette fonctionnalité pour parcourir, exécuter, modifier les codes des
+figures du dossier @file{DrGeo/SmalltalkSketches}. Faire
+...@clicksequence{Clic arrière-plan @click{} Outils @click{}
+Travailler sur un script}... un inspecteur s'affiche alors avec une
+liste de figures programmées. En choisissant une figure, son code
+source s'affiche dans un panneau à droite.
+
+@drgeoFigure{Inspecteur et codes source des figures,WorkOnScript,11}
+
+Choisir @emph{la spirale de Galilée}, puis l'exécuter avec les
+raccourcis clavier ou les boutons, à l'identique de l'espace de
+travail.
+
+@drgeoFigure{Spirale de Galilée,GalileoSpiral,5}
+
+Lorsque le script est modifié dans le panneau à droite, cliquer sur le
+bouton ``Save'' à droite ou utiliser le raccourci clavier
+@kbd{Alt-s}. Pour créer un nouveau script, dans le panneau à gauche
+utiliser le bouton ``Create File''. Par convention les codes sources
+Pharo de figure portent l'extension @file{.st}.
+
+@node Chercheur
+@section Chercheur
+@cindex chercher une méthode
+Le Chercheur est un outil de recherche de sélecteurs (nom d'une
+méthode), de classes, d'expressions dans le code source de @drgeo{} et
+de Pharo plus généralement. Il s'appuie sur les capacités réflexives
+de l'environnement Pharo. Pour ouvrir l'outil faire
+...@clicksequence{Clic arrière-plan @click{} Outils @click{} Chercheur
+de méthode}...
+
+La recherche se fait par un nom partiel ou encore plus intéressant par
+un exemple de calcul et de résultat souhaité. L'outil vous affiche
+alors l'ensemble des réponses correspondantes avec la possibilité de
+parcourir le code source de chacune d'elles in situ@tie{}; en effet il
+existe souvent plusieurs réponses valides, il convient de choisir
+celle souhaitée.
+
+@drgeoFigure{Réponse du Chercheur sur un motif de calcul et sa réponse
+souhaitée,Finder,10}
+
+Quelques exemples de recherches sur des éléments de natures
+différentes@tie{}:
+@itemize
+
+ @item @b{Sélecteur.} Saisir @code{^square} comme nom de sélecteur,
+ cocher ``Regexp'' et choisir ``Selectors'' dans la liste. Ces
+ réponses sont retournées (en cliquant sur l'une d'elle son code
+ source est affiché)@tie{}:
+
+@verbatim
+square
+squareNorm: (DrGLocus2ptsItem)
+squared
+squaredDistanceTo: (Point)
+@end verbatim
+   
+ @item @b{Classe.} Pour trouver les classes modélisant les
+ demi-droites, saisir @code{DrGRay(.*)Item} comme nom de classe avec
+ ``Regex'' coché et choisir ``Class'' dans la liste, le Chercheur
+ retourne cette liste de classe@tie{}:
+ 
+@verbatim
+DrGRay2Item
+DrGRayHomothetyItem
+DrGRayItem
+DrGRayReflexionItem
+DrGRayRotationItem
+DrGRaySymmetryItem
+DrGRayTranslationItem
+@end verbatim
+
+ @item @b{Motif de calcul.} Pour trouver comment calculer la puissance
+ 3 d'un nombre, saisir la séquence @code{5 . 3 . 125}. Elle indique
+ qu'à partir de 5 et 3 nous souhaitons obtenir 125. Choisir
+ ``Examples'' dans la liste, voici les possibilités trouvées@tie{}:
+
+@verbatim
+5 ** 3 --> 125
+5 puissance: 3 --> 125
+5 raisedTo: 3 --> 125
+5 raisedToInteger: 3 --> 125
+@end verbatim
+
+Noter le sélecteur @code{puissance:} en @emph{Français} propre à
+@drgeo{}.
+
+Un autre exemple amusant sur l'addition des couleurs, saisir le motif
+@code{Color red . Color green . Color yellow}, le Chercheur
+retourne@tie{}:
+
+@verbatim
+Color green + Color red --> Color yellow
+Color red + Color green --> Color yellow
+@end verbatim
+
+Il suffit d'utiliser le sélecteur @code{+} pour additionner des
+couleurs@tie{}!
+
+@end itemize
+
+
+@cindex spotter
+@node Spotter
+@section Spotter
+Spotter est un outil de recherche de contenu dans l'environnement
+@drgeo{}. Il s'active par le raccourci clavier @kbd{Shift-Enter} et il
+suffit alors de saisir un mot de recherche. Il est capable de
+rechercher dans les menus, le code source, la documentation intégrée,
+voire des scripts de figure Pharo sur internet comme montré
+précédemment.
+
+@drgeoFigure{Spotter l'outil de recherche,Spotter1,7}

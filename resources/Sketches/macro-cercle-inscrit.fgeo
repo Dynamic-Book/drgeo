@@ -1,0 +1,116 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<macro name="Cercle inscrit">
+<description>Choisir trois points.</description>
+<input>
+<point id="1051411802" type="Free">
+<x>-6.48529411764706</x>
+<y>0.558823529411765</y></point>
+<point id="892368820" type="Free">
+<x>-7.51470588235294</x>
+<y>3.38235294117647</y></point>
+<point id="900611220" type="Free">
+<x>-4.308823529411764</x>
+<y>2.323529411764706</y></point></input>
+<output>
+<hidden>
+<line id="256943235" type="2pts">
+<parent ref="892368820"/> 
+<parent ref="1051411802"/> </line></hidden>
+<hidden>
+<line id="159478461" type="2pts">
+<parent ref="892368820"/> 
+<parent ref="900611220"/> </line></hidden>
+<hidden>
+<value id="884742107" type="value">
+<x>0.3970588235294116</x>
+<y>2.823529411764706</y>
+<value>5.0</value></value></hidden>
+<hidden>
+<circle id="183834569" type="radius">
+<parent ref="892368820"/> 
+<parent ref="884742107"/> </circle></hidden>
+<hidden>
+<point extra="1" id="218614674" type="Intersection">
+<parent ref="159478461"/> 
+<parent ref="183834569"/> </point></hidden>
+<hidden>
+<circle id="204433851" type="radius">
+<parent ref="218614674"/> 
+<parent ref="884742107"/> </circle></hidden>
+<hidden>
+<point extra="1" id="70961112" type="Intersection">
+<parent ref="256943235"/> 
+<parent ref="183834569"/> </point></hidden>
+<hidden>
+<circle id="21577613" type="radius">
+<parent ref="70961112"/> 
+<parent ref="884742107"/> </circle></hidden>
+<hidden>
+<point extra="0" id="-44652278" type="Intersection">
+<parent ref="204433851"/> 
+<parent ref="21577613"/> </point></hidden>
+<hidden>
+<point extra="1" id="44652276" type="Intersection">
+<parent ref="204433851"/> 
+<parent ref="21577613"/> </point></hidden>
+<hidden>
+<line id="102588955" type="2pts">
+<parent ref="-44652278"/> 
+<parent ref="44652276"/> </line></hidden>
+<hidden>
+<line id="101399715" type="2pts">
+<parent ref="900611220"/> 
+<parent ref="1051411802"/> </line></hidden>
+<hidden>
+<circle id="213820083" type="radius">
+<parent ref="1051411802"/> 
+<parent ref="884742107"/> </circle></hidden>
+<hidden>
+<point extra="1" id="146804442" type="Intersection">
+<parent ref="101399715"/> 
+<parent ref="213820083"/> </point></hidden>
+<hidden>
+<circle id="156869683" type="radius">
+<parent ref="146804442"/> 
+<parent ref="884742107"/> </circle></hidden>
+<hidden>
+<point extra="1" id="61505018" type="Intersection">
+<parent ref="256943235"/> 
+<parent ref="213820083"/> </point></hidden>
+<hidden>
+<circle id="76824595" type="radius">
+<parent ref="61505018"/> 
+<parent ref="884742107"/> </circle></hidden>
+<hidden>
+<point extra="0" id="-124498636" type="Intersection">
+<parent ref="156869683"/> 
+<parent ref="76824595"/> </point></hidden>
+<hidden>
+<point extra="1" id="124498634" type="Intersection">
+<parent ref="156869683"/> 
+<parent ref="76824595"/> </point></hidden>
+<hidden>
+<line id="241075315" type="2pts">
+<parent ref="-124498636"/> 
+<parent ref="124498634"/> </line></hidden>
+<hidden>
+<segment id="17228410" type="2pts">
+<parent ref="892368820"/> 
+<parent ref="900611220"/> </segment></hidden>
+<final>
+<point extra="0" id="927940035" type="Intersection">
+<parent ref="102588955"/> 
+<parent ref="241075315"/> </point></final>
+<hidden>
+<line id="128017607" type="perpendicular">
+<parent ref="17228410"/> 
+<parent ref="927940035"/> </line></hidden>
+<hidden>
+<point extra="0" id="961936588" type="Intersection">
+<parent ref="17228410"/> 
+<parent ref="128017607"/> </point></hidden>
+<final>
+<circle id="16982964" type="2pts">
+<parent ref="927940035"/> 
+<parent ref="961936588"/> </circle></final></output></macro></drgenius>

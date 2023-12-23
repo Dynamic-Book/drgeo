@@ -1,0 +1,135 @@
+@c Introduction
+
+@node Introduction
+@unnumbered Preliminary
+
+@drgeo{} permits its users to create geometric figures, called 
+sketches within Dr. Geo, and to manipulate them interactively, 
+observing assigned geometric constraints. It also offers a gentle 
+path into programming. @drgeo{} is usable in teaching situations from 
+the primary to advanced levels. Its user interface is designed as a 
+harmonious combination of simplicity and ease of use with advanced 
+capabilities.
+
+The @drgeo{} user interface, under the form of great simplicity,
+allows the beginner to get acquainted very quickly with the basic
+functions of the software. Then, as the user progresses, the more
+advanced aspects of the interface and the capabilities of @drgeo{}
+will become apparent, such as multiple methods of construction of each
+kind of object,@footnote{A particular command can create an object
+from different parameters. For example with the command for
+constructing a circle, the user can specify its centre and a point on
+the circumference or the length of its radius, among other options. Of
+course this command is represented only by one button, with @drgeo{}
+anticipating the construction intended by the user from the
+context. The immediate effect is thus a decrease of the cognitive load
+in the user interface, while offering a significant expansion of
+capabilities.} macro construction, multiple recording, scripts,
+Smalltalk sketches, and inheritance of Smalltalk in @drgeo{}.  These
+advanced features generate little overload on the interface, which is
+why @drgeo{} is very pleasant for use in primary education; however
+they also make it very interesting for use in high school and
+university.
+
+In the following sections, we explain the basic tools.  Then the
+advanced features are presented in detail. We begin with a blank
+sketch. Open @drgeo{}, revealing a menu bar, a tool bar, and the welcome
+graphic. Click the new sketch button at the left of the toolbar.
+
+@drgeoFigure{@drgeo{} window with a blank figure,fig1,12}
+
+@page
+
+The layout of the interface is as follows:
+@enumerate 
+@item A @emph{menu bar} with:
+@clicksequence {File} -- 
+@clicksequence{Edit} -- 
+@clicksequence{Points} -- 
+@clicksequence{Lines} -- 
+@clicksequence{Transformations} --
+@clicksequence{Numerics} -- 
+@clicksequence{Animate} --
+@clicksequence{Macro construction}
+
+@item An @emph{editing toolbar} New figure; open and save figures;
+undo last action; redo last action; display grid; snap to grid; mode
+toggle for single or multiple object creation; select and move an
+object; erase an object; modify the style of an object; modify object
+properties.
+
+@item A @emph{construction toolbar}, which groups the tools for 
+constructing objects in several tabs. It has the same functions as
+corresponding items on the menu bar.
+
+@item In the right bottom corner, two wheels for moving the sketch
+horizontally and vertically.
+
+@item In the right top corner, a wheel for scaling the sketch.
+
+@end enumerate
+
+@cindex sketch, new 
+
+To create a new sketch, the user selects the New command in the File
+menu. We will indicate such menu choices in the form
+@clicksequence{File@click{}New} from here on. For each new sketch, a
+distinct window opens with its own menu and toolbar. The user can then
+create points, lines, circles, and so on, and control their
+properties.
+
+@heading Philosophy of the application
+
+@drgeo{} II is Free Software@footnote{Free Software is software under
+a Free license such as GPL, which requires that its source code be
+made available for study, modification, and redistribution under the
+same license.} for interactive geometry on multiple platforms. It is a
+complete rewrite of @drgeo{} 1.1 in Pharo Smalltalk --
+@url{http://pharo-project.org}.
+
+@drgeo{} 1.1 was written in C++ and integrated with a Scheme 
+interpreter for writing scripts to make interactive programmed 
+sketches. @drgeo{} II also provides the integration of scripts in 
+geometric sketches so that interactive sketches can be written in a 
+programming language.
+
+The rewrite in Smalltalk was motivated by its unique dynamic 
+qualities; it in fact allows us to push very far in our 
+investigations of the interactive possibilities between the user and 
+the application. So @drgeo{} is not only a convivial interactive 
+geometry application but it is also, as distributed, a complete 
+programming environment to study, to modify and to improve it.
+
+For get an idea of these capabilities, the user is invited to click 
+in the background of @drgeo{} -- outside any window -- and to press 
+the key combination @kbd{control-b}. Choose @t{Tools>System Browser} 
+from the menu. The system browser that appears lets the user explore 
+and modify @drgeo{} source code while it is running.
+
+This access to the source code is part of the @drgeo{} DNA; it is 
+part of the free software philosophy as well, for a completely open 
+approach, unlocked, with great opportunities for learners. Far be it 
+from us to pretend that @drgeo{} is enough for building mental 
+capacity, but it certainly can help.
+
+@drgeoFigure{System browser opened on the @drgeo{} source code from
+@drgeo{} itself,drgeoBrowser,12}
+
+With this same spirit of openness, programmed sketches and scripts --
+presented in the advanced tools section -- rely on an advanced set of
+developer tools: browser, debugger, inspector, and more.
+
+In the following we will not distinguish between the application 
+names @drgeo{}@tie{}II or @drgeo{}.
+
+@heading @drgeo{} on the web
+
+@drgeo{} has its own web site at @url{http://drgeo.eu}. Here you will
+find the following information:
+
+@itemize
+@item how to get @drgeo{},
+@item software documentation,
+@item information about the @drgeo{} project,
+@item reference material on applications of @drgeo{} in teaching.
+@end itemize

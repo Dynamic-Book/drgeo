@@ -1,0 +1,38 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Triangle isoscele" origin_x="0.0" origin_y="0.0" scale="34.0">
+<point color="Red" delta="(-21.0@0.0)" id="1020682926" locked="False" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>-7.220588235294112</x>
+<y>-1.6617647058823537</y></point>
+<point color="Red" delta="(7@7)" id="1040227534" locked="False" masked="False" name="C" style="Cross" thickness="Normal" type="Free">
+<x>-3.338235294117645</x>
+<y>-1.6911764705882324</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="65049718" mark="none" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1020682926"/> 
+<parent ref="1040227534"/> </segment>
+<point color="Red" delta="(7@7)" id="91355181" masked="False" name=" " style="Rectangular" thickness="Dashed" type="Middle_segment">
+<parent ref="65049718"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" id="76659097" masked="False" name="" style="dot" thickness="Dashed" type="perpendicular">
+<parent ref="65049718"/> 
+<parent ref="91355181"/> </line>
+<point color="Red" delta="(4.0@ -21.0)" id="72408961" locked="False" masked="False" name="A" style="Cross" thickness="Normal" type="On_curve">
+<parent ref="76659097"/> 
+<value>0.9459195967704639</value></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="50483017" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1020682926"/> 
+<parent ref="72408961"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="197185981" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="72408961"/> 
+<parent ref="1040227534"/> </segment>
+<angle color="Black" delta="(7@7)" id="235833340" locked="False" masked="False" name="" type="3pts">
+<parent ref="72408961"/> 
+<parent ref="1020682926"/> 
+<parent ref="1040227534"/> </angle>
+<angle color="Black" delta="(7@7)" id="15159932" locked="False" masked="False" name="" type="3pts">
+<parent ref="72408961"/> 
+<parent ref="1040227534"/> 
+<parent ref="1020682926"/> </angle>
+<text color="Black" delta="(7@7)" id="140491810" locked="False" masked="False" name="" type="free">
+<contents>Triangle isoscele:&#10;- the sides AB and AC are equal in length,&#10;- the angles ABC and ACB are of same measure.&#10;&#10;Move the point A, B or C!</contents>
+<x>-2.75</x>
+<y>4.75</y></text></drgeo></drgenius>

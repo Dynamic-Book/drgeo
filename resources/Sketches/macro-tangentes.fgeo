@@ -1,0 +1,80 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<macro name="Tangentes à un cercle">
+<description>Construit les tangentes à un cercle passant par un point donné.</description>
+<input>
+<circle id="1055644579" type="2pts"/> 
+<point id="909501148" type="Free">
+<x>-3.25</x>
+<y>-1.411764705882353</y></point></input>
+<output>
+<hidden>
+<point id="898951156" type="Free">
+<x>-3.89705882352941</x>
+<y>2.176470588235294</y></point></hidden>
+<hidden>
+<point id="967917452" type="Free">
+<x>-2.455882352941177</x>
+<y>2.14705882352941</y></point></hidden>
+<hidden>
+<point id="66889735" type="On_curve">
+<value>0.599101133949617</value>
+<parent ref="1055644579"/> </point></hidden>
+<hidden>
+<point id="27177402" type="On_curve">
+<value>0.389428969188152</value>
+<parent ref="1055644579"/> </point></hidden>
+<hidden>
+<point id="254952246" type="On_curve">
+<value>0.1390068085254748</value>
+<parent ref="1055644579"/> </point></hidden>
+<hidden>
+<segment id="166965299" type="2pts">
+<parent ref="66889735"/> 
+<parent ref="27177402"/> </segment></hidden>
+<hidden>
+<segment id="136329898" type="2pts">
+<parent ref="27177402"/> 
+<parent ref="254952246"/> </segment></hidden>
+<hidden>
+<point id="193605956" type="Middle_segment">
+<parent ref="166965299"/> </point></hidden>
+<hidden>
+<point id="83477361" type="Middle_segment">
+<parent ref="136329898"/> </point></hidden>
+<hidden>
+<line id="251033001" type="perpendicular">
+<parent ref="166965299"/> 
+<parent ref="193605956"/> </line></hidden>
+<hidden>
+<line id="158830401" type="perpendicular">
+<parent ref="136329898"/> 
+<parent ref="83477361"/> </line></hidden>
+<hidden>
+<point extra="0" id="861514423" type="Intersection">
+<parent ref="251033001"/> 
+<parent ref="158830401"/> </point></hidden>
+<hidden>
+<point id="101456182" type="Middle_2pts">
+<parent ref="861514423"/> 
+<parent ref="909501148"/> </point></hidden>
+<hidden>
+<circle id="182444657" type="2pts">
+<parent ref="101456182"/> 
+<parent ref="909501148"/> </circle></hidden>
+<hidden>
+<point extra="0" id="-248587826" type="Intersection">
+<parent ref="1055644579"/> 
+<parent ref="182444657"/> </point></hidden>
+<final>
+<line id="253904215" type="2pts">
+<parent ref="909501148"/> 
+<parent ref="-248587826"/> </line></final>
+<hidden>
+<point extra="1" id="248587824" type="Intersection">
+<parent ref="1055644579"/> 
+<parent ref="182444657"/> </point></hidden>
+<final>
+<line id="207966281" type="2pts">
+<parent ref="909501148"/> 
+<parent ref="248587824"/> </line></final></output></macro></drgenius>

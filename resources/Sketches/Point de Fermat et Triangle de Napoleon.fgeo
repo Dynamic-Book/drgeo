@@ -1,0 +1,142 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Poit de Fermat et Traiangle de Napoléon" origin_x="0.0" origin_y="-3.349999999999999" scale="26">
+<point color="Red" delta="7@7" id="875565218" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-5.005294117647047</x>
+<y>4.589411764705882</y></point>
+<point color="Red" delta="7@7" id="858717076" masked="False" name="C" style="Cross" thickness="Normal" type="Free">
+<x>-10.014705882352942</x>
+<y>-3.4411764705882355</y></point>
+<point color="Red" delta="7@7" id="825815279" masked="False" name="B " style="Cross" thickness="Normal" type="Free">
+<x>6.301764705882333</x>
+<y>-5.971764705882344</y></point>
+<polygon anchor="0.5" color="Yellow" delta="7@7" id="104062260" masked="False" name="" style="plain" thickness="Normal" type="npts">
+<parent ref="875565218"/> 
+<parent ref="858717076"/> 
+<parent ref="825815279"/> </polygon>
+<circle anchor="0.5" color="Black" delta="7@7" id="133198518" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="875565218"/> 
+<parent ref="825815279"/> </circle>
+<circle anchor="0.5" color="Black" delta="7@7" id="16747938" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="825815279"/> 
+<parent ref="875565218"/> </circle>
+<point color="Red" delta="7@7" extra="1" id="162390280" masked="False" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="133198518"/> 
+<parent ref="16747938"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="179303288" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="875565218"/> 
+<parent ref="162390280"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="198690633" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="162390280"/> 
+<parent ref="825815279"/> </segment>
+<circle anchor="0.5" color="Black" delta="7@7" id="35597013" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="875565218"/> 
+<parent ref="858717076"/> </circle>
+<circle anchor="0.5" color="Black" delta="7@7" id="42431309" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="858717076"/> 
+<parent ref="875565218"/> </circle>
+<circle anchor="0.5" color="Black" delta="7@7" id="136864116" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="858717076"/> 
+<parent ref="825815279"/> </circle>
+<circle anchor="0.5" color="Black" delta="7@7" id="179268584" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="825815279"/> 
+<parent ref="858717076"/> </circle>
+<point color="Red" delta="7@7" extra="0" id="-64251376" masked="False" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="35597013"/> 
+<parent ref="42431309"/> </point>
+<point color="Red" delta="7@7" extra="0" id="-151965238" masked="False" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="136864116"/> 
+<parent ref="179268584"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="13433832" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="-64251376"/> 
+<parent ref="875565218"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="184487990" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="-64251376"/> 
+<parent ref="858717076"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="63988948" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="858717076"/> 
+<parent ref="-151965238"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="13487967" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="-151965238"/> 
+<parent ref="825815279"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="43158071" masked="False" name="édite-moi" style="plain" thickness="Normal" type="2pts">
+<parent ref="875565218"/> 
+<parent ref="825815279"/> </segment>
+<point color="Red" delta="7@7" id="98851019" masked="True" name=" " style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="179303288"/> </point>
+<point color="Red" delta="7@7" id="110641510" masked="True" name=" " style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="198690633"/> </point>
+<line anchor="0.5" color="Black" delta="7@7" id="164001073" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="179303288"/> 
+<parent ref="98851019"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="170756841" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="198690633"/> 
+<parent ref="110641510"/> </line>
+<point color="Red" delta="7@7" extra="0" id="-258532168" masked="False" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="164001073"/> 
+<parent ref="170756841"/> </point>
+<circle anchor="0.5" color="Red" delta="7@7" id="51946001" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="-258532168"/> 
+<parent ref="875565218"/> </circle>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="125686356" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="875565218"/> 
+<parent ref="858717076"/> </segment>
+<point color="Red" delta="7@7" id="162156315" masked="True" name=" " style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="13433832"/> </point>
+<point color="Red" delta="7@7" id="233448301" masked="True" name=" " style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="184487990"/> </point>
+<line anchor="0.5" color="Black" delta="7@7" id="160053553" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="13433832"/> 
+<parent ref="162156315"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="181280153" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="184487990"/> 
+<parent ref="233448301"/> </line>
+<point color="Red" delta="7@7" extra="0" id="-132311672" masked="False" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="160053553"/> 
+<parent ref="181280153"/> </point>
+<circle anchor="0.5" color="Red" delta="7@7" id="245670049" masked="False" name="édite-moi" style="plain" thickness="Thick" type="2pts">
+<parent ref="-132311672"/> 
+<parent ref="875565218"/> </circle>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="265130857" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="825815279"/> 
+<parent ref="858717076"/> </segment>
+<point color="Red" delta="7@7" id="78129030" masked="True" name=" " style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="265130857"/> </point>
+<point color="Red" delta="7@7" id="261153559" masked="True" name=" " style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="63988948"/> </point>
+<line anchor="0.5" color="Black" delta="7@7" id="191510953" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="265130857"/> 
+<parent ref="78129030"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="195639721" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="63988948"/> 
+<parent ref="261153559"/> </line>
+<point color="Red" delta="7@7" extra="0" id="-46739024" masked="False" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="191510953"/> 
+<parent ref="195639721"/> </point>
+<circle anchor="0.5" color="Red" delta="7@7" id="132774128" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="-46739024"/> 
+<parent ref="825815279"/> </circle>
+<point color="Red" delta="7@7" extra="1" id="58480910" masked="False" name="P (Point de Fermat)" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="51946001"/> 
+<parent ref="245670049"/> </point>
+<polygon anchor="0.18007138171220094" color="Black" delta="-17.922063171128798@21.798472535872975" id="131499680" masked="False" name="" style="plain" thickness="Normal" type="npts">
+<parent ref="875565218"/> 
+<parent ref="162390280"/> 
+<parent ref="825815279"/> </polygon>
+<polygon anchor="0.5" color="Black" delta="7@7" id="126639315" masked="False" name="" style="plain" thickness="Normal" type="npts">
+<parent ref="-64251376"/> 
+<parent ref="875565218"/> 
+<parent ref="858717076"/> </polygon>
+<polygon anchor="0.5" color="Black" delta="7@7" id="235358776" masked="False" name="" style="plain" thickness="Normal" type="npts">
+<parent ref="858717076"/> 
+<parent ref="825815279"/> 
+<parent ref="-151965238"/> </polygon>
+<segment anchor="0.5024940623586364" arrow="makeNoArrows" color="Blue" delta="-86.0@5.0" id="218693378" masked="False" name="Triangle de Napoléon (équil.)" style="dash" thickness="Thick" type="2pts">
+<parent ref="-132311672"/> 
+<parent ref="-258532168"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="85850186" masked="False" name="" style="dash" thickness="Thick" type="2pts">
+<parent ref="-258532168"/> 
+<parent ref="-46739024"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="192544666" masked="False" name="" style="dash" thickness="Thick" type="2pts">
+<parent ref="-132311672"/> 
+<parent ref="-46739024"/> </segment></drgeo></drgenius>

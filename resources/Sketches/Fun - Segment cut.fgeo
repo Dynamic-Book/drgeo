@@ -1,0 +1,54 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Fun - Segment cut" origin_x="0.0" origin_y="0.0" scale="34.0">
+<point color="Red" delta="(7@7)" id="951432087" locked="False" masked="False" name="A" style="Cross" thickness="Dashed" type="Free">
+<x>-8</x>
+<y>-5</y></point>
+<point color="Red" delta="(7@7)" id="1004458214" locked="False" masked="False" name="B" style="Cross" thickness="Dashed" type="Free">
+<x>-8</x>
+<y>6</y></point>
+<point color="Red" delta="(-19.313730399250517@9.148400524683325)" id="1001801502" locked="False" masked="False" name="Move me!" style="Rectangular" thickness="Dashed" type="Free">
+<x>-6.4117647058823515</x>
+<y>-3.7941176470588234</y></point>
+<segment anchor="0.9720919082363396" arrow="makeNoArrows" color="Blue" delta="(-37.0@ -6.0)" id="114110847" mark="none" masked="False" name="[AB]" style="plain" thickness="Thick" type="2pts">
+<parent ref="951432087"/> 
+<parent ref="1004458214"/> </segment>
+<point color="Red" delta="(7@7)" id="35000309" masked="False" name="J" style="Rectangular" thickness="Dashed" type="Symmetry">
+<parent ref="951432087"/> 
+<parent ref="1001801502"/> </point>
+<point color="Red" delta="(7@7)" id="88491263" masked="False" name="K" style="Rectangular" thickness="Dashed" type="Symmetry">
+<parent ref="1001801502"/> 
+<parent ref="35000309"/> </point>
+<point color="Red" delta="(7@7)" id="55034736" masked="False" name="L" style="Rectangular" thickness="Dashed" type="Symmetry">
+<parent ref="35000309"/> 
+<parent ref="88491263"/> </point>
+<point color="Red" delta="(7@7)" id="167236039" masked="False" name="M" style="Rectangular" thickness="Dashed" type="Symmetry">
+<parent ref="88491263"/> 
+<parent ref="55034736"/> </point>
+<line anchor="0.10111873710867164" color="Orange" delta="(-2.691312784223669@ -14.056619526156851)" id="22934504" masked="False" name="(MB)" style="plain" thickness="Normal" type="2pts">
+<parent ref="167236039"/> 
+<parent ref="1004458214"/> </line>
+<line anchor="0.5" color="Orange" delta="(7@7)" id="146011989" masked="False" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="22934504"/> 
+<parent ref="55034736"/> </line>
+<line anchor="0.5" color="Orange" delta="(7@7)" id="19953814" masked="False" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="22934504"/> 
+<parent ref="88491263"/> </line>
+<line anchor="0.5" color="Orange" delta="(7@7)" id="79681044" masked="False" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="22934504"/> 
+<parent ref="35000309"/> </line>
+<line anchor="0.5" color="Orange" delta="(7@7)" id="176288547" masked="False" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="22934504"/> 
+<parent ref="1001801502"/> </line>
+<point color="Orange" delta="(7@7)" extra="0" id="-13739512" masked="False" name="1/5" style="Rectangular" thickness="Dashed" type="Intersection">
+<parent ref="114110847"/> 
+<parent ref="176288547"/> </point>
+<point color="Orange" delta="(7@7)" extra="0" id="-103587535" masked="False" name="2/5" style="Rectangular" thickness="Dashed" type="Intersection">
+<parent ref="79681044"/> 
+<parent ref="114110847"/> </point>
+<point color="Orange" delta="(8.0@ -9.0)" extra="0" id="-186293777" masked="False" name="3/5" style="Rectangular" thickness="Dashed" type="Intersection">
+<parent ref="19953814"/> 
+<parent ref="114110847"/> </point>
+<point color="Orange" delta="(7@7)" extra="0" id="-234475258" masked="False" name="4/5" style="Rectangular" thickness="Dashed" type="Intersection">
+<parent ref="146011989"/> 
+<parent ref="114110847"/> </point></drgeo></drgenius>

@@ -1,0 +1,142 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Point Le Moine" origin_x="-1.95" origin_y="0.3499999999999994" scale="34.0">
+<point color="Red" delta="7@7" id="1010457984" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-3.073529411764703</x>
+<y>4.955882352941171</y></point>
+<point color="Red" delta="7@7" id="1012146536" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>10.602941176470576</x>
+<y>1.8088235294117543</y></point>
+<point color="Red" delta="7@7" id="964701544" masked="False" name="C" style="Cross" thickness="Normal" type="Free">
+<x>-5.249999999999995</x>
+<y>-3.485294117647059</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="202635498" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1010457984"/> 
+<parent ref="1012146536"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="37750994" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1012146536"/> 
+<parent ref="964701544"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="135681258" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1010457984"/> 
+<parent ref="964701544"/> </segment>
+<line anchor="0.5" color="Black" delta="7@7" id="231841485" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="1012146536"/> 
+<parent ref="1010457984"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="147298325" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="1012146536"/> 
+<parent ref="964701544"/> </line>
+<value color="Black" delta="7@7" id="340793307" masked="True" name="" type="value">
+<value>5.0</value>
+<x>0.3970588235294117</x>
+<y>2.823529411764706</y></value>
+<circle anchor="0.5" color="Black" delta="7@7" id="5824509" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="1012146536"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="1" id="236986846" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="147298325"/> 
+<parent ref="5824509"/> </point>
+<circle anchor="0.5" color="Black" delta="7@7" id="65511831" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="236986846"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="1" id="216568134" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="231841485"/> 
+<parent ref="5824509"/> </point>
+<circle anchor="0.5" color="Black" delta="7@7" id="211467631" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="216568134"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="0" id="-60487484" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="65511831"/> 
+<parent ref="211467631"/> </point>
+<point color="Red" delta="7@7" extra="1" id="60487482" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="65511831"/> 
+<parent ref="211467631"/> </point>
+<line anchor="0.5" color="Orange" delta="7@7" id="210784435" masked="False" name="" style="dash" thickness="Normal" type="2pts">
+<parent ref="-60487484"/> 
+<parent ref="60487482"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="45377581" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="1010457984"/> 
+<parent ref="1012146536"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="112313389" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="1010457984"/> 
+<parent ref="964701544"/> </line>
+<circle anchor="0.5" color="Black" delta="7@7" id="162991013" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="1010457984"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="1" id="132988286" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="112313389"/> 
+<parent ref="162991013"/> </point>
+<circle anchor="0.5" color="Black" delta="7@7" id="89940599" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="132988286"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="1" id="106920318" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="45377581"/> 
+<parent ref="162991013"/> </point>
+<circle anchor="0.5" color="Black" delta="7@7" id="206950007" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="106920318"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="0" id="-118985972" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="89940599"/> 
+<parent ref="206950007"/> </point>
+<point color="Red" delta="7@7" extra="1" id="118985970" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="89940599"/> 
+<parent ref="206950007"/> </point>
+<line anchor="0.5" color="Orange" delta="7@7" id="157369555" masked="False" name="" style="dash" thickness="Normal" type="2pts">
+<parent ref="-118985972"/> 
+<parent ref="118985970"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="70101709" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="964701544"/> 
+<parent ref="1010457984"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="254199829" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="964701544"/> 
+<parent ref="1012146536"/> </line>
+<circle anchor="0.5" color="Black" delta="7@7" id="237300733" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="964701544"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="1" id="82269662" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="254199829"/> 
+<parent ref="237300733"/> </point>
+<circle anchor="0.5" color="Black" delta="7@7" id="61920663" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="82269662"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="1" id="161548614" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="70101709"/> 
+<parent ref="237300733"/> </point>
+<circle anchor="0.5" color="Black" delta="7@7" id="232883567" masked="True" name="" style="plain" thickness="Normal" type="radius">
+<parent ref="161548614"/> 
+<parent ref="340793307"/> </circle>
+<point color="Red" delta="7@7" extra="0" id="-145652540" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="61920663"/> 
+<parent ref="232883567"/> </point>
+<point color="Red" delta="7@7" extra="1" id="145652538" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="61920663"/> 
+<parent ref="232883567"/> </point>
+<line anchor="0.5" color="Orange" delta="7@7" id="265076915" masked="False" name="" style="dash" thickness="Normal" type="2pts">
+<parent ref="-145652540"/> 
+<parent ref="145652538"/> </line>
+<point color="Red" delta="7@7" id="114097713" masked="False" name="B'" style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="135681258"/> </point>
+<point color="Red" delta="7@7" id="151497265" masked="False" name="C'" style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="202635498"/> </point>
+<point color="Red" delta="7@7" id="88304505" masked="False" name="A'" style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="37750994"/> </point>
+<ray anchor="0.5" color="Green" delta="7@7" id="156073280" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="1012146536"/> 
+<parent ref="114097713"/> </ray>
+<point color="Red" delta="7@7" id="252370536" masked="False" name=" " style="Cross" thickness="Normal" type="Middle_2pts">
+<parent ref="1010457984"/> 
+<parent ref="88304505"/> </point>
+<ray anchor="0.5" color="Green" delta="7@7" id="169919936" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="1010457984"/> 
+<parent ref="88304505"/> </ray>
+<ray anchor="0.5" color="Green" delta="7@7" id="162145600" masked="False" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="964701544"/> 
+<parent ref="151497265"/> </ray>
+<ray anchor="0.5" color="Red" delta="7@7" id="87019907" masked="False" name="" style="plain" thickness="Thick" type="Reflexion">
+<parent ref="162145600"/> 
+<parent ref="265076915"/> </ray>
+<ray anchor="0.5" color="Red" delta="7@7" id="156336035" masked="False" name="" style="plain" thickness="Thick" type="Reflexion">
+<parent ref="169919936"/> 
+<parent ref="157369555"/> </ray>
+<ray anchor="0.5" color="Red" delta="7@7" id="216758659" masked="False" name="" style="plain" thickness="Thick" type="Reflexion">
+<parent ref="156073280"/> 
+<parent ref="210784435"/> </ray></drgeo></drgenius>

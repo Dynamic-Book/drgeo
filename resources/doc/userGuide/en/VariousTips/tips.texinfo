@@ -1,0 +1,167 @@
+@c various tips
+
+@node Various tips
+@chapter Various tips
+
+Due to @drgeo{} integration with the Pharo Smalltalk environment, 
+there are a few genies we can invoke. Most of them are hidden to the 
+user. It is not that we want to restrain their use, but that we 
+don't want to overload the user when discovering @drgeo{}. As we will 
+show in the following sections, these genies can be invoked from 
+menus, keyboard shortcuts or Smalltalk code.
+
+@section Programming
+
+In this section we present a few tools to use when writing Smalltalk
+scripts or composing sketches, beginning with the workspace, the
+debugger, and the inspector.
+
+@cindex workspace
+@cindex tools, workspace
+@subsection Workspace
+@anchor{workspace}
+
+To show a workspace, click on the @drgeo{} environment background then
+do @kbd{Ctrl-k}@footnote{Depending one your system, replace @kbd{Ctrl}
+by @kbd{Alt}.}.
+
+@cindex workspace, pasting code
+
+A workspace, at first glance, is like a text editor. But it is in fact
+a console to edit Smalltalk code: to write it, to compile it, and to
+execute it. It is of course possible to paste in code copied from
+somewhere else.
+
+After invoking a workspace, paste the source code of the Smalltalk
+sketch below@footnote{To paste a text, try with the shortcut
+@kbd{Ctrl-v} or from its contextual menu (right click).}:
+
+@example
+| sketch function p integral summits |
+ 
+function := [:x | x * x ].
+summits := OrderedCollection new.
+sketch := DrGeoSketch new.
+p := sketch point: -1@@0.
+p hide.
+summits add: p.
+ 
+-1 to: 1 by: 0.1 do: [:x |
+   p := sketch point: x @@ (function value: x).
+   summits add: p hide].
+
+p := sketch point: 1@@0.
+summits add: p hide.
+ 
+integral := sketch polygon: summits.
+integral color: Color blue.
+@end example
+
+@drgeoFigure{Your workspace with the pasted source code and its 
+contextual menu,fig52,9}
+
+@cindex workspace, compiling code
+
+To compile and to execute this source code, just select it with the
+mouse and invoke @emph{Do it(d)} in the contextual menu. These two
+operations can also be done at the keyboard: @kbd{Ctrl-a} to select
+all the source code then @kbd{Ctrl-d} to execute it. You immediately
+get the result of this code, an interactive programmed sketch.
+
+@drgeoFigure{Result after executing the source code: the integral of
+  the function in [-1@tie{};@tie{}1],fig53,7}
+
+@page
+@cindex workspace, profiling code
+@cindex tools, profiling
+@subsection Profiler
+
+When executing complex Smalltalk code, running it with a profiling
+option let you see its bottlenecks. To do so, in the contextual menu
+invoke the command @emph{Profile it}. The source code is executed, the
+sketch is built, and then a profile window informs you about the execution
+time in different part of the code and the various invoked methods. It
+is a wonderful way to navigate the execution tree of the code and look
+for methods consuming too many cycles.
+
+@c Report bug: Cannot resize panes in profiler. They display only two
+@c lines and a fraction each.
+
+@drgeoFigure{@drgeo{} profiling,fig54,10}
+
+@page
+@cindex workspace, executing step by step
+@subsection Debugger
+
+Last refinement: stepping through code. This is done through the
+debugger. Select the code to debug, then in the contextual
+(right-click) menu, choose the command @emph{Debug it}. The debugger
+is invoked on the first line of the selected source code, which is
+executed step by step with the button @emph{Over}, one method call at
+a time. In the bottom area of the debugger window, at the right, the
+local variables are shown with type information. Other buttons allow
+other refinements in step by step execution. You should explore them
+before looking at Smalltalk documentation.
+
+@drgeoFigure{The @drgeo{} debugger,fig56,10}
+
+@cindex debugger
+@cindex tools, debugger
+@cindex tools, debugger, breakpoint
+
+As shown in the previous section, the debugger lets you execute the 
+code step by step. In the @drgeo{} environment you can invoke the 
+debugger on any selected code in a workspace with the keyboard 
+shortcut @kbd{Alt-D}.
+
+Moreover, the debugger can be invoked in the source code by adding a 
+line @code{self halt.} -- like a breakpoint. In our previous 
+example we modify the source code as follow:
+
+@example
+...
+p := sketch point: -1@@0.
+p hide.
+summits add: p.
+
+self halt.
+ 
+-1 to: 1 by: 0.1 do: [:x |
+   p := sketch point: x @@ (function value: x).
+   summits add: p hide].
+...
+@end example
+
+@page
+@cindex inspector
+@cindex tools, inspector
+@subsection Inspector
+
+In the inspector dialogue, the user examines the attributes of an 
+instance or a variable. The information in the view is updated 
+automatically whenever the inspected object changes.
+
+In our previous example, suppose we want to see the contents of the
+@code{summits} collection. In this case, we very simply add a
+line of code to send the message @code{inspect} to
+@code{summits}. The place in the code where we put it is not very
+important@footnote{For obvious reasons, we must avoid adding it in the
+loop.}. It can be at the beginning or the end because we do not have a
+breakpoint or step by step execution:
+
+@example
+...
+p := sketch point: -1@@0.
+p hide.
+summits add: p.
+
+summits inspect.
+ 
+-1 to: 1 by: 0.1 do: [:x |
+   p := sketch point: x @@ (function value: x).
+   summits add: p hide].
+...
+@end example
+
+@drgeoFigure{The inspector on the variable @code{summits},fig57,6}
+

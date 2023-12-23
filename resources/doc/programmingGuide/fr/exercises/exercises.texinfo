@@ -1,0 +1,2080 @@
+@c Solution des exercices
+@node Solutions des exercices
+@appendix Solutions des exercices
+
+@section La syntaxe par l'exemple
+@subheading @ref{exeScale1}
+@example
+DrGeoFigure nouveau afficherAxes afficherGrille pleinEcran echelle: 1
+@end example
+Les graduations des axes sont de 50 en 50.
+
+@subheading @ref{exeScale0}
+@error{} ZeroDivide, @emph{erreur de division par zéro}. Il suffit de
+fermer les fenêtres.
+
+@subheading @ref{exeMyClass}
+Un élève de la classe 932 écrira :
+@example
+DrGeoFigure nouveau pleinEcran texte: 'Vive la 933 !!'
+@end example
+
+
+@subheading @ref{exeCoordinates}
+@example
+DrGeoFigure nouveau afficherAxes point: 0 @@ 0.
+DrGeoFigure nouveau afficherAxes point: 1 @@ 0.
+DrGeoFigure nouveau afficherAxes point: 0 @@ -1.
+DrGeoFigure nouveau afficherAxes point: -1 @@ -1.
+@end example
+
+@subheading @ref{exeOrdre1}
+L'ordre d'envoi des messages :
+@enumerate
+ @item @code{2 + 2} @result{} 4
+ @item @code{nouveau} envoyé à @code{DrGeoFigure} @result{} une figure
+ @item @code{pleinEcran} envoyé à la figure @result{} la figure
+ @item @code{2 @@ 4} @result{} un objet coordonnées de point (2;4)
+ @item @code{point: 2 @@ 4} envoyé à la figure
+@end enumerate
+
+@subheading @ref{exeOrdre2}
+L'ordre d'envoi des messages et les objets sont modifiés. En l'absence
+des parenthèses, les messages binaire @code{@@} et @code{+} sont
+exécutés de la gauche vers la droite@tie{}:
+@enumerate
+ @item @code{nouveau} envoyé à @code{DrGeoFigure} @result{} une figure
+ @item @code{pleinEcran} envoyé à la figure @result{} la figure
+ @item @code{2 @@ 2} @result{} un objet coordonnées de point (2;2)
+ @item @code{2 @@ 2 + 2} @result{} un objet de coordonnées de point (4;4)
+ @item @code{point: 4 @@ 4} envoyé à la figure
+@end enumerate
+
+@subheading @ref{exeFirstSegment}
+@example
+DrGeoFigure nouveau segmentDe: 2 @@ 1 a: 0 @@ 0
+@end example
+
+@subheading @ref{exeFirstRay}
+@example
+DrGeoFigure nouveau demiDroiteOrigine: -2 @@ -1 passantPar: 0 @@ 0
+@end example
+
+@subheading @ref{exeFirstCircle}
+@example
+DrGeoFigure nouveau cercleCentre: 0 @@ 0 rayon: 3
+@end example
+
+@subheading @ref{exeCascadeQuestion}
+Si le message @code{afficherAxes} était précédé de ``;'' cela
+signifierait que le destinataire du message serait
+@code{DrGeoFigure}. Or celui-ci ne comprend pas ce message. Par
+ailleurs c'est à la nouvelle figure créée que nous demandons
+d'afficher ses axes, à savoir retourné par @code{DrGeoFigure nouveau},
+donc pas de ``;'' pour envoyer le message à la nouvelle figure.
+
+@subheading @ref{exeFirstSquare}
+@example
+DrGeoFigure nouveau pleinEcran;
+   afficherAxes;
+   afficherGrille;
+   segmentDe: -2 @@ 2 a: 2 @@ 2;
+   segmentDe: 2 @@ 2 a: 2 @@ -2;
+   segmentDe: 2 @@ -2 a: -2 @@ -2;
+   segmentDe: -2 @@ -2 a: -2 @@ 2
+@end example
+
+@subheading @ref{exeFirstSquareCircle}
+@example
+DrGeoFigure nouveau pleinEcran;
+   afficherAxes;
+   afficherGrille;
+   segmentDe: -2 @@ 2 a: 2 @@ 2;
+   segmentDe: 2 @@ 2 a: 2 @@ -2;
+   segmentDe: 2 @@ -2 a: -2 @@ -2;
+   segmentDe: -2 @@ -2 a: -2 @@ 2;
+   cercleCentre: 0 @@ 0 rayon: 2 
+@end example
+
+@subheading @ref{exeVariableTriangle}
+@example
+| maFigure |
+maFigure := DrGeoFigure nouveau.
+maFigure afficherGrille.
+maFigure segmentDe: 0 @@ 0 a: 4 @@ 0.
+maFigure segmentDe: 4 @@ 0 a: 1 @@ 3.
+maFigure segmentDe: 1 @@ 3 a: 0 @@ 0.
+@end example
+
+@subheading @ref{exeSegmentsMiddle}
+@example
+| maFigure segment1 segment2 milieu1 milieu2|
+maFigure := DrGeoFigure nouveau.
+maFigure afficherGrille.
+segment1 := maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
+milieu1 := maFigure milieuDe: segment1.
+segment2 := maFigure segmentDe: 1 @@ 2 a: 5 @@ 6.
+milieu2 := maFigure milieuDe: segment2.
+maFigure segmentDe: milieu1 a: milieu2
+@end example
+
+@subheading @ref{exeAttributsPoint}
+@example
+| maFigure segment1 segment2 |
+maFigure := DrGeoFigure nouveau.
+maFigure afficherGrille.
+segment1 := maFigure segmentDe: 0 @ 0 a: 4 @ 4.
+segment1 couleur: Color pink;
+   tiret;
+   nommer: 'S1'.
+segment2 := maFigure segmentDe: 2 @ 3 a: 4 @ 0.
+segment2 couleur: Color orange;
+   tiret;
+   nommer: 'S2'.
+(maFigure intersectionDe: segment1 et: segment2)
+   nommer: 'I';
+   large;
+   croix.
+@end example
+
+@subheading @ref{exeArrayParallelogram}
+@example
+DrGeoFigure nouveau polygone: @{0 @@ 0 . 4 @@ 0 . 5 @@ 3 . 1 @@ 3@}
+@end example
+
+@subheading @ref{exeRandomInterval}
+@enumerate
+ @item @code{11 auHasard} donne une valeur entière au hasard entre 1 et 11
+ compris.
+
+ @item @code{11 auHasard - 6} donne donc une valeur entière comprise entre 1-6
+ et 11-6, à savoir entre -5 et 5.
+
+ @item Donc les valeurs possibles pour l'abscisse et l'ordonnée sont
+ @{-5 ; -4 ; -3 ; -2 ; -1 ; 0 ; 1 ; 2 ; 3 ; 4 ; 5@}
+@end enumerate
+
+@subheading @ref{exeJokingPointExe}
+@example
+DrGeoFigure nouveau afficherAxes;
+   point: [(11 auHasard - 6) @@ (11 auHasard - 6)]
+@end example
+
+@subheading @ref{exeJokingNegateFloatPoint}
+@example
+DrGeoFigure nouveau afficherAxes;
+   afficherGrille;
+   echelle: 100;
+   point: [(-8 auHasard / 2) @@ (-8 auHasard / 2)]
+@end example
+
+
+Avec cette échelle de 100, la graduation des axes est à 0,5 près. Vous
+remarquez alors que le point farceur est toujours sur la grille.
+
+
+@subheading @ref{exeJokingPointParenthesis}
+Il est nécessaire que l'abscisse -- receveur à gauche du message
+@code{@@} -- et l'ordonnée -- paramètre à droite du message @code{@@} --
+soient calculées avant de constuire l'objet coordonnées, résultat de
+l'envoi du message @code{@@}.
+
+@subheading @ref{exeJokingPointNecessaryParenthesis}
+Le receveur du message @code{@@} est le résultat de @code{(5 auHasard
+/ 10)} à sa gauche. Ce code comporte le message unaire @code{auHasard}
+qui est prioritaire sur le message @code{@@} et le message binaire
+@code{/} qui est évalué avant le message @code{@@} -- ordre d'envoi
+des messages de la gauche vers la droite pour les messages de
+priorités identiques.
+
+Les parenthèses ne sont donc pas nécessaires pour le receveur du
+message @code{@@}.
+
+@strong{Toutefois}, les mettre facilite la compréhension du code par le
+lecteur humain.
+
+@subheading @ref{exeJokingFloatDiagonalPointAlt}
+@example
+| figure |
+figure := DrGeoFigure nouveau.
+figure afficherAxes;
+   afficherGrille.
+figure point: [
+   | coordonnee |
+   coordonnee := 50 auHasard / 10.
+   coordonnee @@ (2 * coordonnee)].
+figure droitePassantPar: 0@@0 et: 1@@2
+@end example
+
+@subheading @ref{exeJokingFloatDiagonalPointSquare}
+Le point farceur n'est plus sur une ligne droite. Il suit une ligne
+courbe qui s'appelle une parabole.
+
+@subheading @ref{exeNameJokingPoint}
+Il faut introduire une variable @code{farceur} pour nommer ensuite le
+point.
+@example
+| figure farceur |
+figure := DrGeoFigure nouveau.
+figure
+   afficherAxes;
+   afficherGrille.
+farceur := figure point: [(50 auHasard / 10) @@ (50 auHasard / 10)].
+farceur nommer: 'Je suis un farceur'
+@end example
+
+@subheading @ref{exePointsOnAbscissa1}
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+figure point: 1 @@ 0.
+figure point: 2 @@ 0.
+figure point: 3 @@ 0.
+figure point: 4 @@ 0.
+figure point: 5 @@ 0.
+figure point: 6 @@ 0.
+figure point: 7 @@ 0.
+figure point: 8 @@ 0.
+figure point: 9 @@ 0.
+figure point: 10 @@ 0
+@end example
+
+@subheading @ref{exeNegativeAbscissa}
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+-10 a: -1 faire: [:abscisse |
+   figure point: abscisse @@ 0]
+@end example
+
+@subheading @ref{exeOrdinate}
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+1 a: 10 faire: [:ordonnee |
+   figure point: 0 @@ ordonnee]
+@end example
+
+@subheading @ref{exeDiagonalAbscissaOrdinate}
+Le nom du paramètre du bloc est modifié pour plus de cohérence, car il
+représente à la fois une abscisse et une ordonnée.
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+1 a: 10 faire: [:coordonnee |
+   figure point: coordonnee @@ coordonnee]
+@end example
+
+@subheading @ref{exeLoopStep0dot1}
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+-5 a: 5 par: 0.2 faire: [:abscisse |
+   figure point: abscisse @@ 0]
+@end example
+
+@subheading @ref{exePointsOrdinate}
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+@{-1 . 5.2 . -3.14 . 2.6@} faire: [:ordonnee |
+   figure point: 0 @@ ordonnee]
+@end example
+
+@subheading @ref{exePointNameAbscissa}
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+@{-2 . 4 . 1/3 . 3.14 . -1/5@} faire: [:abscisse |
+   | point |
+   point := figure point: abscisse @@ 0.
+   point nommer: abscisse]
+@end example
+
+@subheading @ref{exeLoopCollection}
+Observez les parenthèses autour de l'ordonnée du dernier point.
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+@{1 @@ 1 . -1 @@ 1 . 3 @@ -1 . 2/3 @@ (-1/2)@} faire: [:coordonnees |
+   figure point: coordonnees]
+@end example
+
+@subheading @ref{exeNumberTesting}
+Pour le nombre 1, dans le code ci-dessous, placer le curseur clavier
+sur la ligne souhaitée et faire @kbd{Ctrl-P} au clavier pour afficher
+la condition retournée :
+@example
+1 impair.
+1 pair.
+1 estPremier.
+1 estEntier.
+1 estDecimal.
+1 positif.
+1 strictementPositif.
+@end example
+
+@subheading @ref{exePrimeNumbers}
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+figure echelle: 5.
+1 a: 100 faire: [:abscisse |
+   abscisse estPremier siVrai: [
+      | point |
+      point := figure point: abscisse @@ 0.
+      point nommer: abscisse]
+]
+@end example
+
+@section Nombres et opérations
+@subheading @ref{exeRelativeNumber}
+@example
+(-80 a: 50) commeCollectionOrdonnee
+@end example
+
+@subheading @ref{exeFloatPrecision}
+@example
+5.2 + 0.9  - 6.1
+@result{} 8.881784197001252e-16
+
+5.2 + 0.7 + 0.11
+@result{} 6.010000000000001
+
+1.2 * 3  - 3.6
+@result{} -4.440892098500626e-16
+@end example
+
+@subheading @ref{exeZeroDivide}
+Le système retourne une erreur @code{ZeroDivide}, division par zéro.
+
+@subheading @ref{exeFractionPrecision}
+@example
+(52/10) + (9/10)  - (61/10)
+@result{} 0
+
+(52/10) + (7/10)  + (11/100)
+@result{} 601/100 soit 6.01
+
+(12/10) * 3  - (36/10)
+@result{} 0
+@end example
+
+@subheading @ref{exeFractionDecimal}
+@example
+15.0/7
+@result{} 2.142857142857143
+
+(15/7) commeDecimal
+@result{} 2.142857142857143
+
+535/17.0
+@result{} 31.470588235294116
+
+(535/17) commeDecimal
+@result{} 31.470588235294116
+@end example
+
+@subheading @ref{exeFractionConvert}
+@example
+1.2 commeFractionApprochee
+@result{} (6/5)
+
+17.3 commeFractionApprochee
+@result{} (173/10)
+
+0.00175 commeFractionApprochee
+@result{} (7/4000)
+
+9542.25 commeFractionApprochee
+@result{} (38169/4)
+@end example
+
+@subheading @ref{exeArithmeticCalculus}
+@example
+10 / 5 + 2
+2 + (10 / 5)
+10 + (7 * 2) + 4
+(6 + 4) * 2
+4 * 5 + (7 * 2)
+@end example
+
+@subheading @ref{exeRationalCalculus}
+@example
+(2/9) + (3/9)
+(5/7) - (2/7)
+(2/3) * (4/5)
+@end example
+
+@subheading @ref{exeRationalReciprocal}
+@example
+1/(7/4) @result{} (4/7)
+1/(98/99) @result{} (99/98)
+@end example
+
+@subheading @ref{exeEuclidDivisions}
+@example
+65 // 7 @result{} 9
+65 \\ 7 @result{} 2
+732 // 13 @result{} 56
+732 \\ 13 @result{} 4
+5241 // 29 @result{} 180
+5241 \\ 29 @result{} 21
+@end example
+
+@subheading @ref{exeMultiple}
+Le programme retourne comme réponse @emph{C'est un multiple}.
+@example
+85200 \\ 24 = 0
+   siVrai: ['C''est un multiple !']
+   siFaux: ['Ce n''est pas un multiple.']
+@end example
+
+@subheading @ref{exeDiviser}
+Le programme retourne comme réponse @emph{24 est un diviseur de 85200 !}.
+@example
+85200 \\ 24 = 0
+   siVrai: ['24 est un diviseur de 85200 !']
+   siFaux: ['24 n''est pas un diviseir de 85200.']
+@end example
+
+@subheading @ref{exeUIDiviser}
+@example
+| a b reponse |
+a := (UIManager default request: 'Un premier nombre') commeNombre.
+b := (UIManager default request: 'Un deuxième nombre') commeNombre.
+a \\ b = 0
+   siVrai: [reponse := b asString, ' est un diviseur de ', a asString]
+   siFaux: [reponse := b asString, ' n''est pas un diviseur de ', a asString].
+UIManager default alert: reponse
+@end example
+
+@subheading @ref{exeDivides155}
+@example
+(1 a: 155) choisir: [ :n |  155 \\ n = 0]
+@end example
+
+@subheading @ref{exoCommonDivider}
+Observer l'utilisation des parenthèses () autour des deux appels du
+bloc de code @code{diviseurs} avec 100 et 155 comme arguments. C'est
+pour des raisons de priorités.
+@example
+| diviseurs |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+(diviseurs valeur: 100) & (diviseurs valeur: 155)
+@end example
+
+@subheading @ref{exeUICommonDividers}
+@example
+| a b commun diviseurs |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+""
+a := (UIManager default request: 'Un premier nombre naturel') commeNombre.
+b := (UIManager default request: 'Un deuxième nombre naturel') commeNombre.
+commun := (diviseurs valeur: a) & (diviseurs valeur: b).
+UIManager default alert: 'Les diviseurs communs de ',
+   a asString, ' et ', b asString,
+   ' sont : ', commun asString
+@end example
+
+@subheading @ref{exePgdc}
+@example
+| diviseurs pgdc |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+pgdc := [:a :b | ((diviseurs valeur: a) & (diviseurs valeur: b)) max].
+""
+pgdc valeur: 100 valeur: 155
+@end example
+
+@subheading @ref{exeUIPgdc}
+@example
+| a b diviseurs pgdc |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+pgdc := [:x :y | ((diviseurs valeur: x) & (diviseurs valeur: y)) max].
+""
+a := (UIManager default request: 'Un premier nombre naturel') commeNombre.
+b := (UIManager default request: 'Un deuxième nombre naturel') commeNombre.
+UIManager default alert: 'Le PGDC de ',
+   a asString, ' et ', b asString,
+   ' est : ', (pgdc valeur: a valeur: b) asString
+@end example
+
+@subheading @ref{exePrimeNumber}
+@example
+| diviseurs premier |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+premier := [: n | (diviseurs valeur: n) taille = 2].
+""
+premier valeur: 155
+@end example
+
+@subheading @ref{exePrimeNumbers1000}
+@example
+| diviseurs premier |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+premier := [: n | (diviseurs valeur: n) taille = 2].
+""
+(1 a: 1000) choisir: [:n | premier valeur: n]
+@end example
+
+@subheading @ref{exeUIPrimeNumbers}
+@example
+| a b diviseurs pgdc reponse |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+pgdc := [:x :y | ((diviseurs valeur: x) & (diviseurs valeur: y)) max].
+""
+a := (UIManager default request: 'Un premier nombre naturel') commeNombre.
+b := (UIManager default request: 'Un deuxième nombre naturel') commeNombre.
+(pgdc valeur: a valeur: b) = 1
+   siVrai:[reponse := a asString, ' et ', b asString, ' sont premiers entre eux.']
+   siFaux: [reponse := a asString, ' et ', b asString, ' ne sont pas premiers entre eux.'].
+UIManager default alert: reponse
+@end example
+
+
+@section Espace
+@subheading @ref{exeManyParallels}
+@example
+| figure d1|
+figure := DrGeoFigure nouveau.
+d1 := figure droitePassantPar: 0 @@ 5 et: 2 @@ 0.
+d1 nommer: 'd1'.
+(figure point: 0 @@ 5) montrer.
+3 a: 12 par: 0.5 faire: [:abscisse |
+   figure paralleleA: d1 passantPar: abscisse @@ 0]
+@end example
+
+@subheading @ref{exeManyPerpendiculars}
+@example
+| figure d1|
+figure := DrGeoFigure nouveau.
+d1 := figure droitePassantPar: 0 @@ 5 et: 2 @@ 0.
+d1 nommer: 'd1'.
+(figure point: 0 @@ 5) montrer.
+3 a: 12 par: 0.5 faire: [:abscisse |
+   figure perpendiculaireA: d1 passantPar: abscisse @@ 0]
+@end example
+
+@subheading @ref{exeOddEvenPrime}
+@example
+| figure d1 droite |
+figure := DrGeoFigure nouveau echelle: 3.
+d1 := figure droitePassantPar: 0 @@ 5 et: 2 @@ 0.
+d1 nommer: 'd1'.
+(figure point: 0 @@ 5) montrer.
+1 a: 500 faire: [:abscisse |
+   | couleur |
+   droite := figure perpendiculaireA: d1 passantPar: abscisse @@ 0.
+   abscisse pair
+      siVrai: [couleur := Color red]
+      siFaux: [couleur := Color orange].
+   abscisse estPremier siVrai: [couleur := Color blue].
+   droite couleur: couleur]
+@end example
+
+@subheading @ref{distanceLines}
+@example
+| figure droite1 droite2 perp pointA pointB |
+figure := DrGeoFigure nouveau afficherAxes.
+droite1 := figure droitePassantPar: 5 @@ 5 et: 7 @@ -2.
+droite2 := figure paralleleA: droite1 passantPar: 0 @@ 0.
+perp := figure perpendiculaireA: droite2 passantPar: -5 @@ 0.
+droite1 nommer: 'droite 1'.
+droite2 nommer: 'droite 2'.
+pointA := figure intersectionDe: droite1 et: perp.
+pointB := figure intersectionDe: droite2 et: perp.
+(figure distanceDe: pointA a: pointB) montrer
+@end example
+
+@subheading @ref{movedPerp}
+La distance entre les deux droites parallèles est inchangée.
+
+@subheading @ref{manyPaths}
+@example
+| figure droite1 droite2 perp ptA ptB |
+figure := DrGeoFigure nouveau afficherAxes.
+droite1 := figure droitePassantPar: 5 @@ 5 et: 7 @@ -2.
+droite2 := figure paralleleA: droite1 passantPar: 0 @@ 0.
+perp := figure perpendiculaireA: droite2 passantPar: -5 @@ 0.
+perp epais.
+droite1 nommer: 'droite 1'.
+droite2 nommer: 'droite 2'.
+ptA := figure intersectionDe: droite1 et: perp.
+ptB := figure intersectionDe: droite2 et: perp.
+(figure distanceDe: ptA a: ptB) montrer.
+0 a: 1 par: 0.01 faire: [:valeur |
+   | point |
+   point := figure pointSurLigne: droite1 a: valeur.
+   point cacher.
+   (figure segmentDe: point a: ptB) pointille]
+@end example
+
+@subheading @ref{exeParallelogramStill}
+Lorsque les points A, B ou C sont déplacés, le point D se déplace
+@emph{automatiquement} afin que ABCD reste un parallélogramme. Cela
+vient du fait que le point D a été construit à partir de la propriété
+des côtés opposés parallèles du parallélogramme.
+
+@subheading @ref{exeAnotherParallelogram}
+@example
+| figure o m n p mn pm |
+figure := DrGeoFigure nouveau.
+m := (figure point: -5 @@ 2) nommer: 'M'.
+n := (figure point: 3 @@ 2) nommer: 'N'.
+p := (figure point: 1 @@ -5) nommer: 'P'.
+mn := figure segmentDe: m a: n.
+pm := figure segmentDe: p a: m.
+o := figure
+   intersectionDe: (figure paralleleA: pm passantPar: n) cacher
+   et: (figure paralleleA: mn passantPar: p) cacher.
+o nommer: 'O'.
+figure segmentDe: o a: n.
+figure segmentDe: o a: p
+@end example
+
+@subheading @ref{exeParallelogramCenter}
+@example
+| figure a b c i |
+figure := DrGeoFigure nouveau.
+a := (figure point: -5 @@ 2) nommer: 'A'.
+b := (figure point: 3 @@ 2) nommer: 'B'.
+c := (figure point: 1 @@ -5) nommer: 'C'.
+i := (figure milieuDe: a et: c) nommer: 'I'
+@end example
+
+@subheading @ref{exeParallelogramSymmetry}
+@example
+| figure a b c i d |
+figure := DrGeoFigure nouveau.
+a := (figure point: -5 @@ 2) nommer: 'A'.
+b := (figure point: 3 @@ 2) nommer: 'B'.
+c := (figure point: 1 @@ -5) nommer: 'C'.
+i := (figure milieuDe: a et: c) nommer: 'I'.
+d := (figure symetriqueDe: b selonCentre: i) nommer: 'D'.
+figure polygone: @{a . b . c . d@}
+@end example
+
+@subheading @ref{exeParallelogram}
+Le deuxième point d'intersection des deux cercles permet de former un
+quadrilatère dont les côtés opposés sont parallèles. Toutefois les
+côtés opposés ne sont alors pas parallèles. Le quadrilatère est dit
+croisé, les côtés opposés sont sécants. Ce n'est donc pas un
+parallélogramme.
+
+@subheading @ref{exeIsoSides}
+@example
+| figure a b c cercle |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure pointSurLigne: cercle a: 0.2.
+c nommer: 'C'
+@end example
+
+@subheading @ref{exeLosangeParallelogram}
+@example
+| figure a b c d ab bc cercle |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure pointSurLigne: cercle a: 0.2.
+c nommer: 'C'.
+ab := figure segmentDe: a a: b.
+bc := figure segmentDe: b a: c.
+d := figure
+  intersectionDe: (figure paralleleA: ab passantPar: c) cacher
+  et: (figure paralleleA: bc passantPar: a) cacher.
+d nommer: 'D'.
+figure segmentDe: a a: d.
+figure segmentDe: c a: d
+@end example
+
+@subheading @ref{exeLosangeCenter}
+@example
+| figure a b c d i cercle |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure pointSurLigne: cercle a: 0.2.
+c nommer: 'C'.
+i := (figure milieuDe: a et: c) nommer: 'I'.
+d := (figure symetriqueDe: b selonCentre: i) nommer: 'D'.
+figure polygone: @{a . b . c . d@}
+@end example
+
+@subheading @ref{exePerpendicularSides}
+@example
+| figure a b c ab droite |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+c := figure pointSurLigne: droite a: 0.1.
+c nommer: 'C'
+@end example
+
+@subheading @ref{exeRectangleParallelogram}
+@example
+| figure a b c d ab bc droite |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+c := figure pointSurLigne: droite a: 0.1.
+c nommer: 'C'.
+bc := figure segmentDe: b a: c.
+d := figure
+  intersectionDe: (figure paralleleA: ab passantPar: c) cacher
+  et: (figure paralleleA: bc passantPar: a) cacher.
+d nommer: 'D'.
+figure segmentDe: a a: d.
+figure segmentDe: c a: d
+@end example
+
+@subheading @ref{exeRectangleCenter}
+@example
+| figure a b c d i ab droite|
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+c := figure pointSurLigne: droite a: 0.1.
+c nommer: 'C'.
+i := (figure milieuDe: a et: c) nommer: 'I'.
+d := (figure symetriqueDe: b selonCentre: i) nommer: 'D'.
+figure polygone: @{a . b . c . d@}
+@end example
+
+@subheading @ref{exeRectangleCircle}
+@example
+| figure a c i cercle |
+figure := DrGeoFigure new.
+a := figure point: 0 @@ 0.
+c := figure point: 5 @@ 2.
+figure segmentDe: a a: c. 
+i := figure milieuDe: a et: c.
+cercle := figure cercleCentre: i passantPar: a.
+@end example
+
+@subheading @ref{exeRectangleDiagonals}
+@example
+| figure a c i cercle ib b d|
+figure := DrGeoFigure new.
+a := figure point: 0 @@ 0.
+c := figure point: 5 @@ 2.
+figure segmentDe: a a: c.
+i := figure milieuDe: a et: c.
+cercle := figure cercleCentre: i passantPar: a.
+b := figure pointSurLigne: cercle a: 0.4.
+ib := figure droitePassantPar: i et: b.
+d := figure intersectionDe: ib et: cercle. 
+figure polygone: @{ a . b . c . d  @}
+@end example
+
+
+@subheading @ref{exeIsoPerpendicularSides}
+@example
+| figure a b c ab droite cercle |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure intersectionDe: droite et: cercle.
+c nommer: 'C'
+@end example
+
+@subheading @ref{exeSquareParallelogram}
+@example
+| figure a b c ab bc droite cercle |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure intersectionDe: droite et: cercle.
+c nommer: 'C'.
+bc := figure segmentDe: b a: c.
+d := figure
+  intersectionDe: (figure paralleleA: ab passantPar: c) cacher
+  et: (figure paralleleA: bc passantPar: a) cacher.
+d nommer: 'D'.
+figure segmentDe: a a: d.
+figure segmentDe: c a: d.
+figure segmentDe: a a: b.
+ab cacher.
+cercle cacher.
+droite cacher.
+@end example
+
+@subheading @ref{exeSquareCenter}
+@example
+| figure a b c d i ab droite cercle |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure intersectionDe: droite et: cercle.
+c nommer: 'C'.
+i := (figure milieuDe: a et: c) nommer: 'I'.
+d := (figure symetriqueDe: b selonCentre: i) nommer: 'D'.
+figure polygone: @{a . b . c . d@}
+@end example
+
+@subheading @ref{exeTriangleIsoscele1}
+@example
+| figure a b c cercle1 cercle2 |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+cercle1 := figure cercleCentre: b rayon: 4.
+cercle2 := figure cercleCentre: c rayon: 4.
+a := (figure intersectionDe: cercle1 et: cercle2) nommer: 'A'.
+cercle1 cacher.
+cercle2 cacher.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleIsoscele2}
+@example
+| figure a b c bc mediatrice |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+bc := figure segmentDe: b a: c.
+mediatrice := figure mediatrice: bc.
+a := (figure pointSurLigne: mediatrice a: 0.2) nommer: 'A'.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleIsosceleAngle}
+La difficulté pour terminer l'exercice vient de l'angle nécessaire
+pour la 2e rotation, ce n'est pas le même. C'est le complémentaire à
+360 degrés du premier angle. Le plus simple étant définir un deuxième
+angle @emph{alpha2} en inversant les deux extrémités du premier
+angle.
+@example
+| figure alpha1 alpha2 b c b1 c1 demiDroite1 demiDroite2|
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+alpha1 := figure angleCentre: 10@@10 de: 12@@10 a: 12@@13.
+b1 := figure rotationDe: b parCentre: c etAngle: alpha1.
+demiDroite1 := figure demiDroiteOrigine: c passantPar: b1.
+alpha2 := figure angleCentre: 10@@10 de: 12@@13 a: 12@@10.
+c1 := figure rotationDe: c parCentre: b etAngle: alpha2.
+demiDroite2 := figure demiDroiteOrigine: b passantPar: c1.
+a := (figure intersectionDe: demiDroite1 et: demiDroite2) nommer: 'A'.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleIsosceleAngleMod}
+@example
+| figure alpha1 alpha2 b c b1 c1 demiDroite1 demiDroite2|
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+alpha1 := figure angleCentre: 10@@10 de: 12@@10 a: 12@@13.
+b1 := figure rotationDe: b parCentre: c etAngle: alpha1.
+demiDroite1 := figure demiDroiteOrigine: c passantPar: b1.
+alpha2 := figure angleCentre: 10@@10 de: 12@@13 a: 12@@10.
+c1 := figure rotationDe: c parCentre: b etAngle: alpha2.
+demiDroite2 := figure demiDroiteOrigine: b passantPar: c1.
+a := (figure intersectionDe: demiDroite1 et: demiDroite2) nommer: 'A'.
+b1 cacher.
+c1 cacher.
+demiDroite1 cacher.
+demiDroite2 cacher.
+(figure point: 12@@10) montrer.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleEquilateral1}
+@example
+| figure a b c cercle1 cercle2 |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+cercle1 := figure cercleCentre: b passantPar: c.
+cercle2 := figure cercleCentre: c passantPar: b.
+a := figure intersectionDe: cercle1 et: cercle2.
+a nommer: 'A'.
+cercle1 cacher.
+cercle2 cacher.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleEquilateral2}
+@example
+| figure a b c cercle mediatrice |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+cercle := figure cercleCentre: b passantPar: c.
+mediatrice := figure mediatriceDe: b a: c.
+a := figure intersectionDe: cercle et: mediatrice.
+a nommer: 'A'.
+cercle cacher.
+mediatrice cacher.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleRectangle}
+@example
+| figure a b c bc perp |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+bc := figure segmentDe: b a: c.
+perp := figure perpendiculaireA: bc passantPar: b.
+a := (figure pointSurLigne: perp a: 0.1) nommer: 'A'.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleRectangleIsoscele}
+@example
+| figure a b c bc perp cercle |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+bc := figure segmentDe: b a: c.
+perp := figure perpendiculaireA: bc passantPar: b.
+cercle := figure cercleCentre: b passantPar: c.
+a := (figure intersectionDe: perp et: cercle) nommer: 'A'.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleRectangleIsosceleMark}
+@example
+| figure a b c bc ba perp cercle |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+bc := figure segmentDe: b a: c.
+perp := figure perpendiculaireA: bc passantPar: b.
+cercle := figure cercleCentre: b passantPar: c.
+a := (figure intersectionDe: perp et: cercle) nommer: 'A'.
+figure polygone: @{a . b . c@}.
+perp cacher.
+cercle cacher.
+figure angleGeometriqueCentre: b de: a a: c.
+bc marquerAvecSimpleTrait.
+ba := figure segmentDe: b a: a.
+ba marquerAvecSimpleTrait.
+@end example
+
+@subheading @ref{exeTrianglePerpendicularBisector}
+@example
+| figure a b c m1 m2 m3 m |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+m1 := figure mediatriceDe: a a: b.
+m2 := figure mediatriceDe: b a: c.
+m3 := figure mediatriceDe: a a: c.
+m := (figure intersectionDe: m1 et: m2) nommer: 'M'
+@end example
+
+@subheading @ref{exeTriangleCircle1}
+@example
+| figure a b c m1 m2 m3 m |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+m1 := figure mediatriceDe: a a: b.
+m2 := figure mediatriceDe: b a: c.
+m3 := figure mediatriceDe: a a: c.
+m := (figure intersectionDe: m1 et: m2) nommer: 'M'.
+figure cercleCentre: m passantPar: a
+@end example
+
+@subheading @ref{exeTriangleAngleBisector}
+@example
+| figure a b c b1 b2 b3 o |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+b1 := figure bissectriceSommet: a cote1: b cote2: c.
+b2 := figure bissectriceSommet: b cote1: a cote2: c.
+b3 := figure bissectriceSommet: c cote1: b cote2: a.
+o := (figure intersectionDe: b1 et: b2) nommer: 'O'
+@end example
+
+@subheading @ref{exeTriangleCircle2}
+@example
+| figure a b c b1 b2 b3 o s1 h |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+b1 := figure bissectriceSommet: a cote1: b cote2: c.
+b2 := figure bissectriceSommet: b cote1: a cote2: c.
+b3 := figure bissectriceSommet: c cote1: b cote2: a.
+o := (figure intersectionDe: b1 et: b2) nommer: 'O'.
+s1 := figure segmentDe: a a: b.
+h := figure
+   intersectionDe: s1
+   et: (figure perpendiculaireA: s1 passantPar: o).
+figure cercleCentre: o passantPar: h
+@end example
+
+@subheading @ref{exeTriangleHeight}
+@example
+| figure a b c ab bc ac h1 h2 h3 |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+ab := figure segmentDe: a a: b.
+bc := figure segmentDe: b a: c.
+ac := figure segmentDe: a a: c.
+h1 := figure perpendiculaireA: ab passantPar: c.
+h2 := figure perpendiculaireA: bc passantPar: a.
+h3 := figure perpendiculaireA: ac passantPar: b.
+(figure intersectionDe: h1 et: h2) nommer: 'H'
+@end example
+
+@subheading @ref{exeTriangleHeight}
+@example
+| figure a b c mi1 mi2 mi3 m1 m2 m3 |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+mi1 := figure milieuDe: a et: b.
+mi2 := figure milieuDe: b et: c.
+mi3 := figure milieuDe: a et: c.
+m1 := figure droitePassantPar: a et: mi2.
+m2 := figure droitePassantPar: b et: mi3.
+m3 := figure droitePassantPar: c et: mi1.
+(figure intersectionDe: m1 et: m2) nommer: 'G'
+@end example
+
+@subheading @ref{exeTriangleAlternInternAngles}
+@example
+| figure a b c ab bc d1 m mac|
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 6@@0) nommer: 'B'.
+c := (figure point: 4@@9) nommer: 'C'.
+ab := figure droitePassantPar: a et: b.
+(figure segmentDe: a a: b) normal.
+bc := (figure segmentDe: b a: c) normal.
+(figure segmentDe: a a: c) normal.
+(figure angleGeometriqueCentre: b de: a a: c) couleur: Color red.
+(figure angleGeometriqueCentre: a de: b a: c) couleur: Color blue.
+(figure angleGeometriqueCentre: c de: a a: b) couleur: Color brown.
+d1 := figure paralleleA: bc passantPar: a.
+m := (figure pointSurLigne: d1 a: 0.89) nommer: 'M'.
+(figure angleGeometriqueCentre: a de: m a: c) couleur: Color brown
+@end example
+
+@subheading @ref{exeTriangleCorrespondingAngles}
+A ajouter à la suite de la solution de l'@ref{exeTriangleAlternInternAngles}.
+
+@example
+| figure ... n |
+../..
+n := (figure pointSurLigne: ab a: 0.2) nommer: 'N'.
+(figure angleGeometriqueCentre: a de: m a: n) couleur: Color red
+@end example
+
+@subheading @ref{exeQuadCrossed}
+@example
+| figure ancre a b c d |
+figure := DrGeoFigure nouveau.
+figure polygone: @{ 0@@0. 6@@0. -3@@8 . 4@@9 @}.
+(figure droitePassantPar: 0@@0 et: 4@@9) pointille.
+a := figure angleGeometriqueCentre: 0@@0 de: 6@@0 a: 4@@9.
+b := figure angleGeometriqueCentre:  6@@0 de: -3@@8 a: 0@@0.
+c := figure angleGeometriqueCentre: 4@@9 de: -3@@8 a: 0@@0.
+d := figure angleGeometriqueCentre: -3@@8 de: 6@@0 a: 4@@9.
+ancre := figure point: -2 @@ -2.
+figure point: [
+   ancre nommer: 'Somme des angles : '@comma{}
+      (a mathItem  degreeAngle
+      + b mathItem degreeAngle 
+      + c mathItem degreeAngle
+      + d mathItem degreeAngle) rounded asString]
+@end example
+
+@subheading @ref{exeCentralSymmetry}
+@example
+| figure carre o |
+figure := DrGeoFigure nouveau.
+o := figure point: 3 @@ -2.
+carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure symetriqueDe: carre selonCentre: o
+@end example
+
+@subheading @ref{exeAxialSymmetry}
+@example
+| figure carre d |
+figure := DrGeoFigure nouveau.
+d := figure droitePassantPar: -3 @@ 3 et: -8 @@ 0.
+carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure symetriqueDe: carre selonAxe: d
+@end example
+
+@subheading @ref{exeTranslation}
+@example
+| figure carre a b v |
+figure := DrGeoFigure nouveau.
+a := figure point: -1 @@ -1.
+b := figure point: -4 @@ -3.
+v := figure vecteurOrigine: a extremite: b.
+carre := figure polygone: @{ 1@@0. 5@@0. 5@@4 . 1@@4 @}.
+figure translationDe: carre parVecteur: v
+@end example
+
+@subheading @ref{exeRotations}
+@example
+| figure carre o a1 a2 |
+figure := DrGeoFigure nouveau.
+o := figure point: 0 @@ 0.
+a1 := 90 degreesToRadians.
+a2 := -90 degreesToRadians.
+carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure rotationDe: carre parCentre: o etAngle: a1.
+figure rotationDe: carre parCentre: o etAngle: a2
+@end example
+
+@subheading @ref{exeScales}
+@example
+| figure carre a b k1 k2 |
+figure := DrGeoFigure nouveau afficherAxes afficherGrille.
+a := figure point: -8 @@ 5.
+b := figure point: 4 @@ -7.
+k1 := -1/2.
+k2 := 5/2.
+carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure homothetieDe: carre parCentre: a etFacteur: k1.
+figure homothetieDe: carre parCentre: b etFacteur: k2
+@end example
+
+@subheading @ref{exeCollectionTransformed1}
+Dans la collection, il est nécessaire d'envoyer le message
+@code{#montrer} au point. En effet il a été créé en même temps que le
+cercle mais masqué. Nous invoquons ce point et demandons qu'il se
+montre.
+@example
+| figure collection d |
+figure := DrGeoFigure nouveau.
+ := figure droitePassantPar: -7 @@ 0 et: 0 @@ -8.
+collection := @{figure segmentDe: -2 @@ 2 a: 2 @@ 2 .
+   figure segmentDe: 2 @@ 2 a: 2 @@ -2 .
+   figure segmentDe: 2 @@ -2 a: -2 @@ -2 .
+   figure segmentDe: -2 @@ -2 a: -2 @@ 2 .
+   figure cercleCentre: 0 @@ 0 rayon: 2@.
+   figure segmentDe: 2 @@ 2 a: -2 @@ -2.
+   figure segmentDe: 2 @@ -2 a: -2 @@ 2.
+   (figure point: 0 @@ 0) montrer@}.
+collection faire: [:forme | figure symetriqueDe: forme selonAxe: d]
+@end example
+
+@subheading @ref{exeCollectionTransformed2}
+@example
+| figure collection o k |
+figure := DrGeoFigure nouveau.
+d := figure point: -10 @@ -10.
+k := 1/4.
+collection := @{figure segmentDe: -2 @@ 2 a: 2 @@ 2 .
+   figure segmentDe: 2 @@ 2 a: 2 @@ -2 .
+   figure segmentDe: 2 @@ -2 a: -2 @@ -2 .
+   figure segmentDe: -2 @@ -2 a: -2 @@ 2 .
+   figure cercleCentre: 0 @@ 0 rayon: 2@}.
+collection faire: [:forme |
+   figure homothetieDe: forme parCentre: o etFacteur: k]
+@end example
+
+@subheading @ref{exeSpiral}
+@example
+| figure collection d |
+figure := DrGeoFigure nouveau.
+d := (figure droitePassantPar: 4@@0 et: 4@@5) cacher.
+collection := @{figure segmentDe: 4@@1 a: 1@@1.
+   figure segmentDe: 1@@1 a: 1@@4.
+   figure segmentDe: 1@@4 a: 4@@4.
+   figure segmentDe: 4@@4 a: 4@@2.
+   figure segmentDe: 4@@2 a: 2@@2.
+   figure segmentDe: 2@@2 a: 2@@3.
+   figure segmentDe: 2@@3 a: 3@@3@}.
+collection faire: [:forme|
+   figure symetriqueDe: forme selonAxe: d]
+@end example
+
+@subheading @ref{exeSmiley}
+@example
+| figure collection o |
+figure := DrGeoFigure nouveau.
+o := figure point: -1 @@ -1.
+collection := @{figure cercleCentre: 3@@3 rayon: 3.
+   figure cercleCentre: 2@@4 rayon: 1/2.
+   figure cercleCentre: 4@@4 rayon: 1/2.
+   figure polygone: @{(3/2)@@2 . (5/2)@@(3/2) . (7/2)@@(3/2).
+      (9/2)@@2 . (7/2)@@1 . (5/2)@@1@} @}.
+collection faire: [:forme|
+   figure symetriqueDe: forme selonCentre: o]
+@end example
+
+@subheading @ref{exeFrise1}
+@example
+| figure collection o1 o2 o3 o4 o5 |
+figure := DrGeoFigure nouveau.
+o1 := figure point: 4@@2.5.
+o2 := figure point: 1@@2.5.
+o3 := figure point: -2@@2.5.
+o4 := figure point: -5@@2.5.
+o5 := figure point: -8@@2.5.
+collection := @{(figure segmentDe: 7@@1 a: 4@@1) normal.
+   (figure segmentDe: 4@@1 a: 4@@4) normal.
+   (figure segmentDe: 4@@4 a: 7@@4) normal.
+   (figure segmentDe: 7@@4 a: 7@@2) normal.
+   (figure segmentDe: 7@@2 a: 5@@2) normal.
+   (figure segmentDe: 5@@2 a: 5@@3) normal.
+   (figure segmentDe: 5@@3 a: 6@@3) normal@}.
+@{o1 . o2 . o3 . o4 . o5@} faire: [:centre |
+   collection := collection collecter: [:forme |
+      figure symetriqueDe: forme selonCentre: centre] ]
+@end example
+
+@subheading @ref{exeMotifTranslation}
+@example
+| figure collection |
+figure := DrGeoFigure nouveau.
+collection := @{figure segmentDe: 0@@0 a: (1/2)@@0.
+   figure segmentDe: (1/2)@@0 a: 2@@1.
+   figure segmentDe: 2@@1 a: 2@@0.
+   figure segmentDe: 2@@0 a: 3@@0@}
+@end example
+
+
+@subheading @ref{exeMotifFrise1}
+@example
+| figure collection |
+figure := DrGeoFigure nouveau.
+collection := @{figure segmentDe: 0@@0 a: 4@@0.
+   figure segmentDe: 0@@4 a: 4@@4.
+   figure segmentDe: 0@@1 a: 0@@3.
+   figure segmentDe: 0@@3 a: 3@@3.
+   figure segmentDe: 3@@3 a: 3@@2.
+   figure segmentDe: 3@@2 a: 2@@2.
+   figure segmentDe: 2@@2 a: 2@@1.
+   figure segmentDe: 2@@1 a: 4@@1@}
+@end example
+
+@subheading @ref{exeMotifFrise1Translations}
+@example
+
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure intersectionDe: droite et: cercle.
+c nommer: 'C'
+@end example
+
+@subheading @ref{exeSquareParallelogram}
+@example
+| figure a b c ab bc droite cercle |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure intersectionDe: droite et: cercle.
+c nommer: 'C'.
+bc := figure segmentDe: b a: c.
+d := figure
+  intersectionDe: (figure paralleleA: ab passantPar: c) cacher
+  et: (figure paralleleA: bc passantPar: a) cacher.
+d nommer: 'D'.
+figure segmentDe: a a: d.
+figure segmentDe: c a: d.
+figure segmentDe: a a: b.
+ab cacher.
+cercle cacher.
+droite cacher.
+@end example
+
+@subheading @ref{exeSquareCenter}
+@example
+| figure a b c d i ab droite cercle |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 5@@1) nommer: 'B'.
+ab := figure droitePassantPar: a et: b.
+droite := figure perpendiculaireA:  ab passantPar: b.
+cercle := figure cercleCentre: b passantPar: a.
+c := figure intersectionDe: droite et: cercle.
+c nommer: 'C'.
+i := (figure milieuDe: a et: c) nommer: 'I'.
+d := (figure symetriqueDe: b selonCentre: i) nommer: 'D'.
+figure polygone: @{a . b . c . d@}
+@end example
+
+@subheading @ref{exeTriangleIsoscele1}
+@example
+| figure a b c cercle1 cercle2 |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+cercle1 := figure cercleCentre: b rayon: 4.
+cercle2 := figure cercleCentre: c rayon: 4.
+a := (figure intersectionDe: cercle1 et: cercle2) nommer: 'A'.
+cercle1 cacher.
+cercle2 cacher.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleIsoscele2}
+@example
+| figure a b c bc mediatrice |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+bc := figure segmentDe: b a: c.
+mediatrice := figure mediatrice: bc.
+a := (figure pointSurLigne: mediatrice a: 0.2) nommer: 'A'.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleIsosceleAngle}
+La difficulté pour terminer l'exercice vient de l'angle nécessaire
+pour la 2e rotation, ce n'est pas le même. C'est le complémentaire à
+360 degrés du premier angle. Le plus simple étant définir un deuxième
+angle @emph{alpha2} en inversant les deux extrémités du premier
+angle.
+@example
+| figure alpha1 alpha2 b c b1 c1 demiDroite1 demiDroite2|
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+alpha1 := figure angleCentre: 10@@10 de: 12@@10 a: 12@@13.
+b1 := figure rotationDe: b parCentre: c etAngle: alpha1.
+demiDroite1 := figure demiDroiteOrigine: c passantPar: b1.
+alpha2 := figure angleCentre: 10@@10 de: 12@@13 a: 12@@10.
+c1 := figure rotationDe: c parCentre: b etAngle: alpha2.
+demiDroite2 := figure demiDroiteOrigine: b passantPar: c1.
+a := (figure intersectionDe: demiDroite1 et: demiDroite2) nommer: 'A'.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleIsosceleAngleMod}
+@example
+| figure alpha1 alpha2 b c b1 c1 demiDroite1 demiDroite2|
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+alpha1 := figure angleCentre: 10@@10 de: 12@@10 a: 12@@13.
+b1 := figure rotationDe: b parCentre: c etAngle: alpha1.
+demiDroite1 := figure demiDroiteOrigine: c passantPar: b1.
+alpha2 := figure angleCentre: 10@@10 de: 12@@13 a: 12@@10.
+c1 := figure rotationDe: c parCentre: b etAngle: alpha2.
+demiDroite2 := figure demiDroiteOrigine: b passantPar: c1.
+a := (figure intersectionDe: demiDroite1 et: demiDroite2) nommer: 'A'.
+b1 cacher.
+c1 cacher.
+demiDroite1 cacher.
+demiDroite2 cacher.
+(figure point: 12@@10) montrer.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleEquilateral1}
+@example
+| figure a b c cercle1 cercle2 |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+cercle1 := figure cercleCentre: b passantPar: c.
+cercle2 := figure cercleCentre: c passantPar: b.
+a := figure intersectionDe: cercle1 et: cercle2.
+a nommer: 'A'.
+cercle1 cacher.
+cercle2 cacher.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleEquilateral2}
+@example
+| figure a b c cercle mediatrice |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+cercle := figure cercleCentre: b passantPar: c.
+mediatrice := figure mediatriceDe: b a: c.
+a := figure intersectionDe: cercle et: mediatrice.
+a nommer: 'A'.
+cercle cacher.
+mediatrice cacher.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleRectangle}
+@example
+| figure a b c bc perp |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+bc := figure segmentDe: b a: c.
+perp := figure perpendiculaireA: bc passantPar: b.
+a := (figure pointSurLigne: perp a: 0.1) nommer: 'A'.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleRectangleIsoscele}
+@example
+| figure a b c bc perp cercle |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+bc := figure segmentDe: b a: c.
+perp := figure perpendiculaireA: bc passantPar: b.
+cercle := figure cercleCentre: b passantPar: c.
+a := (figure intersectionDe: perp et: cercle) nommer: 'A'.
+figure polygone: @{a . b . c@}
+@end example
+
+@subheading @ref{exeTriangleRectangleIsosceleMark}
+@example
+| figure a b c bc ba perp cercle |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+bc := figure segmentDe: b a: c.
+perp := figure perpendiculaireA: bc passantPar: b.
+cercle := figure cercleCentre: b passantPar: c.
+a := (figure intersectionDe: perp et: cercle) nommer: 'A'.
+figure polygone: @{a . b . c@}.
+perp cacher.
+cercle cacher.
+figure angleGeometriqueCentre: b de: a a: c.
+bc marquerAvecSimpleTrait.
+ba := figure segmentDe: b a: a.
+ba marquerAvecSimpleTrait.
+@end example
+
+@subheading @ref{exeTrianglePerpendicularBisector}
+@example
+| figure a b c m1 m2 m3 m |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+m1 := figure mediatriceDe: a a: b.
+m2 := figure mediatriceDe: b a: c.
+m3 := figure mediatriceDe: a a: c.
+m := (figure intersectionDe: m1 et: m2) nommer: 'M'
+@end example
+
+@subheading @ref{exeTriangleCircle1}
+@example
+| figure a b c m1 m2 m3 m |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+m1 := figure mediatriceDe: a a: b.
+m2 := figure mediatriceDe: b a: c.
+m3 := figure mediatriceDe: a a: c.
+m := (figure intersectionDe: m1 et: m2) nommer: 'M'.
+figure cercleCentre: m passantPar: a
+@end example
+
+@subheading @ref{exeTriangleAngleBisector}
+@example
+| figure a b c b1 b2 b3 o |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+b1 := figure bissectriceSommet: a cote1: b cote2: c.
+b2 := figure bissectriceSommet: b cote1: a cote2: c.
+b3 := figure bissectriceSommet: c cote1: b cote2: a.
+o := (figure intersectionDe: b1 et: b2) nommer: 'O'
+@end example
+
+@subheading @ref{exeTriangleCircle2}
+@example
+| figure a b c b1 b2 b3 o s1 h |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+b1 := figure bissectriceSommet: a cote1: b cote2: c.
+b2 := figure bissectriceSommet: b cote1: a cote2: c.
+b3 := figure bissectriceSommet: c cote1: b cote2: a.
+o := (figure intersectionDe: b1 et: b2) nommer: 'O'.
+s1 := figure segmentDe: a a: b.
+h := figure
+   intersectionDe: s1
+   et: (figure perpendiculaireA: s1 passantPar: o).
+figure cercleCentre: o passantPar: h
+@end example
+
+@subheading @ref{exeTriangleHeight}
+@example
+| figure a b c ab bc ac h1 h2 h3 |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+ab := figure segmentDe: a a: b.
+bc := figure segmentDe: b a: c.
+ac := figure segmentDe: a a: c.
+h1 := figure perpendiculaireA: ab passantPar: c.
+h2 := figure perpendiculaireA: bc passantPar: a.
+h3 := figure perpendiculaireA: ac passantPar: b.
+(figure intersectionDe: h1 et: h2) nommer: 'H'
+@end example
+
+@subheading @ref{exeTriangleHeight}
+@example
+| figure a b c mi1 mi2 mi3 m1 m2 m3 |
+figure := DrGeoFigure nouveau.
+a := (figure point: 2@@1) nommer: 'A'.
+b := (figure point: 7@@2) nommer: 'B'.
+c := (figure point: 4@@7) nommer: 'C'.
+figure polygone: @{a . b . c@}.
+mi1 := figure milieuDe: a et: b.
+mi2 := figure milieuDe: b et: c.
+mi3 := figure milieuDe: a et: c.
+m1 := figure droitePassantPar: a et: mi2.
+m2 := figure droitePassantPar: b et: mi3.
+m3 := figure droitePassantPar: c et: mi1.
+(figure intersectionDe: m1 et: m2) nommer: 'G'
+@end example
+
+@subheading @ref{exeTriangleAlternInternAngles}
+@example
+| figure a b c ab bc d1 m mac|
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 6@@0) nommer: 'B'.
+c := (figure point: 4@@9) nommer: 'C'.
+ab := figure droitePassantPar: a et: b.
+(figure segmentDe: a a: b) normal.
+bc := (figure segmentDe: b a: c) normal.
+(figure segmentDe: a a: c) normal.
+(figure angleGeometriqueCentre: b de: a a: c) couleur: Color red.
+(figure angleGeometriqueCentre: a de: b a: c) couleur: Color blue.
+(figure angleGeometriqueCentre: c de: a a: b) couleur: Color brown.
+d1 := figure paralleleA: bc passantPar: a.
+m := (figure pointSurLigne: d1 a: 0.89) nommer: 'M'.
+(figure angleGeometriqueCentre: a de: m a: c) couleur: Color brown
+@end example
+
+@subheading @ref{exeTriangleCorrespondingAngles}
+A ajouter à la suite de la solution de l'@ref{exeTriangleAlternInternAngles}.
+
+@example
+| figure ... n |
+../..
+n := (figure pointSurLigne: ab a: 0.2) nommer: 'N'.
+(figure angleGeometriqueCentre: a de: m a: n) couleur: Color red
+@end example
+
+@subheading @ref{exeQuadCrossed}
+@example
+| figure ancre a b c d |
+figure := DrGeoFigure nouveau.
+figure polygone: @{ 0@@0. 6@@0. -3@@8 . 4@@9 @}.
+(figure droitePassantPar: 0@@0 et: 4@@9) pointille.
+a := figure angleGeometriqueCentre: 0@@0 de: 6@@0 a: 4@@9.
+b := figure angleGeometriqueCentre:  6@@0 de: -3@@8 a: 0@@0.
+c := figure angleGeometriqueCentre: 4@@9 de: -3@@8 a: 0@@0.
+d := figure angleGeometriqueCentre: -3@@8 de: 6@@0 a: 4@@9.
+ancre := figure point: -2 @@ -2.
+figure point: [
+   ancre nommer: 'Somme des angles : '@comma{}
+      (a mathItem  degreeAngle
+      + b mathItem degreeAngle 
+      + c mathItem degreeAngle
+      + d mathItem degreeAngle) rounded asString]
+@end example
+
+@subheading @ref{exeCentralSymmetry}
+@example
+| figure carre o |
+figure := DrGeoFigure nouveau.
+o := figure point: 3 @@ -2.
+carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure symetriqueDe: carre selonCentre: o
+@end example
+
+@subheading @ref{exeAxialSymmetry}
+@example
+| figure carre d |
+figure := DrGeoFigure nouveau.
+d := figure droitePassantPar: -3 @@ 3 et: -8 @@ 0.
+carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure symetriqueDe: carre selonAxe: d
+@end example
+
+@subheading @ref{exeTranslation}
+@example
+| figure carre a b v |
+figure := DrGeoFigure nouveau.
+a := figure point: -1 @@ -1.
+b := figure point: -4 @@ -3.
+v := figure vecteurOrigine: a extremite: b.
+carre := figure polygone: @{ 1@@0. 5@@0. 5@@4 . 1@@4 @}.
+figure translationDe: carre parVecteur: v
+@end example
+
+@subheading @ref{exeRotations}
+@example
+| figure carre o a1 a2 |
+figure := DrGeoFigure nouveau.
+o := figure point: 0 @@ 0.
+a1 := 90 degreesToRadians.
+a2 := -90 degreesToRadians.
+carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure rotationDe: carre parCentre: o etAngle: a1.
+figure rotationDe: carre parCentre: o etAngle: a2
+@end example
+
+@subheading @ref{exeScales}
+@example
+| figure carre a b k1 k2 |
+figure := DrGeoFigure nouveau afficherAxes afficherGrille.
+a := figure point: -8 @@ 5.
+b := figure point: 4 @@ -7.
+k1 := -1/2.
+k2 := 5/2.
+carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure homothetieDe: carre parCentre: a etFacteur: k1.
+figure homothetieDe: carre parCentre: b etFacteur: k2
+@end example
+
+@subheading @ref{exeCollectionTransformed1}
+Dans la collection, il est nécessaire d'envoyer le message
+@code{#montrer} au point. En effet il a été créé en même temps que le
+cercle mais masqué. Nous invoquons ce point et demandons qu'il se
+montre.
+@example
+| figure collection d |
+figure := DrGeoFigure nouveau.
+ := figure droitePassantPar: -7 @@ 0 et: 0 @@ -8.
+collection := @{figure segmentDe: -2 @@ 2 a: 2 @@ 2 .
+   figure segmentDe: 2 @@ 2 a: 2 @@ -2 .
+   figure segmentDe: 2 @@ -2 a: -2 @@ -2 .
+   figure segmentDe: -2 @@ -2 a: -2 @@ 2 .
+   figure cercleCentre: 0 @@ 0 rayon: 2@.
+   figure segmentDe: 2 @@ 2 a: -2 @@ -2.
+   figure segmentDe: 2 @@ -2 a: -2 @@ 2.
+   (figure point: 0 @@ 0) montrer@}.
+collection faire: [:forme | figure symetriqueDe: forme selonAxe: d]
+@end example
+
+@subheading @ref{exeCollectionTransformed2}
+@example
+| figure collection o k |
+figure := DrGeoFigure nouveau.
+d := figure point: -10 @@ -10.
+k := 1/4.
+collection := @{figure segmentDe: -2 @@ 2 a: 2 @@ 2 .
+   figure segmentDe: 2 @@ 2 a: 2 @@ -2 .
+   figure segmentDe: 2 @@ -2 a: -2 @@ -2 .
+   figure segmentDe: -2 @@ -2 a: -2 @@ 2 .
+   figure cercleCentre: 0 @@ 0 rayon: 2@}.
+collection faire: [:forme |
+   figure homothetieDe: forme parCentre: o etFacteur: k]
+@end example
+
+@subheading @ref{exeSpiral}
+@example
+| figure collection d |
+figure := DrGeoFigure nouveau.
+d := (figure droitePassantPar: 4@@0 et: 4@@5) cacher.
+collection := @{figure segmentDe: 4@@1 a: 1@@1.
+   figure segmentDe: 1@@1 a: 1@@4.
+   figure segmentDe: 1@@4 a: 4@@4.
+   figure segmentDe: 4@@4 a: 4@@2.
+   figure segmentDe: 4@@2 a: 2@@2.
+   figure segmentDe: 2@@2 a: 2@@3.
+   figure segmentDe: 2@@3 a: 3@@3@}.
+collection faire: [:forme|
+   figure symetriqueDe: forme selonAxe: d]
+@end example
+
+@subheading @ref{exeSmiley}
+@example
+| figure collection o |
+figure := DrGeoFigure nouveau.
+o := figure point: -1 @@ -1.
+collection := @{figure cercleCentre: 3@@3 rayon: 3.
+   figure cercleCentre: 2@@4 rayon: 1/2.
+   figure cercleCentre: 4@@4 rayon: 1/2.
+   figure polygone: @{(3/2)@@2 . (5/2)@@(3/2) . (7/2)@@(3/2).
+      (9/2)@@2 . (7/2)@@1 . (5/2)@@1@} @}.
+collection faire: [:forme|
+   figure symetriqueDe: forme selonCentre: o]
+@end example
+
+@subheading @ref{exeFrise1}
+@example
+| figure collection o1 o2 o3 o4 o5 |
+figure := DrGeoFigure nouveau.
+o1 := figure point: 4@@2.5.
+o2 := figure point: 1@@2.5.
+o3 := figure point: -2@@2.5.
+o4 := figure point: -5@@2.5.
+o5 := figure point: -8@@2.5.
+collection := @{(figure segmentDe: 7@@1 a: 4@@1) normal.
+   (figure segmentDe: 4@@1 a: 4@@4) normal.
+   (figure segmentDe: 4@@4 a: 7@@4) normal.
+   (figure segmentDe: 7@@4 a: 7@@2) normal.
+   (figure segmentDe: 7@@2 a: 5@@2) normal.
+   (figure segmentDe: 5@@2 a: 5@@3) normal.
+   (figure segmentDe: 5@@3 a: 6@@3) normal@}.
+@{o1 . o2 . o3 . o4 . o5@} faire: [:centre |
+   collection := collection collecter: [:forme |
+      figure symetriqueDe: forme selonCentre: centre] ]
+@end example
+
+@subheading @ref{exeMotifTranslation}
+@example
+| figure collection |
+figure := DrGeoFigure nouveau.
+collection := @{figure segmentDe: 0@@0 a: (1/2)@@0.
+   figure segmentDe: (1/2)@@0 a: 2@@1.
+   figure segmentDe: 2@@1 a: 2@@0.
+   figure segmentDe: 2@@0 a: 3@@0@}
+@end example
+
+
+@subheading @ref{exeMotifFrise1}
+@example
+| figure collection |
+figure := DrGeoFigure nouveau.
+collection := @{figure segmentDe: 0@@0 a: 4@@0.
+   figure segmentDe: 0@@4 a: 4@@4.
+   figure segmentDe: 0@@1 a: 0@@3.
+   figure segmentDe: 0@@3 a: 3@@3.
+   figure segmentDe: 3@@3 a: 3@@2.
+   figure segmentDe: 3@@2 a: 2@@2.
+   figure segmentDe: 2@@2 a: 2@@1.
+   figure segmentDe: 2@@1 a: 4@@1@}
+@end example
+
+@subheading @ref{exeMotifFrise1Translations}
+@example
+| figure collection v |
+figure := DrGeoFigure nouveau.
+v := figure vecteur: 3 @@ 0.
+collection := @{figure segmentDe: 0 @@ 0 a: (1/2) @@ 0.
+   figure segmentDe: (1/2) @@ 0 a: 2 @@ 1.
+   figure segmentDe: 2 @@1 a: 2 @@ 0.
+   figure segmentDe: 2 @@ 0 a: 3 @@ 0@}.
+5 foisRepete: [
+   collection := collection collecter: [:forme |
+     figure translationDe: forme parVecteur:v ] ]
+@end example
+
+
+
+@subheading @ref{exeFrise2}
+@example
+| figure collection v |
+figure := DrGeoFigure nouveau.
+v := figure vecteur: 4@@0.
+collection := @{figure segmentDe: 0@@0 a: 4@@0.
+   figure segmentDe: 0@@4 a: 4@@4.
+   figure segmentDe: 0@@1 a: 0@@3.
+   figure segmentDe: 0@@3 a: 3@@3.
+   figure segmentDe: 3@@3 a: 3@@2.
+   figure segmentDe: 3@@2 a: 2@@2.
+   figure segmentDe: 2@@2 a: 2@@1.
+   figure segmentDe: 2@@1 a: 4@@1@}.
+5 foisRepete: [
+  collection := collection collecter: [:forme |
+     figure translationDe: forme parVecteur:v ] ]
+@end example
+
+@subheading @ref{exeFrise2Show}
+@example
+| figure collection v |
+figure := DrGeoFigure nouveau.
+v := figure vecteur: 4@@0.
+collection := @{figure segmentDe: 0@@0 a: 4@@0.
+   figure segmentDe: 0@@4 a: 4@@4.
+   figure segmentDe: 0@@1 a: 0@@3.
+   figure segmentDe: 0@@3 a: 3@@3.
+   figure segmentDe: 3@@3 a: 3@@2.
+   figure segmentDe: 3@@2 a: 2@@2.
+   figure segmentDe: 2@@2 a: 2@@1.
+   figure segmentDe: 2@@1 a: 4@@1@}.
+collection faire: [:forme | forme epais].
+5 foisRepete: [
+  collection := collection collecter: [:forme |
+     figure translationDe: forme parVecteur:v ] ]
+@end example
+
+@subheading @ref{exeFrise3}
+Deux solutions à cet exercice sont proposées. La première ci-dessous
+est dans la suite de ce qui a été appris jusqu'à présente. Elle a
+l'avantage d'être relativement facile à comprendre, mais son code est
+assez répétitif.
+
+L'autre solution est écrite comme le ferait un programmeur
+professionnel, le code n'est pas répétitif et utilise un message
+subtile @code{injecter:dans:} pour construire la ligne du motif à
+partir de la liste de ses sommets.
+
+@strong{Solution naïve.}
+@example
+| figure sommets collection v |
+figure := DrGeoFigure nouveau.
+v := figure vecteur: 5@@0.
+collection := @{figure segmentDe: 0@@0 a: 5@@0.
+   figure segmentDe: 0@@6 a: 5@@6.
+   figure segmentDe: 0@@1 a: 0@@5.
+   figure segmentDe: 0@@5 a: 4@@5.
+   figure segmentDe: 4@@5 a: 4@@2.
+   figure segmentDe: 4@@2 a: 2@@2.
+   figure segmentDe: 2@@2 a: 2@@3.	
+   figure segmentDe: 2@@3 a: 3@@3.
+   figure segmentDe: 3@@3 a: 3@@4.
+   figure segmentDe: 3@@4 a: 1@@4.
+   figure segmentDe: 1@@4 a: 1@@1.
+   figure segmentDe: 1@@1 a: 5@@1@}.
+5 foisRepete: [
+  collection := collection collecter: [:forme |
+     figure translationDe: forme parVecteur:v ] ]
+@end example
+
+@sp 2
+
+@strong{Solution experte.}
+@example
+| figure sommets collection v |
+figure := DrGeoFigure nouveau.
+v := figure vecteur: 5@@0.
+collection := OrderedCollection new.
+collection 
+   ajouter: (figure segmentDe: 0@@0 a: 5@@0);
+   ajouter: (figure segmentDe: 0@@6 a: 5@@6).
+sommets := @{0@@5. 4@@5. 4@@2. 2@@2. 2@@3. 3@@3. 3@@4. 1@@4. 1@@1. 5@@1@}.
+sommets injecter: 0@@1 dans: [ :pointPrec : pointSuiv |
+   collection ajouter: (figure segmentDe: pointPrec a: pointSuiv).
+   pointSuiv].
+5 foisRepete: [
+   collection := collection collecter: [:forme |
+      figure translationDe: forme parVecteur:v ] ]
+@end example
+
+
+@subheading @ref{exeMotifFriseReflection}
+@example
+| figure collection |
+figure := DrGeoFigure nouveau.
+collection := @{figure segmentDe: 0@@0 a: (1/2)@@0.
+   figure segmentDe: (1/2)@@0 a: (1/2)@@2.
+   figure segmentDe: (1/2)@@2 a: 1@@2@}
+@end example
+
+
+@subheading @ref{exeTranslateReflected}
+@example
+| figure collection symetriques axe v |
+figure := DrGeoFigure nouveau.
+axe := figure droitePassantPar: 1@@0 et: 1@@3.
+v := figure vecteur: 2@@0.
+collection := @{figure segmentDe: 0@@0 a: (1/2)@@0.
+   figure segmentDe: (1/2)@@0 a: (1/2)@@2.
+   figure segmentDe: (1/2)@@2 a: 1@@2@} commeCollectionOrdonnee.
+symetriques := collection collecter: [:forme |
+   figure symetriqueDe: forme selonAxe: axe].
+collection ajouterTout: symetriques.
+5 foisRepete: [
+   collection := collection collecter: [:forme |
+      figure translationDe: forme parVecteur:v ] ]
+@end example
+
+@subheading @ref{exeTranslatedSymmetry1}
+@example
+| figure collection symetriques centre v |
+figure := DrGeoFigure nouveau.
+centre := figure point: 3@@0.
+v := figure vecteur: 6@@0.
+collection := @{figure segmentDe: 0@@3 a: 1@@1.
+   figure segmentDe: 1@@1 a: 3@@0.
+   figure segmentDe: 3@@0 a: 2@@2.
+   figure segmentDe: 2@@2 a: 0@@3@} commeCollectionOrdonnee.
+symetriques := collection collecter: [:forme |
+   figure symetriqueDe: forme selonCentre: centre].
+collection ajouterTout: symetriques.
+5 foisRepete: [
+   collection := collection collecter: [:forme |
+      figure translationDe: forme parVecteur:v ] ]
+@end example
+
+@subheading @ref{exeTranslatedSymmetries}
+@example
+| figure collection symetriques centre v d |
+figure := DrGeoFigure nouveau.
+centre := figure point: 3@@0.
+v := figure vecteur: 6@@0.
+d := figure droitePassantPar: 3@@0 et: 3@@1.
+collection := @{figure segmentDe: 0@@3 a: 1@@1.
+   figure segmentDe: 1@@1 a: 3@@0.
+   figure segmentDe: 3@@0 a: 2@@2.
+   figure segmentDe: 2@@2 a: 0@@3@} commeCollectionOrdonnee.
+"Construction de Motif 2, symétrique de Motif 1 selon le centre"
+symetriques := collection collecter: [:forme |
+   figure symetriqueDe: forme selonCentre: centre].
+collection ajouterTout: symetriques.
+"Construction de Motif 3 et Motif 4, symétriques de Motif 1 et
+Motif 2 selon l'axe d"
+symetriques := collection collecter: [:forme |
+   figure symetriqueDe: forme selonAxe: d].
+collection ajouterTout: symetriques.
+5 foisRepete: [
+   collection := collection collecter: [:forme |
+      figure translationDe: forme parVecteur:v ] ]
+@end example
+
+@section Fonctions
+
+@subheading @ref{exePlotLinearFunction}
+L'affectation du bloc de code définissant la fonction à une variable
+@code{f} est superflue puisque le bloc de code est utilisé une seule
+fois dans le programme.
+@example
+| figure |
+figure := DrGeoFigure nouveau afficherAxes afficherGrille.
+figure courbeDe:  [:x | -2 * x] de: -5 a: 5
+@end example
+
+@subheading @ref{exeObservationLinear}
+Lorsque la valeur de @emph{a} est positive, la droite est montante de
+la gauche vers la droite. La fonction linéaire est dite
+@emph{croissante}.
+
+Lorsque la valeur de @emph{a} est négative, la droite est descendante
+de la gauche vers la droite. La fonction linéaire est dite
+@emph{décroissante}.
+
+Lorsque @emph{a = 0}, la droite est confondue avec le premier axe
+(abscisses). La fonction linéaire est dite constante.
+
+@subheading @ref{exePlotLinearFunctionDynamicDecimal}
+@example
+| figure f a |
+figure := DrGeoFigure nouveau afficherAxeafficherGrille echelle: 50.
+a := figure decimal: 1 a: 5 @@ -5 min: -8 max: 8 nom: 'a' afficherValeur: true.
+f := [:x | a valeur * x].
+figure courbeDe: f de: -10 a: 10
+@end example
+
+@subheading @ref{exePlotAffineFunction}
+@example
+| figure f a b |
+figure := DrGeoFigure nouveau afficherAxes afficherGrille echelle: 50.
+a := figure entier: 1 a: 5 @@ -5 min: -8 max: 8 nom: 'a' afficherValeur: true.
+b := figure entier: 1 a: 5 @@ -6 min: -8 max: 8 nom: 'b' afficherValeur: true.
+f := [:x | a valeur * x + b valeur].
+figure courbeDe: f de: -10 a: 10
+@end example
+
+@subheading @ref{exeObservationAffine}
+Lorsque la valeur de @emph{b} augmente, la droite se déplace
+parallèlement vers le haut de la figure, dans le sens positif
+de l'axe vertical (ordonnées).
+
+Lorsque la valeur de @emph{b} diminue, la droite se déplace
+parallèlement vers le bas de la figure, dans le sens négatif de l'axe
+vertical (ordonnées).
+
+Lorsque @emph{b = 0}, la droite passe par l'origine des axes, la
+fonction est alors linéaire.
+
+Lorsque @emph{a = 0}, la droite est parallèle au premier axe
+(abscisses). La fonction est dite constante de la forme
+x@tie{}@U{27FC}@tie{}@emph{b}.
+
+@subheading @ref{exePlotQuadratiqueFunction}
+@strong{Attention.} Dans l'expression de la fonction quadratique, dans
+le bloc de code, les parenthèses sont nécessaires autour de la
+deuxième multiplication. En effet, comme expliqué au chapitre sur la
+syntaxe, le système a une notion différente des priorités (priorités
+des messages et non pas des opérateurs).
+@example
+| figure f a b c|
+figure := DrGeoFigure nouveau afficherAxes afficherGrille echelle: 50.
+a := figure decimal: 1 a: 5 @@ -1 min: -8 max: 8 nom: 'a' afficherValeur: true.
+b := figure decimal: 1 a: 5 @@ -2 min: -8 max: 8 nom: 'b' afficherValeur: true.
+c := figure decimal: 1 a: 5 @@ -3 min: -8 max: 8 nom: 'c' afficherValeur: true.
+f := [:x | a valeur * x squared + (b valeur * x) + c valeur].
+figure courbeDe: f de: -10 a: 10
+@end example
+
+@subheading @ref{exeObservationQuadratique}
+Lorsque le signe de @emph{a} est positif, la parabole est orientée vers
+le haut, ses branches partent vers l'infini positif.
+
+Lorsque le signe de @emph{a} est négatif, la parabole est orientée vers
+le bas, ses branches partent vers l'infini négatif.
+
+Lorsque @emph{a} est égale à zéro, c'est une fonction affine de pente
+@emph{b} et ordonnée à l'origine @emph{c}.
+
+@subheading @ref{exePlotPowerFunction}
+@example
+| figure f n|
+figure := DrGeoFigure nouveau afficherAxes afficherGrille echelle: 50.
+n := figure entier: 1 a: 5 @@ -1 min: 1 max: 7 nom: 'n' afficherValeur: true.
+f := [:x | x puissance: n valeur].
+figure courbeDe: f de: -10 a: 10
+@end example
+
+@subheading @ref{exePlotHomographicFunction}
+@example
+| figure f a|
+figure := DrGeoFigure nouveau afficherAxes afficherGrille echelle: 50.
+a := figure entier: 1 a: 5 @@ -1 min: -10 max: 10 nom: 'a' afficherValeur: true.
+f := [:x | a valeur / x].
+figure courbeDe: f de: -10 a: 10
+@end example
+
+
+@subheading @ref{exeObservationHomographic}
+Lorsque @emph{a} est positif, la fonction homographique est décroissante.
+
+Lorsque @emph{a} est négatif, la fonction homographique est croissante.

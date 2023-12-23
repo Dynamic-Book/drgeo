@@ -1,0 +1,413 @@
+@c Glossary 
+@c Menu syntax ...@clicksequence{File @click New}...
+@c Index cindex keyword1, keyword2... (start uncapitalized)
+@c Hyperlink @url{http://wherever.org}
+@c Italic @emph{}
+@c Bold @strong{}
+@c Code
+@c @example
+@c @end example
+@c
+@c Interval [a ; b]
+@c @section Workspace
+@c @xref{workspace}
+
+@node Glossary
+@appendix @drgeo{} Glossary
+@cindex glossary
+
+this Glossary assumes that the learner understands the vocabulary and
+constructions of elementary Euclidean geometry, and aims to provide
+simple and clear explanations of terms used in geometry beyond that
+level, algebra, @drgeo{}, and Smalltalk sufficient for the beginner to
+proceed with, and also in some significant cases very correct
+explanations that will help the more advanced learner to understand
+@drgeo{} and Smalltalk further. Full understanding requires other
+tools, such as a Smalltalk reference manual and study of @drgeo{}
+source code, or even extensive study of Computer Science.
+
+Complete understanding is not given to mere mortals, and there are
+theorems implying that it is actually a self-contradictory idea.
+Besides, where would the fun be in having nothing left to learn?
+
+@strong{abcissa} In coordinate geometry, the x coordinate of a
+point. In @drgeo{}, it can also be the difference between the x
+coordinates of the initial and final points of a vector. See also
+curvilinear abscissa.
+
+@strong{API} Application Programming Interface; in @drgeo{}, methods 
+usable in scripts to apply to math items, from the class hierarchy 
+@code{DrGMathItem}.
+
+@strong{argument} A value provided to a function, assigned to a 
+variable that it can act on. In Smalltalk, however, messages are 
+sent to objects rather than applying functions to values. One can 
+view the recipient of a message as an argument of the method invoked 
+by the message. Sometimes called a parameter of a function.
+
+@strong{array} An indexable sequence of Smalltalk objects created with
+either of two notations. For example, @{@} and #() are the empty
+array; @{1@} and #(1) are an array with one element, the integer 1;
+@{'a' . 2@} and #('a' 2) are an array containing two elements; and so
+on.
+
+@strong{background process} Define
+@c This appears without explanation in a comment on an animation in the
+@c Smalltalk Figure chapter.
+
+@strong{balloon help} Explanations of objects in a user interface
+that appear when the mouse briefly points to the object.
+
+@strong{block} In Smalltalk syntax, a segment of Smalltalk code,
+optionally including a declaration of local variables, enclosed in
+brackets.
+
+@strong{block closure} A Smalltalk object of class BlockClosure
+representing a program, defined by a block, that is not an object
+method, together with the environment it executes in, so that the
+closure can be a parameter of a control structure such as whileTrue:,
+which is a method of the BlockClosure class, or ifTrue: which is a
+method of the Boolean class.
+
+@strong{browser} See @strong{class browser}.
+
+@strong{change set} In Smalltalk, a change set is created by saving all
+new and modified class and method definitions. Although change sets can
+be accessed via the Extended search submenu in a workspace, they are
+not relevant to normal use of @drgeo{}.
+
+@strong{class} In Smalltalk, an object representing a type of 
+object (class members) together with the behavior of its members 
+(methods).
+
+@strong{class browser}	A Smalltalk development tool that displays the
+classes and methods of Smalltalk objects in an organized manner, and
+provides access to detailed information on all objects and code. Also
+known as System browser.
+
+@strong{class comment} A text string in a class definition usually
+intended to provide information on the purpose of a class (class
+intention), any variables it exposes, and how to use the class and its
+methods (class collaborations, class API).
+
+@strong{closure} See block closure.
+
+@strong{constraint} The relationship between geometric elements in
+which a change in the position, orientation, or size of one affects
+the properties of another, or in which properties of some elements
+prevent some kinds of change to another. For example, after
+constructing the intersection of two lines, moving one of the lines
+generally moves the intersection, but the intersection cannot be moved
+directly.
+
+@strong{constructionist learning} The terminology of education is
+vexed and confusing, with the same word used in multiple meanings, and
+very similar words used in very different ways, all compounded by deep
+ignorance and misunderstandings about human nature.
+
+Seymour Papert defined constructionism in a proposal to the National 
+Science Foundation entitled ``Constructionism: A New Opportunity for 
+Elementary Science Education'' as follows: "The word constructionism 
+is a mnemonic for two aspects of the theory of science education 
+underlying this project. From constructivist theories of psychology 
+we take a view of learning as a reconstruction rather than as a 
+transmission of knowledge. Then we extend the idea of manipulative 
+materials to the idea that learning is most effective when part of 
+an activity the learner experiences as constructing is a meaningful 
+product." Geometric constructions and computer programs are but two of
+many such products.
+
+@strong{control structure} A method of an appropriate class for
+determining whether or how often to execute a block of code, such as
+ifTrue: or whileTrue:.
+
+@strong{Creative Commons} An organization devoted to sharing of
+content in much the same manner as Free/Open Source Software,
+providing licenses that guarantee that a work can be copied freely
+(CC), and if desired translated and improved (Sharealike), as long as
+the results are published under the same license. It provides other
+licensing options as well.
+
+@strong{curvilinear abscissa} In @drgeo{}, the parametric coordinate
+of a free point on a curve in the range [0@tie{};@tie{}1]. For
+circles, arcs, and polygons, this is proportional to arc length. For
+straight lines, and for loci based on straight lines, it is based on
+the arctangent of the distance from a base point, mapping
+[-infinity@tie{};@tie{}infinity] to [0@tie{};@tie{}1]. One of the
+points defining the line is taken to be its origin, with curvilinear
+abscissa 0.5, while a point on the line with curvilinear abscissa 0 or
+1 is at infinity.
+
+@strong{data pane} The area at the left in a @drgeo{} sketch window,
+listing the items in the sketch in the order of their creation, and
+giving some essential properties of the items.
+
+@strong{debugger} A Smalltalk tool for investigating programs, which 
+can be used to find and correct errors or to explore the working of 
+Smalltalk code.
+
+@strong{degree} A measure of angles, with 360 degrees in a circle, 180
+degrees in a straight angle, and 90 degrees in a right angle.
+
+@strong{development environment} A set of tools for creating, 
+inspecting, and maintaining software.
+
+@strong{domain} The set of values on which a function is defined.
+
+@strong{dynamically typed} Of a programming language, allowing the
+type of a variable to be changed during program execution, or allowing
+a data structure to be expanded or shrunk. In Smalltalk, objects of
+differen classes can be assigned to the same variable at different
+times.
+
+@strong{free point} A point that the user can drag freely in the
+workspace or on a curve. Contrast with constrained point, defined by
+its relations to other sketch objects, such as the intersection of two
+lines.
+
+@strong{Free Software} Software provided under a license that protects
+the rights of the user, especially the four Software Freedoms defined
+at @url{http://www.gnu.org/philosophy/free-sw.html}:
+
+@enumerate
+
+@item 0 The freedom to run the program, for any purpose.
+
+@item 1 The freedom to study how the program works, and change it so 
+it does your computing as you wish. Access to the source code is a 
+precondition for this. 
+
+@item 2 The freedom to redistribute copies so you can help your 
+neighbor.
+
+@item 3 The freedom to distribute copies of your modified versions
+to others. By doing this you can give the whole community a chance
+to benefit from your changes. Access to the source code is a
+precondition for this.
+
+@end enumerate
+
+@strong{functional} Of interactive software, requiring commands to be
+explicitly invoked at each use, as opposed to modal, where a command
+can be applied multiple times after being selected once.  @drgeo{} has
+elements of both, and can be toggled between them with the
+single/multiple creation button.
+
+@strong{global variable} A variable accessible anywhere. Contrast
+with local variable and instance variable.
+
+@strong{homothety} Scale to larger or smaller size. For example, make
+similar triangles.
+
+@strong{instance variable} A variable declared in the header of a
+method as a local variable, accessible only within that method.
+
+@strong{local variable} A variable whose value can be accessed or
+changed only in some restricted context, such as the methods of a
+single class, or within a single method. Contrast with global variable.
+
+@strong{lock} Fix a @drgeo{} point in place in a sketch so that it
+cannot be moved by clicking and dragging. It can still be relocated
+under program control or by editing its coordinates in the property
+dialog.
+
+@strong{hide} Make a Dr. Geo object invisible and unselectable in
+the sketch. Hidden objects appear in light gray and can be selected
+when editing object styles.
+
+@strong{infinity} In geometry, a point at infinity is defined as the
+intersection of parallel lines. In algebra, an infinity can be defined
+as the limit of a divergent sequence, as 1/0, as tan(pi/2) and in
+other ways. @drgeo{} allows for points and even lines at infinity, but
+does not handle algebraic infinities well.
+
+@strong{inspector} In Smalltalk, a tool for viewing properties of 
+an object.
+
+@strong{label} The name of an object, displayed alongside it. The 
+user can create labels in the object style editor.
+
+@strong{locus} A curve or set of points defined by constraints such as 
+distance from given points or lines. For example, the locus of a 
+point equidistant from two rays is the bisector of the angle between 
+the rays. Plural loci.
+
+@strong{macro} In many programming systems, macro processing means
+making text substitutions in source code. In @drgeo{} a macro is an
+encapsulated construction specifying a set of objects as its starting
+point, and another set of objects as results. The construction must
+uniquely determine the outputs from the given inputs. Where this is
+the case, @drgeo{} determines how to carry out the construction and
+records the procedure for reuse. Macros are built using tools accessed
+in the macro construction tab.
+
+@strong{math item} Object in a class from the hierarchy
+@code{DrGMathItem}, including points and curves of various kinds,
+numeric values, and others.
+
+@strong{method}	In object-oriented programming, a program associated 
+with a class specifying some behavior of the object type of that 
+class (instance method) or of the class itself (class method). The name
+of the method is called its selector.
+
+@strong{method finder}	A Smalltalk tool for searching for methods 
+based on their names, their associated classes, their program text, 
+examples of use, or pragmas.
+
+@strong{method source} The code defining a Smalltalk method.
+
+@strong{method string} Literal string within method code.
+
+@strong{modal}	Of software, having distinct states or modes in
+which particular functions can be applied repeatedly, as opposed to
+stateless or functional, where the function has to be specified for
+each use. @drgeo{} has elements of both, and can be toggled between them
+with the single/multiple creation button.
+
+@strong{name} In the object style properties dialog for Dr. Geo
+objects, a label to be displayed with the object.
+
+@strong{norm} Length of a vector.
+
+@strong{object}	In Smalltalk, a member of a class whose behavior is 
+specified by methods defined in that class.
+
+@strong{object-oriented} In programming languages, using object
+definitions rather than data types, where objects are defined in
+classes by the methods that act on them, and classes can inherit
+methods from other classes, usually in a tree-structured hierarchy.
+The class structure of Pharo Smalltalk can be examined using the
+hierarchy function in the class browser in @drgeo{}.
+
+@strong{Open Source} Software published under the Debian Open Source
+guidelines or any other license that requires making source code
+available to all users without charge or other restrictions. Similar
+to Free Software, but there are differences in the terms of the
+various licenses.
+
+@strong{ordinate} In coordinate geometry, the y coordinate.
+
+@strong{pane} An area in a Smalltalk window reserved for a particular
+purpose.
+
+@strong{parameter} Another name for a function argument. See also
+parametric curve.
+
+@strong{parametric curve} A curve defined by functions of a variable
+other than the coordinates. For example, x = cos(t), y = sin(t),
+where x and y are the coordinates of a point, defines a circle with
+t as the parameter.
+
+@strong{Pharo Smalltalk} The version of Smalltalk used to implement
+@drgeo{}.
+
+@strong{pin} Click in a sketch window to place an object at the point
+selected.
+
+@strong{plane} In @drgeo{}, an extended Euclidean plane, where
+parallel lines are equidistant, and in principle intersect in the same
+point at infinity in both directions. @drgeo{} does not handle points
+and lines at infinity consistently, where a line at infinity joins two
+points at infinity. This is in contrast with the standard Euclidean
+plane, which does not have points at infinity; with non-Euclidean
+planes where there are no equidistant straight lines and there may be
+points at or beyond infinity; and with the projective plane, where all
+pairs of lines intersect, but there is no concept of distance or
+length. It would be possible to use homogeneous coordinates in a
+projective plane to make @drgeo{} handle infinities consistently, but
+explaining them is beyond the scope of this glossary. Note that it is
+possible to model and explore all of these geometries within @drgeo{},
+and that an Omar (Our Most Assiduous Reader, in the lore of Conway
+game theory) could reconstruct @drgeo{} to support any or all of them
+(and more) directly.
+
+@strong{pointBlockItem} a DrGPointBlockItem, defined as a "Point
+item defined by a block closure". It is a subclass of
+DrGPointCoordinateItem, which is a subclass of DrGPointItem, so that
+it responds to the normal point methods.
+
+@strong{pragma}	A system for tagging methods, used by the method finder
+but not relevant in @drgeo{}.
+
+@strong{protocol} The set of categories for the methods in a class,
+displayed in the class browser.
+
+@strong{radian} A measure of angles based on the lengths of arcs in
+a unit circle with circumference 2pi. 1 in radian measure is the
+angle subtending an arc of length 1 in this circle, or more
+generally the radius in any circle. Commonly used in symbolic form
+in mathematics, where a right angle is represented as pi/2. For
+purposes of arithmetic, angle measure in degrees is usually more
+convenient.
+
+@strong{reference} Within Smalltalk, any occurrence of a given class
+name in any class definition or method code. A search for "references
+to it" using Extended Search on the right-click menu in a workspace
+opens a Users tool. See Smalltalk documentation for details.
+
+@strong{reflective} In a programming language, providing tools for
+examining objects by methods other than reading source code files.
+
+@strong{script}	A Smalltalk method created in the DrGeoUserScripts 
+class that can be called using the Use a script button in the 
+Numerics tab or the Use a script command in the Numerics menu. The 
+result of a script can be pinned in a sketch, so that the script is 
+saved and reloaded with the sketch.
+
+@strong{selector} In Smalltalk, the name of a method. It may contain
+more than one part, in which case each part will end with a colon. For
+example, distance: to:.
+
+@strong{sender} For a given selector, a class that has a method of
+that name.
+
+@strong{sketch}	A geometric figure defined using Dr. Geo commands,
+including constraints, formatting, and other properties of points,
+lines, curves, and compound elements. Macro constructions,
+equations, and pinned scripts are also parts of a sketch.
+
+@strong{sketch pane} The area in a @drgeo{} sketch window below the
+toolbars where geometric, numeric, algebraic, and script items are
+placed to form the sketch.
+
+@strong{Smalltalk} An object-oriented, graphical programming
+language and environment designed by the Learning Resources Group at
+Xerox PARC (Palo Alto Research Center), the model for all modern
+Graphical User Interfaces (GUI) after the Apple Lisa and Macintosh
+were based on it.
+
+@strong{Smalltalk-80} The first publicly-released version of Smalltalk.
+
+@strong{stateless} Of interactive software that is not modal, that is, 
+where commands do not change the state of the application so that 
+only certain commands are active until the user changes to another mode.
+
+@strong{style} Properties of a sketch object, such as name (also 
+called label), colour, shape, size, and the states hide/display and 
+lock/unlock.
+
+@strong{system browser}	The class browser.
+
+@strong{type} In programming languages generally, the type of a 
+variable defines the number of bits used to represent it plus any 
+internal structure, and the functions that apply to it. In 
+Smalltalk, object types are defined as classes, including the 
+methods that apply to objects in each class, and do not imply any
+particular representation in memory or in storage.
+
+@strong{value} Of a variable, the object it refers to at the time,
+if any. Of a function, the object it returns when called with
+particular arguments, if any.
+
+@strong{variable} A name that functions like a pronoun in human
+languages, being able to refer to different objects in different
+classes at different times. Variables are implemented as objects,
+just like everything else in Smalltalk. Making a variable refer to a
+different object is called assigning that object to the variable as its
+value.
+
+@strong{visibility}	The property of displaying in the sketch or 
+being hidden.
+
+@strong{workspace} A Smalltalk window for entering, executing, and 
+debugging Smalltalk code.

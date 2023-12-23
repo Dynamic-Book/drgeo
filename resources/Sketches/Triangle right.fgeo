@@ -1,0 +1,32 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Triangle right" origin_x="0.0" origin_y="0.0" scale="34.0">
+<point color="Red" delta="(-17.0@8.0)" id="992484171" locked="False" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-8</x>
+<y>-1</y></point>
+<point color="Red" delta="(7@7)" id="1041139887" locked="False" masked="False" name="C" style="Cross" thickness="Normal" type="Free">
+<x>-4</x>
+<y>-1</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="239042628" mark="none" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="992484171"/> 
+<parent ref="1041139887"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" id="242559493" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="239042628"/> 
+<parent ref="992484171"/> </line>
+<point color="Red" delta="(-6.0@ -23.0)" id="180022564" locked="False" masked="False" name="B" style="Cross" thickness="Normal" type="On_curve">
+<parent ref="242559493"/> 
+<value>0.9367428308044361</value></point>
+<angle color="Black" delta="(7@7)" id="68895183" locked="False" masked="False" name="" type="3pts">
+<parent ref="180022564"/> 
+<parent ref="992484171"/> 
+<parent ref="1041139887"/> </angle>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="174225525" mark="none" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="992484171"/> 
+<parent ref="180022564"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="202114181" mark="none" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="180022564"/> 
+<parent ref="1041139887"/> </segment>
+<text color="Black" delta="(7@7)" id="237045376" locked="False" masked="False" name="" type="free">
+<contents>A right triangle has one of its &#10;interior angle measuring 90 degrees.&#10;&#10;Move the point A, B or C!</contents>
+<x>-4.661764705882353</x>
+<y>4.573529411764706</y></text></drgeo></drgenius>

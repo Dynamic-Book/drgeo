@@ -1,0 +1,79 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Droite de Simson" origin_x="0.0" origin_y="0.8500000000000005" scale="15">
+<point color="Red" delta="-22.0@ -11.0" id="935133402" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-1.4318181818181839</x>
+<y>7.919786096256689</y></point>
+<point color="Red" delta="7@7" id="960382931" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>14.916603004838377</x>
+<y>-3.582505729564558</y></point>
+<point color="Red" delta="7@7" id="1056848068" masked="False" name="C" style="Cross" thickness="Normal" type="Free">
+<x>-8.161764705882353</x>
+<y>-3.6176470588235294</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="191609987" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="935133402"/> 
+<parent ref="960382931"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="245613308" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="935133402"/> 
+<parent ref="1056848068"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="7@7" id="263291449" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1056848068"/> 
+<parent ref="960382931"/> </segment>
+<point color="Red" delta="7@7" id="149598580" masked="True" name=" " style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="191609987"/> </point>
+<point color="Red" delta="7@7" id="170408735" masked="True" name=" " style="Cross" thickness="Normal" type="Middle_segment">
+<parent ref="245613308"/> </point>
+<line anchor="0.5" color="Black" delta="7@7" id="99388137" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="191609987"/> 
+<parent ref="149598580"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="185854297" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="245613308"/> 
+<parent ref="170408735"/> </line>
+<point color="Red" delta="7@7" extra="0" id="-14844224" masked="False" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="99388137"/> 
+<parent ref="185854297"/> </point>
+<circle anchor="0.12336315108809928" color="Black" delta="-24.146571136881768@ -33.885861290385705" id="14663636" masked="False" name="Cercle circonscrit" style="plain" thickness="Thick" type="2pts">
+<parent ref="-14844224"/> 
+<parent ref="960382931"/> </circle>
+<point color="Red" delta="7@7" id="80148395" masked="False" name="P" style="Cross" thickness="Normal" type="On_curve">
+<parent ref="14663636"/> 
+<value>0.19799078801092163</value></point>
+<line anchor="0.5" color="Black" delta="7@7" id="86816189" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="245613308"/> 
+<parent ref="80148395"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="101802899" masked="False" name="" style="dash" thickness="Normal" type="2pts">
+<parent ref="1056848068"/> 
+<parent ref="935133402"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="170267390" masked="False" name="" style="dash" thickness="Normal" type="2pts">
+<parent ref="1056848068"/> 
+<parent ref="960382931"/> </line>
+<line anchor="0.5" color="Black" delta="7@7" id="251407428" masked="False" name="" style="dash" thickness="Normal" type="2pts">
+<parent ref="935133402"/> 
+<parent ref="960382931"/> </line>
+<point color="Red" delta="-23.0@ -12.0" extra="0" id="881309781" masked="False" name="P1" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="86816189"/> 
+<parent ref="101802899"/> </point>
+<line anchor="0.5" color="Black" delta="7@7" id="97522981" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="251407428"/> 
+<parent ref="80148395"/> </line>
+<point color="Red" delta="-29.0@ -7.0" extra="0" id="986597292" masked="False" name="P2" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="251407428"/> 
+<parent ref="97522981"/> </point>
+<line anchor="0.5" color="Black" delta="7@7" id="18140395" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="170267390"/> 
+<parent ref="80148395"/> </line>
+<point color="Red" delta="-22.0@13.0" extra="0" id="1017046516" masked="False" name="P3" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="170267390"/> 
+<parent ref="18140395"/> </point>
+<line anchor="0.9858818977044486" color="Blue" delta="-47.128721530374555@ -19.215692915384363" id="112104036" masked="False" name="Droite de Simson (P1-P2-P3)" style="plain" thickness="Thick" type="2pts">
+<parent ref="881309781"/> 
+<parent ref="1017046516"/> </line>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="98188477" masked="False" name="" style="dash" thickness="Thick" type="2pts">
+<parent ref="80148395"/> 
+<parent ref="986597292"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="160103013" masked="False" name="" style="dash" thickness="Thick" type="2pts">
+<parent ref="80148395"/> 
+<parent ref="1017046516"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="61541654" masked="False" name="" style="dash" thickness="Thick" type="2pts">
+<parent ref="80148395"/> 
+<parent ref="881309781"/> </segment></drgeo></drgenius>

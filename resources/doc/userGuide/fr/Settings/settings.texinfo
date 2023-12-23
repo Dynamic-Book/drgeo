@@ -1,0 +1,120 @@
+@c Settings
+
+@node Préférences
+@chapter Préférences
+@cindex préférences
+
+Ce chapitre décrit le système des préférences de l'environnement
+@drgeo{}. Il permet de régler les styles par défaut des objets d'une
+figure, l'aspect de l'interface graphique et quelques préférences
+réseaux.
+
+La navigateur de préférences s'ouvre par ...@clicksequence{Clic
+arrière-plan @click{} Préférences}...
+
+@drgeoFigure{Le navigateur de préférences avec la liste des styles par
+ défaut dépliée,SettingsBrowser,9}
+
+@cindex préférences, enregistrer
+Pour rendre ces préférences permanentes -- lors du prochain lancement
+de @drgeo{} elles seront toujours effectives -- il faut enregistrer la
+session @drgeo{} ...@clicksequence{Clic arrière-plan @click{} Outils
+@click{} Enregistrer la session}...
+
+@section Thèmes graphiques
+@cindex thème graphique
+
+@drgeo{} propose deux thèmes graphiques pour l'interface utilisateur@tie{}:
+@itemize
+
+   @item @b{Thème sombre}. Pour une interface utilisateur sombre, plus
+   adapté à un écran d'ordinateur
+
+   @item @b{Thème lumineux}. Pour une interface utilisateur lumineuse,
+   plus adapté à un écran de vidéoprojecteur.
+@end itemize
+
+@section Styles d'objets
+@cindex style, par défaut
+Depuis une figure géométrique, le style des objets est réglable par
+l'utilisateur@tie{}: la couleur d'une ligne, la taille d'un point,
+l'épaisseur d'un segment, etc. Nombres de ces paramètres peuvent
+recevoir une valeur par défaut@tie{}: par exemple que tout point soit
+une petite croix noir.
+
+@section Réseau
+@cindex réseau
+@drgeo{} propose deux fonctions réseau@tie{}: sauvegarder/charger des
+figures sur un serveur @acronym{FTP, File Transfer Protocol}, partager
+des figures dans un réseau local.  Ces options sont rangées dans la
+liste ``Network'' du navigateur de préférences.
+
+@subsection Utiliser des ressources réseau
+@cindex enregistrer, réseau
+@cindex ouvrir, réseau
+Dans le navigateur de préférences, activer l'option @b{Utiliser des
+ressources réseau}, elle donne alors accès aux réglages pour se
+connecter à un serveur de partage de figures, en lecture et en
+écriture@tie{}:
+
+@itemize
+
+   @item @b{Type de serveur.} L'interface propose ftp et http, mais
+   seul le premier est fonctionnel pour l'instant.
+
+   @item @b{Hôte.} C'est le nom du serveur ou une IP, par exemple
+   @file{ftp.drgeo.eu}.
+
+   @item @b{Nom d'utilisateur.} C'est le login de connexion au
+   serveur.
+
+   @item @b{Mot de passe.} Le mot de passe de l'utilisateur sur le
+   serveur.
+
+   @item @b{Partage.} C'est le nom du partage sur le serveur où lire
+   et enregistrer les figures, concrètement c'est un dossier à la
+   racine du partage du serveur.
+
+@end itemize
+
+Une fois ces éléments configurés, la fenêtre d'ouverture d'une figure
+propose un bouton ``Réseau'' avec le partage visible et modifiable. Il
+suffit de cliquer sur ce bouton pour charger la liste des figures en
+partage. Pour le constater, faire ...@clicksequence{Clic arrière-plan
+@click{} Ouvrir une figure @click{} Réseau}...
+
+
+De même la fenêtre pour sauver une figure propose une option réseau où
+enregistrer. Pour le constater, depuis n'importe quelle fenêtre
+@drgeo{}, faire @clicksequence{Fichier @click{} Enregistrer ou
+Enregistrer sous @click{} Partage réseau}...
+
+@subsection Partage de réseau local
+@cindex réseau, local, partage
+Plus souple, le partage dans un réseau local ne nécessite pas de
+serveur dédié. Au lieu de cela, un poste maître avec @drgeo{} en
+fonctionnement fait office de serveur de figures.
+
+Dans le navigateur de préférences, activer l'option @b{Partage de
+réseau local}. Une fois fait, le @drgeo{} en cours de fonctionnement
+partage alors toutes ses figures situées dans le dossier
+@file{DrGeo/MyShares}.
+
+Depuis les autres postes, élèves par exemple, à l'ouverture d'une
+figure cliquer sur le bouton ``Partage enseignant'' pour parcourir la
+liste des figures partagées par le poste maître.  Pour le constater,
+faire ...@clicksequence{Clic arrière-plan @click{} Ouvrir une
+figure @click{} Partage enseignant}...
+
+Sur le poste maître il faudra avant tout copier les figures à partager
+dans le dossier @file{DrGeo/MyShares}. Cela se fait soit depuis le
+gestionnaire de fichiers de l'ordinateur, en copiant les fichiers
+@file{.fgeo} et @file{.png} associés dans le dossier
+@file{DrGeo/MyShares}. Soit depuis @drgeo{} lui-même en enregistrant la
+figure dans le dossier @file{DrGeo/MyShares} par
+@clicksequence{Fichier @click{} Enregistrer à @click{} MyShares
+@click{} nom de figure}... A répéter pour chacune des figures à
+partager.
+
+
+

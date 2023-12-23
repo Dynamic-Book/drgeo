@@ -1,0 +1,553 @@
+@node Nombres et opérations
+@chapter Nombres et opérations
+
+@quotation
+@strong{Poser et résoudre des problèmes pour construire et structurer
+des représentations des nombres réels}
+@*
+@strong{Résoudre des problèmes numériques}
+@*
+Résolution de problèmes numériques en lien avec les ensembles de
+nombres travaillés, l'écriture de ces nombres et les opérations
+étudiées.
+@author  Plan d'Études Romand
+@end quotation
+
+@menu
+* Ensembles de nombres::Représentation des nombres entiers, décimaux et rationnels
+* Opérations::Les quatre opérations
+* Nombres naturels::Multiples, diviseurs, nombres premiers 
+@end menu
+
+Dans ce chapitre nous ne construisons pas de figure interactive. Le
+code écrit, lorsqu'exécuté, affichera un résultat numérique. Ainsi
+depuis l'espace de travail le code édité est exécuté avec la commande
+@emph{Print it}@tie{}: ...@clicksequence{Clic bouton droit @click{}
+@emph{Print it}} (@kbd{Cltrl-p} au clavier). Le résultat de
+l'exécution de la dernière ligne du programme est imprimé.
+
+@cindex ensemble
+@cindex collection, nombres
+@node Ensembles de nombres
+@section Ensembles de nombres
+@cindex nombre, entier
+@subsection Les entiers
+Il existe différents ensembles de nombres dont les nombres naturels et
+les nombres entiers relatifs.
+
+Ecrire l'exemple ci-dessous, puis le sélectionner à la souris et
+l'exécuter par un @emph{Print it} (@kbd{Ctrl-p}).
+
+@drgeoExample{Les nombres naturels de 0 à 100,naturalNumbers,
+(0 a: 100) commeEnsemble}
+
+Le résultat est un ensemble des nombres naturels de 0 à
+100. @code{Set} en anglais se traduit par Ensemble.
+@example
+(0 a: 100) commeEnsemble
+@result{} "a Set(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70
+71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93
+94 95 96 97 98 99 100)"
+@end example
+
+Le message à mot clé @code{a:} crée un intervalle de valeurs
+numériques. Il est envoyé à un nombre, valeur de départ de
+l'intervalle, ici 0, avec comme argument la fin de l'intervalle, ici
+100. Le message unaire @code{commeEnsemble} est uniquement là comme
+commodité d'affichage de la réponse.
+
+@drgeoExercise{Nombres entiers relatifs,exeRelativeNumber,@emph{Créer
+l'ensemble de nombres entiers relatifs de -80 à 50.}}
+
+@cindex nombre, décimal
+@subsection Les décimaux
+Les nombres décimaux s'écrivent avec un point ``.'' comme séparateur
+de la partie entière et de la partie décimale@tie{}: @code{1.5},
+@code{1235.021} ou @code{0.5}. Le nombre @code{0.00004} s'écrit plus
+simplement @code{4e-5}@tie{}; cela veut dire 4 précédé de 5 zéros ou 4
+comme 5ième chiffre après la virgule.
+
+@strong{Attention.} Les ordinateurs se représentent les nombres
+décimaux d'une façon légèrement imprécise. Vous devez savoir que
+contrairement à vous, ils ne savent pas toujours faire des calculs
+exacts avec les nombres décimaux. La plupart des systèmes
+informatiques masquent ces erreurs car elles sont très faibles. Le
+langage Pharo ne cachent pas cette imprécision.
+
+@drgeoExample{Ordinateur dyscalculique !,FloatPrecision,
+0.1 + 0.2 - 0.3
+@result{} 5.551115123125783e-17}
+
+Dans l'@ref{FloatPrecision}, la valeur retournée devrait être zéro
+mais ce n'est pas le cas. L'ordinateur retourne @code{5.55e-17}, soit
+0.0000000000000000555, c'est très proche de zéro, mais il y a tout de
+même une petite erreur.
+
+@drgeoExercise{D'autres erreurs de calculs avec des
+décimaux,exeFloatPrecision,@emph{Donner 3 calculs montrant des erreurs
+sur les résultats attendus.}}
+
+Lorsque la précision doit être absolue pour un programme, il faut
+utiliser une autre représentation des nombres décimaux@tie{}: les
+fractions ou nombres rationnels.
+
+@cindex nombre, rationnel
+@cindex nombre, fraction
+@subsection Les rationnels
+Les nombres fractionnaires s'écrivent avec une barre de
+division@tie{}: en exécutant et en affichant -- par @emph{print it} --
+le code @code{5/2} @result{} @code{(5/2)}. Le système a retourné une
+fraction entre parenthèses, il n'a pas calculé la forme décimale.
+
+@drgeoExercise{Vers l'infini et au delà,exeZeroDivide, @emph{Que se
+passe-t-il lors de l'exécution du code} @code{5/0} @emph{?}}
+
+Revenons au problème de dyscalculie de l'ordinateur avec les nombres
+décimaux. En utilisant l'écriture fractionnaire des nombres décimaux,
+l'@ref{FloatPrecision} devient alors comme ci-dessous.
+
+@drgeoExample{Enfin juste avec les fractions !,FractionPrecision,
+(1/10) + (2/10) - (3/10)
+@result{} 0}
+
+Cette fois-ci l'ordinateur ne souffre plus de dyscalculie.
+
+@drgeoExercise{Corriger les erreurs,exeFractionPrecision,
+@emph{Reprendre l'@ref{exeFloatPrecision} en écrivant les décimaux
+avec leur écriture fractionnaire. Les erreurs constatées
+disparaissent.}}
+
+L'écriture fractionnaire est donc très utile lorsque la précision est
+nécessaire. Pour obtenir l'écriture décimale d'une fraction, il suffit
+de lui demander en lui envoyant le message unaire
+@code{commeDecimal}. Par exemple @code{(5/2) commeDecimal} @result{}
+@code{2.5}. Attention les parenthèses sont importantes pour l'ordre
+d'envoi des messages.
+
+Une autre possibilité est d'écrire la fraction avec un numérateur ou
+un dénominateur sous forme décimale. @code{5.0/2} ou @code{5/2.0}
+@result{} @code{2.5}.
+
+@drgeoExercise{Fraction et écriture décimale,exeFractionDecimal,
+@emph{Demander à @drgeo{}@comma{} de deux façons différentes@comma{} l'écriture
+décimale des fractions suivantes@tie{}:
+@*
+- @code{15/7}
+@*
+- @code{535/17}
+}}
+
+@drgeo{} sait aussi donner l'écriture fractionnaire d'un nombre
+décimal. Encore une fois, il suffit de demander par l'envoi d'un
+message @code{commeFractionApprochee}. Nous savons déjà que
+l'ordinateur est dyscalculique lorsqu'il manipule des nombres
+décimaux. C'est pour cette raison que lorsque nous demandons une
+fraction d'un nombre décimal le message s'appelle
+@code{commeFractionApprochee} et non pas @code{commeFraction} car nous
+devons tenir compte de son trouble.
+
+Observer les deux exemples ci-dessous.
+
+@drgeoExample{Encore la dyscalculie,convertToFraction,
+1.3 commeFraction
+@result{} (5854679515581645/4503599627370496)
+
+1.3 commeFractionApprochee
+@result{} (13/10)}
+
+Le premier montre le nombre rationnel tel que l'ordinateur se
+représente 1.3. Si c'est juste à l'affichage-- la division donne bien
+1.3 -- c'est loin d'être la réponse attendue. Le deuxième exemple
+donne la réponse attendue. Il faut donc utiliser le message
+@code{commeFractionApprochee} pour obtenir une fraction
+``raisonnable''.
+
+@drgeoExercise{Conversion en fraction,exeFractionConvert,
+@emph{Déterminer avec @drgeo{} les écritures fractionnaires des
+nombres suivants@tie{}: 1.2@tie{}; 17.3@tie{}; 0.00175 et 9542.25}}
+
+@node Opérations
+@section Opérations
+
+@cindex calcul, priorité
+@subsection Priorité des opérations
+Le langage informatique Pharo ne connaît pas la priorité des
+opérateurs. L'ordre de calcul des quatre opérations arithmétiques
+@math{(+ ; - ; * ; /)} est toujours de la gauche vers la droite. Les
+opérateurs sont en fait des messages binaires comme expliqué dans le
+chapitre sur la syntaxe du langage@tie{}: l'ordre d'envoi d'une série
+de messages binaires est de la gauche vers la droite.
+
+Pour changer l'ordre de calculs, il faut donc utiliser des parenthèses.
+
+@drgeoExample{Ordre de calculs,calculusOrder,
+5 * 3 + 2
+@result{} 17
+
+5 + 3 * 2 @emph{C'est équivalent en mathématiques à @math{(5 + 3) * 2}}
+@result{} 16 ! 
+
+5 + (3 * 2)  @emph{C'est équivalent en mathématiques à @math{5 + 3 * 2}}
+@result{} 11}
+
+@strong{Pour résumer.} Lorsque nous écrivons un calcul avec le langage
+Pharo, il faut donc garder en tête que l'ordre de calculs des
+opérations arithmétiques est toujours de la gauche vers la
+droite. Pour changer l'ordre, utiliser des parenthèses.
+
+@drgeoExercise{Calculs arithmétiques,exeArithmeticCalculus,
+@emph{Écrire le code informatique de calculs pour obtenir les
+résultats suivants (à droite de @result{}). Lorsque nécessaire,
+utiliser des parenthèses pour suivre l'ordre des priorités
+mathématiques des opérateurs arithmétiques@tie{}:}
+@*
+@math{10 / 5 + 2} @result{} 4
+@*
+@math{2 + 10 / 5} @result{} 4 
+@*
+@math{10 + 7 * 2 + 4} @result{} 28
+@*
+@math{(6 + 4) * 2} @result{} 20
+@*
+@math{4 * 5 + 7 * 2} @result{} 34}
+
+
+@cindex calcul, fraction
+@subsection Calcul fractionnaire
+@drgeo{} sait calculer avec des nombres fractionnaires, il faut juste
+bien veiller à @strong{placer les fractions entre parenthèses}.
+
+@drgeoExample{Calculs fractionnaires,rationalCalculus,
+Mathématiques : @math{1 / 5 + 3 / 5} @result{} @math{4 / 5}
+Code : (1/5) + (3/5) @result{} (4/5)}
+
+S'entraîner avec l'exercice suivant@tie{}:
+@drgeoExercise{Calculs fractionnaires,exeRationalCalculus,
+@emph{Écire le code pour effectuer les calculs suivants@tie{}:}
+@*
+@math{2 / 9 + 3 / 9} @result{} @math{5 / 9}
+@*
+@math{5 / 7 - 2 / 7} @result{} @math{3 / 7}
+@*
+@math{(2 / 3) * (4 / 5)} @result{} @math{8 / 15}}
+
+@cindex inverse
+@drgeoMath{L'inverse d'une nombre -- et d'une fraction -- s'obtient en
+divisant 1 par ce nombre.}
+Par exemple, @math{1 / (4/5) = 5/4}. Cela s'écrit de la même façon en
+code informatique.
+
+@drgeoExample{Inverse d'une fraction,rationalReciprocal, Code :
+1/(3/5) @result{} (5/3)}
+
+@drgeoExercise{Inverses de fractions,exeRationalReciprocal,
+@emph{Écrire le code pour calculer les inverses des fractions (7/4) et
+(98/99).}}
+
+@subsection Division euclidienne
+@drgeoMath{La division euclidienne ou division entière de deux nombres
+entiers où 423 est le dividende et 15 le diviseur donne un quotient de
+28 et un reste de 3.}
+Ces résultats se calculent avec les messages binaires @code{//} pour
+le quotient et @code{\\} le reste.
+
+@drgeoExample{Division euclidienne,euclidDivision,
+423 // 15 @result{} 28 "le quotient"
+423 \\\ 15 @result{} 3  "le reste"}
+
+@drgeoExercise{Divisions euclidiennes,exeEuclidDivisions,
+@emph{Écrire le code pour calculer le quotient et le reste des divisions suivantes@tie{}:
+@*
+- 65 par 7
+@*
+- 732 par 13
+@*
+- 5241 par 29}}
+
+
+@node Nombres naturels
+@cindex nombre, naturel
+@section Nombres naturels
+@drgeoMath{Un nombre naturel est un nombre entier et positif, 0
+compris. L'ensemble des nombres naturels est infini.}
+
+Pour obtenir le 1er million de ces nombres, nous le codons @code{0 a:
+999999}. Pour vérifier son cardinal -- nombre d'éléments -- nous
+codons @code{(0 a: 999999) taille} et nous affichons le résultat par
+@emph{Print it} (@kbd{Ctrl-p}).
+
+@cindex multiple
+@cindex diviseur
+@subsection Multiples et diviseurs
+@drgeoMath{Lorsque le @strong{reste} d'une division euclidienne est
+égale à zéro cela signifie que le @strong{dividende} est un multiple
+du @strong{diviseur}. Cela revient à dire que le @strong{diviseur} est
+un diviseur du @strong{dividende}.}
+
+@cindex test, siVrai siFaux
+Avec le division euclidienne nous disposons donc d'une méthode pour
+tester si un nombre est multiple d'une autre nombre ou si un nombre
+est diviseur d'un autre nombre. Exécuter l'exemple ci-dessous avec la
+commande @emph{Print it} -- @kbd{Ctrl-p} -- et observer la réponse
+affichée.
+
+@drgeoExample{Tester un multiple,testMultiple,
+85214 \\\ 24 = 0
+   siVrai: ['C''est un multiple !']
+   siFaux: ['Ce n''est pas un multiple.']}
+
+@drgeoExercise{Test de multiple,exeMultiple, @emph{Modifier
+l'@ref{testMultiple} avec les valeurs 85200 et 24. Quelle réponse est
+obtenue ?}}
+
+@drgeoExercise{Test de diviseur,exeDiviser, @emph{Adapter
+l'@ref{testMultiple} pour tester si 24 est un diviseur de 85200.}}
+
+L'exemple suivant montre comment créer un programme interactif pour
+tester si un nombre est multiple d'un autre nombre nombre.
+
+@drgeoExample{Programme interactif avec multiple,UIMutliple,
+| a b |
+a := (UIManager default request: 'Un premier nombre') commeNombre.
+b := (UIManager default request: 'Un deuxième nombre') commeNombre.
+a \\\ b = 0
+   siVrai: [ UIManager default alert:
+      a asString@comma{} ' est un mulitple de '@comma{} b asString ]
+   siFaux: [ UIManager default alert:
+      a asString@comma{} ' n''est pas un mulitple de '@comma{} b asString ]}
+
+Dans cet exemple, @code{a} et @code{b} sont deux variables pour
+représenter nos deux nombres. Pour demander à l'utilisateur la valeur
+de ces nombres, nous utilisons l'objet @code{UIManager default}.
+C'est le gestionnaire par défaut -- manager -- de l'Interface
+Utilisateur -- UI veut dire @emph{User Interface} en anglais, il
+s'occupe des fenêtres à l'écran.
+
+Pour afficher une petite fenêtre où saisir le nombre, nous le
+demandons au gestionnaire avec le message @code{request:} -- cela veut
+dire requête/demande. Le gestionnaire nous retourne alors la réponse
+de l'utilisateur. Cette réponse est une phrase que nous convertissons
+en nombre avec le message @code{commeNombre}. Pour afficher la
+réponse, nous utilisons le message @code{alert:} envoyé au
+manager. Cette réponse est construite à partir de portions de phrase
+concaténées -- collées -- avec le message binaire
+virgule@tie{}:``@code{,}''.
+
+@drgeoExercise{Programme interactive avec diviseur,exeUIDiviser,
+@emph{Modifier l'@ref{UIMutliple} afin de tester si un nombre est
+diviseur d'un autre nombre. La réponse est donnée sous la forme d'une
+phrase affichée dans une fenêtre.}}
+
+
+@cindex diviseur
+@subsection Diviseurs d'un nombre naturel
+Pour construire l'ensemble des diviseurs de 100, nous choisissons
+chacun des nombres naturels de 1 à 100 qui divise 100. Le code
+ci-dessous lancé par un @emph{Print it} (@kbd{Ctrl-p}) affiche une
+collection des diviseurs de 100.
+
+@cindex collection, choisir:
+@drgeoExample{Diviseurs de 100,divides100,
+(1 a: 100) choisir: [ :n |  100 \\\ n = 0]}
+
+Le message à mot clé @code{choisir:} est envoyé à l'ensemble
+@{1;...;100@}. Dans le bloc de code @code{[]}, l'argument @code{n}
+prend chacune des valeurs des nombres de l'ensemble. Nous testons
+alors si @code{n} divise 100, c'est vrai lorsque le reste de la
+division est égale à 0, en code cela donne @code{100 \\ n = 0}. Dans
+ce cas, la méthode @code{choisir:} retient la valeur de @code{n}.
+
+@drgeoExercise{Diviseurs de 155,exeDivides155,@emph{Adapter
+l'@ref{divides100} pour obtenir les diviseurs de 155.}}
+
+Une dernière chose à faire est de transformer ce code en
+un bloc de code. De cette façon nous pouvons demander les diviseurs
+de plusieurs nombres naturels sans répéter tout le code.
+
+@drgeoExample{Diviseurs de 155 et 100,divides100And155,
+| diviseurs |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\\ n = 0]].
+diviseurs valeur: 100.
+diviseurs valeur: 155}
+
+Le bloc de code @code{[]} est affecté à la variable
+@code{diviseurs}. Dans ce bloc, @code{:nombre} est un paramètre qui
+prend la valeur de 100 lorsque nous codons @code{diviseurs valeur:
+100} ou qui prend la valeur de 155 lorsque nous codons @code{diviseurs
+valeur: 155}.
+
+Attention, dans cet exemple seule la dernière ligne est affichée lors
+d'une exécution par un @emph{P rint it}. Pour afficher à la fois les
+diviseurs de 100 et 155, nous concaténons les réponses en remplaçant
+les deux dernières lignes de code par @code{(diviseurs valeur: 100),
+(diviseurs valeur: 155)}.
+
+@cindex diviseur, commun
+@subsection Diviseurs communs
+@drgeoMath{Un diviseur est commun à deux nombres naturels lorsqu'il
+divise ces deux nombres.}
+
+Examinons en détail l'@ref{divides100And155} avec les diviseurs
+communs de 100 et 155.
+
+Pour 100, le code nous retourne cette liste de diviseurs@tie{}:
+@example
+| diviseurs |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+diviseurs valeur: 100.
+@result{}  #(1 2 4 5 10 20 25 50 100)
+@end example
+
+Pour 155, le code nous retourne cette liste de diviseurs@tie{}:
+@example
+| diviseurs |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\ n = 0]].
+diviseurs valeur: 155.
+@result{}  #(1 5 31 155)
+@end example
+
+Nous observons que 1 et 5 sont les diviseurs communs de 100 et 155 car
+ils sont présents dans les collections @code{#(1 2 4 5 10 20 25 50
+100)} @strong{et} @code{#(1 5 31 155)}. Nous le traduisons en code en
+demandant l'intersection de ces deux collections, c'est-à-dire ne
+retenir que leurs nombres communs, cela se code@tie{}:
+
+@example
+#(1 2 4 5 10 20 25 50 100) & #(1 5 31 155)
+@result{} #(5 1)
+@end example
+
+@drgeoExercise{Diviseurs communs de 100 et 155,exoCommonDivider,
+@emph{Modifier l'@ref{divides100And155} pour afficher la collection
+des diviseurs communs de 100 et 155}}
+
+Maintenant, écrivons un programme interactif pour demander et calculer
+les diviseurs communs de deux nombres.
+
+@drgeoExercise{Programme interactif de diviseurs
+communs,exeUICommonDividers, @emph{Adapter la solution de
+l'@ref{exoCommonDivider} pour écrire un programme interactif comme
+l'@ref{UIMutliple} calculant et affichant les diviseurs de deux
+nombres.}}
+
+Nous pouvons aussi définir un nouveau bloc de code pour calculer les
+diviseurs communs de deux nombres.
+
+@drgeoExample{Bloc de code diviseurs communs,commonDividersBloc,
+| a b diviseurs divCommuns |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\\ n = 0]].
+divCommuns := [:x :y | (diviseurs valeur: x) & (diviseurs valeur: y)].
+""
+divCommuns valeur: 100 valeur: 155}
+
+
+@cindex diviseur, pgdc
+@subsection Plus grand diviseur commun
+@drgeoMath{Lorsque nous nous intéressons aux diviseurs communs de deux
+nombres naturels, il y en a un de particulier, c'est le @strong{P}lus
+@strong{G}rand @strong{D}iviseur @strong{C}ommun. Dans l'ensemble des
+diviseurs communs c'est le plus grand, le maximum.}
+
+Toujours avec l'exemple des diviseurs communs de 100 et 155, nous
+avions trouvé la collection @code{#(5 1)}, pour obtenir le PGDC, nous
+demandons le maximum de cette collection en lui envoyant le message
+@code{max}@tie{}, cela donne le code :
+
+@example
+#(5 1) max
+@result{} 5
+@end example
+
+Le PGDC de 100 et 155 est 5 !
+
+@drgeoExercise{PGDC,exePgdc, @emph{Écrire un bloc de code affecté à
+une variable @code{pgdc} et qui retourne le PGDC de deux nombres
+naturels. Le bloc de code reprendra la solution de
+l'@ref{exoCommonDivider}. Comme l'@ref{commonDividersBloc}, ce bloc
+aura deux arguments.}}
+
+@drgeoExercise{Programme interactif de PGDC,exeUIPgdc, @emph{Écrire un
+ programme interactif qui demande deux nombres naturels à
+ l'utilisateur et qui répond d'une phrase le PGDC affiché dans une
+ fenêtre. S'inspirer de l'@ref{UIMutliple} et de la solution de
+ @ref{exePgdc}}}
+
+
+@cindex nombre, premier
+@subsection Nombre premier
+@drgeoMath{Un nombre premier est un nombre naturel qui a exactement
+deux diviseurs@tie{}: 1 et lui-même. Lorsque nous connaissons la
+collection des diviseurs d'un nombre, il est premier si elle contient
+exactement deux nombres@tie{}: 1 et le nombre lui-même.}
+
+Par exemple 155 n'est pas premier car sa collection de diviseurs
+@code{#(1 5 31 155)} contient 4 nombres. Pour le coder il suffit donc
+de demander la taille de la collection des diviseurs en lui envoyant
+le message @code{taille}@tie{}:
+@example
+#(1 5 31 155) taille
+@result{} 4
+"155 n'est pas premier"
+@end example
+
+En posant la question @emph{155 est-il premier ?}, nous attendons une
+réponse qui est soit Vrai, soit Faux. En code informatique cela se
+traduit en @code{true} ou @code{false}. Pour obtenir cette réponse
+nous comparons la taille de la collection des diviseurs à 2. Si la
+taille est égale à 2 nous obtenons la réponse @code{true}, sinon
+@code{false}.
+
+@drgeoExample{Nombre premier ?,primeNumberTest,
+| diviseurs |
+diviseurs := [:nombre |
+   (1 a: nombre) choisir: [ :n |  nombre \\\ n = 0]].
+""
+"Tester chacune des lignes ci-dessous"
+(diviseurs valeur: 155) taille = 2.
+"@result{} false"
+(diviseurs valeur: 29) taille = 2.
+"@result{} true"
+(diviseurs valeur: 100) taille = 2.
+"@result{} false"
+(diviseurs valeur: 1) taille = 2.
+"@result{} false"
+(diviseurs valeur: 2) taille = 2.
+"@result{} true"}
+
+@drgeoExercise{Nombre premier,exePrimeNumber, @emph{Écrire un bloc de
+code affecté à une variable @code{premier} qui retourne une réponse
+@code{true} ou @code{false} selon que le nombre passé en paramètre est
+premier ou non.}}
+
+Nous disposons maintenant d'un bloc de code pour tester si un nombre
+est premier ou non. Il serait intéressant de construire la collection
+des nombres premiers de 1 à 1000. Une ligne de code supplémentaire est
+nécessaire par rapport à la solution de l'@ref{exePrimeNumber}.
+
+@drgeoExercise{Nombres premiers entre 1 et 1000,exePrimeNumbers1000,
+@emph{Compléter la solution de l'@ref{exePrimeNumber} avec une ligne
+de code supplémentaire pour déterminer la collection des nombres
+premiers entre 1 et 1000. @strong{Indice :} utiliser les messages à
+mot clé @code{1 a: 1000} et @code{choisir:}.}}
+
+@drgeoMath{Deux nombres sont premiers entre eux lorsque leur seul
+diviseur commun est 1. Cela signifie que leur PGDC est 1.}
+Par exemple 21 et 25 sont premiers entre eux car 1 est leur seul
+diviseur commun. Noter que 21 et 25 pris individuellement ne sont pas
+des nombres premiers.
+
+@drgeoExercise{Nombres premiers entre eux ?, exeUIPrimeNumbers,
+@emph{Écrire un programme interactif qui demande à l'utilisateur deux
+nombres naturels et qui répond par une phrase si les nombres sont
+premiers entre eux ou pas. S'inspirer de la solution de
+l'@ref{exeUIPgdc}.}}
+
+
+@c Idées
+@c chercher si deux nombres sont premier entre eux

@@ -1,0 +1,1005 @@
+@c La syntaxe Pharo par l'exemple
+@node La syntaxe par l'exemple
+@chapter La syntaxe par l'exemple
+
+
+@menu
+* La syntaxe::La syntaxe en quelques mots
+* Saisir le code::Editer le code
+* Les messages::Programmer par l'envoi de messages
+* Cascade de messages::Envoyer une série des messages à un même objet
+* Les variables::Déclarer et utiliser des variables informatiques
+* Commentaire::Documenter son code
+* Collection::Regrouper des objets dans les collections
+* Bloc de code::Du code embarqué
+* Structures de contrôle::Contrôler le déroulement d'un programme
+@end menu
+
+
+@cindex syntaxe
+@node La syntaxe
+@section La syntaxe, c'est quoi ?
+Tout langage de programmation s'appuie sur un ensemble de mots clés et
+de règles. Pharo est très simple, il en impose une vingtaine, et
+en ce qui nous concerne moins d'une quinzaine seront utilisés dans ce
+guide.
+
+Pour donner une image parlante, la syntaxe est au code source, ce que
+la grammaire et la conjugaison sont au français. Mais pour un code
+source la conséquence à ne pas respecter la syntaxe est plus
+embêtante@tie{}: le programme refusera de fonctionner. Un texte en
+français avec une grammaire ou une conjugaison approximative pourra
+toujours être compris par le lecteur humain, c'est la différence entre
+nous et les machines. Mais pas d'inquiétude, l'environnement Pharo de
+@drgeo{} offre plusieurs solutions lorsque le code comporte des
+erreurs de syntaxe.
+
+Dans les sections suivantes nous présentons des exemples illustrant
+chaque élément de syntaxe. Vous êtes invités à recopier leur code
+source. C'est formateur et ils sont toujours courts. En prolongement
+des exemples, des exercices accessibles sont proposés,
+faites-les@tie{}!
+
+@cindex espace de travail
+@cindex playground
+@node Saisir le code
+@section Où saisir le code ?
+Le code source est saisi au clavier dans un ``espace de travail'' --
+nommé ``Playground'' en anglais qui veut dire espace de jeu,
+programmer est donc une activité ludique !
+
+Cet outil ressemble à s'y méprendre à un éditeur de texte. Mais c'est
+en fait une console d'édition de code Pharo@tie{}: pour écrire,
+compiler et exécuter du code source. Il est bien sûr possible d'y
+coller un code source copié ailleurs, par exemple depuis une version
+web de ce guide. Mais saisir le code source au clavier offre
+l'agréable sentiment de composer son programme et de réfléchir au rôle
+de chacune des instructions saisies. Les exemples sont de toute façon
+très courts.
+
+Revenons à notre ``espace de travail'', pour l'afficher faire
+...@clicksequence{Clic arrière-plan @click{} Outils @click{} Espace de
+travail}...  ou cliquer sur l'arrière-plan et faire
+@kbd{Alt-k}@footnote{Selon votre système d'exploitation, remplacer
+@kbd{Alt} par @kbd{Ctrl}.}.
+
+@drgeoFigure{Notre ``Espace de travail'' ou ``Playground'' avec un
+code source d'une ligne !,playground,8}
+
+@strong{Consigne Importante.} Pour s'y retrouver dans les exemples et
+les exercices recopiés ou écrits, il faut @strong{d'abord} renommer à
+chaque fois la page de l'espace de travail. Par exemple, lors de la
+recopie d'un exemple nommé @emph{Exemple 2.1}@tie{}: double cliquer
+sur l'onglet @emph{Page} en haut à gauche puis écrire ``Exemple 2.1''
+et valider avec le touche clavier @kbd{Enter}.
+
+@cindex message
+@node Les messages
+@section Hermès, messager des dieux
+Avec le langage Pharo tout est histoire de @emph{demander} quelque
+chose à @emph{quelqu'un} pour obtenir ce que nous souhaitons@tie{}:
+afficher une nouvelle figure, faire un calcul, afficher un point dans
+une figure, afficher une phrase. Pour demander il suffit d'envoyer un
+@strong{message} à ce quelqu'un et d'attendre sa réponse.
+
+Maintenant, écrivons notre premier programme, comme dans l'exemple
+ci-dessous. Ensuite pour lancer le programme -- le terme ``exécuter''
+est souvent utilisé aussi -- il suffit de sélectionner le code à la
+souris puis de faire ...@clicksequence{Clic bouton droit @click{}
+@emph{Do it(d)} dans le menu contextuel}. Ces deux opérations se font
+également avec le raccourci clavier @kbd{Ctrl-a} suivi de
+@kbd{Ctrl-d}. Vous obtenez alors immédiatement le résultat de ce
+programme, à savoir une figure vide@tie{}!
+
+@cindex figure programmée, nouvelle
+@drgeoExample{Premier programme,firstCode,DrGeoFigure nouveau}
+
+@subheading Comment comprendre ce programme ?
+C'est en fait une histoire d'objet à qui nous demandons quelque
+chose. Ici à l'objet @code{DrGeoFigure} nous demandons poliment une
+nouvelle figure en lui envoyant le message @code{nouveau}. Cela
+signifie que cet objet est capable de comprendre ce message@tie{}! Il
+nous répond une nouvelle figure qu'il a également le bon goût
+d'afficher.  @code{DrGeoFigure} est en quelque sorte le patron des
+figures, le big boss à qui il faut demander des choses, le terme
+informatique c'est @code{Classe} -- il doit avoir une certaine classe,
+voire une classe certaine mais rien à voir avec une classe d'école !
+Et comme il est important son nom commence toujours par une majuscule.
+
+Ainsi, @code{DrGeoFigure} est le receveur du message @code{nouveau} --
+il est toujours à gauche du message -- il nous répond @emph{une
+figure} qui s'appelle une instance de @code{DrGeoFigure} dans le
+jargon informatique.
+
+@cindex message, unaire
+@cindex axes des abscisses et ordonnées
+@subsection Message unaire
+Ce qui est bien avec les messages c'est que nous pouvons les envoyer
+les uns après les autres, si l'objet est capable de les comprendre.
+
+Dans cet autre exemple, nous demandons à la figure nouvellement créée
+d'afficher le repère cartésien -- les axes des abscisses et des
+ordonnées@tie{}:
+
+@drgeoExample{Figure avec les axes des abscisses et des ordonnées,firstCodeAxes,
+DrGeoFigure nouveau afficherAxes}
+
+Traduisons ce qui se passe : le message @code{nouveau} est envoyé à la
+classe @code{DrGeoFigure}, elle répond alors une nouvelle figure à qui
+nous demandons ensuite d'afficher les axes avec le message
+@code{afficherAxes}. Ainsi la lecture du code se fait de la gauche
+vers la droite, comme une phrase en français, mais en plus simple car
+il n'y pas vraiment de conjugaison ou grammaire bizarre.
+
+@cindex grille
+@cindex plein écran (figure)
+Et donc nous envoyons des messages comme nous enfilons des perles dans
+un collier. La figure affichée est trop petite ! On envoie le message
+@code{pleinEcran}. Pas de grille ! On envoie le message
+@code{afficherGrille}. Il suffit donc d'envoyer les messages
+appropriés@tie{}:
+
+@drgeoExample{Des messages comme des perles sur un collier,firstManyMessages,
+DrGeoFigure nouveau afficherAxes afficherGrille pleinEcran}
+
+La phrase commence à être longue ! Ces messages que nous envoyons en
+enfilade sont des messages @emph{unaire} que la figure est capable de
+comprendre bien sûr. Chacun de ces messages demande juste @emph{une}
+chose spécifique, sans autre précision supplémentaire, puis répond la
+même figure, ce qui permet l'enfilade de messages.
+
+@cindex message, mot clé
+@cindex @sortas{echelle} échelle
+@cindex zoom
+@subsection Message à mot clé
+Supposons que la graduation des axes de notre figure ne nous convient
+pas, nous souhaitons grossir la figure. Il nous suffit d'envoyer le
+message approprié pour demander un changement d'échelle, mais comment
+préciser de combien@tie{}? Et bien il suffit de l'écrire avec le
+message@tie{}:
+
+@drgeoExample{Changement d'échelle,firstScale,
+DrGeoFigure nouveau afficherAxes pleinEcran echelle: 100}
+
+La phrase est tellement longue que le message @code{afficherGrille} a
+été enlevé, mais vous pouvez le laisser.
+
+Ici le message est @code{echelle:} avec en plus la valeur @code{100},
+cela s'appelle un @emph{paramètre}. Remarquer que le message se
+termine par ``@strong{:}'', cela veut dire qu'un paramètre est attendu
+tout de suite après. Un tel message est dit à @emph{mot clé}, et il
+est possible d'avoir plusieurs paramètres, donc plusieurs mots clés,
+nous le verrons plus tard.
+
+Pour résumer, nous avons demandé avec le message à mot clé
+@code{echelle: 100} un changement d'échelle à 100, cela veut dire
+``100 points écran = 1 unité''.
+
+@drgeoExercise{Echelle 1,exeScale1,@emph{Modifier l'@ref{firstScale} pour
+une échelle égale à 1. Qu'observe-t-on ?}}
+
+@drgeoExercise{Echelle 0,exeScale0,@emph{Que se passe-t-il avec une
+échelle égale à 0 ?}}
+
+Voici un autre exemple de message à mot clé pour afficher un texte
+dans une figure.
+
+@drgeoExample{Bonjour tout le monde,helloWorld,
+DrGeoFigure nouveau pleinEcran
+   texte: 'Bonjour. Je suis Eric Dupont'}
+
+@cindex chaîne de caractères
+@cindex phrase
+Cette-fois ci le message à mot clé est @code{texte:} et son paramètre
+est la phrase @code{'Bonjour. Je suis Eric Dupont'}. Une phrase est
+toujours entourée d'apostrophes @code{'} -- dans le jargon
+informatique cela s'appelle une chaîne de caractères.
+
+@drgeoExercise{Ma classe,exeMyClass,@emph{Modifier l'@ref{helloWorld}
+pour afficher comme message 'Vive la classe XXX !!'}}
+
+
+@cindex message, binaire
+@cindex point, coordonnées
+@cindex coordonnées
+@subsection Message binaire
+Jusqu'à présent nous avons uniquement affiché une figure vide, il
+serait temps d'y ajouter un objet géométrique, par exemple un
+point. Si vous avez bien suivi jusqu'à présent, vous devinez qu'il
+suffira d'envoyer un message @code{point} à la figure pour demander de
+créer un point.
+
+Mais où placer le point dans la figure@tie{}? Et bien nous devons
+aussi indiquer les coordonnées avec le message, et donc utiliser un
+message à mot clé @code{point:} où ``les coordonnées'' représente son
+paramètre. Cela nous donne donc le code ci-dessous.
+
+@drgeoExample{Figure avec un point,firstPoint0,
+DrGeoFigure nouveau afficherAxes point: 0 @@ 1}
+
+La figure ci-dessous est alors obtenue avec un point rouge de coordonnées
+(0;1). Comme c'est une figure interactive vous pouvez même
+attraper le point à la souris et le déplacer ci et là.
+
+@drgeoFigure{Figure @drgeo{} avec le point (0;1),firstPoint,6}
+
+Vous avez sans doute deviné que le paramètre @code{0 @@ 1} du message
+@code{point:} représente les coordonnées du point. Et bien ce code
+@code{0 @@ 1} est encore une histoire de message. Cette fois-ci, cela
+s'appelle un message @emph{binaire}, c'est le troisième et dernier
+type de message.
+
+Un message @emph{binaire} -- comme son nom l'indique -- se compose de
+deux objets et d'un message. Le message ici c'est @code{@@}, il est
+envoyé au nombre @code{0} -- zéro@footnote{Souvenez-vous, le receveur
+du message est toujours à gauche du message.} avec comme paramètre le
+nombre @code{1}. L'objet @code{0} répond alors à ce message par un
+objet de type coordonnées de point@footnote{C'est une instance de la
+classe @code{Point}, une sorte de couple de coordonnées.}. Pour le
+dire d'une autre façon, nous demandons au nombre 0 de s'associer avec
+le nombre 1 pour former un couple de coordonnées.
+
+Outre représenter des coordonnées de points, les messages binaires
+sont aussi utiles pour écrire les quatre opérations arithmétiques@tie{}:
+
+@enumerate
+
+ @item @strong{@code{1 + 2}}. Nous demandons à 1 de s'ajouter avec 2
+ et de nous répondre le résultat.
+
+ @item @strong{@code{8 * 3}}. Nous demandons à 8 de se multiplier avec
+ 3 et de nous répondre le résultat.
+
+@end enumerate
+
+
+@drgeoExercise{Variez les coordonnées,exeCoordinates,
+@emph{Modifiez @ref{firstPoint0} pour placer les points de
+coordonnées} (0;0)@comma{} (1;0)@comma{} (0;-1) ou (-1;-1).}
+
+@cindex vecteur, coordonnées
+Voici un autre exemple avec un vecteur. Attrapez-le à la souris.
+@drgeoExample{Un vecteur@comma{} c'est un déplacement,firstVector,
+DrGeoFigure nouveau afficherAxes vecteur: 3 @@ 1.5}
+
+
+@cindex message, types
+@subheading Résumons !
+Pharo propose donc 3 types différents de message pour écrire notre
+code informatique.
+
+@itemize
+
+ @item Le message @emph{unaire}, par exemple @code{afficherAxes} ou
+ @code{pleinEcran}. La priorité d'envoi des messages est de la gauche
+ vers la droite.
+
+ @item Le message à @emph{mot clé}, par exemple @code{echelle:} ou
+ @code{point:} Il se termine par un ``:'' et attend à sa droite un
+ paramètre.
+
+ @item Le message @emph{binaire}, par exemple @code{@@}. Il a un seul
+ paramètre, l'objet à sa droite.
+
+@end itemize
+
+@cindex message, priorités
+@subsection Priorités des messages
+Mais à l'identique des priorités des opérations arithmétiques (+, -,
+*, /), quel est l'ordre d'envoi de ces trois messages@tie{}? Et bien
+c'est :
+
+@center @strong{Parenthèses >> Unaire >> Binaire >> Mot clé >> De gauche à droite}
+
+Dans @ref{firstPoint0}, l'ordre d'envoi est donc@tie{}:
+
+@enumerate
+
+ @item Message unaire @code{nouveau} envoyé à @code{DrGeoFigure}, une
+ nouvelle figure est retournée, notre figure.
+
+ @item Message unaire @code{afficherAxes} envoyé à notre figure.
+
+ @item Message binaire @code{@@} pour obtenir un objet de coordonnées
+ (0;1).
+
+ @item Message à mot clé @code{point:} envoyé à notre figure avec le
+ paramètre coordonnées de point obtenu en retour du message précédent.
+
+@end enumerate
+
+@drgeoExercise{Ordre d'envoi,exeOrdre1,
+@emph{Dans ce code@comma{} quel est l'ordre d'envoi des messages ?}
+@*
+@code{DrGeoFigure nouveau point: 2 @@ (2 + 2)}}
+
+@drgeoExercise{Ordre d'envoi,exeOrdre2,
+@emph{Que se passe-t-il lorsque les parenthèses de @ref{exeOrdre1} sont supprimées ?}
+@*
+@code{DrGeoFigure nouveau point: 2 @@ 2 + 2}}
+
+
+@cindex droite
+Maintenant nous souhaitons afficher une droite passant par les
+@emph{deux} points (0;0) et (0;1). Nous utilisons donc le message à
+mot clé @code{droitePassantPar:et:} avec @emph{deux} paramètres. Le
+code s'écrit comme suit.
+
+@drgeoExample{Droite passant par (0;0) et (1;1),firstLine,
+DrGeoFigure nouveau droitePassantPar: 0 @@ 0 et: 1 @@ 1}
+
+Un message à mot clé peut avoir autant de paramètres que
+nécessaire@tie{}: 1, 2, 3, etc. Bien sûr le receveur doit comprendre
+un tel message. Mais ici, notre figure est capable de comprendre le
+message @code{droitePassantPar:et:} et bien d'autres encore.
+
+@subheading Un peu de pratique !
+A toi de jouer maintenant avec les exercices suivants.
+
+@cindex segment
+@drgeoExercise{Mon premier segment,exeFirstSegment,
+@emph{Construire un segment passant par les points (2;1) et (0;0).}
+@*
+@emph{Utiliser le message} @code{segmentDe:a:}}
+
+@cindex demi-droite
+@drgeoExercise{Ma première demi-droite,exeFirstRay,
+@emph{Construire une demi-droite d'origine (-2;-1) et passant par (0;0).}
+@*
+@emph{Utiliser le message} @code{demiDroiteOrigine:passantPar:}}
+
+@cindex cercle, rayon
+@drgeoExercise{Mon premier cercle,exeFirstCircle,
+@emph{Construire un cercle de centre (0;0) et de rayon 3.}
+@*
+@emph{Utiliser le message} @code{cercleCentre:rayon:}}
+
+@cindex message, cascade
+@node Cascade de messages
+@section Cascade de messages 
+Tous ces messages envoyés les uns après les autres, ce n'est pas
+toujours très clair. Lorsque nous envoyons nos messages à un même
+objet -- ici la figure créée par le code @code{DrGeoFigure nouveau} --
+il est préférable d'utiliser @emph{une cascade de messages} en les
+séparant par un ``@strong{;}''. @ref{firstManyMessages} se réécrit
+alors comme suit.
+
+@drgeoExample{Des messages en cascade,firstCascade,
+DrGeoFigure nouveau afficherAxes; afficherGrille; pleinEcran}
+
+Pour rendre le code plus lisible, nous l'écrivons sur plusieurs lignes
+en insérant quelques espaces en début de lignes.
+
+@drgeoExample{Des messages en cascade,firstCascadeMultipleLines,
+DrGeoFigure nouveau
+   afficherAxes;
+   afficherGrille;
+   pleinEcran}
+
+Lorsque les messages sont envoyés de cette façon à un même objet, cela
+s'appelle une cascade de messages. Comme une cascade avec de l'eau qui
+ruisselle. Bon c'est vrai il faut beaucoup d'imagination, mais les
+informaticiens en ont beaucoup.
+
+Que se passe-t-il dans cette cascade de messages ?
+
+@enumerate
+ @item @code{DrGeoFigure nouveau} @result{} objet @emph{une figure} créé
+
+ @item @code{afficherAxes} est envoyé à @emph{la figure}
+
+ @item @code{afficherGrille} est envoyé à @emph{la figure}
+
+ @item @code{pleinEcran} est envoyé à @emph{la figure}
+@end enumerate
+
+@drgeoExercise{Premier de cascade,exeCascadeQuestion,@emph{Pourquoi n'y
+a-t-il pas de ``;'' avant le message} @code{afficherAxes} @emph{?}}
+
+
+Avec les cascades, nous pouvons écrire plusieurs messages à
+mot-clé. Cela n'est pas possible sans.
+
+@drgeoExample{Cascade avec toutes sortes de messages,cascadeVariousMessages,
+DrGeoFigure nouveau pleinEcran;
+   afficherAxes;
+   afficherGrille;
+   segmentDe: 0 @@ 0 a: 1 @@ 1;
+   segmentDe: 0 @@ 0 a: -1 @@ 1}
+
+@drgeoExercise{Un carré,exeFirstSquare,@emph{Construire une figure avec
+ ses axes, sa grille, en plein écran et avec un carré de coté 4
+ unités.}}
+
+@drgeoExercise{Un carré et un cercle,exeFirstSquareCircle,@emph{Dans ce
+carré construire un cercle inscrit à l'intérieur.}}
+
+Nous savons maintenant construire une figure, lui demander d'afficher
+ses axes ou sa grille. Dans cette figure nous savons y construire des
+lignes, des carrés ou des cercles. Comme nous utilisons souvent notre
+figure pour y construire des objets géométriques, nous pourrions lui
+donner un petit nom. Dans le jargon informatique cela s'appelle une
+@emph{variable}.
+
+@cindex variable, déclaration
+@node Les variables
+@section Les variables
+En programmation une variable permet de se souvenir d'un objet pour le
+réutiliser aussi souvent que souhaité. Le nom d'une variable est
+libre. Avant son utilisation, une variable nommée @code{maFigure} doit
+être déclarée en début de code de cette façon@tie{}: @code{| maFigure
+|}.
+
+@drgeoExample{Une variable pour notre figure,firstVariable,
+| maFigure |
+maFigure := DrGeoFigure nouveau.
+maFigure point: 0 @@ 0}
+
+@enumerate
+ @item A la première ligne, la variable @code{maFigure} est déclarée.
+@cindex variable, affectation
+ @item A la deuxième ligne, le résultat du message @code{DrGeoFigure
+ nouveau} est placé dans la variable @code{maFigure} grâce au symbole
+ d'affectation ``@strong{:=}''. Observer le point à la fin de la
+ ligne, c'est un séparateur avec la ligne de code suivante.
+
+ @item A la troisième ligne, nous envoyons un message à la variable
+ @code{maFigure} pour créer un point dans la figure.
+ 
+@end enumerate
+
+@strong{En résumé.} Une variable est constituée d'un nom et d'un
+objet. Donner un nom à un objet -- pour en faire une variable --
+s'appelle une affectation, elle se fait avec le symbole
+``@strong{:=}''. Pour déclarer une variable, il faut la placer entre
+@strong{| |} au début du programme.
+
+L'intérêt d'une variable est son utilisation multiple dans le code.
+
+@drgeoExample{Une variable utilisée plusieurs fois,firstVariableManyUse,
+| maFigure |
+maFigure := DrGeoFigure nouveau.
+maFigure afficherGrille.
+maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
+maFigure segmentDe: 4 @@ 0 a: 0 @@ 4}
+
+@strong{Remarques.} Le point en fin de chaque ligne est un séparateur
+d'instructions. C'est pour cette raison que dans
+l'@ref{firstVariableManyUse} la dernière ligne ne se termine pas par
+un point. Aussi la déclaration de variable @code{| maFigure |} ne se
+termine pas par un point car ce n'est pas une instruction.
+
+Écrire le programme sur plusieurs lignes est donc optionnel et
+l'@ref{firstVariableManyUse} se réécrit en une seule ligne comme suit,
+mais ce n'est pas clair du tout et à ne pas faire@tie{}!
+
+@smallexample
+| maFigure | maFigure := DrGeoFigure nouveau. maFigure afficherGrille. maFigure segmentDe: [../..]
+@end smallexample
+
+@drgeoExercise{Triangle et variable,exeVariableTriangle, @emph{Modifier
+@ref{firstVariableManyUse} pour construire un triangle de sommets les
+points de coordonnées (0;0) (4;0) et (1;3)}}
+
+@cindex milieu, segment
+Outre la figure, une variable peut référencer tout objet géométrique
+créé dans la figure. Dans l'exemple suivant, nous nous souvenons du
+segment créé dans la variable @code{segment}. Celle-ci est ensuite
+utilisée pour créer le milieu du segment.
+
+@drgeoExample{Deux variables,twoVariables,
+| maFigure segment |
+maFigure := DrGeoFigure nouveau.
+maFigure afficherGrille.
+segment := maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
+maFigure milieuDe: segment}
+
+@cindex point, intersection
+Voici un autre exemple avec trois variables pour construire
+l'intersection de deux segments. Sur la figure construite, déplace les
+segments et observe.
+
+@drgeoExample{Trois variables,threeVariables,
+| maFigure segment1 segment2 |
+maFigure := DrGeoFigure nouveau.
+maFigure afficherGrille.
+segment1 := maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
+segment2 := maFigure segmentDe: 2 @@ 3 a: 4 @@ 0.
+maFigure intersectionDe: segment1 et: segment2}
+
+
+@drgeoExercise{Segments liés par leur milieu,exeSegmentsMiddle,
+@emph{Compléter @ref{twoVariables} avec un deuxième segment
+d'extrémités les points (1;2) et (5;6). Construire son milieu et
+relier les deux milieux par un segment.}}
+
+
+@cindex aspect
+@subheading Utiliser, modifier des objets
+Une variable sert aussi à se souvenir de l'objet pour le modifier plus
+tard dans le code. Pour un objet géométrique cela signifie modifier un
+de ses attributs comme son nom (dans la figure), son aspect, sa
+couleur, etc.
+
+Voici quelques possibilités pour modifier l'aspect d'un segment :
+@drgeoExample{Variable et attributs, variableAttribut,
+| segment |
+segment := DrGeoFigure nouveau segmentDe: 0 @@ 0 a: 5 @@ 5.
+segment nommer: 'S'.
+segment	couleur: Color blue.
+segment	epais.
+segment	marquerAvecDisque}
+
+@drgeoFigure{Attributs d'un segment,SegmentAttributs,4}
+
+Quelques observations concernant cet exemple. Nous n'avons pas de
+variable pour nous souvenir de la figure, en effet dans la ligne de
+code qui crée la figure nous créons en suivant le segment, et par la
+suite nous ne manipulons plus la figure. En revanche nous avons une
+variable @code{segment} afin de nous souvenir du segment et modifier
+ses attributs.  Le message à mot clé @code{couleur:} attend comme
+paramètre un objet couleur, un tel objet s'obtient en envoyant à la
+classe @code{Color} un message de type @code{blue}, @code{yellow},
+@code{pink}, etc.@footnote{Ces messages n'ont pas été traduits en
+français, d'où leur nom en anglais.}
+
+Pour modifier l'aspect du segment, nous envoyons toujours les messages
+à la même variable @code{segment}. Nous pouvons alors réécrire le code
+avec une cascade de messages. Cela ne change rien au fonctionnement du
+programme, mais il est plus court et plus
+clair. @ref{variableAttribut} devient alors@tie{}:
+
+@example
+| segment |
+segment := DrGeoFigure nouveau segmentDe: 0 @@ 0 a: 5 @@ 5.
+segment
+   nommer: 'S';
+   couleur: Color blue;
+   epais;
+   marquerAvecDisque
+@end example
+
+Voici une liste de messages pour modifier l'aspect d'un segment et
+d'un point@tie{}:
+@cindex point, forme
+@cindex point, taille
+@cindex ligne, épaisseur
+@cindex ligne, style
+@cindex segment, codage
+@cindex nom
+@cindex couleur
+@table @strong
+ @item Forme de point.
+ @code{croix} @code{carre} @code{rond}
+
+ @item Taille de point.
+ @code{petit} @code{moyen} @code{large}
+
+ @item Épaisseur de ligne.
+ @code{fin} @code{normal} @code{epais}
+
+ @item Style de ligne.
+ @code{plein} @code{tiret} @code{pointille}
+
+ @item Codage de segment
+ @code{marquerAvecCercle} @code{marquerAvecDisque} @code{marquerAvecSimpleTrait}
+ @code{marquerAvecDoubleTrait} @code{marquerAvecTripleTrait}
+
+ @item Nom d'un objet.
+ @code{nommer:}. Le paramètre est une objet de type chaîne de
+ caractères. Par exemple @code{'Toto'}.
+
+ @item Couleur d'un objet.
+  @code{couleur:}. Le paramètre est un objet de type @code{Color}. Par
+ exemple @code{Color black} ou @code{Color orange}.
+@end table
+
+@drgeoExercise{Attributs d'un point,exeAttributsPoint,@emph{Reprendre
+@ref{threeVariables} et modifier à sa guise l'aspect des deux segments
+et du point d'intersection.}}
+
+
+@cindex commentaire
+@node Commentaire
+@section Commentaire
+Lorsque le code d'une figure s'étale sur plusieurs lignes, il est
+parfois utile d'ajouter des commentaires pour expliquer ce que fait le
+code. Un commentaire est une phrase qui n'intervient pas dans le
+programme, elle est uniquement destinée au lecteur du code source,
+c'est-à-dire TOI@tie{}! Un commentaire s'écrit entre guillemets droits
+``@strong{"}''. Il est placé n'importe où et il peut y en avoir
+plusieurs.
+
+@drgeoExample{Commentaire,comment,
+| maFigure segment1 segment2 |
+"ceci est une nouvelle figure"
+maFigure := DrGeoFigure nouveau. 
+maFigure afficherGrille.
+segment1 := maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
+segment2 := maFigure segmentDe: 2 @@ 3 a: 4 @@ 0.
+"Construire l'intersection:"
+maFigure intersectionDe: segment1 et: segment2}
+
+@cindex collection
+@cindex polygone
+@node Collection
+@section Collection
+A l'@ref{exeVariableTriangle}, l'objectif était de créer un
+triangle. Nous allons découvrir une méthode bien plus efficace pour
+créer un triangle comme un polygone à trois sommets.
+
+@drgeoExample{Triangle facile !,arrayTriangle,
+DrGeoFigure nouveau polygone: @{0 @@ 0 . 4 @@ 0 . 1 @@ 3@}}
+
+Ici le message à mot clé @code{polygone:} a comme paramètre une
+collection contenant les coordonnées des sommets du triangle. Elle
+s'écrit @code{@{0 @@ 0 . 4 @@ 0 . 1 @@ 3@}}. Une collection contient
+une série d'objets séparés par des points ``@strong{.}'' Une telle
+collection est dite dynamique car son contenu est évalué -- calculé --
+lors de l'exécution du programme. Dans notre exemple, le contenu est
+une série de coordonnées créées par les quatre messages binaires
+@code{@@}.
+
+Une collection c'est un peu comme les ensembles en
+mathématiques@tie{}: elle commence par une accolade ouvrante @{ et se
+termine par une accolade fermante @}. L'ensemble des diviseurs de 12
+est @{1@tie{}; 2@tie{}; 3@tie{}; 4@tie{}; 6@tie{}; 12@} en écriture
+mathématiques et @{1@tie{}. 2@tie{}. 3@tie{}. 4@tie{}. 6@tie{}. 12@}
+en Pharo.
+
+@drgeoExercise{Parallélogramme facile,exeArrayParallelogram, @emph{A
+l'aide d'une collection et du message} @code{polygone:} @emph{code un
+parallélogramme de sommets (0;0) (4;0) (5;3) (1;3).}}
+
+@cindex bloc de code
+@cindex hasard
+@node Bloc de code
+@section Bloc de code
+Jusqu'à présent, nous produisons des figures qui sont toujours
+identiques lors de l'exécution de son code source. Nous pouvons
+toutefois introduire du hasard en demandant de tirer au hasard un
+nombre entier qui servira d'abscisse ou d'ordonnée. Pour ce faire il
+suffit d'envoyer le message unaire @code{auHasard} à un nombre
+entier. Pour obtenir un nombre entier au hasard entre 1 et 5, écrire
+@code{5 auHasard}.
+
+@drgeoExample{Point au hasard,randomPoint,
+DrGeoFigure nouveau
+   afficherAxes
+   point: 5 auHasard @@ 5 auHasard}
+
+Là pour comprendre, il faut se souvenir de l'ordre d'envoi des
+messages. Le paramètre du message @code{point:} est @code{5 auHasard
+@@ 5 auHasard}. Les deux messages unaires @code{auHasard} sont envoyés
+avant le message @code{@@}, ce qui donne un couple d'abscisse et
+d'ordonnée tirées au hasard pour les coordonnées du point.
+
+Voici une variante de l'exemple précédent qui donne un résultat un peu
+différent@tie{}:
+
+@drgeoExample{Point au hasard@comma{} les négatifs aussi !,randomPoint2,
+DrGeoFigure nouveau
+   afficherAxes;
+   point: (11 auHasard - 6) @@ (11 auHasard - 6)}
+
+@drgeoExercise{Intervalle de valeur,exeRandomInterval,@emph{Dans
+l'@ref{randomPoint2}, quelles sont les valeurs possibles pour les
+abscisses et les ordonnées@tie{}?}}
+
+@subheading Le point farceur
+Ce qui serait amusant c'est de créer une figure avec un point farceur
+qui se déplace au hasard lorsque nous essayons de l'attraper. Pour ce
+faire, les coordonnées du point doivent être tirées au hasard à chaque
+instant. Il suffit que le code @code{5 auHasard @@ 5 auHasard}
+calculant les coordonnées soit exécuté à chaque instant, pour cela
+nous le transformons en un objet @strong{bloc de code}.
+
+Un bloc de code est un objet de type mini-programme qui s'exécute dans
+notre programme autant de fois que nous le souhaitons. Pour obtenir un
+bloc de code, il suffit de placer son code source entre crochets
+@strong{[@tie{}]}. Ainsi le paramètre du message à mot clé
+@code{point:} devient un bloc de code -- bout de programme -- qui sera
+exécuté à chaque fois que nous essayons d'attraper le point à la
+souris@tie{}:
+
+@drgeoExample{Point farceur,jokingPoint,
+DrGeoFigure nouveau
+   afficherAxes;
+   point: [5 auHasard @@ 5 auHasard]}
+
+@drgeoExercise{Point farceur@comma{} les négatifs aussi !,exeJokingPointExe,
+@emph{Modifier l'@ref{randomPoint2} pour en faire un point farceur.}}
+
+
+Dans l'@ref{jokingPoint}, le point farceur a des coordonnées qui sont
+toujours des nombres entiers. Nous aimerions avoir des valeurs
+décimales, par exemple au dixième près comme 2,4 ou 4,8. Pour y
+arriver, une astuce classique en informatique est de tirer au hasard
+un nombre entier plus grand de 1 à 50 -- et non plus de 1 à 5 -- et de
+diviser par 10. Le code devient alors @code{ 50 auHasard / 10}.
+
+@drgeoExample{Point farceur au dixième,jokingFloatPoint,
+DrGeoFigure nouveau
+   afficherAxes;
+   point: [(50 auHasard / 10) @@ (50 auHasard / 10)]}
+
+@drgeoExercise{Point farceur négatif à 0@comma{}5 près,exeJokingNegateFloatPoint,
+@emph{Modifier l'@ref{jokingFloatPoint} pour que les coordonnées du
+point farceur soient des nombres décimaux négatifs comme
+@{-4@tie{};@tie{}-3,5@tie{};@tie{}-3@tie{};@tie{}-2,5...@tie{};@tie{}-1,5@tie{};@tie{}-1@}.
+}}
+
+Voici deux questions un peu difficiles sur le code de
+l'@ref{jokingFloatPoint} :
+
+@drgeoExercise{Pourquoi des parenthèses ?@sup{*},exeJokingPointParenthesis,
+@emph{Pourquoi est-ce que des parenthèses ont été ajoutées au receveur
+et au paramètre du message @code{@@}@tie{}?}}
+
+@drgeoExercise{Parenthèses@comma{} toutes nécessaires ?@sup{*},exeJokingPointNecessaryParenthesis,
+@emph{Est-ce que les parenthèses sont nécessaires autour du receveur
+du message @code{@@} ? Pourquoi ?}}
+
+@subheading Point farceur sur diagonale
+Une chose encore plus forte est de forcer notre point farceur à rester
+sur la diagonale des axes des abscisses et des ordonnées. C'est-à-dire
+sur la droite qui passe par l'origine (0;0) du repère et le point
+(1;1).
+
+Dans la @ref{axisDiagonal}, si nous observons bien le point M situé
+sur cette diagonale, son abscisse et son ordonnée sont les mêmes.
+
+@drgeoFigure{Point sur diagonale,axisDiagonal,6}
+
+@drgeoExercise{Un autre point sur diagonale,exeAnotherPointDiagonal,
+@emph{Ajouter au crayon gris un autre point sur cette diagonale et
+mesurer le plus précisément ses abscisse et ordonnée. Quelle
+constatation faire@tie{}?}}
+
+Pour revenir à notre point farceur, pour le forcer à rester sur la
+diagonale il suffit que ses abscisse et ordonnée soient égales. Pour
+cela, nous utilisons une variable qui est locale au bloc de code et
+que nous déclarons au début du bloc avec le code
+@code{|@tie{}coordonnee@tie{}|}. Cette variable contient alors
+l'unique calcul d'une coordonnée tirée au hasard.
+
+@cindex bloc de code, valeur de retour
+@drgeoExample{Point farceur sur diagonale,jokingFloatDiagonalPoint,
+DrGeoFigure nouveau
+   afficherAxes;
+   afficherGrille;
+   point: [
+      | coordonnee |
+      coordonnee := 50 auHasard / 10.
+      coordonnee @@ coordonnee
+   ];
+   droitePassantPar: 0@@0 et: 1@@1}
+
+A remarquer comment le bloc de code s'est étoffé sur plusieurs
+lignes. C'est en fait souvent le cas. La dernière ligne du bloc --
+@code{coordonnee @@ coordonnee} -- est la valeur retournée et qui sert
+à fixer les coordonnées du point farceur.
+
+Pour plus de clarté, nous introduisons une variable @code{figure} pour
+lui envoyer des messages et éviter cette longue cascade de
+messages. Cela doit être la règle pour toute figure un temps soit peu
+complexe.
+
+@drgeoExample{Point farceur sur diagonale avec variable,jokingFloatDiagonalPointVar,
+| figure |
+figure := DrGeoFigure nouveau.
+figure
+   afficherAxes;
+   afficherGrille.
+figure point: [
+   | coordonnee |
+   coordonnee := 50 auHasard / 10.
+   coordonnee @@ coordonnee].
+figure droitePassantPar: 0@@0 et: 1@@1}
+
+
+@drgeoExercise{Point farceur@comma{} autre droite,exeJokingFloatDiagonalPointAlt,
+@emph{Modifier l'@ref{jokingFloatDiagonalPointVar} afin que l'ordonnée
+du point farceur soit le double de son abscisse. Que se passe-t-il ?
+Construire alors la ligne.}}
+
+@drgeoExercise{Point farceur@comma{} autre droite ?,exeJokingFloatDiagonalPointSquare,
+@emph{Et que se passe-t-il lorsque son ordonnée est le carré de son absicsse ?}}
+
+@drgeoExercise{Je suis un point farceur,exeNameJokingPoint,
+@emph{Modifier le code d'un des programmes de point farceur pour
+nommer le point 'Je suis un farceur'.}}
+
+@node Structures de contrôle
+@section Structures de contrôle
+Supposons que nous souhaitions placer des points sur l'axe des
+abscisses. Un point sur l'axe des abscisses a comme coordonnées (1;0),
+(2;0), (-3;0), (2,5;0), etc. Sa deuxième coordonnée, l'ordonnée, est
+toujours 0 car le point est collé sur l'axe des abscisses !
+
+Pour créer des points d'abscisse respective 1, 2, 3 nous utilisons
+donc le code @code{figure point: 1 @@ 0}, @code{figure point: 2 @@ 0},
+@code{figure point: 3 @@ 0}.
+
+@drgeoExercise{Points sur axe des abscisses,exePointsOnAbscissa1,
+@emph{Écrire le code d'une figure comprenant 10 points placés sur
+l'axe des abscisses dont les abscisses sont
+@{1@tie{};@tie{}2@tie{};@tie{}3@tie{};@tie{}4@tie{};@tie{}5@tie{};@tie{}6@tie{};@tie{}7@tie{};@tie{}8@tie{};@tie{}9@tie{};@tie{}10@}
+}}
+
+La résolution de l'@ref{exePointsOnAbscissa1} n'est pas compliqué,
+mais c'est répétitif d'écrire 10 fois le même code pour créer un
+point.  Et bien cela tombe bien car les programmes sont excellents
+pour répéter des instructions.
+
+@cindex boucle
+@cindex bloc de code, paramètre
+@subsection Boucle
+Pour répéter un ensemble d'instructions de code, nous utilisons une
+@strong{boucle}. Pour résoudre l'@ref{exePointsOnAbscissa1}
+intelligemment, nous utilisons donc une boucle pour les valeurs
+d'abscisse de 1 à 10. Cela donne le code suivant :
+
+@drgeoExample{Boucle de 1 à 10,loop1To10,
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+1 a: 10 faire: [:abscisse |
+   figure point: abscisse @@ 0]}
+
+@cindex boucle, a:faire:
+Ici, nous introduisons un nouveau message à mot clé @code{a:faire:}
+avec deux paramètres. Ce message permet d'exécuter un code pour un
+intervalle de valeur, ici de 1 à 10, de 1 en 1.
+
+Le receveur du message est le nombre 1, la valeur initiale des
+abscisses. Son premier paramètre est le nombre 10, valeur finale des
+abscisses.
+
+Le deuxième paramètre, le bloc de code, est le code à exécuter pour
+chacune des valeurs d'abscisse. Ainsi le bloc @code{[:abscisse |
+figure point: abscisse @@ 0]} est répété 10 fois et le paramètre
+@code{abscisse} prend successivement les valeurs entières de 1 à 10.
+
+Dans le bloc de code la première ligne @code{[:abscisse|} déclare son
+paramètre. Si le bloc avait nécessité deux paramètres, nous écririons
+cette première ligne @code{[:abscisse :ordonnees|}. Le nom des
+paramètres est libre.
+
+@drgeoExercise{Sur l'axe des abscisses@comma{} les négatifs
+aussi,exeNegativeAbscissa, @emph{Écrire une boucle pour placer sur
+l'axe des abscisses les points d'abscisse de -10 à -1}}
+
+@drgeoExercise{Sur l'axe des ordonnées,exeOrdinate, @emph{Écrire une
+boucle pour placer sur l'axe des ordonnées les points d'ordonnée de 1
+à 10}}
+
+@drgeoExercise{Sur la diagonale,exeDiagonalAbscissaOrdinate,
+@emph{Écrire une boucle pour placer sur la diagonale des axes des
+abscisses et des ordonnées les points de coordonnée de 1 à 10}}
+
+@cindex boucle, a:par:faire:
+Nous constatons l'efficacité des boucles pour répéter un grand nombre
+de fois du code. Nous avons fait une boucle sur les valeurs entières
+de 1 à 10. Serait-il possible de le faire avec un pas de 0,5, comme 1
+; 1,5 ; 2 ; 2,5 etc. ?
+
+Oui, il suffit d'utiliser le message @code{a:par:faire:} pour indiquer
+dans le 3ème paramètre le pas de progression dans la boucle. Notre
+code devient alors :
+
+@drgeoExample{Boucle de 1 à 10 à demi-pas,loop1To10Step,
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+1 a: 10 par: 0.5 faire: [:abscisse |
+   figure point: abscisse @@ 0]}
+
+@drgeoExercise{Des pas de lilliputiens,exeLoopStep0dot1,
+@emph{Modifier l'@ref{loop1To10Step} pour afficher les points sur
+l'axes des abscisses de -5 à 5@comma{} tous les 2 dixièmes}}
+
+
+@cindex collection, faire:
+Encore plus fort, comment faire une boucle sur des abscisses
+hétéroclites, non régulières cette fois-ci. Par exemple des abscisses
+comme @{-2 ; 4 ; 1/3 ; 3,14 ; -1/5@} ?
+
+Et bien nous utilisons un autre message @code{faire:} que nous
+envoyons cette fois-ci à une collection. Dans @ref{arrayTriangle} nous
+avons fait connaissance avec une collection de coordonnées de points,
+cette fois-ci nous utilisons une collection de valeurs hétéroclites.
+
+@drgeoExample{Une boucle sur des valeurs en vrac,loopCollection,
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+@{-2 . 4 . 1/3 . 3.14 . -1/5@} faire: [:abscisse |
+   figure point: abscisse @@ 0]}
+
+
+@drgeoExercise{Nuage de points,exePointsOrdinate,
+@emph{A l'aide d'une boucle sur une collection de nombres@comma{}
+placer les points de l'axe des ordonnées @{-1 ; 5,2 ; -3,14 ; 2,6@} }
+}
+
+Lorsque nous plaçons les points, il serait judicieux de nommer les
+points avec leur abscisse.
+
+@drgeoExercise{Points nommés avec leur abscisse,exePointNameAbscissa,
+@emph{Modifier l'@ref{loopCollection} afin que les points aient comme
+nom leur abscisse. Indice : envoyer le message} @code{nommer:} @emph{à
+chaque point créé.}}
+
+Une collection peut contenir n'importe quelle sorte d'objet : des
+valeurs ou des coordonnées de point comme déjà vu précédemment, et
+bien d'autres. Il est aussi possible de faire une boucle sur une
+collection hétéroclite de nombres -- entiers, décimaux,
+fractionnaires.
+
+@drgeoExercise{Points en vrac,exeLoopCollection,
+@emph{À l'aide d'une boucle} @code{faire:} @emph{sur une
+collection@comma{} placer les points de coordonnées (1;1), (-1;1), (3;-1) et (2/3;-1/2)}}
+
+@cindex test
+@subsection Test
+Une chose intéressante à faire est de placer sur une droite les points
+dont les abscisses sont des nombres pairs, c'est à dire divisible par
+deux. Par exemple afficher les points dont les abscisses entre 1 et
+100 sont des nombres pairs.
+
+Pour cela nous devons @emph{tester} si les abscisses sont des nombres
+pairs. @strong{Cela s'appelle tester si une condition est vraie ou
+fausse, c'est fondamental dans l'écriture d'un programme
+informatique.} Voici l'exemple complet. Ne pas hésiter à grossir dans
+la figure pour mieux voir :
+
+@cindex nombre, pair
+@cindex test, siVrai
+@drgeoExample{Abscisse pair,evenAbscissa,
+| figure |
+figure := DrGeoFigure nouveau afficherAxes.
+figure echelle: 5.
+1 a: 100 faire: [:abscisse |
+   abscisse pair siVrai: [figure point: abscisse @@ 0]
+]}
+
+Nous introduisons ici un nouveau message à mot clé @code{siVrai:}. Il
+fonctionne de cette façon@tie{}:
+
+@cartouche
+@verbatim
+(condition) siVrai: [bloc de code à exécuter si condition vraie]
+@end verbatim
+@end cartouche
+
+Le code de notre (condition) est ici @code{abscisse pair}. Le message
+unaire @code{pair} est envoyé à un nombre et ce dernier nous répond
+par un objet "vrai" ou "faux" (@code{true} ou @code{false} en anglais)
+selon que le nombre est pair ou non. Lorsque la condition est vraie
+alors le bloc en paramètre du message @code{siVrai:} est exécuté et le
+point est créé. Sinon il ne se passe rien et la boucle reprend avec la
+valeur suivante de l'abscisse.
+
+@cindex nombre, impair
+@cindex nombre, premier
+@cindex nombre, entier
+@cindex nombre, décimal
+@cindex nombre, positif
+Il existe de nombreux messages pour tester des conditions. En
+voici quelques uns à envoyer à un nombre : @code{impair},
+@code{estPremier}, @code{estEntier}, @code{estDecimal},
+@code{positif}, @code{strictementPositif}.
+
+@drgeoExercise{Conditions sur nombre,exeNumberTesting, @emph{Tester
+chacun des messages ci-dessus en l'envoyant aux nombres 0 ; 1 ; 2 ; -5
+; 3,4. Pour afficher le résultat de chaque test, lancer le code avec
+la commande @emph{"Print it"} du menu de l'espace de travail ou le
+raccourci clavier @kbd{Ctrl-p}.}}
+
+Afficher des nombres pairs n'est pas très intéressant, mais finalement
+avec peu de modifications nous pouvons afficher les nombres premiers.
+
+@drgeoExercise{Nombres premiers,exePrimeNumbers, @emph{Modifier
+l'@ref{evenAbscissa} afin d'afficher uniquement les nombres dont
+l'abscisse est un nombre premier. Nommer les points avec leur
+abscisse.}}
+
+@c exemple avec les diviseurs commun

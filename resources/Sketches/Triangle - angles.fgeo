@@ -1,0 +1,57 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Triangle - angles" origin_x="-3.336363636363636" origin_y="2.2545454545454544" scale="55">
+<point color="Red" delta="(-4.0@ -21.0)" id="1041415871" locked="False" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>-6.1344919786096215</x>
+<y>3.267112299465238</y></point>
+<point color="Red" delta="(-20.0@1.0)" id="1018702626" locked="False" masked="False" name="C" style="Cross" thickness="Normal" type="Free">
+<x>-6.397058823529415</x>
+<y>0.3676470588235293</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="247820275" mark="none" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1041415871"/> 
+<parent ref="1018702626"/> </segment>
+<point color="Red" delta="(7@7)" id="1053139523" locked="False" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-3.144117647058824</x>
+<y>0.3858288770053464</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="200442875" mark="none" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1018702626"/> 
+<parent ref="1053139523"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="189782220" mark="none" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1053139523"/> 
+<parent ref="1041415871"/> </segment>
+<angle color="Green" delta="(7@7)" id="139725637" locked="False" masked="False" name="" type="3pts">
+<parent ref="1053139523"/> 
+<parent ref="1041415871"/> 
+<parent ref="1018702626"/> </angle>
+<angle color="Black" delta="(7@7)" id="182340753" locked="False" masked="False" name="" type="3pts">
+<parent ref="1041415871"/> 
+<parent ref="1018702626"/> 
+<parent ref="1053139523"/> </angle>
+<angle color="Blue" delta="(7@7)" id="82328109" locked="False" masked="False" name="" type="3pts">
+<parent ref="1018702626"/> 
+<parent ref="1053139523"/> 
+<parent ref="1041415871"/> </angle>
+<line anchor="0.5" color="Black" delta="(7@7)" id="241505084" masked="False" name="" style="dot" thickness="Dashed" type="2pts">
+<parent ref="1018702626"/> 
+<parent ref="1053139523"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" id="167259371" masked="False" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="189782220"/> 
+<parent ref="1018702626"/> </line>
+<point color="Red" delta="(7@7)" id="233671890" locked="False" masked="False" name=" " style="Cross" thickness="Normal" type="On_curve">
+<parent ref="167259371"/> 
+<value>0.94304337548867</value></point>
+<point color="Red" delta="(7@7)" id="115157429" locked="False" masked="False" name=" " style="Cross" thickness="Normal" type="On_curve">
+<parent ref="241505084"/> 
+<value>0.07525711979917876</value></point>
+<angle color="Blue" delta="(7@7)" id="217925448" locked="False" masked="False" name="" type="3pts">
+<parent ref="233671890"/> 
+<parent ref="1018702626"/> 
+<parent ref="115157429"/> </angle>
+<angle color="Green" delta="(7@7)" id="105951186" locked="False" masked="False" name="" type="3pts">
+<parent ref="1041415871"/> 
+<parent ref="1018702626"/> 
+<parent ref="233671890"/> </angle>
+<text color="Black" delta="(7@7)" id="176090340" locked="False" masked="False" name="" type="free">
+<contents>The measures of the interior angles of&#10;the triangle always add up to 180 degrees.&#10;&#10;Move the  point A, B or C!</contents>
+<x>-7.781818181818185</x>
+<y>5.318181818181818</y></text></drgeo></drgenius>

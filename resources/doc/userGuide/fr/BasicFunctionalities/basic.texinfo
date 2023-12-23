@@ -1,0 +1,644 @@
+@c Fonctions géométriques de base
+
+@node Fonctions de base
+@chapter Fonctions de base
+
+@menu
+* Points::              Points libre, milieu, mobile sur une ligne,...
+* Lignes::              Droite, segment, cercle, vecteur,...
+* Transformations::     Rotation, Symétrie centrale,...
+* Numériques et texte:: Distances entre objets, coordonnées, valeur libre,...
+* Script::              Traitements informatiques 
+* Macro constructions:: Des constructions complexes en trois clics
+* Autres outils::       Gomme, style, grille,...
+@end menu
+
+Ce chapitre décrit les outils utilisés pour construire une figure
+géométrique.  Ces outils sont rangés dans six groupes accessibles à
+partir de la seconde barre d'outils de @drgeo.
+
+@drgeoFigure{Catégories d'outils de @drgeo{} et leurs
+descriptions,fig3,12}
+
+Par défaut, @drgeo{} opère en mode fonctionnel. L'utilisateur clique
+sur un onglet de fonction puis sur le bouton d'une fonction précise ou
+il choisit une fonction depuis un menu@tie{}; ensuite seulement il
+sélectionne le ou les objet(s) de la figure pour appliquer la fonction
+une seule fois. À ce moment, l'application retourne dans son état par
+défaut où l'utilisateur choisit et déplace les objets. A tout moment,
+l'utilisateur peut abandonner la fonction avant la fin de la sélection
+finale avec le bouton ``Choisir et Déplacer'', ou le menu
+...@clicksequence{Édition @click{} Choisir et déplacer}...
+
+C'est le contraire du mode modale, où le clic sur une fonction place
+l'application dans un mode permanent où la commande s'utilise
+plusieurs fois de suite. Pour activer le mode modale, l'utilisateur
+choisit le menu ...@clicksequence{Édition @click{} Création
+multiple}... Les commandes pour éditer les styles et propriétés d'un
+objet sont toujours modales, cela permet de modifier plusieurs objets
+sans avoir à réactiver la commande. L'utilisateur doit sortir
+explicitement de ces fonctions modales en choisissant la commande
+choisir et déplacer ou toute autre commande de construction.
+
+Lorsque l'utilisateur clique sur un des boutons de cette barre
+d'outils, une liste supplémentaire de boutons s'affiche
+immédiatement. Celle-ci regroupe des fonctions d'une même famille.
+
+De la gauche vers la droite, nous avons accès aux outils pour
+construire des points et des lignes, utiliser des transformations,
+calculer des valeurs, animer des points mobiles, gérer les
+macro-constructions.
+
+Ces fonctions se retrouvent à l'identique dans le menu en haut de
+chaque fenêtre de @drgeo. Nous présentons leur contenu dans les
+sections suivantes.
+
+@node Points
+@section Points
+
+@heading Point
+@cindex point libre
+@anchor{free_point}
+Crée un point libre dans le plan ou sur un objet unidimensionnel
+(segment, demi-droite, droite, arc de cercle, cercle, lieu)@tie{}:
+
+@enumerate
+@item Dans le premier cas, le point créé est mobile librement dans toute la
+figure. Pour le construire l'utilisateur clique simplement sur le
+fond.
+
+@item  Dans le deuxième cas, le point n'est libre que dans l'objet
+  unidimensionnel (ligne) où il a été créé@tie{}; il est collé sur
+  l'objet. Pour construire ce type de point, l'utilisateur clique sur
+  une ligne (c.-à-d. droite, demi-droite, segment, cercle, arc de
+  cercle, etc.).
+@end enumerate
+
+
+@cindex point intersection
+Depuis cette commande, l'utilisateur crée un @strong{point
+d'intersection} entre deux lignes (c.-à-d. droite, demi-droite,
+segment, arc de cercle, cercle)@tie{}; il suffit de cliquer à
+l'intersection de celles-ci, @drgeo{} l'indique d'ailleurs par une
+bulle d'aide @emph{Intersection}.
+
+
+@subheading Comment placer un point avec des coordonnées données@tie{}?
+
+Une possibilité est de placer deux valeurs libres dans la figure --
+@xref{numeric_tool,,outils numériques} -- puis de construire le point
+ayant pour coordonnées ces deux valeurs --
+@xref{coordinate_point,,point défini par ses coordonnées}. Cette
+possibilité a un avantage sur la précédente, le point ainsi construit
+ne peut pas être déplacé directement à la souris, le point est en
+quelque sorte bloqué dans sa position.
+
+
+@heading Milieu
+@cindex point milieu
+Crée le milieu de deux points ou d'un segment@tie{}:
+
+@enumerate
+@item  Dans le premier cas, l'utilisateur sélectionne deux points.
+@item  Dans le deuxième cas, l'utilisateur sélectionne simplement un
+segment.
+@end enumerate
+
+@heading Intersection
+@cindex point intersection
+Crée la ou les intersection(s) de deux lignes (i.e. droite,
+demi-droite, segment, arc de cercle, cercle). L'utilisateur doit
+sélectionner deux lignes. Lorsqu'une des lignes choisie est un arc de
+cercle ou un cercle alors deux points d'intersection sont créés.
+
+@heading Coordonnées
+@cindex point défini par coordonnées
+@anchor{coordinate_point}
+Crée un point défini par ses coordonnées. L'utilisateur doit soit
+sélectionner un script retournant un couple de coordonnées --
+@xref{scriptCoordinates,,coordonées par script} -- soit sélectionner
+deux nombres@tie{}: le premier correspond à l'abscisse, le second à
+l'ordonnée.
+
+@subheading Comment placer un point contraint par ses coordonnées@tie{}?
+
+Cette fonction est largement utilisée lorsque nous souhaitons par
+exemple construire le lieu d'un point. Cette construction suppose au
+préalable l'existence de deux valeurs -- @xref{numeric_tool,,outils
+numériques} -- le point est ensuite construit en sélectionnant ces
+deux valeurs.
+
+
+@node Lignes
+@section Lignes
+
+@heading Droite
+@cindex droite
+Crée une droite définie par deux points. L'utilisateur sélectionne
+deux points.
+
+
+@heading Droite parallèle
+@cindex droite parallèle
+Crée une ligne parallèle à une direction et passant par un
+point. L'utilisateur sélectionne un point et une direction
+(c.-à-d. une droite, une demi-droite, un segment ou un vecteur).
+
+@heading Droite perpendiculaire
+@cindex droite perpendiculaire
+Crée une droite perpendiculaire à une direction et passant par un
+point. L'utilisateur sélectionne un point et une direction
+(c.-à-d. une droite, une demi-droite, un segment ou un vecteur).
+
+@heading Médiatrice
+@cindex médiatrice
+Crée la médiatrice d'un segment. L'utilisateur sélectionne un segment
+ou deux points, extrémités du segment.
+
+@heading Bissectrice
+@cindex bissectrice
+Crée la bissectrice d'un angle formé par trois points. L'utilisateur
+sélectionne soit un angle géométrique (défini par trois points), soit
+trois points, la bissectrice passe alors par le deuxième point.
+
+@heading Demi-droite
+@cindex demi-droite
+Crée une demi-droite définie par deux points. L'utilisateur
+sélectionne deux points, le premier est l'origine, le second
+appartient à la demi-droite.
+
+@heading Segment
+@cindex segment
+Crée un segment donné par deux points.
+
+@heading Vecteur
+@cindex vecteur
+Crée un vecteur donné par deux points. L'utilisateur sélectionne deux
+points, le premier est l'origine, le second est l'extrémité. Une fois
+le vecteur créé, celui-ci s'attrape et se déplace indépendamment des
+deux points. Ceci reste vrai pour un vecteur construit par une
+transformation -- @xref{transformations}.
+
+@heading Cercle
+@cindex cercle
+Crée un cercle. L'utilisateur crée un cercle selon différentes
+sélections@tie{}:
+@enumerate
+ @item  le centre et un point du cercle@tie{};
+ @item  le centre et un segment dont la longueur est le rayon du cercle@tie{};
+ @item  le centre et un nombre (le rayon du cercle).
+@end enumerate
+
+Pour créer un cercle à partir de son centre et son rayon, vous avez
+besoin d'un point et d'une valeur. Cette dernière doit exister avant
+de créer le cercle. Elle est de n'importe quelle sorte@tie{}: une
+valeur calculée comme une distance ou une valeur libre que vous
+éditez. Pour créer une valeur voir les outils Numériques --
+@xref{numeric_tool,,outils numériques}.
+
+@heading Arc de cercle
+@cindex arc de cercle, trois points
+Crée un arc de cercle passant par trois points. Le premier est
+l'origine de l'arc, le troisième est l'extrémité, le second est un
+point de l'arc.
+
+
+@cindex arc de cercle, centre
+@heading Arc (centre)
+Crée un arc de cercle défini par son centre, une origine de l'arc et
+son ouverture. Le premier point choisi est le centre, le deuxième
+l'origine et le troisième point donne l'angle au centre de l'arc.
+
+ 
+@heading Polygone
+@cindex polygone, quelconque
+Crée un polygone défini par n points. L'utilisateur sélectionne dans
+la figure n points, sommets du polygone ; puis pour indiquer la fin de
+sa sélection des sommets, il clique à nouveau sur le premier point
+choisi. Le premier et le dernier sont donc un seul et même point ce
+qui indique à @drgeo{} que la sélection est terminée.
+
+Le polygone accepte des points mobiles sur son périmètre, mais il
+n'est pas possible de faire une intersection avec une autre ligne. En
+revanche la construction de l'image d'un polygone par une
+transformation géométrique est acceptée.
+
+@heading Polygone régulier
+@cindex polygone, régulier
+Crée un polygone régulier défini par deux points et une valeur
+numérique. L'utilisateur sélectionne son centre, un sommet et une
+valeur indiquant le nombre de sommets.
+
+@heading Lieu d'un point
+@cindex lieu géométrique
+Crée un lieu défini par deux points. L'utilisateur sélectionne deux
+points, l'un des deux est un point sur une ligne, l'autre est un point
+sous contraintes du premier (c.-à-d. quand l'un bouge, l'autre fait de
+même).
+
+@node Transformations
+@section Transformations
+@anchor{transformations}
+@cindex transformations
+
+@heading Symétrie centrale
+@cindex symétrie centrale
+Crée l'image d'un objet par une symétrie centrale. L'utilisateur
+sélectionne l'objet à transformer et le centre de symétrie (un
+point). Quand l'utilisateur veut construire l'image d'un point, le
+premier point sélectionné est le centre de la symétrie.
+
+@heading Réflexion (symétrie axiale)
+@cindex symétrie axiale
+@cindex réflexion
+Crée l'image d'un objet par une symétrie axiale. L'utilisateur
+sélectionne l'objet à transformer et l'axe de symétrie (une
+droite). Quand l'utilisateur veut construire l'image d'une droite, la
+première droite sélectionnée est l'axe de la symétrie.
+
+
+@heading Translation
+@cindex translation
+Crée l'image d'un objet par une translation. Quand l'utilisateur veut
+construire l'image d'un vecteur, le premier vecteur sélectionné est le
+vecteur de translation.
+
+@heading Rotation
+@cindex rotation
+Crée l'image d'un objet par une rotation. L'utilisateur sélectionne
+l'objet à transformer, le centre et l'angle de la rotation. Quand
+l'utilisateur veut créer l'image d'un point, le premier point
+sélectionné est le centre de la rotation.
+
+L'angle de la rotation se définit de plusieurs façons@tie{}:
+
+@itemize
+@item
+  @strong{valeur numérique}@tie{}: l'angle est alors exprimé en
+  radians (Exemples de valeurs numériques@tie{}: valeur libre,
+  distance entre deux points, longueur d'un segment, une coordonnée,
+  une valeur retournée par un script Pharo @drgeo, etc.)@tie{};
+@item
+  @strong{la mesure d'un angle géométrique ou orienté formé par trois
+points}@tie{}: sa mesure est alors exprimée en degrés. La mesure
+appartient à l'intervalle [0@tie{};@tie{}180] ou
+[0@tie{};@tie{}360[. L'angle doit être défini avec une des commandes
+décrites dans la section angle@tie{};
+@item
+  @strong{la mesure d'un angle orienté de deux vecteurs}@tie{}: sa
+  mesure est exprimée en degrés et couvre l'intervalle
+  ]-180@tie{};@tie{}180]. L'angle doit être défini avec la commande
+  angle orienté en choisissant deux vecteurs.
+@end itemize
+
+@heading Homothétie
+@cindex homothétie
+Crée l'image d'un objet par une homothétie. L'utilisateur sélectionne
+l'objet à transformer, le centre et le facteur (c.-à-d. un
+nombre). Quand l'utilisateur veut créer l'image d'un point, le premier
+point sélectionné est le centre de l'homothétie.
+
+
+@node Numériques et texte
+@section Numériques et texte
+@anchor{numeric_tool}
+
+@heading Distance, longueur & nombre
+@cindex nombre
+@cindex pente de droite
+@cindex distance à une droite
+@cindex périmètre cercle
+@cindex longueur segment
+@cindex norme vecteur
+@cindex longueur arc de cercle
+@cindex valeur libre
+Crée une valeur numérique. La valeur numérique, selon la sélection de
+l'utilisateur, est calculée ou bien saisie@tie{}:
+@enumerate
+ @item  pour deux points c'est la distance entre ces deux points@tie{};
+ @item  pour un segment c'est la longueur de ce segment@tie{};
+ @item  pour un vecteur c'est la norme de ce vecteur@tie{};
+ @item  pour un cercle c'est le périmètre de ce cercle@tie{};
+ @item  pour un arc de cercle c'est la longueur de cet arc@tie{};
+ @item  pour une droite c'est la pente de cette droite@tie{};
+ @item  pour une droite et un point c'est la distance entre ce point et
+   la droite@tie{};
+ @item  un @strong{clic souris directement sur le fond de la figure}
+   permet à l'utilisateur d'entrer une nouvelle valeur (c.-à-d. une
+   valeur libre).
+@end enumerate
+
+Cette dernière possibilité est très intéressante dans certaines
+situations. Elle permet de fixer une longueur, le rayon d'un cercle, la
+mesure d'angle (en radians) ou les coordonnées d'un point. La valeur
+est ensuite utilisée à partir des outils spécifiques de construction
+de cercle, de rotation et de point défini par ses coordonnées.
+
+@heading Angle orienté
+@cindex angle orienté
+Calcule la mesure d'un angle orienté défini par trois points ou deux
+vecteurs.  Dans le premier cas, la mesure de l'angle appartient à
+l'intervalle [0@tie{};@tie{}360[, dans le second cas à l'intervalle
+]-180@tie{};@tie{}180].
+
+@heading Angle géométrique
+@cindex angle géométrique
+Calcule la mesure d'un angle géométrique défini par trois points dont
+la mesure appartient à l'intervalle [0@tie{};@tie{}180].
+
+@heading Coordonnées, équation
+@cindex coordonnées, point
+@cindex coordonnées, vecteur
+Crée les coordonnées (abscisse et ordonnée) d'un point ou d'un
+vecteur. Donne l'équation d'une droite.
+
+
+
+@heading Texte
+@cindex texte libre
+Ajoute un bloc de texte dans la figure. Cliquer à l'emplacement
+souhaité, puis éditer directement le texte.
+
+Pour éditer à nouveau le texte, choisir l'outil de modification des
+propriétés des objets -- @xref{edit_property,,éditer propriétés}.
+
+
+@node Script
+@section Script
+@anchor{script-tool}
+
+@heading Utiliser un script
+@cindex script, utiliser
+Insère dans la figure un script préalablement défini. Après avoir
+choisi le script, la commande attend de l'utilisateur de choisir 0 ou
+@emph{n} objets de la figure, puis un lieu désigné de la figure où
+afficher son résultat.
+
+Un script s'utilise pour ses effets de bord sur la figure --
+modifications des autres objets de la figure -- ou pour sa valeur de
+retour alors utilisée dans les constructions suivantes.
+
+@heading Modifier un script
+@cindex script, éditer
+Édite un script Pharo. Un éditeur de scripts est ouvert dans
+lequel l'utilisateur édite le script choisi.
+
+
+@heading Créer un script
+@cindex script, créer
+Crée un script Pharo. L'utilisateur choisit le nom, une
+description et les paramètres du script.
+
+Un éditeur de script est ouvert dans lequel l'utilisateur édite le
+script choisi. Pour créer de nouvelle méthode, il suffit de
+sauvegarder avec la commande @kbd{Ctrl-s}.
+
+Les scripts Pharo @drgeo{} sont couverts en détails dans la partie
+des fonctionnalités avancées -- @xref{advancedFeatures,,fonctionalités
+avancées} -- et exactement à la section script -- @xref{script}.
+
+@node Macro constructions
+@section Macro construction
+@cindex macro-construction
+
+@heading Construire une macro
+Extrait une séquence de construction d'une figure et la transforme
+en macro-construction. 
+
+@heading Exécuter/éditer une macro
+Exécuter une macro-construction.  La macro-construction est soit
+fraîchement créée ou chargée depuis un fichier.
+
+Les macro-constructions sont présentées en détail dans la section
+macro-construction -- @xref{macroConstruction,,macro-construction}.
+
+
+@node Autres outils
+@section Autres outils
+@cindex outils divers
+
+@subsection Supprimer un objet
+@cindex supprimer objet
+@cindex gomme
+@drgeoIcon{fig30}
+
+Un objet d'une figure est supprimé en activant le menu
+...@clicksequence{Éditer @click{} Supprimer}... puis en le choisissant
+dans la figure. Les objets dépendants de l'objet effacé sont également
+supprimés. Lors de la suppression d'une ligne, les points utilisés
+pour la construire sont conservés. Cette action s'annule avec le
+bouton défaire de la barre d'outils ou du menu Éditer.
+
+@subsection Style d'un objet
+@cindex style d'un objet
+@cindex nommer objet
+@cindex renommer objet
+@cindex masquer objet
+@cindex cacher objet
+@drgeoIcon{fig29}
+
+Chaque objet géométrique a ses propres attributs de style comme la
+couleur, l'épaisseur, l'étiquette, la taille et la forme. De plus, il
+est possible de cacher temporairement un objet sans le supprimer. Par
+exemple, pour cacher des constructions intermédiaires sans les
+supprimer. Tous ces attributs s'ajustent depuis le panneau latéral qui
+apparaît lorsque l'utilisateur choisit un objet de la figure. Pour
+cela il faut d'abord se mettre dans le mode d'édition de style en
+cliquant sur le bouton dédié de la barre d'outils.
+
+@subheading Style de point
+@cindex style, point
+@cindex coller point
+@cindex verrouiller point
+Le panneau latéral de style d'un point concerne tous les types de
+points. Il est possible d'ajuster la couleur, la forme, la taille, le
+nom et la visibilité. Pour les points libres dans le plan ou sur une
+ligne, une option de verrouillage à leur emplacement est
+proposée. Enfin l'option commentaire désactive l'affichage de sa bulle
+d'information lors de son survol par le curseur souris.
+
+@drgeoFigure{Panneau d'édition de style d'un point,fig31,4}
+
+
+@subheading Style de ligne
+@cindex style, ligne
+Le panneau latéral de style d'une ligne concerne les droites, les
+demi-droites, les segments, les vecteurs, les cercles, les arcs de
+cercle, les lieux de points et les polygones. Il est possible
+d'ajuster la couleur, l'épaisseur, le style de trait, d'adjoindre des
+flèches pour les segments et d'éditer le nom et la
+visibilité. Certaines propriétés ne s'appliquent que pour des types
+précis de lignes, comme les marques et flèches sur segments.
+
+@cindex marquer un segment
+Par ailleurs, pour les segments, des options supplémentaires
+``Flèche'' et ``Marque'' offre la possibilité d'adjoindre des flèches
+et des marques sur les segments.
+
+@drgeoFigure{Panneau d'édition de style d'une ligne,fig32,4}
+
+
+@subheading Style de valeur
+@cindex style, valeur
+@cindex coller valeur
+@cindex verrouiller valeur
+Le panneau latéral de style d'une valeur concerne toutes les sortes de
+valeurs@tie{}: saisie par l'utilisateur ou correspondant à une
+mesure. Il permet de modifier la couleur d'affichage, d'éditer le nom
+et la visibilité de la valeur. Une option de verrouillage à
+l'emplacement est également proposée.
+
+@drgeoFigure{Panneau d'édition de style d'une valeur,fig33,4}
+
+@subheading Style de texte et script
+@cindex style, texte
+@cindex style, script
+Le panneau latéral de style de texte et de script permet d'ajuster,
+entre autres choses, la couleur, l'arrière-plan, la bordure, la taille
+
+@drgeoFigure{Panneau d'édition de style d'un texte ou script,fig4,4}
+
+@subsection Propriété d'un objet
+@cindex propriété objet
+@anchor{edit_property}
+
+@drgeoIcon{fig58} 
+
+Les propriétés de certains objets sont modifiables numériquement. Sont
+concernés les points libres dans le plan ou sur une courbe, les
+valeurs numériques libres et les scripts. Pour ce faire, après avoir
+sélectionné cet outil, choisir un de ces objets@tie{}; une boîte de
+dialogue s'affichera alors@tie{}:
+
+@subheading Point libre
+@cindex coordonnées point libre
+En choisissant un point libre, une boîte de dialogue permet de
+modifier son abscisse et son ordonnée.
+
+@drgeoFigure{Éditer les coordonnées d'un point libre,fig60,8}
+
+@subheading Point libre sur une courbe
+@cindex abscisse point sur ligne
+En choisissant un point libre sur une courbe, une boîte de dialogue
+permet de modifier son abscisse curviligne. Cette dernière est
+normalisée sur l'intervalle [0@tie{};@tie{}1].
+
+@drgeoFigure{Éditer l'abscisse curviligne d'un point libre sur une
+  ligne,fig61,8}
+
+@subheading Valeur libre
+@cindex valeur libre éditer
+En choisissant une valeur libre, une boîte de dialogue permet d'éditer
+sa valeur.
+
+@drgeoFigure{Éditer une valeur libre,fig62,8}
+
+@subheading Script
+@cindex script, éditer
+En choisissant un script, un navigateur de code permet de l'étudier et
+de le modifier. Pour sauvegarder toute modification apportée au
+script, utiliser la combinaison de touche @kbd{Ctrl-s} ou
+l'entrée @emph{Do-it} dans le menu contextuel au-dessus du script
+(clic droit de la souris pour l'afficher).
+
+@drgeoFigure{Éditer un script,fig63,8}
+
+@subheading Texte
+@cindex texte éditer
+En choisissant un texte, une boîte de dialogue permet de
+l'éditer. Dans celle-ci, le texte peut être mise en forme sur
+plusieurs lignes à l'aide de retour chariot -- touche clavier
+@kbd{Entrée}.
+
+@drgeoFigure{Éditer un texte,fig65,6}
+
+
+@subsection Déplacer, zoomer la figure
+@cindex déplacer figure
+La figure se déplace à l'aide des molettes dans le coin en bas à
+droite de la figure ou bien directement avec le bouton droit de la
+souris.
+
+@cindex grossissement figure
+@cindex zoom figure
+L'échelle de la figure se modifie à l'aide de la molette en haut à
+droite de la fenêtre. La molette de la souris offre cette même
+fonction ; presser simultanément la touche @kbd{Shift} du clavier
+augmente la vitesse de grossissement.
+
+@subsection Déplacer un objet
+@cindex déplacer objet
+@drgeoIcon{fig28}
+
+Un objet est déplacé par glisser-déposer. La figure est alors
+redessinée en respectant ses propriétés. Quasiment tous les objets
+géométriques peuvent être déplacés. Si nécessaire, @drgeo{} déplace
+les points libres associés. Par exemple, quand l'utilisateur déplace
+une droite définie par deux points, @drgeo{} déplace les deux points
+simultanément.
+
+
+@subheading Muter un point
+@cindex muter point
+Dans ce mode, il est également possbile de changer la nature d'un
+point d'une des natures suivantes@tie{}:
+@itemize
+@item  point libre dans le plan
+@item  point libre sur une ligne
+@item  point d'intersection
+@end itemize
+
+vers un point d'une des natures suivantes@tie{}:
+@itemize
+@item  point libre dans le plan
+@item  point libre sur une ligne
+@item  point d'intersection
+@end itemize
+
+Par exemple transformer un point libre dans le plan en un point
+d'intersection. Il existe toutefois une contrainte@tie{}: il n'est pas
+possible de muter un point vers une ligne (libre ou intersection) plus
+``jeune'' que le point. Plus jeune signifie que la ligne a été créée
+après le point.
+
+La touche @kbd{Shift} enfoncée en même temps qu'un point est
+attrapé et déplacé indique toujours par des bulles d'information les
+points qui peuvent être mutés et les destinations (plan, ligne,
+intersection de lignes) possibles.
+
+@drgeoFigure{Appuyer sur @kbd{Shift} pour muter un point,mutate,7}
+
+
+
+@cindex fusion point
+@subheading Fusion de points
+Dans ce mode, deux points libres peuvent être fusionés@tie{}: pour
+cela, déplacer un point au dessus du deuxième point destination et
+attendre quelques secondes avec le bouton souris toujours appuyé, les
+points sont fusionnés.
+
+@subheading Cloner des lignes
+@cindex cloner ligne
+Différents types de lignes peuvent être clonées@tie{}: pour cela
+presser et garder appuyé le bouton de la souris sur la ligne à cloner,
+une ligne clonée s'affiche alors prête à être positionnée à
+l'emplacement souhaité par l'utilisateur.
+
+
+@subsection Grille et axes
+@cindex grille afficher
+@cindex axes
+Il est possible d'afficher ou cacher une grille dans toute figure de
+@drgeo, la commande est accessible depuis le bouton @drgeoIcon{fig2}
+de la boîte d'outils. La grille s'ajuste selon l'échelle de la
+figure. Le menu ...@clicksequence{Édition @click{} Axes}... donne lui
+accès aux axes des abscisses et des ordonnées.  Enfin, lors de la
+sauvegarde d'une figure, l'état de la grille est également sauvegardé
+(affichée ou non affichée).
+
+@cindex grille aimantée
+Lors de la création ou du déplacement de points, il est possible de
+coller ceux-ci à la grille -- ou au mieux selon la contrainte du
+point. Pour cela il suffit d'activer la fonction grille aimantée avec
+le bouton @drgeoIcon{fig5} de la boîte d'outils.
+

@@ -1,0 +1,49 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<macro name="Cercle circonscrit">
+<description>Choisir trois points.&#10;Seront construits :&#10; - le triangle formé par ces trois points&#10; - le centre du cercle circonscrit&#10; - le cercle circonscrit du triangle</description>
+<input>
+<point id="1049436752" type="Free">
+<x>-1.45588235294118</x>
+<y>-1.588235294117647</y></point>
+<point id="822381394" type="Free">
+<x>-3.220588235294107</x>
+<y>2.3235294117647</y></point>
+<point id="867739654" type="Free">
+<x>-5.89705882352943</x>
+<y>-0.558823529411762</y></point></input>
+<output>
+<final>
+<segment id="216869904" type="2pts">
+<parent ref="822381394"/> 
+<parent ref="1049436752"/> </segment></final>
+<final>
+<segment id="70021180" type="2pts">
+<parent ref="1049436752"/> 
+<parent ref="867739654"/> </segment></final>
+<final>
+<segment id="53444178" type="2pts">
+<parent ref="822381394"/> 
+<parent ref="867739654"/> </segment></final>
+<hidden>
+<point id="224717059" type="Middle_segment">
+<parent ref="216869904"/> </point></hidden>
+<hidden>
+<point id="154201823" type="Middle_segment">
+<parent ref="70021180"/> </point></hidden>
+<hidden>
+<line id="223122945" type="perpendicular">
+<parent ref="216869904"/>
+<parent ref="224717059"/></line></hidden>
+<hidden>
+<line id="73328985" type="perpendicular">
+<parent ref="70021180"/>
+<parent ref="154201823"/></line></hidden>
+<final>
+<point extra="0" id="1049726023" type="Intersection">
+<parent ref="223122945"/> 
+<parent ref="73328985"/> </point></final>
+<final>
+<circle id="90768810" type="2pts">
+<parent ref="1049726023"/> 
+<parent ref="822381394"/> </circle></final></output></macro></drgenius>

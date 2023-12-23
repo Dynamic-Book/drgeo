@@ -1,0 +1,81 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<macro name="Conic 5 points">
+<description>Define a conic given five points</description>
+<input>
+<point id="852272662" name=" " type="Free">
+<x>3.0588235294117645</x>
+<y>1.9411764705882353</y></point>
+<point id="808167964" name=" " type="Free">
+<x>2.0</x>
+<y>-2.676470588235294</y></point>
+<point id="949217882" name=" " type="Free">
+<x>-2.6176470588235294</x>
+<y>-1.6176470588235288</y></point>
+<point id="870566088" name=" " type="Free">
+<x>-2.117647058823532</x>
+<y>0.647058823529411</y></point>
+<point id="1065543450" name=" " type="Free">
+<x>-0.5882352941176471</x>
+<y>1.9705882352941178</y></point></input>
+<output>
+<hidden>
+<line id="74505547" name="(A1B2)" type="2pts">
+<parent ref="852272662"/> 
+<parent ref="870566088"/> </line></hidden>
+<hidden>
+<line id="25165939" name="(B1A2)" type="2pts">
+<parent ref="1065543450"/> 
+<parent ref="808167964"/> </line></hidden>
+<hidden>
+<point extra="0" id="-121887796" name=" " type="Intersection">
+<parent ref="74505547"/> 
+<parent ref="25165939"/> </point></hidden>
+<hidden>
+<point id="1066011147" name=" " type="Free">
+<x>-4.050000666666667</x>
+<y>1.2333333333333336</y></point></hidden>
+<hidden>
+<circle id="57216408" name="" type="2pts">
+<parent ref="-121887796"/> 
+<parent ref="1066011147"/> </circle></hidden>
+<hidden>
+<point id="189034205" name=" " type="On_curve">
+<parent ref="57216408"/> 
+<value>0.702746</value></point></hidden>
+<hidden>
+<line id="79237888" name="(XZ)" type="2pts">
+<parent ref="-121887796"/> 
+<parent ref="189034205"/> </line></hidden>
+<hidden>
+<line id="18508595" name="(C1A2)" type="2pts">
+<parent ref="949217882"/> 
+<parent ref="808167964"/> </line></hidden>
+<hidden>
+<point extra="0" id="-59060675" name=" " type="Intersection">
+<parent ref="18508595"/> 
+<parent ref="79237888"/> </point></hidden>
+<hidden>
+<line id="48625286" name="" type="2pts">
+<parent ref="-59060675"/> 
+<parent ref="852272662"/> </line></hidden>
+<hidden>
+<line id="209476727" name="(C1B2)" type="2pts">
+<parent ref="949217882"/> 
+<parent ref="870566088"/> </line></hidden>
+<hidden>
+<point extra="0" id="-183671139" name=" " type="Intersection">
+<parent ref="79237888"/> 
+<parent ref="209476727"/> </point></hidden>
+<hidden>
+<line id="135262738" name="" type="2pts">
+<parent ref="-183671139"/> 
+<parent ref="1065543450"/> </line></hidden>
+<hidden>
+<point extra="0" id="-223875290" name=" " type="Intersection">
+<parent ref="135262738"/> 
+<parent ref="48625286"/> </point></hidden>
+<final>
+<locus id="189496560" name="" type="2pts">
+<parent ref="189034205"/> 
+<parent ref="-223875290"/> </locus></final></output></macro></drgenius>

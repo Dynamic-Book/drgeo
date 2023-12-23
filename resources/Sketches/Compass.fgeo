@@ -1,0 +1,36 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<macro name="Compass">
+<description>Build an arc from a compass.&#10;Input parameters are:&#10;-  arc center, start point, end point&#10;- radius of the arc (a value)</description>
+<input>
+<point id="909938354" name="" type="Free">
+<x>2.514705882352938</x>
+<y>-0.7352941176470597</y></point>
+<point id="951046954" name="" type="Free">
+<x>0.07352941176470562</x>
+<y>-2.88235294117647</y></point>
+<point id="1036893000" name="" type="Free">
+<x>2.63235294117647</x>
+<y>-3.2352941176470584</y></point>
+<value id="857819805" name="" type="value">
+<value>3.0</value>
+<x>3.1911764705882355</x>
+<y>0.5294117647058824</y></value></input>
+<output>
+<hidden>
+<ray id="236665537" name="" type="2pts">
+<parent ref="909938354"/> 
+<parent ref="951046954"/> </ray></hidden>
+<hidden>
+<circle id="37602369" name="" type="radius">
+<parent ref="909938354"/> 
+<parent ref="857819805"/> </circle></hidden>
+<hidden>
+<point extra="1" id="19685552" name="" type="Intersection">
+<parent ref="236665537"/> 
+<parent ref="37602369"/> </point></hidden>
+<final>
+<arc id="140351824" name="" type="centerAngle">
+<parent ref="909938354"/> 
+<parent ref="19685552"/> 
+<parent ref="1036893000"/> </arc></final></output></macro></drgenius>

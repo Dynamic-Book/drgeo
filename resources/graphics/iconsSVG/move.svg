@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   style="enable-background:new"
+   id="svg5"
+   version="1.1"
+   viewBox="0 0 12.506998 12.507"
+   height="47.27055"
+   width="47.270542">
+  <metadata
+     id="metadata1060">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2">
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="671.35658"
+       x2="241.13447"
+       y1="671.35658"
+       x1="231.59209"
+       id="action_blanc">
+      <stop
+         id="stop34826"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+    </linearGradient>
+  </defs>
+  <g
+     transform="translate(-229.0574,-652.88353)"
+     style="display:inline"
+     id="layer1">
+    <g
+       style="display:inline"
+       transform="translate(-1.1550511e-6,-15.435417)"
+       id="g2494">
+      <g
+         id="use22895"
+         transform="translate(157.99547,596.9007)"
+         style="fill:none">
+        <rect
+           style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.276272;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+           id="rect5382"
+           width="12.506998"
+           height="12.507"
+           x="71.061935"
+           y="71.418243" />
+      </g>
+      <g
+         style="display:inline"
+         transform="translate(-1.052374,-1.5553341)"
+         id="g22909">
+        <g
+           id="g22901" />
+        <g
+           transform="rotate(90,236.36328,676.12777)"
+           id="use22903" />
+        <g
+           transform="rotate(180,236.36328,676.12777)"
+           id="use22905" />
+        <g
+           transform="rotate(-90,236.36328,676.12777)"
+           id="use22907">
+          <path
+             d="m 232.90271,675.07881 c -0.34333,0.34333 -0.68666,0.68667 -1.02999,1.03 0.34333,0.34333 0.68666,0.68666 1.02999,1.02999 m -0.56064,-1.01103 c 0.85842,0 1.71685,0 2.57527,0 m 0.39698,3.46057 c 0.34333,0.34333 0.68667,0.68666 1.03,1.02999 0.34333,-0.34333 0.68666,-0.68666 1.02999,-1.02999 m -1.01103,0.56064 c 0,-0.85842 0,-1.71685 0,-2.57527 m 3.46057,-0.39698 c 0.34333,-0.34333 0.68666,-0.68667 1.02999,-1.03 -0.34333,-0.34333 -0.68666,-0.68666 -1.02999,-1.02999 m 0.56064,1.01103 c -0.85842,0 -1.71685,0 -2.57527,0 m -0.39698,-3.46057 c -0.34333,-0.34333 -0.68667,-0.68666 -1.03,-1.02999 -0.34333,0.34333 -0.68666,0.68666 -1.02999,1.02999 m 1.01103,-0.56064 c 0,0.85842 0,1.71685 0,2.57527"
+             style="display:inline;vector-effect:none;fill:none;fill-opacity:1;stroke:url(#action_blanc);stroke-width:0.39687499;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+             id="path22943" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

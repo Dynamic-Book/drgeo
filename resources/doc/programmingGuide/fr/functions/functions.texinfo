@@ -1,0 +1,193 @@
+@node Fonctions
+@chapter Fonctions
+@quotation
+@strong{Résoudre des problèmes numériques et algébriques}
+@*
+Résolution de problèmes en lien avec les notions étudiées (fonctions,
+diagrammes, expressions algébriques et équations).
+@*
+Résolution de problèmes de proportionnalité.
+@author Plan d'Études Romand
+@end quotation
+
+@menu
+* Fonction linéaire::
+* Pente d'une droite::
+* Fonction affine::
+* Fonction quadratique::
+* Fonction puissance n-ième::
+* Fonction homographique::
+@end menu
+
+@node Fonction linéaire
+@cindex fonction, linéaire
+@section Fonction linéaire
+@drgeoMath{Une fonction linéaire est de la forme @emph{x} @U{27FC} @emph{ax}.
+@*
+Le nombre @emph{a} s'appelle la pente (ou facteur de linéarité,
+coefficient de linéarité, coefficient directeur). Sa représentation
+graphique est une droite passant par l'origine des axes.}
+
+@cindex fonction, courbe
+@drgeo{} sait afficher les représentations graphiques -- courbes --
+des fonctions. Il suffit de définir une fonction sous la forme d'un
+bloc de code ayant un argument, par exemple @code{[:x | 3 * x]} et
+d'utiliser le message à mot clé @code{courbeDe:de:a} envoyé à une
+figure.
+
+@drgeoExample{Fonction linéaire de pente 3,plotLineraFunction,
+| figure f |
+figure := DrGeoFigure nouveau afficherAxes afficherGrille.
+f := [:x | 3 * x].
+figure courbeDe: f de: -5 a: 5}
+
+Ici la droite est tracée pour x variant de -5 à 5.
+
+@drgeoFigure{Représentation graphique d'une fonction
+linéaire de pente 3,FonctionLineaire,8}
+
+@drgeoExercise{Fonction linéaire de pente -2,exePlotLinearFunction,
+@emph{Afficher la représentation graphique d'une fonction linéaire de
+pente -2.}}
+
+@node Pente d'une droite
+@section Pente d'une droite
+Comment la pente @emph{a} d'une fonction linéaire x @U{27FC} @emph{a}x
+influence sa représentation graphique, la droite@tie{}?
+
+
+@cindex réglette, entier
+Pour observer cette influence, dans @drgeo{} nous faisons varier la
+valeur @emph{a} de la pente. Nous utilisons pour cela une réglette
+comme montré dans l'exemple ci-dessous.
+
+@drgeoExample{Fonction linéaire à pente un nombre entier variable,plotLinearFunctionDynamic,
+| figure f a |
+figure := DrGeoFigure nouveau afficherAxes afficherGrille echelle: 50.
+a := figure entier: 1 a: 5 @@ -5 min: -8 max: 8 nom: 'a' afficherValeur: true.
+f := [:x | a valeur * x].
+figure courbeDe: f de: -10 a: 10}
+
+La réglette est créée avec le message à mot clé
+@code{entier:a:min:max:nom:afficherValeur:}, elle est affectée à la
+variable @code{a}@tie{}:
+
+@itemize
+
+ @item La valeur initiale de la réglette est 1 ;
+
+ @item Elle est affichée à la coordonnées (5;-5) ;
+
+ @item Sa valeur minimale est -10 ;
+
+ @item Sa valeur maximale 10.
+
+@end itemize
+
+Pour obtenir la valeur actuelle de la réglette, lui demander avec le
+message @code{valeur}@tie{}: cela se code @code{a valeur}.
+
+@drgeoFigure{Représentation graphique d'une fonction linéaire de pente
+un entier variable,FonctionLineaireReglette,8}
+
+@drgeoExercise{Observations fonction linéaire,exeObservationLinear,
+@emph{Faire varier la valeur de @strong{a} à l'aide de la
+réglette. Qu'observons nous lorsque la valeur de a est positive@tie{}?
+Négative@tie{}? Que se passe-t-il lorsque a est égale à zéro@tie{}?}}
+
+@drgeoExercise{Fonction linéaire à pente un nombre décimal
+variable,exePlotLinearFunctionDynamicDecimal,@emph{Modifier
+l'@ref{plotLinearFunctionDynamic} afin d'utiliser une réglette avec un
+nombre @strong{décimal}. Chercher dans l'index des méthodes le message
+à mot clé à utiliser.}}
+
+@node Fonction affine
+@cindex fonction, affine
+@cindex pente d'une droite
+@section Fonction affine
+@drgeoMath{Une fonction affine est de la forme @emph{x} @U{27FC} @emph{ax} + @emph{b}.
+@*
+Sa représentation graphique est une droite.
+@*
+Le nombre @emph{a} est la pente de la droite.
+@*
+Le nombre @emph{b} est l'ordonnée à l'origine. C'est l'ordonnée --
+2ème coordonnée -- du point d'intersection de la droite avec l'axe
+vertical (ordonnées).}
+
+Pour comprendre le comportement de la droite d'une fonction affine
+selon les valeurs des nombres @emph{a} et @emph{b}, nous construisons
+une figure interactive où les nombres @emph{a} et @emph{b} sont
+variables.
+
+@drgeoExercise{Fonction affine dynamique,exePlotAffineFunction,
+@emph{En s'inspirant de l'@ref{plotLinearFunctionDynamic}@comma{}
+construire la droite d'une fonction affine. Les valeurs des nombres a
+et b seront obtenues par deux réglettes sur des nombres entiers.}}
+
+@drgeoExercise{Observations fonction affine, exeObservationAffine,
+ @emph{Faire varier la valeur de @strong{b} à l'aide de la
+ réglette. Qu'observons nous lorsque la valeur de @strong{b}
+ augmente@tie{}?  Diminue@tie{}? Que se passe-t-il lorsque @strong{b}
+ est égale à zéro@tie{}?  Que se passe-t-il lorsque @strong{a} est
+ égale à zéro@tie{}?}}
+
+@node Fonction quadratique
+@cindex fonction, quadratique
+@section Fonction quadratique
+@drgeoMath{Une fonction quadratique est de la forme x @U{27FC}
+@emph{ax}@sup{2} + @emph{bx} + @emph{c}
+@*
+La représentation graphique d'une fonction quadratique est une
+@emph{parabole}. C'est une ligne qui n'est pas droite.}
+
+Pour comprendre le comportement de cette parabole selon les valeurs
+des nombres @emph{a}, @emph{b} et @emph{c}, nous programmons une
+figure interactive où ces trois valeurs peuvent être modifiées par
+l'utilisateur.
+
+@drgeoExercise{Fonction quadratique dynamique,exePlotQuadratiqueFunction,
+@emph{En s'inspirant de l'@ref{plotLinearFunctionDynamic}@comma{}
+construire la parabole d'une fonction quadratique. Les valeurs des
+nombres a@comma{} b et c seront obtenues par trois réglettes sur des
+nombres décimaux puis entiers.}}
+
+
+@drgeoExercise{Observations fonction quadratique,exeObservationQuadratique,
+@emph{Faire varier la valeur de @strong{a} à l'aide de la
+réglette. Qu'observons nous selon le signe de a@tie{}?  Que se
+passe-t-il lorsque a est égale à zéro@tie{}?}}
+
+
+@node Fonction puissance n-ième
+@section Fonction puissance n-ième
+@drgeoMath{Une fonction puissance n-ième est une fonction de la forme
+@emph{x} @U{27FC} @emph{x}@sup{@emph{n}} @ @ @ (@emph{n} est un nombre
+naturel différent de zéro)}
+
+@cindex puissance
+@drgeoExercise{Fonction puissance n-ième dynamique, exePlotPowerFunction,
+@emph{En s'inspirant de l'@ref{plotLinearFunctionDynamic}@comma{}
+construire la courbe d'une fonction puissance n-ième. La valeur du
+nombre n sera obtenue par une réglette de nombre entier compris entre 1
+et 7}.
+@*
+@strong{Indice@tie{}:} utiliser le message @code{puissance:} pour
+calculer une puissance n-ième. Ce message est envoyé à la base
+(@emph{x}) et son argument est l'exposant (@emph{n}).}
+
+@node Fonction homographique
+@section Fonction homographique
+@drgeoMath{Une fonction homographique est, par exemple, une fonction
+de la forme x @U{27FC} @emph{a}/@emph{x} @ @ @ (@emph{a} et @emph{x}
+différents de zéro)}
+
+@drgeoExercise{Fonction homographique dynamique, exePlotHomographicFunction,
+@emph{En s'inspirant de l'@ref{plotLinearFunctionDynamic}@comma{}
+construire la courbe d'une fonction homographique de la forme a/x. La
+valeur du nombre a sera obtenue par une réglette de nombre entier
+compris entre -10 et 10.}}
+
+@drgeoExercise{Observation fonction homographique,exeObservationHomographic,
+@emph{Faire varier la valeur de @strong{a} à l'aide de la
+réglette. Qu'observons nous selon le signe de a@tie{}?}}

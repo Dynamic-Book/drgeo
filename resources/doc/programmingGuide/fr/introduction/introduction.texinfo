@@ -1,0 +1,86 @@
+@node Introduction
+@chapter Introduction
+
+@section À propos de @drgeo{}
+@drgeo{}@footnote{@url{http://drgeo.eu}} est l'environnement de
+géométrie interactive et de programmation du projet libre
+GNU@footnote{@url{http://gnu.org}}. Outre son interface graphique
+classique de géométrie interactive, il permet de concevoir des figures
+interactives par l'écriture d'un code informatique. Les figures
+géométriques sont ainsi programmées et non plus conçues à la
+souris. Cette approche s'appuie sur les spécificités du code telles
+que les structures de contrôle, les boucles, les collections,
+etc. pour produire un résultat visuel et interactif.
+
+Programmer de la géométrie interactive est aussi une autre façon de
+ faire des mathématiques@tie{}: les concepts mathématiques
+ sous-jacents sont réinvestis dans le contexte de la programmation, la
+ figure interactive résultante donne un feedback immédiat quant à la
+ validité du code écrit.
+
+Le domaine des mathématiques couvert par cette approche ne se limite
+pas à la seule géométrie, il est ouvert aux domaines où les
+représentations visuelles, graphiques et dynamiques sont pertinentes,
+et ils sont nombreux.
+
+@section À propos de ce livre
+Le guide utilisateur de
+@drgeo{}@footnote{@url{https://www.gnu.org/software/dr-geo/doc/fr}}
+présente déjà en détail, de façon assez technique, toutes les
+possibilités offertes en termes de programmation. Mais ce guide est
+essentiellement techinque et n'a que faiblement une visée
+pédagogique. Ici nous proposons une approche progressive s'appuyant
+sur de nombreux exemples et exercices directement liés aux contenus
+mathématiques enseignés dans le secondaire. Les exercices sont
+corrigés en annexe.
+
+Ce guide est donc destiné aux enseignants de mathématiques ou
+d'informatique, aux animateurs d'activités extra-scolaires, aux
+parents et aux jeunes souhaitant découvrir la programmation d'une
+façon originale et attrayante.
+
+La programmation avec @drgeo{} se pratique avec le langage
+informatique Pharo@footnote{@url{http://pharo.org}}, c'est le même
+langage avec lequel @drgeo{} est développé. Pharo est une
+implémentation et une extension moderne de Smalltalk qui fut mis au
+point au
+PARC@footnote{@url{https://fr.wikipedia.org/wiki/Palo_Alto_Research_Center}},
+au cours d'un lent processus de raffinement d'une dizaine d'années, de
+1972 à 1983. Ce langage fut conçu pour inventer l'informatique
+personnelle telle qu'elle est connue aujourd'hui. Avec en plus une
+vision romanesque propre à cette période de notre histoire, à savoir
+une dimension programmation par l'utilisateur accessible à tous, y
+compris aux plus jeunes.
+
+@section Contenu
+La partie I présente la programmation à travers une série d'exemples
+et d'exercices progressifs, leur correction se trouve en annexe.
+L'écriture du code informatique est en français, sans caractère
+accentué, le langage de programmation est Pharo. L'environnement
+de programmation est @drgeo{} basé sur celui de Pharo.
+
+La partie II propose une série d'activités adaptés aux enseignements
+mathématiques en secondaire 1. Selon le système éducatif, le
+secondaire 1 correspond à des tranches d'âges de 11 à 14 ans. Les
+thèmes mathématiques abordés couvrent des éléments de la géométrie
+euclidienne, le repère cartésien, les fonctions affines, quadratiques,
+puissances n-ième, les équations et systèmes d'équations,
+transformations géométriques, etc.
+
+Les activités proposées puisent dans ce vivier mathématiques, sans
+aucune réelle volonté d'exhaustivité. Le fil conducteur est plus
+l'intérêt à transposer une connaissance, un concept ou une résolution
+d'un problème mathématique sous le forme d'un petit programme
+informatique.
+
+Parfois l'objectif recherché sera la simple illustration sous la forme
+d'une figure géométrique interactive, produit du programme
+informatique.
+
+La partie III présente plus précisément plusieurs aspects techniques
+de @drgeo{}@tie{}: un description détaillée des méthodes pour
+programmer et les outils pour développer du code informatique
+
+En annexe, partie IV du document, le lecteur trouvera plusieurs
+indexes dont un sur les méthodes, des aides pour résoudre les
+exercices, les solutions des exercices, etc.

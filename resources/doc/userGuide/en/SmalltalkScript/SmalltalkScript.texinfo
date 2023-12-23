@@ -1,0 +1,1044 @@
+@c Smalltalk script
+
+@node Smalltalk script
+@anchor{script}
+@chapter @drgeo{} Smalltalk script
+@cindex script, introduction
+
+@drgeo{} is a dynamic application written in Pharo Smalltalk. This
+means that it is possible to modify it within itself as it is
+running. We have exploited this feature with the
+@clicksequence{Numerics@click{}Use a script} command to define sketch items in
+@drgeo{} which are in fact Smalltalk scripts -- code snippets -- to
+extend the possibilities of @drgeo{} dynamically, without limit. But
+what exactly is Smalltalk?
+
+@quotation
+Smalltalk is an object-oriented, dynamically typed, reflective
+programming language. Smalltalk was created as the language to
+underpin the "new world" of computing exemplified by "human–computer
+symbiosis." It was designed and created in part for educational use,
+more so for constructionist learning, at the Learning Research Group
+(LRG) of Xerox Palo Alto Research Center (PARC) by Alan Kay, Dan
+Ingalls, Adele Goldberg, Ted Kaehler, Scott Wallace, and others during
+the 1970s.  The language was first generally released as Smalltalk-80.
+Smalltalk-like languages are in continuing active development, and
+have gathered loyal communities of users around them. ANSI Smalltalk
+was ratified in 1998 and represents the standard version of
+Smalltalk.@footnote{Wikipedia Smalltalk article
+(@url{http://en.wikipedia.org/wiki/Smalltalk}). Page view the 24 Jully
+2013. Contents under the license CC-BY-SA 3.0
+(@url{http://creativecommons.org/licenses/by-sa/3.0/deed.fr}).}
+@end quotation
+
+In this definition, object-oriented means that everything in 
+Smalltalk is an object defined in a class, with its behavior 
+determined by methods defined in that class. This is in contrast 
+with the notion of a variable associated with a data type in most 
+programming languages, where the type system sets few limits on what 
+can be done with values. 
+
+In statically typed languages, the type of a variable has to be
+declared before it can be used, and that type cannot be changed within
+the program. In particular, the sizes of arrays and other composite
+data structures must be declared in advance. In dynamically typed
+languages, a variable name can be repurposed to refer to an object of
+a different class with a simple assignment, items can be added to or
+removed from data structures at will, and the class definition can be
+changed while a program is running.
+
+Reflection in programming languages refers to the ability to examine 
+and modify properties of objects within the live system, rather than 
+having to read the source code in which variables are declared to 
+determine their types and infer their properties. Reflection tools 
+in Smalltalk include the system browser, the inspector, the object 
+explorer, and the method finder.
+
+This abstract from the book preface @emph{Pharo By
+Example}@footnote{@url{http://pharobyexample.org}} describes the
+Smalltalk environment used by @drgeo{}:
+
+@quotation
+Pharo is a modern Open Source development environment for the classic
+Smalltalk-80 programming language.
+
+Pharo strives to offer a lean, Open Source platform for professional
+software development, and a robust and stable platform for research
+and development into dynamic languages and environments.
+@end quotation
+
+@drgeo{} uses the Smalltalk environment to create a comfortable
+environment for writing scripts providing access to the programming
+interfaces for geometric objects. These interfaces are the set of
+methods in the definitions of the types of the objects.
+
+Thus the user can write scripts to manipulate the sketch items, and 
+as scripts pinned in the sketch are also sketch items, they do not 
+need to be in separate files, but can be saved in the sketch file.
+
+@c This requires substantial clarification.
+
+Scripts are not edited as sketch items but as methods stored 
+globally in Smalltalk. Using a script and pinning the result in a 
+sketch makes it part of the sketch so that it can be saved and 
+reloaded with the sketch. However, there is no way to keep scripts 
+in different sketches separate if they are open at the same time. 
+This is a design bug, because users will often have all of their 
+work polluted with scripts meant to be used in other sketches, 
+unless they exercise great care to avoid this. In fact, the default 
+state of @drgeo{} contains a number of useless scripts that could have 
+been put into the examples category or even omitted, so that any new 
+session would start with an empty scripts category.
+
+A workaround is to close @drgeo{} and open a new session after working 
+with a sketch containing multiple scripts and before creating any 
+new sketch, which can then begin without any extraneous scripts.
+
+@c Can we talk about creating a subclass for each sketch, and 
+@c grouping scripts in the Use a script dialog box by sketch?
+
+@c Also, what is the private category for? I don't see it explained
+@c anywhere in this manual.
+
+While it is possible to put scripts for a sketch into a new category
+for creating them, it is not possible to select by category when using
+a script. Furthermore, in the use a script dialog, scripts seem to be
+offered in random order. It is certainly not alphabetical or temporal
+order.
+
+Scripts in @drgeo{} are executed in the Pharo Smalltalk environment.
+The user thus benefits from the excellent developer tools of the
+environment: class browser, inspector, debugger, etc. The user wishing
+to explore the power of scripts is invited to study the book
+@emph{Pharo By Example}, where he or she will learn the Smalltalk
+language and its environment.
+
+
+For our purposes in this chapter, it is necessary mainly to understand
+how to use a Workspace. Open a new Workspace by clicking in the
+background and selecting @clicksequence{Tools@click{}Workspace}. The
+workspace provides
+
+@itemize
+  @item Basic text editing capability
+  @item Syntax highlighting
+  @item Context-sensitive selector (method name) completion
+  @item Access to a menu of editing commands and development tools
+@end itemize
+
+Text editing capabilities in a Workspace consist of the usual Cut,
+Copy, and Paste; Find and Replace; Undo and Do again. An Extended
+search function displays information about selected items using
+various development tools. There are also Accept and Cancel
+functions. Typing in the Workspace causes a highlight to appear at
+the upper right of the window. Accept checkpoints the contents of
+the window, empties the undo stack, and causes the highlight to
+disappear. Editing and then cancelling takes the window back to the
+last checkpoint without having to undo each action individually.
+
+When editing, object names appear in blue, method names and symbols
+such as := in black, and unrecognized text in red. This includes
+incomplete names, undeclared local variables, and also syntax
+errors. When the user is typing a selector, a menu appears showing
+selectors starting with the typed text that are usable in the
+current context, that is, for the object that will receive this
+message. Move up or down in the menu with the arrow keys, and accept
+the highlighted selector by pressing the tab key. If the selector
+has more than one part, all of the parts are entered into the
+workspace.
+
+Development tools provided on the workspace menu, accessed by
+right-clicking in the workspace, are
+
+@itemize
+  @item @strong{Do it} Execute the selected text or the current line
+  otherwise
+
+  @item @strong{Print it} Execute text and display the result.
+
+  @item @strong{Inspect it} Open an Inspector on a selected class
+  name, or execute selected text and open an Inspector on the results.
+
+  @item @strong{Explore it} Open an object Explorer on a selected
+  class name, or execute selected text and open an Explorer on the
+  results.
+
+  @item @strong{Debug it} Open a Debugger on selected code.
+
+  @item @strong{Profile it} Open a Profiler on selected code.
+@end itemize
+
+Development tools accessible in the Extended search menu are the
+following.
+
+@itemize
+  @item @strong{browse it}
+  @item @strong{senders of it}
+  @item @strong{references to it}
+  @item @strong{selectors containing it}
+  @item @strong{method strings with it}
+  @item @strong{method source with it}
+  @item @strong{class names containing it}
+  @item @strong{class comments with it}
+  @item @strong{change sets with it}
+@end itemize
+
+Each one opens the tool specified on the text selected or on an object
+that that text names, if any. If there is none, a message may appear
+saying so.
+
+Some of the functions of these development tools can be discovered
+through exploration, clicking on every button to see what happens.
+For further details see Pharo Smalltalk documentation.
+
+@cindex script, examples
+@section Script by the example
+
+@cartouche
+@strong{WARNING:} THE FOLLOWING SECTIONS ARE OBSOLETE AND NEED TO BE
+SYNCHRONISED WITH THE FRENCH USER GUIDE
+@end cartouche
+
+There are two phases to using scripts:
+
+@itemize
+  @item creating the script
+  @item inserting the script in a sketch one or more times with
+  different parameters
+@end itemize
+
+The tool to create or edit a script is on the menu
+@clicksequence{Numeric@click{}Edit a script}. It is also reachable
+from the toolbar.
+
+The tool to use a script is on the menu
+@clicksequence{Numeric@click{}Use a script}. It is also reachable from
+the toolbar.
+
+A script can be defined to receive 0 or more arguments (input
+parameters). After selecting a script to insert in the sketch, the
+user clicks on the items used as arguments. Then a final click
+somewhere in the background sets the location for the returned value.
+
+In the following section, we present a few script examples so that the
+function and power of scripting will be more easily understood.  The
+script and the macro construction give a special dimension to @drgeo{}
+-- with a different positioning@footnote{A macro construction is
+geometry oriented whereas a script is numerically/computation
+oriented.} -- to let the user go into areas that the software was not
+initially planned for.
+
+It is important to understand that most Pharo Smalltalk resources are
+accessible in scripts. This is particularly true for the class and
+method libraries@footnote{For example, mathematical functions.}, which
+we will use a lot.
+
+@subsection Script without parameter
+@cindex script, parameter(s), 0
+
+
+@heading First example:
+@cindex script, examples, simple
+
+The procedure to create a script without an input parameter is as follows:
+
+@enumerate
+@item @strong{Edit the script}
+
+  @enumerate
+  @item Select @clicksequence{Numeric@click{}Edit a script} in the menu to open
+    the script editor:
+
+    @drgeoFigure{@anchor{scriptEditor}Script editor,fig35,8}
+    
+    Within the script editor window there are three panes:
+    
+    @itemize
+    @item In the top left, the script categories to keep in good
+      order: @t{examples}, @t{private}, and
+      @t{scripts}. It is in this last one that you put your scripts.
+    @item In the top right, the script names in the selected
+      category. When selecting one, its source code is displayed
+      in the editor pane at the bottom.
+    @item In the bottom, the source code editor for the selected
+      script. It is there you create or modify the scripts. To
+      accept a modification, press the keyboard keys
+      @kbd{Ctrl-s}.
+    @end itemize
+    
+  @item In the script editor, select the category @t{scripts}.  The
+    text editor in the bottom will display a script source code
+    template (@xref{scriptEditor}).
+
+  @item Input the source code as below (@xref{firstScript}):
+
+    @example
+      myFirstScript
+      "Hello, World is the traditional first program in any language.
+      It simply displays a text message."
+         ^ 'Hello, World!'.
+    @end example
+
+	Save the script with @kbd{Ctrl-s}. @drgeo{} will ask 
+	your last name and first name to track the history of the script 
+	modifications. @c  This does not happen.
+	The first script line, @t{myFirstScript} is 
+	the name of the script, followed by the source code. It is 
+	followed by an optional comment of one or more lines between 
+	quotation marks. The comment should usually explain the purpose 
+	of the script, what are the expected parameters, and what are 
+	the conditions for its use. We strongly encourage you to 
+	document carefully to prevent confusion and error.
+
+    @drgeoFigure{@anchor{firstScript}My first script,fig38,8}
+    
+    The script editor can now be closed.
+  @end enumerate
+
+@item @strong{Using the script in the sketch}@*
+  Select @clicksequence{Numeric@click{}Use a script} in the menu. In the
+  displayed dialogue box, choose the script
+  @t{myFirstScript}. Note: each time a script is selected, its
+  descriptive comment is displayed in the bottom of the dialogue.
+
+  @drgeoFigure{Select a script,fig50,8}
+
+  Once the script selected, click on the sketch at the place to pin 
+  it. In this example the script only returns the message ``@tie{} Hello, 
+  World@tie{}!@tie{}''. The returned value is always printed in the sketch. If 
+  necessary it is converted to a text representation.
+
+@end enumerate
+
+In the following examples, we only give the source code of the
+Smalltalk scripts. To use them in @drgeo{}, just follow the steps
+explained previously.
+
+
+@cindex script, @t{random value}
+@heading A random number generator and more:
+
+If you need a simple random generator for numbers between 1 and 10, 
+the following script exactly does that:
+
+@example
+random
+"I return a random number continuously updated"
+   ^ 10 atRandom.
+@end example
+
+@c  "Answer a random integer from 1 to self picked from aGenerator."
+
+At each sketch update, it generates a different random number in the
+interval [1@tie{};@tie{}10]. Updates occur when the sketch is changed by 
+dragging an object.
+
+In case you prefer a random decimal number in the interval [0@tie{};@tie{}1], use
+this script:
+@example
+random2
+"I return a random decimal number continuously updated from 0 to 1"
+   ^ (101 atRandom -1) / 100.
+@end example
+
+
+Some details:
+  @itemize
+  @item The value returned by the script is the result of the
+    expression after the @strong{^ }.
+  @item The returned value can be of any class. @drgeo{} prints its text 
+  representation (a string).
+  @item To return the value of a variable, it is enough to
+    put its name after the symbol @strong{^ }.
+  @end itemize
+
+@heading Calculate common values
+
+To access an approximate value of @emph{pi} with the maximum precision
+available in Smalltalk:
+@example
+pi
+   ^ Float pi
+@end example
+
+This returns 3.141592653589793.
+
+or @emph{e} :
+@example
+e
+   ^ Float e
+@end example
+
+This returns 2.718281828459045.
+
+These returned values are usable in the same way as any other value 
+generated by @drgeo{}. Even for such small things, the script is your 
+friend. But it can do much more interesting things when it receives 
+input parameters.
+
+Indeed, so far the scripts have had no arguments, so that it was not 
+necessary to select items in the sketch when inserting the script in 
+the construction. Of course the real interest in scripts comes from 
+returning the values of numerical computation, pinned in the sketch 
+for use with other constructions or scripts. In the following 
+sections we show the use of scripts in a cascade.
+
+@subsection Script with one input parameter
+@cindex script, parameter(s), 1
+
+The procedure to create a script with one input parameter is mostly 
+the same:
+
+@enumerate
+
+@item When editing the script (@clicksequence{Numeric@click{}Edit a
+script}), the argument is inserted in the first line with the script
+name.@*
+
+For example to calculate the distance from the origin to a point, we
+write the following script:
+  
+@example
+distanceToOrigin: item 
+"Return the distance from origin to a point"
+   ^ item point dist: 0@@0
+@end example
+
+A few explanations:
+@itemize
+
+@item @t{item} is the argument of our script, which must be a 
+  point. It is in fact an instance of the class @t{DrGPointItem} 
+  @footnote{To learn about the protocol of this class, write its name 
+  in a workspace, select it with the mouse then press the keys
+  @kbd{Ctrl-b}. A class browser opens on this class 
+  to navigate in its protocol and source code.}
+
+
+@item @t{DrGPointItem} has an instance method @t{#point}
+  returning its coordinates. Thus from the argument we can extract
+  information, here its coordinates, and calculate with it.
+
+@item @t{0@@0} is an instance of the class @t{Point} with
+  coordinates (0,0).
+@item @t{#dist:} is a keyword message @footnote{As we can see
+    because its name ends in ``:''} from the class
+  @t{Point} expecting as its unique argument another instance of
+  @t{Point}. It calculates the distance between these two
+  instances. It can be understood as: ``distance between item point
+  and (0,0)''. The keyword message syntax is very specific to Smalltalk.
+  The arguments are declared in the message name line of a method.
+@end itemize
+
+@item To use a script (@clicksequence{Numeric@click{}Use a script}), @drgeo{}
+  expects from the user to click on appropriate objects, then 
+  somewhere in the sketch.@* 
+
+  @strong{Attention}: If an item other than a point is selected when a
+  point is expected, @drgeo{} throws an error, opening a debugger
+  window stating the problem and offering further information. The
+  debugger window can be safely closed. To continue, select the script
+  again.  
+
+@end enumerate
+
+
+Depending on the type of argument received by the script, various
+methods are available: to get its value, its coordinate, etc. A list
+of the methods you can use is presented below (@xref{api-dgs}).
+
+
+@subsection Script with two input parameters:
+@cindex script, parameter(s), 2
+
+Let's say we want to calculate the distance between two points. To 
+do so we create a script with two input parameters inserted on the 
+name line of the script. We name it @t{distance:to:}, where 
+each ``:'' indicates the place of the parameter. Therefore in the 
+script editor we write the following source code:
+
+
+@example
+distance: item1 to: item2
+"Calculate the distance between two points"
+   ^ item1 point dist: item2 point
+@end example
+
+@t{item1} and @t{item2} are the names of the two parameters, 
+which can be chosen freely.  To use this script, proceed as in the 
+previous example: select two points in the construction and click 
+somewhere in the sketch to pin the result of the script.
+
+
+@subsection Detailed example with several scripts
+@cindex script, examples, complex
+@cindex script, curve, tangent
+
+
+In the following section, we present a more complex sketch,
+integrating a cascading use of scripts to construct the curve of a
+function and its tangent at a mobile point of the curve.
+
+The final sketch is in the @drgeo{} folder @t{examples}. It is
+named @t{Curve and slope.fgeo}.
+
+
+@drgeoFigure{Curve and tangent to a point,fig55,10}
+
+In a new empty sketch, we construct a horizontal segment, then add to
+this segment a free point named ``Move me!''. This point will be the
+base to construct the curve as a locus.
+
+
+@cindex script, function
+
+@heading Define a function: A script can return any type of object,
+so that our first construction simply defines a function. To do so, we
+use a Smalltalk object named block of code (an anonymous function in
+Scheme and some other languages). We name this script
+@t{myFunction}, without parameter:
+
+@example
+myFunction
+"Definition of our function"
+   ^ [:x | x cos]
+@end example
+
+Next we insert the function in the sketch@footnote{It is important to
+add it to the construction to get it included in the file when the
+sketch is saved.} So the block of code returned by @t{myFunction}
+expects one argument @t{:x} and it returns the cosine of that
+argument. We see later how to manipulate this script.
+
+@cindex script, function, image
+@cindex script, coordinates, point
+@anchor{scriptCoordinates}
+@heading Image of a value by function:
+
+Now we calculate the coordinates of a point on the curve. We use our
+point ``Move me!'' abscissa and our function previously defined. Our
+script will have one unique point argument; as we will see we do not
+need to pass @t{myFunction} as argument:
+
+@example
+pointM: item
+"Return a point on the curve of myFunction and driven by item point"
+   ^ item point x @@(self myFunction value: item point x)
+@end example
+
+The point returned by this script has the same abscissa as the 
+argument, and its ordinate is the image of that abscissa by the 
+function.
+
+Note:
+@itemize
+@item the direct access to the function: @t{self myFunction},
+@item the way to pass an argument to this block of code, which can be
+  understood as @t{myFunction(item point x)}.
+@end itemize
+
+Now we use this script @t{pointM:} with the point ``Move me!'' 
+as argument; the result of this script is of the form @t
+{1.2@@0.5} representing a pair of coordinates.
+
+With the tool @drgeoIcon{fig7}, @clicksequence{Points@click{}Coordinates}, we
+create a point with its coordinates specified by the result of this
+script.
+
+@cindex locus, script 
+
+The locus tool @drgeoIcon{fig14}, @clicksequence{Lines@click{}Locus}, gives the
+curve after selecting our two points.
+
+@heading Slope at a point of the function's curve:
+
+We calculate an approximation of the slope at a given point thus:
+
+p = (f(x + 0.001) - f(x)) / 0.001
+
+This is directly translated in the script @t{slope:} with a single
+argument, the point at which to approximate the slope:
+
+@example
+slope: item
+"Compute the slope at the given x point position for myFunction"
+| f  x |
+   f := self myFunction.
+   x := item point x.
+   ^ (f value: x + 0.001) - (f value: x) / 0.001
+@end example
+
+Next we insert this script in the construction.
+
+Note:
+@itemize
+@item The declaration of temporary variables @t{| f x |}. As
+  explained variables are not typed, so only the name is required.
+@item A reference to a block of code in a variable @t{f := self
+    myFunction}. The symbol to assign a value to a variable is
+  ``@t{:=}''.
+@item The parenthesis! Smalltalk has no concept of operator priority; in
+  fact operators do not exist in this language. The reader is 
+  encouraged to study the section about Smalltalk messages in 
+  the book @emph{Pharo By Example}.
+@end itemize
+
+
+@cindex script, examples, tangent to a curve
+@heading Calculate and display the tangent to a curve:
+
+To construct our tangent we need two points: one on the curve -- we
+have it already -- and a second one on the line. For this last one we
+use the previously calculated slope. Let's write a second script
+computing this second point's coordinates:
+
+@example
+pointN: item
+"Given an initial point, calculate the coordinates 
+of a point on the tangent"
+| p x |
+   p := self slope: item.
+   x := item point x + 1.
+   ^ x @ (item point y + p)
+@end example
+
+
+With the protocol of the class @t{Point} -- message @t{+}
+sent to a point -- this script can be written in one line:
+
+@example
+pointN: item
+"Given an initial point, calculate the coordinates 
+of a point on the tangent"
+   ^ item point + (1@@ (self slope: item))
+@end example
+
+We use this script with argument the point on the curve. We get as
+result the coordinates of the second point on the tangent. With these
+inputs we construct the second point@footnote{Tool
+@clicksequence{Points@click{}Coordinates}}. The tangent is the line
+defined by this point and the point on the curve.
+
+When moving the point ``Move me!'', the tangent is recomputed. 
+Equally interesting: modifying the script @t{myFunction} 
+updates the whole construction accordingly. A few examples of 
+modifications to this script:
+
+@example
+   ^ [:x | x * x / 10]
+
+   ^ [:x | x cos + (10 * x) sin]
+
+   ^ [:x | (x * 5) cos + x abs]
+@end example
+  
+@section Reference methods for @drgeo{} scripts
+@anchor{api-dgs}
+
+@c  DGS API is exposed here
+
+An argument passed to a script is always a reference to an instance of
+a class from the hierarchy @t{DrGMathItem},the base class of
+all items used in a construction. So to know about the messages you
+can send to an argument passed to a script, it is wise to examine the
+hierarchy of @t{DrGMathItem}. It contains more than 80 classes,
+but because of class inheritance, only a few classes are interesting to
+explore:
+
+@itemize
+@item @t{DrGMathItem}
+@item @t{DrGpointItem}
+@item @t{DrGDirectionItem} for segment, line, ray, vector
+@item @t{DrGArcItem}
+@item @t{DrGCircleItem}
+@item @t{DrGLocus2ptsItem}
+@item @t{DrGPolygonNptsItem}
+@item @t{DrGValueItem}
+@end itemize
+
+To explore these classes, open a workspace -- @kbd{Ctrl-k}
+after a click in the background of the environment -- input and mouse
+select the class name to explore then press the shortcut
+@kbd{Ctrl-b} to open a class browser on it.
+
+The following sections contain descriptions of some useful messages, 
+ordered by class.
+
+@subsection Math Item
+
+The protocol of the class @t {DrGMathItem} concerns all types 
+of argument passed to a script.
+
+@deftypemethod DrGMathItem <String> safeName
+  @result{} text representing the item name
+  @example
+name := point1 safeName.
+^ name asUppercase.
+@end example
+@end deftypemethod
+
+@c  It is not at all obvious to the learner how this API is used.
+@c  Here is what might happen when someone with limited experience in
+@c  Smalltalk tries to discover how it works.
+@c 
+@c  The above code fails when executed in a workspace.
+@c  name := point1 safeName.  doIt
+@c  DrGeoUserScripts(Object)    doesNotUnderstand: #safeName
+@c 
+@c  point1 class printIt UndefinedObject
+@c 
+@c  Well, let's try it in a script
+@c 
+@c  test
+@c ^self safeName
+@c 
+@c  Use script, pick point
+@c  DrGeoUserScripts(Object)    doesNotUnderstand: #safeName
+@c  Message    SentTo:
+
+@c  test: point
+@c  ^self class
+@c 
+@c  DrGeoUserScript
+@c 
+@c  Yes, self is not what we want, so create a selector and have it
+@c  apply to an item in the sketch. Yes, that works.
+
+To use this method in a script, create a @drgeo{} math item and give it a
+name with the style function. Then create the script
+
+@example
+myName: item
+^item safeName
+@end example
+
+and use it as usual, clicking on the point and then a place to put 
+the result. Note that changing the name of the item and then forcing 
+an update, for example by moving the item, updates the result of the 
+script.
+
+@deftypemethod DrGMathItem <Boolean> exist
+  @result{} boolean indicating whether the item exists in the 
+  current state of the sketch
+
+@c  This requires more explanation. If I apply it to an item, I get the
+@c  result true. If I delete the item, the script that depends on it is
+@c  also deleted. How do I apply this method to an object that does not
+@c  exist, for which there is no such value?
+@c 
+@c  exist is an instance variable for any DrGMathItem. It can be set to
+@c  false with the exist: method. What would be the purpose of doing that?
+
+  @example
+line exist ifTrue: [ position := line origin ].
+@end example
+@end deftypemethod
+
+@deftypemethod DrGMathItem <Collection> parents
+  @result{} collection of the parents of this item
+  @example
+point1 := segment parents first.
+@end example
+@end deftypemethod
+
+In this example, the parents of a segment joining two points are 
+returned as an array containing the two points. In contrast, the 
+parents of a free point are returned as nil.
+
+@defmethod DrGMathItem move: vector
+@var{vector}, a vector (x,y) representing the displacement
+
+Move an item in a given direction, if possible while respecting its
+constraints.
+
+@example
+circle move: 2@@1.
+@end example
+@end defmethod
+
+@deftypemethod DrGMathItem <Point> closestPointTo: aPoint
+  @var{aPoint}, coordinates
+  @result{} coordinates of the point  on ``curve'' the closest to ``aPoint''.
+
+This works when the curve is a line, a segment, a vector, an arc, a
+circle, a polygon, or a locus.
+
+@example
+position := segment closestPointTo: 2@@1.
+[..]
+position := arc closestPointTo: 2@@1.
+@end example
+@end deftypemethod
+
+@c  I tried it with a circle and a point, and got an error.
+@c  DrGPointFreeItem(Object)    doesNotUnderstand: #-
+@c  when calling DrGCircle2ptsItem(DrGCircleItem)    closestPointTo:
+@c 
+@c  Same problem with a segment and a point.
+@c 
+@c  Oh, I get it. Pick the point first. Does that mean that the arguments
+@c  are assigned in reverse order? Testing...Nope. That means that
+@c  something else is backwards.
+@c  No, it's worse than that. I get the coordinates of the point selected,
+@c  not the nearest point on the curve.
+@c 
+@c  Aha!
+@c  I have to apply the point method to the point, which therefore
+@c  cannot be named point. And I do get to pick the curve first.
+@c 
+@c  closestPointof: curve to: item
+@c  "Closest point of a given curve to a given point"
+@c  ||
+@c  ^circle closestPointTo: item point.
+@c 
+@c  It does work with different curve types, including locus.
+@c 
+@c  Asking for the closest point of a circle to its center results in
+@c  a Divide By Zero error.
+@c 
+@c  Report as bug.
+
+@subsection Point
+
+A point item -- point object defined in a @drgeo{} construction --
+passed as argument to a script is a complex object. It can be a
+free point on the plane, on a line, an intersection, etc. A few methods
+can be useful in scripts.
+
+@deftypemethod DrGPointItem <Point> point
+ @result{} coordinates of this item
+ @example
+abscissa := pointItem point x.
+@end example
+@end deftypemethod
+
+For example, with this script
+
+@example
+showOrdinate: aDrGeoPoint
+"ordinate of point"
+   ^ aDrGeoPoint point y
+@end example
+
+The user would invoke this script, pick a point, and pin the result in
+the sketch showing the ordinate of the selected point.
+
+@defmethod DrGPointItem point: aPoint
+  @var{aPoint}, coordinates
+
+  @result{} modify the coordinate of ``item''
+@example
+pointItem point: 5@@2.
+@end example
+@end defmethod
+
+@c  Further explanation is needed.
+@c  When I apply this to a point, I get a script item reading
+@c  Point (5 ; 2)
+@c  The point it is applied to does not relocate when the script is used,
+@c  but waits until the next update.
+@c 
+@c  Report as bug.
+
+@deftypemethod DrGPointOnCurveItem <Float> abscissa
+  @result{} curvilinear abscissa of this point, in the interval [0@tie{};@tie{}1] 
+  @example
+a := pointItem abscissa.
+@end example
+@end deftypemethod
+
+@defmethod DrGPointOnCurveItem abscissa: a
+  @var{a}, decimal number in the interval [0@tie{};@tie{}1] 
+
+  @result{} modify the curvilinear abscissa of a free point on a line
+  @example
+pointItem abscissa: 0.5.
+@end example
+@end defmethod
+
+@defmethod DrGPointItem moveAt: aPoint
+  @var{aPoint}, coordinates where to displace ``item''
+
+  @result{} displace ``item'' to the given position
+  @example
+point moveAt: 2@@1.
+@end example
+@end defmethod
+
+@c  Explain how this differs from point: above and position: below. I see
+@c  that position: applies only to value items pinned in the sketch.
+@c  point: applies to a DrGPointItem or DrGPointFreeItem.
+@c  moveAt: applies to them and also a DrGPointOnCurveItem, in which case
+@c  it moves to a point with the same abscissa as the parameter item.
+
+@subsection Straight or curved line
+@deftypemethod DrGCurveItem <Float> abscissaOf: aPoint
+  @var{aPoint}, coordinates (x,y) of a point
+
+  @result{} number in [0@tie{};@tie{}1] curvilinear abscissa of ``aPoint''
+  on ``curve''
+  @example
+a := curve abscissaOf: 2@@1.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGCurveItem <Point> pointAt: anAbscissa
+  @var{anAbscissa}, number in [0@tie{};@tie{}1]
+
+  @result{} coordinates of a point on ``curve'' with curvilinear 
+  abscissa equal to  ``anAbscissa''
+  @example
+myPoint := curve pointAt: 0.5.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGCurveItem <Boolean> contains: aPoint
+  @var{aPoint}, coordinates (x, y) of a point
+
+  @result{} boolean indicating if the  ``aPoint'' is on ``curve''
+  @example
+(curve contains: 0@@1) ifTrue: [^ 'Yes!']
+  ifFalse: [^ 'No!'].
+@end example
+@end deftypemethod
+
+@c  All cases must be covered or an error may result.
+
+@subsection Line, ray, segment, vector
+
+@deftypemethod DrGDirectionItem <Point> origin
+  @result{} coordinates of the origin of this item
+  @example
+item origin.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGDirectionItem <Vector> direction
+  @result{} vector (x, y) indicating the item direction
+  @example
+v := item direction.
+slope := v y / v x.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGDirectionItem <Vector> normal
+  @result{} unit vector normal to the item direction
+  @example
+n := item normal.
+@end example
+@end deftypemethod
+
+@subsection Segment
+
+@deftypemethod DrGSegmentItem <Float> item length
+  @result{} length of the segment
+  @example
+segment := canvas segment: 0@@0 to: 5@@5.
+l := segment length
+@end example
+@end deftypemethod
+
+@deftypemethod DrGSegmentItem <Point> extremity1
+  @result{} coordinates of the extremity 1
+  @example
+segment := canvas segment: 0@@0 to: 5@@5.
+p := segment extremity1.
+@end example
+@end deftypemethod
+
+
+@deftypemethod DrGSegmentItem <Point> extremity2
+  @result{} coordinates of the extremity 2
+  @example
+segment := canvas segment: 0@@0 to: 5@@5.
+p := segment extremity2
+@end example
+@end deftypemethod
+
+@deftypemethod DrGSegmentItem <Point> middle
+  @result{} coordinates of the middle of the segment
+  @example
+segment := canvas segment: 0@@0 to: 5@@5.
+m := segment middle
+@end example
+@end deftypemethod
+
+@subsection Circle, arc, polygon
+
+@deftypemethod DrGCircleItem|DrGArcItem <Point> center
+  @result{} coordinates of the centre of the circle or arc
+  @example
+c := item center.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGCircleItem|DrGArcItem <Float> radius
+  @result{} radius of the circle or arc
+  @example
+r := item radius
+@end example
+@end deftypemethod
+
+@deftypemethod DrGCircleItem|DrGArcItem|DrGPolygonItem <Float> length
+  @result{} length of the circle, arc or polygon
+  @example
+l := arc length
+@end example
+@end deftypemethod
+
+@subsection Value
+
+@deftypemethod DrGValueItem <Float> valueItem
+  @result{} value of this item
+  @example
+n1 := item2 valueItem.
+n2 := item2 valueItem.
+n1 + n2.
+@end example
+@end deftypemethod
+
+@c  Class DrGValueItem
+@c  Subclass of DrGMathItem
+@c  No class documentation
+@c  What objects does this apply to?
+@c  Experiment shows that it does not apply to points or to coordinates of
+@c  points. What then?
+@c  Looking in the class hierarchy shows that its subclasses represent
+@c  angles, computed numeric values, scripts, and ValueItems.
+
+@defmethod DrGValueItem valueItem: v
+  @var{v}, decimal number
+
+  @result{} modify the value of a free value item
+  @example
+item valueItem: 5.2.
+@end example
+@end defmethod
+
+
+@defmethod DrGValueItem position: aPoint
+  @var{aPoint}, coordinates (x, y) of a point
+
+  @result{} displace at the screen the position of a value item
+  @example
+item position: 0.5@@2.
+@end example
+@end defmethod
+
+
+@subsection Angle
+
+@deftypemethod DrGAngleItem <Integer> degreeAngle
+  @result{} measure of this angle item in degrees
+  @example
+angle1 := a1 degreeAngle.
+@end example
+@end deftypemethod
+
+
+@deftypemethod DrGAngleItem <Float> radianAngle
+  @result{} measure of this angle item in radians
+  @example
+angle1 := a1 radianAngle.
+@end example
+@end deftypemethod

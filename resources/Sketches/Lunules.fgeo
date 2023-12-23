@@ -1,0 +1,89 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo axes="False" custom_controls="False" grid="False" gridded="False" name="Lunules" origin_x="-11.535268652915711" origin_y="-16.828940667175964" scale="17.0">
+<controls wheelX="True" wheelY="True" wheelZ="True"/> 
+<point color="Red" delta="(7@7)" feedback="True" id="890801660" locked="False" masked="False" name=" " style="Round" thickness="Dashed" type="Free">
+<x>-29.01680672268899</x>
+<y>-21.07563025210084</y></point>
+<point color="Red" delta="(7@7)" feedback="True" id="1063122153" locked="False" masked="False" name=" " style="Round" thickness="Dashed" type="Free">
+<x>-9.80952380952381</x>
+<y>-14.476190476190478</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" id="263893523" mark="none" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="890801660"/> 
+<parent ref="1063122153"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="194307030" masked="True" name="" style="plain" thickness="small" type="perpendicular">
+<parent ref="263893523"/> 
+<parent ref="1063122153"/> </line>
+<point color="Red" delta="(7@7)" feedback="True" id="47906061" locked="False" masked="False" name=" " style="Round" thickness="Dashed" type="On_curve">
+<parent ref="194307030"/> 
+<value>0.021189304634946393</value></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" id="96890919" mark="none" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="890801660"/> 
+<parent ref="47906061"/> </segment>
+<point color="Red" delta="(7@7)" feedback="True" id="256174372" masked="False" name=" " style="Round" thickness="Dashed" type="Middle_segment">
+<parent ref="263893523"/> </point>
+<point color="Red" delta="(10.705966876872653@30.990922838970683)" feedback="True" id="68340663" masked="False" name=" " style="Round" thickness="Dashed" type="Middle_2pts">
+<parent ref="1063122153"/> 
+<parent ref="47906061"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="94624489" masked="True" name="" style="plain" thickness="small" type="perpendicular">
+<parent ref="263893523"/> 
+<parent ref="256174372"/> </line>
+<circle anchor="0.5" color="Black" delta="(7@7)" feedback="True" filled="False" id="230403379" masked="True" name="" style="plain" thickness="small" translucent="True" type="2pts">
+<parent ref="256174372"/> 
+<parent ref="890801660"/> </circle>
+<point color="Red" delta="(7@7)" extra="1" feedback="True" id="133809676" masked="True" name=" " style="Round" thickness="Dashed" type="Intersection">
+<parent ref="94624489"/> 
+<parent ref="230403379"/> </point>
+<arc anchor="0.5477196519848654" arrow="makeNoArrows" color="Green" delta="(-22.032587735345828@ -20.721829465798635)" feedback="True" filled="True" id="21673464" masked="False" name="lunule 1" style="plain" thickness="medium" translucent="True" type="3pts">
+<parent ref="890801660"/> 
+<parent ref="133809676"/> 
+<parent ref="1063122153"/> </arc>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" id="243028568" mark="none" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="1063122153"/> 
+<parent ref="47906061"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="17659349" masked="True" name="" style="plain" thickness="small" type="perpendicular">
+<parent ref="243028568"/> 
+<parent ref="68340663"/> </line>
+<circle anchor="0.5" color="Black" delta="(7@7)" feedback="True" filled="False" id="93740551" masked="True" name="" style="plain" thickness="small" translucent="True" type="2pts">
+<parent ref="68340663"/> 
+<parent ref="1063122153"/> </circle>
+<point color="Red" delta="(7@7)" extra="1" feedback="True" id="191974667" masked="True" name=" " style="Round" thickness="Dashed" type="Intersection">
+<parent ref="17659349"/> 
+<parent ref="93740551"/> </point>
+<arc anchor="0.5" arrow="makeNoArrows" color="Green" delta="(7@7)" feedback="True" filled="True" id="114800352" masked="False" name="lunule 2" style="plain" thickness="medium" translucent="True" type="3pts">
+<parent ref="1063122153"/> 
+<parent ref="191974667"/> 
+<parent ref="47906061"/> </arc>
+<arc anchor="0.5" arrow="makeNoArrows" color="White" delta="(7@7)" feedback="True" filled="True" id="107418824" masked="False" name="" style="plain" thickness="small" translucent="False" type="3pts">
+<parent ref="890801660"/> 
+<parent ref="1063122153"/> 
+<parent ref="47906061"/> </arc>
+<polygon anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" filled="False" id="104959283" masked="False" name="" style="plain" thickness="medium" translucent="True" type="npts">
+<parent ref="890801660"/> 
+<parent ref="1063122153"/> 
+<parent ref="47906061"/> </polygon>
+<arc anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" filled="False" id="107418824" masked="False" name="" style="plain" thickness="small" translucent="True" type="3pts">
+<parent ref="890801660"/> 
+<parent ref="1063122153"/> 
+<parent ref="47906061"/> </arc>
+<value background="White" border="Transparent" class="DrGeoScript216280374" color="Black" delta="(7@7)" feedback="True" fontSize="10" id="540560139" locked="False" masked="False" name="" type="script">
+<parent ref="104959283"/> 
+<code>DrGeoUserScript subclass: #DrGeoScript216280374&#10;&#9;instanceVariableNames: ''&#10;&#9;classVariableNames: ''&#10;&#9;poolDictionaries: ''&#10;&#9;category: 'DrGeoII-User'!&#10;&#10;!DrGeoScript216280374 methodsFor: 'public' stamp: 'DrGeoUser 9/14/2017 12:10'!&#10;compute&#10;&#9;| sommets dernier sommeDesAires|&#10;&#9;sommets _ self arg1 points.&#10;&#9;dernier _ sommets last.&#10;&#9;sommeDesAires _ 0.&#10;&#9;1 to: sommets size - 2 do: [ :index | &#10;&#9;&#9;sommeDesAires _ sommeDesAires + &#10;&#9;&#9;&#9;(dernier triangleArea: (sommets at: index) with: (sommets at: index + 1)) abs&#10;&#9;&#9;].&#10;&#9;^(sommeDesAires / 2)  asFloat! !&#10;&#10;&quot;-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- &quot;!&#10;&#10;DrGeoScript216280374 class&#10;&#9;instanceVariableNames: ''!&#10;&#10;!DrGeoScript216280374 class methodsFor: 'private' stamp: 'DrGeoUser 9/3/2017 10:39'!&#10;newArgumentsType&#10;&#9;^{DrGPolygonItem}! !&#10;&#10;&#10;!DrGeoScript216280374 class methodsFor: 'public' stamp: 'DrGeoUser 9/3/2017 10:39'!&#10;description&#10;&#9;^'Calcule la surface d''un polygone convexe'! !&#10;&#10;!DrGeoScript216280374 class methodsFor: 'public' stamp: 'DrGeoUser 9/3/2017 10:39'!&#10;scriptName&#10;&#9;^'Surface polygone'! !&#10;</code>
+<x>-4.44983447924625</x>
+<y>-1.5656353450471063</y></value>
+<value background="White" border="Transparent" class="DrGeoScript130190116" color="Black" delta="(7@7)" feedback="True" fontSize="9" id="809690611" locked="False" masked="False" name="" type="script">
+<parent ref="21673464"/> 
+<parent ref="114800352"/> 
+<parent ref="107418824"/> 
+<parent ref="540560139"/> 
+<code>DrGeoUserScript subclass: #DrGeoScript130190116&#10;&#9;instanceVariableNames: ''&#10;&#9;classVariableNames: ''&#10;&#9;poolDictionaries: ''&#10;&#9;category: 'DrGeoII-User'!&#10;&#10;!DrGeoScript130190116 methodsFor: 'public' stamp: 'DrGeoUser 9/14/2017 16:11'!&#10;compute&#10;&quot;Edit me&quot;&#10;&#9;^ (self arg1 radius squared + self arg2 radius squared - self arg3 radius squared) * Float pi / 2&#10;&#9;+ self arg4 valueItem! !&#10;&#10;&quot;-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- &quot;!&#10;&#10;DrGeoScript130190116 class&#10;&#9;instanceVariableNames: ''!&#10;&#10;!DrGeoScript130190116 class methodsFor: 'private' stamp: 'DrGeoUser 9/14/2017 12:13'!&#10;newArgumentsType&#10;&#9;^{DrGArcItem.DrGArcItem.DrGArcItem.DrGValueItem}! !&#10;&#10;&#10;!DrGeoScript130190116 class methodsFor: 'public' stamp: 'DrGeoUser 9/14/2017 16:14'!&#10;description&#10;&#9;^'Calcule la surface des lunules sachant:&#10;- les deux demi-cercles lunules&#10;- le demi-cercle de diamètre l''hypoténuse&#10;- l''aire du triangle'! !&#10;&#10;!DrGeoScript130190116 class methodsFor: 'public' stamp: 'DrGeoUser 9/14/2017 12:13'!&#10;scriptName&#10;&#9;^'Lunules'! !&#10;</code>
+<x>-4.3335879806468105</x>
+<y>0.430162974280624</y></value>
+<text background="Green" border="Transparent" color="Black" delta="(7@7)" feedback="True" fontSize="10" id="60959631" locked="False" masked="False" name="" type="free">
+<contents>Surface lunules :</contents>
+<x>-7.417621594092184</x>
+<y>-0.29952890247007247</y></text>
+<text background="White" border="Transparent" color="Black" delta="(7@7)" feedback="True" fontSize="10" id="263129372" locked="False" masked="False" name="" type="free">
+<contents>Surface triangle :</contents>
+<x>-7.535268652915715</x>
+<y>-2.4171759612936037</y></text></drgeo></drgenius>

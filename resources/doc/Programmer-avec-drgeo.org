@@ -1,0 +1,102 @@
+Programmer des mathématiques avec Dr.Geo
+
+* Guide rapide
+
+L'idée est de donner quelques rudiments pour démarrer rapidement. Du
+point de vu du langage Smalltalk, faire brièvement mention de sa
+nature purement objet pour passer ensuite rapidement aux éléments de
+la syntaxe (-> p.91 du Red book).
+
+Concernant les outils, seul Playground est présenté.
+
+** L'indispensable du langage Smalltalk
+(Voir article 3, Linux Pratique ; article 2 Linux Magazine ; Red book)
+Le code illustrant le propos utilisera l'API Dr.Geo.
+
+- variables non typées
+- les littéraux (nombre, caractères et chaîne de caractère, tableau,
+  symbole)
+- messages unaire, binaire et à mots clés
+  - expression de message
+  - parsing, ordre d'évaluation
+  - ATTENTION : pas de priorité avec les opérateurs arithmétiques
+  - message en cascade
+- affectation
+- bloc de code
+- structures de contrôle
+
+Donner un résumé de la syntaxe, en annexe par exemple. Voir p. 59 du
+Blue Book.
+
+** Premières figures programmées
+- Présenter Playground
+- Présentation de figures à la complexité croissante.
+  
+
+* Programmer au secondaire I
+Dans cette section et la suivante l'utilisateur découvrira également
+des classes supplémentaires utile pour la programmation de certaines
+figures.
+
+** Constructions de base
+- droites parallèles
+- droites perpendiculaires
+- triangles : quelconque, isocèle, rectangle, rectangle isocèle,
+  équilatéral
+- quadrilatères : quelconque, parallélogramme, rectangle, losange,
+  trapèze etc.
+- Droites remarquables du triangle
+- Somme des angles d'un triangle
+
+** Angles
+- angles opposés par le sommet, alterne-interne, correspondant
+
+* Programmer au secondaire II
+
+
+* Pour aller plus loin
+
+** Le langage Smalltalk
+(Voir pour reprendre des articles précédents sur Smalltalk et du Red
+Book)
+
+- Dans cette partie nous présentons les caractéristiques objet du
+langage de programmation Smalltlak.
+- Les bibliothèques standards de classes.
+
+** Les outils du développeur
+Reprendre les sections du guide de l'utilisateur Dr.Geo ou renvoyer le
+lecteur vers ce livre pour présenter ces outils.
+- Finder
+- Inspecteur
+- Débuggueur
+- Navigateur de code (Browser)
+- Spotter
+
+** Étendre des possibilités de Dr.Geo
+Dans cette section l'utilisateur apprendra comment étendre les
+possibilités de Dr.Geo pour effectuer des figures plus complexes ou
+décrire des figures plus simplement. (Par exemple comment écrire des
+méthodes triangle/triangleIsocele/triangleEquilateral qui créent des
+triangles spécifiques)
+
+** Trouver et corriger des erreurs
+
+
+* GLOSSAIRE
+
+- Débogueur - Outil pour exécuter pas à pas et détecter des erreurs
+  dans des scripts de figure programmée.
+- Finder - L'outil pour trouver par divers procédés une méthode
+  répondant à un résultat donné ou un nom. Très utile lors de
+  l'apprentissage de Smalltalk et ses libraires de classes.
+- Inspecteur - L'outil pour examiner l'état interne d'un objet, c-à-d la
+  valeur de ses attributs. Il permet aussi de modifier l'état d'un
+  objet.
+- Smalltalk - Le langage de programmation de l'environnement
+  Pharo. Dr.Geo est développé avec cet environnement et donc le
+  langage Smalltalk. Les scripts et les figures programmées de Dr.Geo
+  sont également écrites avec ce langage.
+- Playground - Espace de travail en français, l'éditeur de
+  script. C'est avec cet outil que s'écrit et s'exécute le code source
+  d'une figure programmée.

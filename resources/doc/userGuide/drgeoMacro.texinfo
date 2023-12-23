@@ -1,0 +1,46 @@
+@c Macro definition
+@macro drgeo
+Dr.Geo
+@end macro
+
+@c Figure with caption
+@macro drgeoFigure{caption,file,width}
+@ifnotplaintext
+ @float Figure,\file\
+ @center @image{\file\,\width\cm}
+ @caption{\caption\}
+ @end float
+@end ifnotplaintext
+@ifplaintext
+ @float Figure
+ @caption{\caption\}
+ @end float
+@end ifplaintext
+@end macro
+
+@c Iconic button
+@macro drgeoButton{file}
+@ifnotplaintext
+ @image{\file\,,0.5cm}
+@end ifnotplaintext
+@end macro
+
+@macro drgeoIcon{file}
+@image{\file\,1cm}
+@end macro
+
+@c Highlighted Note
+@macro drgeoNote{aNote}
+@indentedblock
+@iftex
+   @cartouche
+@end iftex
+@ifnotplaintext
+@tie{}@image{note,1cm}
+@end ifnotplaintext
+\aNote\
+@iftex
+   @end cartouche
+@end iftex
+@end indentedblock
+@end macro

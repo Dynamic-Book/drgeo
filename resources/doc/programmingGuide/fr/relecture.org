@@ -1,0 +1,16 @@
+LISTE DE RELECTURE
+
+1) [ ] Introduction
+
+2) [ ] La syntaxe par l'exemple
+Georges
+
+3) [ ] Nombres et opérations
+
+4) [ ] Espace
+
+5) [ ] Fonctions
+
+6) [ ] Figure Pharo
+
+7) [ ] Outils du développeur

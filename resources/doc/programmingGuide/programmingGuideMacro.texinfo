@@ -1,0 +1,49 @@
+@c Macro definitions
+
+@c Mathemtatic knowledge
+@macro drgeoMath{text}
+@indentedblock
+@strong{Résultat mathématique.}
+\text\
+@end indentedblock
+@c @sp 1
+@end macro
+
+@c Example with caption
+@macro drgeoExample{caption,label,example}
+@float Exemple,\label\
+@iftex
+   @cartouche
+@end iftex
+@example
+\example\
+@end example
+@iftex
+   @end cartouche
+@end iftex
+@caption{\caption\}
+@end float
+@iftex
+@sp 1
+@end iftex
+@end macro
+
+@c Exercice with caption
+@macro drgeoExercise{caption,label,exercice}
+@float Exercice,\label\
+@iftex
+   @cartouche
+@end iftex
+@indentedblock
+ \exercice\
+@end indentedblock
+@iftex
+   @end cartouche
+@end iftex
+@caption{@strong{\caption\}}
+@shortcaption{\caption\}
+@end float
+@iftex
+@sp 1
+@end iftex
+@end macro

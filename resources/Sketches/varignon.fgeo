@@ -1,0 +1,80 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo axes="False" custom_controls="False" grid="False" gridded="False" name="Varignon" origin_x="0.0" origin_y="0.0" scale="34.0">
+<controls></controls>
+<point color="Blue" delta="(7@7)" feedback="True" id="207778038" locked="False" masked="False" name="A" style="Rectangular" thickness="Dashed" type="Free">
+<x>-5.6</x>
+<y>1.533333</y></point>
+<point color="Blue" delta="(7@7)" feedback="True" id="263477246" locked="False" masked="False" name="B" style="Rectangular" thickness="Dashed" type="Free">
+<x>-1.466666</x>
+<y>2.3</y></point>
+<point color="Blue" delta="(7@7)" feedback="True" id="256618246" locked="False" masked="False" name="C" style="Rectangular" thickness="Dashed" type="Free">
+<x>1.5</x>
+<y>-2.0</y></point>
+<point color="Blue" delta="(7@7)" feedback="True" id="237321569" locked="False" masked="False" name="D" style="Rectangular" thickness="Dashed" type="Free">
+<x>-6.1</x>
+<y>-3.666667</y></point>
+<segment anchor="0.6808919678333117" arrow="makeNoArrows" color="Blue" delta="(-15.421355313059166@ -30.284747321702753)" feedback="True" id="38298222" mark="none" masked="False" name="[AB]" style="Cross" thickness="small" type="2pts">
+<parent ref="207778038"/> 
+<parent ref="263477246"/> </segment>
+<segment anchor="0.2634245437056246" arrow="makeNoArrows" color="Blue" delta="(7.862572329182399@ -20.412668289762337)" feedback="True" id="201341694" mark="none" masked="False" name="[BC]" style="Cross" thickness="small" type="2pts">
+<parent ref="263477246"/> 
+<parent ref="256618246"/> </segment>
+<segment anchor="0.25610324887203184" arrow="makeNoArrows" color="Blue" delta="(-9.02292049146672@7.820818661414705)" feedback="True" id="164913269" mark="none" masked="False" name="[CD]" style="Cross" thickness="small" type="2pts">
+<parent ref="256618246"/> 
+<parent ref="237321569"/> </segment>
+<segment anchor="0.7180681628693983" arrow="makeNoArrows" color="Blue" delta="(-29.707158768779777@ -8.445548804690304)" feedback="True" id="233963429" mark="none" masked="False" name="[DA]" style="Cross" thickness="small" type="2pts">
+<parent ref="237321569"/> 
+<parent ref="207778038"/> </segment>
+<point color="Red" delta="(-10.0@ -32.0)" feedback="True" id="193537861" masked="False" name="I" style="Cross" thickness="Dashed" type="Middle_segment">
+<parent ref="38298222"/> </point>
+<point color="Red" delta="(12.0@ -16.0)" feedback="True" id="249070645" masked="False" name="J" style="Cross" thickness="Dashed" type="Middle_segment">
+<parent ref="201341694"/> </point>
+<point color="Red" delta="(7@7)" feedback="True" id="59201314" masked="False" name="K" style="Cross" thickness="Dashed" type="Middle_segment">
+<parent ref="164913269"/> </point>
+<point color="Red" delta="(-17.0@ -5.0)" feedback="True" id="216604082" masked="False" name="L" style="Cross" thickness="Dashed" type="Middle_segment">
+<parent ref="233963429"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Red" delta="(7@7)" feedback="True" id="40978780" mark="none" masked="False" name="[IJ]" style="Cross" thickness="small" type="2pts">
+<parent ref="193537861"/> 
+<parent ref="249070645"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Red" delta="(7@7)" feedback="True" id="181341697" mark="none" masked="False" name="[JK]" style="Cross" thickness="small" type="2pts">
+<parent ref="249070645"/> 
+<parent ref="59201314"/> </segment>
+<segment anchor="0.5041978533296145" arrow="makeNoArrows" color="Red" delta="(-17.493319103115482@7.252151032877691)" feedback="True" id="74908958" mark="none" masked="False" name="[KL]" style="Cross" thickness="small" type="2pts">
+<parent ref="59201314"/> 
+<parent ref="216604082"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Red" delta="(7@7)" feedback="True" id="31951137" mark="none" masked="False" name="[LI]" style="Cross" thickness="small" type="2pts">
+<parent ref="216604082"/> 
+<parent ref="193537861"/> </segment>
+<angle color="Black" delta="(7@7)" feedback="True" id="109303885" masked="False" name="" type="3pts">
+<parent ref="216604082"/> 
+<parent ref="193537861"/> 
+<parent ref="249070645"/> </angle>
+<angle color="Black" delta="(7@7)" feedback="True" id="30812021" masked="False" name="" type="3pts">
+<parent ref="193537861"/> 
+<parent ref="249070645"/> 
+<parent ref="59201314"/> </angle>
+<angle color="Black" delta="(7@7)" feedback="True" id="18507864" masked="False" name="" type="3pts">
+<parent ref="59201314"/> 
+<parent ref="216604082"/> 
+<parent ref="193537861"/> </angle>
+<angle color="Black" delta="(7@7)" feedback="True" id="222527424" masked="False" name="" type="3pts">
+<parent ref="249070645"/> 
+<parent ref="59201314"/> 
+<parent ref="216604082"/> </angle>
+<value color="Black" delta="(7@7)" feedback="True" id="61060261" locked="False" masked="False" name="IJ" type="segment_length">
+<parent ref="40978780"/> 
+<x>1.666666</x>
+<y>4.5</y></value>
+<value color="Black" delta="(7@7)" feedback="True" id="107872004" locked="False" masked="False" name="JK" type="segment_length">
+<parent ref="181341697"/> 
+<x>1.666667</x>
+<y>3.6</y></value>
+<value color="Black" delta="(7@7)" feedback="True" id="180322703" locked="False" masked="False" name="KL" type="segment_length">
+<parent ref="74908958"/> 
+<x>1.733333</x>
+<y>2.666666</y></value>
+<value color="Black" delta="(7@7)" feedback="True" id="52101028" locked="False" masked="False" name="LI" type="segment_length">
+<parent ref="31951137"/> 
+<x>1.666666</x>
+<y>1.7</y></value></drgeo></drgenius>

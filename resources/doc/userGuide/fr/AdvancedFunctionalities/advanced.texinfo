@@ -1,0 +1,53 @@
+@c Fonctinonalités avancées: macro, script, smalltalk
+@node Fonctionnalités avancées
+@anchor{advancedFeatures}
+@chapter Introduction
+@cindex macro-construction
+Dans cette partie, nous présentons les fonctionnalités qui étendent
+les possibilités de @drgeo{} pour l'adapter à un usage, à une
+situation pédagogique donnée ou bien pour produire une démonstration
+interactive.
+
+La première est la @dfn{macro-construction} qui extrait une portion de
+construction pour la placer dans un enregistrement. Cet enregistrement
+est ensuite exécutable autant de fois que souhaité, sauvegardé dans un
+fichier et ouvert ultérieurement dans une autre figure.
+
+@cindex script
+
+Les @dfn{scripts Pharo} représentent une autre fonctionnalité pour
+étendre @drgeo{}. Ce sont des items d'une figure au même titre que les
+items géométriques. Ils sont paramétrés par zéro ou plus arguments,
+références d'items géométriques de la figure. Le code du script
+effectue un traitement et retourne un objet placé dans la figure. Un
+script peut également produire un effet de bord en modifiant les
+attributs d'autres items de la figure.
+
+Un script est une instance d'un objet@footnote{Classe dans laquelle
+une ou plusieurs méthodes sont définies par l'utilisateur pour les
+besoins du script.}  greffée dans une figure, il est évalué à chaque
+mise à jour de la figure (c.-à-d. lorsque la figure a besoin d'être
+reconstruite). Les scripts Pharo sont utiles pour la valeur qu'ils
+retournent ou leur effet de bord, cela dépend de ce que l'utilisateur
+souhaite réaliser.
+
+Enfin, dans le prolongement des scripts, @drgeo{} propose de définir
+entièrement des figures avec du code, ce sont les @dfn{figures
+Pharo}. Cette fois il s'agit de décrire une figure géométrique
+complètement sous la forme d'un code source écrit dans le langage
+Pharo. L'intérêt de cette approche est de s'appuyer sur les
+possibilités offertes par un langage de programmation comme les
+boucles, les blocs de code@footnote{Aussi connu sous le nom de
+fonction anonyme.}, les branchements conditionnels, la récursivité,
+etc. pour construire une figure interactive. Ainsi la construction par
+le code d'une figure n'est plus uniquement déclarative comme c'est le
+cas avec l'interface graphique. Pour ce faire le code s'appuie sur une
+@acronym{API}@footnote{@acronym{API,Application Programming
+Interface}, Interface de Programmation Applicative} pour programmer
+l'équivalent des constructions à la souris et bien plus encore.
+
+
+@page
+
+
+ 

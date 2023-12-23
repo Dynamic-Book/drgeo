@@ -1,0 +1,156 @@
+@c Macro construction
+
+@node Macro-construction
+@anchor{macroConstruction}
+@chapter Macro Construction
+@cindex macro construction, introduction
+
+A macro construction is similar to a programmed procedure or
+function, receiving as input items from the sketch and providing as
+outputs another set of items in the sketch. A macro is built
+according to a model defined by the user. That means that the user
+first needs to do the complete construction sequence in the sketch,
+then ask to @drgeo{} to record it in a macro construction. The macro
+construction can then be replayed and saved in a file like any sketch.
+
+To record a construction sequence, @drgeo{} needs to know the initial
+items of the sequence and the final -- output -- items. Of course, the
+final items must depend @emph{only} on the input items, otherwise
+@drgeo{} cannot deduce the final items from the initial ones.
+
+Thus, @drgeo{} traces the logic of the construction sequence for the
+specified outputs, and records it in a macro construction. Then, the
+user can repeat this sequence. When playing the macro construction, it
+only asks for the initial items -- of the types specified -- in the
+sketch and constructs the resulting -- output -- items.
+
+@drgeoNote{Intermediate invisible items are constructed by the macro
+construction. They are necessary to reproduce to complete the
+construction sequence and the resulting output items.}
+
+To illustrate the use of a macro construction, we take the example of
+a circle going through three points.
+
+@drgeoFigure{The initial sketch,fig40,4}
+
+@cindex macro construction, create
+
+Before creating the macro construction, the user has to construct the
+final sketch to serve as a model, as shown in the figure below. 
+
+@drgeoFigure{The sketch with the final construction,fig41,4}
+
+@section Creating a macro construction
+
+The user now tells @drgeo{} he wants to define a macro construction 
+from this sequence. 
+
+He activates the function @clicksequence{Build a macro} from the
+toolbar @drgeoIcon{fig26} or from the menu @clicksequence{macro
+construction@click{}Build macro}.
+
+In the newly displayed dialog box, the user selects the input and
+output objects, and enters a name and description of the
+macro construction.
+
+
+@drgeoFigure{Introduction page in the dialog box to construct a macro
+  construction,fig42,8}
+
+The second page in the dialog box lets the user select the input
+objects. In our example, it is the three initial points. The user
+just needs to go to this second page and then click on the three points
+A, B and C in the sketch. The selected points blink and the names are
+displayed in the dialog box.
+
+@drgeoFigure{The second page with the three points selected,fig43,8}
+
+In the third page, the user selects the output objects. In our
+example, we want the circle and its centre as the result of the macro
+construction. The user clicks on these two objects in the sketch. When
+selected they blink, and their names are displayed in the dialog box.
+
+@drgeoFigure{The third page with the circle and the centre
+selected,fig44,8}
+
+In the fourth page, the user inputs a name and a description for the
+macro construction. This information is displayed when the user plays
+a macro construction. It helps to disambiguate macro constructions.
+
+@drgeoFigure{The fourth page with the name and description of the
+macro construction,fig45,8}
+
+Next, the user validates the definition of the macro construction by
+pressing the @t{Apply} button and examining the results. He can also
+step back to the previous steps to adjust the parameter objects.
+
+
+@drgeoNote{If the selections of the input and output objects do not
+  match (@drgeo{} cannot extract a construction sequence, because an 
+  output depends on an object not selected as an input), the macro 
+  construction cannot be created. In this case the user needs to 
+  reconsider the input and output parameters. He or she can step 
+  back to the second or third page in the dialog box to adjust the 
+  choices.}
+
+
+A this stage, the macro construction is created and recorded in
+@drgeo{}. In the next section, we will see how to use it.
+
+
+@cindex macro construction, execute
+@section Play a macro construction
+
+@cindex macro construction, execute, dialog box
+@subsection With the dialog box
+
+To execute a macro construction, the user clicks on the
+@drgeoIcon{fig27} button in the toolbar or selects the menu
+@clicksequence{macro construction@click{}Execute macro} in the sketch
+window. A dialog box describing the procedure appears.
+
+On the second page of this dialog box the user selects the 
+macro construction in the upper list, and then the input parameters 
+in the sketch. Once all are selected, the macro construction is 
+executed automatically and the output parameters are built and 
+displayed in the sketch.
+
+@drgeoFigure{The user selects the input parameters in the
+sketch,fig46,8}
+
+In our example, the macro construction expects three input parameters
+(three points) and constructs a circle and its centre. Therefore, to
+execute it, you need a sketch with at least three points.
+
+@drgeoFigure{Sketch with three points,fig47,3}
+
+Once we feed three points to the macro we get the expected circle
+and centre.
+
+@drgeoFigure{A final sketch with the circle and its centre,fig48,3}
+
+@cindex macro construction, execute, menu
+
+@subsection With the macro construction menu 
+
+The macro construction loaded in memory are listed in the window menu
+@clicksequence{macro construction}. Selecting a macro construction
+from this menu let you execute it directly. After choosing one in the
+menu, select the input parameters in the sketch. The macro
+construction is executed as soon as all the input parameters are
+selected.
+
+It is a dialog-less mode of execution.
+
+@c A brief section on storing, loading, and importing 
+@c macro constructions is needed here, referring to the Files and 
+@c documents chapter.
+
+As described in the Files and documents chapter, to save a macro or
+collection of macros to a single file, select
+@clicksequence{File@click{} Save multiple}, and then select the items
+to include in the saved file.  The same process works for saving a
+sketch with multiple macros.
+
+To add a macro from a saved file to a sketch, create or open the sketch
+and open a file containing just the macro. 

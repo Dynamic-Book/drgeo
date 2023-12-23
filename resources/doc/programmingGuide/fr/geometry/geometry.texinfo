@@ -1,0 +1,1584 @@
+@node Espace
+@chapter Espace
+@quotation
+@strong{Poser et résoudre des problèmes pour modéliser le plan et l'espace}
+@* Résolution de problèmes géométriques en lien avec les figures et
+les transformations étudiées
+@author Plan d'Études Romand
+@end quotation
+
+@menu
+* Droites::Des droites parallèles, perpendiculaires, distances
+* Quadrilatères::Parallélogramme, rectangle, losange, carré
+* Triangles::Triangles isocèle, équilatéral, rectangle, rectangle isocèle
+* Droites remarquables du triangle::Médiatrice, bissectrice, hauteur et médiane
+* Angles::Angles géométriques ou orientés,alternes-internes, correspondants, somme des angles
+* Transformations::Symétries centrales et axiale, translation,rotation et homothétique
+* Frise::Construire une frise avec des transformations
+@end menu
+
+
+@node Droites
+@section Droites
+@subsection Parallèles
+@drgeoMath{Deux droites d1 et d2 parallèles à une même troisième
+droite d3 sont parallèles entre elles. d1 // d3 et d2 // d3 @result{}
+d1 // d2.}
+Cette proposition des éléments d'Euclide se traduit en un code simple :
+
+@cindex droite, parallèle
+@cindex montrer
+@drgeoExample{Trois droites parallèles,parallels,
+| figure d1 d2 d3 |
+figure := DrGeoFigure nouveau.
+d1 := figure droitePassantPar: 0 @@ 5 et: 2 @@ 0.
+d1 nommer: 'd1'.
+(figure point: 0 @@ 5) montrer.
+d2 := figure paralleleA: d1 passantPar: 5 @@ 0.
+d2 nommer: 'd2'.
+d3 := figure paralleleA: d1 passantPar: 6 @@ 0.
+d3 nommer: 'd3'}
+
+Dans la figure, déplacer le point rouge et observer.
+
+La 5ème ligne du code source force à rendre visible le point de
+coordonnées (0;5). Celui-ci est en effet ajouté à la figure en même
+temps que la droite d1, mais par défaut il est masqué à ce moment là
+pour ne pas surcharger la figure. Pour interagir avec la figure, il
+est intéressant de déplacer ce point là, nous le rendons donc visible.
+
+
+@drgeoExercise{Droites parallèles à la folie,exeManyParallels,
+@emph{Cette proposition est vraie pour 3 droites@comma{} écrire le programme
+pour construire les droites parallèles à d1 et passant par les points de l'axes
+des abscisses @{3 ; 3.5 ; 4 ; 4.5 ;...; 12@}}}
+
+@subsection Perpendiculaires
+@drgeoMath{Deux droites d1 et d2 perpendiculaires à une même troisième
+droite d3 sont parallèles entre elles.}
+
+Cette proposition des éléments d'Euclide se traduit également en un
+code simple@tie{}:
+
+@cindex droite, perpendiculaire
+@drgeoExample{Deux droites perpendiculaires,perpendiculars,
+| figure d1 d2 d3 |
+figure := DrGeoFigure nouveau.
+d1 := figure droitePassantPar: 0 @@ 5 et: 2 @@ 0.
+d1 nommer: 'd1'.
+(figure point: 0 @@ 5) montrer.
+d2 := figure perpendiculaireA: d1 passantPar: 0 @@ 0.
+d2 nommer: 'd2'.
+d3 := figure perpendiculaireA: d1 passantPar: 6 @@ 0.
+d3 nommer: 'd3'}
+
+Dans la figure, déplacer le point rouge et observer.
+
+@drgeoExercise{Droites perpendiculaires à la folie,exeManyPerpendiculars,
+@emph{Ecrire le programme pour construire les droites perpendiculaires à d1
+et passant par les points de l'axes des abscisses @{3 ; 3.5 ; 4 ; 4.5
+;...; 12@}}}
+
+Dans ce monde de grisaille -- fond de figure blanc/noir et droite
+noire/blanche -- ce serait revigorant de colorer les droites, par
+exemple :
+
+@cindex test, siVrai siFaux
+@drgeoExample{Droites paires ou impaires colorées,coloredLines,
+| figure d1 droite |
+figure := DrGeoFigure nouveau.
+d1 := figure droitePassantPar: 0 @@ 5 et: 2 @@ 0.
+d1 nommer: 'd1'.
+(figure point: 0 @@ 5) montrer.
+3 a: 12 faire: [:abscisse |  
+   droite := figure perpendiculaireA: d1 passantPar: abscisse @@ 0.
+   abscisse pair
+      siVrai: [droite couleur: Color red]
+      siFaux: [droite couleur: Color blue]
+]}
+
+La perpendiculaire créée est affectée à une variable @code{droite}.
+La boucle @code{a:faire:} parcourt les abscisses entières de 3 à
+12. Dans cette boucle, la condition @code{abscisse pair} teste avec le
+message à mot clé @code{siVrai:siFaux:} si l'abscisse est paire ou
+impaire. Selon le cas, la droite est colorée en rouge ou en bleu.
+
+Voici un exercice plus intéressant à faire :
+
+@drgeoExercise{Pair@comma{} impair@comma{} premier,exeOddEvenPrime,
+@emph{Modifier l'@ref{coloredLines} pour construire les
+perpendiculaires avec les abscisses entières de 1 à 500. Colorer en
+rouge les abscisses pairs, en orange les impairs et en bleu les nombres
+premiers. Modifier l'échelle de la figure à 3 pour une meilleure vue
+d'ensemble.}}
+
+Dans la figure produite, il est alors possible de reconnaître la
+séquence des nombres premiers parmi les nombres pairs et impairs.
+
+@drgeoFigure{Les nombres premiers en bleu@comma{} parmi les autres
+nombres pairs et impairs non premiers@comma{} respectivement rouge et
+orange,primeLines,8}
+
+
+@subsection Distance
+@cindex distance, entre points
+@subsubsection Distance entre deux points
+@drgeoMath{La distance entre deux points est simplement la mesure du
+segment d'extrémités ces deux points.}
+
+@drgeoExample{Distance entre deux points,distancePoints,
+| figure ptA ptB |
+figure := DrGeoFigure nouveau afficherAxes.
+ptA := figure point: 2 @@ 3.
+ptA nommer: 'A'.
+ptB := (figure point: 3 @@ -2) nommer: 'B'.
+figure segmentDe: ptA a: ptB.
+(figure distanceDe: ptA a: ptB) montrer}
+
+Dans la figure, en déplaçant à la souris les points A ou B, la
+distance est automatiquement actualisée. En attrapant la distance, des
+tirets rouges montrent qu'elle se rapporte aux points A et B.
+
+@cindex distance, point à droite
+@subsubsection Distance d'un point à une droite
+@drgeoMath{La distance entre un point et une droite est obtenue en
+construisant la droite perpendiculaire à la première droite et passant
+par le point. Ensuite mesurer la distance entre le point et
+l'intersection des deux droites. @emph{C'est le plus court chemin du
+point à la droite.}}
+
+@drgeoFigure{Distance d'un point à une droite,DistanceDroitePoint,7}
+
+@cindex point, intersection
+Pour réaliser la figure, nous introduisons un nouveau message à mot
+clé @code{intersectionDe:et:}. Ses paramètres sont les deux lignes dont
+nous souhaitons l'intersection.
+
+@drgeoExample{Distance d'un point à une droite,distancePointLine,
+| figure droite pointA perp intersection |
+figure := DrGeoFigure nouveau.
+droite := figure droitePassantPar: 5 @@ 5 et: 7 @@ -2.
+pointA := figure point: -5 @@ -5.
+perp := figure perpendiculaireA: droite passantPar: pointA.
+intersection := figure intersectionDe: droite et: perp.
+(figure distanceDe: pointA a: intersection) montrer}
+
+@cindex distance, droites parallèles
+@subsubsection Distance entre deux droites parallèles
+@drgeoMath{La distance entre deux droites parallèles est obtenue en
+construisant une perpendiculaire à ces deux droites et en mesurant la
+distance entre leur intersection. @emph{C'est la longueur d'un
+plus court chemin entre ces deux droites.}}
+
+@drgeoFigure{Distance entre deux droites parallèles,DistanceDroiteDroite,8}
+
+
+Dans l'exercice suivant, le programme pour produire une telle figure
+est partiellement écrit, il est à terminer.
+
+@drgeoExercise{Distance entre deux droites parallèles,distanceLines,
+@emph{Terminer l'écriture du programme ci-dessous pour construire la
+ distance entre deux droites parallèles.}
+@*
+@code{| figure droite1 droite2 perp pointA pointB |
+@*
+figure := DrGeoFigure nouveau afficherAxes.
+@*
+droite1 := figure droitePassantPar: 5 @@ 5 et: 7 @@ -2.
+@*
+droite2 := figure paralleleA: droite1 passantPar: 0 @@ 0.
+@*
+perp := figure perpendiculaireA: droite2 passantPar: -5 @@ 0.
+@*
+pointA := figure intersectionDe: droite1 et: perp.
+@*
+[...]}}
+
+@drgeoExercise{Déplacer la perpendiculaire,movedPerp,
+@emph{Dans la figure produite à l'@ref{distanceLines}@comma{} que se
+passe-t-il lorsque la perpendiculaire est déplacée à la souris ?}}
+
+La distance entre deux droites parallèles s'obtient donc par la
+construction d'un chemin perpendiculaire entre celles-ci. Pour
+comparer avec d'autres chemins allant d'une droite à l'autre -- et non
+perpendiculaires -- il serait intéressant de construire un grand
+nombre de segments entre @code{pointA} et d'autres points sur
+@code{droite2}.
+
+Mais avant cela, voici un exemple avec un autre chemin pour aller de
+@code{droite1} à @code{droite2}. La longueur de ce chemin est plus
+grande que la distance !
+
+@drgeoExample{Un autre chemin,altPath,
+| figure droite1 droite2 perp pointA autrePoint|
+figure := DrGeoFigure nouveau afficherAxes.
+droite1 := figure droitePassantPar: 5 @@ 5 et: 7 @@ -2.
+droite2 := figure paralleleA: droite1 passantPar: 0 @@ 0.
+perp := figure perpendiculaireA: droite2 passantPar: -5 @@ 0.
+pointA := figure intersectionDe: droite1 et: perp.
+autrePoint := figure pointSurLigne: droite2 a: 0.8.
+(figure segmentDe: autrePoint a: pointA) pointille}
+
+@cindex point, sur ligne
+Cet exemple introduit un nouveau message à mot clé
+@code{pointSurLigne:a:}. Il place un point sur une ligne. Son premier
+paramètre est une ligne -- ici @code{droite2} -- et le deuxième
+paramètre est l'abscisse du point sur la ligne. Cette abscisse est une
+valeur décimale entre 0 et 1.
+
+@drgeoExercise{D'autres chemins,manyPaths,
+@emph{En adaptant l'@ref{altPath}@comma{} construire une série de
+segments d'extrémités @code{pointA} et des points sur
+@code{droite2}. Ces derniers sont construits à l'aide d'une boucle
+@code{a:par:faire:} de 0 à 1 par un pas de 0.01.}}
+
+Dans la figure déplacer la perpendiculaire et observer l'effet
+graphique !
+
+@drgeoFigure{Que de chemins !,manyPathsFx,8}
+
+@node Quadrilatères
+@section Quadrilatères
+
+@cindex parallélogramme
+@subsection Parallélogramme
+Un parallélogramme possède plusieurs propriétés caractéristiques que
+nous utilisons pour le construire de différentes façons.  Nous
+explorons celles-ci dans les sections suivantes.
+
+@unnumberedsubsubsec Par les côtés opposés
+@drgeoMath{Un parallélogramme est un quadrilatère dont les côtés
+opposés sont parallèles.}
+
+Étant donnés trois points A, B, C, le quatrième sommet D est construit
+comme l'intersection de @strong{la parallèle à AB} passant par C et de
+@strong{la parallèle à BC} passant par A.
+
+@cindex cacher
+@drgeoExample{Parallélogramme et parallèles,parallelogram1,
+| figure a b c d ab bc |
+figure := DrGeoFigure nouveau.
+a := (figure point: 1 @@ 1) nommer: 'A'.
+b := (figure point: 5 @@ 2) nommer: 'B'.
+c := (figure point: 6 @@ 6) nommer: 'C'.
+ab := figure segmentDe: a a: b.
+bc := figure segmentDe: b a: c.
+d := figure
+  intersectionDe: (figure paralleleA: ab passantPar: c) cacher
+  et: (figure paralleleA: bc passantPar: a) cacher.
+d nommer: 'D'.
+figure segmentDe: a a: d.
+figure segmentDe: c a: d}
+
+
+@drgeoExercise{Toujours parallélogramme,exeParallelogramStill,
+@emph{Qu'observe-t-on lorsque les points A@comma{} B ou C sont
+déplacés@tie{}? Pourquoi@tie{} ?}}
+
+@drgeoExercise{Un autre parallélogramme,exeAnotherParallelogram,
+@emph{En suivant l'@ref{parallelogram1}@comma{} construire le
+parallélogramme OMNP connaissant ses sommets M(-5;2) N(3;2) et
+P(1;-5). Il est conseillé de faire un croquis.}}
+
+@drgeoMath{Les cotés opposés d'un parallélogramme sont
+@strong{isométriques} et parallèles.}
+
+@drgeoFigure{Côtés opposés du parallélogramme,parallelogramSides,6}
+
+C'est une propriété utilisée pour construire un parallélogramme au
+compas. Ici dans le code d'une figure programmée, nous utilisons des
+cercles dont les rayons sont les longueurs des côtés.
+
+@cindex cercle, segment
+@drgeoExample{Parallélogramme et côtés isométriques,parallelogram2,
+| figure o m n p mn pm cercle1 cercle2 |
+figure := DrGeoFigure nouveau.
+m := (figure point: -5 @@ 2) nommer: 'M'.
+n := (figure point: 3 @@ 2) nommer: 'N'.
+p := (figure point: 1 @@ -5) nommer: 'P'.
+mn := figure segmentDe: m a: n.
+pm := figure segmentDe: p a: m.
+cercle1 := figure cercleCentre: p segment: mn.
+cercle1 tiret.
+cercle2 := figure cercleCentre: n segment: pm.
+cercle2 tiret.
+o := figure intersectionDe: cercle1 et: cercle2.
+o nommer: 'O'.
+figure segmentDe: o a: n.
+figure segmentDe: o a: p}
+
+Une fois le code exécutée, dans la figure attraper et déplacer les
+points M, N ou P et observer la figure pour bien la comprendre.
+
+@drgeoFigure{Parallélogramme et cercles,parallelogramCircle,6}
+
+@drgeoExercise{Deux points d'intersection,exeParallelogram, @emph{Les
+deux cercles de la @ref{parallelogramCircle} se coupent en deux points dont
+l'un est le point O. Est-ce que le deuxième point d'intersection des
+deux cercles convient pour former un parallélogramme ? Pourquoi ?}}
+
+
+@unnumberedsubsubsec Par les diagonales
+@drgeoMath{Les diagonales d'un parallélogramme se coupent en leur
+milieu. Ce milieu est donc un centre de symétrie.}
+
+@drgeoFigure{Diagonales du parallélogramme,parallelogramDiagonals,6}
+
+Pour un parallélogramme ABCD dont I est le milieu de ses diagonales
+alors le point D est le symétrique de B par rapport à I. Cela nous
+fournit un programme de construction de ABCD que nous développons dans
+les deux exercices suivants.
+
+@cindex milieu, deux points
+@drgeoExercise{Parallélogramme et centre,exeParallelogramCenter,
+@emph{Connaissant les points A(-5;2) B(3;2) et C(1;-5)@comma{}
+construire le point I milieu de AC. Utiliser le message à mot clé}
+@code{milieuDe:et:} pour construire le milieu des points A et C.}
+
+@cindex symétrie, centrale
+L'@ref{exeParallelogramCenter} construit le point I, centre du
+parallélogramme. Pour construire le parallélogramme ABCD, le point D
+est construit comme symétrique de B par rapport à I avec le message
+@code{symetriqueDe:selonCentre:}.
+
+@drgeoExercise{Parallélogramme et symétrie,exeParallelogramSymmetry,
+@emph{A partir de l'@ref{exeParallelogramCenter} construire le
+parallélogramme ABCD. Tracer ABCD avec un polygone.}}
+
+@cindex losange
+@subsection Losange
+@drgeoMath{Un losange est un parallélogramme dont les côtés sont
+isométriques.}
+
+@drgeoFigure{Losange,losange,7}
+
+@unnumberedsubsubsec Troisième sommet
+Ainsi pour un losange ABCD, connaissant A et B, le point C est tel que
+BA=BC. Pour placer correctement un point C, nous construisons le
+cercle de centre B et rayon BA, puis nous plaçons sur ce cercle un
+point C.
+
+@drgeoExercise{Côtés adjacents isométriques,exeIsoSides,
+@emph{Programmer une figure avec les points A(0;0) et B(5;1)@comma{}
+puis construire le cercle de centre B et passant par A. Sur ce cercle
+placer le point C d'abscisse 0.2}. Utiliser les messages à mots clés
+@code{cercleCentre:passantPar:} et @code{pointSurLigne:a:}}
+
+@unnumberedsubsubsec Par les côtés opposés
+Une fois que les points A, B et C sont placés tel que BA=BC, il suffit
+de reprendre le programme de construction pour un
+parallélogramme@tie{}: @emph{étant donnés trois points A, B, C, le
+quatrième sommet D est construit comme l'intersection de @strong{la
+parallèle à AB} passant par C et de @strong{la parallèle à BC} passant
+par A.}
+
+@drgeoExercise{Losange comme un
+parallélogramme,exeLosangeParallelogram, @emph{Compléter le code de
+l'@ref{exeIsoSides} pour construire le point D afin que ABCD soit un
+parallélogramme. S'inspirer également du code de
+l'@ref{parallelogram1} pour cette construction.}}
+
+Pour vérifier que le programme est valide, déplacer A, B et C afin
+d'observer ce qui se passe.
+
+@unnumberedsubsubsec Par les diagonales
+@drgeoMath{Les diagonales d'un losange -- en plus de se couper en leur
+milieu comme pour tout parallélogramme -- sont
+@strong{perpendiculaires}.}
+
+Lorsque les points A, B et C d'un losange ABCD sont placés sur la
+figure il est alors possible de construire le sommet D comme
+symétrique de B par rapport à I, milieu de AC.
+
+@drgeoExercise{Losange et centre,exeLosangeCenter, @emph{Compléter le
+code de l'@ref{exeIsoSides} pour construire le point D et le
+parallélogramme ABCD avec la méthode vue à
+l'@ref{exeParallelogramSymmetry}.}}
+
+@cindex rectangle
+@subsection Rectangle
+@drgeoMath{Un rectangle est un parallélogramme dont les côtés sont
+perpendiculaires.}
+
+@drgeoFigure{Rectangle,rectangle,4}
+
+@unnumberedsubsubsec Troisième sommet
+Ainsi pour un rectangle ABCD, connaissant les points A et B, le point
+C est tel que la droite BA est perpendiculaire à la droite BC. Pour
+placer correctement un point C, nous donc construisons la droite
+passant par B et perpendiculaire à la droite AB, puis nous plaçons sur
+cette droite un point C.
+
+@cindex droite, perpendiculaire
+@cindex point, sur ligne
+@drgeoExercise{Côtés adjacents perpendiculaires,exePerpendicularSides,
+@emph{Programmer une figure avec les points A(0;0) et B(5;1)@comma{}
+puis construire la droite passant par B et perpendiculaire à la droite
+AB. Sur cette droite placer le point C d'abscisse 0.1} Utiliser les
+messages à mots clés @code{perpendiculaireA:passantPar:} et
+@code{pointSurLigne:a:}}
+
+@unnumberedsubsubsec Par les côtés opposés
+Une fois les trois points A, B et C placés comme dans
+l'@ref{exePerpendicularSides}, il suffit de reprendre le programme de
+construction pour un parallélogramme@tie{}: @emph{étant donnés trois
+points A, B, C, le quatrième sommet D est construit comme
+l'intersection de @strong{la parallèle à AB} passant par C et de
+@strong{la parallèle à BC} passant par A.}
+
+
+@drgeoExercise{Rectangle comme un
+parallélogramme,exeRectangleParallelogram, @emph{Compléter le code de
+l'@ref{exePerpendicularSides} pour construire le point D afin que ABCD
+soit un parallélogramme. S'inspirer également du code de
+l'@ref{parallelogram1} pour cette construction.}}
+
+@unnumberedsubsubsec Par les diagonales
+@drgeoMath{Les diagonales d'un rectangle -- en plus de se couper en
+leur milieu comme pour tout parallélogramme -- sont @strong{isométriques}.}
+
+Lorsque les points A, B et C d'un rectangle ABCD sont placés sur la
+figure il est alors possible de construire le sommet D comme
+symétrique de B par rapport à I, milieu de AC.
+
+@drgeoExercise{Rectangle et centre,exeRectangleCenter, @emph{Compléter
+le code de l'@ref{exePerpendicularSides} pour construire le point D et
+le parallélogramme ABCD avec la méthode vue à
+l'@ref{exeParallelogramSymmetry}.}}
+
+@strong{Autre approche.} Puisque les diagonales du rectangle sont
+isométriques, nous commençons par la construction d'une diagonale, par
+exemple AC. La deuxième diagonale BD sera construite telle que
+BD=AC. Dans ce programme de construction nous utiliserons un cercle de
+diamètre AC.
+
+@drgeoExercise{Rectangle et cercle,exeRectangleCircle,
+@emph{Programmer une figure avec le segment d'extrémités les points
+A(0;0) et C(5;2). Construire le milieu I du segment AC puis le cercle
+de diamètre AC.}}
+
+Maintenant nous plaçons un point B où nous le souhaitons sur le
+cercle. La droite IB est construite puis le point D comme intersection
+entre la droite IB et le cercle.
+
+@drgeoExercise{Rectangle et diagonale,exeRectangleDiagonals,
+@emph{Placer le point B d'abscisse 0.4 sur le cercle. Construire la
+droite IB et le point D comme d'intersection de IB et du
+cercle. Construire le polygone ABCD. @strong{Indices@tie{}:} utiliser
+les messages à mots clés @code{pointSurLigne:a:}@comma{}
+@code{droitePassantPar:et:} et @code{intersectionDe:et:}}}
+
+
+@cindex carré
+@subsection Carré
+@drgeoMath{Un carré est un parallélogramme dont les côtés sont
+isométriques et perpendiculaires. Le carré cumule les propriétés du
+losange et du rectangle, il est à la fois un losange et un rectangle.}
+
+@drgeoFigure{Carré,carre,5}
+
+@unnumberedsubsubsec Troisième sommet
+Ainsi pour un carré ABCD, connaissant A et B, le point C est tel que
+BA=BC et la droite BA est perpendiculaire à la droite BC.
+
+Pour placer correctement un point C, nous construisons :
+
+@enumerate
+
+ @item la droite passant par B et perpendiculaire à
+ la droite AB@tie{};
+
+ @item le cercle de centre B et passant par A ;
+
+ @item le point C intersection de cette droite perpendiculaire avec ce
+ cercle.
+ 
+@end enumerate
+
+@drgeoExercise{Côtés adjacents isométriques et
+perpendiculaires,exeIsoPerpendicularSides, @emph{Programmer une figure
+avec les points A(0;0) et B(5;1). Construire la droite passant par B
+perpendiculaire à la droite AB puis le cercle de centre B passant par
+A. Enfin@comma{} construire le point C comme intersection de cette
+droite et de ce cercle}. @strong{Indices@tie{}:} utiliser les messages
+à mots clés @code{perpendiculaireA:passantPar:}@comma{}
+@code{cercleCentre:passantPar:} et @code{intersectionDe:et:}}
+
+@unnumberedsubsubsec Par les côtés opposés
+Une fois les points A, B et C placés, il suffit de reprendre un
+programme de construction pour un parallélogramme déjà répété
+plusieurs fois.
+
+@drgeoExercise{Carré comme un parallélogramme,exeSquareParallelogram,
+@emph{Compléter le code de l'@ref{exeIsoPerpendicularSides} pour
+construire le point D afin que ABCD soit un
+parallélogramme. S'inspirer également du code de
+l'@ref{parallelogram1} pour cette construction. Pour plus de clarté
+dans la figure finale, cacher les droites et cercle intermédiaires.}}
+
+@unnumberedsubsubsec Par les diagonales
+@drgeoMath{Les diagonales d'un carré -- en plus de se couper en leur
+milieu comme pour tout parallélogramme -- sont isométriques et
+perpendiculaires.}
+
+Lorsque les points A, B et C d'un carré ABCD sont placés sur la figure
+il est alors possible de construire le sommet D comme symétrique de B
+par rapport à I, milieu de AC.
+
+@drgeoExercise{Carré et centre,exeSquareCenter, @emph{Compléter le
+code de l'@ref{exeIsoPerpendicularSides} pour construire le point D et
+le carré ABCD avec la méthode vue à l'@ref{exeParallelogramSymmetry}.}}
+
+@cindex triangle
+@node Triangles
+@section Triangles
+Construire un triangle quelconque ne comporte pas de difficulté, il
+suffit d'indiquer les coordonnées des trois sommets du polygone.
+
+@drgeoExample{Triangle quelconque,triangle,
+| figure |
+figure := DrGeoFigure nouveau.
+figure polygone: @{0@@0 . 5@@0 . 2@@3@}}
+
+@cindex triangle, isocèle
+@subsection Isocèle
+Un triangle isocèle possède plusieurs propriétés offrant des approches
+différentes dans sa construction.  Nous les explorons dans les
+sections suivantes.
+
+@unnumberedsubsubsec Côtés isométriques
+@drgeoMath{Un triangle ABC isocèle en A a ses côtés AB et AC
+isométriques.}
+
+@drgeoFigure{Triangle isocèle et côtés isométriques,triangleIsoscele,3}
+
+Ainsi, étant donné un segment BC, le point A est construit au
+compas. Il est le point d'intersection de deux cercles de même rayon
+et de centre respectif B et C. Le rayon du cercle est la longueur des
+côtés AB et AC. Le triangle ABC est alors isocèle en A.
+
+@drgeoExample{Triangle isocèle et cercle,triangleCircle,
+| figure b c cercle1 |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+cercle1 := figure cercleCentre: b rayon: 4}
+
+
+@drgeoExercise{Triangle isocèle@comma{} côtés
+isométriques,exeTriangleIsoscele1, @emph{Compléter
+l'@ref{triangleCircle} pour construire le triangle ABC isocèle en
+A. Le point A sera construit comme l'intersection de deux cercles de
+rayon 4. Cacher les objets géométriques intermédiaires pour plus de
+clarté dans la figure finale.}}
+
+
+@unnumberedsubsubsec Axe de symétrie
+@drgeoMath{Un triangle ABC isocèle en A admet comme axe de
+symétrie la médiatrice du segment BC.
+@*
+Ou dit autrement, le point A appartient à la médiatrice du segment
+BC, cette médiatrice est également la hauteur issue de A du triangle
+ABC.}
+
+@cindex médiatrice
+@drgeoExercise{Triangle isocèle@comma{} axe de
+symétrie,exeTriangleIsoscele2, @emph{Connaissant B(5;1) et
+C(0;0)@comma{} construire un point A sur la médiatrice du segment BC
+puis le triangle ABC.} Utiliser les messages à mots-clés
+@code{mediatrice:} et @code{pointSurLigne:a:}}
+
+@unnumberedsubsubsec Angles isométriques
+@drgeoMath{Un triangle ABC isocèle en A a ses angles B et C
+isométriques.}
+
+Ainsi, étant donnés un segment BC et une mesure d'angle choisie -- par
+exemple 50 degrés -- nous construisons au rapporteur deux demi-droites
+d'origine B et C et formant un angle de 50 degrés avec BC. Ces deux
+droites sont sécantes en A et le triangle ABC ainsi formé est isocèle
+en A.
+
+Pour résumer, dans cette construction les étapes sont les
+suivantes@tie{}:
+
+@enumerate
+
+ @item Choisir une mesure d'angle nommée @emph{alpha}@tie{};
+
+ @item Construire les deux demi-droites d'origine B et C faisant un
+ angle @emph{alpha} avec la droite BC@tie{};
+
+ @item Construire A le point d'intersection de ces deux demi-droites.
+
+@end enumerate
+
+
+@drgeo{} n'a pas d'outil de type rapporteur, la construction des
+demi-droites est donc délicate. Elle nécessite de s'appuyer sur la
+transformation géométrique rotation. Dans l'exemple suivant nous
+montrons le début du programme pour construire la demi-droite
+d'origine C format un angle donné avec BC.
+
+@cindex angle
+@cindex rotation
+@drgeoExample{Angle et rotation,angleRotation,
+| figure alpha1 b c b1 demiDroite1 |
+figure := DrGeoFigure nouveau.
+b := (figure point: 5@@1) nommer: 'B'.
+c := (figure point: 0@@0) nommer: 'C'.
+alpha1 := figure angleCentre: 10@@10 de: 12@@10 a: 12@@13.
+b1 := figure rotationDe: b parCentre: c etAngle: alpha1.
+demiDroite1 := figure demiDroiteOrigine: c passantPar: b1}
+
+@drgeoExercise{Triangle isocèle et angle@sup{*},exeTriangleIsosceleAngle,
+@emph{Compléter l'@ref{angleRotation} en construisant la demi-droite
+d'origine B et faisant un même angle avec BC, puis le point
+d'intersection A et le triangle ABC. Faire un croquis montrant la
+deuxième rotation nécessaire peut aider.}}
+
+Dans la figure finale, ce qui serait amusant c'est de modifier l'angle
+à la souris. Pour cela il suffit de rendre visible un des points de
+l'angle, par exemple celui de coordonnées (12;10).
+
+@drgeoExercise{Triangle isocèle et angle variable,exeTriangleIsosceleAngleMod,
+@emph{A la fin du programme de
+l'@ref{exeTriangleIsosceleAngle}@comma{} rendre visible le point de
+coordonnées (12;10). Cacher tous les objets géométriques
+intermédiaires pour plus de clarté dans la figure finale.}}
+
+Dans les sections précédentes nous avons écrit trois programmes
+différents pour la construction d'un triangle isocèle. Selon la
+propriété du triangle isocèle utilisée, le programme était plus ou
+moins simple à concevoir. Souvent en informatique, il existe
+différentes approches pour résoudre un même problème. Une bonne
+connaissance du domaine -- ici le triangle isocèle -- permet de
+choisir la méthode la plus simple dans la conception du programme
+informatique. Ici s'appuyer sur l'axe de symétrie du triangle
+produisait clairement le programme le plus simple.
+
+@cindex triangle, équilatéral
+@subsection Équilatéral
+
+@unnumberedsubsubsec Côtés isométriques
+@drgeoMath{Un triangle ABC équilatéral a ses côtés AB, AC et BC
+isométriques.}
+
+Ainsi étant donné un segment BC, le point A est construit au compas
+tel que BA=CA=BC. A est un point d'intersection des deux cercles de
+@strong{même rayon BC} et de centre respectif B et C.
+
+@drgeoExercise{Triangle équilatéral@comma{} côtés
+isométriques,exeTriangleEquilateral1,@emph{En complétant
+l'@ref{triangleCircle}@comma{} écrire un programme pour construire le
+triangle ABC équilatéral. Le point A sera construit comme
+l'intersection de deux cercles de rayon BC. Cacher les objets
+géométriques intermédiaires pour plus de clarté dans la figure
+finale.}}
+
+@unnumberedsubsubsec Axes de symétrie
+@drgeoMath{Un triangle ABC équilatéral admet trois axes de symétrie,
+les médiatrices de ses trois côtés.}
+
+Ainsi étant donné un segment BC, le point A se construit comme une
+intersection de la médiatrice de BC et un cercle de centre B ou C et
+de rayon BC.
+
+@drgeoExercise{Triangle équilatéral@comma{} axes de
+symétrie,exeTriangleEquilateral2,@emph{En complétant
+l'@ref{triangleCircle}@comma{} écrire un programme pour construire le
+triangle ABC équilatéral. Le point A sera construit comme
+l'intersection de la médiatrice de BC et d'un cercle de rayon
+BC. Cacher les objets géométriques intermédiaires pour plus de clarté
+dans la figure finale.}}
+
+@cindex triangle, rectangle
+@subsection Triangle rectangle
+@drgeoMath{Un triangle ABC rectangle en B admet un angle droit ABC.}
+
+@drgeoExercise{Triangle rectangle,exeTriangleRectangle,
+@emph{Connaissant B(5;1) et C(0;0)@comma{} construire un point A sur
+la droite perpendiculaire au segment BC en B. Construire ensuite le
+triangle ABC.}  Utiliser les messages à mots-clés
+@code{perpendiculaireA:passantPar:} et @code{pointSurLigne:a:}}
+
+@cindex triangle, rectangle isocèle
+@subsection Triangle rectangle isocèle
+@drgeoMath{Un triangle ABC isocèle rectangle en B admet un angle droit
+ABC et deux côtés isométriques BA et BC.}
+
+@drgeoExercise{Triangle rectangle
+isocèle,exeTriangleRectangleIsoscele,@emph{Connaissant B(5;1) et
+C(0;0)@comma{} construire un point A sur la droite perpendiculaire au
+segment BC en B tel que BA=BC. Construire ensuite le triangle ABC.}
+Utiliser les messages à mots-clés @code{perpendiculaireA:passantPar:}
+et @code{cercleCentre:passantPar:}}
+
+Le codage permet de rendre visible des propriétés sur des angles ou
+des segments isométriques.
+
+@drgeoExercise{Triangle rectangle isocèle
+codé,exeTriangleRectangleIsosceleMark, @emph{Reprendre la solution de
+l'@ref{exeTriangleRectangleIsoscele} pour cacher les constructions
+intermédiaires@comma{} marquer les segments isométriques et afficher
+la valeur de l'angle droit.}  Utiliser les messages à mots-clés
+@code{angleGeometriqueCentre:de:a:} et @code{marquerAvecSimpleTrait}}
+
+
+@node Droites remarquables du triangle
+@section Droites remarquables du triangle
+Dans le triangle, nous connaissons 4 droites remarquables@tie{}: les
+médiatrices, les bissectrices, les hauteurs et les médianes. 
+
+@cindex médiatrice
+@cindex cercle, circonscrit
+@subsection Médiatrices
+@drgeoMath{Dans un triangle, les trois médiatrices construites à
+ partir des côtés du triangle se coupent un même point M. Les
+ médiatrices sont dites @emph{concourantes} en ce point M, c'est le
+ point d'intersection des trois médiatrices.
+@*
+Pour rappel, la médiatrice d'un segment est une droite perpendiculaire
+à ce segment en son milieu.}
+
+Une figure @drgeo{} comprend les messages @code{mediatriceDe:} et
+@code{meditraiceDe:a:} pour construire une médiatrice à partir d'un
+segment ou de deux points -- voir l'annexe des méthodes pour leur
+utilisation.
+
+@drgeoExercise{Médiatrices du
+triangle,exeTrianglePerpendicularBisector,@emph{Construire un triangle
+de sommets A(2;1)@comma{} B(7;2) et C(4;7) puis les 3 médiatrices de
+chacun des 3 côtés AB@comma{} BC et AC.  Nommer M le point
+d'intersection de ces médiatrices.}}
+
+@drgeoMath{Le point M, intersection des médiatrices, est le centre
+d'un cercle qui passe par les trois sommets A, B et C. C'est le
+@emph{cercle circonscrit} du triangle ABC.}
+
+@drgeoExercise{Cercle circonscrit d'un
+triangle,exeTriangleCircle1,@emph{Compléter
+l'@ref{exeTrianglePerpendicularBisector} en construisant le cercle
+circonscrit au triangle ABC.}}
+
+@cindex bissectrice
+@cindex cercle, inscrit
+@subsection Bissectrices
+@drgeoMath{Dans un triangle, les trois bissectrices des trois angles
+du triangle sont concourantes en un point O.
+@*
+Pour rappel, la bissectrice d'un angle coupe celui-ci en deux angles
+isométriques.}
+
+Une figure @drgeo{} comprend les messages @code{bissectriceDe:} et
+@code{bissectriceSommet:cote1:cote2:} pour construire une bissectrice
+à partir d'un angle géométrique ou de trois points.
+
+@drgeoExercise{Bissectrices du
+triangle,exeTriangleAngleBisector,@emph{Construire un triangle
+de sommets A(2;1)@comma{} B(7;2) et C(4;7) puis les 3 bissectrices de
+chacun des ses 3 angles.  Nommer O le point
+d'intersection de ces bissectrices.}}
+
+@drgeoMath{Le point O est le centre du @emph{cercle inscrit} dans le
+triangle ABC. Le rayon de ce cercle est la distance du point O à
+n'importe quel côté du triangle@tie{}: la distance de O à AB, de O à
+BC et de O à AC est la même. Ainsi pour tracer ce cercle inscrit, il
+faut d'abord construire et mesurer une des distances de O à AB, BC ou
+AC.}
+
+@drgeoExercise{Cercle inscrit d'un
+triangle@sup{*},exeTriangleCircle2,@emph{Compléter
+l'@ref{exeTriangleAngleBisector} en construisant le cercle inscrit
+dans le triangle ABC. Le rayon du cercle sera d'abord construit comme
+la distance de O à un des côtés du triangle.}}
+
+@cindex hauteur
+@subsection Hauteurs
+@drgeoMath{Dans un triangle, les trois hauteurs issues des trois
+sommets sont concourantes en un point H appelé orthocentre du
+triangle.
+@*
+Pour rappel, une hauteur d'un triangle est une droite passant par un
+sommet et perpendiculaire au côté opposé à ce sommet.}
+
+@drgeoExercise{Hauteurs du
+triangle,exeTriangleHeight,@emph{Construire un triangle de sommets
+A(2;1)@comma{} B(7;7) et C(4;5) puis les 3 hauteurs issues de chacun
+de ses 3 sommets.  Nommer H le point d'intersection de ces hauteurs.}}
+
+@cindex médiane
+@subsection Médianes
+@drgeoMath{Dans un triangle, les trois médianes issues des trois sommets sont
+concourante en un point G appelé centre de gravité du triangle.
+@*
+Pour rappel, une médiane d'un triangle est une droite passant par un
+sommet et le milieu du côté opposé à ce sommet.}
+
+@drgeoExercise{Médianes du triangle,exeTriangleMedian,@emph{Construire
+un triangle de sommets A(2;1)@comma{} B(7;7) et C(4;5) puis les 3
+médianes issues de chacun de ses 3 sommets.  Nommer G le point
+d'intersection de ces médianes.}}
+
+@cindex angle, géométrique
+@cindex angle, orienté
+@node Angles
+@section Angles
+Depuis @drgeo{}, il est possible de construire deux types d'angle à
+partir de trois points@tie{}:
+
+@itemize
+
+  @item un angle géométrique dont la mesure est comprise entre
+  0@textdegree{} et 180@textdegree{}. Le message à envoyer à la figure
+  est @code{angleGeometriqueCentre:de:a:}.
+
+  @item un angle orienté dont la mesure est comprise entre
+  0@textdegree{} et 360@textdegree{}. L'angle est orienté dans le sens
+  contraire des aiguilles d'une montre. Le message à envoyer à la
+  figure est @code{angleCentre:de:a:}.
+
+@end itemize
+
+
+Observer comment les angles ci-dessous sont différents alors qu'ils
+sont construits à partir des mêmes points.
+
+@drgeoExample{Angles géométrique et orienté,anglesGeometricOriented,
+| figure |
+figure := DrGeoFigure nouveau.
+figure demiDroiteOrigine: 0@@0 passantPar: -2@@2.
+figure demiDroiteOrigine: 0@@0 passantPar: 3@@1.
+(figure angleGeometriqueCentre: 0@@0 de: -2@@2 a: 3@@1) couleur: Color blue.
+(figure angleCentre: 0@@0 de: -2@@2 a: 3@@1) couleur: Color brown}
+
+@drgeoFigure{Angles géométrique (bleu) et orienté (marron avec
+flèche),angleGeometricOriented,7}
+
+@cindex angle, correspondant
+@subsection Angles correspondants
+@drgeoMath{Deux angles correspondants portés par deux droites
+parallèles sont isométriques.}
+Les angles sont placés du même côté des droites parallèles. Dans la
+figure ci-dessous, les droites AC et BD sont parallèles@tie{}; les
+angles BAC et EBD sont correspondants et isométriques.
+
+@drgeoFigure{Angles correspondants portés par deux droites
+parallèles,correspondingAngle,8}
+
+Dans la figure interactive produite par le code ci-dessous, déplacer
+les points D et E de part et d'autre du point B pour observer le
+changement de mesure de l'angle EBD.
+
+@drgeoExample{Angles correspondants,correspondingAngles,
+| figure a b c d e d1 d2 d3 |
+figure := DrGeoFigure nouveau.
+a:= (figure point: 0@@0) nommer: 'A'.
+b:= (figure point: 5@@0) nommer: 'B'.
+c:= (figure point: 1@@3) nommer: 'C'.
+d1 := figure droitePassantPar: a et: b.
+d2 := figure droitePassantPar: a et: c.
+d3 := figure paralleleA: d2 passantPar: b.
+d:= (figure pointSurLigne: d3 a: 0.85) nommer: 'D'.
+e:= (figure pointSurLigne: d1 a: 0.96) nommer: 'E'.
+figure angleGeometriqueCentre: a de: b a: c.
+figure angleGeometriqueCentre: b de: e a: d}
+
+@cindex angle, alterne-interne
+@subsection Angles alternes-internes
+@drgeoMath{Deux angles alternes-internes portés par deux droites
+parallèles sont isométriques.}
+Les angles sont placés de part et d'autre de la troisième droite et
+entre les deux droites parallèles. Dans la figure ci-dessous, les
+droites AC et BD sont parallèles@tie{}; les angles BAC et EBD sont
+alternes-internes et isométriques.
+
+@drgeoFigure{Angles alternes-internes portés par deux droites
+parallèles,alternInternAngle,9}
+
+Dans la figure interactive produite par le code ci-dessous, déplacer
+les points D et E de part et d'autre du point B pour observer le
+changement de mesure de l'angle EBD.
+
+@drgeoExample{Angles alternes-internes,alternInternAngles,
+| figure a b c d e d1 d2 d3 |
+figure := DrGeoFigure nouveau.
+a:= (figure point: 0@@0) nommer: 'A'.
+b:= (figure point: 5@@0) nommer: 'B'.
+c:= (figure point: 1@@3) nommer: 'C'.
+d1 := figure droitePassantPar: a et: b.
+d2 := figure droitePassantPar: a et: c.
+d3 := figure paralleleA: d2 passantPar: b.
+d:= (figure pointSurLigne: d3 a: 0.15) nommer: 'D'.
+e:= (figure pointSurLigne: d1 a: 0.85) nommer: 'E'.
+figure angleGeometriqueCentre: a de: b a: c.
+figure angleGeometriqueCentre: b de: e a: d}
+
+@cindex triangle, somme des angles
+@subsection Somme des angles d'un triangle
+@drgeoMath{La somme des angles d'un triangle est toujours égale à
+180@textdegree{}.}
+
+Nous allons construire une figure expliquant cette propriété. Nous
+écrivons d'abord le code d'une figure d'un triangle avec ses sommets,
+ses côtés et ses angles.
+
+@drgeoExample{Triangle et angles,triangleAngle1,
+| figure a b c ab bc |
+figure := DrGeoFigure nouveau.
+a := (figure point: 0@@0) nommer: 'A'.
+b := (figure point: 6@@0) nommer: 'B'.
+c := (figure point: 4@@9) nommer: 'C'.
+(figure segmentDe: a a: b) normal.
+ab := figure droitePassantPar: a et: b.
+bc := (figure segmentDe: b a: c) normal.
+(figure segmentDe: a a: c) normal.
+(figure angleGeometriqueCentre: b de: a a: c) couleur: Color red.
+(figure angleGeometriqueCentre: a de: b a: c) couleur: Color blue.
+(figure angleGeometriqueCentre: c de: a a: b) couleur: Color brown}
+
+Complétons maintenant ce code pour mettre en évidence deux angles
+particuliers de cette figure.
+
+@drgeoExercise{Triangle et
+angles,exeTriangleAlternInternAngles,@emph{Compléter
+l'@ref{triangleAngle1} en traçant une droite d1 passant par A et
+parallèle à BC. Placer sur d1 un point M d'abscisse 0.9 puis
+construire l'angle géométrique MAC. Que dire des angles ACB et MAC ?}}
+
+@drgeoFigure{Triangle et angles alternes-internes,triangleAngleAlternIntern,8}
+
+Nous complétons à nouveau le code de la figure pour mettre en évidence
+une autre paire d'angles particuliers.
+
+@drgeoExercise{Triangle et angles
+encore,exeTriangleCorrespondingAngles,@emph{Compléter le code de
+l'@ref{exeTriangleAlternInternAngles} en plaçant sur la droite AB un
+point N d'abscisse 0.2 puis construire l'angle géométrique MAN. Que
+dire des angles ABC et MAN ?}}
+
+@drgeoFigure{Triangle et angles correspondants,triangleCorrespondingAngle,8}
+
+Que conclure sur la somme des angles d'un triangle ? Lorsque les
+points A, B ou C sont déplacés, la conclusion précédente est-elle
+toujours vraie ?
+
+@cindex quadrilatère, somme des angles
+@subsection Somme des angles d'un quadrilatère
+
+@cindex convexe (quadrilatère)
+@drgeoMath{Un polygone -- quadrilatère -- est convexe lorsqu'il
+contient chaque segment joignant deux de ses points.}
+
+@drgeoFigure{Polygones convexe et non convexe,PolygonesConvexeNonConvexe,8}
+
+En construisant une diagonale d'un quadrilatère convexe, cela revient à
+découper celui-ci en deux triangles. Il devient alors évident que la
+somme de ses angles est de 2 * 180@textdegree{}, soit
+360@textdegree{}.
+
+
+@drgeoFigure{Somme des angles d'un quadrilatère convexe,quadAngles,7}
+
+Cette figure est produite avec le code suivant :
+
+@drgeoExample{Angles d'un quadrilatère convexe,quadConvexAngle,
+| figure ancre a b c d |
+figure := DrGeoFigure nouveau.
+figure polygone: @{ 0@@0. 6@@0. 4@@9. -3@@8 @}.
+(figure droitePassantPar: 0@@0 et: 4@@9) pointille.
+a := figure angleCentre: 0@@0 de: 6@@0 a: -3@@8.
+b := figure angleCentre: 6@@0 de: 4@@9 a: 0@@0.
+c := figure angleCentre: 4@@9 de: -3@@8 a: 6@@0.
+d := figure angleCentre: -3@@8 de: 0@@0 a: 4@@9.
+ancre := figure point: -2 @@ -2.
+figure point: [ 
+   ancre nommer: 'Somme des angles : '@comma{}
+      (a mathItem  degreeAngle
+      + b mathItem degreeAngle 
+      + c mathItem degreeAngle
+      + d mathItem degreeAngle) rounded asString]}
+
+Observer comment la somme des angles est calculée@tie{}: à chaque
+angle @code{a}, @code{b}, @code{c} et @code{d} il est demandé son
+modèle mathématique en lui envoyant le message @code{mathItem}. A
+celui-ci, il est demandé la mesure de l'angle en degrés par le message
+@code{degreeAngle}@footnote{Un angle se mesure en degrés, mais aussi
+en radians et grades}.
+
+Lorsque le quadrilatère est non-convexe et pour peu qu'il ne soit pas
+croisé -- ses diagonales sont à l'intérieur du quadrilatère -- le code
+de cette figure reste valide et la somme des angles est toujours de
+360@textdegree{}.
+
+@drgeoFigure{Somme des angles d'un quadrilatère non convexe@comma{} non
+croisé,quadNonConvexAngles,6}
+
+
+@cindex croisé (quadrilatère)
+En revanche, le code de cette figure ne convient pas pour afficher la
+somme des angles lorsque le quadrilatère est croisé. Certains angles
+se retrouvent à l'extérieur du quadrilatère. L'utilisation des angles
+orientés dans le code source ne convient pas dans ce cas.
+
+@drgeoFigure{Somme des angles d'un quadrilatère non convexe@comma{} et
+@strong{croisé},quadNonConvex2Angles,6}
+
+@drgeoExercise{Somme des angles d'un quadrilatère croisé,exeQuadCrossed,
+@emph{Modifier le code de l'@ref{quadConvexAngle} pour afficher
+correctement les angles d'un quadrilatère croisé et ainsi avoir la
+somme correcte de ses angles.} Indice : construire des angles
+géométriques avec le message @code{angleGeometriqueCentre:de:a:}.}
+
+Dans la figure interactive alors produite, et en manipulant la
+diagonale, que conclure sur la somme des angles d'un quadrilatère
+croisé ?
+
+@cindex transformations géométriques
+@node Transformations
+@section Transformations géométriques
+Cinq transformations géométriques sont disponibles pour la
+programmation@tie{}: symétrie centrale, symétrie axiale, translation,
+rotation et homothétie (changement d'échelle). Nous allons découvrir
+l'utilisation de ces transformations@tie{}: un exemple montre comment
+coder une transformation puis un exercice à faire est proposé.
+
+@cindex symétrie, centrale
+@subsection Symétrie centrale
+@drgeoMath{Cette transformation est définie par un point O appelé
+centre de la symétrie. Déplacer une figure par une symétrie de centre
+O, c'est faire tourner cette figure d'un demi-tour autour du point
+O. La symétrie centrale est une isométrie@tie{}: la figure et sa
+transformée ont la même forme et les mêmes dimensions, les figures
+sont superposables.}
+
+Dans l'@ref{centralSymmetry} ci-dessous, le triangle est transformé
+par la symétrie de centre O(-1;-1).
+
+@drgeoExample{Image d'un triangle par une symétrie centrale,centralSymmetry,
+| figure triangle o |
+figure := DrGeoFigure nouveau.
+o := figure point: -1 @@ -1.
+triangle := figure polygone: @{ 0@@0. 3@@4. 5@@2 @}.
+figure symetriqueDe: triangle selonCentre: o}
+
+Maintenant s'entraîner avec l'exercice suivant.
+
+@drgeoExercise{Image d'un carré par une symétrie
+centrale,exeCentralSymmetry, @emph{Construire l'image d'un carré de
+côté 4 unités par une symétrie centrale de centre O(3;-2).}}
+
+@cindex symétrie, axiale
+@subsection Symétrie axiale
+@drgeoMath{Cette transformation est définie par une droite @emph{d}
+appelée axe de la symétrie. En pliant la feuille suivant le droite
+@emph{d}, la figure et sa transformée se superposent. Cette
+transformation est également une isométrie.}
+
+Dans l'@ref{axialSymmetry} ci-dessous, le triangle est transformé par
+la symétrie d'axe la droite @emph{d} passant par les points (-3;0) et
+(5;-5).
+
+@drgeoExample{Image d'un triangle par une symétrie axiale,axialSymmetry,
+| figure triangle d |
+figure := DrGeoFigure nouveau.
+d := figure droitePassantPar: -3 @@ 0 et: 5 @@ -5.
+triangle := figure polygone: @{ 0@@0. 3@@4. 5@@2 @}.
+figure symetriqueDe: triangle selonAxe: d}
+
+Maintenant s'entraîner avec l'exercice suivant.
+
+@drgeoExercise{Image d'un carré par une symétrie
+axiale,exeAxialSymmetry, @emph{Construire l'image d'un carré de
+côté 4 unités par une symétrie axiale d'axe la droite d passant par
+les points (-3;3) et (-8;0).}}
+
+@cindex translation
+@subsection Translation
+@drgeoMath{Cette transformation est définie par un vecteur @emph{v}
+appelé vecteur de translation. Déplacer une figure par une
+translation, c'est faire glisser cette figure selon la direction, le
+sens et la longueur du vecteur @emph{v}, sans la faire tourner. Cette
+transformation est une isométrie.}
+
+Dans l'@ref{translation} ci-dessous, le triangle est translaté selon
+le vecteur @emph{v} d'origine le point A(1;1) et d'extrémité B(6;5).
+
+@drgeoExample{Image d'un triangle par une translation,translation,
+| figure triangle a b v |
+figure := DrGeoFigure nouveau.
+a := figure point: 1 @@ 1.
+b := figure point: 6 @@ 5.
+v := figure vecteurOrigine: a extremite: b.
+triangle := figure polygone: @{ 1@@3. 3@@7. 5@@5 @}.
+figure translationDe: triangle parVecteur: v}
+
+Maintenant s'entraîner avec l'exercice suivant.
+
+@drgeoExercise{Image d'un carré par une translation,exeTranslation,
+@emph{Construire l'image d'un carré de côté 4 unités par une
+translation de vecteur v d'origine le point A(-1;-1) et d'extrémité le
+point B(-4;-3).}}
+
+
+@cindex rotation
+@subsection Rotation
+@drgeoMath{Cette transformation est définie par un point O appelé
+centre de la rotation, et un angle @emph{a} appelé angle de la
+rotation. Déplacer une figure par une rotation de centre O et d'angle
+@emph{a}, c'est faire tourner cette figure autour du point O d'un
+angle de @emph{a}. La mesure de l'angle @emph{a} est positive ou
+négative -- sens contraire des aiguilles d'une montre (sens
+anti-horaire) ou sens des aiguilles d'une montre (sens horaire).}
+
+L'exemple ci-dessous montre les rotations d'un
+triangle avec une mesure d'angle positive puis une mesure d'angle
+négative.
+
+@drgeoExample{Images d'un triangle par deux rotations,rotations,
+| figure triangle o a1 a2 |
+figure := DrGeoFigure nouveau.
+o := figure point: 1 @@ 1.
+a1 := 70 degreesToRadians.
+a2 := -70 degreesToRadians.
+triangle := figure polygone: @{ 1@@3. 3@@7. 5@@5 @}.
+figure rotationDe: triangle parCentre: o etAngle: a1.
+figure rotationDe: triangle parCentre: o etAngle: a2}
+
+@drgeoFigure{Deux rotations avec des angles de 70@textdegree{} et
+-70@textdegree{},rotationAnglesOrientes,10}
+
+Maintenant s'entraîner avec l'exercice suivant.
+@drgeoExercise{Image d'un carré par deux rotations,exeRotations,
+@emph{Construire l'image d'un carré de côté 4 unités par une rotation
+de centre O(0;0) et d'angle 90@textdegree{} et par une deuxième
+rotation de centre O(0;0) et d'angle -90@textdegree{}.}}
+
+
+@cindex homothétie
+@subsection Homothétie
+@drgeoMath{Cette transformation géométrique est définie par un point O
+appelé centre de l'homothétie, et une valeur numérique @emph{k}
+appelée rapport de l'homothétie. Elle agrandit ou réduit
+proportionnellement une figure selon le rapport @emph{k}
+@*
+Lorsque le rapport @emph{k} est entre -1 et 1, la figure transformée
+est réduite.
+@*
+Cette transformation n'est pas une isométrie, elle ne conserve par les
+longueurs.}
+
+@drgeoExample{Images réduites d'un triangle par une homothétie,scaleDecrease,
+| figure triangle o k1 k2 |
+figure := DrGeoFigure nouveau.
+o := figure point: 8 @@ 7.
+k1 := 1/4.
+k2 := -1/3.
+triangle := figure polygone: @{ 1@@3. 3@@7. 5@@5 @}.
+(figure homothetieDe: triangle parCentre: o etFacteur: k1)
+   nommer: Réduite et dans le même sens'.
+(figure homothetieDe: triangle parCentre: o etFacteur: k2)
+   nommer: 'Réduite et inversée'}
+
+Lorsque le rapport @emph{k} est supérieur à 1 ou inférieur à -1, la
+figure est agrandie par rapport à la figure originale.
+
+@drgeoExample{Images agrandies d'un triangle par une homothétie,scaleIncrease,
+| figure triangle o k1 k2 |
+figure := DrGeoFigure nouveau.
+o := figure point: 8 @@ 7.
+k1 := 3.
+k2 := -2.
+triangle := figure polygone: @{ 1@@3. 3@@7. 5@@5 @}.
+(figure homothetieDe: triangle parCentre: o etFacteur: k1)
+   nommer: 'Agrandie et dans le même sens'.
+(figure homothetieDe: triangle parCentre: o etFacteur: k2)
+   nommer: 'Agrandie et inversée'}
+
+Maintenant s'entraîner avec l'exercice suivant.
+
+@drgeoExercise{Image d'un carré par deux homothéties,exeScales,
+@emph{Construire l'image d'un carré de côté 4 unités par une homothétie
+de centre A(-8;5) et de rapport -1/2 et par une deuxième
+homothétie de centre B(4;-7) et de rapport 5/2.}}
+
+
+@subsection Transformer une collection d'objets
+Dans les exemples et les exercices précédents nous transformions des
+objets simples tels que des triangles et des carrés. Parfois nous
+souhaitons transformer un groupe d'objets, par exemple un carré avec
+un cercle inscrit à l'intérieur comme dans
+l'@ref{exeFirstSquareCircle}. L'exemple suivant montre qu'il est
+possible de transformer un à un les quatre côtés du segment et le
+cercle.
+
+@drgeoExample{Symétrique d'un carré et d'un cercle inscrit,squareCircleTransformed,
+| figure c1 c2 c3 c4 cercle d |
+figure := DrGeoFigure nouveau.
+c1 := figure segmentDe: -2 @@ 2 a: 2 @@ 2.
+c2 := figure segmentDe: 2 @@ 2 a: 2 @@ -2.
+c3 := figure segmentDe: 2 @@ -2 a: -2 @@ -2.
+c4 := figure segmentDe: -2 @@ -2 a: -2 @@ 2.
+cercle := figure cercleCentre: 0 @@ 0 rayon: 2.
+d := figure droitePassantPar: -7 @@ 0 et: 0 @@ -8.
+figure symetriqueDe: c1 selonAxe: d.
+figure symetriqueDe: c2 selonAxe: d.
+figure symetriqueDe: c3 selonAxe: d.
+figure symetriqueDe: c4 selonAxe: d.
+figure symetriqueDe: cercle selonAxe: d}
+
+Nous remarquons que les 5 dernières lignes du code sont quasiment
+identiques. Cela indique souvent que ce code peut-être modifié afin
+d'être moins répétitif. Une première chose que nous pouvons faire
+c'est de grouper toutes les parties de notre figure (les 4 côtés du
+carré et le cercle) dans une collection d'objet. Dans le langage Pharo
+il existe des objets de type @code{Collection} pour y mettre toutes
+sortes d'objets comme des constructions géométriques.
+
+Nous avons déjà rencontré des collections de type tableau avec le code
+@code{figure polygone: @{ 1@@0. 5@@0. 5@@4 . 1@@4 @}}. Dans cet
+exemple, une collection avec 4 objets de type coordonnées de points
+est créé. A la place de ces coordonnées nous pouvons placer les 5
+parties géométriques de notre figure à transformer -- les côtés du
+carré et le cercle inscrit à l'intérieur. Observer alors dans
+l'@ref{squareCircleTransformed} ci-dessous comment le code a été
+réécrit.
+
+@drgeoExample{Symétrique d'un groupe d'objets,groupTransformed,
+| figure collection d |
+figure := DrGeoFigure nouveau.
+d := figure droitePassantPar: -7 @@ 0 et: 0 @@ -8.
+collection := @{figure segmentDe: -2 @@ 2 a: 2 @@ 2 .
+   figure segmentDe: 2 @@ 2 a: 2 @@ -2 .
+   figure segmentDe: 2 @@ -2 a: -2 @@ -2 .
+   figure segmentDe: -2 @@ -2 a: -2 @@ 2 .
+   figure cercleCentre: 0 @@ 0 rayon: 2@}.
+collection faire: [:forme | figure symetriqueDe: forme selonAxe: d]}
+
+Lors de la création de la collection, les instructions pour créer les
+parties constituantes de la figure sont séparées par des
+``.''. Ensuite l'envoi du message @code{faire:} à cette collection
+crée le symétrique de chacune de ses formes. Le nombre de lignes du
+code source du programme est ainsi presque divisé par 2.
+
+Faire les exercices suivants pour s'entraîner.
+
+@drgeoExercise{Symétrique d'une collection plus
+complexe,exeCollectionTransformed1, @emph{Compléter le code de
+l'@ref{groupTransformed} pour y ajouter les diagonales du carré et le centre du
+cercle.}}
+
+@drgeoExercise{Homothétie d'une collection,exeCollectionTransformed2,
+@emph{Modifier la transformation du code de l'@ref{groupTransformed}:
+utiliser une homothétie de centre (-10;-10) et rapport 1/4.}}
+
+Observer les deux figures ci-dessous pour comprendre avec quels
+segments, cercles et polygone elles sont construites@tie{}:
+
+@drgeoFigure{Spirale,Spiral,4}
+@drgeoFigure{Smiley,Smiley,8}
+
+@drgeoExercise{Spirale,exeSpiral,@emph{Écrire le code pour construire
+la @ref{Spiral}. Placer les formes de cette construction -- segments
+-- dans une collection comme dans l'@ref{groupTransformed}. Appliquer
+à cette collection une symétrie axiale d'axe la droite verticale
+passant par le point (4;0). Pour un meilleur effet esthétique cacher
+la droite.}}
+
+@drgeoExercise{Smiley,exeSmiley,@emph{Écrire le code pour construire
+la @ref{Smiley}. Placer les formes de cette construction -- cercles et
+polygone -- dans une collection comme dans
+l'@ref{groupTransformed}. Appliquer à cette collection une symétrie
+central de centre le point (6;6).}}
+
+@strong{Pour Résumer.} Placer des objets géométriques dans une
+collection permet d'appliquer alors une transformation sur chacun de
+ces objets. Le code informatique écrit est alors plus court, cela
+s'appelle parcourir une collection pour y faire un traitement
+informatique -- ici appliquer une transformation géométrique. Cette
+pratique est très importante en programmation.
+
+@subsection Transformations en cascade
+
+Pour prolonger l'étude précédente, il serait intéressant d'appliquer à
+nouveau une transformation géométrique sur les objets déjà
+transformés. Recopier le code de l'@ref{multipleTriangles}.
+
+@cindex boucle, foisRepete:
+@cindex collection, collecter:
+@drgeoExample{Triangles à gogo,multipleTriangles,
+| figure collection v |
+figure := DrGeoFigure nouveau.
+v := figure vecteur: 2 @@ 0.
+collection := @{figure segmentDe: 0 @@ 0 a: 1 @@ 3.
+   figure segmentDe: 1 @@ 3 a: 1 @@ 3.
+   figure segmentDe: 1 @@ 3 a: 2 @@ 0@}.
+5 foisRepete: [ 
+   collection := collection collecter: [ :forme |
+      figure translationDe: forme parVecteur:  v ] ]}
+
+Dans cet exemple, deux boucles imbriquées -- l'une dans l'autre --
+sont utilisées. La première boucle est @code{foisRepete:}, ici elle
+@strong{répète 5 fois} son bloc de code en paramètre. Dans le bloc de
+code de cette première boucle se trouve la deuxième boucle
+@code{collecter:}.
+
+Comme avec le message @code{faire:}, @code{collecter:} translate
+chacun des objets de la collection mais, @strong{en plus}, il collecte
+ces objets translatés dans une nouvelle collection. Celle-ci est
+ensuite affectée à la variable @code{collection}. Enfin la boucle
+@code{foisRepete:} est reprise et répétée encore quatre fois.
+
+Voici un autre exemple au code plus complexe mais plus intéressant
+esthétiquement.
+
+@drgeoExample{Spirales à gogo,multipleSpirals,
+| figure collection d1 d2 d3 d4 d5|
+figure := DrGeoFigure nouveau.
+d1 := (figure droitePassantPar: 4@@0 et: 4@@5) pointille.
+d2 := (figure droitePassantPar: 1@@0 et: 1@@5) pointille.
+d3 := (figure droitePassantPar: -2@@0 et: -2@@5) pointille.
+d4 := (figure droitePassantPar: -5@@0 et: -5@@5) pointille.
+d5 := (figure droitePassantPar: -8@@0 et: -8@@5) pointille.
+collection := @{(figure segmentDe: 7@@1 a: 4@@1) normal.
+   (figure segmentDe: 4@@1 a: 4@@4) normal.
+   (figure segmentDe: 4@@4 a: 7@@4) normal.
+   (figure segmentDe: 7@@4 a: 7@@2) normal.
+   (figure segmentDe: 7@@2 a: 5@@2) normal.
+   (figure segmentDe: 5@@2 a: 5@@3) normal.
+   (figure segmentDe: 5@@3 a: 6@@3) normal@}.
+@{d1 . d2 . d3 . d4 . d5@} faire: [:axe |
+   collection := collection collecter: [:forme |
+      figure symetriqueDe: forme selonAxe: axe] ]}
+
+@drgeoFigure{Frise de spirales,Frise1,12}
+
+Ce code est plus technique, il utilise deux collections@tie{}: une
+collection de droites @code{@{d1 . d2 . d3 . d4 . d5@}}, puis le
+message @code{collecter:} pour rassembler les objets transformés par
+les symétries axiales dans une nouvelle collection. Cette collection est
+alors affectée à la variable @code{collection}.
+
+Une telle figure où un motif géométrique est transformé
+horizontalement à plusieurs reprises s'appelle une frise. Les
+symétries, translation et rotation sont utilisées pour produire des
+frises à partir d'un motif de base.
+
+@drgeoExercise{Une première frise,exeFrise1, @emph{Modifier
+l'@ref{multipleSpirals} afin d'appliquer une série de 5 symétries
+centrales. Le centre de ces symétries est à déterminer.}}
+
+
+@cindex frise
+@node Frise
+@section Frise
+@quotation
+Une frise est une bande, souvent horizontale, dont la vocation est de
+recevoir un décor, généralement constitué par la répétition d'un motif
+ornemental.
+@author Wikipedia, Frise_(architecture), 5 octobre 2017
+@end quotation
+
+@subsection Translation
+La frise ci-dessous montre un motif déplacé successivement deux fois
+par une translation de vecteur v. Noter que le motif lui-même n'admet
+pas d'axe de symétrie.
+
+@drgeoFigure{Une frise par une translation,FriseTranslation,12}
+
+@drgeoExercise{Motif pour translation,exeMotifTranslation,
+@emph{Écrire le code informatique pour construire le motif de base --
+tracé épais -- de la @ref{FriseTranslation}. Placer le motif dans une
+collection@comma{} comme dans @ref{groupTransformed}.}}
+
+@cindex boucle, foisRepete:
+À partir de ce motif de base, il est maintenant possible de construire
+une frise. Pour ce faire, le motif est glissé horizontalement de 3
+unités vers la droite ou la gauche, c'est en fait la largeur du
+motif. Le motif est répété 5 fois à l'aide d'une boucle avec le
+message @code{foisRepete:}.
+
+@drgeoExercise{Translations du motif,exeMotifFrise1Translations,
+@emph{Compléter le code la solution de l'@ref{exeMotifTranslation}
+pour construire une frise où le motif est répété 5 fois à
+droite.} Indice@tie{}: s'aider de l'@ref{multipleTriangles} si
+nécessaire.}
+
+Voici un autre exemple avec une frise plus élaborée telle que
+rencontrée dans les rues de l'île de Rhodes Grecque.
+
+@drgeoFigure{Frise vue dans une rue de Rhodes (galets de
+plage),Frise-Rhodes,10}
+
+Cette frise est construite à partir d'un motif élémentaire répété
+horizontalement à l'aide d'une transformation géométrique, ici une
+translation. Ce motif élémentaire est une représentation symbolique
+des vagues de la mer, après tout Rhodes est une île Grecque de la
+méditerranée.
+
+@drgeoFigure{Mise en évidence du motif élémentaire d'une
+frise,Motif-Frise,10}
+
+@drgeoExercise{Motif élémentaire,exeMotifFrise1, @emph{Écrire le code
+informatique pour construire le motif de la @ref{Motif-Frise}. Placer
+le motif dans une collection@comma{} comme dans
+l'@ref{groupTransformed}. Si nécessaire s'aider d'une grille fournie
+en annexe. Il faudra alors bien repérer les coordonnées des sommets
+des segments. @xref{Aides}}}
+
+Maintenant que le motif de base est codé et groupé dans une
+collection, il est possible de construire une frise. Pour ce faire, le
+motif est glissé horizontalement de 4 unités vers la droite ou la
+gauche, c'est en fait la largeur du motif (adapter selon la largeur
+du motif créé par chacun à l'@ref{exeMotifFrise1}).
+
+Ce glissement est une transformation géométrique : une translation de
+vecteur v(4;0) par exemple.
+
+@drgeoExercise{Construction des vagues,exeFrise2, @emph{A partir de la
+solution de l'@ref{exeMotifFrise1} et en s'inspirant de
+l'@ref{multipleTriangles}, construire une frise avec 5 motifs de
+base.}}
+
+Dans la frise résultante, il est intéressant de mettre en évidence le
+motif de base.
+
+@drgeoExercise{Motif de base d'une frise,exeFrise2Show,
+@emph{Compléter la solution de l'@ref{exeFrise2} afin que le motif de
+base soit en trait épais.}}
+
+Voici une autre frise construite à partir d'une spirale au tracé plus
+élaboré.
+
+@drgeoFigure{Encore une spirale,Frise3,10}
+
+@drgeoExercise{Translation de spirale,exeFrise3, @emph{Ecrire le code
+pour construire cette frise. Prévoir 5 répétitions du motif de base.}}
+
+Pour construire cette frise, nous utilisons la translation. Dans la
+section suivante nous montrons que d'autres transformations
+géométriques sont utilisables pour construire une frise
+
+@subsection Symétrie axiale
+Observer la frise ci-dessous. Elle est construite par la translation
+de vecteur v du motif dessiné en trait épais.
+
+@drgeoFigure{Une frise par translation mais...,FriseTranslation2,11}
+
+Toutefois le motif admet un axe de symétrie comme montré dans la
+figure ci-dessous. Cela signifie que le motif de base de la frise se
+simplifie en un @strong{motif élémentaire} composé d'uniquement 3
+segments.
+
+@drgeoFigure{...aussi une symétrie axiale,FriseReflection,5}
+
+@drgeoExercise{Motif élémentaire,exeMotifFriseReflection, @emph{Écrire
+le code informatique pour construire le motif élémentaire de la
+@ref{FriseReflection}. Placer le motif dans une collection@comma{}
+comme dans l'@ref{groupTransformed}. Si nécessaire s'aider d'une
+grille fournie en annexe. @xref{Aides}}}
+
+Maintenant pour construire la frise, nous procédons en deux étapes
+avec deux transformations@tie{}:
+@enumerate
+
+ @item Une symétrie axiale pour compléter le motif élémentaire et
+ obtenir le motif complet tel que montré dans la
+ @ref{FriseReflection}. L'axe de la symétrie passe par les points
+ (1;0) et (1;3).
+
+ @item Une translation de vecteur v pour déplacer le motif complété et
+ construire l'ensemble de la frise montrée dans
+ @ref{FriseTranslation2}
+ 
+@end enumerate
+
+Aussi à l'étape 1, le symétrique du motif élémentaire doit être
+ajouté à la collection du motif. Cela se fait avec un code
+informatique nouveau, nous montrons comment le faire dans l'exemple
+ci-dessous.
+
+@cindex collection, ajouterTout:
+@cindex collection, commeCollectionOrdonnee
+@drgeoExample{Compléter le motif élémentaire,completeElementartMotif,
+| figure collection symetriques axe |
+figure := DrGeoFigure nouveau.
+axe := figure droitePassantPar: 1@@0 et: 1@@3.
+collection := @{figure segmentDe: 0@@0 a: (1/2)@@0.
+   figure segmentDe: (1/2)@@0 a: (1/2)@@2.
+   figure segmentDe: (1/2)@@2 a: 1@@2@} commeCollectionOrdonnee.
+symetriques := collection collecter: [:forme |
+   figure symetriqueDe: forme selonAxe: axe].
+collection ajouterTout: symetriques}
+
+Il y a deux nouveaux messages dans ce code informatique.
+@itemize
+
+ @item Le message unaire @code{commeCollectionOrdonnee} envoyé à la
+ collection créée avec le motif élémentaire. Ce message transforme la
+ collection en une collection ordonnée où il est possible d'y ajouter
+ des objets ultérieurement.
+
+
+ @item Le message à mot clé @code{ajouterTout:} pour ajouter le
+ contenue d'une collection à une autre. Ici les segments symétriques
+ sont ajoutés à la collection du motif élémentaire. Après l'envoi de
+ ce message, @code{collection} contient 6 segments et non plus 3 comme
+ initialement.
+
+@end itemize
+
+@drgeoExercise{Translation du motif complété,exeTranslateReflected,
+@emph{Compléter l'@ref{completeElementartMotif} pour construire
+l'ensemble de la frise avec 5 répétitions du motif complété.}}
+
+@subsection Symétrie centrale
+Voici une frise qui se construit à partir d'un motif élémentaire qui
+est un losange -- couleur foncée dans la figure ci-dessous. Ce motif
+est ensuite complété à l'aide d'une symétrie centrale. Puis, à l'aide
+d'une translation de vecteur V, la frise est construite dans son
+ensemble.
+
+@drgeoFigure{Frise et symétrie,FriseCentralSymmetry,14}
+
+@drgeoExercise{Symétrie centrale puis
+translations,exeTranslatedSymmetry1, @emph{Ecrire le code pour
+construire la frise telle que montrée dans la
+@ref{FriseCentralSymmetry}. Adapter le code des exemples et des
+exercices de la section précédente @strong{Symétrie axiale}. Voici les
+étapes à suivre@tie{}:
+@*
+- Coder le motif élémentaire, le losange. @xref{exeMotifFriseReflection}.
+@*
+- Coder la symétrie centrale. @xref{completeElementartMotif}.
+@*
+- Translater les motifs plusieurs fois pour construire la
+  frise. @xref{exeTranslateReflected}.}}
+
+
+@subsection Symétrie centrale et symétrie axiale
+
+Voici une autre frise dont le motif élémentaire est toujours un
+losange -- nommé @emph{Motif 1} dans la figure ci-dessous. Ce motif
+est complété par une symétrie centrale comme dans l'exemple précédent,
+cela donne @emph{Motif 2}. Ensuite, et c'est nouveau, une symétrie
+axiale d'axe la droite @emph{d} est utilisée@tie{}: @emph{Motif 1} se
+transforme en @emph{Motif 3} et @emph{Motif 2} se transforme en
+@emph{Motif 4}.
+
+L'utilisation de la symétrie centrale puis de la symétrie axiale nous
+donne ce motif en forme d'étoile. Il est alors translaté autant de
+fois que souhaité pour obtenir une frise.
+
+@drgeoFigure{Frise et symétries,FriseSymmetryReflection,14}
+
+@drgeoExercise{Symétrie centrale@comma{} symétrie axiale puis
+translations,exeTranslatedSymmetries, @emph{Ecrire le code pour
+construire la frise telle que montrée dans la
+@ref{FriseSymmetryReflection}. Pour ce faire compléter le code de
+l'@ref{exeTranslatedSymmetry1} pour y ajouter l'utilisation de la
+symétrie axiale.}}
+
+Ce chapitre sur les frises géométriques est maintenant terminé. Il est
+possible d'en inventer et programmer beaucoup d'autres. Avec un peu
+d'observation, tu découvriras d'autres frises dans les monuments
+architecturaux, historiques ou récents.

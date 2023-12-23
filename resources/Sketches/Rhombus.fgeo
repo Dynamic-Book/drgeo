@@ -1,0 +1,40 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Rhombus" origin_x="3.235294117647057" origin_y="-1.676470588235296" scale="34.0">
+<point color="Red" delta="(-22.0@4.999999999999998)" id="807594714" locked="False" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-7</x>
+<y>-3</y></point>
+<point color="Red" delta="(7@7)" id="922818622" locked="False" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>-3</x>
+<y>-3</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="53310002" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="807594714"/> 
+<parent ref="922818622"/> </segment>
+<circle anchor="0.5" color="Black" delta="(7@7)" filled="False" id="105876147" masked="True" name="" style="plain" thickness="Normal" translucent="False" type="2pts">
+<parent ref="807594714"/> 
+<parent ref="922818622"/> </circle>
+<point color="Red" delta="(-22.0@ -27.0)" id="93672967" locked="False" masked="False" name="D" style="Cross" thickness="Normal" type="On_curve">
+<parent ref="105876147"/> 
+<value>0.16335878591755087</value></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="233714835" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="93672967"/> 
+<parent ref="807594714"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" id="232882108" masked="True" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="233714835"/> 
+<parent ref="922818622"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" id="158237904" masked="True" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="53310002"/> 
+<parent ref="93672967"/> </line>
+<point color="Red" delta="(7@7)" extra="0" id="1039056837" masked="False" name="C" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="232882108"/> 
+<parent ref="158237904"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="134261378" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="93672967"/> 
+<parent ref="1039056837"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="111769361" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1039056837"/> 
+<parent ref="922818622"/> </segment>
+<text color="Black" delta="(7@7)" id="223431651" locked="False" masked="False" name="" type="free">
+<contents>Rhombus: a parallelogram with &#10;four sides of equal length.&#10;&#10;Move the points A, B or D!</contents>
+<x>0</x>
+<y>2</y></text></drgeo></drgenius>

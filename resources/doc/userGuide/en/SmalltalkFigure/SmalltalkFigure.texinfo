@@ -1,0 +1,1271 @@
+@c Smalltalk sketch
+
+@node Smalltalk sketch
+@anchor{figureSmalltalk}
+@chapter @drgeo{} Smalltalk sketch
+@cindex Smalltalk sketch
+
+
+@emph{@drgeo{} Smalltalk sketches} -- (DSS) -- are sketches entirely
+defined in the Smalltalk language. This is not about constructing a
+sketch with the @drgeo{} graphical interface, but about describing a
+sketch with the Smalltalk language. We provide a nice programming
+interface with an easy and light syntax.
+
+
+@cindex Smalltalk sketch, examples
+@section Smalltalk sketches by example
+ 
+Smalltalk itself is a high level language, carefully crafted
+iteratively for about 10 years at Xerox Parc Research Labs. When a
+sketch is defined with it, we can use all the power of the language
+to build a sketch, or to position some objects randomly to get a
+slightly different sketch at each execution of its Smalltalk code.
+Therefore, a Smalltalk sketch is freed from the constraints of the
+graphic user interface while reinforced by the Smalltalk language.
+
+
+@cindex Smalltalk sketch, execute
+@cindex Smalltalk sketch, run
+
+A Smalltalk sketch is source code to execute in a @strong{workspace},
+which is a text editor where source code can be written and
+executed. To open one, use the shortcut @kbd{Ctrl-k} when no window is
+selected -- or click on the background and in the menu select
+@clicksequence{Tools@click{}Workspace}. It is possible to paste text
+in with the shortcut @kbd{Ctrl-v}. (@xref {workspace} to learn more
+about this tool).
+
+Smalltalk sketches are not saved within @drgeo{}. They must be pasted
+to an external text editor and saved to external files in order to
+be available for reuse in @drgeo{}. Then the text must be copied from
+the external file and pasted into a @drgeo{} workspace in order to be
+executed again.
+
+
+To introduce the concepts of Smalltalk sketches, we will study a few
+examples. Each one will be written in a workspace and its source code
+will be selected with mouse, then executed with the shortcut
+@kbd{Ctrl-d} to @emph{Do-it!}@footnote {Alternatively, this is the
+entry to select in the contextual menu of the workspace.}.
+
+Let's start with the simplest possible Smalltalk sketch:
+
+@example
+DrGeoSketch new
+@end example
+
+When executing it, it simply creates a new empty sketch. The @drgeo{}
+canvas displayed is simplified as there is no toolbar, only the menu
+bar.
+
+@c Is there a command to add the toolbar? Apparently not.
+@c It would be easy to add a method to create a sketch window with a
+@c toolbar in class DrGeoSketch, just by removing the one method
+@c invocation applicationToolbarless from the initialize method.
+
+A second example that begins to do something:
+
+@example
+| c item |
+c := DrGeoSketch new.
+item := c point: 1.2 @@ -2.
+item name: 'A'.
+@end example
+
+Here we define a sketch containing a free point A of coordinates
+(1,2@tie{};@tie{}-2). An object is added to the construction by
+sending a message to the canvas, here @t{#point:} to create a free
+point given its coordinates. The result is a point object. We can also
+modify the point by sending a message to it. Here we rename it 'A'.
+
+
+Let's continue with a third, more interesting example:
+
+@example
+| c triangle ourRandom m n p |
+
+triangle := [:p1 :p2 :p3 |
+	c segment: p1 to: p2.
+	c segment: p2 to: p3.
+	c segment: p3 to: p1].
+ 
+ourRandom := [6 - 11 atRandom].
+
+c := DrGeoSketch new.
+m := c point: ourRandom value @@ 0.
+n := c point: 5 @@ 0.
+p := c point:  ourRandom value @@ 3.
+triangle value: m value: n value: p.
+@end example
+
+This example shows us three interesting things:
+
+@enumerate
+@item The introduction of more elaborate constructions, not initially
+  implemented in @drgeo{}. Here we define a block of code @t{triangle}
+  between the square brackets: given three points, construct a
+  triangle. We can compare this to the macro construction method but
+  with a different, programming oriented approach.
+@item The definition of a block of code -- @t{ourRandom} -- to
+  give us integer random number between -5 and 5.  It is used for a
+  random positioning of the points. Therefore each time the sketch is
+  executed, it is slightly different.
+@item Assigning the result of a construction -- the object we got when
+  sending a construction message to the canvas -- is not mandatory. We
+  do it when we need to keep a reference to the constructed object for
+  later use. Here in the block of code @t{triangle}, we don't keep
+  references to the constructed segments. However, concerning the
+  defined points, we keep references in the local variables @t{m},
+  @t{n} and @t{p}, for later use as arguments when executing the block
+  of code @t{triangle}.
+@end enumerate
+
+To finish with this introduction by example, here is the last one:
+
+@example
+| c a b d |
+
+c := DrGeoSketch new.
+a := c point: 1@@0.
+b := c point: 5@@0.
+d := c line: a to: b.
+a color: Color yellow;
+   round;
+   large.
+b hide.
+d dashed.
+@end example
+
+Two points and a line are constructed. Then messages are sent to them
+to modify their styles, including hiding one.
+
+We have finished our small guided tour of @emph{@drgeo{} Smalltalk
+  sketches}. In the following sections, we expose the commands
+  available.
+ 
+
+@anchor{SmalltalkSketchMethods}
+@section Reference methods for the @drgeo{} Smalltalk sketch
+
+To add an object to a construction, you send a message to the
+canvas. The resulting constructed object can be modified as well by
+sending messages to it. So before adding any object to a canvas, we
+need to create the canvas with the command @t{DrGeoSketch new}.
+
+@cindex Smalltalk sketch, various messages
+@subsection Various messages
+
+@deftypemethod DrGeoSketch <DrGeoSketch> new
+  @result{} Return a canvas and open it. The result is normally
+  assigned to a variable for later use to add constructions.
+  @example
+| canvas | 
+canvas := DrGeoSketch  new.
+@end example
+@end deftypemethod
+
+@defmethod DrGeoSketch fullscreen
+  The sketch is set to fill the @drgeo{} window.
+  @example
+| canvas | 
+canvas := DrGeoSketch new.
+canvas fullscreen
+@end example
+@end defmethod
+
+@defmethod DrGeoSketch do: block
+  @var{block}, Smalltalk block of code with instructions for
+    construction and/or animation of the sketch.
+
+  Execute the block of code in a specific background process. Use it
+    when a construction needs to be done step by step in front of the
+    user or when the sketch is animated.
+  
+@example
+| canvas point | 
+canvas := DrGeoSketch new.
+canvas fullscreen.
+point := canvas point: 0@@0.
+canvas do: [ 
+   -5 to: 5 by: 0.1 do: [:x |
+      point moveTo: x @@ (x cos * 3).
+      (Delay forMilliseconds: 100) wait.
+      canvas update]
+]
+@end example
+@end defmethod
+
+@defmethod DrGeoSketch update
+  Update the canvas after some objects were modified. Used mainly for
+    animation, or for modifications that do not cause an update
+    themselves.
+@end defmethod
+
+@defmethod DrGeoSketch gridOn
+  Display the grid in the canvas.
+@end defmethod
+
+@defmethod DrGeoSketch centerTo: aPoint
+  @var{aPoint}, coordinates of a point
+
+  The canvas is displaced so the point given by the
+    argument is at the centre of the canvas window.
+  @example
+canvas centerTo: 5@@0
+@end example
+@end defmethod
+
+@defmethod DrGeoSketch scale: anInteger
+  @var{anInteger}, scale of the canvas
+
+  Modify the scale of the canvas.
+  @example
+canvas scale: 10
+@end example
+@end defmethod
+
+@cindex Smalltalk sketch, point
+@heading Point.
+
+@deftypemethod DrGeoSketch <DrGeoWrappedPoint> point: aPoint
+  @var{aPoint}, coordinates (x,y)
+
+  @result{} free point in the plane with coordinates @t{aPoint.}
+  @example
+canvas point: 5@@2.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedPoint> pointX:Y: v1 v2
+  @var{v1}, value object
+
+  @var{v2}, value object
+
+  @result{} point determined by its coordinates in the form of
+  values placed in the sketch
+  @example
+canvas 
+   pointX: (canvas freeValue: 2) hide 
+   Y: (canvas freeValue: 5) hide.
+@end example
+@end deftypemethod
+
+@c The following are out of order. They depend on curves, which should
+@c be introduced first.
+@deftypemethod DrGeoSketch <DrGWrappedPoint> pointOnCurve:at: curve abscissa
+  @var{curve}, line (straight line, ray, segment, etc.)
+
+  @var{abscissa}, curvilinear abscissa of the free point, abscissa in interval [0@tie{};@tie{}1]
+
+  @result{} free point on a line
+  @example
+myPoint := canvas pointOnCurve: s1 at: 0.5.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedPoint> middleOf:and: p1 p2
+  @var{p1}, point item or coordinates
+
+  @var{p2}, point item or coordinates
+
+  @result{} middle of two points
+  @example
+| canvas a i |
+canvas := DrGeoSketch new.
+a := canvas point: 1@@1.
+i := canvas middleOf: a and: 4@@4.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedPoint> middleOf: s
+  @var{s}, segment
+
+  @result{} middle of a segment
+  @example
+canvas middleOf: s.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedPoint> intersectionOf:and: l1 l2
+  @var{l1}, line
+
+  @var{l2}, line
+
+  @result{} point of intersection of two lines
+  @example
+canvas intersectionOf: line1 and: line2
+@end example
+@end deftypemethod
+
+
+@deftypemethod DrGeoSketch <DrGWrappedPoint> altIntersectionOf:and: l1 l2
+  @var{l1}, line
+
+  @var{l2}, line
+
+  @result{} second point of intersection of two lines, when it exists
+  @example
+canvas altIntersectionOf: line and: circle.
+@end example
+@end deftypemethod
+
+
+@deftypemethod DrGeoSketch <DrGWrappedPoint> point:parents block item
+  @var{block}, block of code returning coordinates
+
+  @var{item}, math item
+
+  @result{} pointBlockItem whose coordinates are calculated with the
+  block of code with ``item'' as argument
+@c Explanation that completely failed to explain. The result is NOT a
+@c point, but a DrGPointBlockItem, defined as a "Point item defined by a
+@c block closure". It is a subclass of DrGPointCoordinateItem, which is
+@c a subclass of DrGPointItem, so that it responds to the normal point
+@c methods. Added to glossary.
+  
+@example
+| figure s mobile c block |
+figure := DrGeoSketch new.
+figure fullscreen.
+s:=figure
+   segment: (figure point: -5@@0)
+   to: (figure point: 5@@0).
+mobile := figure pointOnCurve: s at: 0.1.
+block := [:mathItem | |x|
+   x := mathItem point x.
+   x @ (x * x * x / 25 - x)].
+c := figure point: block parent: mobile.
+figure locusOf: c when: mobile.
+@end example
+@end deftypemethod
+@c Forward reference to locusOf:.
+
+@deftypemethod DrGeoSketch <DrGWrappedPoint> point:parents block collection
+  @var{block}, block of code returning coordinates
+
+  @var{collection}, math item collection
+
+  @result{} point whose coordinates are calculated with the
+  block of code with ``collection'' as argument
+  
+@example
+| figure a b d m p |
+figure:=DrGeoSketch new.
+a:=figure point: (-2)@@1.
+b:=figure point: 3@@3.
+d:=figure line: a to: b.
+d color: Color blue.
+m:=figure point: 1@@(-1).
+p:= figure 
+   point: [:parents | parents first closestPointTo: parents second point]
+   parents: @{d . m@}.
+@end example
+@end deftypemethod
+
+@c Forward reference to line:to:.
+
+This example uses array notation @{ . @} to provide the collection needed.
+
+@cindex Smalltalk sketch, line (straight)
+@heading Line.
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> line:to: p1 p2
+  @var{p1}, point or coordinates
+
+  @var{p2}, point or coordinates
+
+  @result{} line passing through these two points
+  @example
+| canvas p1 |
+canvas := DrGeoSketch new.
+p1 := canvas point: 0@@0.
+canvas line: p1 to: 1@@2.
+@end example
+@end deftypemethod
+
+Note that if one or both arguments are given as literals, those
+points are not drawn, and are not available in the sketch to click
+and drag. The direction of the line thus cannot be changed
+interactively.
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> parallel:at: d p
+  @var{d}, direction (line, segment, vector,...)
+
+  @var{p}, point or coordinates
+
+  @result{} line parallel to direction @t{d} and passing through
+  point @t{p}
+  @example
+| canvas a d |
+canvas := DrGeoSketch new.
+a := canvas point: 1@@5.
+d := canvas line: (-2)@@1 to: 3@@3.
+canvas parallel: d at: a.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> perpendicular:at: d p  
+  @var{p}, point or coordinates
+
+  @var{d}, direction (line, segment, vector, ...)
+
+  @result{} line perpendicular to direction @t{d} and passing
+  through point @t{p}
+  @example
+canvas perpendicular: d at: 1@@5.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> perpendicularBisector: s  
+  @var{s}, segment
+
+  @result{} perpendicular bisector to @t{s}
+  @example
+canvas perpendicularBisector: (canvas segment: 0@@0 to: 4@@4)
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> perpendicularBisector:to: a b  
+  @var{a}, point or coordinates
+
+  @var{b}, point or coordinates
+
+  @result{} perpendicular bisector to segment joining a and b
+  @example
+canvas perpendicularBisector: 0@@0 to: 4@@4
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> angleBisector: a  
+  @var{a}, geometric angle defined by @strong{three points}
+
+  @result{} angle bisector of the angle @t{a}
+  @example
+canvas angleBisector: angle
+@end example
+@end deftypemethod
+
+@c Forward reference to angle.
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> angleBisectorSummit:side1:side2: a b c  
+  @var{a,b,c}, points defining a geometric angle BAC
+
+  @result{} angle bisector of the angle BAC
+  @example
+canvas angleBisectorSummit: 0@@0 side1: 1@@0 side2: 0@@1
+@end example
+@end deftypemethod
+
+@cindex Smalltalk sketch, ray
+
+@heading Ray.
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> ray:to: o p
+  @var{o}, point or coordinate, the origin
+
+  @var{p}, point or coordinates, point anywhere on the ray
+
+  @result{} ray defined by its origin and a second point
+  @example
+| canvas a |
+canvas := DrGeoSketch new.
+a := canvas point: 1@@5.
+canvas ray: 0@@0 to: a.
+@end example
+@end deftypemethod
+
+@cindex Smalltalk sketch, segment
+@heading Segment.
+
+@deftypemethod DrGeoSketch <DrGWrappedSegment> segment:to: p1 p2
+  @var{p1}, points or coordinates
+
+  @var{p2}, points or coordinates
+
+  @result{} segment defined by two points
+  @example
+| canvas a |
+canvas := DrGeoSketch new.
+a := canvas point: 5@@5.
+canvas segment: 10@@10 to: a.
+@end example
+@end deftypemethod
+
+@cindex Smalltalk sketch, circle
+@heading Circle.
+
+@deftypemethod DrGeoSketch <DrGWrappedFilledCircle> circleCenter:to: c p
+  @var{c}, point or coordinates, centre of the circle
+
+  @var{p}, point or coordinates, point on the circle
+
+  @result{} circle defined by its centre and a point
+  @example
+| canvas a |
+canvas := DrGeoSketch new.
+a := canvas point: 1@@5.
+canvas circleCenter: a to: 10@@4.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedFilledCircle> circleCenter:radius: c r
+  @var{c}, point or coordinates, centre of the circle
+
+  @var{r}, numeric item or numeric value, radius
+
+  @result{} circle defined by its centre and radius
+  @example
+| canvas a r |
+canvas := DrGeoSketch new.
+a := canvas point: 1@@5.
+r := canvas freeValue: 4.
+canvas circleCenter: a radius: r.
+canvas circleCenter: 4@@4 radius: 5
+@end example
+@end deftypemethod
+
+@cindex Smalltalk sketch, arc
+@heading Arc.
+
+@deftypemethod DrGeoSketch <DrGWrappedFinitCurve> arc:to:to: p1 p2 p3
+  @var{p1}, point or coordinates, 1st extremity of the arc
+
+  @var{p2}, point or coordinates representing a point on arc
+
+  @var{p3}, point or coordinates, 2nd extremity of the arc
+
+  @result{} arc defined by its extremities and a point 
+  @example
+| canvas a b |
+canvas := DrGeoSketch new.
+a := canvas point: 1@@5.
+b := canvas point: 0@@5.
+canvas arc: a to: b to: -1 @@ -2.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedFinitCurve> arcCenter:from:to: o a b
+  @var{o}, point or coordinates, centre of the arc
+
+  @var{a}, point or coordinates, origin of the arc
+
+  @var{b}, point or coordinates, so the angle is AOB
+
+  @result{} arc defined by its centre and angle AOB 
+  @example
+| canvas a b |
+canvas := DrGeoSketch new.
+a := canvas point: 1@@5.
+b := canvas point: 0@@5.
+canvas arcCenter: a from: b to: -1 @@ -2.
+@end example
+@end deftypemethod
+
+@cindex Smalltalk sketch, polygon
+@heading Polygon.
+
+@deftypemethod DrGeoSketch <DrGWrappedFinitCurve> polygon: collection
+  @var{collection}, collection of points or coordinates; vertices of the polygon
+
+  @result{} polygon defined by its vertices
+  @example
+| canvas b |
+canvas := DrGeoSketch new.
+b := canvas point: 1@@3.
+canvas polygon: @{1@@2. b. 0@@0. d@}
+@end example
+@end deftypemethod
+@tie{}@*
+
+@deftypemethod DrGeoSketch <DrGWrappedFinitCurve> regularPolygonCenter:vertex:sides: c s n
+  @var{c}, point or coordinates, centre of the polygon   
+
+  @var{s}, point or coordinate, a vertex of the polygon
+
+  @var{n}, value item or numeric value, number of vertices of the polygon
+
+  @result{} regular polygon defined by its centre, one vertex and number of vertices
+  @example
+| canvas b |
+canvas := DrGeoSketch new.
+b := canvas point: 1@@3.
+canvas regularPolygonCenter: b vertex: 1@@1 sides: 7.
+@end example
+@end deftypemethod
+
+@cindex Smalltalk sketch, geometric transformation
+@cindex transformation, Smalltalk sketch
+@heading Geometric transformations.
+
+Geometric transformations are to transform any kind of geometric
+objects: point, segment, line, ray, vector, circle, arc and polygon.
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> rotate:center:angle: i c a  
+  @var{i}, object to transform (point, segment, line, ray, vector, circle, arc, polygon)
+
+  @var{c}, point or coordinates, rotation centre
+
+  @var{a}, value item or numeric value, rotation angle
+
+  @result{} transformed object
+  @example
+| canvas c k l |
+canvas := DrGeoSketch new.
+c := canvas point: 5@@5.
+k := 3.14159.
+l := canvas line: 0@@0 to: 5@@5.
+canvas rotate: l center: c angle: k.
+canvas rotate: l center: 0@@0 angle: Float pi / 3.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> scale:center:factor: i c k  
+  @var{i}, object to transform (point, segment, line, ray, vector,
+  circle, arc, polygon)
+
+  @var{c}, point or coordinates, homothety centre
+
+  @var{k}, value item or numeric value, homothety factor
+
+  @result{} transformed object
+  @example
+| canvas c k l |
+canvas := DrGeoSketch new.
+c := canvas point: 0@@5.
+k := -3.
+l := canvas line: 0@@0 to: 5@@5.
+canvas scale: l center: c factor: k.
+canvas scale: l center: 0@@4 factor: 5.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> symmetry:center: i c  
+  @var{i}, point, segment, line, ray, vector, circle, arc, polygon   
+
+  @var{c}, point or coordinates, symmetry centre
+
+  @result{} transformed object
+  @example
+| canvas a |
+canvas := DrGeoSketch new.
+a := canvas point: 4@@2.
+canvas symmetry: a center: 0@@0.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> reflect:axe: i a
+@c This should be reflect:axis: in Gr. Geo
+@c Report as bug
+  @var{item}, point, segment, line, ray, vector, circle, arc, polygon
+
+  @var{axe}, line, symmetry axis
+
+  @result{} transformed object
+  @example
+| canvas a d polygon |
+canvas := DrGeoSketch new.
+a := canvas polygon: @{0@@0 . 2@@0 . 3@@2 . 0@@4@}
+d := canvas line: (-1)@@(-1) to: 4@@(-1).
+canvas reflect: a axis: d
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> translate:vector: i v  
+  @var{item}, point, segment, line, ray, vector, circle, arc, polygon
+
+  @var{vector}, vector or coordinates
+
+  @result{} transformed object
+  @example
+| canvas u a|
+canvas := DrGeoSketch new.
+u := canvas vector: (canvas point: 1@@1) to: (canvas point: 3@@2).
+a := canvas translate: (canvas point: 2@@1) vector: u.
+@end example
+@*
+  @example
+| canvas u a|
+canvas := DrGeoSketch new.
+a := canvas translate: (canvas point: 2@@1) vector: 2@@1.
+@end example
+@end deftypemethod
+
+@cindex Smalltalk sketch, locus
+@heading Locus of a point.
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> locusOf:when: m c
+  @var{m}, mobile point on a line
+
+  @var{c}, fixed point depending on the mobile point @t{m}
+
+  @result{} locus
+  @example
+canvas locusOf: c when: mobile.
+@end example
+@end deftypemethod
+@c Explanation that completely fails to explain. How is the dependency
+@c expressed? In one of the examples above, a DrGPointBlockClosure is
+@c used, created with a point:parent: method call.
+@c
+@c At a minimum, this needs a complete example.
+
+@cindex Smalltalk sketch, vector
+@heading Vector.
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve>vector:to: o e
+  @var{o}, point or coordinates, vector origin
+
+  @var{e}, point or coordinates, vector extremity
+
+  @result{} vector
+  @example
+| canvas b |
+canvas := DrGeoSketch new.
+b := canvas point: 0@@5.
+canvas vector: b to: -1 @@ -2.
+@end example
+@end deftypemethod
+
+
+@deftypemethod DrGeoSketch <DrGWrappedCurve> vector: p
+  @var{p}, point or coordinates, the vector coordinates
+
+   @result{} vector from 0@@0 to point
+  @example
+| canvas p |
+canvas := DrGeoSketch new.
+p := canvas point: 5@@5.
+canvas vector: p.
+canvas vector: -5 @@ -5
+@end example
+@end deftypemethod
+
+@cindex Smalltalk sketch, number, distance, coordinates
+@heading Number.
+
+When applying a method to a canvas that creates a numeric value, the
+value is placed as a @drgeo{} math item somewhat at random in the
+sketch, and is initially hidden. It can be revealed with the show
+command described below.
+
+ @deftypemethod DrGWrappedPoint <Point> coordinates
+   @var{pointItem}, point
+
+   @result{} coordinates (static) of self
+   @example
+| canvas c p segment |
+canvas := DrGeoSketch new.
+segment := canvas segment: 0@@0 to: 3@@5
+p := canvas pointOnCurve: segment at: 0.5.
+c := p coordinates.
+canvas freeValue: c x
+@end example
+ @end deftypemethod
+
+ @deftypemethod DrGeoSketch <DrGWrappedValue> abscissaOf: item
+   @var{item}, point or vector item
+
+   @result{} abscissa (dynamic) item of @var{item}
+   @example
+| canvas m x |
+canvas := DrGeoSketch new.
+m := canvas middleOf: 10@@5 and: 7@@8.
+x := canvas abscissaOf: m.
+@end example
+ @end deftypemethod
+
+The abscissa of a point is its x coordinate. The abscissa of a vector
+is the difference between the x coordinates of its initial and final
+points.
+
+ @deftypemethod DrGeoSketch <DrGWrappedValue> ordinateOf: item
+   @var{item}, point or vector item
+
+   @result{} ordinate (dynamic) item of @t{item}
+   @example
+| canvas m x |
+canvas := DrGeoSketch new.
+m := canvas middleOf: 10@@5 and: 7@@8.
+x := canvas ordinateOf: m
+@end example
+ @end deftypemethod
+
+The ordinate of a point is its y coordinate. The ordinate of a vector
+is the difference between the y coordinates of its initial and final
+points.
+
+@deftypemethod DrGeoSketch <DrGWrappedValue> freeValue: v
+  @var{v}, initial value
+
+  @result{} free value item, initially hidden, randomly placed
+  @example
+v:= canvas freeValue: (-1 arcCos).
+v show
+@end example
+@end deftypemethod
+
+@defmethod DrGWrappedValue value: aNumber
+  @var{item}, a free value item
+
+  @var{aNumber}, a number
+
+  Eedit the value of a free number item
+  @example
+v := canvas freeValue: 3.
+v show.
+v value: Float pi
+@end example
+@end defmethod
+
+
+
+@deftypemethod DrGeoSketch <DrGWrappedValue> lengthOf: item
+  @var{item}, segment, circle, arc or vector
+
+  @result{} number item, the item length
+  @example
+canvas lengthOf: v1.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedValue> distance:to: item point
+  @var{item}, line or point
+
+  @var{point}, point
+
+  @result{} number, distance between two points or a point and a
+  line
+  @example
+canvas distance: l1 to: a.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedValue> slopeOf: line
+  @var{line}, line
+
+  @result{} number, slope of the line
+  @example
+| canvas p |
+canvas := DrGeoSketch new.
+p := canvas slopeOf: d.
+@end example
+@end deftypemethod
+
+@drgeo{} does not handle infinite slope for vertical lines well. If a
+slope is placed in a sketch, and then the line is made vertical, the
+slope disappears from the sketch, and its value does not update in the
+data pane.
+
+@c Report as bug. It is not a bug, slope is not defined in that case so it disappears
+
+@cindex Smalltalk sketch, angle
+@heading Angle.
+
+@deftypemethod DrGeoSketch <DrGWrappedValue> angle:to:to: a b c
+  @var{a}, point
+
+  @var{b}, point, angle summit
+
+  @var{c}, point
+
+  @result{} geometric angle ABC in the interval [0@tie{};@tie{}pi]
+  @example
+| canvas a b c angle |
+canvas := DrGeoSketch new.
+a :=canvas point: 0@@0.
+b :=canvas point: 0@@4.
+c :=canvas point: 3@@0.
+angle  := canvas angle: b to: a to: c.
+angle show.
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedValue> angle:to: v1 v2
+  @var{v1}, vector
+
+  @var{v2}, vector
+
+  @result{} oriented angle given two vectors in the interval ]-pi@tie{};@tie{}pi]
+  @example
+| canvas v1 v2 a b c angle |
+canvas := DrGeoSketch new.
+a :=canvas point: 0@@0.
+b :=canvas point: 0@@4.
+c :=canvas point: 3@@0.
+v1 := canvas vector: a to: b.
+v2 := canvas vector: a to: c.
+angle  := canvas angle: v2 to: v1.
+angle show.
+@end example
+@end deftypemethod
+
+
+@cindex Smalltalk sketch, equation
+@heading Equation.
+
+@deftypemethod DrGeoSketch <DrGWrappedValue> equationOf: item
+  @var{item}, line or circle
+
+  @result{} equation of the line or circle
+  @example
+| canvas e d |
+canvas := DrGeoSketch new.
+d := canvas line: 0@@0 to: 15@@13.
+e := canvas equationOf: d.
+e show.
+@end example
+@end deftypemethod
+
+
+@cindex Smalltalk sketch, text
+@heading Text.
+
+@deftypemethod DrGeoSketch <DrGWrappedText> text: string
+  @var{string}, a string
+
+  @result{} a text arbitrary positioned
+  @example
+canvas text: 'Hello'
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoSketch <DrGWrappedText> text:at: string point
+  @var{string}, a string
+
+  @var{point}, coordinates
+
+  @result{} a text positioned at aPoint
+  @example
+canvas text: 'Hello,
+I am happy!' at: 0@@0
+@end example
+@end deftypemethod
+
+@defmethod item text: aString
+  @var{item}, an item representing a text
+
+  @var{aString}, a string
+
+  Edit the text of a text object
+  @example
+myText := canvas text: 'Hello'.
+myText text: 'Bye'
+@end example
+@end defmethod
+
+
+@cindex Smalltalk sketch, object attributes
+@subsection Modification of object attributes
+
+To modify object attributes, we send messages to the objects. So the
+attributes are always modified after creating the objects.
+
+@defmethod DrGWrappedItem color: aColor
+  @var{aColor}, a @t{Color}, see methods in this class for existing colors@tie{}:
+    @t{Color black, Color red, Color blue, Color orange, Color yellow,...}
+
+  Modify the item color
+  @example
+pointA color: Color green.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedText backgroundColor: aColor
+  @var{aColor}, a @t{Color}
+
+  Modify the background color of the text item
+  @example
+myText backgroundColor: Color green.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedItem name: aString
+  @var{aString}, a string, text
+  
+Rename item
+  @example
+segment name: '[AB]'.
+@end example  
+@end defmethod
+
+@defmethod DrGWrappedItem hide
+
+Hide an item
+  @example
+point hide
+@end example
+@end defmethod
+
+@defmethod DrGWrappedItem show
+
+  Show an item
+  @example
+value show
+@end example
+@end defmethod
+
+
+@defmethod DrGWrappedCurve small
+
+  Set thickness of line to small
+  @example
+circle small.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedCurve normal
+
+  Set thickness of line to normal
+  @example
+arc normal.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedCurve large
+
+  Set thickness of line to  large
+  @example
+polygon large.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedCurve plain
+
+  Plain, undotted, style line
+  @example
+polygon plain.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedCurve dashed
+
+  Dash style line
+  @example
+polygon dashed.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedCurve dotted
+
+  Dotted style line
+  @example
+arc dotted.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedPoint cross
+
+  Cross shape for point
+  @example
+a cross.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedPoint round
+
+  Round shape for point
+  @example
+a round.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedPoint square
+
+  Square shape for point
+  @example
+a square.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedPoint small
+
+  Small sized point
+  @example
+a small.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedPoint medium
+  
+Medium sized point
+  @example
+a medium.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedPoint large
+
+  Large sized point
+  @example
+a large.
+@end example
+@end defmethod
+
+@defmethod DrGWrappedItem moveTo: point
+  @var{point}, coordinates
+
+  Move the item to the given position, if its constraints permit
+  @example
+| canvas a |
+canvas := DrGeoSketch new.
+a := canvas point: 0@@0.
+a moveTo: 5@@5.
+canvas update
+@end example
+@end defmethod
+
+@cindex Smalltalk sketch, complementary methods
+@subsection Complementary methods
+The @t{DrGeoSketch} class proposes in the category
+@t{helpers} complementary methods to ease the computation of
+complex, interactive sketches.
+
+@defmethod DrGeoSketch plot:from:to: block x0 x1
+  @var{block}, block of code, with one argument, to describe a function on an interval 
+
+  @var{x0}, number, lower boundary of the function's domain 
+
+  @var{x1}, number, upper boundary of the function's domain
+
+  Display the curve representing the function described by the block
+   of code, in the interval [x0@tie{};@tie{}x1], and display a free
+   point on the x axis together with a relative point on the curve,
+   representing the value of the function at that point.
+@example
+canvas plot: [:x| x * x] from: -3 to: 3.
+@end example
+@end defmethod
+
+
+@deftypemethod DrGeoSketch <BlockClosure> float:at:from:to:name: f1 p f2 f4 s
+  @var{f1}, initial value
+
+  @var{p}, left position of the ruler
+
+  @var{f2}, minimum value
+
+  @var{f3}, maximum value
+
+  @var{s}, name of the value
+
+  @result{} block of code returning the current value of the ruler
+
+  Construct a ruler at the given position with a @strong{decimal}
+    value in the interval [float2@tie{};@tie{}float3]
+
+  @example
+| canvas A F |
+canvas := DrGeoSketch new.
+A := canvas float: 1 at: -10@@4 from: 0 to: 10 name:  'A'.
+F := canvas integer: 3 at: -10@@3 from: 0 to: 10 name: 'F' showValue: true.
+A value + F value.
+@end example
+@end deftypemethod
+
+@c Document showValue:
+
+There are other variants, some for integer values.
+
+@c You have said too much or too little. What is this statement about?
+
+
+@cindex Smalltalk sketch, examples
+@section Gallery of examples
+
+To illustrate the use of @drgeo{} Smalltalk sketches, we present
+below a small set of examples. It shows you some possibilities that
+we hope will inspire you for your own needs. For each example for
+which we give the Smalltalk source code, we encourage you to copy
+and paste it into a @drgeo{} workspace and run the code.
+
+@cindex Smalltalk sketch, examples, animation
+@subsection Animate a figure
+These examples rely on time handling and background processes.
+@c Explain background processes. Added to glossary with empty definition.
+
+We begin with a simple animation in order to understand the concept:
+
+@example
+| figure p pause |
+figure:=DrGeoSketch new.
+p := figure point: 0@@0.
+pause := Delay forSeconds: 0.2.
+figure do: [ 
+   100 timesRepeat: [
+      p mathItem moveTo: (p mathItem point + (0.1@@0)).
+      figure update.
+      pause wait]].
+@end example
+
+The Delay class supports setting time intervals for pausing
+@drgeo{}. The @code{do:} and @code{timeRepeat:} control structures
+repeat a code block that moves its argument item across the
+sketch. The update is necessary so that the point is displayed in its
+new position after each move.
+
+A second example with a more elaborate sketch:
+
+@c What is this supposed to do? What appears in the sketch is
+@c incomprehensible.
+
+@example
+| figure s r u pause |
+figure := DrGeoSketch new fullscreen.
+s := figure segment: 0@@ -1 to: 4@@ -1.
+r := figure pointOnCurve: s at: 0.8.
+s := figure segment: 0@@0 to: 0@@1.
+u := figure pointOnCurve: s at: 0.7.
+u round small; color: Color blue.
+1 to: 100 do: [:n|
+   u := figure
+      point: [:parents| |y t|
+         y := parents first point y.
+         t := parents second point x.
+         (n / 5) @@ t * y * (1 - y)]
+      parents:  @{u . r@}.
+   u round small; color: Color blue].
+pause := Delay forSeconds: 0.1.
+figure do: [
+   0 to: 1 by: 0.05 do: [:x |
+      r mathItem setCurveAbscissa: x.
+      figure update.
+      pause wait]].
+@end example
+ 
+@cindex Smalltalk sketch, examples, Sierpinski triangle
+@subsection Sierpinski triangle
+This example largely relies on a recursive block of code for drawing
+triangles and subdividing them to a specified number of levels.
+@example
+| triangle c |
+triangle := [:s1 :s2 :s3 :n |
+    c segment: s1 to: s2;
+        segment: s2 to: s3;
+        segment: s3 to: s1.
+    n > 0 ifTrue:
+        [triangle
+            value: s1
+            value: (c middleOf: s1 and: s2) hide
+            value: (c middleOf: s1 and: s3) hide
+            value: n-1.
+        triangle
+            value: (c middleOf: s1 and: s2) hide
+            value: s2
+            value: (c middleOf: s2 and: s3) hide
+            value: n-1.
+        triangle
+            value: (c middleOf: s1 and: s3) hide
+            value: (c middleOf: s2 and: s3) hide
+            value: s3
+            value: n-1.]].
+
+c := DrGeoSketch new.
+triangle
+    value: (c point: 0 @@ 3)
+    value: (c point: 4 @@ -3)
+    value: (c point: -4 @@ -3)
+    value: 3.
+@end example
+
+@drgeoFigure{Triangle de Sierpinski,fig59,8}

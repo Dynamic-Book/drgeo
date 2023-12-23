@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="fig3.svg"
+   inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+   inkscape:export-xdpi="99.827179"
+   inkscape:export-ydpi="99.827179">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 561.25983 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_z="793.70078 : 561.25983 : 1"
+       inkscape:persp3d-origin="396.85039 : 374.17322 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2902"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2976"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3021"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3021-3"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3021-8"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3209"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3209-5"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3209-4"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3209-6"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2875"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2897"
+       inkscape:persp3d-origin="0.53333333 : 0.35555555 : 1"
+       inkscape:vp_z="1.0666667 : 0.53333333 : 1"
+       inkscape:vp_y="0 : 1066.6667 : 0"
+       inkscape:vp_x="0 : 0.53333333 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.21"
+     inkscape:cx="377.55486"
+     inkscape:cy="788.20196"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1016"
+     inkscape:window-height="982"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="0,1"
+       position="-30.877351,698.76787"
+       id="guide3011"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-20.137403,843.75717"
+       id="guide2865"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="174.40758,713.27014"
+       id="guide3127"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="81.892104,854.49712"
+       orientation="1,0"
+       id="guide3776"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="203.31754,833.64929"
+       orientation="0,1"
+       id="guide3841"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       sodipodi:absref="/home/hilaire/Travaux/Developpement/DrGeoII/trunk/doc/fr/BasicFunctionalities/figures/ToolTabs.png"
+       xlink:href="ToolTabs.png"
+       inkscape:export-ydpi="52"
+       inkscape:export-xdpi="52"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       width="605.60364"
+       height="25"
+       id="image3124"
+       x="83.825935"
+       y="329.33392" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke:none"
+       x="82.436172"
+       y="423.92172"
+       id="text2908"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52"><tspan
+         sodipodi:role="line"
+         id="tspan2910"
+         x="82.436172"
+         y="423.92172"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold'">Points </tspan><tspan
+         sodipodi:role="line"
+         x="82.436172"
+         y="438.92172"
+         id="tspan2912"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- libre</tspan><tspan
+         sodipodi:role="line"
+         x="82.436172"
+         y="453.92172"
+         id="tspan2922"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- milieu</tspan><tspan
+         sodipodi:role="line"
+         x="82.436172"
+         y="468.92172"
+         id="tspan2916"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- intersection</tspan><tspan
+         sodipodi:role="line"
+         x="82.436172"
+         y="483.92172"
+         id="tspan2920"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- selon coordonnées</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.86294746px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 113.67149,349.0068 -0.6759,60.24275"
+       id="path2924"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke:none"
+       x="83.662628"
+       y="188.84813"
+       id="text2908-5"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52"><tspan
+         sodipodi:role="line"
+         id="tspan2910-0"
+         x="83.662628"
+         y="188.84813"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">Lignes</tspan><tspan
+         sodipodi:role="line"
+         x="83.662628"
+         y="203.84813"
+         id="tspan2912-7"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- droite, demi-droite</tspan><tspan
+         sodipodi:role="line"
+         x="83.662628"
+         y="218.84813"
+         id="tspan2922-5"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- segment, cercle, arc</tspan><tspan
+         sodipodi:role="line"
+         x="83.662628"
+         y="233.84813"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3005">- parallèle, perpendiculaire</tspan><tspan
+         sodipodi:role="line"
+         x="83.662628"
+         y="248.84813"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3131">- médiatrice, bissectrice</tspan><tspan
+         sodipodi:role="line"
+         x="83.662628"
+         y="263.84814"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3007">- vecteur, polygone</tspan><tspan
+         sodipodi:role="line"
+         x="83.662628"
+         y="278.84814"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3009">- lieu de point</tspan><tspan
+         sodipodi:role="line"
+         x="83.662628"
+         y="293.84814"
+         id="tspan2920-9"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke:none"
+       x="215.24185"
+       y="423.90799"
+       id="text2908-5-8"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52"><tspan
+         sodipodi:role="line"
+         id="tspan2910-0-0"
+         x="215.24185"
+         y="423.90799"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold'">Transformations</tspan><tspan
+         sodipodi:role="line"
+         x="215.24185"
+         y="438.90799"
+         id="tspan2912-7-6"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- symétrie</tspan><tspan
+         sodipodi:role="line"
+         x="215.24185"
+         y="453.90799"
+         id="tspan2922-5-8"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- réflexion</tspan><tspan
+         sodipodi:role="line"
+         x="215.24185"
+         y="468.90799"
+         id="tspan2916-8-0"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- translation</tspan><tspan
+         sodipodi:role="line"
+         x="215.24185"
+         y="483.90799"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3005-3">- rotation</tspan><tspan
+         sodipodi:role="line"
+         x="215.24185"
+         y="498.90799"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3009-1">- homothétie</tspan><tspan
+         sodipodi:role="line"
+         x="215.24185"
+         y="513.90802"
+         id="tspan2920-9-0"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke:none"
+       x="309.33395"
+       y="203.52348"
+       id="text2908-5-2"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52"><tspan
+         sodipodi:role="line"
+         id="tspan2910-0-9"
+         x="309.33395"
+         y="203.52348"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold'">Numériques</tspan><tspan
+         sodipodi:role="line"
+         x="309.33395"
+         y="218.52348"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3009-6">- longueur</tspan><tspan
+         sodipodi:role="line"
+         x="309.33395"
+         y="233.52348"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3106">- valeur libre</tspan><tspan
+         sodipodi:role="line"
+         x="309.33395"
+         y="248.52348"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3108">- angle</tspan><tspan
+         sodipodi:role="line"
+         x="309.33395"
+         y="263.52347"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3110">- coordonnées</tspan><tspan
+         sodipodi:role="line"
+         x="309.33395"
+         y="278.52347"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3114">- texte libre</tspan><tspan
+         sodipodi:role="line"
+         x="309.33395"
+         y="293.52347"
+         id="tspan2920-9-7"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke:none"
+       x="487.80231"
+       y="248.97957"
+       id="text2908-5-1"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52"><tspan
+         sodipodi:role="line"
+         id="tspan2910-0-8"
+         x="487.80231"
+         y="248.97957"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold'">Macro-construction</tspan><tspan
+         sodipodi:role="line"
+         x="487.80231"
+         y="263.97955"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3009-2">- créer une macro</tspan><tspan
+         sodipodi:role="line"
+         x="487.80231"
+         y="278.97955"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3157">- exécuter une macro</tspan><tspan
+         sodipodi:role="line"
+         x="487.80231"
+         y="293.97955"
+         id="tspan2920-9-70"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"> </tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 158.02973,288.8704 -0.33635,43.42404"
+       id="path2924-3"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 269.23239,350.11219 0.0872,59.13736"
+       id="path2924-7"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 350.98128,334.25212 -0.0483,-45.38172"
+       id="path2924-30"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 549.39681,288.8704 -0.13714,45.38913"
+       id="path2924-0"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 483.08743,353.26341 -0.45054,55.98614"
+       id="path2924-0-2"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke:none"
+       x="569.12769"
+       y="423.85306"
+       id="text2908-5-1-0"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52"><tspan
+         sodipodi:role="line"
+         id="tspan2910-0-8-4"
+         x="569.12769"
+         y="423.85306"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold'">Animer</tspan><tspan
+         sodipodi:role="line"
+         x="569.12769"
+         y="438.85306"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan2923">Animer un point</tspan><tspan
+         sodipodi:role="line"
+         x="569.12769"
+         y="453.85306"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3138">mobile sur une ligne</tspan><tspan
+         sodipodi:role="line"
+         x="569.12769"
+         y="468.85306"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3140">à différentes vitesses.</tspan><tspan
+         sodipodi:role="line"
+         x="569.12769"
+         y="483.85306"
+         id="tspan2920-9-70-5"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"> </tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 640.07161,348.97846 -0.15863,60.27109"
+       id="path2924-0-2-3"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke:none"
+       x="431.30267"
+       y="423.81778"
+       id="text2908-5-1-0-6"
+       inkscape:export-filename="/home/hilaire/Travaux/Developpement/DrGeoII/drgeo/doc/fr/BasicFunctionalities/figures/fig3.png"
+       inkscape:export-xdpi="52"
+       inkscape:export-ydpi="52"><tspan
+         sodipodi:role="line"
+         id="tspan2910-0-8-4-7"
+         x="431.30267"
+         y="423.81778"
+         style="font-weight:bold;font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold'">Script</tspan><tspan
+         sodipodi:role="line"
+         x="431.30267"
+         y="438.81778"
+         id="tspan2920-9-70-5-6"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">- Utiliser un script</tspan><tspan
+         sodipodi:role="line"
+         x="431.30267"
+         y="453.81778"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3832">- Modifier un script</tspan><tspan
+         sodipodi:role="line"
+         x="431.30267"
+         y="468.81778"
+         style="font-size:12px;line-height:1.25;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
+         id="tspan3834">- Créer un script </tspan></text>
+  </g>
+</svg>

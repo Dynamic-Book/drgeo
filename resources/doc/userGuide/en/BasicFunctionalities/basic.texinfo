@@ -1,0 +1,692 @@
+@c Basic functionality
+
+@node Basic functionality
+@chapter Basic functionality
+This chapter describes the tools used to construct a geometric sketch.
+
+@section Tools for construction
+
+These tools are ordered on six tabs. Clicking any of these tabs brings
+up an appropriate toolbar.
+
+@drgeoFigure{Tool categories and the descriptions,fig3,15}
+
+@drgeo{} defaults to a functional mode of operation. The user must
+click on a function tab and then a function button, or select a
+function from a menu, before selecting the object or objects to apply
+it to, and executing the function once. At this point, the application
+returns to its default state, in which the user can select and move
+objects. The user can abort any function before making the final
+selection with the Select and move button on the toolbar, or the
+@clicksequence{Edit@click{}Select and Move} command.
+
+This is in contrast to a modal application, in which clicking a
+function button puts the application into a mode that allows the
+command to be used multiple times in succession. To activate the modal
+mode the user selects @clicksequence{Edit@click{}Create multiple} or
+the corresponding button in the toolbar. The commands for editing
+object styles and properties are always modal, allowing any number of
+objects to be modified without having to select the function
+repeatedly to apply it to each one. The user has to explicitly exit
+them, for example by returning to the select and move mode or starting
+some other command.
+
+There is a mode toggle button for single/multiple creation, which
+switches from this functional mode to this modal mode, in which
+function selection is persistent. That is, selecting the line
+function allows the user to create multiple lines without having to
+select that function over again for each one.
+
+When the user clicks one of these tabs, an additional toolbar 
+displays immediately. It groups functions of the same family.
+
+From left to right, we have access to tools to build points and 
+lines, use transformations, calculate values, animate sketches, and 
+manage macro construction and execution.
+
+These functions also appear in the menus at the top of every
+@drgeo{} window.
+
+@subsection Point tools
+
+@cindex point, free
+@subsubsection Free point
+@drgeoButton{fig4}
+@anchor{free_point}
+
+Create a free point in the plane or on a line object (segment, ray,
+straight line, arc, circle, locus):
+
+@enumerate
+@item In the first case, the created point can be moved anywhere in
+  the plane of the sketch. To create it the user simply clicks in the
+  background.
+
+@item In the second case, the point can move freely only in the line 
+  where it was created; it is stuck on the object. To create this type
+  of point, the user clicks on a line (i.e. straight line, ray,
+  segment, circle, arc, etc.).
+@end enumerate
+
+
+@cindex point, intersection
+From this command, you can also create one @strong{intersection point}
+between two lines (i.e.  straight line, ray, segment, arc, circle). It
+is enough to click in the intersection of these. Moreover, @drgeo{}
+indicates it by the help bubble: @emph{Intersection}.
+
+@cindex point, middle
+@subsubsection Middle
+@drgeoButton{fig5}
+
+Create the middle point between two points, or the midpoint of a segment:
+
+@enumerate
+@item In the first case, the user selects two points.
+@item In the second case, the user selects a segment.
+@end enumerate
+
+@cindex point, intersection
+@subsubsection Intersection
+@drgeoButton{fig6}
+
+Create one or several intersection(s) of two lines (i.e. straight
+line, ray, segment, arc, circle). The user has to select two
+lines. When one or both of the chosen lines is an arc or a circle then
+two intersection points may be created.
+
+
+@cindex point, defined by coordinates
+@subsubsection Point defined by coordinates
+@anchor{coordinate_point}
+@drgeoButton{fig7}
+
+@heading How to place a point by specifying its coordinates
+@c Combining two sections on the same command.
+
+A possibility is to place two free values in the sketch --
+@xref{numeric_tool} -- then build the point with these two values as
+coordinates -- @xref{coordinate_point}. This possibility has an
+advantage over the previous one for some purposes. The point so
+constructed cannot be directly moved with the mouse. The point is
+constrained in its position.
+
+Create a point defined by its coordinates. The user selects a script
+
+@c Forward reference!
+
+returning a pair of x-y coordinates -- @xref{scriptCoordinates} -- or
+two values:
+
+@c Forward reference to Numeric->Distance, length, value
+
+the first one is the abscissa (the x coordinate) and second one the
+ordinate (the y coordinate).
+
+@heading How to construct a point constrained by its coordinates?
+
+This function is mainly used to construct a locus of point. 
+
+This construction supposes beforehand the existence of two values --
+@xref{numeric_tool} -- the point is then constructed by selecting
+these two values.
+
+@subsection Line tools
+
+@cindex line
+@subsubsection Line
+@drgeoButton{fig8}
+
+Create a straight line defined by two points. The user clicks on two
+points, or clicks on one point and drags to another.
+
+
+@cindex line, parallel
+@subsubsection Parallel line
+@drgeoButton{fig16}
+
+Create a line parallel to a given direction and going through a
+point. The user clicks a point and a direction (i.e. straight line,
+ray, segment or vector).
+
+
+@cindex line, perpendicular
+@subsubsection Perpendicular line
+@drgeoButton{fig17}
+
+Create a line perpendicular to a given direction and going through a
+point. The user clicks a point and a direction (i.e. straight line,
+ray, segment or vector).
+
+@cindex line, perpendicular bisector
+@subsubsection Perpendicular bisector
+@drgeoButton{fig17a} 
+
+Create a perpendicular bisector given a segment or two points. The
+user clicks on a segment or two points, or clicks and drags.
+
+@cindex line, angle bisector
+@subsubsection Angle bisector
+@drgeoButton{fig17b} 
+
+Create the angle bisector of an angle formed by three points. The
+users clicks on a geometric angle (defined by three points) 
+@c Forward reference
+
+or clicks on three points. The line will bisect the angle at the
+second point.
+
+@cindex ray
+@subsubsection Ray
+@drgeoButton{fig9}
+
+Create a ray defined by two points. The user clicks on two points. The
+first one is the origin, the second one a point on the ray.
+
+@cindex segment
+@subsubsection Segment
+@drgeoButton{fig10}
+
+Create a segment given two points.
+
+@cindex vector
+@subsubsection Vector
+@drgeoButton{fig11}
+
+Create a vector given two points. The user select two points, the 
+origin, the second one the terminal point.
+
+Once the vector is created, it can be moved independently of the two
+points. This remains true when the vector is built from a
+transformation -- @xref{transformations}.
+
+@cindex circle
+@subsubsection Circle
+@drgeoButton{fig12}
+
+Create a circle. The user can create it from different selections:
+@enumerate
+ @item the centre and a point on the circle,
+ @item the centre and a segment whose length is the radius,
+ @item the centre and a number (the radius).
+@end enumerate
+
+To create a circle from its centre and radius, you need a point and a
+value. The value must exist prior to the circle. It can be any sort of
+value: a computed value like a distance or a free value you edit. You
+create a free value from the "Numerics" tool -- @xref{numeric_tool}.
+
+@cindex arc, three points
+@subsubsection Arc by three points
+@drgeoButton{fig13}
+
+Create an arc going through three points. The first one is the 
+starting point, the third one is the end point, and the second 
+one is a point on the arc.
+
+@cindex arc, centre
+@subsubsection Arc, centre 
+@drgeoButton{fig13a}
+
+Create an arc defined by its center and by starting and ending points. The first
+one is the centre, the second one is the starting point, and the third one is the end point.
+
+
+@cindex polygon
+@subsubsection Polygon
+@drgeoButton{fig15}
+
+Create a polygon defined by n points. The user selects n+1 points
+defining the polygon submits. The first and last ones are the same
+point, it indicates to @drgeo{} the selection is over. Mobile point can
+be added on polygon, but it is not possible to compute an intersection
+with another line. However geometric transformation of polygon are
+allowed.
+
+@cindex polygon, regular
+@subsubsection Polygon regular
+@drgeoButton{fig15a}
+
+Create a regular polygon defined by two points and a numeric value.
+The user selects its center, one vertex, and a value indicating the
+number of vertices. If the value selected is not an integer, it is
+truncated to the next lower integer.
+
+@cindex locus
+@subsubsection Locus
+@drgeoButton{fig14} 
+Locus defined by two points. The user selects two points, one free on
+a line, the other one depending on it, so that moving the first point
+makes the location of the second point change. This dependent point is
+called a relative point.
+
+For example, we can construct an ellipse based on its property that 
+the sum of the distances from each point on the ellipse to two given 
+points is constant.
+
+@enumerate
+  @item Create free points O and A, which will be the given points.
+  @item With center O and radius greater than the length OA, create a circle.
+  @item Create a free point B on the circle.
+  @item Join the segments OA and OB.
+  @item Construct the point C, the midpoint of AB. 
+  @item Create a perpendicular bisector to AB.
+  @item Construct the point D, the intersection of OB and the 
+  perpendicular bisector to AB.
+  @item Construct the locus with free point B and relative point D.
+@end enumerate
+
+Since CD is the perpendicular bisector of AB, the triangles ACD and 
+BCD are congruent (side-angle-side). Therefore AD = BD. Then 
+AD + DO = BD + DO, which is the radius BO, which is constant. D lies on
+the ellipse. Moving B all around the circle moves D all around the
+ellipse.
+
+
+@anchor{transformations}
+@cindex transformation
+@subsection Transformation tools
+
+@cindex transformation, reflection
+@subsubsection Reflection
+@drgeoButton{fig18}
+
+Transform an object by a reflection. The user clicks on the object to
+transform and the axis -- straight line -- of the reflection. When the
+object to transform is a straight line, the first clicked is the axe
+of the reflection.
+
+@cindex transformation, symmetry
+@subsubsection Symmetry
+@drgeoButton{fig19}
+
+Transform an object by a central symmetry. The user clicks on the
+object to transform and the centre of symmetry (a point). When the
+object to transform is a point, the first clicked is the centre of the
+symmetry.
+
+@cindex transformation, translation
+@subsubsection Translation
+@drgeoButton{fig20}
+
+Transform an object by a translation. The user clicks on the object to
+transform and a vector. When the object to transform is a vector, the
+first clicked is the vector of translation.
+
+@c It is not possible to translate a vector by a vector.
+@c Report as bug. **For me it does not make sense**
+
+@cindex transformation, rotation
+@subsubsection Rotation
+@drgeoButton{fig21}
+
+Transform an object by a rotation. The user clicks on the object to
+rotate, a centre (point) and an angle. When the object to transform is
+a point, the first clicked is the centre.
+
+The rotation angle can be defined by three different means:
+
+@itemize
+@item @strong{numeric value}: the angle is therefore the value
+  interpreted in radians (Examples of numeric value: free value,
+  distance between two points, segment length, a coordinate, a value
+  returned by a @drgeo{} script, etc.),
+
+@item @strong{a geometric angle defined by three points}: its measure
+  is displayed in degrees. Beware, in this case the measure ranges
+  only in the interval [0@tie{};@tie{}180]. The angle has to be put in numeric
+  form using the angle function described below.
+
+@item @strong{an oriented angle between two vectors}: its measure is
+  displayed in degrees in the interval ]-180@tie{};@tie{}180]. The angle has to
+  be put in numeric form using the angle function described below.
+
+@end itemize
+
+@cindex transformation, homothety
+@cindex transformation, scale
+@subsubsection Homothety (scale)
+@drgeoButton{fig22}
+
+Transform an object by scaling it. The user clicks on the object to
+transform, the centre and the factor (i.e. a number). When the object
+to transform is a point, the first clicked is the centre.
+
+@subsection Numerics and text tools
+
+@anchor{numeric_tool}
+@cindex number
+@cindex line, slope
+@cindex line, distance
+@cindex circle, perimeter
+
+@cindex segment, length
+@cindex vector, norm
+@cindex arc, length
+@cindex number, free value
+@subsubsection Distance, length & value
+@drgeoButton{fig23}
+
+Create a numeric value. The value, depending on the user selection,
+may be computed or user edited:
+
+@enumerate
+ @item for two points it is the distance between these two,
+ @item for a segment it is its length,
+ @item for a vector it is its norm,
+ @item for a circle it is its perimeter,
+ @item for an arc it is its length,
+ @item for a line it is its slope,
+ @item for a point and a line it is the distance between these two,
+ @item a @strong{mouse click on the background} creates a free value, 
+   initially 0, that the user can edit.
+@end enumerate
+
+A newly created free value can be edited by clicking it. Later on, 
+it can be edited by clicking the property button on the toolbar, 
+described below, and then selecting the value.
+
+This last possibility is very interesting for some situations. It lets
+the user set an arbitrary value to use for a given length, the radius
+of a circle, an angle measure (in radians) or the coordinates of a
+point. The value is then used by other specific tools to construct a
+circle, a rotation or a point defined by its coordinates.
+
+@cindex angle, geometric
+@cindex angle, oriented
+@subsubsection Angle
+@drgeoButton{fig24}
+
+Compute the angle defined by three points or two vectors. In the first
+case, the angle is considered as non oriented (i.e. angle whose
+measure belongs to the interval [0@tie{};@tie{}180]).  In the second case, the
+angle is oriented and its measure belongs to the interval
+]-180@tie{};@tie{}180].
+
+@cindex point, coordinates
+@cindex vector, coordinates
+@subsubsection Coordinates
+@drgeoButton{fig25}
+
+Create the coordinates (abscissa and ordinate) of a point or vector.
+
+@cindex text
+@subsubsection Free text
+
+@drgeoButton{fig64}
+
+Add a block of text in the sketch. The user clicks at the desired
+position, then edits the text. To edit the text again, the user
+clicks the property button described below, then the text.
+
+@cindex script, use
+@subsubsection Inserting a Smalltalk script
+@anchor{script-tool}
+
+@drgeoButton{fig49}
+
+Insert a @drgeo{} Smalltalk script in the sketch. The script expects 
+a number of objects as arguments, and requires a target to attach 
+the output to. It returns an object whose text representation is 
+printed in the sketch, at the position clicked by the user. A script 
+can be used for its side effects or for the value it returns, ready 
+to be used for subsequent constructions. See the Smalltalk Script 
+chapter for more details.
+
+@cindex script, edit
+@subsubsection Editing a Smalltalk script
+
+@drgeoButton{fig49a}
+
+Edit or create a Smalltalk script. A script editor is opened for the
+user to edit any existing script or to create a new script.
+
+The @drgeo{} Smalltalk scripting system is reviewed in detail in the
+chapter on advanced functionalities (@xref{script}).
+
+@cindex macro construction
+@subsection macro construction tools
+
+@subsubsection Create a macro construction
+@drgeoButton{fig26}
+
+Extract a construction sequence from the sketch and compile it as a
+macro construction.
+
+macro constructions are covered in detail in its
+section (@xref{macroConstruction}).
+
+@subsubsection Execute a macro construction
+@drgeoButton{fig27}
+
+Execute a macro construction. The macro construction can be newly 
+created or loaded from a file.
+
+@cindex misc tools
+@subsection Misc tools
+
+@cindex object, delete
+@cindex eraser
+@subsubsection Delete an object
+@drgeoIcon{fig30}
+
+An object can be deleted using the eraser tool or the
+@clicksequence{Edit@click{}Eraser} command. Objects that depend on the
+deleted object will also disappear. When deleting a curve, the points
+used to define it remain behind. The action is undoable with the undo
+button in the toolbar or the undo menu item in the Edit menu.
+
+@cindex edit, style
+@cindex style
+@cindex object, rename
+@cindex rename, object
+@cindex object, hide
+@cindex object, style
+@subsubsection Change the style of an object
+@drgeoIcon{fig29}
+
+Each geometric object has its own style attributes, which can 
+include colour, line style, thickness, label, size and shape, and 
+properties such as Fill, Translucent, and Hidden. An object that is 
+hidden remains in the sketch, but is not seen except when editing 
+properties, so that it can be found. Hiding intermediate 
+construction is often useful to avoid clutter in the sketch. All 
+these attributes are edited from a side panel displayed when the 
+user enters style mode. To do so, click the @drgeoIcon{fig29} button 
+from the toolbar, and then select a particular item in the sketch.
+
+@heading Style of point.
+@cindex style, point
+@cindex point, rename
+@cindex point, lock
+
+The lateral panel for style of point is for points within every kind
+of object. Name, Colour, shape (x, dot, or block), size, visibility,
+and locking are adjusted from there. Only the position of free points
+on the plane or on a curve is lockable.
+
+@drgeoFigure{Side panel to edit style of point,fig31,4}
+
+
+@heading Style of line.
+@cindex style, line
+@cindex style, polygon
+
+The side panel for style of line is for straight lines, rays,
+segments, vectors, circles, arcs, loci, and polygons. Name, 
+colour, thickness, solid or dashed styles, and visibility are 
+adjusted from there. Some properties only apply to particular 
+kinds of line, as in the case of marks and arrowheads on segments.
+
+@cindex style, segment, mark
+@cindex segment, mark
+
+@drgeoFigure{Lateral panel to edit style of line,fig32,4}
+
+@heading Style of value.
+@cindex style, value
+@cindex style, script
+@cindex value, lock
+
+The lateral panel for style of value is for all kinds of numeric value: 
+free value edited by the user, measure, computed results from a @drgeo{} 
+Smalltalk script. Colour, label and visibility are adjusted from here. 
+The value can also be locked.
+
+@drgeoFigure{Lateral panel to edit style of line,fig33,4}
+
+@page
+
+@cindex edit, property
+@cindex object, property
+@subsubsection Object property
+@anchor{edit_property}
+
+@drgeoIcon{fig58} 
+
+Some objects' numeric or text values are editable. This includes 
+the coordinates of free points on the plane or on a curve, free 
+values and scripts. To edit the property, select this tool, then 
+choose one of these objects in the sketch. A dialog box will appear:
+
+
+@cindex free point, property
+@heading Free point.
+Selecting a free point, a dialog box let you edit its abscissa and
+ordinate.
+
+@drgeoFigure{Edit the coordinates of a free point,fig60,8}
+
+@cindex free point, on curve, property
+@heading Free point on curve.
+
+Selecting a free point on curve, a dialog box let you edit its
+curvilinear abscissa. It is normalised in the interval
+[0@tie{};@tie{}1]. This allows a curve to be treated as a parametric
+curve.
+
+@c It is evidently not normalized by arc length. How is it determined?
+
+@drgeoFigure{Edit the curvilinear abscissa of free point on a
+  curve,fig61,8}
+
+@cindex free value, property
+@heading Free value.
+Selecting a free value, a dialog box let you edit its value.
+
+@drgeoFigure{Edit a free value,fig62,8}
+
+@cindex script, property
+@heading Script.
+
+Selecting the value displayed from a script, an editor is 
+opened to let you study and edit it. To
+save any modification to a script, use the key shortcut
+@kbd{Ctrl-s} or the entry @emph{Do-it} in the contextual
+menu over the script (right mouse click to display it).
+
+@c Shouldn't that be Accept (s) rather than Do it (d)?
+
+@drgeoFigure{Edit a script,fig63,8}
+
+@cindex text, property
+@heading Text.
+
+Selecting a script, a dialog box let you edit it. The text can be
+formatted in several lines with carriage return -- keyboard key
+@kbd{Return}.
+
+@drgeoFigure{Edit a text,fig65,6}
+
+@page
+@section Misc functions
+
+@cindex sketch, move
+@subsection Moving the Sketch
+
+The sketch can be moved with the wheels in the right bottom corner or
+directly with the right mouse button.
+
+@cindex sketch, scale
+@subsection Scaling the sketch
+
+The sketch scale can be adjusted with the wheel on the top right of
+the window. The mouse wheel offers this same service; press
+simultaneously the keyboard key @kbd{Shift} to speed up the scaling.
+
+
+@cindex object, move
+@subsection Moving an object
+@drgeoIcon{fig28}
+
+An object is moved by clicking and dragging with the mouse. The 
+whole sketch is then recomputed and redrawn to respect the 
+constraints specified. Almost all geometric objects can be moved. If 
+necessary, @drgeo{} moves the associated free points. For example, 
+when the user drags a line defined by two points, the points are 
+moved simultaneously.
+
+@c This is not true for vectors. Should we say so?
+
+@cindex point, mutate
+
+In this mode, it is possible to change the nature of a point from:
+ 
+@itemize
+@item a free point on the plane
+@item a free point on a curve
+@item an intersection point
+@end itemize
+
+to a point as:
+@itemize
+@item a free point on the plane
+@item a free point on a curve
+@item an intersection point
+@end itemize
+
+For example, transforming a free point on the plane into an
+intersection point. However, there is one constraint: it is not
+possible to mutate a point toward a ``younger'' line (as free on the
+line or intersection with the line). Younger line means created
+chronologically after the point.
+
+Pressing the keyboard key @kbd{Shift} while grabbing a point will
+display a balloon help text about the point you can mutate and the
+possible destinations.
+
+@drgeoFigure{Pressing [Shift] to mutate a point,mutate,7}
+
+
+@cindex point, merge
+@subsection Merging points
+Two free points can be merged: to do so drag one point over the second
+destination point and hold for a few seconds.
+
+@cindex curve, clone
+@subsection Cloning curve
+Various type of curve can be cloned to quickly duplicate identical
+objects. To do so press and hold the mouse button over the curve to
+clone. The curve will blink, and then a cloned curve is displayed, 
+slightly offset from the original, ready to be positioned as the
+user chooses.
+
+
+@cindex grid, display
+@subsection Grid
+
+It is possible to show or hide a grid in every sketch with the
+@drgeoIcon{fig2} button in the toolbar. The scale of the grid 
+adjusts itself when the sketch is enlarged or shrunk. When 
+saving a sketch, the grid state is saved as well.
+
+
+@cindex grid, magnet 
+
+When creating or moving points, it is possible to constrain them to
+snap to the grid, so that the point will appear at the grid position 
+closest to the mouse pointer. To do so, activate the magnet tool from 
+the @drgeoIcon{fig34} button in the toolbar.
+
+
+ 

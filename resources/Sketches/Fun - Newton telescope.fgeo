@@ -1,0 +1,85 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" gridded="False" name="Newton telescope" origin_x="1.7371794871794874" origin_y="9.054487179487174" scale="22.0">
+<point color="Red" delta="(7@7)" id="1011661819" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>-3.999999999999999</x>
+<y>19.038461538461593</y></point>
+<point color="Red" delta="(7@7)" id="925769713" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>4.0</x>
+<y>19.038461538461593</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" id="184406738" mark="none" masked="True" name="" style="plain" thickness="small" type="2pts">
+<parent ref="1011661819"/> 
+<parent ref="925769713"/> </segment>
+<point color="Orange" delta="(-50.665147498041506@ -25.523871750573335)" id="92886995" locked="False" masked="False" name="Light beam (move it)" style="Round" thickness="Thick" type="On_curve">
+<parent ref="184406738"/> 
+<value>0.21022727272727107</value></point>
+<point color="Red" delta="(7@7)" id="1039553378" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>0</x>
+<y>10</y></point>
+<point color="Red" delta="(7@7)" id="1024176096" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>0</x>
+<y>0</y></point>
+<line anchor="0.5" color="Black" delta="(7@7)" id="139837943" masked="True" name="" style="dot" thickness="small" type="2pts">
+<parent ref="1039553378"/> 
+<parent ref="1024176096"/> </line>
+<point color="Red" delta="(-32.98776754989717@ -25.230115503756906)" id="154447646" locked="False" masked="False" name="Focus (move me too)" style="Rectangular" thickness="Thick" type="On_curve">
+<parent ref="139837943"/> 
+<value>0.04418360182902675</value></point>
+<value class="DrGeoScript238532948" color="Black" delta="(7@7)" id="804646426" locked="False" masked="True" name="" type="script">
+<parent ref="154447646"/> 
+<code>DrGeoUserScript subclass: #DrGeoScript238532948&#10;&#9;instanceVariableNames: ''&#10;&#9;classVariableNames: ''&#10;&#9;poolDictionaries: ''&#10;&#9;category: 'DrGeoII-User'!&#10;!DrGeoScript238532948 commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript238532948 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 18:15'!&#10;compute&#10;&quot;Edit me&quot;&#10;&#9;^[:x | x * x / (self arg1 point y * 4)]! !&#10;&#10;&quot;-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- &quot;!&#10;&#10;DrGeoScript238532948 class&#10;&#9;instanceVariableNames: ''!&#10;!DrGeoScript238532948 class commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript238532948 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 18:14'!&#10;description&#10;&#9;^'I compute the parabola function accordingly to my focuspoint provided as argument.'! !&#10;&#10;!DrGeoScript238532948 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 16:06'!&#10;scriptName&#10;&#9;^'Parabola function'! !&#10;&#10;&#10;!DrGeoScript238532948 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 18:14'!&#10;newArgumentsType&#10;&#9;^{DrGPointItem}! !&#10;</code>
+<x>3.5384615384615383</x>
+<y>-1.7115384615384608</y></value>
+<value class="DrGeoScript180017649" color="Black" delta="(7@7)" id="507082497" locked="False" masked="True" name="" type="script">
+<parent ref="92886995"/> 
+<parent ref="804646426"/> 
+<code>DrGeoUserScript subclass: #DrGeoScript180017649&#10;&#9;instanceVariableNames: ''&#10;&#9;classVariableNames: ''&#10;&#9;poolDictionaries: ''&#10;&#9;category: 'DrGeoII-User'!&#10;!DrGeoScript180017649 commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript180017649 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 16:10'!&#10;compute&#10;&quot;Edit me&quot;&#10;&#9;^ self arg1 point x @ (self arg2 compute value: self arg1 point x)! !&#10;&#10;&quot;-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- &quot;!&#10;&#10;DrGeoScript180017649 class&#10;&#9;instanceVariableNames: ''!&#10;!DrGeoScript180017649 class commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript180017649 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 16:09'!&#10;description&#10;&#9;^'I provide the coordinates of a point on the parabola curve.&#10;Arguments:&#10;- point, x-coordinte is used to compute the coordinates&#10;- script, returning a bloc of code, parabola function.'! !&#10;&#10;!DrGeoScript180017649 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 16:09'!&#10;scriptName&#10;&#9;^'Point on parabola'! !&#10;&#10;&#10;!DrGeoScript180017649 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 16:09'!&#10;newArgumentsType&#10;&#9;^{DrGPointItem.DrGValueItem}! !&#10;</code>
+<x>-6.461538461538462</x>
+<y>-1.4807692307692308</y></value>
+<point color="Blue" delta="(7@7)" id="86328406" masked="False" name=" " style="Round" thickness="Normal" type="Script">
+<parent ref="507082497"/> </point>
+<locus anchor="0.5" arrow="makeNoArrows" color="Blue" delta="(7@7)" id="242619018" masked="False" name="" style="plain" thickness="large" type="2pts">
+<parent ref="92886995"/> 
+<parent ref="86328406"/> </locus>
+<point color="Blue" delta="(7@7)" id="924483040" locked="False" masked="False" name=" " style="Rectangular" thickness="Dashed" type="Free">
+<x>-1</x>
+<y>13</y></point>
+<point color="Blue" delta="(7@7)" id="901707916" locked="False" masked="False" name=" " style="Rectangular" thickness="Dashed" type="Free">
+<x>1</x>
+<y>15</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="(7@7)" id="257088734" mark="none" masked="False" name="" style="plain" thickness="large" type="2pts">
+<parent ref="924483040"/> 
+<parent ref="901707916"/> </segment>
+<point color="Red" delta="(7@7)" id="834963801" locked="False" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>6</x>
+<y>15</y></point>
+<point color="Red" delta="(7@7)" id="832042367" locked="False" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>6</x>
+<y>13</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="(7@7)" id="78944790" mark="none" masked="False" name="" style="plain" thickness="large" type="2pts">
+<parent ref="834963801"/> 
+<parent ref="832042367"/> </segment>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Orange" delta="(7@7)" id="237676939" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="92886995"/> 
+<parent ref="86328406"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" id="185298601" masked="True" name="" style="plain" thickness="small" type="2pts">
+<parent ref="86328406"/> 
+<parent ref="154447646"/> </line>
+<point color="Blue" delta="(7@7)" extra="0" id="1067338430" masked="False" name=" " style="Round" thickness="Normal" type="Intersection">
+<parent ref="185298601"/> 
+<parent ref="257088734"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" id="1465730" masked="True" name="" style="plain" thickness="small" type="perpendicular">
+<parent ref="257088734"/> 
+<parent ref="1067338430"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" id="100541567" masked="True" name="" style="plain" thickness="small" type="Reflexion">
+<parent ref="185298601"/> 
+<parent ref="1465730"/> </line>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Orange" delta="(7@7)" id="77440846" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="86328406"/> 
+<parent ref="1067338430"/> </segment>
+<point color="Blue" delta="(7@7)" extra="0" id="996747920" masked="False" name=" " style="Round" thickness="Normal" type="Intersection">
+<parent ref="78944790"/> 
+<parent ref="100541567"/> </point>
+<segment anchor="0.5" arrow="makeForwardArrow" color="Orange" delta="(7@7)" id="59575196" mark="none" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="1067338430"/> 
+<parent ref="996747920"/> </segment></drgeo></drgenius>

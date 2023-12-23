@@ -1,0 +1,171 @@
+\input texinfo @c -*-texinfo-*-
+@c %**start of header
+@documentlanguage fr
+@documentencoding UTF-8
+@settitle  Programmer avec Dr.Geo
+@set timeStamp Time-stamp: <2019-08-31 12:42:33 hilaire>
+@paragraphindent 0
+@exampleindent 1
+@set drgeoVersion 19.09
+@set txicodequoteundirected ON 
+@setfilename programmer-avec-drgeo.info
+@include ../../userGuide/drgeoMacro.texinfo
+@include ../programmingGuideMacro.texinfo
+
+@macro thanks
+Merci aux relecteurs de ce manuel : Alain Busser, Aubin Jarry, Georges Khaznadar.
+@end macro
+
+@afourwide
+@c @afourlatex
+@c 7x9.25 inches 17.8x23.5
+@c @smallbook
+@c %**end of header
+
+@copying
+Ce manuel est pour GNU Dr.Geo (version @value{drgeoVersion}), un
+environnement de géométrie interactive et de programmation.
+
+Copyright @copyright{} 2019 Hilaire Fernandes
+
+Compilation : @today{}
+
+Source de la documentation : @url{https://bazaar.launchpad.net/~drgeo-developers/drgeo} 
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+``GNU Free Documentation License''.
+@end quotation
+@end copying
+
+
+@titlepage
+@title Programmer avec Dr.Geo @value{drgeoVersion}
+@subtitle Faire des mathématiques en programmant 
+@author Hilaire Fernandes (@email{hilaire@@drgeo.eu})
+@iftex
+   @page
+   @vskip 0pt plus 1filll
+   @insertcopying
+   @*
+   @thanks{}
+@end iftex
+@end titlepage
+
+@headings off
+@everyheading BROUILLON  @| @thispage @| @thischapter
+@everyfooting @| @| @today
+
+@iftex
+@shortcontents
+@contents
+@end iftex
+
+@node Top
+
+@ifnottex
+@top @drgeo
+@end ifnottex
+
+@menu
+* Introduction::Quelques mots sur @drgeo{} et ce guide
+* La syntaxe par l'exemple::Découvrir la syntaxe à travers des exemples
+* Nombres et opérations::Programmer avec des nombres
+* Espace::Programmer de la géométrie
+* Fonctions::Programmer avec des fonctions
+* Figure Pharo::Descriptions exhaustives des commandes
+* Outils du développeur::Outils pour la programmation
+* GNU Free Documentation License::La licence de partage de ce livre
+* Copyright des documents::Droits des documents tiers de ce livre
+* Liste des exercices::
+* Solutions des exercices::Les corrections de tous les exercices
+* Liste des exemples::
+* Liste des figures::
+* Aides::Des aides pour résoudre les exercices
+* Index::Des indexes pour rechercher des concepts ou des méthodes informatiques
+@end menu
+
+@ifnottex
+ @insertcopying
+ @thanks
+@end ifnottex 
+
+
+@c==================================================
+@c:INTRODUCTION
+@include introduction/introduction.texinfo
+@c==================================================
+@c:PART1 -- Pour bien démarrer
+@part Partie I @*Pour bien démarrer
+@c:La syntaxe par l'exemple
+@include syntax/syntax.texinfo
+@c==================================================
+@c:PART 2 -- Programmer au secondaire I
+@part Partie II @*Programmer au secondaire I
+@c:Nombres et opérations
+@include numbers/numbers.texinfo
+@c:Espace
+@include geometry/geometry.texinfo
+@c:Fonctions
+@include functions/functions.texinfo
+@c==================================================
+@c:PART3 - Pour aller plus loin
+@part Partie III @*Pour aller plus loin dans la programmation
+@c:Le langage Pharo
+@include SmalltalkFigure/SmalltalkFigure.texinfo
+@c:Les outils du développeur
+@include Tools/tools.texinfo
+@c:Etendre les possibilités de Dr.Geo
+@include expandDrgeo/expandDrgeo.texinfo
+@c:Trouver et corriger des erreurs
+@include handlingError/handlingError.texinfo
+@c==================================================
+@c:PART4 - ANNEXE
+@part Partie IV @*Annexes
+@c License
+@include ../../userGuide/fdl.texinfo
+@c Copyrighted document used in the book
+@include copyright.texinfo
+@c List of exercises
+@node Liste des exercices
+@appendix Liste des exercices
+@listoffloats Exercice
+@c Solutions of exercises
+@include exercises/exercises.texinfo
+@c List of examples
+@node Liste des exemples
+@appendix Liste des exemples
+@listoffloats Exemple
+@c List of figures
+@node Liste des figures
+@appendix Liste des figures
+@listoffloats Figure
+@c Espace de recherche
+@node Aides
+@appendix Aides
+Cette annexe propose des documents à utiliser lors de la résolution de
+certains exercices.
+@*
+@center @image{GrilleCentre,12cm}
+@page
+@*
+@center @image{GrilleCentre,12cm}
+@page
+@*
+@center @image{GrillePositif,12cm}
+@page
+@*
+@center @image{GrillePositif,12cm}
+@c Indexes
+@node Index
+@appendix Index conceptuel
+@printindex cp
+@appendix Index des méthodes @drgeo{}
+@printindex fn
+@c:END OF THE BOOK
+
+@bye

@@ -1,0 +1,59 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Square" origin_x="0.0" origin_y="0.0" scale="34.0">
+<point color="Red" delta="(-18.0@1.0)" id="810091687" locked="False" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-7</x>
+<y>-2</y></point>
+<point color="Red" delta="(5.0@3.0)" id="1012389236" locked="False" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>-2</x>
+<y>-2</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="175310337" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="810091687"/> 
+<parent ref="1012389236"/> </segment>
+<circle anchor="0.5" color="Black" delta="(7@7)" filled="False" id="252837504" masked="True" name="" style="plain" thickness="Normal" translucent="False" type="2pts">
+<parent ref="810091687"/> 
+<parent ref="1012389236"/> </circle>
+<line anchor="0.5" color="Black" delta="(7@7)" id="105075346" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="175310337"/> 
+<parent ref="810091687"/> </line>
+<point color="Red" delta="(-18.0@ -20.0)" extra="1" id="265314690" masked="False" name="D" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="252837504"/> 
+<parent ref="105075346"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" id="222556746" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="105075346"/> 
+<parent ref="265314690"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" id="239610427" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="175310337"/> 
+<parent ref="1012389236"/> </line>
+<point color="Red" delta="(9.0@ -14.0)" extra="0" id="877399984" masked="False" name="C" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="222556746"/> 
+<parent ref="239610427"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="10297824" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="265314690"/> 
+<parent ref="877399984"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="130938619" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="810091687"/> 
+<parent ref="265314690"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="56789302" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="877399984"/> 
+<parent ref="1012389236"/> </segment>
+<angle color="Green" delta="(7@7)" id="224381640" locked="False" masked="False" name="" type="3pts">
+<parent ref="1012389236"/> 
+<parent ref="810091687"/> 
+<parent ref="265314690"/> </angle>
+<angle color="Green" delta="(7@7)" id="217083232" locked="False" masked="False" name="" type="3pts">
+<parent ref="810091687"/> 
+<parent ref="265314690"/> 
+<parent ref="877399984"/> </angle>
+<angle color="Green" delta="(7@7)" id="203697707" locked="False" masked="False" name="" type="3pts">
+<parent ref="265314690"/> 
+<parent ref="877399984"/> 
+<parent ref="1012389236"/> </angle>
+<angle color="Green" delta="(7@7)" id="206516714" locked="False" masked="False" name="" type="3pts">
+<parent ref="877399984"/> 
+<parent ref="1012389236"/> 
+<parent ref="810091687"/> </angle>
+<text color="Black" delta="(7@7)" id="25507405" locked="False" masked="False" name="" type="free">
+<contents>Square: a rectangle and a rhombus &#10;at the same time.&#10;A parallelogram with four sides of&#10;equal length and four right angles.</contents>
+<x>-0.2941176470588234</x>
+<y>4.088235294117646</y></text></drgeo></drgenius>

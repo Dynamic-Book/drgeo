@@ -1,0 +1,128 @@
+@c Opérations sur les fichiers
+
+@node Fichiers et documents
+@chapter Fichiers et documents
+
+Les constructions peuvent être enregistrées de deux manières. Une
+construction par fichier ou un ensemble de constructions et de
+macro-constructions dans un seul fichier (c.-à-d. une session @drgeo{}).
+Nous vous rappelons que les documents sont sauvegardés avec
+l'extension @file{.fgeo}.
+
+
+
+@section Renommer une figure
+@cindex renommer figure
+Depuis le menu ...@clicksequence{Fichier @click{} Renommer}...,
+l'utilisateur change le nom et le titre de la fenêtre de la figure
+active. Cette fonction est particulièrement utile lorsque
+l'utilisateur sauvegarde un ensemble de figures dans un unique fichier
+de session.
+
+@section Enregistrer
+@cindex enregistrer
+@cindex enregistrer, réseau
+
+À partir du menu ...@clicksequence{Fichier @click{} Enregistrer}...,
+la figure de la vue active est enregistrée dans un fichier.
+
+@drgeoNote{@drgeo{} sait travailler avec plusieurs figures en même
+  temps, chaque figure ayant sa propre fenêtre. L'utilisateur passe
+  d'une figure à l'autre en utilisant la barre des tâches en bas de
+  l'environnement @drgeo{}.}
+
+Avec le menu ...@clicksequence{Fichier @click{} Enregistrer sous...},
+l'utilisateur sauvegarde le document sous un autre nom.
+
+Les documents sont habituellement sauvegardés dans la structure de
+l'application @drgeo{}, dans le dossier
+@file{DrGeo/MySketches}. Pour sauver dans un emplacement
+arbitraire du disque dur, utiliser le menu ...@clicksequence{Fichier
+@click{} Enregistrer à...}.
+
+@cindex réseau, local, partage
+Cela est utile lorsque l'enseignant souhaite partager des fichiers
+avec ses étudiants dans un réseau local. Il enregistre les figures
+dans le dossier @file{DrGeo/MyShares} de @drgeo, puis active le
+partage réseau local depuis ...@clicksequence{Clic arrière-plan
+@click{} Préférences @click{} Réseau @click{} Partage de réseau
+local}... Les étudiants accède aux figures partagées en choisissant
+@strong{Partage enseignant} lors de l'ouverture d'une figure.
+
+@drgeoNote{Lors de la sauvegarde d'un document, une option réseau est
+  proposée dans la boîte de dialogue@footnote{Seul le partage sur un
+  serveur ftp fonctionne pour l'instant, il se configure depuis
+  ...@clicksequence{Clic arrière-plan @click{} Préférences @click{}
+  Réseau @click{} Utiliser des ressources réseau}...} Lors de la
+  sélection de cette option, il faut également donner un nom de
+  partage réseau -- du choix de l'utilisateur -- en plus du nom du
+  document. Cette option permet de partager des documents entre
+  plusieurs utilisateurs connectés en réseau.}
+
+
+@subheading Enregistrement d'une session
+@cindex enregistrer, macro-construction
+@cindex enregistrer, session
+
+Une session est un ensemble de données de @drgeo{} que l'utilisateur
+enregistre d'un seul coup dans un fichier. Cela permet de placer un
+ensemble de données (figures et macro-constructions) dans un seul
+fichier, afin de faciliter leurs réutilisations.
+
+À partir du menu ...@clicksequence{Fichier @click{} Enregistrement
+multiple}..., l'utilisateur accède à la boîte de dialogue de
+sauvegarde d'une session.
+
+@drgeoFigure{La boîte de dialogue de session @drgeo{},fig51,8}
+
+Dans cette boîte de dialogue, la liste de toutes les données actives
+est présentée dans une colonne.  Chaque ligne est préfixée du tag
+@strong{Fig.} ou @strong{Macro} selon son type, la seconde partie de
+la ligne contient le nom de la donnée.
+
+@drgeoNote{Actuellement, une session peut contenir deux types de
+  données@tie{}: figure interactive 2D et macro-construction.}
+
+L'utilisateur sélectionne les données à enregistrer en cochant leur
+case puis valide avec le bouton ``OK''.
+
+@drgeoNote{Le menu ...@clicksequence{Fichier @click{} Enregistrement
+  multiple}... est le seul moyen d'enregistrer une macro-construction
+  dans un fichier.}
+
+
+@subheading Enregistrer une macro-construction
+@cindex enregistrer, macro-construction
+
+Pour enregistrer une ou des macro-constructions dans un fichier,
+procéder comme pour l'enregistrement d'une session -- enregistrement
+multiple. Depuis la boîte de dialogue de sauvegarde d'une session,
+sélectionner la ou les macro-constructions à sauvegarder, puis donner
+le nom du fichier. C'est tout@tie{}!
+
+Il est ainsi possible de constituer des librairies de
+macro-contructions, une par fichier ou plusieurs regroupées selon un
+même thème dans un seul fichier.
+
+
+@section Exporter une figure
+@cindex exporter figure
+Le menu ...@clicksequence{Fichier @click{} Exporter image}... exporte
+la figure de la fenêtre active dans un fichier image au format
+standard
+@acronym{PNG}@footnote{@url{http://www.w3.org/Graphics/PNG}}. Les
+images sont sauvées dans la structure de l'application @drgeo{}, dans
+le dossier @file{DrGeo.app/MyExports}.
+
+@section Ouvrir un fichier
+@cindex ouvrir, macro-construction
+@cindex ouvrir, session
+@cindex ouvrir, figure
+
+Que l'utilisateur ait sauvegardé une seule figure ou une session avec
+différents types de documents, la procédure pour l'ouverture est la
+même par le menu ...@clicksequence{Fichier @click{} Ouvrir}... Si la
+session ouverte contient des macro-constructions, celles-ci sont
+directement disponibles depuis l'outil pour jouer des
+macro-constructions. Les macro-constructions sont alors disponibles
+depuis toutes les fenêtres ouvertes de @drgeo{}, actuelles ou futures.

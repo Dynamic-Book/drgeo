@@ -1,0 +1,116 @@
+@c Files and documents
+
+@node Files and documents
+@chapter Files and documents
+
+Sketches are saved in two different ways, one sketch per file or a set
+of sketches and macro constructions in one file (i.e. a @drgeo{}
+session). We recall that documents are saved with the extension
+@strong{.fgeo}. When providing the file name, you don't need to write
+this extension. @drgeo{} will do it for you.
+
+@cindex sketch, rename
+@section Rename a sketch
+From the menu @clicksequence{File@click{}Change title}, the user
+changes the name and the title of the active window. This function is
+useful when the user saves a set of sketches in a single session file.
+
+@cindex sketch, save
+@section Save a sketch
+
+From the menu @clicksequence{File@click{}Save}, the sketch of the
+active window is saved. The user is prompted for a name.
+
+@c Bug: Dr. Geo will not save an edited sketch in the same file. The 
+@c user has to enter the name each time the sketch is saved. This 
+@c results in multiple sketches with the same name. There is no way to 
+@c delete the old sketch files from within Dr. Geo.
+@c
+@c ** It should not be the case **
+
+
+@drgeoNote{@drgeo{} can work with several sketches at the same time.
+  The user switches from one sketch to another one with the task bar
+  in the bottom of the @drgeo{} environment.}
+
+With the menu @clicksequence{File@click{}Save as...}, the user saves the
+document under another name.
+
+The documents are saved in the @drgeo{} application structure, in the
+folder @t{DrGeo.app/MySketches}. To save at an arbitrary location in
+the hard disk structure, use the menu @clicksequence{File@click{}Save
+at...}
+
+@cindex sketch, save, network 
+@cindex share, network, sketch
+@cindex network, share, sketch
+@drgeoNote{When saving a document, a network option is available in
+  the dialog box. If selecting this option, the user must also provide
+  a network share name -- arbitrarily chosen by the user -- and the
+  document name. This option lets a group of networked users share
+  sketches}
+
+
+@cindex sketch, export
+@section Export a sketch
+The menu @clicksequence{File@click{}Export as bitmap} exports the
+sketch of the active window in a picture file in the standard format
+PNG@footnote{@url{http://www.w3.org/Graphics/PNG}}.
+
+The pictures are saved in the @drgeo{} structure application, in the
+folder @t{DrGeo.app/MyExports}.
+
+
+@cindex macro construction, save
+@cindex session, save
+@cindex sketch, save, session
+@section Save a session
+
+A session is a set of @drgeo{} documents -- sketches and
+macro constructions -- the user saves in @strong{one} file. It eases
+the preparation of pedagogical sequences.
+
+From the menu @clicksequence{File@click{}Save multiple}, the users
+accesses a dialog box to select the document to integrate in the
+session file.
+
+@drgeoFigure{The @drgeo{} session dialog box,fig51,8}
+
+In this dialog, the list of all active documents is presented in
+column. Each line is prefixed with a tag @t{Fig.} or @t{Macro}
+according to the document type. The second part is the name of the
+document.
+
+@drgeoNote{As for now, a session knows about two types of document: 2D
+  interactive sketch and macro construction.}
+
+The user selects the documents to integrate in the session then 
+provides a name for the composite file, and clicks @clicksequence{OK}.
+
+@drgeoNote{The menu @clicksequence{File@click{}Save multiple} is the
+only method for saving a macro construction in a file.}
+
+
+@cindex macro construction, save
+@section Save a macro construction
+
+To save one or several macro constructions in a file, proceed the 
+same way as for saving a session -- multiple save. From the dialog 
+box to save a session, select one or several macro construction to 
+save, then input the file name. That's all.
+
+Therefore, it is possible to build macro construction libraries, one
+per file or several per file following a given theme.
+
+@cindex macro construction, open
+@cindex session, open
+@cindex sketch, open
+@section Open a file
+
+Whenever the user saved an individual sketch or a session in a file,
+the procedure to open it is the same from the menu
+@clicksequence{File@click{}Open}.
+
+If the session contains macro constructions, they are automatically
+added to the macro menus and player, ready to use in any existing
+@drgeo{} window.

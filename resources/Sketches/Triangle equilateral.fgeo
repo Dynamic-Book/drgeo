@@ -1,0 +1,43 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Triangle equilateral" origin_x="0.0" origin_y="0.0" scale="34.0">
+<point color="Red" delta="(-19.0@0.0)" id="992484171" locked="False" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-8</x>
+<y>-1</y></point>
+<point color="Red" delta="(5.0@8.0)" id="926297112" locked="False" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>-3</x>
+<y>-1</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="111142553" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="992484171"/> 
+<parent ref="926297112"/> </segment>
+<circle anchor="0.5" color="Black" delta="(7@7)" filled="False" id="66919960" masked="True" name="" style="plain" thickness="Normal" translucent="False" type="2pts">
+<parent ref="992484171"/> 
+<parent ref="926297112"/> </circle>
+<circle anchor="0.5" color="Black" delta="(7@7)" filled="False" id="37739268" masked="True" name="" style="plain" thickness="Normal" translucent="False" type="2pts">
+<parent ref="926297112"/> 
+<parent ref="992484171"/> </circle>
+<point color="Red" delta="(-6.0@ -23.0)" extra="1" id="45943652" masked="False" name="C" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="66919960"/> 
+<parent ref="37739268"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="98387893" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="992484171"/> 
+<parent ref="45943652"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="178479390" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="45943652"/> 
+<parent ref="926297112"/> </segment>
+<angle color="Green" delta="(7@7)" id="35987066" locked="False" masked="False" name="" type="3pts">
+<parent ref="45943652"/> 
+<parent ref="992484171"/> 
+<parent ref="926297112"/> </angle>
+<angle color="Green" delta="(7@7)" id="249276422" locked="False" masked="False" name="" type="3pts">
+<parent ref="992484171"/> 
+<parent ref="926297112"/> 
+<parent ref="45943652"/> </angle>
+<angle color="Green" delta="(7@7)" id="140772190" locked="False" masked="False" name="" type="3pts">
+<parent ref="926297112"/> 
+<parent ref="45943652"/> 
+<parent ref="992484171"/> </angle>
+<text color="Black" delta="(7@7)" id="81132991" locked="False" masked="False" name="" type="free">
+<contents>Equilateral triangle:&#10;- all sides have the same length,&#10;- all interior angles measure 60 degrees.&#10;&#10;Move the point A or B!</contents>
+<x>-3.0294117647058822</x>
+<y>4.470588235294116</y></text></drgeo></drgenius>

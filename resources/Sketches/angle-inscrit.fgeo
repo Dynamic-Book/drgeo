@@ -1,0 +1,39 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Angle-inscrit" origin_x="0.0" origin_y="0.0" scale="34.0">
+<point color="Red" delta="7@7" id="1041102864" masked="False" name="O" style="Cross" thickness="Dashed" type="Free">
+<x>-0.983333</x>
+<y>-0.15</y></point>
+<point color="Red" delta="7@7" id="998963443" masked="False" name=" " style="Rectangular" thickness="Dashed" type="Free">
+<x>2.916667</x>
+<y>-0.083333</y></point>
+<circle anchor="0.5" color="Black" delta="7@7" id="92218180" masked="False" name="" style="Cross" thickness="Normal" type="2pts">
+<parent ref="1041102864"/> 
+<parent ref="998963443"/> </circle>
+<point color="Red" delta="7@7" id="155971502" masked="False" name="I" style="Cross" thickness="Dashed" type="On_curve">
+<parent ref="92218180"/> 
+<value>0.610376</value></point>
+<point color="Red" delta="7@7" id="56382671" masked="False" name="J" style="Cross" thickness="Dashed" type="On_curve">
+<parent ref="92218180"/> 
+<value>0.498322</value></point>
+<point color="Red" delta="7@7" id="6863981" masked="False" name="K" style="Cross" thickness="Dashed" type="On_curve">
+<parent ref="92218180"/> 
+<value>0.2730334964957186</value></point>
+<polygon anchor="0.762003192916692" color="Blue" delta="-25.0@ -13.0" id="139447395" masked="False" name="IJK" style="Cross" thickness="Normal" type="npts">
+<parent ref="155971502"/> 
+<parent ref="56382671"/> 
+<parent ref="6863981"/> </polygon>
+<angle color="Black" delta="7@7" id="232780843" masked="False" name="IKJ" type="3pts">
+<parent ref="155971502"/> 
+<parent ref="6863981"/> 
+<parent ref="56382671"/> </angle>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="58335556" masked="False" name="[OI]" style="Cross" thickness="Normal" type="2pts">
+<parent ref="1041102864"/> 
+<parent ref="155971502"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Blue" delta="7@7" id="130377777" masked="False" name="[OJ]" style="Cross" thickness="Normal" type="2pts">
+<parent ref="1041102864"/> 
+<parent ref="56382671"/> </segment>
+<angle color="Black" delta="7@7" id="159958988" masked="False" name="IOJ" type="3pts">
+<parent ref="155971502"/> 
+<parent ref="1041102864"/> 
+<parent ref="56382671"/> </angle></drgeo></drgenius>

@@ -1,0 +1,15 @@
+@c Documents avec copyright
+@node Copyright des documents
+@appendix Copyright des documents
+@raggedright
+@subheading @ref{Frise-Rhodes}
+Hannes Grobe 19:09, 3 September 2006 (UTC)@*
+(https://commons.wikimedia.org/wiki/File:Rhodes_meander_hg.jpg),
+"Rhodes meander hg", Editing,
+https://creativecommons.org/licenses/by-sa/2.5/legalcode
+
+@subheading @ref{Frise3}
+Theon (https://commons.wikimedia.org/wiki/File:Frise_exemple.svg),
+https://creativecommons.org/licenses/by-sa/4.0/legalcode
+@end raggedright
+

@@ -1,0 +1,66 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Symmetry citroen" origin_x="-7.200000000000002" origin_y="3.1" scale="34.0">
+<point color="Red" delta="7@7" id="887442332" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>-11.132352941176455</x>
+<y>7.51470588235294</y></point>
+<point color="Red" delta="7@7" id="1018366379" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>-11.13235294117645</x>
+<y>-0.1617647058823568</y></point>
+<line anchor="0.5" color="Black" delta="7@7" id="34941518" masked="True" name="" style="plain" thickness="Normal" type="2pts">
+<parent ref="887442332"/> 
+<parent ref="1018366379"/> </line>
+<point color="Red" delta="7@7" id="143755299" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="On_curve">
+<parent ref="34941518"/> 
+<value>0.7584712177281945</value></point>
+<point color="Red" delta="7@7" id="245146412" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="On_curve">
+<parent ref="34941518"/> 
+<value>0.8688021370542229</value></point>
+<point color="Red" delta="7@7" id="143397625" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="On_curve">
+<parent ref="34941518"/> 
+<value>0.922584923796208</value></point>
+<value color="Black" delta="7@7" id="652243408" locked="False" masked="True" name="" type="value">
+<value>2</value>
+<x>-2.426470588235294</x>
+<y>6.867647058823529</y></value>
+<circle anchor="0.5" color="Black" delta="7@7" filled="False" id="64525259" masked="True" name="" style="plain" thickness="Normal" translucent="False" type="radius">
+<parent ref="143397625"/> 
+<parent ref="652243408"/> </circle>
+<line anchor="0.5" color="Black" delta="7@7" id="174025109" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="34941518"/> 
+<parent ref="143397625"/> </line>
+<point color="Red" delta="7@7" extra="0" id="-262603262" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="64525259"/> 
+<parent ref="174025109"/> </point>
+<point color="Red" delta="7@7" id="58751325" locked="False" masked="True" name=" " style="Cross" thickness="Normal" type="On_curve">
+<parent ref="34941518"/> 
+<value>0.9655241322537462</value></point>
+<vector anchor="0.5" color="Black" delta="7@7" id="81721326" masked="True" name="" origin="-8.92647058823528@ -0.5147058823529452" style="plain" thickness="Normal" type="2pts">
+<parent ref="1018366379"/> 
+<parent ref="58751325"/> </vector>
+<point color="Red" delta="7@7" id="262912570" masked="True" name=" " style="Cross" thickness="Normal" type="Reflexion">
+<parent ref="-262603262"/> 
+<parent ref="34941518"/> </point>
+<polygon anchor="0.5" color="Black" delta="7@7" id="151114990" masked="False" name="" style="plain" thickness="Normal" type="npts">
+<parent ref="143755299"/> 
+<parent ref="-262603262"/> 
+<parent ref="245146412"/> 
+<parent ref="262912570"/> </polygon>
+<polygon anchor="0.5" color="Black" delta="7@7" id="10622271" masked="False" name="" style="plain" thickness="Normal" type="Translation">
+<parent ref="151114990"/> 
+<parent ref="81721326"/> </polygon>
+<point color="Orange" delta="7@7" id="1002720950" locked="False" masked="False" name=" " style="Cross" thickness="Normal" type="Free">
+<x>-8.867647058823527</x>
+<y>5.573529411764706</y></point>
+<point color="Orange" delta="7@7" id="1050321604" locked="False" masked="False" name=" " style="Cross" thickness="Normal" type="Free">
+<x>-8.897058823529408</x>
+<y>0.6029411764705899</y></point>
+<line anchor="0.5" color="Orange" delta="7@7" id="123406847" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1002720950"/> 
+<parent ref="1050321604"/> </line>
+<polygon anchor="0.5" color="Magenta" delta="7@7" id="21155249" masked="False" name="" style="plain" thickness="Normal" type="Reflexion">
+<parent ref="151114990"/> 
+<parent ref="123406847"/> </polygon>
+<polygon anchor="0.5" color="Magenta" delta="7@7" id="165887530" masked="False" name="" style="plain" thickness="Normal" type="Reflexion">
+<parent ref="10622271"/> 
+<parent ref="123406847"/> </polygon></drgeo></drgenius>

@@ -1,0 +1,56 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="True" gridded="False" name="Curve and slope" origin_x="-0.9713624937154345" origin_y="-1.2584615384615385" scale="50.0">
+<point color="Red" delta="(7@7)" id="867378184" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>-9.0</x>
+<y>-3.0</y></point>
+<point color="Red" delta="(7@7)" id="931411001" locked="True" masked="True" name=" " style="Cross" thickness="Normal" type="Free">
+<x>7.5</x>
+<y>-3.0</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" id="21046543" mark="none" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="867378184"/> 
+<parent ref="931411001"/> </segment>
+<point color="Black" delta="(-23.0@11.0)" id="165288154" locked="False" masked="False" name="Move me" style="Round" thickness="Normal" type="On_curve">
+<parent ref="21046543"/> 
+<value>0.4239642119474035</value></point>
+<value class="DrGeoScript126328658" color="Black" delta="(7@7)" id="270874268" locked="False" masked="False" name="" type="script">
+<code>DrGeoUserScript subclass: #DrGeoScript126328658&#10;&#9;instanceVariableNames: ''&#10;&#9;classVariableNames: ''&#10;&#9;poolDictionaries: ''&#10;&#9;category: 'DrGeo-Script-Items'!&#10;!DrGeoScript126328658 commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript126328658 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:28'!&#10;compute&#10;&quot;Edit me&quot;&#10;&#9;^[:x | x cos ]! !&#10;&#10;&quot;-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- &quot;!&#10;&#10;DrGeoScript126328658 class&#10;&#9;instanceVariableNames: ''!&#10;!DrGeoScript126328658 class commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 14:50'!&#10;description&#10;&#9;^'The function to be plotted. Return a bloc of code'! !&#10;&#10;!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 14:43'!&#10;scriptName&#10;&#9;^'Function'! !&#10;&#10;&#10;!DrGeoScript126328658 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 14:43'!&#10;newArgumentsType&#10;&#9;^{}! !&#10;</code>
+<x>0.08169934640522716</x>
+<y>-4.226307189542484</y></value>
+<value class="DrGeoScript88541399" color="Black" delta="(7@7)" id="708811594" locked="False" masked="False" name="Mcoord" type="script">
+<parent ref="165288154"/> 
+<parent ref="270874268"/> 
+<code>DrGeoUserScript subclass: #DrGeoScript88541399&#10;&#9;instanceVariableNames: ''&#10;&#9;classVariableNames: ''&#10;&#9;poolDictionaries: ''&#10;&#9;category: 'DrGeo-Script-Items'!&#10;!DrGeoScript88541399 commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript88541399 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:04'!&#10;compute&#10;&quot;Edit me&quot;&#10;&#9;^ (self arg1 point x) @ (self arg2 compute value: self arg1 point x)! !&#10;&#10;&quot;-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- &quot;!&#10;&#10;DrGeoScript88541399 class&#10;&#9;instanceVariableNames: ''!&#10;!DrGeoScript88541399 class commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript88541399 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 15:02'!&#10;newArgumentsType&#10;&#9;^{DrGPointItem.DrGValueItem}! !&#10;&#10;&#10;!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:02'!&#10;description&#10;&#9;^'Calculate the image of a point x-coordinates.&#10;Arguments:&#10;- Point&#10;- Script returning a bloc of code, a function'! !&#10;&#10;!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:02'!&#10;scriptName&#10;&#9;^'Image'! !&#10;</code>
+<x>0.04738562091503473</x>
+<y>-3.3651960784313815</y></value>
+<point color="Red" delta="(-18.465923413805513@12.32766539416707)" id="255814553" masked="False" name="M" style="Cross" thickness="Dashed" type="Script">
+<parent ref="708811594"/> </point>
+<locus anchor="0.5" arrow="makeNoArrows" color="Blue" delta="(7@7)" id="8959116" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="165288154"/> 
+<parent ref="255814553"/> </locus>
+<value class="DrGeoScript75108106" color="Black" delta="(7@7)" id="132368241" locked="False" masked="False" name="Ncoord" type="script">
+<parent ref="255814553"/> 
+<parent ref="270874268"/> 
+<code>DrGeoUserScript subclass: #DrGeoScript75108106&#10;&#9;instanceVariableNames: ''&#10;&#9;classVariableNames: ''&#10;&#9;poolDictionaries: ''&#10;&#9;category: 'DrGeo-Script-Items'!&#10;!DrGeoScript75108106 commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript75108106 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:18'!&#10;compute&#10;&quot;Edit me&quot;&#10;&#9;| p x |&#10;&#9;x _ self arg1 point x.&#10;&#9;p _ ((self arg2 compute value: x +0.0001) - (self arg2 compute value: x)) / 0.0001.&#10;&#9;^ self arg1 point + (1 @ p)! !&#10;&#10;&quot;-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- &quot;!&#10;&#10;DrGeoScript75108106 class&#10;&#9;instanceVariableNames: ''!&#10;!DrGeoScript75108106 class commentStamp: '&lt;historical&gt;' prior: 0!&#10;!&#10;&#10;&#10;!DrGeoScript75108106 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 15:15'!&#10;newArgumentsType&#10;&#9;^{DrGPointItem.DrGValueItem}! !&#10;&#10;&#10;!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:15'!&#10;description&#10;&#9;^'Compute the coordinates of a point on the slope.&#10;Arguments:&#10;- Script returning a function as a bloc of code&#10;- A point whose x-coordinates is used as the base computation'! !&#10;&#10;!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:15'!&#10;scriptName&#10;&#9;^'Point on slope'! !&#10;</code>
+<x>0.09640522875817026</x>
+<y>-3.7883986928104605</y></value>
+<point color="Red" delta="(-11.0@ -23.0)" id="25301990" masked="False" name="N" style="Cross" thickness="Dashed" type="Script">
+<parent ref="132368241"/> </point>
+<line anchor="0.5" color="Brown" delta="(7@7)" id="228923722" masked="False" name="" style="dash" thickness="small" type="2pts">
+<parent ref="255814553"/> 
+<parent ref="25301990"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" id="24133665" masked="True" name="" style="plain" thickness="small" type="parallel">
+<parent ref="21046543"/> 
+<parent ref="255814553"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" id="251447843" masked="True" name="" style="plain" thickness="small" type="perpendicular">
+<parent ref="21046543"/> 
+<parent ref="25301990"/> </line>
+<point color="Red" delta="(7@7)" extra="0" id="965958137" masked="True" name=" " style="Cross" thickness="Normal" type="Intersection">
+<parent ref="24133665"/> 
+<parent ref="251447843"/> </point>
+<segment anchor="0.5295759329372629" arrow="makeNoArrows" color="Red" delta="(-6.898441427851822@ -18.0)" id="99346564" mark="none" masked="False" name="+1" style="dot" thickness="small" type="2pts">
+<parent ref="255814553"/> 
+<parent ref="965958137"/> </segment>
+<segment anchor="0.4455709500674253" arrow="makeNoArrows" color="Red" delta="(6.0@ -6.710958039698937)" id="138914605" mark="none" masked="False" name="+f'(Xm)" style="dot" thickness="small" type="2pts">
+<parent ref="965958137"/> 
+<parent ref="25301990"/> </segment></drgeo></drgenius>

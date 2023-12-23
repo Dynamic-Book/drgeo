@@ -1,0 +1,43 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Triangle right isoscele" origin_x="-4.852941176470586" origin_y="0.38235294117647056" scale="34.0">
+<point color="Red" delta="(-18.0@6.0)" id="985224377" locked="False" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-10</x>
+<y>-1</y></point>
+<point color="Red" delta="(8.0@10.0)" id="919037254" locked="False" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>-5</x>
+<y>-1</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="12997005" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="985224377"/> 
+<parent ref="919037254"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" id="94621388" masked="True" name="" style="plain" thickness="Normal" type="perpendicular">
+<parent ref="12997005"/> 
+<parent ref="985224377"/> </line>
+<circle anchor="0.5" color="Black" delta="(7@7)" filled="False" id="94677260" masked="True" name="" style="plain" thickness="Normal" translucent="False" type="2pts">
+<parent ref="985224377"/> 
+<parent ref="919037254"/> </circle>
+<point color="Red" delta="(-10.0@ -24.0)" extra="1" id="195169312" masked="False" name="C" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="94621388"/> 
+<parent ref="94677260"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="128443619" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="985224377"/> 
+<parent ref="195169312"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="99134092" mark="none" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="195169312"/> 
+<parent ref="919037254"/> </segment>
+<angle color="Black" delta="(7@7)" id="46698970" locked="False" masked="False" name="" type="3pts">
+<parent ref="195169312"/> 
+<parent ref="985224377"/> 
+<parent ref="919037254"/> </angle>
+<angle color="Green" delta="(7@7)" id="199312334" locked="False" masked="False" name="" type="3pts">
+<parent ref="985224377"/> 
+<parent ref="195169312"/> 
+<parent ref="919037254"/> </angle>
+<angle color="Green" delta="(7@7)" id="180880814" locked="False" masked="False" name="" type="3pts">
+<parent ref="195169312"/> 
+<parent ref="919037254"/> 
+<parent ref="985224377"/> </angle>
+<text color="Black" delta="(7@7)" id="200733581" locked="False" masked="False" name="" type="free">
+<contents>Isoscele right triangle is &#10;both right and isoscele.&#10;&#10;Move the point A or B!</contents>
+<x>-7.426470588235293</x>
+<y>4.4558823529411775</y></text></drgeo></drgenius>

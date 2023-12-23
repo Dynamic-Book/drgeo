@@ -1,0 +1,99 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo axes="False" custom_controls="False" grid="False" gridded="False" name="Compass perpendicular bissector" origin_x="2.0588235294117645" origin_y="-1.7352941176470584" scale="34.0">
+<controls wheelX="True" wheelY="True" wheelZ="True"/> 
+<point color="Blue" delta="(7@7)" feedback="True" id="909938354" locked="False" masked="False" name="" style="Round" thickness="Dashed" type="Free">
+<x>2.514705882352938</x>
+<y>-0.7352941176470597</y></point>
+<point color="Red" delta="(7@7)" feedback="True" id="1071714814" locked="False" masked="True" name="" style="Round" thickness="Dashed" type="Free">
+<x>0.8382352941176469</x>
+<y>2.2352941176470575</y></point>
+<point color="Red" delta="(7@7)" feedback="True" id="1025783142" locked="False" masked="True" name="" style="Round" thickness="Dashed" type="Free">
+<x>-0.985294117647058</x>
+<y>-0.6470588235294125</y></point>
+<value color="Black" delta="(7@7)" feedback="True" id="170361245" locked="False" masked="False" name="" type="value">
+<value>3.0</value>
+<x>3.1911764705882355</x>
+<y>0.5294117647058824</y></value>
+<ray anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="247956749" masked="True" name="" style="plain" thickness="small" type="2pts">
+<parent ref="909938354"/> 
+<parent ref="1071714814"/> </ray>
+<circle anchor="0.5" color="Black" delta="(7@7)" feedback="True" filled="False" id="251073345" masked="True" name="" style="plain" thickness="small" translucent="True" type="radius">
+<parent ref="909938354"/> 
+<parent ref="170361245"/> </circle>
+<point color="Red" delta="(7@7)" extra="1" feedback="True" id="102420826" masked="True" name="" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="247956749"/> 
+<parent ref="251073345"/> </point>
+<arc anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" filled="False" id="242088208" masked="False" name="" style="plain" thickness="small" translucent="True" type="centerAngle">
+<parent ref="909938354"/> 
+<parent ref="102420826"/> 
+<parent ref="1025783142"/> </arc>
+<point color="Blue" delta="(7@7)" feedback="True" id="1065168156" locked="False" masked="False" name="" style="Round" thickness="Dashed" type="Free">
+<x>-1.044117647058824</x>
+<y>-2.3529411764705883</y></point>
+<point color="Red" delta="(7@7)" feedback="True" id="900157382" locked="False" masked="True" name="" style="Round" thickness="Dashed" type="Free">
+<x>-2.3088235294117645</x>
+<y>-0.7352941176470589</y></point>
+<point color="Red" delta="(7@7)" feedback="True" id="1042535092" locked="False" masked="True" name="" style="Round" thickness="Dashed" type="Free">
+<x>0.4852941176470588</x>
+<y>-1.4411764705882353</y></point>
+<ray anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="51289285" masked="True" name="" style="plain" thickness="small" type="2pts">
+<parent ref="1065168156"/> 
+<parent ref="1042535092"/> </ray>
+<circle anchor="0.5" color="Black" delta="(7@7)" feedback="True" filled="False" id="138170191" masked="True" name="" style="plain" thickness="small" translucent="True" type="radius">
+<parent ref="1065168156"/> 
+<parent ref="170361245"/> </circle>
+<point color="Red" delta="(7@7)" extra="1" feedback="True" id="154281947" masked="True" name="" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="51289285"/> 
+<parent ref="138170191"/> </point>
+<arc anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" filled="False" id="145003215" masked="False" name="" style="plain" thickness="small" translucent="True" type="centerAngle">
+<parent ref="1065168156"/> 
+<parent ref="154281947"/> 
+<parent ref="900157382"/> </arc>
+<point color="Red" delta="(7@7)" feedback="True" id="821877084" locked="False" masked="True" name="" style="Round" thickness="Dashed" type="Free">
+<x>1.4558823529411762</x>
+<y>-4.38235294117647</y></point>
+<point color="Red" delta="(7@7)" feedback="True" id="883004784" locked="False" masked="True" name="" style="Round" thickness="Dashed" type="Free">
+<x>3.13235294117647</x>
+<y>-1.8529411764705879</y></point>
+<ray anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="118834509" masked="True" name="" style="plain" thickness="small" type="2pts">
+<parent ref="1065168156"/> 
+<parent ref="821877084"/> </ray>
+<point color="Red" delta="(7@7)" extra="1" feedback="True" id="164317112" masked="True" name="" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="118834509"/> 
+<parent ref="138170191"/> </point>
+<arc anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" filled="False" id="9689430" masked="False" name="" style="plain" thickness="small" translucent="True" type="centerAngle">
+<parent ref="1065168156"/> 
+<parent ref="164317112"/> 
+<parent ref="883004784"/> </arc>
+<point color="Red" delta="(7@7)" feedback="True" id="951046954" locked="False" masked="True" name="" style="Round" thickness="Dashed" type="Free">
+<x>0.07352941176470562</x>
+<y>-2.88235294117647</y></point>
+<point color="Red" delta="(7@7)" feedback="True" id="1036893000" locked="False" masked="True" name="" style="Round" thickness="Dashed" type="Free">
+<x>2.63235294117647</x>
+<y>-3.2352941176470584</y></point>
+<ray anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="236665537" masked="True" name="" style="plain" thickness="small" type="2pts">
+<parent ref="909938354"/> 
+<parent ref="951046954"/> </ray>
+<circle anchor="0.5" color="Black" delta="(7@7)" feedback="True" filled="False" id="251073345" masked="True" name="" style="plain" thickness="small" translucent="True" type="radius">
+<parent ref="909938354"/> 
+<parent ref="170361245"/> </circle>
+<point color="Red" delta="(7@7)" extra="1" feedback="True" id="254895536" masked="True" name="" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="236665537"/> 
+<parent ref="251073345"/> </point>
+<arc anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" filled="False" id="259926608" masked="False" name="" style="plain" thickness="small" translucent="True" type="centerAngle">
+<parent ref="909938354"/> 
+<parent ref="254895536"/> 
+<parent ref="1036893000"/> </arc>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-48451084" masked="False" name="" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="242088208"/> 
+<parent ref="145003215"/> </point>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-229049026" masked="False" name="" style="Round" thickness="Dashed" type="Intersection">
+<parent ref="9689430"/> 
+<parent ref="259926608"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" feedback="True" id="207476447" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="-48451084"/> 
+<parent ref="-229049026"/> </line>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" id="118922916" mark="none" masked="False" name="" style="plain" thickness="small" type="2pts">
+<parent ref="909938354"/> 
+<parent ref="1065168156"/> </segment></drgeo></drgenius>

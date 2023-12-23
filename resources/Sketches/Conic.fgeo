@@ -1,0 +1,63 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Conic" origin_x="0.0" origin_y="0.0" scale="30.0">
+<point color="Red" delta="(7@7)" id="1067247103" locked="False" masked="False" name="A1" style="Round" thickness="Thick" type="Free">
+<x>-6.749999333333333</x>
+<y>2.6666673333333337</y></point>
+<point color="Red" delta="(7@7)" id="838584068" locked="False" masked="False" name="A2" style="Round" thickness="Thick" type="Free">
+<x>-9.95</x>
+<y>-1.8</y></point>
+<point color="Red" delta="(7@7)" id="1013344350" locked="False" masked="False" name="C1" style="Round" thickness="Thick" type="Free">
+<x>-1.983333666666667</x>
+<y>-5.900000333333331</y></point>
+<point color="Red" delta="(7@7)" id="841476221" locked="False" masked="False" name="B2" style="Round" thickness="Thick" type="Free">
+<x>5.783334</x>
+<y>0.4000003333333333</y></point>
+<point color="Red" delta="(7@7)" id="829297680" locked="False" masked="False" name="B1" style="Round" thickness="Thick" type="Free">
+<x>1.716666</x>
+<y>6.8</y></point>
+<line anchor="0.04455665043335105" color="Black" delta="(-15.104286912044188@ -19.697888945371176)" id="25405013" masked="False" name="(A1B2)" style="Cross" thickness="Normal" type="2pts">
+<parent ref="1067247103"/> 
+<parent ref="841476221"/> </line>
+<line anchor="0.9826032696538699" color="Black" delta="(-28.054712426757078@ -21.238279622394316)" id="59441697" masked="False" name="(B1A2)" style="Cross" thickness="Normal" type="2pts">
+<parent ref="829297680"/> 
+<parent ref="838584068"/> </line>
+<point color="Red" delta="(7@7)" extra="0" id="-240297380" masked="False" name="X" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="25405013"/> 
+<parent ref="59441697"/> </point>
+<point color="Red" delta="(7@7)" id="1066011147" locked="False" masked="False" name="" style="Round" thickness="Dashed" type="Free">
+<x>-4.050000666666667</x>
+<y>1.2333333333333336</y></point>
+<circle anchor="0.5" color="DarkGray" delta="(7@7)" filled="False" id="87048424" masked="False" name="" style="Cross" thickness="Normal" translucent="False" type="2pts">
+<parent ref="-240297380"/> 
+<parent ref="1066011147"/> </circle>
+<point color="Red" delta="(7@7)" id="123755869" locked="False" masked="False" name="Z" style="Cross" thickness="Dashed" type="On_curve">
+<parent ref="87048424"/> 
+<value>0.702746</value></point>
+<line anchor="0.0471120974354608" color="Black" delta="(11.599518288041736@ -0.37712560651539206)" id="132919696" masked="False" name="(XZ)" style="Cross" thickness="Normal" type="2pts">
+<parent ref="-240297380"/> 
+<parent ref="123755869"/> </line>
+<line anchor="0.06144907646662656" color="Black" delta="(-12.0@ -19.0)" id="50320039" masked="False" name="(C1A2)" style="Cross" thickness="Normal" type="2pts">
+<parent ref="1013344350"/> 
+<parent ref="838584068"/> </line>
+<point color="Red" delta="(7@7)" extra="0" id="-215074535" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="50320039"/> 
+<parent ref="132919696"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" id="195053201" masked="False" name="" style="Cross" thickness="Normal" type="2pts">
+<parent ref="-215074535"/> 
+<parent ref="1067247103"/> </line>
+<line anchor="0.9803193609651631" color="Black" delta="(-1.4848428808950302@13.199011776579823)" id="257489282" masked="False" name="(C1B2)" style="Cross" thickness="Normal" type="2pts">
+<parent ref="1013344350"/> 
+<parent ref="841476221"/> </line>
+<point color="Red" delta="(7@7)" extra="0" id="-164549060" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="132919696"/> 
+<parent ref="257489282"/> </point>
+<line anchor="0.5" color="Black" delta="(7@7)" id="151570825" masked="False" name="" style="Cross" thickness="Normal" type="2pts">
+<parent ref="-164549060"/> 
+<parent ref="829297680"/> </line>
+<point color="Red" delta="(7@7)" extra="0" id="-235838632" masked="False" name="C2" style="Round" thickness="Thick" type="Intersection">
+<parent ref="151570825"/> 
+<parent ref="195053201"/> </point>
+<locus anchor="0.5" arrow="makeNoArrows" color="Blue" delta="(7@7)" id="58438142" masked="False" name="" style="Cross" thickness="Thick" type="2pts">
+<parent ref="123755869"/> 
+<parent ref="-235838632"/> </locus></drgeo></drgenius>

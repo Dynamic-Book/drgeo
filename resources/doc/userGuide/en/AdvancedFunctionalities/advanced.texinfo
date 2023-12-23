@@ -1,0 +1,36 @@
+@c Advanded features
+
+@node Advanced features
+@anchor{advancedFeatures}
+@unnumbered Introduction
+In this part, we present features to extend @drgeo{}'s
+capabilities, or to adapt it to a given pedagogical situation.
+
+The first feature is the @emph{macro construction}. It lets the user 
+record a sequence of construction steps in a single command. Once 
+recorded, it can be replayed and saved in a file to be opened later in 
+another sketch.
+
+@cindex script
+
+the @drgeo{} Smalltalk script is another feature to extend @drgeo{}
+behaviour. A script appears as a sketch item like any other. As
+input, it can expect zero, one, or more references to geometric
+items from the sketch, and it returns a reference whose print
+representation is placed in the sketch. It is in fact a programmed
+method @footnote{Comparable to a procedure for users of other
+programming languages.} placed in a sketch, and evaluated each time
+the whole sketch is updated (i.e. when the sketch need to be
+redrawn). A @drgeo{} Smalltalk script may be useful for its returned
+object or for its side effects, depending on the wishes of the user.
+
+Going a step further, @drgeo{} offers Smalltalk sketches. In this case
+the whole interactive geometry sketch is described in Smalltalk source
+code. Its interest is the functional approach to describing a
+sketch@footnote{For example recursively} compared to the linear,
+declarative method of constructing a sketch with the mouse.
+
+@page
+
+
+ 

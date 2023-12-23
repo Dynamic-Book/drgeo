@@ -1,0 +1,45 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo grid="False" name="Parallelogram" origin_x="2.499999999999998" origin_y="6.938893903907228e-18" scale="34.0">
+<point color="Red" delta="(7@7)" id="870381538" locked="False" masked="False" name="A" style="Cross" thickness="Normal" type="Free">
+<x>-9</x>
+<y>-1</y></point>
+<point color="Red" delta="(7@7)" id="1014910785" locked="False" masked="False" name="B" style="Cross" thickness="Normal" type="Free">
+<x>-2</x>
+<y>-1</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="26405725" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="870381538"/> 
+<parent ref="1014910785"/> </segment>
+<point color="Red" delta="(-24.0@ -23.0)" id="818546280" locked="False" masked="False" name="D" style="Cross" thickness="Normal" type="Free">
+<x>-7</x>
+<y>3</y></point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="204848216" mark="mark2" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="870381538"/> 
+<parent ref="818546280"/> </segment>
+<line anchor="0.5" color="Black" delta="(7@7)" id="5563880" masked="True" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="204848216"/> 
+<parent ref="1014910785"/> </line>
+<line anchor="0.5" color="Black" delta="(7@7)" id="162629664" masked="True" name="" style="plain" thickness="Normal" type="parallel">
+<parent ref="26405725"/> 
+<parent ref="818546280"/> </line>
+<point color="Red" delta="(8.0@ -22.0)" extra="0" id="1005711777" masked="False" name="C" style="Cross" thickness="Normal" type="Intersection">
+<parent ref="5563880"/> 
+<parent ref="162629664"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="217655031" mark="mark1" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="818546280"/> 
+<parent ref="1005711777"/> </segment>
+<segment anchor="0.5" arrow="makeNoArrows" color="Brown" delta="(7@7)" id="173041844" mark="mark2" masked="False" name="" style="plain" thickness="Thick" type="2pts">
+<parent ref="1005711777"/> 
+<parent ref="1014910785"/> </segment>
+<angle color="Green" delta="(7@7)" id="162055058" locked="False" masked="False" name="" type="3pts">
+<parent ref="818546280"/> 
+<parent ref="870381538"/> 
+<parent ref="1014910785"/> </angle>
+<angle color="Green" delta="(7@7)" id="78552563" locked="False" masked="False" name="" type="3pts">
+<parent ref="1014910785"/> 
+<parent ref="1005711777"/> 
+<parent ref="818546280"/> </angle>
+<text color="Black" delta="(7@7)" id="142045808" locked="False" masked="False" name="" type="free">
+<contents>Parallelogram:&#10;- the opposite sides are parallel and of equal length,&#10;- the opposite angles are of equal measure.&#10;&#10;Move the point A, B, C or D!</contents>
+<x>1.2352941176470593</x>
+<y>2.529411764705884</y></text></drgeo></drgenius>

@@ -1,0 +1,393 @@
+@c Exemples didactiques
+
+@node Exemples didactiques
+
+@chapter Exemples didactiques
+Ce chapitre est une aide pour étudier @drgeo{} à partir d'exemples.
+Contrairement aux chapitres précédents, l'approche est plus concrète
+par rapport à des situations précises. Le contenu de ce chapitre s'est
+constitué à partir de contributions diverses.
+
+
+@section Aire et périmètre
+
+Une des possibilités d'utilisation didactique de @drgeo{} consiste dans
+l'utilisation des scripts Pharo pour résoudre des exercices de
+géométrie.
+
+Comme exemple, nous allons montrer la solution d'un problème classique
+mettant en oeuvre le théorème de Pythagore dont le texte est le
+suivant@tie{}:
+
+@quotation
+Soit un trapèze rectangle ABCD où sont connues les bases et la
+hauteur. Calculer le périmètre et l'aire du trapèze.
+@end quotation
+
+@strong{Solution@tie{}:}
+
+Commençons par construire la figure dans @drgeo{} qui doit être comme
+ci-dessous@tie{}:
+
+@drgeoFigure{Trapèze rectangle,trapeze,6}
+
+Nous écrirons un script qui, étant donnés les bases et la hauteur,
+calculera son aire et son périmètre. Le script aura donc comme
+argument. trois segments, les bases1, base2 et la hauteur. Dans un
+premier temps, nous définissons le script avec arguments les deux
+bases et la hauteur du trapèze.
+
+@drgeoFigure{Définition du script,trapeze-script,9}
+
+Dans ce script, nous écrivons quelques méthodes pour accéder
+facilement aux longueurs caractéristiques du trapèze rectangle@tie{}:
+@example
+@strong{base1}
+   ^ self arg1 length
+@end example
+@example
+@strong{base2}
+   ^ self arg2 length
+@end example
+@example
+@strong{hauteur}
+   ^ self arg3 length
+@end example
+
+Puis une méthode calculant son aire@tie{}:
+@example
+@strong{aire}
+"Calcule l'aire du trapèze"
+   ^ (self base1 + self base2) * self hauteur / 2
+@end example
+
+Et une pour calculer le périmètre, nous calculons la longueur BC à
+l'aide du théorème de Pythagore@tie{}:
+@example
+@strong{perimetre}
+"Calculer la longueur manquante,
+puis le périmètre du trapèze rectangle"
+| hb bc |
+   hb := (self base1  -self base2 ) abs.
+   bc := (hb squared + self hauteur squared) sqrt.
+   ^ self base1 + self base2 + self hauteur + bc
+@end example
+
+Enfin la méthode @t{compute} assemble les deux calculs pour affichage:
+
+@example
+compute
+   ^ 'Aire = ', self aire printString, '
+Périmètre = ', self perimetre printString
+@end example
+
+Il n'est pas difficile, si vous suivez le même modèle, de développer
+d'autres exemples similaires.
+
+@cindex script, théorème de Tolomeo
+@section Théorème et conjectures
+Les scripts Pharo permettent de résoudre des exercices mais aussi
+de comprendre de façon plus approfondie l'énonciation des théorèmes et
+de vérifier des conjectures. Dans cette section nous commençons par
+analyser le théorème de Tolomeo@tie{}:
+
+@quotation
+Étant donné un quadrilatère inscrit dans un cercle
+la somme du produit des côtés opposés est égale 
+au produit des diagonales.
+@end quotation
+
+Nous pouvons construire la figure avec @drgeo{} comme ci-dessous où
+nous avons implémenté deux scripts qui calculent respectivement la
+somme du produit des côtés opposés et le produit des diagonales. Nous
+ne détaillons plus toutes les étapes de création du script, nous
+donnons uniquement le corps de la méthode @t{compute}.
+
+@drgeoFigure{Théorème de Tolomeo@tie{}: quadrilatère convexe,tolomeo,6}
+
+La méthode @t{compute} du premier script est la suivante@tie{}:
+@example
+@strong{compute}
+"Choisir quatre côtés consécutifs du quadrilatère"
+   | ab bc cd ad |
+   ab := self arg1 length.
+   bc := self arg2 length.
+   cd := self arg3 length.
+   ad := self arg4 length.
+   ^ (ad * bc) + (ab * cd)
+@end example
+
+La méthode @t{compute} du second script est@tie{}:
+@example
+@strong{compute}
+"Choisir les deux diagonales du quadrilatère"
+   | ac bd |
+   ac := self arg1 length
+   bd := self arg2 length
+   ^ ac * bd
+@end example
+
+Comme nous pouvons le voir les valeurs retournées par les deux
+scripts, en accord avec le théorème de Tolomeo, sont les
+mêmes@footnote{Il ne s'agit que d'une vérification
+numérique.}. Lorsque nous modifions dynamiquement la figure, les
+valeurs des scripts sont toujours identiques, sauf dans la situation
+suivante où le quadrilatère perd sa convexité@tie{}:
+
+@drgeoFigure{Théorème de Tolomeo : quadrilatère non convexe,tolomeo-non-convexe,6}
+
+Dans ce cas le théorème n'est pas vrai et l'énoncé précédent n'est pas
+bien énoncé, il doit donc être reformulé comme ci-dessous@tie{}:
+
+@quotation
+  Étant donné un quadrilatère CONVEXE inscrit dans un cercle la
+  somme du produit des côtés opposés est égale au produit des
+  diagonales.
+@end quotation
+
+À ce stade les conjectures apparaîssent naturellement@tie{}: est-ce
+que le théorème de Tolomeo est valide pour un quadrilatère convexe
+@strong{non inscrit dans un cercle}@tie{}?
+
+Avec @drgeo{} nous pouvons vérifier que cette conjecture est fausse
+comme le montre la figure suivante, où il nous a suffit de détacher du
+cercle le point B en l'attrapant avec la touche @kbd{Shift}
+enfoncée.
+
+@drgeoFigure{Réfutation de la conjecture,tolomeo-quad-non-inscrit-cercle,6}
+
+Le lecteur n'aura pas de difficulté à utiliser @drgeo{} dans la
+construction d'exemples didactiques, probablement plus connus,
+relativement aux théorèmes de Pythagore et d'Euclide.
+
+@page
+@section Nombre irrationnel
+@cindex figure Pharo, spirale de Teodoro
+
+Une construction classique, relative au nombre irrationnel, connue
+sous le nom de spirale de Teodoro, permet de construire
+géométriquement la racine carrée de nombres entiers à partir d'un
+triangle rectangle isocèle.
+
+Considérons le triangle OAB où OA = 1@tie{}:
+
+@drgeoFigure{Construction de la racine de 2,racine2,6}
+
+Par le théorème de Pythagore nous avons OB égale à la racine carrée de
+2. Si maintenant, avec la figure, nous construisons un nouveau
+triangle rectangle en B, avec les côtés OB et BC tel que
+BC@tie{}=@tie{}1.
+
+@drgeoFigure{Construction de la racine 3,racine3,6}
+
+Toujours par le théorème de Pythagore, il est clair que l'hypoténuse
+OC de OBC a pour longueur la racine carrée de 3. En itérant le
+processus précédent à l'infini nous obtenons toutes les racines
+carrées des nombres naturels.
+
+La nature itérative de la construction s'adapte parfaitement à
+l'utilisation des figures Pharo.
+
+@page
+
+Considérons alors le code suivant@tie{}:
+@example
+| figure triangle |
+figure := DrGeoSketch new fullscreen.
+triangle := [:p1 :p2 :p3 :n | 
+   |s1 s2 s3 perp cercle p4 |
+   s1 := figure segment: p1 to: p2.
+   s2 := (figure segment: p2 to: p3) color: Color red.
+   s3 := figure segment: p3 to: p1.
+   perp := (figure perpendicular: s3 at: p3) hide.
+   cercle := (figure circleCenter: p3 to: p2) hide.
+   p4 := (figure altIntersectionOf: cercle and:  perp) hide.
+   n > 0 ifTrue:
+      [triangle value: p1 value: p3 value: p4 value: n -1]
+].
+triangle 
+   value: 0@@0
+   value: -1@@0
+   value: -1@@1
+   value: 50
+@end example
+Le triangle du début est défini à travers les coordonnées seulement
+par commodité. Le code est la transcription littérale de la procédure
+itérative décrite précédement.  Une fois exécuté par @drgeo{} le code
+donne la figure ci-dessous.
+
+@drgeoFigure{Spirale de Teodoro,teodoro-spiral,7} 
+ 
+Les hypoténuses de chaque triangle ont pour longueur les racines
+carrées des nombres entiers naturels compris entre 2 et 52.
+
+@page
+
+La même spirale avec les éléments intermédiaires de construction
+montre combien il serait difficile de construire @emph{à la main} une
+telle figure@tie{}:
+
+@drgeoFigure{Spirale de Teodoro avec les éléments cachés
+  révélés,teodoro-spiral-full,7}
+
+Comme bonus, nous vous proposons ci-dessous une version animée de la
+construction de la spirale. Pour cela nous envoyons au canevas les
+messages @code{#do:} et @code{#update}. Ils sont documentés,
+@xref{SmalltalkSketchMethods}. Noter l'utilisation de la classe
+@code{Delay} pour ralentir la construction@tie{}:
+
+@example
+| figure triangle delay|
+figure := DrGeoSketch new fullscreen.
+triangle := [:p1 :p2 :p3  :n | 
+   |s1 s2 s3 perp cercle p4 |
+   s1 := figure segment: p1 to: p2.
+   s2 := (figure segment: p2 to: p3) color: Color red.
+   s3 := figure segment: p3 to: p1.
+   perp := figure perpendicular: s3 at: p3.
+   cercle := figure circleCenter: p3 to: p2.
+   p4 := figure altIntersectionOf: cercle and:  perp.
+   figure update.
+   (Delay forMilliseconds: 200) wait.
+   perp hide. cercle hide. p4 hide.
+   n > 0 ifTrue: [triangle value: p1 value: p3 value: p4 value: n -1]].
+figure do: [triangle value: 0@@0 value: -1@@0	value: -1@@1 value: 50]
+@end example
+
+
+@section Spirale de Baravelle
+@cindex figure Pharo, spirale de Baravelle
+
+Comme vu précédement, à l'aide de figure Pharo il est possible de
+construire de façon intuitive et simple des figures pour
+@emph{visionner} des situations qui en programmation sont récursives
+-- ou cycliques.
+
+Approfondissons cet aspect, en modifiant le code Pharo utilisé
+pour la construction des nombres irrationnels, afin d'obtenir une
+figure fameuse de la littérature des mathématiques, à savoir la
+spirale de Baravelle.
+
+Le code définissant la spirale est le suivant@tie{}:
+@example
+| figure triangle |
+figure := DrGeoSketch new fullscreen.
+triangle := [:p1 :p2 :p3  :n | 
+   |s1 s2 s3 m  perp cercle p4 |
+   s1 := figure segment: p1 to: p2.
+   s2 := figure segment: p2 to: p3.
+   s3 := figure segment: p3 to: p1.
+   m := (figure middleOf: p1 and: p3) hide.
+   perp := (figure perpendicular: s3 at: p3) hide.
+   cercle := (figure 
+      circleCenter: p3 
+      radius: (figure distance: m to: p3) hide) hide.
+   p4 := (figure altIntersectionOf: cercle and: perp) hide.
+   n > 0 ifTrue: 
+      [triangle value: m value: p3 value: p4 value: n - 1]].
+triangle 
+   value: (figure point: 0 @@ 5) 
+   value: (figure point: 5 @@ 5) 
+   value: (figure point: 5 @@ 0) 
+   value: 9.
+triangle 
+   value: (figure point: 0 @@ -5) 
+   value: (figure point: -5 @@ -5) 
+   value: (figure point: -5 @@ 0) 
+   value: 9 
+@end example
+
+@drgeoFigure{La spirale de Baravelle suite à l'exécution du code
+  Pharo,spirale-baravelle,8}
+
+À partir de la figure et du code Pharo correspondant nous
+percevons bien la nature itérative du mécanisme de construction de la
+figure. Un problème intéressant que nous laissons au lecteur, consiste
+à établir à quel moment les deux rameaux de la spirale convergent.
+
+@page
+@section Catena di Pappo
+@cindex figure Pharo, Catena di Pappo
+
+Une utilisation de base de Figure Pharo de @drgeo{} consiste en la
+reproduction de figure dont nous connaissons les caractéristiques
+analytiques. L'exemple de construction que nous proposons est
+représenté par la fameuse ``Catena di Pappo''.
+
+Les centres et rayons successifs des cercles qui la constituent ont
+une expression analytique connue, il est donc aisé de reproduire la
+figure par programmation.
+  
+@example
+| figure circle a o m|
+figure := DrGeoSketch new fullscreen.
+circle := [].
+circle := [:n | 
+   |r c p |
+   r := (figure freeValue: 15 / (n squared + 6)) hide.
+   c := figure point: 
+      (15 / (n squared + 6) * 5)
+      @@ (15 / (n squared + 6) * n * 2).
+   c small; round.
+   p := figure circleCenter: c radius: r.
+   n > 0 ifTrue: [circle value: n - 1]].
+circle value: 10 .
+a := (figure point: 5@@0) name: 'A'.
+o := (figure point: 0@@0) name: 'O'.
+m := figure 
+   middleOf: o 
+   and: ((figure point: 15@@0) name: 'B').
+m name: 'M'.
+figure 
+   circleCenter: m to: o;
+   circleCenter: a to: o;
+   line: a to: o.
+@end example
+
+La figure s'appuie sur un bloc de code récursif pour construire les
+cercles.  Un exercice non trivial, que nous laissons au lecteur,
+consiste à déterminer une construction à la règle et au compas
+conduisant à une implémentation itérative.
+
+@drgeoFigure{Catena di Pappo,pappo,8}
+
+@page
+@section Calcul de PI
+
+Le calcul approximatif de PI a joué un rôle important dans l'histoire
+des Mathématiques. Les méthodes pour ce type de calcul sont diverses
+et contiennent souvent des améliorations d'une méthode à l'autre. Nous
+vous proposons une approche du problème très simplifiée. Cette
+approche a toutefois l'avantage de montrer l'essence même de la
+méthodologie.
+
+Nous commençons avec la construction d'un hexagone régulier inscrit
+dans un cercle.
+
+@drgeoFigure{Hexagone régulier inscrit,pi-hexagone,7}
+
+L'idée de la méthode consiste dans un premier temps à approximer la
+longueur du cercle avec le périmètre P0 de l'hexagone et de calculer
+une approximation de PI quotient de P0 par le diamètre du
+cercle. Clairement l'approximation de PI obtenue sera de 3.
+
+Lors d'une deuxième étape nous pouvons, en utilisant @drgeo{},
+construire un côté du dodécagone inscrit dans le cercle. Nous
+calculons son périmètre P1 ainsi qu'une approximation successive de PI
+comme quotient de P1 par le diamètre.
+
+Un petit script est écrit pour calculer ce quotient à partir du
+polygone et d'un diamètre du cercle@tie{}:
+
+@example
+@strong{compute}
+"Approximation de PI à partir d'un polygone régulier
+dans un cercle.
+Sélectionner: le polygone et un diamètre du cercle"
+   ^ self arg1 length / self arg2 length
+@end example
+
+@drgeoFigure{Approximation de PI,pi-dodecagone,7}
+
+En augmentant le nombre de côtés du polygone régulier inscrit nous
+obtenons de meilleures approximations.

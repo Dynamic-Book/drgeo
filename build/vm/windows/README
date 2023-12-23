@@ -1,0 +1,6 @@
+Install into the DrGeo/VM folder the content of a Windows OpenSmalltalk virtual
+machine.
+
+The folder DrGeo/VM should contain:
+    - the executable
+    - the dynamic linked libraries

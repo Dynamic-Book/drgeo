@@ -1,0 +1,130 @@
+@node Introduction
+@unnumbered Introduction
+
+@drgeo{} permet de créer des figures géométriques et de les manipuler
+interactivement en respectant leurs contraintes géométriques. Il offre
+également la possibilité d'introduire graduellement la programmation.
+Il est ainsi utilisable dans des situations d'enseignement allant du
+niveau primaire au niveau supérieur. L'interface utilisateur de
+@drgeo{} a été conçue pour allier dans un ensemble harmonieux à la
+fois simplicité d'utilisation, ergonomie et fonctionnalités avancées.
+
+L'interface simple de @drgeo permet au néophyte de se familiariser
+très rapidement avec les fonctions de base du logiciel. Puis, au cours
+de sa progression, l'utilisateur découvrira des aspects plus avancés
+de l'interface et du fonctionnement de @drgeo{} : modes multiples de
+construction des objets@footnote{À partir d'une même commande, il
+s'agit de créer un type d'objet selon des modalités différentes.  Par
+exemple à partir de la commande construction de cercle, l'utilisateur
+peut créer un cercle défini par son centre et un point, ou bien une
+longueur, etc. Bien sûr cette commande n'est représentée que par une
+seule icône, il incombe à @drgeo{} d'anticiper sur la construction de
+l'utilisateur. L'effet immédiat est donc une diminution de la charge
+cognitive de l'interface sur l'utilisateur, tout en proposant un
+nombre important de modes de construction.}, macro-construction,
+enregistrement multiple, script et figure programmés en Pharo. Ces
+fonctionnalités plus complexes génèrent peu de surcharge sur
+l'interface, c'est pour cela que @drgeo{} reste simple à utiliser en
+enseignement primaire, tout en restant intéressant pour le lycée.
+
+Dans les sections suivantes, les outils de base sont exposés.
+Ensuite les fonctionnalités avancées sont présentées en détail.
+
+A l'ouverture de @drgeo{}, l'environnement est vide, il suffit de
+faire ...@clicksequence{Clic arrière-plan @click{} Nouveau}... pour
+obtenir une figure vierge.
+
+@drgeoFigure{Fenêtre @drgeo{} avec une figure
+vierge,fig1,12}
+
+L'agencement de l'interface est comme suit@tie{}:
+@enumerate
+@item La @emph{barre de menu} caractéristique avec@tie{}:
+  @clicksequence{Fichier} --
+  @clicksequence{Édition} --  
+  @clicksequence{Points} -- 
+  @clicksequence{Lignes} --
+  @clicksequence{Transformations} -- 
+  @clicksequence{Numériques et texte} --
+  @clicksequence{Script} --
+  @clicksequence{Macro-construction} --
+  @clicksequence{Animer}.
+
+@item Une @emph{barre d'outils}@tie{}: ouvrir et sauver des figures@tie{}; 
+défaire/refaire les dernières actions@tie{}; afficher la grille@tie{};
+coller à la grille@tie{}; bascule entre édition multiple ou simple@tie{};
+attraper un objet@tie{}; supprimer un objet@tie{}; modifier le style
+et les propriétés d'un objet.
+@item La @emph{barre d'outils} regroupant dans divers onglets les
+  fonctions de construction présentes dans la barre de menu@tie{};
+@item Dans le coin en bas à droite, l'utilisateur a à sa disposition deux
+  molettes pour déplacer horizontalement et verticalement la
+  figure.
+@item La seconde molette à droite, en haut, pour changer l'échelle de la
+  figure.
+@end enumerate
+
+@cindex figure vierge
+Pour créer une nouvelle figure géométrique, l'utilisateur choisit la
+commande Nouveau dans le menu Fichier.  Pour plus de concision, nous
+indiquerons dorénavant les commandes de menu sous la forme
+...@clicksequence{Fichier @click{} Nouveau}...  Pour chaque nouvelle
+figure, une fenêtre distincte est proposée avec ses propres barres de
+menus et d'outils. L'utilisateur peut alors créer des points, lignes,
+cercle, etc. et contrôler leurs propriétés.
+
+@drgeo{} II est un logiciel libre@footnote{Un logiciel est libre
+  lorsque son code source peut être étudié, modifié et redistribué.}
+  multiplate-formes de géométrie interactive. Il est une réécriture
+  complète de @drgeo{} 1.1 en Pharo. Pharo@footnote{Pharo est une
+  implémentation libre du language Smalltalk, @url{http://pharo.org}}
+  a été utilisé pour ce faire. @drgeo{} 1.1 était écrit en C++ et
+  intégrait un interpréteur Scheme pour la rédaction de scripts et de
+  figures programmées.  @drgeo{} II permet également l'intégration de
+  scripts dans les figures géométriques ainsi que l'écriture de
+  figures interactives entièrement décrites avec un langage de
+  programmation.
+
+Le choix d'une réécriture en Pharo fut motivé par les qualités
+dynamiques uniques de ce langage@tie{}; celui-ci nous permet en effet de
+pousser extrêmement loin nos investigations sur les dimensions
+interactives entre l'utilisateur et le logiciel. Ainsi @drgeo{} n'est
+pas seulement un logiciel convivial de géométrie interactive mais
+aussi, tel que distribué, un environnement complet de programmation
+dans lequel le logiciel peut être étudié, modifié et amélioré. 
+
+Pour s'en convaincre, l'utilisateur est invité à faire
+...@clicksequence{Clic arrière-plan @click{} Outils @click{}
+Navigateur système}... Le navigateur de classes alors affiché est un
+outil pour parcourir et modifier le code source de @drgeo{} alors que
+celui-ci est en fonctionnement.
+
+Cet accès au code source du logiciel, pour l'étudier, le modifier et
+le redistribuer est complètement ancré dans l'esprit du logiciel libre
+pour une approche non verrouillé à une informatique autre que de
+béatitude. Loin de nous l'idée de prétendre que @drgeo{} permet de
+rendre les esprits plus alertes, néanmoins il y contribue assurément.
+
+@drgeoFigure{La navigateur du code source de @drgeo{} depuis @drgeo{}
+lui-même,drgeoBrowser,12}
+
+Avec ce même esprit, les systèmes de figures programmées et de scripts
+-- présentés dans les sections sur les outils avancés -- sont adossés
+à un outillage évolué de mise au point du code@tie{}: navigateur,
+débogueur, inspecteur d'objet. Dans la suite du document, nous
+nommerons indifféremment le logiciel @drgeo{} II ou @drgeo.
+
+@sp 1
+
+@cindex site web @drgeo{}
+@drgeo{} dispose de son propre espace web à l'adresse@tie{}:
+@url{http://drgeo.eu}.
+
+Sur cet espace, l'utilisateur trouvera les informations suivantes@tie{}:
+
+@itemize
+  @item comment obtenir @drgeo{}@tie{};
+  @item la documentation sur le logiciel@tie{};
+  @item des indications pour s'impliquer dans le projet @drgeo{}@tie{};
+  @item des références sur des exploitations pédagogiques du logiciel.
+@end itemize

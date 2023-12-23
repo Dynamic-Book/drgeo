@@ -1,0 +1,75 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo axes="False" custom_controls="False" grid="False" gridded="False" name="Logo Mitshubishi" origin_x="-2.1818181818181817" origin_y="0.6363636363636362" scale="38.0">
+<controls wheelX="True" wheelY="True" wheelZ="True"/> 
+<value color="Black" delta="(7@7)" feedback="True" id="626455262" locked="False" masked="True" name="" type="value">
+<value>4.0</value>
+<x>-9.75</x>
+<y>9.191176470588236</y></value>
+<point color="Red" delta="(7@7)" feedback="True" id="1025742038" locked="False" masked="False" name=" " style="Rectangular" thickness="Normal" type="Free">
+<x>-10.050646116570194</x>
+<y>2.0938551622021824</y></point>
+<circle anchor="0.5" color="Black" delta="(7@7)" feedback="True" filled="False" id="121030838" masked="True" name="" style="plain" thickness="small" translucent="True" type="radius">
+<parent ref="1025742038"/> 
+<parent ref="626455262"/> </circle>
+<point color="Blue" delta="(1.521717455968414@13.004527979408344)" feedback="True" id="6324548" locked="False" masked="False" name="Bouge moi !" style="Round" thickness="Thick" type="On_curve">
+<parent ref="121030838"/> 
+<value>0.9196590005822352</value></point>
+<value color="Black" delta="(7@7)" feedback="True" id="771148737" locked="False" masked="True" name="angle" type="value">
+<value>2.094</value>
+<x>-3.6323529411764706</x>
+<y>8.602941176470589</y></value>
+<point color="Red" delta="(7@7)" feedback="True" id="53080725" masked="True" name=" " style="Round" thickness="Dashed" type="Rotation">
+<parent ref="6324548"/> 
+<parent ref="1025742038"/> 
+<parent ref="771148737"/> </point>
+<point color="Red" delta="(7@7)" feedback="True" id="250402046" masked="True" name=" " style="Round" thickness="Dashed" type="Rotation">
+<parent ref="53080725"/> 
+<parent ref="1025742038"/> 
+<parent ref="771148737"/> </point>
+<segment anchor="0.5" arrow="makeNoArrows" color="Black" delta="(7@7)" feedback="True" id="263683059" mark="none" masked="True" name="" style="plain" thickness="small" type="2pts">
+<parent ref="53080725"/> 
+<parent ref="6324548"/> </segment>
+<value background="White" border="Transparent" class="DrGeoScript230232982" color="Black" delta="(7@7)" feedback="True" fontSize="9" id="363473867" locked="False" masked="True" name="" type="script">
+<parent ref="263683059"/> 
+<code>DrGeoUserScript subclass: #DrGeoScript230232982&#10;&#9;instanceVariableNames: ''&#10;&#9;classVariableNames: ''&#10;&#9;poolDictionaries: ''&#10;&#9;category: 'DrGeoII-User'!&#10;&#10;!DrGeoScript230232982 methodsFor: 'public' stamp: 'DrGeoUser 6/13/2017 15:53'!&#10;compute&#10;&quot;Edit me&quot;&#10;&#9;^ self arg1 direction r / 3! !&#10;&#10;&quot;-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- &quot;!&#10;&#10;DrGeoScript230232982 class&#10;&#9;instanceVariableNames: ''!&#10;&#10;!DrGeoScript230232982 class methodsFor: 'private' stamp: 'DrGeoUser 6/13/2017 15:53'!&#10;newArgumentsType&#10;&#9;^{DrGSegmentItem}! !&#10;&#10;&#10;!DrGeoScript230232982 class methodsFor: 'public' stamp: 'DrGeoUser 6/13/2017 15:53'!&#10;description&#10;&#9;^'Compute the third of a segment length.'! !&#10;&#10;!DrGeoScript230232982 class methodsFor: 'public' stamp: 'DrGeoUser 6/13/2017 15:53'!&#10;scriptName&#10;&#9;^'Segment third'! !&#10;</code>
+<x>0.04411764705882353</x>
+<y>2.926470588235294</y></value>
+<circle anchor="0.5" color="Black" delta="(7@7)" feedback="True" filled="False" id="100391689" masked="True" name="" style="plain" thickness="small" translucent="True" type="radius">
+<parent ref="6324548"/> 
+<parent ref="363473867"/> </circle>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-4648151" masked="True" name=" " style="Round" thickness="Dashed" type="Intersection">
+<parent ref="263683059"/> 
+<parent ref="100391689"/> </point>
+<circle anchor="0.5" color="Black" delta="(7@7)" feedback="True" filled="False" id="16402266" masked="True" name="" style="plain" thickness="small" translucent="True" type="radius">
+<parent ref="-4648151"/> 
+<parent ref="363473867"/> </circle>
+<point color="Red" delta="(7@7)" extra="0" feedback="True" id="-55870356" masked="True" name=" " style="Round" thickness="Dashed" type="Intersection">
+<parent ref="263683059"/> 
+<parent ref="16402266"/> </point>
+<point color="Red" delta="(7@7)" feedback="True" id="161781442" masked="True" name=" " style="Round" thickness="Dashed" type="Rotation">
+<parent ref="-4648151"/> 
+<parent ref="1025742038"/> 
+<parent ref="771148737"/> </point>
+<point color="Red" delta="(7@7)" feedback="True" id="267760861" masked="True" name=" " style="Round" thickness="Dashed" type="Rotation">
+<parent ref="-55870356"/> 
+<parent ref="1025742038"/> 
+<parent ref="771148737"/> </point>
+<point color="Red" delta="(7@7)" feedback="True" id="55313615" masked="True" name=" " style="Round" thickness="Dashed" type="Rotation">
+<parent ref="161781442"/> 
+<parent ref="1025742038"/> 
+<parent ref="771148737"/> </point>
+<point color="Red" delta="(7@7)" feedback="True" id="5632134" masked="True" name=" " style="Round" thickness="Dashed" type="Rotation">
+<parent ref="267760861"/> 
+<parent ref="1025742038"/> 
+<parent ref="771148737"/> </point>
+<polygon anchor="0.5" arrow="makeNoArrows" color="Red" delta="(7@7)" feedback="True" filled="True" id="241557161" masked="False" name="" style="plain" thickness="small" translucent="True" type="npts">
+<parent ref="6324548"/> 
+<parent ref="5632134"/> 
+<parent ref="161781442"/> 
+<parent ref="53080725"/> 
+<parent ref="-55870356"/> 
+<parent ref="55313615"/> 
+<parent ref="250402046"/> 
+<parent ref="267760861"/> 
+<parent ref="-4648151"/> </polygon></drgeo></drgenius>

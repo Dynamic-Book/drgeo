@@ -1,0 +1,160 @@
+@c Les macro-constructions
+
+@node Macro construction
+
+@chapter Macro-construction
+@cindex macro-construction, introduction
+@anchor{macroConstruction}
+
+@menu
+* Créer une macro construction::
+* Jouer une macro construction::
+@end menu
+
+
+Une macro-construction ressemble un peu à une procédure qui reçoit des
+items d'une figure en entrée et qui retourne un ou plusieurs items de
+figure, construits par la macro-construction. Une macro est construite
+à partir d'un modèle défini par l'utilisateur. Cela signifie que
+l'utilisateur doit réaliser la séquence de construction une première
+fois dans une figure puis demander à @drgeo{} de l'enregistrer dans une
+macro-construction. La macro-construction peut ensuite être
+sauvegardée dans un fichier au même titre qu'une figure.
+
+Pour enregistrer une séquence de construction, @drgeo{} doit connaître
+les items initiaux de la séquence ainsi que les items finaux.
+Évidemment, les items finaux ne doivent dépendre @emph{que} des
+items initiaux@footnote{Cette contrainte a depuis été assouplie et
+  permet d'aller encore plus loin avec les macro-constructions.},
+sinon @drgeo{} ne sera pas capable de déduire les items finaux à partir
+des items initiaux.
+
+Ainsi, @drgeo{} déduit la logique de la séquence de construction et
+l'enregistre dans une macro-construction. L'utilisateur peut alors
+répéter cette séquence en jouant la macro-construction, elle demande
+seulement des items initiaux (du même type) de la figure et construit
+les items résultants.
+
+@drgeoNote{Les items de figure intermédiaires et invisibles sont
+  aussi construits par la macro-construction. Ils sont nécessaires
+  pour construire les items résultants.}
+
+Pour illustrer la fonctionnalité macro-construction, nous prenons
+l'exemple de la construction du cercle passant par trois points.
+
+@drgeoFigure{La figure initiale,fig40,5}
+
+@cindex macro-construction, créer
+
+Avant la création de la macro-construction, l'utilisateur doit
+construire la figure finale, elle est considérée comme modèle par la
+macro-construction.
+
+@drgeoFigure{La figure avec la construction finale,fig41,5}
+
+@node Créer une macro construction
+@section Créer une macro construction
+
+À cette étape, la séquence de construction est faite. L'utilisateur
+doit maintenant avertir @drgeo{} qu'il veut une macro-construction à
+partir de cette séquence. Il doit appeler la fonction
+@command{Construire une macro} à partir de la barre d'outils ou depuis
+le menu ...@clicksequence{Macro-construction @click{} Construire une
+macro}... de la fenêtre de la figure.
+
+Depuis la boîte de dialogue qui s'affiche alors, l'utilisateur
+sélectionne les paramètres d'entrée et de sortie, le nom et la
+description de la macro-construction.
+
+@drgeoFigure{Première page introductive de la boîte de dialogue de
+  l'assistant pour construire une macro-construction,fig42,8}
+
+La seconde page de la boîte de dialogue sert à sélectionner les
+paramètres d'entrée. Dans notre exemple, ce sont les trois points
+initiaux. L'utilisateur a juste besoin d'aller jusqu'à cette seconde
+page et il sélectionne les trois points A, B et C de la figure. Les
+points sélectionnés clignotent alors et leur nom s'affiche dans la
+page de la boîte de dialogue.
+
+@drgeoFigure{La seconde page : les trois points sont
+  sélectionnés,fig43,8}
+
+À partir de la troisième page, l'utilisateur choisit les paramètres de
+sortie. Dans notre exemple, nous voulons le cercle et son centre comme
+résultat de la macro-construction. L'utilisateur clique alors sur ces
+deux objets dans la figure, lorsque sélectionnés ces derniers
+clignotent et leur nom apparaît dans la boite de dialogue.
+
+@drgeoFigure{La troisième page : le cercle et son centre sont
+  sélectionnés,fig44,8}
+
+Dans la quatrième page, l'utilisateur entre le nom et la description
+de la macro-construction. Ces informations sont affichées lorsque
+l'utilisateur exécute une macro-construction. Ceci permet de
+distinguer les macro-constructions entre elles.
+
+@drgeoFigure{La quatrième page : le nom et la description de la
+  macro-construction,fig45,8}
+
+L'utilisateur valide ensuite la définition de la macro-construction en
+appuyant sur le bouton @t{Appliquer}. Il peut aussi revenir
+aux étapes précédentes pour ajuster les paramètres de la
+macro-construction.
+
+@drgeoNote{Si la sélection des paramètres d'entrée et de sortie ne
+  correspond pas (@drgeo{} ne peut pas extraire la logique de la
+  construction), la macro-construction ne peut pas être créée. Dans ce
+  cas, l'utilisateur doit reconsidérer la sélection des paramètres
+  d'entrée et de sortie. Il peut revenir à la seconde ou la troisième
+  page de la boîte de dialogue de l'assistant pour ajuster ses choix.}
+
+À cette étape, la macro-construction est créée et enregistrée dans
+@drgeo{}. Dans la prochaine section, nous verrons comment l'utiliser.
+
+
+@node Jouer une macro construction
+@section Jouer une macro construction
+@cindex macro-construction, jouer
+@subheading À l'aide de la boîte de dialogue
+@cindex macro-construction, jouer, boîte de dialogue
+
+Pour exécuter une macro-construction, l'utilisateur choisit dans la
+barre d'outils ou le menu @clicksequence{Macro-construction @click{}
+Jouer une macro} de la fenêtre de la figure. Une boîte de dialogue
+décrivant la procédure s'affiche alors.
+
+À partir de celle-ci, dans la seconde page, il sélectionne la
+macro-construction dans la liste en haut de la boîte de dialogue. Une
+fois la macro sélectionnée, il peut directement choisir les paramètres
+d'entrée dans la figure -- avant cliquer sur le fond de la figure afin
+que les bulles d'aide s'affichent lors du survole des objets. Dès que
+tous les paramètres d'entrée sont sélectionnés, la macro-construction
+est exécutée et les paramètres finaux sont construits.
+
+@drgeoFigure{L'utilisateur sélectionne les paramètres d'entrée
+  dans la figure,fig46,8}
+
+Dans notre exemple, la macro-construction nécessite trois paramètres
+d'entrée (trois points) et elle construit un point et un cercle. Pour
+exécuter notre macro-construction, il faut une figure avec au moins
+trois points.
+
+@drgeoFigure{Une figure avec trois points,fig47,4}
+
+Une fois que notre macro-construction est appliquée à ces trois
+points, nous avons le cercle souhaité et son centre.
+
+@drgeoFigure{La figure finale avec le cercle et son centre,fig48,4}
+
+@subheading À l'aide du menu macro-construction
+@cindex macro-construction, jouer, menu
+Les macro-constructions chargées en mémoire sont listées dans le menu
+de fenêtre ``Macro-construction''. En sélectionnant une de ces
+macro-constructions dans le menu, il est alors possible de choisir
+directement les paramètres d'entrées dans la figure pour exécuter la
+macro-construction. 
+
+C'est un mode d'exécution d'une macro-construction sans boîte de
+dialogue. Par ailleurs, en faisant une pause sur un des items de ce
+menu, la description détaillée de la macro-construction est affichée.
+ 

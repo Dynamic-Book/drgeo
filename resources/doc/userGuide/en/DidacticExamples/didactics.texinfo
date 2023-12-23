@@ -1,0 +1,409 @@
+@c Didactic applications
+
+@node Didactic applications
+@chapter Didactic applications
+
+This chapter is an aid to studying @drgeo{} using didactic
+examples. Although in the previous chapters several examples were
+presented, here the approach is little more concrete, while still very
+original. This chapter was created using contributions from various
+cultural sources.
+
+@section Perimeter and area
+
+One possible didactic use of @drgeo{} is through its Smalltalk script
+system to resolve classic geometry exercises.
+
+As an example, we will show the solution of the following classic
+problem -- involving the Pythagorean theorem:
+
+@quotation
+  A right trapezoid ABCD where the bases and height are known. 
+  Calculate its perimeter and area.
+@end quotation
+
+@strong{Solution:}
+
+First we construct the @drgeo{} sketch as follows:
+
+@drgeoFigure{Right trapezoid,trapeze,9}
+
+The sketch contains the data to use to resolve the problem. First we
+can answer the question of the area. To do so we write a Smalltalk
+script with arguments the two bases and the height:
+
+@example
+@strong{areaTrapezoidBase1: b1 base2: b2 height: h}
+"Calculate the area of a right trapezoid given 
+its bases and one height"
+   ^ h length * (b1 length + b2 length) / 2 
+@end example
+
+To calculate the perimeter, we write a script where we calculate the
+length of BC with the Pythagorean theorem:
+
+@example
+@strong{perimeterTrapezoidBase1: b1 base2: b2 height: h}
+"Calculate the area of a right trapezoid given
+its two bases and one height"
+| hb bc |
+   hb := (b2 length - b1 length) abs.
+   bc := (hb squared + h length squared) sqrt.
+   ^ b1 length + b2 length + h length + bc 
+@end example
+
+It is not difficult, if you follow the same model, to develop other
+similar examples.
+
+@cindex script, examples, Ptolemy's theorem
+@section Theorem and conjectures
+With Smalltalk scripts one can solve exercises, but can also understand
+theorems more deeply and verify conjectures. In this section we start
+to analyse Ptolemy's theorem:
+
+@quotation
+  Given an inscribed quadrilateral, the sum of the products of its
+  opposite sides is equal to the product of its diagonals.
+@end quotation
+
+We construct the sketch as below where we implemented two scripts to
+calculate respectively the sum of the products of its opposite sides
+and the product of its diagonals.
+ 
+@drgeoFigure{Ptolemy's theorem: inscribed quadrilateral,tolomeo,6}
+
+The first script:
+@example
+@strong{ptolemySumS1: ab s2: bc s3: cd s4: ad}
+"Select the four consecutive sides of the quadrilateral, 
+then the location for the result"
+^ (ad length * bc length) + (ab length * cd length)
+@end example
+
+The second script:
+@example
+@strong{ptolemyProductD1: ac d2: bd}
+"Select the two diagonals of the quadrilateral, 
+then the location for the result"
+^ ac length * bd length
+@end example
+
+As we can see, the values returned by the scripts, as stated by
+Ptolemy's theorem, are equal@footnote{This is only a numerical
+example, not a proof.} When we dynamically modify the sketch, the
+script values are always equal, except in the following situation
+where the quadrilateral is not convex:
+
+@drgeoFigure{Ptolemy's theorem: non convex inscribed 
+quadrilateral,tolomeo-non-convexe,6}
+
+In this case the theorem is not true and the previous text of the
+theorem is inaccurate. It should be reformulated as follow:
+
+@quotation
+  Given an inscribed CONVEX quadrilateral, the sum of the 
+  products of its opposite sides is equal to the product of its 
+  diagonals.
+@end quotation
+
+Now a additional conjecture can be stated: is the theorem still valid
+when the convex quadrilateral is @strong{non inscribed}?
+
+With @drgeo{} we verify this conjecture is false with the following
+counterexample bellow. To build this counterexample, we have just
+detached the point B from the circle by dragging it with the touch
+@kbd{Shift} pressed at the same time.
+
+@drgeoFigure{Counterexample of the conjecture,tolomeo-quad-non-inscrit-cercle,6}
+
+The reader will easily use @drgeo{} to construct additional didactic
+examples, perhaps more famous, relative to the Pythagorean and
+Euclidean theorems.
+
+
+@page
+@section Irrational numbers
+@cindex Smalltalk sketch, examples, Teodoro spiral
+
+A classic construction of irrational numbers, known as the
+Teodoro spiral, gives the geometric construction of integer square
+roots. It begins with an isosceles right triangle.
+
+Let's start with the triangle OAB where OA=AB=1:
+
+@drgeoFigure{Construction of the square root of 2,racine2,6}
+
+Using the Pythagorean theorem we have OB equal to the square root of
+2. Now, with the sketch, we construct another right triangle
+with the sides OB and BC so that BC=1.
+
+@drgeoFigure{Construction of the square root of 3,racine3,6}
+
+Still using the Pythagorean theorem, it is clear the hypotenuse OC of
+OBC has a length equal to the square root of 3. The process can be
+repeated without limit to get the square roots of all positive integers.
+
+The iterative nature of this construction can be naturally
+represented in a Smalltalk sketch.
+
+@page
+
+Let's consider the following Smalltalk sketch source code:
+@example
+| sketch triangle |
+sketch := DrGeoCanvas new fullscreen.
+triangle := [:p1 :p2 :p3  :n | 
+   |s1 s2 s3 perp circle p4 |
+   s1 := sketch segment: p1 to: p2.
+   s2 := (sketch segment: p2 to: p3) color: Color red.
+   s3 := sketch segment: p3 to: p1.
+   perp := (sketch perpendicular: s3 at: p3) hide.
+   circle := (sketch circleCenter: p3 to: p2) hide.
+   p4 := (sketch altIntersectionOf: circle and:  perp) hide.
+   n > 0 ifTrue: [triangle value: p1 value: p3 value: p4 value: n -1]].
+
+triangle 
+   value: 0@@0
+   value: -1@@0
+   value: -1@@1
+   value: 50
+@end example
+
+The triangle at the beginning is defined by the coordinates of its
+vertices. The source code is a direct transcription of the logic of
+the construction, integrating its iterative nature with a recursive
+loop.  We use the @code{#hide} message several times to mask
+intermediate constructions, in order not to overload the user's
+perception with background constructions. Once executed,  @drgeo{}
+gives the following sketch.
+
+@drgeoFigure{Teodoro spiral,teodoro-spiral,7} 
+ 
+The hypotenuse length of each triangle is the square root of an integer
+in the interval [2@tie{};@tie{}52].
+
+@page
+
+The same spiral with intermediate items shown exposes how difficult it
+will be to @emph{hand construct} such a sketch:
+
+@drgeoFigure{Teodoro spiral with hidden item
+  revealed,teodoro-spiral-full,7}
+
+As a bonus, here is an animated version of the previous Smalltalk
+sketch. To do this we send to the canvas the messages @code{#do:} and
+@code{#update} (@xref{SmalltalkSketchMethods} for more reading about
+it).
+
+Note the use of the class
+@code{Delay} to slow down the construction:
+@example
+| sketch triangle delay|
+sketch := DrGeoCanvas new fullscreen.
+triangle := [:p1 :p2 :p3  :n | 
+   |s1 s2 s3 perp circle p4 |
+   s1 := sketch segment: p1 to: p2.
+   s2 := (sketch segment: p2 to: p3) color: Color red.
+   s3 := sketch segment: p3 to: p1.
+   perp := sketch perpendicular: s3 at: p3.
+   circle := sketch circleCenter: p3 to: p2.
+   p4 := sketch altIntersectionOf: circle and:  perp.
+   sketch update.
+   (Delay forMilliseconds: 200) wait.
+   perp hide. circle hide. p4 hide.
+   n > 0 ifTrue: [triangle value: p1 value: p3 value: p4 value: n -1]].
+
+sketch do: [triangle value: 0@@0 value: -1@@0 value: -1@@1 value: 50]
+@end example
+
+
+@section Baravelle spiral
+@cindex Smalltalk sketch, examples, Baravelle spiral
+
+As we saw previously, in Smalltalk sketches it is easy to construct,
+intuitively and simply, sketches @emph{to visualise} recursive or
+iterative situations in programming.
+
+We can go one step further by modifying the previous Smalltalk code --
+used to construct irrational numbers -- to get a famous sketch of the
+mathematics literature: the Baravelle spiral constructed from similar
+equilateral right triangles.
+
+The code to construct this spiral is as follows:
+@example
+| sketch triangle |
+sketch := DrGeoCanvas new fullscreen.
+triangle := [:p1 :p2 :p3 :n | 
+   |s1 s2 s3 m  perp circle p4 |
+   s1 := sketch segment: p1 to: p2.
+   s2 := sketch segment: p2 to: p3.
+   s3 := sketch segment: p3 to: p1.
+   m := (sketch middleOf: p1 and: p3) hide.
+   perp := (sketch perpendicular: s3 at: p3) hide.
+   circle := (sketch 
+      circleCenter: p3 
+      radius: (sketch distance: m to: p3) hide) hide.
+   p4 := (sketch altIntersectionOf: circle and: perp) hide.
+   n > 0 ifTrue: [triangle value: m value: p3 value: p4 value: n -1]
+].
+
+triangle 
+   value: (sketch point: 0@@5) 
+   value: (sketch point: 5@@5) 
+   value: (sketch point: 5@@0) 
+   value: 9.
+triangle 
+   value: (sketch point: 0@@ -5) 
+   value: (sketch point: -5@@ -5) 
+   value: (sketch point: -5@@0) 
+   value: 9
+@end example
+
+@drgeoFigure{The Baravelle spiral after executing the Smalltalk code,spirale-baravelle,8}
+
+With this sketch and the corresponding Smalltalk code we clearly perceive
+the recursive nature of the construction mechanism. An interesting
+problem for the reader is to establish when the two branches of the
+spiral converge.
+
+@c What does that mean? The triangles follow logarithmic spirals that
+@c twine endlessly around each other and never meet.
+
+@page
+@section Pappus Chain
+@cindex Smalltalk sketch, examples, Pappus chain
+
+Another classic use of a Smalltalk programmed sketch is based on its
+numeric ability to reproduce a geometric sketch knowing its analytic
+characteristics.
+ 
+The example we propose is the famous ``Pappus Chain''.
+
+The successive circles' centres and radii are analytically known,
+and in fact rational. It is therefore easy to reproduce this sketch
+by programming.
+
+@quotation
+@example
+| sketch circle a o m|
+sketch := DrGeoCanvas new fullscreen.
+circle := [:n | 
+   | r c p |
+   r := (sketch freeValue: 15 / (n squared + 6)) hide.
+   c := sketch point: 
+     (15 / (n squared + 6) * 5) @@ 
+     (15 / (n squared + 6) * n * 2).
+   c small; round.
+   p := sketch circleCenter: c radius: r.
+   n > 0 ifTrue: [circle value: n - 1]].
+
+circle value: 10 .
+a := (sketch point: 5@@0) name: 'A'.
+o := (sketch point: 0@@0) name: 'O'.
+m := sketch 
+   middleOf: o 
+   and: ((sketch point: 15@@0) name: 'B').
+m name: 'M'.
+sketch 
+   circleCenter: m to: o;
+   circleCenter: a to: o;
+   line: a to: o.
+@end example
+@end quotation
+
+The source code is relatively intuitive and it does not require any
+comment.
+
+A non-trivial exercise for the reader consists of determining a
+ruler and compass construction for the figure.
+
+@drgeoFigure{Catena di Pappo,pappo,10}
+
+@section @emph{pi} calculus
+
+The approximation of @emph{pi} played an important role in the history
+of mathematics. Numerous methods were proposed, offering a variety
+of improvements over time, from elementary geometry to calculus. We
+will examine one of the earliest approaches to the problem,
+originally carried out by Archimedes, called -- although this phrase
+is not precisely accurate -- the @strong{method of exhaustion}. This
+approach has however the advantage of exposing the essence of the
+methodology.
+
+Archimedes described a simple ruler and compass construction of
+regular polygons inscribed inside and outside a circle, and
+laborious calculations of the lengths of their sides, doubling the
+number of sides at each step up to 96. In modern terms, this gives
+three digits of precision, approximately 3.14. We, however, can
+proceed much more simply, letting @drgeo{} do the hard work, and
+continuing to polygons of more than a million sides, which takes us
+nearly to the limits of ordinary computer arithmetic, that is, 16
+decimal places for floating point numbers (3.141592653589793). Using
+much more advanced methods on supercomputers has made it possible to
+calculate ten trillion digits of @emph{pi}.
+
+@c In fact, Pharo Smalltalk crashes with an out of memory error when
+@c asked to calculate the perimeter of a polygon with 10 million sides,
+@c and has display problems at 4 million sides, where the script gives
+@c ten digits precision, 3.141592653.
+
+We start with the construction of an inscribed regular hexagon.
+Create a numeric value, and set it to 6. Create a segment (the
+diameter) and bisect it to get the center. Create a circle with the
+given center through one of the endpoints of the segment. Create a
+regular polygon with the given center, one of the endpoints as a vertex,
+and the numeric value as the number of sides.
+
+@c Check whether that matches the figure below.
+
+@drgeoFigure{Inscribed regular hexagon,pi-hexagone,7}
+
+The idea of the of the exhaustion method starts with approximating the
+length of the circle with the perimeter of the P0 hexagon; then to
+calculate an approximation of @emph{pi} as the quotient of the
+perimeter of that hexagon by the diameter of the circle. Clearly,
+since the side of the hexagon is the same length as the radius of the
+circle, the resulting initial approximation of @emph{pi} is 3.
+
+In a second step, we construct an inscribed dodecagon. To construct
+the previous regular hexagon, we used the @drgeo{} tool to construct
+a regular polygon with 6 vertices. To construct the dodecagon, we
+just need to change this free value item to 12, and the polygon will
+update automatically. We calculate the P1 perimeter, then an
+approximation of @emph{pi} as the quotient of the perimeter by the
+diameter of the circle.
+
+A small script is written to calculate this quotient; its arguments
+are the polygon and the circle diameter:
+
+@example
+@strong{approxPIpolygon: poly diameter: d}
+"PI approximation given an inscribed regular polygon.
+Arguments: the polygon and the circle diameter"
+   ^ poly length / d length
+@end example
+
+Now apply this script to the constructed polygon and its diameter  (the
+segment we started with), and pin the result in the sketch.
+
+@c Does this match the following figure?
+
+@drgeoFigure{@emph{pi} approximation,pi-dodecagone,7}
+
+When increasing the number of sides of the polygon, by editing the free
+value, we improve the approximation.
+
+To display both the approximation of @emph{pi} and its accuracy, we can
+modify the script to display them together:
+
+@example
+@strong{approxPIpolygon: poly diameter: d}
+"PI approximation given an inscribed regular polygon.
+Arguments: the polygon and the circle diameter"
+^ Array
+   with: poly length / d length
+   with: (poly length / d length - Float pi) abs  
+@end example
+
+As we increase the number of sides of the polygon, how quickly does
+this process approach the true value? How far can we go?

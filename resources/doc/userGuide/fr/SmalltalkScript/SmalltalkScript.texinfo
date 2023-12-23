@@ -1,0 +1,1156 @@
+@c Les scripts Pharo
+@node Script Pharo
+@chapter Script Pharo @drgeo{}
+@cindex script, introduction
+@anchor{script}
+
+@menu
+* Script sans paramètre::                   
+* Script avec un paramètre::
+* Script avec deux paramètres::
+* Exemple détaillé de figure avec plusieurs scripts::Utilisation en cascade de scripts
+* Éditer un script comme un pro::Utiliser la navigateur système
+* Disséquer un script::Principe d'un script
+* Méthodes de référence::Méthodes de référence pour écrire un script
+* Aspect des objets::Modifier l'aspect d'un objet, d'une figure à partir d'un script
+@end menu
+
+@drgeo{} est une application dynamique écrite en Pharo. Cela
+signifie qu'il est possible de le modifier alors qu'il est en cours de
+fonctionnement. Nous exploitons cette possibilité pour définir dans
+@drgeo{} des items de la figure qui sont en fait des scripts Pharo
+-- des bouts de codes, Cela permet d'étendre dynamiquement, à
+l'infini, les possibilités de @drgeo{}. Mais qu'est-ce que
+Pharo@tie{}?
+
+@quotation
+Pharo est un langage de programmation orienté objet, réflexif et
+dynamiquement typé. Il est une implémenation et extension de
+Smalltalk. Ce dernier fut l'un des premiers langages de programmation
+à disposer d'un environnement de développement intégré complètement
+graphique. Il a été créé en 1972. Il est inspiré par Lisp et Simula.
+Il a été conçu par Alan Kay, Dan Ingals, Ted Kaehler, Adele Goldberg
+au Palo Alto Research Center de Xerox. Le langage a été formalisé en
+tant que Smalltalk-80 et est depuis utilisé par un grand nombre de
+personnes. Smalltalk est toujours activement développé.
+
+Smalltalk a été d'une grande influence dans le développement de
+nombreux langages de programmation, dont : Objective-C, Actor, Java et
+Ruby.
+
+Un grand nombre des innovations de l'ingénierie logicielle des années
+1990 viennent de la communauté des programmeurs Smalltalk, tels que
+les Design Patterns (appliquées au logiciel), l'Extreme Programming
+(XP) et le refactoring. Ward Cunningham, l'inventeur du concept du
+Wiki, est également un programmeur Smalltalk.
+
+@author Wikipedia, Smalltalk, 2 janvier 2011
+@end quotation
+
+Cet extrait de la préface du livre @emph{Pharo By Example} décrit
+  précisément la plate forme Pharo utilisée pour @drgeo{}@tie{}:
+
+@quotation
+    Pharo est une implémentation moderne, libre et complète de
+    l'environnement et langage de programmation Smalltalk.
+
+    Pharo s'attache à offrir une plate forme robuste et stable pour du
+    développement professionnel en langages et environnement
+    dynamiques. 
+@author Pharo By Example, introduction        
+@end quotation
+
+@drgeo{} exploite l'environnement Pharo pour proposer, d'une part,
+un environnement convivial d'écriture de scripts et, d'autre part,
+pour donner accès à l'interface des items géométriques ou numériques
+constitutifs d'une figure. L'interface est en fait l'ensemble des
+méthodes d'instance -- fonctions de classe -- de ces items.
+
+Ainsi l'utilisateur peut écrire des scripts pour manipuler les items
+des figures@tie{}; et puisque ces scripts sont des items de figure au même
+titre que d'autres, ils n'ont pas besoin d'être dans un fichier
+séparé, ils sont enregistrés dans le fichier de la figure.
+
+L'autre grande force des scripts est de s'appuyer sur l'environnement
+de développement de Pharo@tie{}; l'utilisateur bénéficie ainsi
+d'outils évolués pour mettre au point ces scripts@tie{}: navigateur de
+classes, inspecteur, débogueur, etc. L'utilisateur souhaitant
+exploiter au mieux la puissance des scripts est donc invité à étudier
+le livre @emph{Pharo By Example}, il y apprendra le langage Pharo
+et son environnement.
+
+Les scripts ont deux facettes@tie{}:
+
+@itemize
+@item l'écriture du script lui même@tie{};
+@item l'utilisation du script dans la figure, un même script est
+  utilisable plusieurs fois, avec des paramètres différents.
+@end itemize
+
+Les outils pour créer et éditer un script sont disponibles depuis les
+menus ...@clicksequence{Script @click{} Créer un script}... et
+...@clicksequence{Script @click{} Modifier un script}... Ces fonctions
+se trouvent également dans la barre d'outils. Pour utiliser un script
+choisir le menu ...@clicksequence{Script @click{} Utiliser un
+script}... également disponible dans la barre d'outils.
+
+
+Un script est un objet de première
+classe@footnote{@url{https://fr.wikipedia.org/wiki/Objet_de_première_classe}}. Il
+est défini comme une classe Pharo et une instance de celle-ci est
+créée pour chacune de ses utilisations dans une figure géométrique.
+
+Lors de la sauvegarde d'une figure comprenant une ou plusieurs 
+instances de scripts, le code source de leur classe est également 
+enregistré@tie{}; pour s'en convaincre ouvrir avec un éditeur de texte un 
+fichier @file{.fgeo} d'une figure utilisant un script.
+
+Dans son utilisation, un script peut recevoir de 0 à @emph{n} 
+paramètres d'entrée.  Après le choix du script à insérer dans la 
+figure, il suffit alors de cliquer sur les objets de type paramètres 
+d'entrée -- comme précisé lors de la création du script -- puis sur 
+le fond de la figure pour y placer le résultat du script.
+
+Par la suite nous vous proposons de travailler sur quelques exemples
+de scripts pour comprendre leur fonctionnement. Les scripts, comme les
+macro-constructions, donnent une dimension particulière à @drgeo{},
+ils permettent --@tie{}chacun avec un positionnement
+différent@footnote{Les macro-constructions ont une approche
+géométrique tandis que les scripts ont une approche numérique mais
+aussi et surtout nous pouvons les utiliser dans un esprit de
+bidouillage (``hacking'' en anglais).}@tie{}-- d'aller là où les
+auteurs du logiciel ne sont pas allés ou ne souhaitent pas aller.
+
+Il est aussi important de comprendre que l'ensemble des
+fonctionnalités de Pharo sont disponibles depuis les scripts. C'est
+particulièrement vrai pour ses bibliothèques de fonctions@footnote{En
+particulier, les fonctions mathématiques.}, nous allons bien sûr les
+utiliser intensément.
+
+@node Script sans paramètre
+@cindex script, sans paramètre
+@section Script sans paramètre
+@subheading Principe de construction d'un script
+Lors de la construction d'un script, depuis ...@clicksequence{Script
+  @click{} Créer un script}... trois éléments sont demandés pour le
+  définir@tie{}:
+
+@enumerate
+@item son nom ;
+@item sa description ;
+@item les types de paramètres d'entrée.
+@end enumerate
+
+Le troisième point indique l'ordre et les objets sur lesquels cliquer
+(point, segment, etc.) pour ensuite créer une instance du script dans
+la figure.
+
+@subheading Premier exemple
+La procédure pour créer et utiliser un script sans paramètre d'entrée
+est la suivante@tie{}:
+
+@strong{Édition du script.}
+
+@enumerate
+
+    @item Choisir ...@clicksequence{Script @click{} Créer un
+    script}... le constructeur de script s'affiche alors --
+    @xref{scriptConstructor}.
+
+    @drgeoFigure{@anchor{scriptConstructor}Le constructeur de script,fig35,9}
+    
+    Il comprend trois parties@tie{}:
+    
+    @itemize
+
+        @item @strong{Nom}. Son nom, saisir @t{Mon premier
+        script}. Dans le menu ``Script'', ce script est alors affiché
+        avec ce nom, le choisir donc avec soin. Il est modifiable
+        ultérieurement.
+
+        @item @strong{Description}. Sa description, saisir @t{Le
+        commentaire de mon premier script}. Dans le menu ``Script'',
+        ce script a une bulle d'information avec ce texte. Inscrire
+        donc ici l'ensemble des détails nécessaires à son
+        utilisation@tie{}: ce qu'il fait et les types d'objets sur
+        lesquels cliquer pour le faire fonctionner.
+      
+        @item @strong{Arguments}. Les types d'objets utilisés en
+        paramètres d'entrée, ceux sur lesquels cliquer pour activer le
+        script. Dans ce premier exemple, nous n'ajoutons pas
+        d'argument car nous créons un script sans paramètre
+        d'entrée.
+    @end itemize
+
+
+    @item Presser le bouton @t{Construire}, @drgeo{} construit alors
+    une classe pour ce script et affiche un éditeur de script sur
+    celle-ci -- @xref{scriptEditor}.
+
+    @anchor{scriptEditor}
+    @drgeoFigure{Editeur de script sur @emph{mon premier script},fig38,8}
+    
+    
+    De la gauche vers la droite et du haut vers le bas@tie{}:
+
+    @itemize
+
+       @item L'onglet ``Méthodes'' présente les méthodes du code
+       source du script.
+
+       @item L'onglet ``Données de script'' avec les méthodes de
+       définition du script@tie{}: titre, description, arguments du
+       script.
+
+       @item La liste des méthodes du code source ou de définition
+       selon l'onglet sélectionné.  En cliquant sur une méthode, son
+       code source est affiché dans l'éditeur de texte en
+       bas. @strong{La méthode @code{compute} est créée par défaut par
+       @drgeo{}. C'est cette méthode qui retourne le résultat à
+       afficher dans la figure.}  Attention à ne pas la supprimer cela
+       provoquerait une erreur, il est toutefois possible de la
+       recréer le cas échéant.
+
+       @item Un éditeur de code source pour éditer une méthode. Pour
+        valider une modification, il suffit de presser les touches
+        @kbd{Ctrl-s}.
+
+    @end itemize
+
+    Saisir le code source ci-dessous dans le panneau du bas de
+    l'éditeur de script@tie{}:
+
+    @example
+compute
+   "Je dis bonjour"
+   ^ 'hello !'.
+    @end example
+
+    Sauvegarder le script en cliquant sur le bouton ``Enregistrer'' à
+    droite de l'onglet ``Code source'' ou par la combinaison de
+    touches @kbd{Ctrl-s}.
+
+    La première ligne d'une méthode, ici @code{compute}, désigne
+    toujours le nom de la méthode, la suite est le code source du
+    script. La deuxième ligne de celle-ci, entre guillemets, est un
+    commentaire de ce que fait la méthode, nous conseillons de bien
+    documenter losrque vous créer plusieurs méthodes dans un script.
+
+    Pour créer une nouvelle méthode, il suffit de changer le nom de la
+    méthode affichée et de sauver avec le bouton ``Enregistrer'' à
+    droite.
+    
+    L'éditeur de script peut maintenant être fermé.
+ @end enumerate
+
+@strong{Utilisation du script dans la figure.}
+
+Choisir ...@clicksequence{Script @click{} Utiliser un script}... dans
+le menu. Dans la boîte de dialogue qui s'affiche alors choisir le
+script @t{Mon premier script} que nous avons créé précédemment. Noter
+qu'à chaque fois qu'un script est choisi, son commentaire descriptif
+est affiché en dessous.
+
+@drgeoFigure{Choisir un script,fig50,8}
+
+Une fois le script sélectionné, cliquer dans la figure à l'emplacement
+souhaité, le script y est inséré@tie{}; dans cet exemple il ne fait
+que retourner le message ``hello@tie{}!''. La valeur retournée par la
+méthode @code{compute} est toujours celle affichée dans la figure.
+
+Dans les exemples ci-dessous, nous donnons uniquement le code source
+de la méthode @code{compute}. En reprenant les étapes précédentes, à
+vous de créer le script en choisissant à votre convenance ses nom et
+description, nous ne revenons pas sur ces étapes.
+
+@cindex script, valeur aléatoire
+@subheading Un générateur de nombres aléatoires et autres
+
+Si vous souhaitez un générateur de nombres entiers aléatoires entre 0
+et 10, rien de plus simple, c'est ce que fait le script suivant@tie{}:
+@example
+compute
+"Je retourne un nombre aléatoire"
+   ^ 10 atRandom.
+@end example
+
+À chaque mise à jour de la figure, il génère un nombre aléatoire 
+entier dans l'intervalle [0 ; 10]. Si vous préférez un nombre 
+flottant dans l'intervalle [0 ; 1], utilisez ce script@tie{}: 
+
+@example
+compute 
+"Je retourne un nombre décimal aléatoire entre 0 et 1"
+   ^ 100 atRandom / 100.
+@end example
+
+
+Quelques précisions@tie{}:
+
+@itemize
+@item 
+La valeur retournée par le script est le résultat de l'expression
+après le symbole @strong{^}@tie{};
+
+@item 
+La valeur retournée peut être de n'importe quel type@footnote{Une
+instance de n'importe quelle classe pour être précis car les types
+n'existent pas en Pharo}, @drgeo{} en affiche une représentation
+sous forme de chaîne de caractères@tie{};
+
+@item 
+Si l'on souhaite retourner la valeur d'une variable, il suffit de
+mettre son nom après le symbole @strong{^}@tie{}.
+
+@end itemize
+
+@subheading Calculer des valeurs usuelles
+
+Pour afficher une valeur approchée de @strong{pi} ou de
+@strong{e}@tie{}:
+@example
+compute
+   ^ Float pi
+@end example
+
+@example
+compute
+   ^ Float e
+@end example
+
+
+Les valeurs retournées par ces scripts sont ensuite utilisables comme
+toutes les autres valeurs numériques générées par @drgeo{}.  Pour
+toutes ces petites choses les scripts sont donc vos amis. Mais ils peuvent
+faire bien plus de choses intéressantes lorsqu'ils reçoivent des
+paramètres en entrée.
+
+
+En effet ici les scripts n'avaient aucun argument, il n'y avait donc
+pas lieu de sélectionner des items de la figure lors de l'insertion
+des scripts dans la construction. Bien sûr leur intérêt réside dans
+les traitements numériques qu'ils permettent sur des items et la
+restitution de ce résultat dans la figure, sous la forme d'un objet
+qui lui même peut-être utilisé par d'autres scripts. Dans les sections
+suivantes nous montrerons de tels enchaînements de scripts.
+
+
+@node Script avec un paramètre
+@cindex script, 1 paramètre
+@section Script avec un paramètre
+
+@subheading L'exemple
+Prenons l'exemple d'un script qui étant donné un polygone va@tie{}:
+@itemize
+@item Afficher un message pour indiquer si c'est un rectangle.
+@item Colorier en bleu le polygone lorsqu'il est un rectangle, sinon
+  en rouge.
+@end itemize
+
+@subheading Objectif
+
+Cet exemple montre comment faire des calculs à partir de l'état d'un
+objet -- un polygone -- et modifier un attribut visuel d'un objet --
+sa couleur. Étant donné que le langage informatique Pharo des
+scripts est le même que celui de @drgeo{}, nous montrons que l'étude
+du fonctionnement interne de @drgeo{} permet d'utiliser au mieux les
+scripts.
+
+Enfin les trois constituants d'un objet mathématique sont exposés@tie{}:
+hiérarchies des classes @t{DrGMathItem} pour le modèle
+mathématique, @t{DrGMathItemCostume} pour la représentation
+visuelle et @t{DrGCostumeStyle} pour gérer les attributs visuels
+(couleur, formes,...).
+
+@subheading Créer le script
+La procédure pour créer un script avec un paramètre d'entrée est
+sensiblement la même. Toutefois un argument de type polygone est
+nécessaire, en effet lors de son utilisation il faut choisir un
+polygone dans la figure. Les paramètres du constructeur de ce script
+-- à invoquer par le menu ...@clicksequence{Script @click{} Créer un
+script}... ressembleront à la figure ci-jointe --
+@xref{scriptConstructorOneArg}.
+
+@anchor{scriptConstructorOneArg}
+@drgeoFigure{Le constructeur de
+  script avec un argument demandé,SmalltalkScript01,9}
+ 
+@subheading Logique de fonctionnement
+
+La logique de ce script est implémentée dans sa méthode
+@code{compute}. Elle est la suivante@tie{}:
+@enumerate
+@item colorier en rouge le polygone
+@item tester si le polygone est un quadrilatère, dans la négative
+  retourner le message @t{'Je ne suis même pas un quadrilatère'}.
+@item tester si ses diagonales sont isométriques et partagent le même
+  milieu@tie{}:
+  @enumerate
+  @item si oui, colorier en bleu le polygone et retourner le message
+    @t{'Je suis un rectangle}.
+  @item si non, retourner le message @t{'Je ne suis PAS un
+      rectangle'}.
+  @end enumerate
+@item fin de la méthode @code{compute}
+@end enumerate
+
+@subheading Le code source
+
+La méthode principale @code{compute} du script@tie{}:
+
+@example
+compute
+   | diag1 diag2 points mid1 mid2|
+   self paintRed.
+   self isQuad ifFalse:
+      [ ^ 'Je ne suis même pas un quadrilatère !' ].
+   points := self arg1 points.
+   diag1 := points first - points third.
+   mid1 := points first + points third / 2.
+   diag2 := points second - points fourth.
+   mid2 := points second + points fourth / 2.
+   (diag1 r = diag2 r and: [mid1 = mid2])  
+      ifTrue: [ 
+         self paintBlue.
+         ^ 'Je suis un rectangle :)' ]
+      ifFalse: [ ^ 'Je ne suis PAS un rectangle :(' ].
+@end example
+
+Quelques explications@tie{}:
+@itemize
+@item 
+Les méthodes @t{paintRed} et @t{isQuad} sont invoquées sur @t{self},
+cela signifie qu'elles sont implémentées dans la classe de ce script
+ou une classe parente, nous y reviendrons. Dans la terminologie
+Pharo, il est dit que le message @t{#paintRed} est envoyé à
+@t{self}.
+
+@item 
+Le message @t{#arg1} retourne le premier argument du script (@t{self
+arg1}). Ici obligatoirement un polygone, à savoir une instance de la
+classe @t{DrGPolygonItem}@footnote{Pour découvrir le protocole de
+cette classe, écrire son nom dans un Workspace, le sélectionner à la
+souris puis presser les touches @kbd{Ctrl-b}, un navigateur de classes
+s'affiche alors sur cette classe, il permet de naviguer et d'étudier
+son code source.}. Si notre script était défini avec deux arguments,
+le message @t{#arg2} donne le deuxième objet choisi par l'utilisateur.
+
+@item 
+@t{DrGPolygonItem} a une méthode @t{points} qui retourne une
+collection de ses sommets. Nous en extrayons les informations
+nécessaires à nos calculs.
+
+@item 
+Les deux vecteurs des diagonales du quadrilatère sont calculés et
+placés dans les variables locales @t{diag1} et @t{diag2}. Ce sont des
+instances de la classe standard @t{Point}.
+
+@item 
+Les milieux des diagonales sont calculés et également placées dans les
+variables locales @t{mid1} et @t{mid2}.
+
+@item
+Les longueurs des diagonales et les milieux sont comparés, selon le
+résultat des pharases différents sont retournées. Pour obtenir la
+longueur d'une diagonale, le rayon en coordonnées polaire est demandé
+avec le message @t{#r}. Explorer la classe @t{Point} pour lire le code
+source de cette méthode.
+
+@end itemize
+
+@
+
+Passons maintenant aux trois autres méthodes de ce script, à savoir
+@t{paintRed}, @t{paintBlue} et @t{isQuad}@tie{}:
+
+@example
+paintRed
+   self costume1 style color: Color red
+@end example
+
+@example
+paintBlue
+   self costume1 style color: Color blue
+@end example
+
+Le message @t{#costume1} demande le costume du premier argument du
+script, à savoir le costume du polygone. Dans @drgeo{}, le costume
+d'un objet permet à la fois l'accès au modèle mathématique et à sa
+représentation graphique ainsi que ses attributs associés de
+style@footnote{Pour être précis, un script reçoit toujours par sa
+variable @t{arguments} les costumes des objets sur lesquels
+l'utilisateur a cliqué@tie{}; la méthode @t{arg1} donne alors le
+modèle par un appel @t{arguments first mathItem}, tandis que la
+méthode @t{costume1} se contente de faire @t{arguments first}.}. Ces
+deux méthodes demandent donc le style du costume (message @t{#style})
+pour lui envoyer ensuite le message à mot clé @t{#color:} avec comme
+argument la couleur souhaitée.
+
+Les messages à mot clé sont une spécificité de Pharo@tie{}: les
+arguments sont intercalés dans le nom du message.
+
+La dernière méthode annexe est triviale, elle demande au modèle (le
+polygone retourné par la méthode @t{arg1}) sa liste des sommets,
+puis la taille de cette liste. Le polygone est un quadrilatère si
+cette taille est de 4@tie{} :
+@example
+isQuad
+   ^ self arg1 points size = 4
+@end example
+
+Après la saisie de chacune de ces méthodes, le code source doit être
+sauvé et compilé par le raccourci clavier @kbd{Ctrl-s}.
+
+Pour l'utilisation du script (...@clicksequence{Script @click{}
+Utiliser un script}...) @drgeo{} attend que l'utilisateur clique sur
+un polygone, puis sur un emplacement de la figure.
+ 
+Selon le type d'objet en référence, diverses méthodes sont
+disponibles@tie{}; qui pour obtenir sa valeur, qui pour obtenir ses
+coordonnées, etc. Le répertoire des méthodes est disponible depuis la
+section Méthodes de référence des scripts @xref{api-dgs}.
+
+
+@node Script avec deux paramètres
+@cindex script, 2 paramètres
+@section Script avec deux paramètres
+
+Pour calculer la distance entre deux points@footnote{Cette 
+fonctionnalité est nativement présente dans @drgeo{}, il s'agit donc 
+là d'un prétexte à un exercice.}, nous créons alors un script avec 
+deux arguments@tie{}: deux points. L'unique méthode @code{compute} est 
+alors@tie{}:
+
+@example
+compute
+"Calcule la distance entre deux points"
+   ^ self arg1 point dist: self arg2 point
+@end example
+
+Ici les méthodes @t{arg1} et @t{arg2} retournent des objets
+@drgeo{} de type point, dans la hiérarchie de classe @t{DrGPointItem}.
+Cette classe a une méthode @t{point} qui retourne
+ses coordonnées.
+
+@t{#dist:} est un message à mot clé @footnote{Nom de message
+  comprenant des ``@strong{:}''} de la classe @t{Point} qui attend
+  comme unique argument un autre point, elle calcule la distance entre
+  ces deux instances. Elle peut se comprendre comme@tie{}: ``distance
+  entre arg1 point et arg2 point''.
+
+
+Pour utiliser ce script, procéder comme dans les exemples précédents@tie{}:
+choisir deux points de la construction et un emplacement de la figure
+pour y placer le résultat du script.
+
+
+@node Exemple détaillé de figure avec plusieurs scripts
+@cindex script, tangente à une courbe
+@section Exemple détaillé de figure avec plusieurs scripts
+
+Dans la section suivante, nous présentons une figure plus complexe
+intégrant un enchaînement de scripts pour la construction d'une
+portion de courbe représentative d'une fonction et la tangente en un
+point mobile de cette portion de courbe.
+
+La figure finale est disponible dans le dossier @t{examples} de
+@drgeo{}, elle s'appelle @t{Curve and slope.fgeo}.
+
+
+@drgeoFigure{Courbe et tangente en un point,fig55,10}
+
+Dans une nouvelle figure, nous commençons par construire un segment
+horizontal, nous y plaçons un point libre appelé ``Move me''. Ce
+point servira de base à la construction de la courbe comme lieu d'un
+point.
+
+@cindex script, fonction
+@subheading Définir un fonction
+Comme un script est capable de retourner n'importe quel type d'objet,
+le premier de notre construction définira simplement la fonction
+utilisée. Pour ce faire nous utilisons des objets Pharo de type
+bloc de code -- fonction anonyme en Lisp. Nous nommons ce script
+@t{Function}, sans arguments, sa méthode @code{compute} est@tie{}:
+@example
+compute
+"La définition de notre fonction"
+   ^ [:x | x cos]
+@end example
+
+Ensuite nous le plaçons dans la figure@footnote{Il est important de le
+  référencer dans la figure afin qu'il soit inclus dans la description
+  de celle-ci lors d'une opération de sauvegarde sur fichier.}. Ainsi
+le bloc de code retourné par @t{Function} attend un argument
+@t{:x} et retourne le cosinus de celui-ci. Nous verrons dans la
+suite comment manipuler ce script.
+
+@cindex script, fonction, image
+@cindex script, coordonnées, point
+@anchor{scriptCoordinates}
+@subheading Image d'une valeur par une fonction
+
+Maintenant nous calculons les coordonnées d'un point appartenant à la
+courbe. Nous utilisons notre point ``Move me'' et notre fonction. Ce
+script @t{Mcoord} aura comme arguments ce point et le script
+@t{Function} (dans cet ordre)@tie{}:
+
+@example
+compute
+   ^ (self arg1 x) @@ (self arg2 compute value: self arg1 x)
+@end example
+
+L'abscisse de ses coordonnées est la même que celle du point de
+départ, son ordonnée est l'image de son abscisse par la fonction.
+
+Noter@tie{}:
+@itemize
+
+   @item @code{self arg2}, l'accès au script @t{Function}, qui est un
+   bloc de code définissant la fonction@tie{};
+
+   @item la définition de l'ordonnée, le passage de l'argument à
+   la fonction doit se comprendre comme @t{Function(item x)}.
+@end itemize
+
+Maintenant utilisons ce script @t{Mcoord} avec comme argument le point
+``Move me!''@tie{}; le résultat du script est de la forme
+@t{1.2@@0.5}, cela représente un couple de coordonnées.
+
+Avec l'outil point ...@clicksequence{Points @click{} Coordonnées}...
+créons un point ayant ses coordonnées contraintes par le résultat de
+ce script.
+
+
+@cindex script, lieu géométrique
+
+L'outil lieu d'un point ...@clicksequence{Lignes @click{} Lieu de
+  point}... donne ensuite la courbe en sélectionnant nos deux points.
+
+
+@cindex script, exemples, tangente à une courbe
+@subheading Pente en un point de la courbe d'une fonction et tangente
+
+Pour ce faire, nous calculons une valeur approchée de la pente en un
+point de la courbe, avec celle-ci nous déduirons un deuxième point de
+la tangente.
+
+@math{p = ( f(x + 0.0001) - f(x) ) / 0.0001}
+
+Cela se traduit par un script @t{Ncoord} avec comment argument le
+point où calculer une approximation de la pente et le script
+@t{Function}@tie{}:
+
+@example
+compute
+| p x f |
+   f := self arg2 compute.
+   x := self arg1 point x.
+   p := ((f value: x + 0.0001) - (f value: x)) / 0.0001.
+   ^ self arg1 point + (1 @@ p)
+@end example
+
+Nous plaçons ensuite ce script dans la figure.
+
+Noter@tie{}:
+@itemize
+@item La déclaration de variables temporaires @t{| p x f |}. Les
+  variables ne sont pas typées, pas de soucis de ce côté là.
+@item La référence du bloc de code avec une variable @t{f :=
+    self arg2 compute}. Le symbole pour assigner une valeur à une
+  variable est ``@t{:=}''.
+@item Les parenthèses ! Pharo ne connait pas la priorité des
+  opérateurs, en fait ils n'existent pas dans ce langage. Le lecteur
+  est invité à étudier la section sur les messages Pharo du livre
+  @emph{Pharo By Exemple}.
+@end itemize
+
+
+Utilisons ce script avec comme arguments le point de notre courbe et
+notre script @t{Function}. Nous obtenons un deuxième couple de
+coordonnées. Avec celles-ci construisons un point, la tangente est la
+droite définie par ce point et celui de la courbe.
+
+En déplaçant le point ``Move me!'', la tangente est recalculée. Tout
+aussi intéressant@tie{}: modifier le script @t{Function} actualise
+correctement l'ensemble de notre construction. Quelques exemples de
+modifications@tie{}:
+
+@example
+   ^ [:x | x * x / 10]
+
+   ^ [:x | x cos + (10 * x) sin]
+
+   ^ [:x | (x * 5) cos + x abs]
+@end example
+
+
+@node Éditer un script comme un pro
+@section Éditer un script comme un pro
+@cindex script, navigateur de classe
+@drgeo{} propose de modifier les scripts avec son éditeur de script,
+c'est en fait un éditeur de classe simplifié. Il est possible
+d'utiliser Calypso, le navigateur de classe de l'environnement Pharo.
+Il offre plus de possibilités mais il est plus complexe. Nous le
+présentons brièvement.
+
+Pour ouvrir Calypso ...@clicksequence{Clic arrière-plan @click{}
+Outils @click{} Navigateur système}... Ensuite dans la fenêtre
+nouvellement ouverte, à gauche clic sur ``DrGeoII-User'' pour afficher
+les scripts -- @xref{scriptClass}.
+
+@anchor{scriptClass}
+@drgeoFigure{Navigateur de classe Calypso,fig49,12}
+
+De la gauche vers la droite et du haut vers le bas y sont
+    présentées@tie{}:
+
+    @itemize
+    
+        @item Les bibliothèques de classes, ici @t{DrGeoII-User},
+        c'est l'emplacement des scripts utilisateur.
+
+        @item La liste des scripts utilisateur, de la forme
+        @t{DrGeoScriptxxxx}, les classes représentant les scripts.
+        
+        @item Les catégories de méthodes par classe (script) pour les
+        ranger, ici une catégorie dédiée @t{public}. L'utilisateur en
+        crée d'autres si besoin. La catégorie @t{public} activée,
+        c'est dans celle-ci que toute nouvelle méthode est placée.
+        
+        @item Les méthodes de la catégorie sélectionnée. Ici, dans la
+        catégorie @t{public}, se trouve l'unique méthode
+        @code{compute}. En cliquant sur une méthode, son code source
+        est affiché dans l'éditeur de texte en bas. @strong{La méthode
+        @code{compute} est créée par défaut par @drgeo{}. C'est cette
+        méthode qui retourne le résultat à afficher dans la figure.}
+        Attention à ne pas la supprimer cela provoquerait une erreur,
+        il est toutefois possible de la recréer lors d'une telle
+        erreur depuis le navigateur de classe.
+      
+        @item Sur toute la largeur, la zone texte pour édition du code
+        source de la méthode sélectionnée. Pour valider une
+        modification, il suffit de presser les touches @kbd{Ctrl-s}.
+        
+    @end itemize
+
+
+@node Disséquer un script
+@section Disséquer un script
+Quelques éléments d'explication sur la représentation d'un script@tie{}:
+
+@itemize
+@item @strong{First class citizen.} Comme déjà expliqué, un script est
+  une classe Pharo.
+@item @strong{Instance.} Tant que des paramètres d'entrée différents
+  sont choisis, un même script s'utilise plusieurs fois dans une même
+  figure, ce sont des instances du script -- de sa classe pour être
+  précis.
+@item @strong{Etat.} A son utilisation dans une figure correspond une
+  instance de celle-ci. L'état d'une instance -- la valeur des
+  variables d'instance -- est donc différent de celui d'une autre
+  instance et il perdure tout au long du cycle de vie de la figure et
+  de l'instance. Au delà, des traitements d'un script, cela permet
+  donc de conserver et de faire évoluer son état tout au long du cycle
+  de vue d'une figure.
+@item @strong{Coté classe.} Dans la navigateur de
+  classes (@xref{scriptClass}), en pressant le bouton à coché
+  @t{Class side}, @drgeo{} affiche des méthodes de classe. Ce sont
+  des méthodes communes à toute les instances de ce script, on y
+  trouve son nom, sa description et la liste de ses arguments. Ils
+  sont modifiables.
+@end itemize
+
+
+@node Méthodes de référence
+@section Méthodes de référence
+@anchor{api-dgs}
+@c DGS API is exposed here
+Un argument passé à un script est toujours une référence vers une
+instance de classe de la hiérarchie @t{DrGMathItem}, elle est le
+modèle de base pour représenter tout objet d'une figure. Ainsi pour
+connaître les messages compris par un argument d'un script, il
+convient d'examiner la hiérarchie de @t{DrGMathItem}. Celle-ci
+comprend plus de 80 classes, mais du fait des héritages, seules
+quelques unes sont intéressantes pour les usages courants des
+scripts@tie{}:
+@itemize
+@item @t{DrGMathItem}
+@item @t{DrGPointItem}
+@item @t{DrGDirectionItem} concerne segment, droite,
+  demi-droite, vecteur
+@item @t{DrGArcItem}
+@item @t{DrGCircleItem}
+@item @t{DrGLocus2ptsItem}
+@item @t{DrGPolygonNptsItem}
+@item @t{DrGValueItem}
+@end itemize
+
+Pour explorer ces classes, utiliser par exemple Spotter, l'outil de
+recherche de Pharo. Pour l'invoquer @kbd{Shift-Enter}, puis
+saisir le nom d'une classe, par exemple ``DrGPointItem'' et choisir
+dans le résultat de la recherche. Le navigateur de classe Calypso
+s'affiche alors sur la classe recherchée.
+
+Les sections suivantes contiennent la description de quelques messages
+utiles. Elles sont présentées par classe.  Pour plus de concision dans
+la description de l'@acronym{API}, le préfixe @t{DrG} dans le nom des
+classes est omis.
+
+@subsection Item math
+Cette section regroupe des méthodes de la classe @t{DrGMathItem},
+classe mère de la hiérarchie des objets d'une figure.
+
+Ces messages peuvent donc être envoyés à tous les types d'objets
+passés en argument à un script.
+
+@deftypemethod MathItem <String> safeName
+@result{} une chaîne de caractères représentant le nom de l'item
+@example
+nom := point1 safeName
+^nom asUppercase.
+@end example
+@end deftypemethod
+
+
+@deftypemethod MathItem <Boolean> exist
+@result{} un booléen indiquant si l'item est dans un état permettant son existence
+
+Du fait de la dimension dynamique d'une figure géométrique, un objet
+peut ne plus exister temporairement. C'est par exemple le cas pour le
+point d'intersection de deux segments, cette méthode permet alors de
+vérifier l'existence de l'intersection.
+@example
+line exist ifTrue: [ position := line origin ]
+@end example
+@end deftypemethod
+
+@deftypemethod MathItem <Collection> parents
+@result{} une collection d'items, parents de l'item
+@example
+point1 := segment parents first
+@end example
+@end deftypemethod
+
+@defmethod MathItem move: unVecteur
+@var{unVecteur}, instance de @code{Point}, vecteur de coordonnées (x,y)
+représentant le déplacement
+
+Déplace un item dans une direction donnée, tout en tenant compte de
+ses contraintes.
+@example
+circle move: 2@@1
+@end example
+@end defmethod
+
+
+@deftypemethod MathItem <Point> closestPointTo: unPoint
+@result{} coordonnées du point sur l'item le plus proche de @var{unPoint}
+@var{unPoint}, un couple de coordonnées
+
+Cette méthode prend tout son sens sur des items de type ligne comme droite,
+cercle, arc, polygone, etc.
+@example
+position := segment closestPointTo: 2@@1
+
+position := arc closestPointTo: 2@@1
+@end example
+@end deftypemethod
+
+
+@subsection Point
+Un item point -- objet point defini dans une construction @drgeo{} --
+passé en argument à un script est un objet très complexe. Il peut être
+un point libre dans le plan, sur une ligne, une intersection,
+etc. Quelques méthodes spécifiques permettent d'exploiter ce type
+d'objet depuis les scripts.
+
+@deftypemethod PointItem <Point> point
+@result{} coordonnées de ce point
+
+L'objet retourné est une instance de @dfn{Point}, son abscisse et
+ordonnée s'obtiennent par le message @dfn{#x} et @dfn{#y}
+respectivement.
+@example
+abscissa := pointA point x
+@end example
+@end deftypemethod
+
+
+@defmethod PointItem point: aPoint
+@var{aPoint}, couple de coordonnées
+
+Modifie les coordonnées de l'item point tout en respectant ses
+contraintes propres. Pour un point libre, la nouvelle position sera
+exactement celle donnée en argument, pour un point contraint (sur
+ligne, intersection) cela sera sans effet.
+@example
+pointA point: 5@@2
+@end example
+@end defmethod
+
+@deftypemethod PointOnCurveItem <Float> abscissa
+@result{} abscisse curviligne de ce point sur sa ligne, elle est
+normalisée sur [0 ; 1]
+
+Cette méthode est réservée au point libre sur une ligne
+@example
+a := mobile abscissa
+@end example
+@end deftypemethod
+
+@defmethod PointOnCurveItem abscissa: uneValeur
+@var{uneValeur}, valeur décimale de [0 ; 1]
+
+Modifie l'abscisse curviligne d'un point libre sur une ligne.
+@example
+pointItem abscissa: 0.5
+@end example
+@end defmethod
+
+
+@defmethod PointItem moveAt: unPoint
+@var{unPoint}, couple de coordonnées (x,y) où déplacer le point
+
+Déplace le point à la position donnée en argument.
+@example
+point moveAt: 2@@1
+@end example
+@end defmethod
+
+@subsection Ligne droite ou courbe
+Ces messages sont à envoyer aux objets de type ligne comme droite,
+cercle, polygone, etc.
+
+@deftypemethod  CurveItem <Float> abscissaOf: unPoint
+@result{} une valeur de [0 ; 1], abscisse curviligne de @var{unPoint}
+sur la ligne
+
+@var{unPoint}, un point (x,y)
+@example
+a := curve abscissaOf: 2@@1
+@end example
+@end deftypemethod
+
+
+@deftypemethod CurveItem <Point> pointAt: uneValeur
+@result{} coordonnées du point de la ligne d'abscisse curviligne
+@var{uneValeur}
+
+@var{uneValeur}, un nombre de [0 ; 1]
+@example
+myPoint := curve pointAt: 0.5.
+^ myPoint x
+@end example
+@end deftypemethod
+
+
+@deftypemethod CurveItem <Boolean> contains: unPoint
+@result{} un booléen indiquant si @var{unPoint} est sur la ligne
+
+@var{unPoint}, un point (x,y)
+@example
+(curve contains: 0@@1) ifTrue: [^ 'Yes!']
+@end example
+@end deftypemethod
+
+@subsection Droite, demi-droite, segment, vecteur
+Ensemble de méthodes dédiées aux lignes droites.
+
+@deftypemethod DirectionItem <Point> origin
+@result{} un point origine de cette ligne
+
+D'un point de vue interne les droites sont graduées avec une
+origine. Cela permet de positionnement de points sur celle-ci.
+@example
+segment origin
+@end example
+@end deftypemethod
+
+
+@deftypemethod DirectionItem <Point> direction
+@result{} un vecteur (x,y) indiquant la direction de la ligne
+@example
+v := droite direction.
+pente := v y / v x
+@end example
+@end deftypemethod
+
+@deftypemethod DirectionItem <Point> normal
+@result{} un vecteur unitaire normal à la direction de la ligne
+@example
+n := vecteur normal
+@end example
+@end deftypemethod
+
+@subsection Segment
+Ensemble de méthodes dédiées aux segments.
+
+@deftypemethod SegmentItem <Float> length
+@result{} longueur du segment
+@example
+segment := canvas segment: 0@@0 to: 5@@5.
+l := segment length
+@end example
+@end deftypemethod
+
+@deftypemethod SegmentItem <Point> extremity1
+@result{} coordonnées de l'extrémité 1 du segment
+@example
+segment := canvas segment: 0@@0 to: 5@@5.
+p := segment extremity1.
+@end example
+@end deftypemethod
+
+
+@deftypemethod SegmentItem <Point> extremity2
+@result{} coordonnées de l'extrémité 2 du segment
+@example
+segment := canvas segment: 0@@0 to: 5@@5.
+p := segment extremity2
+@end example
+@end deftypemethod
+
+@deftypemethod SegmentItem <Point> middle
+@result{} coordonnées du milieu du segment
+@example
+segment := canvas segment: 0@@0 to: 5@@5.
+m := segment middle
+@end example
+@end deftypemethod
+
+@subsection Cercle, arc de cercle, polygone
+Ensemble de méthodes réservées aux cercle, arc et polygone.
+
+@deftypemethod CircleItem|ArcItem <Point> center
+@result{} point, centre du cercle ou de l'arc de cercle
+@example
+c := arcAB center
+@end example
+@end deftypemethod
+
+@deftypemethod CircleItem|ArcItem <Float> radius
+@result{} rayon du cercle ou de l'arc de cercle
+@example
+rayon := monCercle radius
+@end example
+@end deftypemethod
+
+@deftypemethod CircleItem|ArcItem|PolygonItem <Float> length
+@result{} longueur du cercle, de l'arc de cercle ou du polygone
+@example
+perimetre := triangle length
+@end example
+@end deftypemethod
+
+@subsection Valeur
+
+@deftypemethod ValueItem <Float> valueItem
+@result{} valeur de cet item
+@example
+n1 := item2 valueItem.
+n2 := item2 valueItem.
+n1 + n2.
+@end example
+@end deftypemethod
+
+@defmethod ValueItem valueItem: uneValeur
+@var{uneValeur}, valeur décimale
+
+Modifie la valeur d'un item de type valeur libre.
+@example
+item valueItem: 5.2.
+@end example
+@end defmethod
+
+@defmethod ValueItem  position: unPoint
+@var{unPoint}, point (x,y)
+
+Déplace dans la figure l'item à la position @var{unPoint}.
+@example
+maValeur position: 0.5@@2.
+@end example
+@end defmethod
+
+
+@subsection Angle
+
+@deftypemethod AngleItem <Integer> degreeAngle
+@result{} une mesure  en degrés de cet angle orienté ou géométrique
+@example
+angle1 := a1 degreeAngle.
+@end example
+@end deftypemethod
+
+@deftypemethod AngleItem <Float> radianAngle
+@result{} une mesure en radian de cet angle orienté ou géométrique
+@example
+angle1 := a1 radianAngle.
+@end example
+@end deftypemethod
+
+@node Aspect des objets
+@section Aspect des objets
+Un script, en plus de faire des calculs, peut modifier l'aspect d'un
+objet mathématique passé en argument, de lui même ou de tout autre
+objet d'une figure (i.e. canevas).
+
+Précédemment, nous avons discuté des modèles d'objet géométrique, ils
+sont tous des instances de classe de la hiérarchie
+@t{DrGMathItem}@tie{}; leur représentant graphique à l'écran sont
+appelés @b{costumes}, instances de classe de la hiérarchie
+@t{DrGMathItemCostume}. Accéder au costume d'un modèle offre la
+possibilité d'éditer son aspect@tie{}: couleurs, style de traits,
+etc. Quelques méthodes sont décrites dans la section suivante pour
+accéder aux costumes et aux styles. Le lecteur curieux explorera les
+hiérarchies des classes @t{DrGMathItemCostume} et @t{DrGCostumeStyle}
+pour en découvrir davantage.
+ 
+@deftypemethod DrGeoUserScript <MathItemCostume> costume
+  @result{} costume du script lui-même. Il faut toujours tester
+  l'existence du costume avant son utilisation (voir exemple)
+  @example
+compute
+   self costume ifNotNil: 
+      [self costume style color: Color blue].
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoUserScript <MathItemCostume> costume1
+  @result{} le costume du modèle passé en premier argument à ce script
+  @example
+paintBlue
+   self costume1 style color: Color blue
+@end example
+@end deftypemethod
+
+@deftypemethod DrGeoUserScript <MathItem> arg1
+  @result{} le modèle passé en premier argument à ce script. Son type
+  exact dépend des arguments avec lesquels l'instance du script a été
+  créée.
+
+ @example 
+isParallelogram
+"Test my polygon argument is a parallelogram"
+   | points mid1 mid2|
+   points := self arg1 points.
+   mid1 := points first + points third / 2.
+   mid2 := points second + points fourth / 2.
+   ^ points size = 4 and: [mid1 = mid2]
+@end example
+@end deftypemethod
+
+Des paires de méthodes pour les arguments suivants sont
+disponibles@tie{}: @t{costume2}/@t{arg2}, @t{costume3}/@t{arg3} et
+@t{costume4}/@t{arg4}.
+
+@deftypemethod DrGeoUserScript <DrGeo> app
+  @result{} l'instance @drgeo{} où ce script existe. Entre autres
+  choses, donne accès aux costumes de la figure.
+
+ @example 
+polygonCostumes
+"Return the list of polygon costume in the canvas"
+   ^ self app costumes select: [ :costume | 
+      costume mathItem isPolygonItem].
+@end example
+@end deftypemethod
