@@ -24,9 +24,10 @@ cd Cuis-Smalltalk-Dev
 Install virtual machine
 
 ```bash
+cd Cuis
 wget -O cogspur.tgz https://github.com/OpenSmalltalk/opensmalltalk-vm/releases/latest/download/squeak.cog.spur_linux64x64.tar.gz
 tar -zxvf cogspur.tgz
-mv ./sqcogspur64linuxht ./cogspur
+mv ./sqcogspur64linuxht ./VM
 ```
 
 ## Dr. Geo code
