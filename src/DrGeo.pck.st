@@ -1,6 +1,6 @@
-'From Cuis6.0 [latest update: #6118] on 25 December 2023 at 7:12:21 pm'!
+'From Cuis6.0 [latest update: #6118] on 25 December 2023 at 7:14:32 pm'!
 'Description '!
-!provides: 'DrGeo' 1 662!
+!provides: 'DrGeo' 1 663!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -8770,9 +8770,16 @@ length
 		self canComputeArcData.
 		length]! !
 
-!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 10:46:31'!
+!DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 12/25/2023 19:14:27'!
 roundedValueString
-	^ mathItem degreeAngle rounded asString, '°'.! !
+	| roundedValueString |
+	roundedValueString := mathItem degreeAngle rounded asString, '°'.
+	mathItem name isEmptyOrNil ifFalse: [
+		roundedValueString := String streamContents: [ :str |
+				str nextPutAll: mathItem name;
+					nextPutAll: ' = ';
+					nextPutAll: roundedValueString] ].
+	^roundedValueString 	! !
 
 !DrGAngleGeometricMorph methodsFor: 'accessing' stamp: 'hlsf 6/5/2021 20:16:48'!
 styleClass
