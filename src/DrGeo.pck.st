@@ -1,6 +1,6 @@
-'From Cuis 6.0 [latest update: #6092] on 14 December 2023 at 9:04:41 am'!
+'From Cuis6.0 [latest update: #6118] on 25 December 2023 at 7:12:21 pm'!
 'Description '!
-!provides: 'DrGeo' 1 661!
+!provides: 'DrGeo' 1 662!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -8853,6 +8853,10 @@ drawRecOn: canvas
 		p _ screenCenter + vector2.
 		canvas lineTo: p	]
 ! !
+
+!DrGAngleGeometricMorph methodsFor: 'testing' stamp: 'hlsf 12/25/2023 19:12:13'!
+wantsContour
+	^ false! !
 
 !DrGAngleOrientedMorph methodsFor: 'drawing' stamp: 'hlsf 5/15/2021 10:55:35'!
 canComputeArcData
