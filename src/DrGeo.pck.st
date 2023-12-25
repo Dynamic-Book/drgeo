@@ -1,6 +1,6 @@
-'From Cuis6.0 [latest update: #6118] on 25 December 2023 at 7:14:32 pm'!
+'From Cuis6.0 [latest update: #6118] on 25 December 2023 at 7:29:12 pm'!
 'Description '!
-!provides: 'DrGeo' 1 663!
+!provides: 'DrGeo' 1 664!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7119,11 +7119,12 @@ releaseMiniView
 	(drgeoView respondsTo: #presenter) 
 		ifTrue: [drgeoView presenter ifNotNil: [:pres | pres release] ]! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/30/2022 20:53:10'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 12/25/2023 19:28:31'!
 buildMorphicWindow
 	super buildMorphicWindow.
 	titleMorph showButtonsNamed: #(close collapse expand).
-	self toggleHelp ! !
+	self toggleHelp.
+	self activeHand newKeyboardFocus: codeView scroller! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/14/2022 16:36:45'!
 button: iconSymbol action: actionSelector help: helpString
