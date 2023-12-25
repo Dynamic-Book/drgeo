@@ -1,4 +1,4 @@
-Instructions to install Dr. Geo in a Cuis-Smalltalk developer environment.
+Instructions to install [Dr. Geo](https://www.gnu.org/s/dr-geo/) in a Cuis-Smalltalk developer environment.
 
 # Set-up
 Set up your Cuis-Smalltalk dev environment:
