@@ -1,0 +1,16 @@
+
+Help needed - Documentation
+
+We are writing the manual in French.
+
+We badly need national coordinator to maintain localised version of the Dr.Genius manual
+
+What is needed for the job?
+
+LaTeX/HyperLaTeX knowledges;
+Keeping track of the changes in the source manual;
+Mathematical knowledges.
+
+Want to apply? Contact hilaire@ofset.org
+
+

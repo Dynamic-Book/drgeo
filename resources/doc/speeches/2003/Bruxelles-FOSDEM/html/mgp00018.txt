@@ -1,0 +1,14 @@
+
+Help needed - Development
+
+SCHEME/GUILE WIZARDS -- The potentialities of Guile into DrGenius are important, there are many paths to explore:
+DGS macro => procedural macro written in Scheme (hot!)
+Geometry proof system for DrGenius => guidance in proof (very hot!)
+Scheme console, to interactively manipulate DrGenius figure from Scheme commands
+Define an alternative save format in Scheme then a Logo to DrGenius translator
+
+GNOME WIZARD
+Gnome is a moving target, help is needed to integrate the beast into DrGenius
+
+
+

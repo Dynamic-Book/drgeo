@@ -1,0 +1,12 @@
+
+Fonctionnalités avancées - MC (2)
+
+
+Une macro-construction (MC) est un ensemble de constructions que l'utilisateur souhaite enregistrer, afin de les utiliser plus tard.
+
+Pour définir une MC, l'utilisateur doit:
+
+faire la construction complète une fois;
+
+demander à Dr. Genius de l'enregistrer.
+

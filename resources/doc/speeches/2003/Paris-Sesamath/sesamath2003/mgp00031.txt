@@ -1,0 +1,10 @@
+
+Contribuer à la documentation (3)
+
+Un document commun aux manuels "drgeniusCommon.tex" contient un ensemble de macros pour gérer de façon consistante le style des versions papier et en ligne;
+Le source français du manuel est la version de référence pour un traduction vers d'autres langues
+On utilise le système des marqueurs CVS (CVS tags) afin de faciliter le travail de synchronisation dans les traductions vers d'autres langues
+
+Lire le document README dans le module drgenius-man
+(Faire une démo)
+

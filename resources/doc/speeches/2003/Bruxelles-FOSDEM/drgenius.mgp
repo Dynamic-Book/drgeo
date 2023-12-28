@@ -1,0 +1,339 @@
+%include "default.mgp"
+
+%page
+ 
+FOSDEM 2003
+
+%ccolor "red"
+
+%center
+
+%image "drgenius.png"
+
+
+Free Interactive Geometry
+by OFSET
+(hilaire@ofset.org)
+
+
+%page
+
+Table of Contents
+
+
+	Dr. Genius
+	What is the situation?
+	What's in Dr.Genius?
+	Advanced features
+		Macro-construction
+		Guile Script
+	High level road map
+	Where are we?
+	Help Needed
+		Documentation
+		User's Feedback
+		Development
+	Projects at OFSET
+
+
+%page
+
+Dr. Genius
+
+%center
+%image "drgenius.png"
+
+%leftfill
+Dr. Genius is about interactive geometry.  
+It allows one to create geometric figures plus the interactive manipulations of such figures in respect with their geometric constraints. 
+It is useable in teaching situations with students from primary or secondary level.
+
+DrGenius (as was DrGeo) is officially part of the GNU project
+
+
+%page
+%bgrad  0 0 128 -15 1 "orange" "white" "white" "white" "white" "white" "orange"
+
+What is the situation? (1)
+
+Target are schools, educators and students. They know very little about FS and they are not technicians therefore:
+
+	few teachers can help
+
+	it's difficult to motivate
+
+	then there is little *quality* free educational software
+
+To develop quality educational software, we definitively need teachers
+
+%page
+%bgrad  0 0 128 -15 1 "orange" "white" "white" "white" "white" "white" "orange"
+
+What is the situation? (2)
+
+We need to bring the educators into the FS community. At OFSET we are dedicated at:
+
+	promoting the FS values and benefices into the education;
+	producing quality software which enhances the teaching;
+	writing good documentations available in national languages;
+	writing cool examples of what can be done with the software.
+
+
+%page
+%bgrad  0 0 128 -15 1 "yellow" "white" "white" "white" "white" "white" "yellow"
+
+What's in DrGenius? (1)
+
+Construction of interactive geometry figure with tools as:
+
+	point (free, middle, on a line, intersection);
+	line (straight line, ray, segment, vector, circle, arc circle, polygon, locus);
+	planar transformations (rotation, symmetries, scale, translation plus parallel and perpendicular line construction);
+	numeric measurements (length, distance, coordinate, equation, free value, angle);
+	macro-construction;
+	DGS (DrGenius Guile Script).
+
+%pause
+LET'S SEE A FEW EXAMPLES!
+%pause 
+
+%system "/usr/bin/drgenius -f session-demo.drgenius"
+
+
+%page
+%bgrad  0 0 128 -15 1 "yellow" "white" "white" "white" "white" "white" "yellow"
+
+What's in DrGenius? (2)
+
+Various export filters:
+	Due to the MVC development model of Dr.Genius it is easy to add new filters: the DrGenius drawable  (drgeoDrawable) is abstracted and derived as gtkDrawable, latexDrawable, postscriptDrawable.
+
+Infinite Undo/Redo operations for everything but the macro-construction
+
+Session management to prepare pedagogical activities 
+
+
+%page
+%bgrad  0 0 128 -15 1 "blue" "white" "white" "white" "white" "white" "blue"
+
+Advanced Features - Macro-Construction (MC)
+
+A macro-construction is a set of constructions the user wants to be recorded, so he can use it later.
+
+To define one MC, the user needs to:
+
+	make the construction once;
+
+	ask DrGenius to record it.
+
+%page
+%bgrad  0 0 128 -15 1 "blue" "white" "white" "white" "white" "white" "blue"
+
+Macro-Construction - Example (1)
+
+
+Here is a situation
+%center
+%newimage -zoom 150 "euler+bissectrices2.eps" 
+
+
+%page
+%bgrad  0 0 128 -15 1 "blue" "white" "white" "white" "white" "white" "blue"
+
+Macro-Construction - Example (2)
+
+We want to get out of this figure a MC able to construct:
+	the Euler line;
+	the circles;
+	the centres;
+	eventually the triangle edges.
+
+All in all a MC consists of:
+	3 input objects/parameters;
+	10 output objects/parameters.
+
+%pause 
+LET'S SEE WITH DR GENIUS
+%pause
+%system "drgenius"
+
+%page
+%bgrad  0 0 128 -15 1 "blue" "white" "white" "white" "white" "white" "blue"
+
+Macro-Construction - Example (3)
+
+Once defined a MC can be saved through a session:
+
+	as a single document;
+
+	or embedded with other documents to arrange a pedagogical situation.
+
+
+%pause
+MORE ?
+%pause
+%system "emacs euler.mac" 
+
+
+%page
+%bgrad  0 0 128 -15 1 "green" "white" "white" "white" "white" "white" "green"
+
+Advanced Features - DrGenius Guile Script (DGS)
+
+A DGS is a Guile script procedure framed in a GeometricObject!
+
+As a procedure it receives input parameters and it returns a numeric or a string.
+
+Input parameters are references to other geometric objects of the current figure. At the creation time of the DGS, the user selects the input geometric objects.
+
+The output parameter is the last value of the script.
+
+%pause 
+LET'S SEE AN EXAMPLE
+%pause
+%system "drgenius -f session-demo.drgenius"
+
+
+%page
+%bgrad  0 0 128 -15 1 "orange" "white" "white" "white" "white" "white" "orange"
+
+High level road map
+
+
+	1. An user friendly interactive geometry software
+		Human factor criteria
+		Advanced features
+
+	2. An user DrGenius reference manual
+		Printable
+		Online as a contextual help
+		At best in several languages
+
+	3. Activities corpus
+
+
+%page
+%bgrad  0 0 128 -15 1 "orange" "white" "white" "white" "white" "white" "orange"
+
+Where are we?
+
+
+	Point 1. is almost finished for now
+
+	We are working at point 2.
+
+	Point 3. should be conducted by the users
+
+
+%page
+%bgrad  0 0 128 -15 1 "orange" "white" "white" "white" "white" "white" "orange"
+
+HELP NEEDED
+
+We need help in several domains:
+
+	Documentation
+
+	User's Feedback
+
+	Development
+
+
+
+%page
+%bgrad  0 0 128 -15 1 "orange" "white" "white" "white" "white" "white" "orange"
+
+Help needed - Documentation
+
+We are writing the manual in French.
+
+We badly need national coordinator to maintain localised version of the Dr.Genius manual
+
+What is needed for the job?
+
+	LaTeX/HyperLaTeX knowledges;
+	Keeping track of the changes in the source manual;
+	Mathematical knowledges.
+
+Want to apply? Contact hilaire@ofset.org
+
+
+%page
+%bgrad  0 0 128 -15 1 "orange" "white" "white" "white" "white" "white" "orange"
+
+Help needed - User's feedback
+
+
+TEST TEST TEST!!!
+
+We like to receive from DrGenius' user:
+
+	Bugs report;
+
+	New figures;
+
+	Contributions to localisation;
+
+	Suggestions.
+
+
+%page
+%bgrad  0 0 128 -15 1 "orange" "white" "white" "white" "white" "white" "orange"
+
+Help needed - Development
+
+SCHEME/GUILE WIZARDS -- The potentialities of Guile into DrGenius are important, there are many paths to explore:
+	DGS macro => procedural macro written in Scheme (hot!)
+	Geometry proof system for DrGenius => guidance in proof (very hot!)
+	Scheme console, to interactively manipulate DrGenius figure from Scheme commands
+	Define an alternative save format in Scheme then a Logo to DrGenius translator
+
+GNOME WIZARD
+	Gnome is a moving target, help is needed to integrate the beast into DrGenius
+
+
+
+%page
+%bgrad  0 0 128 -15 1 "red" "white" "white" "white" "white" "white" "red"
+
+TO HELP
+
+
+
+Join us at
+
+%center
+
+%size 9
+http://www.ofset.org/drgenius
+
+%page
+%bgrad  0 0 128 -15 1 "grey" "white" "white" "white" "white" "white" "grey"
+
+PROJECTS AT OFSET
+
+
+
+	FREEDUC-CD - «Live» GNU system for the education sector
+		http://www.ofset.org/projects/edusoft/edusost.html
+
+	GCOMPRIS - Educative activities for the primary school
+		http://www.ofset.org/gcompris
+
+	DR GENIUS - Interactive geometry
+		http://www.ofset.org/drgenius
+
+%page
+%bgrad  0 0 128 -15 1 "darkgreen" "white" "white" "white" "white" "white" "darkgreen"
+
+THE END
+
+
+
+
+
+
+%center
+%newimage "gnome-drgenius.png"
+
+http://www.ofset.org/drgenius

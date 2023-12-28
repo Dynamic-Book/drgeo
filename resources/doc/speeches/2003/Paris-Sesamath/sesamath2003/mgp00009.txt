@@ -1,0 +1,12 @@
+
+Interface et outils géométriques (5)
+
+Les figures interactives se construisent à l'aide d'outils dont:
+
+points (libre, milieu, sur une ligne, d'intersection, par coordonnées);
+lignes (droite, demi-droite, segment, vecteur, cercle, arc de cercle, polygone, lieu);
+transformations planes (rotation, symétrie centrale, réflexion, homothéties, translation ainsi que la construction de droites parallèles et perpendiculaires);
+mesures numériques (longueur, distance, coordonnées, équation, valeur libre, angle);
+macro-constructions;
+DGS (DrGenius Guile Script).
+

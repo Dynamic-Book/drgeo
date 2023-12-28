@@ -1,0 +1,19 @@
+
+Table of Contents
+
+
+Dr. Genius
+What is the situation?
+What's in Dr.Genius?
+Advanced features
+Macro-construction
+Guile Script
+High level road map
+Where are we?
+Help Needed
+Documentation
+User's Feedback
+Development
+Projects at OFSET
+
+

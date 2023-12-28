@@ -1,0 +1,11 @@
+
+Perspectives
+
+Développer les potentialités de Guile dans Dr.Genius:
+
+Macro DGS => macro procédurale écrite en Scheme;
+Système de preuve géométrique => aide à la démonstration;
+Console Guile pour manipuler interactivement une figure Dr.Genius avec des commandes Scheme;
+Définir un format de sauvegarde alternatif en Scheme puis un traducteur LOGO-Dr.Genius.
+
+

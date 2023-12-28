@@ -1,0 +1,10 @@
+
+Contribuer à la documentation (1)
+
+La rédaction de la documentation se fait par Internet:
+
+Dans le CVS d'OFSET, les manuels sont dans le module "drgenius-man";
+
+Les manuels utilisent les outils LaTeX, HyperLaTeX, Autoconf/Automake et Make;
+
+

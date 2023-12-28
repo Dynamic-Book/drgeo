@@ -1,0 +1,13 @@
+
+Comment s'impliquer ? (2)
+
+
+Compléter la documentation
+
+Créer des activités pédagogiques
+
+Participer au développement sur le code source
+
+Pour s'impliquer, la première étape passe souvent par l'inscription à la liste de développement du projet, pour Dr.Genius voir:
+http://www.ofset.org/drgenius/ml-fr.html
+

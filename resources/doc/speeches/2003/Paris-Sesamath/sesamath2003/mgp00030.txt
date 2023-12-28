@@ -1,0 +1,10 @@
+
+Contribuer à la documentation (2)
+
+CVS
+C'est l'outil de collaboration de la communauté du libre, il permet de travailler sur des corpus de textes de type:
+Codes sources
+Textes dans des formats transparents comme ascii, xml, LaTeX
+Pour le manuel de Dr. Genius, c'est le deuxième cas de figure, avec un manuel dans le format HyperLaTeX/LaTeX
+
+

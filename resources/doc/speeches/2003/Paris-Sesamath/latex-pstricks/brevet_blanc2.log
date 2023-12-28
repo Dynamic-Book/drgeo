@@ -1,0 +1,190 @@
+This is TeXk, Version 3.14159 (Web2C 7.3.9) (format=latex 2003.1.16)  20 MAR 2003 11:01
+ Source specials enabled.
+ %&-line parsing enabled.
+**\nonstopmode\input{brevet_blanc2.tex}
+(./brevet_blanc2.tex (/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo
+File: size10.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/pstricks/pstricks.sty
+Package: pstricks 1997/03/25 package wrapper for PSTricks pstricks.tex
+
+(/usr/share/texmf/tex/generic/pstricks/pstricks.tex
+`PSTricks' v97 patch 14  <1999/12/23> (tvz)
+\pst@dima=\dimen103
+\pst@dimb=\dimen104
+\pst@dimc=\dimen105
+\pst@dimd=\dimen106
+\pst@dimg=\dimen107
+\pst@dimh=\dimen108
+\pst@hbox=\box26
+\pst@boxg=\box27
+\pst@cnta=\count87
+\pst@cntb=\count88
+\pst@cntc=\count89
+\pst@cntd=\count90
+\pst@cntg=\count91
+\pst@cnth=\count92
+\pst@toks=\toks14
+(/usr/share/texmf/tex/generic/pstricks/pstricks.con)
+\psunit=\dimen109
+\psxunit=\dimen110
+\psyunit=\dimen111
+\pslinewidth=\dimen112
+\pst@customdefs=\toks15
+\pslinearc=\dimen113
+\everypsbox=\toks16
+\psframesep=\dimen114
+\pslabelsep=\dimen115
+\theoverlaybox=\box28
+))
+(/usr/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2001/07/10 v0.99a Input encoding file 
+
+(/usr/share/texmf/tex/latex/base/latin1.def
+File: latin1.def 2001/07/10 v0.99a Input encoding file 
+))
+(/usr/share/texmf/tex/generic/babel/babel.sty
+Package: babel 2001/03/01 v3.7h The Babel package
+
+(/usr/share/texmf/tex/generic/babel/frenchb.ldf
+Language: french 2001/09/09 v1.5g French support from the babel system
+
+(/usr/share/texmf/tex/generic/babel/babel.def
+File: babel.def 2001/03/01 v3.7h Babel common definitions
+\babel@savecnt=\count93
+\U@D=\dimen116
+)
+Package babel Info: Making : an active character on input line 199.
+Package babel Info: Making ; an active character on input line 200.
+Package babel Info: Making ! an active character on input line 201.
+Package babel Info: Making ? an active character on input line 202.
+
+*************************************
+* Local config file frenchb.cfg used
+*
+(/usr/share/texmf/tex/generic/babel/frenchb.cfg))) (./brevet_blanc2.aux)
+\openout1 = `brevet_blanc2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT2/wncyr/m/n on input line 20.
+LaTeX Font Info:    Try loading font information for OT2+wncyr on input line 20
+.
+
+(/usr/share/texmf/tex/latex/cyrillic/ot2wncyr.fd
+File: ot2wncyr.fd 1999/12/17 v3.2a Computer Modern Cyrillic font definitions
+)
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Info: Redefining \dots on input line 20.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 24.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 24.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 24.
+
+
+LaTeX Warning: No \author given.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 38.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 38.
+
+LaTeX Warning: Marginpar on page 1 moved.
+
+
+LaTeX Warning: Marginpar on page 1 moved.
+
+
+LaTeX Warning: Marginpar on page 1 moved.
+
+
+LaTeX Warning: Marginpar on page 1 moved.
+
+
+LaTeX Warning: Marginpar on page 1 moved.
+
+[1
+
+]
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+[2] (./pyramide.tex)
+Overfull \hbox (22.98883pt too wide) in paragraph at lines 20--116
+ [][] 
+ []
+
+[3]
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+
+LaTeX Warning: Marginpar on page 4 moved.
+
+[4] (./brevet_blanc2.aux) ) 
+Here is how much of TeX's memory you used:
+ 1630 strings out of 61382
+ 18623 string characters out of 1195948
+ 84936 words of memory out of 2500001
+ 4597 multiletter control sequences out of 10000+50000
+ 9258 words of font info for 32 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 1000
+ 25i,12n,24p,210b,383s stack positions out of 1500i,500n,5000p,200000b,5000s
+
+Output written on brevet_blanc2.dvi (4 pages, 18280 bytes).

@@ -1,0 +1,1650 @@
+<?xml version="1.0"?>
+<drgenius>
+  <drgeo name="angle-inscrit.drgenius">
+    <point id="8202BE8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="O">
+      <x>-1.383333</x>
+      <y>-0.083333</y>
+    </point>
+    <point id="814FE40" type="Free" color="Red" thickness="Dashed" style="RectangularEmpty" filled="False" masked="False" name="">
+      <x>2.916667</x>
+      <y>-0.083333</y>
+    </point>
+    <circle id="814FA60" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8202BE8"/>
+      <parent ref="814FE40"/>
+    </circle>
+    <point id="814FB60" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I">
+      <value>0.654873</value>
+      <parent ref="814FA60"/>
+    </point>
+    <point id="8162CD0" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="J">
+      <value>0.498322</value>
+      <parent ref="814FA60"/>
+    </point>
+    <point id="8162D90" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="K">
+      <value>0.229723</value>
+      <parent ref="814FA60"/>
+    </point>
+    <polygon id="8162E50" type="npts" color="Blue" thickness="Normal" style="Cross" filled="False" masked="False" name="IJK">
+      <parent ref="814FB60"/>
+      <parent ref="8162CD0"/>
+      <parent ref="8162D90"/>
+    </polygon>
+    <angle id="8162F88" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="IKJ">
+      <parent ref="814FB60"/>
+      <parent ref="8162D90"/>
+      <parent ref="8162CD0"/>
+    </angle>
+    <segment id="81630C0" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[OI]">
+      <parent ref="8202BE8"/>
+      <parent ref="814FB60"/>
+    </segment>
+    <segment id="81631D8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[OJ]">
+      <parent ref="8202BE8"/>
+      <parent ref="8162CD0"/>
+    </segment>
+    <angle id="81632A0" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="IOJ">
+      <parent ref="814FB60"/>
+      <parent ref="8202BE8"/>
+      <parent ref="8162CD0"/>
+    </angle>
+  </drgeo>
+  <drgeo name="cercle-inscrit.xml">
+    <point id="8250ED0" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <x>-5.716666</x>
+      <y>5.249999</y>
+    </point>
+    <point id="8250F78" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <x>-1.683334</x>
+      <y>-0.050000</y>
+    </point>
+    <point id="8251020" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <x>-7.716667</x>
+      <y>-1.783334</y>
+    </point>
+    <circle id="82510C8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="Alway" name="">
+      <parent ref="8250F78"/>
+      <parent ref="8251020"/>
+    </circle>
+    <line id="8251160" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="Alway" name="">
+      <parent ref="8250ED0"/>
+      <parent ref="8250F78"/>
+    </line>
+    <point id="8251200" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="Alway" name="" extra="0">
+      <parent ref="82510C8"/>
+      <parent ref="8251160"/>
+    </point>
+    <circle id="8251298" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="Alway" name="">
+      <parent ref="8251200"/>
+      <parent ref="8250F78"/>
+    </circle>
+    <circle id="8253470" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="Alway" name="">
+      <parent ref="8251020"/>
+      <parent ref="8250F78"/>
+    </circle>
+    <point id="82534D8" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="Alway" name="" extra="1">
+      <parent ref="8251298"/>
+      <parent ref="8253470"/>
+    </point>
+    <point id="8253550" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="Alway" name="" extra="0">
+      <parent ref="8251298"/>
+      <parent ref="8253470"/>
+    </point>
+    <line id="82535E8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82534D8"/>
+      <parent ref="8253550"/>
+    </line>
+    <circle id="8253718" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="Alway" name="">
+      <parent ref="8250ED0"/>
+      <parent ref="8250F78"/>
+    </circle>
+    <line id="82537B0" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="Alway" name="">
+      <parent ref="8251020"/>
+      <parent ref="8250ED0"/>
+    </line>
+    <point id="8253850" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="Alway" name="" extra="0">
+      <parent ref="8253718"/>
+      <parent ref="82537B0"/>
+    </point>
+    <circle id="8253900" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="Alway" name="">
+      <parent ref="8253850"/>
+      <parent ref="8250ED0"/>
+    </circle>
+    <circle id="8253998" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="Alway" name="">
+      <parent ref="8250F78"/>
+      <parent ref="8250ED0"/>
+    </circle>
+    <point id="8253A30" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="Alway" name="" extra="1">
+      <parent ref="8253900"/>
+      <parent ref="8253998"/>
+    </point>
+    <point id="8253AC8" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="Alway" name="" extra="0">
+      <parent ref="8253900"/>
+      <parent ref="8253998"/>
+    </point>
+    <line id="8253B60" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8253A30"/>
+      <parent ref="8253AC8"/>
+    </line>
+    <segment id="8253C00" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8250ED0"/>
+      <parent ref="8250F78"/>
+    </segment>
+    <segment id="8253CB8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8250F78"/>
+      <parent ref="8251020"/>
+    </segment>
+    <segment id="8253D70" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8251020"/>
+      <parent ref="8250ED0"/>
+    </segment>
+    <point id="8253E28" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="82535E8"/>
+      <parent ref="8253B60"/>
+    </point>
+    <line id="8253EE8" type="perpendicular" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8253E28"/>
+      <parent ref="8253C00"/>
+    </line>
+    <point id="8253F88" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="8253EE8"/>
+      <parent ref="8253C00"/>
+    </point>
+    <circle id="8254000" type="2pts" color="Orange" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8253E28"/>
+      <parent ref="8253F88"/>
+    </circle>
+  </drgeo>
+  <drgeo name="mercedes.drgenius">
+    <point id="826FE88" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="">
+      <x>-3.066667</x>
+      <y>2.883333</y>
+    </point>
+    <numeric id="8271A80" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <value>3.000000</value>
+      <x>0.766667</x>
+      <y>5.616667</y>
+    </numeric>
+    <numeric id="8271BC0" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <value>2.800000</value>
+      <x>1.166667</x>
+      <y>4.650000</y>
+    </numeric>
+    <numeric id="8271C88" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <value>2.094395</value>
+      <x>0.766667</x>
+      <y>2.883333</y>
+    </numeric>
+    <numeric id="8271D50" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <value>0.400000</value>
+      <x>1.566667</x>
+      <y>0.850000</y>
+    </numeric>
+    <circle id="8271E18" type="radius" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="826FE88"/>
+      <parent ref="8271BC0"/>
+    </circle>
+    <circle id="8271EC8" type="radius" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="826FE88"/>
+      <parent ref="8271A80"/>
+    </circle>
+    <circle id="8271F78" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="826FE88"/>
+      <parent ref="8271D50"/>
+    </circle>
+    <point id="8271FF0" type="On_curve" color="Black" thickness="Dashed" style="Round" filled="False" masked="False" name="">
+      <value>0.549377</value>
+      <parent ref="8271E18"/>
+    </point>
+    <point id="8272098" type="Rotation" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="">
+      <parent ref="8271FF0"/>
+      <parent ref="826FE88"/>
+      <parent ref="8271C88"/>
+    </point>
+    <point id="8272140" type="Rotation" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="">
+      <parent ref="8272098"/>
+      <parent ref="826FE88"/>
+      <parent ref="8271C88"/>
+    </point>
+    <halfLine id="82721E8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="8272098"/>
+      <parent ref="826FE88"/>
+    </halfLine>
+    <halfLine id="8272338" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="8271FF0"/>
+      <parent ref="826FE88"/>
+    </halfLine>
+    <halfLine id="82723F8" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="True" name="">
+      <parent ref="8272140"/>
+      <parent ref="826FE88"/>
+    </halfLine>
+    <point id="82724B8" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="" extra="0">
+      <parent ref="8272338"/>
+      <parent ref="8271F78"/>
+    </point>
+    <point id="8272578" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="" extra="1">
+      <parent ref="8272338"/>
+      <parent ref="8271F78"/>
+    </point>
+    <point id="8272620" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="" extra="0">
+      <parent ref="82721E8"/>
+      <parent ref="8271F78"/>
+    </point>
+    <point id="82726C8" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="" extra="1">
+      <parent ref="82721E8"/>
+      <parent ref="8271F78"/>
+    </point>
+    <point id="8272770" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="" extra="0">
+      <parent ref="82723F8"/>
+      <parent ref="8271F78"/>
+    </point>
+    <point id="8272818" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="" extra="1">
+      <parent ref="82723F8"/>
+      <parent ref="8271F78"/>
+    </point>
+    <segment id="82728C0" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272140"/>
+      <parent ref="8272578"/>
+    </segment>
+    <segment id="8272960" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272578"/>
+      <parent ref="8272098"/>
+    </segment>
+    <segment id="8272A18" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272098"/>
+      <parent ref="8272818"/>
+    </segment>
+    <segment id="8272AD0" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272818"/>
+      <parent ref="8271FF0"/>
+    </segment>
+    <segment id="8273358" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8271FF0"/>
+      <parent ref="82726C8"/>
+    </segment>
+    <segment id="8273410" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82726C8"/>
+      <parent ref="8272140"/>
+    </segment>
+    <segment id="82734C8" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272818"/>
+      <parent ref="8272140"/>
+    </segment>
+    <segment id="8273580" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82726C8"/>
+      <parent ref="8272098"/>
+    </segment>
+    <segment id="8273638" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272578"/>
+      <parent ref="8271FF0"/>
+    </segment>
+    <point id="82736F0" type="Free" color="Orange" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <x>1.633333</x>
+      <y>-0.716667</y>
+    </point>
+    <point id="8273798" type="Free" color="Orange" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <x>0.466666</x>
+      <y>6.250000</y>
+    </point>
+    <line id="8273840" type="2pts" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82736F0"/>
+      <parent ref="8273798"/>
+    </line>
+    <circle id="82738F8" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8271EC8"/>
+      <parent ref="8273840"/>
+    </circle>
+    <circle id="8273A40" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8271E18"/>
+      <parent ref="8273840"/>
+    </circle>
+    <segment id="8273AF0" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272960"/>
+      <parent ref="8273840"/>
+    </segment>
+    <segment id="8273BA8" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272A18"/>
+      <parent ref="8273840"/>
+    </segment>
+    <segment id="8273C60" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8273580"/>
+      <parent ref="8273840"/>
+    </segment>
+    <segment id="8273D18" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82728C0"/>
+      <parent ref="8273840"/>
+    </segment>
+    <segment id="8273DD0" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82734C8"/>
+      <parent ref="8273840"/>
+    </segment>
+    <segment id="8273E88" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8273410"/>
+      <parent ref="8273840"/>
+    </segment>
+    <segment id="8273F40" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8273358"/>
+      <parent ref="8273840"/>
+    </segment>
+    <segment id="8273FF8" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8273638"/>
+      <parent ref="8273840"/>
+    </segment>
+    <segment id="8274080" type="Reflexion" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8272AD0"/>
+      <parent ref="8273840"/>
+    </segment>
+  </drgeo>
+  <drgeo name="moyenne-prop.drgenius">
+    <point id="8293300" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="O">
+      <x>-2.850000</x>
+      <y>-0.816666</y>
+    </point>
+    <point id="8294F28" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="M">
+      <x>-0.150000</x>
+      <y>-0.583333</y>
+    </point>
+    <circle id="8294FD8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8293300"/>
+      <parent ref="8294F28"/>
+    </circle>
+    <point id="8295088" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="N">
+      <value>0.214013</value>
+      <parent ref="8294FD8"/>
+    </point>
+    <line id="8295148" type="2pts" color="DarkGreen" thickness="Normal" style="Cross" filled="False" masked="False" name="(OM)">
+      <parent ref="8293300"/>
+      <parent ref="8294F28"/>
+    </line>
+    <line id="8295210" type="2pts" color="DarkGreen" thickness="Normal" style="Cross" filled="False" masked="False" name="(ON)">
+      <parent ref="8293300"/>
+      <parent ref="8295088"/>
+    </line>
+    <point id="82952D8" type="On_curve" color="Red" thickness="Thick" style="RectangularEmpty" filled="False" masked="False" name="R">
+      <value>0.940373</value>
+      <parent ref="8295148"/>
+    </point>
+    <segment id="8295398" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[NR]">
+      <parent ref="8295088"/>
+      <parent ref="82952D8"/>
+    </segment>
+    <line id="8295460" type="parallel" color="DarkGreen" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8294F28"/>
+      <parent ref="8295398"/>
+    </line>
+    <point id="8295518" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="S" extra="0">
+      <parent ref="8295460"/>
+      <parent ref="8295210"/>
+    </point>
+    <numeric id="82955D8" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="OR">
+      <x>4.683334</x>
+      <y>3.283333</y>
+      <parent ref="8293300"/>
+      <parent ref="82952D8"/>
+    </numeric>
+    <numeric id="8295760" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="OM">
+      <x>4.750000</x>
+      <y>2.650000</y>
+      <parent ref="8293300"/>
+      <parent ref="8294F28"/>
+    </numeric>
+    <numeric id="8295860" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="ON">
+      <x>2.050000</x>
+      <y>3.283334</y>
+      <parent ref="8293300"/>
+      <parent ref="8295088"/>
+    </numeric>
+    <numeric id="8295948" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="OS">
+      <x>2.050000</x>
+      <y>2.583334</y>
+      <parent ref="8293300"/>
+      <parent ref="8295518"/>
+    </numeric>
+    <script id="8295A30" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="OR &#215; OS">
+      <x>2.083334</x>
+      <y>1.716666</y>
+      <parent ref="82955D8"/>
+      <parent ref="8295948"/>
+      <code>(define OR (getValue a1))
+(define OS (getValue a2))
+(* OS OR)</code>
+    </script>
+    <script id="8295D88" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="OM&#178;">
+      <x>2.100000</x>
+      <y>1.066667</y>
+      <parent ref="8295760"/>
+      <code>(define OM (getValue a1))
+(* OM OM)</code>
+    </script>
+  </drgeo>
+  <drgeo name="orthocentre-symetique.drgenius">
+    <point id="82AB3F8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="">
+      <x>-3.766666</x>
+      <y>1.433333</y>
+    </point>
+    <point id="82AD0D8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="">
+      <x>-0.700000</x>
+      <y>0.000000</y>
+    </point>
+    <circle id="82AD140" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="C">
+      <parent ref="82AB3F8"/>
+      <parent ref="82AD0D8"/>
+    </circle>
+    <point id="82AD1A8" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="C">
+      <value>0.706177</value>
+      <parent ref="82AD140"/>
+    </point>
+    <point id="82AD210" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="A">
+      <value>0.426065</value>
+      <parent ref="82AD140"/>
+    </point>
+    <point id="82AD278" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="B">
+      <value>0.060163</value>
+      <parent ref="82AD140"/>
+    </point>
+    <segment id="82AD2E0" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[AB]">
+      <parent ref="82AD210"/>
+      <parent ref="82AD278"/>
+    </segment>
+    <segment id="82AD350" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[BC]">
+      <parent ref="82AD278"/>
+      <parent ref="82AD1A8"/>
+    </segment>
+    <segment id="82AD3C0" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[AC]">
+      <parent ref="82AD210"/>
+      <parent ref="82AD1A8"/>
+    </segment>
+    <point id="82AD430" type="Middle_segment" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I">
+      <parent ref="82AD350"/>
+    </point>
+    <line id="82AD498" type="perpendicular" color="Orange" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="82AD278"/>
+      <parent ref="82AD3C0"/>
+    </line>
+    <line id="82AD508" type="perpendicular" color="Orange" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="82AD210"/>
+      <parent ref="82AD350"/>
+    </line>
+    <point id="82AD578" type="Intersection" color="Orange" thickness="Dashed" style="Round" filled="False" masked="False" name="H" extra="0">
+      <parent ref="82AD498"/>
+      <parent ref="82AD508"/>
+    </point>
+    <point id="82AD5E0" type="Symmetry" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I'">
+      <parent ref="82AD578"/>
+      <parent ref="82AD430"/>
+    </point>
+    <locus id="82AD648" type="None" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82AD210"/>
+      <parent ref="82AD5E0"/>
+    </locus>
+  </drgeo>
+  <drgeo name="varignon.drgenius">
+    <customUI password="$1$3Q5SyJB1$mWDMHv5bNw6UjJHoUe9pG0">
+      <tool id="0">FALSE</tool>
+      <tool id="1">FALSE</tool>
+      <tool id="2">FALSE</tool>
+      <tool id="3">TRUE</tool>
+      <tool id="4">FALSE</tool>
+      <tool id="5">TRUE</tool>
+      <tool id="6">TRUE</tool>
+      <tool id="7">FALSE</tool>
+      <tool id="8">FALSE</tool>
+      <tool id="9">FALSE</tool>
+      <tool id="10">FALSE</tool>
+      <tool id="11">FALSE</tool>
+      <tool id="12">FALSE</tool>
+      <tool id="13">FALSE</tool>
+      <tool id="14">FALSE</tool>
+      <tool id="15">FALSE</tool>
+      <tool id="16">FALSE</tool>
+      <tool id="17">FALSE</tool>
+      <tool id="18">FALSE</tool>
+      <tool id="19">FALSE</tool>
+      <tool id="20">FALSE</tool>
+      <tool id="21">FALSE</tool>
+      <tool id="22">FALSE</tool>
+      <tool id="23">FALSE</tool>
+      <tool id="24">FALSE</tool>
+      <tool id="25">FALSE</tool>
+      <tool id="26">TRUE</tool>
+      <tool id="27">TRUE</tool>
+      <tool id="28">TRUE</tool>
+      <tool id="29">TRUE</tool>
+      <tool id="30">FALSE</tool>
+      <tool id="31">FALSE</tool>
+      <tool id="32">FALSE</tool>
+      <tool id="33">TRUE</tool>
+      <tool id="34">TRUE</tool>
+      <tool id="35">FALSE</tool>
+    </customUI>
+    <point id="82C8F60" type="Free" color="Blue" thickness="Dashed" style="Rectangular" filled="False" masked="False" name="A">
+      <x>-5.600000</x>
+      <y>1.533333</y>
+    </point>
+    <point id="82CAB90" type="Free" color="Blue" thickness="Dashed" style="Rectangular" filled="False" masked="False" name="B">
+      <x>-1.599999</x>
+      <y>3.666667</y>
+    </point>
+    <point id="82CAC50" type="Free" color="Blue" thickness="Dashed" style="Rectangular" filled="False" masked="False" name="C">
+      <x>1.966667</x>
+      <y>-2.933333</y>
+    </point>
+    <point id="82CAD10" type="Free" color="Blue" thickness="Dashed" style="Rectangular" filled="False" masked="False" name="D">
+      <x>-6.100000</x>
+      <y>-3.666667</y>
+    </point>
+    <segment id="82CADD0" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[AB]">
+      <parent ref="82C8F60"/>
+      <parent ref="82CAB90"/>
+    </segment>
+    <segment id="82CAE98" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[BC]">
+      <parent ref="82CAB90"/>
+      <parent ref="82CAC50"/>
+    </segment>
+    <segment id="82CAF60" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[CD]">
+      <parent ref="82CAC50"/>
+      <parent ref="82CAD10"/>
+    </segment>
+    <segment id="82CB028" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[DA]">
+      <parent ref="82CAD10"/>
+      <parent ref="82C8F60"/>
+    </segment>
+    <point id="82CB0F0" type="Middle_segment" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I">
+      <parent ref="82CADD0"/>
+    </point>
+    <point id="82CB1B0" type="Middle_segment" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="J">
+      <parent ref="82CAE98"/>
+    </point>
+    <point id="82CB270" type="Middle_segment" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="K">
+      <parent ref="82CAF60"/>
+    </point>
+    <point id="82CB330" type="Middle_segment" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="L">
+      <parent ref="82CB028"/>
+    </point>
+    <segment id="82CB3F0" type="2pts" color="Bordeaux" thickness="Normal" style="Cross" filled="False" masked="False" name="[IJ]">
+      <parent ref="82CB0F0"/>
+      <parent ref="82CB1B0"/>
+    </segment>
+    <segment id="82CB4B8" type="2pts" color="Bordeaux" thickness="Normal" style="Cross" filled="False" masked="False" name="[JK]">
+      <parent ref="82CB1B0"/>
+      <parent ref="82CB270"/>
+    </segment>
+    <segment id="82CB580" type="2pts" color="Bordeaux" thickness="Normal" style="Cross" filled="False" masked="False" name="[KL]">
+      <parent ref="82CB270"/>
+      <parent ref="82CB330"/>
+    </segment>
+    <segment id="82CB648" type="2pts" color="Bordeaux" thickness="Normal" style="Cross" filled="False" masked="False" name="[LI]">
+      <parent ref="82CB330"/>
+      <parent ref="82CB0F0"/>
+    </segment>
+    <angle id="82CB7F8" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="IJK">
+      <parent ref="82CB0F0"/>
+      <parent ref="82CB1B0"/>
+      <parent ref="82CB270"/>
+    </angle>
+    <angle id="82CB8E0" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="KLI">
+      <parent ref="82CB270"/>
+      <parent ref="82CB330"/>
+      <parent ref="82CB0F0"/>
+    </angle>
+    <angle id="82CB9C8" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="JKL">
+      <parent ref="82CB1B0"/>
+      <parent ref="82CB270"/>
+      <parent ref="82CB330"/>
+    </angle>
+    <numeric id="82CBAB0" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="IJ">
+      <x>1.666666</x>
+      <y>4.500000</y>
+      <parent ref="82CB3F0"/>
+    </numeric>
+    <numeric id="82CBC18" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="JK">
+      <x>1.666667</x>
+      <y>3.600000</y>
+      <parent ref="82CB4B8"/>
+    </numeric>
+    <numeric id="82CBCF0" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="KL">
+      <x>1.733333</x>
+      <y>2.666666</y>
+      <parent ref="82CB580"/>
+    </numeric>
+  </drgeo>
+  <drgeo name="Fig. 1">
+    <point id="82E9C08" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="M">
+      <x>-8.066667</x>
+      <y>1.866667</y>
+    </point>
+    <point id="82E9CB0" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="N">
+      <x>0.100000</x>
+      <y>-1.600000</y>
+    </point>
+    <point id="82E9D70" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="P">
+      <x>-7.833334</x>
+      <y>-2.466666</y>
+    </point>
+    <segment id="82E9E30" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[MN]">
+      <parent ref="82E9C08"/>
+      <parent ref="82E9CB0"/>
+    </segment>
+    <segment id="82E9EF8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[NP]">
+      <parent ref="82E9CB0"/>
+      <parent ref="82E9D70"/>
+    </segment>
+    <segment id="82E9FC0" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[MP]">
+      <parent ref="82E9C08"/>
+      <parent ref="82E9D70"/>
+    </segment>
+    <point id="82EA088" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="O">
+      <x>3.500000</x>
+      <y>3.633333</y>
+    </point>
+    <point id="82EA148" type="Middle_2pts" color="Red" thickness="Dashed" style="Rectangular" filled="False" masked="False" name="M'">
+      <parent ref="82EA088"/>
+      <parent ref="82E9C08"/>
+    </point>
+    <point id="82EA208" type="Middle_2pts" color="Red" thickness="Dashed" style="Rectangular" filled="False" masked="False" name="N'">
+      <parent ref="82E9CB0"/>
+      <parent ref="82EA088"/>
+    </point>
+    <point id="82EA2C8" type="Middle_2pts" color="Red" thickness="Dashed" style="Rectangular" filled="False" masked="False" name="P'">
+      <parent ref="82EA088"/>
+      <parent ref="82E9D70"/>
+    </point>
+    <segment id="82EA388" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[M'N']">
+      <parent ref="82EA148"/>
+      <parent ref="82EA208"/>
+    </segment>
+    <segment id="82EA450" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[N'P']">
+      <parent ref="82EA208"/>
+      <parent ref="82EA2C8"/>
+    </segment>
+    <segment id="82EA518" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[P'M']">
+      <parent ref="82EA2C8"/>
+      <parent ref="82EA148"/>
+    </segment>
+    <angle id="82EA5E0" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="P'N'M'">
+      <parent ref="82EA2C8"/>
+      <parent ref="82EA208"/>
+      <parent ref="82EA148"/>
+    </angle>
+    <angle id="82EA6C8" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="MNP">
+      <parent ref="82E9C08"/>
+      <parent ref="82E9CB0"/>
+      <parent ref="82E9D70"/>
+    </angle>
+    <angle id="82EA7B0" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="PMN">
+      <parent ref="82E9D70"/>
+      <parent ref="82E9C08"/>
+      <parent ref="82E9CB0"/>
+    </angle>
+    <angle id="82EA898" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="NPM">
+      <parent ref="82E9CB0"/>
+      <parent ref="82E9D70"/>
+      <parent ref="82E9C08"/>
+    </angle>
+    <angle id="82EA980" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="N'P'M'">
+      <parent ref="82EA208"/>
+      <parent ref="82EA2C8"/>
+      <parent ref="82EA148"/>
+    </angle>
+    <angle id="82EAA68" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="P'M'N'">
+      <parent ref="82EA2C8"/>
+      <parent ref="82EA148"/>
+      <parent ref="82EA208"/>
+    </angle>
+    <numeric id="82EAB50" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="MN">
+      <x>5.766666</x>
+      <y>1.300000</y>
+      <parent ref="82E9E30"/>
+    </numeric>
+    <numeric id="82EAC28" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="NP">
+      <x>5.700000</x>
+      <y>0.633334</y>
+      <parent ref="82E9EF8"/>
+    </numeric>
+    <numeric id="82EAD00" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="MP">
+      <x>5.700000</x>
+      <y>0.100000</y>
+      <parent ref="82E9FC0"/>
+    </numeric>
+    <numeric id="82EADD8" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="N'P'">
+      <x>6.000000</x>
+      <y>3.866667</y>
+      <parent ref="82EA450"/>
+    </numeric>
+    <numeric id="82EAED0" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="M'N'">
+      <x>5.966667</x>
+      <y>4.633333</y>
+      <parent ref="82EA388"/>
+    </numeric>
+    <numeric id="82EAFB0" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="P'M'">
+      <x>6.000000</x>
+      <y>3.166666</y>
+      <parent ref="82EA518"/>
+    </numeric>
+  </drgeo>
+  <drgeo name="Fig. 2">
+    <point id="83067B8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="M">
+      <x>-5.233334</x>
+      <y>3.166667</y>
+    </point>
+    <point id="8308388" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="N">
+      <x>-1.066667</x>
+      <y>0.400000</y>
+    </point>
+    <point id="8308430" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="P">
+      <x>-4.233334</x>
+      <y>-0.399999</y>
+    </point>
+    <segment id="83084F0" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[MN]">
+      <parent ref="83067B8"/>
+      <parent ref="8308388"/>
+    </segment>
+    <segment id="83085B8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[NP]">
+      <parent ref="8308388"/>
+      <parent ref="8308430"/>
+    </segment>
+    <segment id="8308680" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[MP]">
+      <parent ref="83067B8"/>
+      <parent ref="8308430"/>
+    </segment>
+    <point id="8308748" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="O">
+      <x>-1.866667</x>
+      <y>4.433333</y>
+    </point>
+    <angle id="8308808" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="MNP">
+      <parent ref="83067B8"/>
+      <parent ref="8308388"/>
+      <parent ref="8308430"/>
+    </angle>
+    <angle id="83088F0" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="PMN">
+      <parent ref="8308430"/>
+      <parent ref="83067B8"/>
+      <parent ref="8308388"/>
+    </angle>
+    <angle id="83089D8" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="NPM">
+      <parent ref="8308388"/>
+      <parent ref="8308430"/>
+      <parent ref="83067B8"/>
+    </angle>
+    <numeric id="8308AC0" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="MN">
+      <x>5.766666</x>
+      <y>1.300000</y>
+      <parent ref="83084F0"/>
+    </numeric>
+    <numeric id="8308B98" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="NP">
+      <x>5.700000</x>
+      <y>0.633334</y>
+      <parent ref="83085B8"/>
+    </numeric>
+    <numeric id="8308C70" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="MP">
+      <x>5.700000</x>
+      <y>0.100000</y>
+      <parent ref="8308680"/>
+    </numeric>
+    <point id="8308D48" type="Symmetry" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="M'">
+      <parent ref="8308748"/>
+      <parent ref="83067B8"/>
+    </point>
+    <point id="8308E08" type="Symmetry" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="N'">
+      <parent ref="8308748"/>
+      <parent ref="8308388"/>
+    </point>
+    <point id="8308EC8" type="Symmetry" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="P'">
+      <parent ref="8308748"/>
+      <parent ref="8308430"/>
+    </point>
+    <segment id="8308F88" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[M'P']">
+      <parent ref="8308D48"/>
+      <parent ref="8308EC8"/>
+    </segment>
+    <segment id="8309050" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[P'N']">
+      <parent ref="8308EC8"/>
+      <parent ref="8308E08"/>
+    </segment>
+    <segment id="8309118" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[N'M']">
+      <parent ref="8308E08"/>
+      <parent ref="8308D48"/>
+    </segment>
+    <numeric id="83091E0" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="P'N'">
+      <x>5.599842</x>
+      <y>-1.900000</y>
+      <parent ref="8309050"/>
+    </numeric>
+    <numeric id="83092D8" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="M'P'">
+      <x>5.633176</x>
+      <y>-2.300000</y>
+      <parent ref="8308F88"/>
+    </numeric>
+    <numeric id="83093B8" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="M'N'">
+      <x>5.599842</x>
+      <y>-1.400000</y>
+      <parent ref="8309118"/>
+    </numeric>
+    <angle id="8309498" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="N'M'P'">
+      <parent ref="8308E08"/>
+      <parent ref="8308D48"/>
+      <parent ref="8308EC8"/>
+    </angle>
+    <angle id="8309568" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="M'P'N'">
+      <parent ref="8308D48"/>
+      <parent ref="8308EC8"/>
+      <parent ref="8308E08"/>
+    </angle>
+    <angle id="8309650" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="P'N'M'">
+      <parent ref="8308EC8"/>
+      <parent ref="8308E08"/>
+      <parent ref="8308D48"/>
+    </angle>
+  </drgeo>
+  <drgeo name="trigo1.drgenius">
+    <point id="8325F78" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="A">
+      <x>-3.816667</x>
+      <y>-1.483333</y>
+    </point>
+    <point id="8327B90" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="B">
+      <x>2.883333</x>
+      <y>-1.516667</y>
+    </point>
+    <point id="8327C38" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="C">
+      <x>1.116667</x>
+      <y>2.383334</y>
+    </point>
+    <segment id="8327CF8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[AB]">
+      <parent ref="8325F78"/>
+      <parent ref="8327B90"/>
+    </segment>
+    <segment id="8327DC0" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[BC]">
+      <parent ref="8327B90"/>
+      <parent ref="8327C38"/>
+    </segment>
+    <segment id="8327E88" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[CA]">
+      <parent ref="8327C38"/>
+      <parent ref="8325F78"/>
+    </segment>
+    <numeric id="8327F50" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="AB">
+      <x>-7.950000</x>
+      <y>0.516667</y>
+      <parent ref="8327CF8"/>
+    </numeric>
+    <numeric id="8328028" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="AC">
+      <x>-7.883334</x>
+      <y>1.950000</y>
+      <parent ref="8327E88"/>
+    </numeric>
+    <numeric id="8328100" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="BC">
+      <x>-7.950000</x>
+      <y>1.283333</y>
+      <parent ref="8327DC0"/>
+    </numeric>
+    <angle id="83281D8" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="ABC">
+      <parent ref="8325F78"/>
+      <parent ref="8327B90"/>
+      <parent ref="8327C38"/>
+    </angle>
+    <angle id="83282C0" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="BCA">
+      <parent ref="8327B90"/>
+      <parent ref="8327C38"/>
+      <parent ref="8325F78"/>
+    </angle>
+    <angle id="83283A8" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="BAC">
+      <parent ref="8327B90"/>
+      <parent ref="8325F78"/>
+      <parent ref="8327C38"/>
+    </angle>
+    <script id="8328490" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="sin(A)/BC">
+      <x>-8.416667</x>
+      <y>-0.983334</y>
+      <parent ref="83283A8"/>
+      <parent ref="8328100"/>
+      <code>(define a (getValue a1))
+(define l (getValue a2))
+(/ (sin a) l)</code>
+    </script>
+    <script id="8328790" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="sin(B)/AC">
+      <x>-8.416667</x>
+      <y>-1.683333</y>
+      <parent ref="83281D8"/>
+      <parent ref="8328028"/>
+      <code>(define a (getValue a1))
+(define l (getValue a2))
+(/ (sin a) l)</code>
+    </script>
+    <script id="8328A00" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="sin(C)/AB">
+      <x>-8.483333</x>
+      <y>-2.416667</y>
+      <parent ref="83282C0"/>
+      <parent ref="8327F50"/>
+      <code>(define a (getValue a1))
+(define l (getValue a2))
+(/ (sin a) l)</code>
+    </script>
+  </drgeo>
+  <drgeo name="ellipsis-locus.xml">
+    <point id="8342C68" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="A">
+      <x>0.216666</x>
+      <y>6.466667</y>
+    </point>
+    <point id="8344880" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="C">
+      <x>7.683333</x>
+      <y>6.333334</y>
+    </point>
+    <segment id="8344928" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[AC]">
+      <parent ref="8342C68"/>
+      <parent ref="8344880"/>
+    </segment>
+    <point id="83449F0" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="B">
+      <value>0.439432</value>
+      <parent ref="8344928"/>
+    </point>
+    <numeric id="8344AB0" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>1.316667</x>
+      <y>7.066666</y>
+      <parent ref="8342C68"/>
+      <parent ref="83449F0"/>
+    </numeric>
+    <numeric id="8344BA0" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>5.550000</x>
+      <y>6.900000</y>
+      <parent ref="8344880"/>
+      <parent ref="83449F0"/>
+    </numeric>
+    <point id="8344C78" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F1">
+      <x>1.883334</x>
+      <y>-0.666667</y>
+    </point>
+    <point id="8344D20" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F2">
+      <x>7.316667</x>
+      <y>-0.766667</y>
+    </point>
+    <circle id="8344DE0" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8344C78"/>
+      <parent ref="8344AB0"/>
+    </circle>
+    <circle id="8344E90" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8344D20"/>
+      <parent ref="8344BA0"/>
+    </circle>
+    <point id="8344F40" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I2" extra="0">
+      <parent ref="8344DE0"/>
+      <parent ref="8344E90"/>
+    </point>
+    <point id="8345000" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I1" extra="1">
+      <parent ref="8344DE0"/>
+      <parent ref="8344E90"/>
+    </point>
+    <locus id="83450C0" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83449F0"/>
+      <parent ref="8345000"/>
+    </locus>
+    <locus id="8345E18" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83449F0"/>
+      <parent ref="8344F40"/>
+    </locus>
+    <numeric id="8346B50" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-8.183334</x>
+      <y>2.616666</y>
+      <parent ref="8344C78"/>
+      <parent ref="8345000"/>
+    </numeric>
+    <numeric id="8346C40" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-8.483333</x>
+      <y>1.750000</y>
+      <parent ref="8345000"/>
+      <parent ref="8344D20"/>
+    </numeric>
+    <script id="8346D18" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-6.333333</x>
+      <y>2.116666</y>
+      <parent ref="8346B50"/>
+      <parent ref="8346C40"/>
+      <code>(define d1 (getValue a1))
+(define d2 (getValue a2))
+(+ d1 d2)</code>
+    </script>
+    <segment id="8346FE8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[F1I1]">
+      <parent ref="8344C78"/>
+      <parent ref="8345000"/>
+    </segment>
+    <segment id="8347058" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[I1F2]">
+      <parent ref="8345000"/>
+      <parent ref="8344D20"/>
+    </segment>
+  </drgeo>
+  <drgeo name="hyperbola-locus.xml">
+    <point id="8364130" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="A">
+      <x>-3.616667</x>
+      <y>2.233334</y>
+    </point>
+    <point id="83641C0" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="B">
+      <x>-2.250000</x>
+      <y>2.366667</y>
+    </point>
+    <line id="8364280" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="(AB)">
+      <parent ref="8364130"/>
+      <parent ref="83641C0"/>
+    </line>
+    <point id="8364348" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <value>0.989836</value>
+      <parent ref="8364280"/>
+    </point>
+    <halfLine id="83643F0" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83641C0"/>
+      <parent ref="8364348"/>
+    </halfLine>
+    <point id="83644B0" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="C">
+      <value>0.730972</value>
+      <parent ref="83643F0"/>
+    </point>
+    <segment id="8364570" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[AC]">
+      <parent ref="8364130"/>
+      <parent ref="83644B0"/>
+    </segment>
+    <segment id="8364E40" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[BC]">
+      <parent ref="83641C0"/>
+      <parent ref="83644B0"/>
+    </segment>
+    <numeric id="8364F08" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[AC]">
+      <x>-7.316667</x>
+      <y>3.533333</y>
+      <parent ref="8364570"/>
+    </numeric>
+    <numeric id="8364FE0" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[BC]">
+      <x>6.416667</x>
+      <y>5.200000</y>
+      <parent ref="8364E40"/>
+    </numeric>
+    <point id="83650B8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F1">
+      <x>-0.783333</x>
+      <y>-2.833333</y>
+    </point>
+    <point id="8365178" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F2">
+      <x>2.250000</x>
+      <y>-2.100000</y>
+    </point>
+    <circle id="8365238" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83650B8"/>
+      <parent ref="8364F08"/>
+    </circle>
+    <circle id="83652E8" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8365178"/>
+      <parent ref="8364FE0"/>
+    </circle>
+    <circle id="8365398" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83650B8"/>
+      <parent ref="8364FE0"/>
+    </circle>
+    <circle id="8365448" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8365178"/>
+      <parent ref="8364F08"/>
+    </circle>
+    <point id="83654F8" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I3" extra="0">
+      <parent ref="83652E8"/>
+      <parent ref="8365238"/>
+    </point>
+    <point id="83655B8" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I4" extra="1">
+      <parent ref="83652E8"/>
+      <parent ref="8365238"/>
+    </point>
+    <point id="8365678" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I2" extra="0">
+      <parent ref="8365398"/>
+      <parent ref="8365448"/>
+    </point>
+    <point id="8365738" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I1" extra="1">
+      <parent ref="8365398"/>
+      <parent ref="8365448"/>
+    </point>
+    <locus id="83657F8" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83644B0"/>
+      <parent ref="8365738"/>
+    </locus>
+    <locus id="8366550" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83644B0"/>
+      <parent ref="8365678"/>
+    </locus>
+    <locus id="8367288" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83644B0"/>
+      <parent ref="83654F8"/>
+    </locus>
+    <locus id="8367FC0" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83644B0"/>
+      <parent ref="83655B8"/>
+    </locus>
+  </drgeo>
+  <drgeo name="parabola-locus.xml">
+    <point id="8387508" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F">
+      <x>-0.916667</x>
+      <y>-0.400000</y>
+    </point>
+    <point id="8387570" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="H">
+      <x>-2.450000</x>
+      <y>-0.800000</y>
+    </point>
+    <line id="83875E8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="(FH)">
+      <parent ref="8387508"/>
+      <parent ref="8387570"/>
+    </line>
+    <line id="83876B0" type="perpendicular" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8387570"/>
+      <parent ref="83875E8"/>
+    </line>
+    <point id="8387768" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="M">
+      <value>0.061403</value>
+      <parent ref="83876B0"/>
+    </point>
+    <segment id="8387828" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[FM]">
+      <parent ref="8387508"/>
+      <parent ref="8387768"/>
+    </segment>
+    <point id="83878F0" type="Middle_segment" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8387828"/>
+    </point>
+    <line id="83879B0" type="perpendicular" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83878F0"/>
+      <parent ref="8387828"/>
+    </line>
+    <line id="8387A50" type="perpendicular" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8387768"/>
+      <parent ref="83876B0"/>
+    </line>
+    <point id="8387B08" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="K" extra="0">
+      <parent ref="8387A50"/>
+      <parent ref="83879B0"/>
+    </point>
+    <locus id="8387BC8" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8387768"/>
+      <parent ref="8387B08"/>
+    </locus>
+  </drgeo>
+  <drgeo name="slope-cos.drgenius">
+    <point id="83A5470" type="Free" color="Blue" thickness="Dashed" style="Rectangular" filled="False" masked="True" name="">
+      <x>-8.450000</x>
+      <y>-5.683333</y>
+    </point>
+    <point id="83A54D8" type="Free" color="Blue" thickness="Dashed" style="Rectangular" filled="False" masked="True" name="">
+      <x>-1.783333</x>
+      <y>-5.716666</y>
+    </point>
+    <segment id="83A5540" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83A5470"/>
+      <parent ref="83A54D8"/>
+    </segment>
+    <point id="83A55E8" type="On_curve" color="Bordeaux" thickness="Thick" style="RectangularEmpty" filled="False" masked="False" name="Move me!">
+      <value>0.384865</value>
+      <parent ref="83A5540"/>
+    </point>
+    <script id="83A56A8" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="Xo">
+      <x>1.916667</x>
+      <y>-4.750000</y>
+      <parent ref="83A55E8"/>
+      <code>(define x (getAbscissa a1))
+(* 20  (- x 0.5))</code>
+    </script>
+    <script id="83A5958" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="Yo">
+      <x>2.216667</x>
+      <y>-5.316667</y>
+      <parent ref="83A56A8"/>
+      <code>(define x (getValue a1))
+(cos x)</code>
+    </script>
+    <point id="83A5BA8" type="Coordinate" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="Mo">
+      <parent ref="83A56A8"/>
+      <parent ref="83A5958"/>
+    </point>
+    <locus id="83A5C68" type="None" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83A55E8"/>
+      <parent ref="83A5BA8"/>
+    </locus>
+    <script id="83A6940" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="slope at Mo">
+      <x>4.616667</x>
+      <y>-4.550000</y>
+      <parent ref="83A56A8"/>
+      <code>(- 0 (sin (getValue a1)))</code>
+    </script>
+    <script id="83A6B60" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="X1">
+      <x>7.183333</x>
+      <y>-4.416667</y>
+      <parent ref="83A56A8"/>
+      <code>(define x1 (getValue a1))
+(+ x1 2)</code>
+    </script>
+    <script id="83A6DE0" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="Y1">
+      <x>7.483333</x>
+      <y>-5.483333</y>
+      <parent ref="83A5BA8"/>
+      <parent ref="83A6940"/>
+      <parent ref="83A6B60"/>
+      <code>(define x0 (car (getCoordinates a1)))
+(define y0 (cadr (getCoordinates a1)))
+(define m (getValue a2))
+(define x1 (getValue a3))
+(+ (* m (- x1 x0)) y0)</code>
+    </script>
+    <point id="83A6EA0" type="Coordinate" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83A6B60"/>
+      <parent ref="83A6DE0"/>
+    </point>
+    <line id="83A7000" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83A5BA8"/>
+      <parent ref="83A6EA0"/>
+    </line>
+    <point id="83A71C8" type="Coordinate" color="Red" thickness="Dashed" style="RectangularEmpty" filled="False" masked="True" name="">
+      <parent ref="83A6B60"/>
+      <parent ref="83A5958"/>
+    </point>
+    <segment id="83A7288" type="2pts" color="Blue" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83A6EA0"/>
+      <parent ref="83A71C8"/>
+    </segment>
+    <segment id="83A7328" type="2pts" color="Blue" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83A5BA8"/>
+      <parent ref="83A71C8"/>
+    </segment>
+  </drgeo>
+  <drgeo name="sin-cos.drgenius">
+    <numeric id="83C2F90" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-7.000000</value>
+      <x>-7.116666</x>
+      <y>6.050000</y>
+    </numeric>
+    <numeric id="83C4B98" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>0.050000</value>
+      <x>-6.950000</x>
+      <y>5.583333</y>
+    </numeric>
+    <numeric id="83C4C60" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-0.050000</value>
+      <x>-7.116667</x>
+      <y>5.183334</y>
+    </numeric>
+    <numeric id="83C4D28" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-6.000000</value>
+      <x>-4.550000</x>
+      <y>6.116667</y>
+    </numeric>
+    <numeric id="83C4DF0" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>0.000000</value>
+      <x>-4.316667</x>
+      <y>5.650000</y>
+    </numeric>
+    <numeric id="83C4EB8" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-5.000000</value>
+      <x>-2.450000</x>
+      <y>6.183333</y>
+    </numeric>
+    <numeric id="83C4F80" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-3.500000</value>
+      <x>1.350000</x>
+      <y>6.150000</y>
+    </numeric>
+    <numeric id="83C5048" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>3.500000</value>
+      <x>3.883333</x>
+      <y>6.116667</y>
+    </numeric>
+    <point id="83C5110" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C2F90"/>
+      <parent ref="83C4B98"/>
+    </point>
+    <point id="83C51B8" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C2F90"/>
+      <parent ref="83C4C60"/>
+    </point>
+    <point id="83C5260" type="Coordinate" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="O">
+      <parent ref="83C4D28"/>
+      <parent ref="83C4DF0"/>
+    </point>
+    <point id="83C5320" type="Coordinate" color="Red" thickness="Normal" style="Round" filled="False" masked="False" name="A">
+      <parent ref="83C4EB8"/>
+      <parent ref="83C4DF0"/>
+    </point>
+    <point id="83C53E0" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C4F80"/>
+      <parent ref="83C4DF0"/>
+    </point>
+    <point id="83C5488" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5048"/>
+      <parent ref="83C4DF0"/>
+    </point>
+    <arcCircle id="83C5530" type="3pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="C">
+      <parent ref="83C5110"/>
+      <parent ref="83C5320"/>
+      <parent ref="83C51B8"/>
+    </arcCircle>
+    <point id="83C5688" type="On_curve" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="N">
+      <value>0.335287</value>
+      <parent ref="83C5530"/>
+    </point>
+    <vector id="83C5748" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="OA">
+      <Ox>-6.000000</Ox>
+      <Oy>0.000000</Oy>
+      <parent ref="83C5260"/>
+      <parent ref="83C5320"/>
+    </vector>
+    <vector id="83C5860" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="ON">
+      <Ox>-6.000000</Ox>
+      <Oy>0.000000</Oy>
+      <parent ref="83C5260"/>
+      <parent ref="83C5688"/>
+    </vector>
+    <angle id="83C5928" type="vectors" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="(OA,ON)">
+      <x>-3.483333</x>
+      <y>4.250000</y>
+      <parent ref="83C5748"/>
+      <parent ref="83C5860"/>
+    </angle>
+    <numeric id="83C5A10" type="pt_abscissa" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-5.449999</x>
+      <y>4.383333</y>
+      <parent ref="83C5688"/>
+    </numeric>
+    <numeric id="83C5B28" type="pt_ordinate" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-5.216666</x>
+      <y>3.916667</y>
+      <parent ref="83C5688"/>
+    </numeric>
+    <numeric id="83C5C40" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>0.000000</value>
+      <x>-2.383334</x>
+      <y>5.716666</y>
+    </numeric>
+    <numeric id="83C5D08" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-7.500000</value>
+      <x>-8.050000</x>
+      <y>-6.316667</y>
+    </numeric>
+    <numeric id="83C5DD0" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-4.500000</value>
+      <x>-8.023903</x>
+      <y>-6.858034</y>
+    </numeric>
+    <numeric id="83C5E98" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-1.500000</value>
+      <x>-3.932236</x>
+      <y>-6.854591</y>
+    </numeric>
+    <numeric id="83C5F60" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-3.000000</value>
+      <x>-0.265570</x>
+      <y>-6.987925</y>
+    </numeric>
+    <segment id="83C5FF0" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C53E0"/>
+      <parent ref="83C5488"/>
+    </segment>
+    <point id="83C60A8" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C4F80"/>
+      <parent ref="83C5F60"/>
+    </point>
+    <point id="83C6150" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5048"/>
+      <parent ref="83C5F60"/>
+    </point>
+    <point id="83C61F8" type="Coordinate" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5C40"/>
+      <parent ref="83C4DF0"/>
+    </point>
+    <point id="83C62A0" type="Coordinate" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5C40"/>
+      <parent ref="83C5F60"/>
+    </point>
+    <point id="83C6348" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5D08"/>
+      <parent ref="83C5DD0"/>
+    </point>
+    <point id="83C63F0" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5DD0"/>
+      <parent ref="83C5E98"/>
+    </point>
+    <point id="83C6530" type="Coordinate" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="M">
+      <parent ref="83C5928"/>
+      <parent ref="83C5B28"/>
+    </point>
+    <segment id="83C65F0" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C63F0"/>
+      <parent ref="83C6348"/>
+    </segment>
+    <segment id="83C66A8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C60A8"/>
+      <parent ref="83C6150"/>
+    </segment>
+    <line id="83C6760" type="perpendicular" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="83C5688"/>
+      <parent ref="83C5FF0"/>
+    </line>
+    <point id="83C6818" type="Intersection" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="83C6760"/>
+      <parent ref="83C65F0"/>
+    </point>
+    <numeric id="83C68D8" type="pt_abscissa" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-5.921930</x>
+      <y>-6.376148</y>
+      <parent ref="83C6818"/>
+    </numeric>
+    <numeric id="83C6988" type="pt_ordinate" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-5.988597</x>
+      <y>-6.842814</y>
+      <parent ref="83C6818"/>
+    </numeric>
+    <point id="83C6A50" type="Coordinate" color="Green" thickness="Normal" style="Cross" filled="False" masked="False" name="P">
+      <parent ref="83C5928"/>
+      <parent ref="83C6988"/>
+    </point>
+    <line id="83C6B10" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="83C53E0"/>
+      <parent ref="83C5488"/>
+    </line>
+    <point id="83C6BC8" type="Intersection" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="83C6760"/>
+      <parent ref="83C6B10"/>
+    </point>
+    <segment id="83C6C88" type="2pts" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="[NM]">
+      <parent ref="83C5688"/>
+      <parent ref="83C6530"/>
+    </segment>
+    <segment id="83C6D38" type="2pts" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C6818"/>
+      <parent ref="83C6A50"/>
+    </segment>
+    <segment id="83C6DF0" type="2pts" color="DarkBlue" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5688"/>
+      <parent ref="83C6BC8"/>
+    </segment>
+    <segment id="83C6EA8" type="2pts" color="Green" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5260"/>
+      <parent ref="83C6BC8"/>
+    </segment>
+    <line id="83C6F60" type="perpendicular" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="83C5260"/>
+      <parent ref="83C6B10"/>
+    </line>
+    <point id="83C6FF8" type="Intersection" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="83C6F60"/>
+      <parent ref="83C65F0"/>
+    </point>
+    <segment id="83C70A8" type="2pts" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5260"/>
+      <parent ref="83C6FF8"/>
+    </segment>
+    <segment id="83C7148" type="2pts" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C6FF8"/>
+      <parent ref="83C60A8"/>
+    </segment>
+    <line id="83C7200" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="(MP)">
+      <parent ref="83C6530"/>
+      <parent ref="83C6A50"/>
+    </line>
+    <point id="83C72C8" type="Intersection" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="83C7200"/>
+      <parent ref="83C5FF0"/>
+    </point>
+    <point id="83C7388" type="Intersection" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="83C7200"/>
+      <parent ref="83C66A8"/>
+    </point>
+    <segment id="83C7430" type="2pts" color="DarkBlue" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C6530"/>
+      <parent ref="83C72C8"/>
+    </segment>
+    <segment id="83C74D0" type="2pts" color="Green" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C6A50"/>
+      <parent ref="83C7388"/>
+    </segment>
+    <segment id="83C7588" type="2pts" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C6BC8"/>
+      <parent ref="83C6818"/>
+    </segment>
+    <locus id="83C7640" type="None" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5688"/>
+      <parent ref="83C6530"/>
+    </locus>
+    <locus id="83C8398" type="None" color="Green" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5688"/>
+      <parent ref="83C6A50"/>
+    </locus>
+    <segment id="83C90D0" type="2pts" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5320"/>
+      <parent ref="83C53E0"/>
+    </segment>
+    <numeric id="83C9188" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>1.200000</value>
+      <x>1.583333</x>
+      <y>5.616667</y>
+    </numeric>
+    <numeric id="83C9250" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-1.200000</value>
+      <x>1.383333</x>
+      <y>5.116666</y>
+    </numeric>
+    <point id="83C9318" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5C40"/>
+      <parent ref="83C9188"/>
+    </point>
+    <point id="83C93C0" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5C40"/>
+      <parent ref="83C9250"/>
+    </point>
+    <segment id="83C9468" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C93C0"/>
+      <parent ref="83C9318"/>
+    </segment>
+    <numeric id="83C9520" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-1.800000</value>
+      <x>2.683333</x>
+      <y>-6.214072</y>
+    </numeric>
+    <numeric id="83C95E8" type="value" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <value>-4.200000</value>
+      <x>2.850000</x>
+      <y>-6.780739</y>
+    </numeric>
+    <point id="83C96B0" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5C40"/>
+      <parent ref="83C9520"/>
+    </point>
+    <point id="83C9758" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5C40"/>
+      <parent ref="83C95E8"/>
+    </point>
+    <segment id="83C9800" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C96B0"/>
+      <parent ref="83C9758"/>
+    </segment>
+    <point id="83C98B8" type="Intersection" color="Red" thickness="Normal" style="Round" filled="False" masked="False" name="B'" extra="0">
+      <parent ref="83C6F60"/>
+      <parent ref="83C5530"/>
+    </point>
+    <point id="83C9978" type="Intersection" color="Red" thickness="Normal" style="Round" filled="False" masked="False" name="B" extra="1">
+      <parent ref="83C6F60"/>
+      <parent ref="83C5530"/>
+    </point>
+    <point id="83C9A38" type="Coordinate" color="Red" thickness="Normal" style="Round" filled="False" masked="False" name="A'">
+      <parent ref="83C2F90"/>
+      <parent ref="83C4DF0"/>
+    </point>
+    <line id="83C9AF8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="(NM)">
+      <parent ref="83C5688"/>
+      <parent ref="83C6530"/>
+    </line>
+    <point id="83C9BC0" type="Intersection" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="83C6F60"/>
+      <parent ref="83C9AF8"/>
+    </point>
+    <segment id="83C9C80" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C9BC0"/>
+      <parent ref="83C5260"/>
+    </segment>
+    <segment id="83C9D20" type="2pts" color="Green" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C9BC0"/>
+      <parent ref="83C5688"/>
+    </segment>
+    <point id="83C9DD8" type="Middle_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="83C5688"/>
+      <parent ref="83C5320"/>
+    </point>
+    <halfLine id="83C9E80" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="83C5260"/>
+      <parent ref="83C9DD8"/>
+    </halfLine>
+    <point id="83C9F20" type="Intersection" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="83C9E80"/>
+      <parent ref="83C5530"/>
+    </point>
+    <point id="83CA7E8" type="Intersection" color="Red" thickness="Normal" style="Cross" filled="False" masked="True" name="" extra="1">
+      <parent ref="83C9E80"/>
+      <parent ref="83C5530"/>
+    </point>
+    <arcCircle id="83CA890" type="3pts" color="Red" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C5320"/>
+      <parent ref="83CA7E8"/>
+      <parent ref="83C5688"/>
+    </arcCircle>
+    <segment id="83CA948" type="2pts" color="Red" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C61F8"/>
+      <parent ref="83C72C8"/>
+    </segment>
+    <segment id="83CA9E8" type="2pts" color="Red" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C62A0"/>
+      <parent ref="83C7388"/>
+    </segment>
+    <point id="83CAAA0" type="Free" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="sinus de l'angle (OA, ON)">
+      <x>-1.468640</x>
+      <y>1.170409</y>
+    </point>
+    <point id="83CABA8" type="Free" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="cosinus de l'angle (OA, ON)">
+      <x>-1.601973</x>
+      <y>-1.729591</y>
+    </point>
+    <point id="83CAC90" type="Free" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="D&#233;placez N (seul point libre)">
+      <x>-7.218640</x>
+      <y>1.237076</y>
+    </point>
+    <point id="83CADA8" type="Free" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="ZOOMEZ &#192; 200%">
+      <x>-3.793640</x>
+      <y>2.523852</y>
+    </point>
+    <point id="83CAE70" type="Coordinate" color="White" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C4DF0"/>
+      <parent ref="83C5B28"/>
+    </point>
+    <point id="83CAF18" type="Coordinate" color="Black" thickness="Dashed" style="Cross" filled="False" masked="True" name="">
+      <parent ref="83C4DF0"/>
+      <parent ref="83C6988"/>
+    </point>
+    <segment id="83CAFC0" type="2pts" color="DarkBlue" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83CAE70"/>
+      <parent ref="83C61F8"/>
+    </segment>
+    <segment id="83CB050" type="2pts" color="Green" thickness="Thick" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83CAF18"/>
+      <parent ref="83C62A0"/>
+    </segment>
+    <segment id="83CB0F0" type="2pts" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C6530"/>
+      <parent ref="83CAE70"/>
+    </segment>
+    <segment id="83CB1A8" type="2pts" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="83C6A50"/>
+      <parent ref="83CAF18"/>
+    </segment>
+  </drgeo>
+</drgenius>

@@ -1,0 +1,12 @@
+
+Dr. Genius
+
+
+
+Dr. Genius is about interactive geometry.  
+It allows one to create geometric figures plus the interactive manipulations of such figures in respect with their geometric constraints. 
+It is useable in teaching situations with students from primary or secondary level.
+
+DrGenius (as was DrGeo) is officially part of the GNU project
+
+

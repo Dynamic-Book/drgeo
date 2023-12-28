@@ -1,0 +1,12 @@
+
+Comment s'impliquer ? (3)
+
+Concrètement :
+Traduction de l'interface utilisateur;
+La documentation en Français a été traduite par un professeur d'IUFM;
+La documentation a aussi été traduite en Italien, Espagnol par des enseignants. D'autres traductions devraient suivre;
+Le filtre d'exportation en PostScript a été initialement écrit par un professeur;
+Certaines parties du logiciel ont été écrites par des ingénieurs;
+Des figures ont été faites par des enseignants et des ingénieurs;
+Beaucoup de rapports de bugs par des enseignants.
+

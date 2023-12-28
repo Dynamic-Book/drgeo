@@ -1,0 +1,10 @@
+
+Documentation (1)
+
+Les aides
+Documentation électronique du manuel utilisateur de DrGenius
+
+Aides contextuelles
+Bulles d'aide pour chacune des icônes des barres d'outils
+
+

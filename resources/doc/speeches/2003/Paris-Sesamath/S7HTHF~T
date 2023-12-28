@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<drgenius>
+  <drgeo name="ellipsis-locus.xml">
+    <point id="82019F8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="A">
+      <x>0.216666</x>
+      <y>6.466667</y>
+    </point>
+    <point id="81D6F80" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="C">
+      <x>7.683333</x>
+      <y>6.333334</y>
+    </point>
+    <segment id="81D9BC0" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[AC]">
+      <parent ref="82019F8"/>
+      <parent ref="81D6F80"/>
+    </segment>
+    <point id="81D97A8" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="B">
+      <value>0.439432</value>
+      <parent ref="81D9BC0"/>
+    </point>
+    <numeric id="81D9868" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>1.316667</x>
+      <y>7.066666</y>
+      <parent ref="82019F8"/>
+      <parent ref="81D97A8"/>
+    </numeric>
+    <numeric id="8204260" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>5.550000</x>
+      <y>6.900000</y>
+      <parent ref="81D6F80"/>
+      <parent ref="81D97A8"/>
+    </numeric>
+    <point id="81E5938" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F1">
+      <x>1.883334</x>
+      <y>-0.666667</y>
+    </point>
+    <point id="81E59E0" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F2">
+      <x>7.316667</x>
+      <y>-0.766667</y>
+    </point>
+    <circle id="81E5AA0" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81E5938"/>
+      <parent ref="81D9868"/>
+    </circle>
+    <circle id="81E5BA0" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81E59E0"/>
+      <parent ref="8204260"/>
+    </circle>
+    <point id="81E5C50" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I2" extra="0">
+      <parent ref="81E5AA0"/>
+      <parent ref="81E5BA0"/>
+    </point>
+    <point id="81E5D10" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I1" extra="1">
+      <parent ref="81E5AA0"/>
+      <parent ref="81E5BA0"/>
+    </point>
+    <locus id="81DCC58" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81D97A8"/>
+      <parent ref="81E5D10"/>
+    </locus>
+    <locus id="81DD930" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81D97A8"/>
+      <parent ref="81E5C50"/>
+    </locus>
+    <numeric id="81E5E90" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-8.183334</x>
+      <y>2.616666</y>
+      <parent ref="81E5938"/>
+      <parent ref="81E5D10"/>
+    </numeric>
+    <numeric id="81E5F80" type="distance_2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-8.483333</x>
+      <y>1.750000</y>
+      <parent ref="81E5D10"/>
+      <parent ref="81E59E0"/>
+    </numeric>
+    <script id="81E6058" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <x>-6.333333</x>
+      <y>2.116666</y>
+      <parent ref="81E5E90"/>
+      <parent ref="81E5F80"/>
+      <code>(define d1 (getValue a1))
+(define d2 (getValue a2))
+(+ d1 d2)</code>
+    </script>
+    <segment id="81DE620" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[F1I1]">
+      <parent ref="81E5938"/>
+      <parent ref="81E5D10"/>
+    </segment>
+    <segment id="81DE6E8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[I1F2]">
+      <parent ref="81E5D10"/>
+      <parent ref="81E59E0"/>
+    </segment>
+  </drgeo>
+  <drgeo name="hyperbola-locus.xml">
+    <customUI password="$1$Lz0Syz9.$XtN2/SdlcpVOZstG6BYxH0">
+      <tool id="0">FALSE</tool>
+      <tool id="1">FALSE</tool>
+      <tool id="2">FALSE</tool>
+      <tool id="3">FALSE</tool>
+      <tool id="4">FALSE</tool>
+      <tool id="5">FALSE</tool>
+      <tool id="6">TRUE</tool>
+      <tool id="7">FALSE</tool>
+      <tool id="8">FALSE</tool>
+      <tool id="9">FALSE</tool>
+      <tool id="10">FALSE</tool>
+      <tool id="11">FALSE</tool>
+      <tool id="12">FALSE</tool>
+      <tool id="13">FALSE</tool>
+      <tool id="14">FALSE</tool>
+      <tool id="15">FALSE</tool>
+      <tool id="16">FALSE</tool>
+      <tool id="17">FALSE</tool>
+      <tool id="18">FALSE</tool>
+      <tool id="19">FALSE</tool>
+      <tool id="20">FALSE</tool>
+      <tool id="21">FALSE</tool>
+      <tool id="22">FALSE</tool>
+      <tool id="23">FALSE</tool>
+      <tool id="24">FALSE</tool>
+      <tool id="25">FALSE</tool>
+      <tool id="26">FALSE</tool>
+      <tool id="27">FALSE</tool>
+      <tool id="28">FALSE</tool>
+      <tool id="29">FALSE</tool>
+      <tool id="30">FALSE</tool>
+      <tool id="31">FALSE</tool>
+      <tool id="32">FALSE</tool>
+      <tool id="33">FALSE</tool>
+      <tool id="34">FALSE</tool>
+      <tool id="35">FALSE</tool>
+    </customUI>
+    <point id="82134B0" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="A">
+      <x>-3.616667</x>
+      <y>2.233334</y>
+    </point>
+    <point id="82150C8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="B">
+      <x>-2.250000</x>
+      <y>2.366667</y>
+    </point>
+    <line id="8215188" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="(AB)">
+      <parent ref="82134B0"/>
+      <parent ref="82150C8"/>
+    </line>
+    <point id="82152E0" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <value>0.989836</value>
+      <parent ref="8215188"/>
+    </point>
+    <halfLine id="8215388" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82150C8"/>
+      <parent ref="82152E0"/>
+    </halfLine>
+    <point id="8215498" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="C">
+      <value>0.730972</value>
+      <parent ref="8215388"/>
+    </point>
+    <segment id="8215558" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[AC]">
+      <parent ref="82134B0"/>
+      <parent ref="8215498"/>
+    </segment>
+    <segment id="8215620" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[BC]">
+      <parent ref="82150C8"/>
+      <parent ref="8215498"/>
+    </segment>
+    <numeric id="82156E8" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[AC]">
+      <x>-7.316667</x>
+      <y>3.533333</y>
+      <parent ref="8215558"/>
+    </numeric>
+    <numeric id="8215810" type="segment_length" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[BC]">
+      <x>6.416667</x>
+      <y>5.200000</y>
+      <parent ref="8215620"/>
+    </numeric>
+    <point id="82158E8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F1">
+      <x>-0.050000</x>
+      <y>-0.533333</y>
+    </point>
+    <point id="82159A8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F2">
+      <x>1.816667</x>
+      <y>-0.800000</y>
+    </point>
+    <circle id="8215A68" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82158E8"/>
+      <parent ref="82156E8"/>
+    </circle>
+    <circle id="8215B18" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82159A8"/>
+      <parent ref="8215810"/>
+    </circle>
+    <circle id="8215BC8" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82158E8"/>
+      <parent ref="8215810"/>
+    </circle>
+    <circle id="8215C78" type="radius" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="82159A8"/>
+      <parent ref="82156E8"/>
+    </circle>
+    <point id="8215D28" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I3" extra="0">
+      <parent ref="8215B18"/>
+      <parent ref="8215A68"/>
+    </point>
+    <point id="8215DE8" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I4" extra="1">
+      <parent ref="8215B18"/>
+      <parent ref="8215A68"/>
+    </point>
+    <point id="8215EA8" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I2" extra="0">
+      <parent ref="8215BC8"/>
+      <parent ref="8215C78"/>
+    </point>
+    <point id="8215F68" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="I1" extra="1">
+      <parent ref="8215BC8"/>
+      <parent ref="8215C78"/>
+    </point>
+    <locus id="8215FF0" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8215498"/>
+      <parent ref="8215F68"/>
+    </locus>
+    <locus id="8216D48" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8215498"/>
+      <parent ref="8215EA8"/>
+    </locus>
+    <locus id="8217A80" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8215498"/>
+      <parent ref="8215D28"/>
+    </locus>
+    <locus id="82187B8" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8215498"/>
+      <parent ref="8215DE8"/>
+    </locus>
+  </drgeo>
+  <drgeo name="parabola-locus.xml">
+    <point id="8234928" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="F">
+      <x>-0.850000</x>
+      <y>-0.566667</y>
+    </point>
+    <point id="8236558" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="H">
+      <x>-2.450000</x>
+      <y>-0.800000</y>
+    </point>
+    <line id="8236618" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="(FH)">
+      <parent ref="8234928"/>
+      <parent ref="8236558"/>
+    </line>
+    <line id="82366E0" type="perpendicular" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8236558"/>
+      <parent ref="8236618"/>
+    </line>
+    <point id="8236798" type="On_curve" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="M">
+      <value>0.061403</value>
+      <parent ref="82366E0"/>
+    </point>
+    <segment id="8236858" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="[FM]">
+      <parent ref="8234928"/>
+      <parent ref="8236798"/>
+    </segment>
+    <point id="8236920" type="Middle_segment" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8236858"/>
+    </point>
+    <line id="82369E0" type="perpendicular" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8236920"/>
+      <parent ref="8236858"/>
+    </line>
+    <line id="8236A80" type="perpendicular" color="Black" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8236798"/>
+      <parent ref="82366E0"/>
+    </line>
+    <point id="8236B38" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="K" extra="0">
+      <parent ref="8236A80"/>
+      <parent ref="82369E0"/>
+    </point>
+    <locus id="8236BF8" type="None" color="Red" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8236798"/>
+      <parent ref="8236B38"/>
+    </locus>
+  </drgeo>
+</drgenius>

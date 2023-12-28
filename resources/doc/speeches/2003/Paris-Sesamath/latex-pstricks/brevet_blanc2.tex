@@ -1,0 +1,200 @@
+%
+% Brevet blanc mai 2000
+%
+% --------------------------
+% Quelques macro commandes:
+%
+% Pour noter le nombre de point d'une question dans la marge
+% au singulier
+\newcommand{\point}[1]{\marginpar{\framebox[1cm]{\bfseries{\emph{\scriptsize{{#1 pt}}}}}}}
+% au pluriel
+\newcommand{\points}[1]{\marginpar{\framebox[1cm]{\bfseries{\emph{\scriptsize{{#1 pts}}}}}}}
+
+\documentclass[a4paper]{article}
+\usepackage{pstricks}
+\usepackage[latin1]{inputenc}
+\usepackage[french]{babel}
+\title{Brevet Blanc de Mathématiques}
+\date{25 mai 2000}
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+Durée : 2h00\\
+Numérique : 12 points\\
+Géométrie : 12 points\\
+Problème : 12 points\\
+Présentation : 4 points
+\end{flushleft}
+\part*{ACTIVITÉS NUMÉRIQUES}
+\section*{EXERCICE 1}
+\begin{enumerate}
+        \item Calculer A, B, C (faire apparaître les étapes de chaque
+        calcul et donner les résultats sous la forme la plus simple
+        possible)~:\\
+$A=\left(\frac{3}{8}\right)^{2}-\frac{1}{8}$\hfill
+$B=\left(3-\sqrt{5}\right)^{2}+2\left(25+\sqrt{45}\right)$\hfill
+$C=\frac{-2.4 \times 10^{7} \times 8 \times 10^{-9}}{3 \times 10^{-3}}$\points{3}
+        \item
+        \begin{enumerate}
+                \item Que peut-on dire des nombres \emph{A} et \emph{B}~?\point{0.5}
+                \item Que peut-on dire des nombres \emph{B} et \emph{C}~?\point{0.5}
+        \end{enumerate} 
+\end{enumerate}
+
+\section*{EXERCICE 2}
+\begin{enumerate}
+        \item 
+        \begin{enumerate}
+                \item Développer et réduire l'expression~: $D=(2x+5)(3x-1)$.\point{0.5}
+                \item Développer et réduire l'expression~: 
+                        $E=\left(x-1\right)^2 + x^2 + \left(x+1\right)^2$.\point{1}\\
+                Application~: déterminer trois nombres entiers positifs consécutifs, $(x-1)$, $x$,
+                 et $(x+1)$ dont la somme des carrés est 4802.\point{1} 
+        \end{enumerate}
+        \item \begin{enumerate}
+                \item Factoriser l'expression~: $F=\left(x+3\right)^2 - (2x+1)(x+3)$.\point{1}
+                \item Factoriser l'expression~: $G=4x^2-100$.\point{0.5}\\
+                Application~: déterminer un nombre positif dont le carré du double 
+                est égal à 100.\point{1}
+        \end{enumerate}
+\end{enumerate}
+\section*{EXERCICE 3}
+Antoine dit à Thomas~: ``Si tu me donnes ...... billes, j'en aurai autant que toi.''\\
+Thomas réplique~: ``Si je t'en donne ......, tu en auras ...... fois plus que moi.''
+\begin{enumerate}
+        \item Observer la mise en équation de ce problème~:
+        \begin{center}
+                \fbox{\begin{minipage}{8cm}
+                Soit \emph{a} le nombre de billes d'Antoine, et \emph{t} le nombre de billes
+                de Thomas~:
+                $$\left\lbrace
+                        \begin{array}{rcl}
+                        a+6 & = & t-6 \\
+                        a+10 & = & 2(t-10)
+                        \end{array}\right.$$
+                \end{minipage}}
+        \end{center}
+        Recopier l'énoncé du problème en le complétant par les nombres qui manquent.\point{1}
+        \item Calculer le nombre de billes d'Antoine et de Thomas.\points{2}
+\end{enumerate}
+
+\part*{ACTIVITÉS GÉOMÉTRIQUES}
+\section*{EXERCICE 1}
+
+Observer la figure ci-dessous puis recopier et compléter les phrases
+suivantes (il n'est demandé aucune justification et il n'est pas
+demandé de réproduire la figure):
+\begin{center}
+\begin{pspicture}(4,4)
+\psline(0,0)(4,4)(4,2)(2,4)(2,0)(0,2)(0,0)
+\psline(0,2)(4,2)(2,0)(2,4)(0,4)(4,0)(2,0)
+\psline(0,2)(2,4)
+\rput(0.3,0){E} \rput(1.7,0){F} \rput(4.2,0){G}
+\rput(-0.3,2){D} \rput(2.2,2.5){A} \rput(4.2,2){H}
+\rput(-0.3,4){C} \rput(2.4,4){B} \rput(4.2,4){I}
+\end{pspicture}
+\end{center}
+\begin{enumerate}
+        \item Le symétrique de ABC par rapport à A est ......\point{0.5}
+        \item L'image de D par la translation de vecteur $\overrightarrow{CA}$ 
+        est ...... \point{0.5}
+        \item ABD et ...... sont symétriques par rapport à la droite (AD).\point{0.5}
+        \item $\overrightarrow{DB} + \ldots = \overrightarrow{DF}$.\point{0.5}
+        \item $\overrightarrow{AB} + \overrightarrow{AH} = \ldots$.\point{0.5}
+\end{enumerate}
+
+\pagebreak
+
+\section*{EXERCICE 2}
+La figure ci-après représente une pyramide à base carrée de 10 cm de côté et de hauteur 8 cm.
+\begin{center}
+        \input{pyramide}
+\end{center}
+\begin{enumerate}
+
+        \item Montrer que la valeur approchée par excès de son volume,
+        à 1 cm$^3$ près, est 267 cm$^3$.\point{1.5}
+
+        \item En déduire le volume de la réduction de cette pyramide,
+        à l'echelle $\frac{1}{3}$ (arrondir au cm$^3$ le plus
+        proche).\point{1.5}
+\end{enumerate}
+
+\section*{EXERCICE 3}
+\begin{enumerate}
+
+        \item Construire un triangle ABC rectangle en B tel que
+        AB~=~7cm et BC~=~3cm.\point{1.5}
+
+        \item Calculer la mesure de l'angle $\widehat{A}$, (donner la
+        valeur arrondie au degré le plus proche).\point{1}
+        
+        \item Le cercle de diamètre [AB] et de centre I coupe (AC) en E.
+        \begin{enumerate}
+
+                \item Démontrer que les droites (BE) et (AC) sont
+                perpendiculaires.\point{1}
+
+                \item On trace par le point I la perpendiculaire à la
+                droite (BE) qui coupe (BE) en J et (BC) en K.\point{1.5}\\
+                Démontrer que J est le milieu de [BE].
+
+                \item Démontrer que CE = 2JK.\point{1.5}
+        \end{enumerate}
+\end{enumerate}
+
+\pagebreak
+
+
+\part*{PROBLÈME}
+Le plan est muni d'un repère orthonormal (O,I,J). L'unité est le centimètre.
+\begin{enumerate}
+
+        \item Sur une feuille de papier millimétré dessiner le repère
+        et placer les points~: A(-1;~0) B(2; ~-1) C(1;~6). On
+        complètera la figure au fur et à mesure des
+        questions.\point{1}
+
+        \item Donner sans justification une équation de la droite
+        (AB).\point{1}
+
+        \item \begin{enumerate}
+
+                \item Donner sans justification le coefficient
+                directeur de la droite (AC).\point{0.5}
+
+                \item Que peut-on en déduire pour les droites (AB) et
+                (AC)~?\point{1.5}
+        \end{enumerate}
+
+        \item \begin{enumerate}
+
+                \item Calculer AC et AB. On donnera des valeurs
+                exactes. \points{2}
+
+                \item En déduire l'aire du triangle ABC.\point{1}
+        \end{enumerate}
+
+        \item Soit le point E$\left(-\frac{5}{2}; \frac{1}{2}\right)$.\\
+        Montrer que E est sur la droite (AB).\point{1}
+
+        \item On note $\Delta$ la droite parallèle à la droite (BC)
+        passant par le point E. Soit F le point d'intersection des
+        droites $\Delta$ et (AC).
+        \begin{enumerate}
+
+                \item Calculer AE. On donnera la valeur exacte.\point{1}
+
+                \item Calculer le rapprt $\frac{AE}{AB}$.\point{1}
+
+                \item En déduire l'aire du triangle AEF.\point{2}
+
+        \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

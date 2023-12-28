@@ -1,0 +1,9 @@
+
+Interface et outils géométriques (3)
+
+Accès aux outils géométriques
+
+Barre d'outils
+
+
+

@@ -1,0 +1,9 @@
+
+Dr. Genius & LaTeX (1)
+
+Pour intégrer une figure Dr. Genius, on dispose de deux méthodes :
+
+Exportation d'une figure au format PostScript comme avec TeXmacs;
+
+Exportation d'une figure en source natif LaTeX. Dans ce cas, l'extension graphique PSTricks de LaTeX est utilisée.
+

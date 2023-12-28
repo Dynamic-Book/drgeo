@@ -1,0 +1,11 @@
+
+Pourquoi Dr. Genius ? (1)
+
+Un projet qui remonte à 1996 lorsqu'aucun logiciel libre de géométrie dynamique n'existait.
+
+Initialement développé sous DOS avec les outils du projet GNU, c'était Dr. Geo (1996)
+
+Puis porté sous GTK+ - Nombreux échanges avec l'AFUL (1999)
+
+Porté sous Gnome, Dr. Genius, montée en puissance importante (2000-????)
+

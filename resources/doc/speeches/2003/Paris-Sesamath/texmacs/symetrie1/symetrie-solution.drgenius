@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<drgenius>
+  <drgeo name="symetrie-solution.drgenius">
+    <customUI password="$1$pMX1yNx4$MgafBVLuGIJWlsYDZKqLi1">
+      <tool id="0">TRUE</tool>
+      <tool id="1">TRUE</tool>
+      <tool id="2">FALSE</tool>
+      <tool id="3">FALSE</tool>
+      <tool id="4">FALSE</tool>
+      <tool id="5">TRUE</tool>
+      <tool id="6">TRUE</tool>
+      <tool id="7">TRUE</tool>
+      <tool id="8">FALSE</tool>
+      <tool id="9">TRUE</tool>
+      <tool id="10">TRUE</tool>
+      <tool id="11">TRUE</tool>
+      <tool id="12">FALSE</tool>
+      <tool id="13">TRUE</tool>
+      <tool id="14">FALSE</tool>
+      <tool id="15">FALSE</tool>
+      <tool id="16">FALSE</tool>
+      <tool id="17">FALSE</tool>
+      <tool id="18">FALSE</tool>
+      <tool id="19">FALSE</tool>
+      <tool id="20">FALSE</tool>
+      <tool id="21">FALSE</tool>
+      <tool id="22">FALSE</tool>
+      <tool id="23">FALSE</tool>
+      <tool id="24">FALSE</tool>
+      <tool id="25">FALSE</tool>
+      <tool id="26">FALSE</tool>
+      <tool id="27">FALSE</tool>
+      <tool id="28">FALSE</tool>
+      <tool id="29">FALSE</tool>
+      <tool id="30">FALSE</tool>
+      <tool id="31">FALSE</tool>
+      <tool id="32">FALSE</tool>
+      <tool id="33">TRUE</tool>
+      <tool id="34">TRUE</tool>
+      <tool id="35">TRUE</tool>
+    </customUI>
+    <point id="8170EF0" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="">
+      <x>0.716666</x>
+      <y>2.216667</y>
+    </point>
+    <point id="8171018" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="">
+      <x>-1.483334</x>
+      <y>-1.950000</y>
+    </point>
+    <point id="8157F48" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="A">
+      <x>-0.750000</x>
+      <y>2.250000</y>
+    </point>
+    <point id="8158008" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="B">
+      <x>-3.916667</x>
+      <y>1.983333</y>
+    </point>
+    <point id="81580C8" type="Free" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="C">
+      <x>-3.016667</x>
+      <y>-0.150000</y>
+    </point>
+    <line id="8159BD0" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="(d)">
+      <parent ref="8170EF0"/>
+      <parent ref="8171018"/>
+    </line>
+    <segment id="8159CE8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[AC]">
+      <parent ref="8157F48"/>
+      <parent ref="81580C8"/>
+    </segment>
+    <segment id="8159E00" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[CB]">
+      <parent ref="81580C8"/>
+      <parent ref="8158008"/>
+    </segment>
+    <segment id="8159EC8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[BA]">
+      <parent ref="8158008"/>
+      <parent ref="8157F48"/>
+    </segment>
+    <point id="8159F90" type="Reflexion" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="A'">
+      <parent ref="8157F48"/>
+      <parent ref="8159BD0"/>
+    </point>
+    <point id="815A050" type="Reflexion" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="B'">
+      <parent ref="8158008"/>
+      <parent ref="8159BD0"/>
+    </point>
+    <segment id="815A110" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="[B'A']">
+      <parent ref="815A050"/>
+      <parent ref="8159F90"/>
+    </segment>
+    <line id="81BF4D8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="(BC)">
+      <parent ref="8158008"/>
+      <parent ref="81580C8"/>
+    </line>
+    <point id="81C3568" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="" extra="0">
+      <parent ref="8159BD0"/>
+      <parent ref="81BF4D8"/>
+    </point>
+    <line id="81C42E8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="81C3568"/>
+      <parent ref="815A050"/>
+    </line>
+    <line id="8169848" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="(CA')">
+      <parent ref="81580C8"/>
+      <parent ref="8159F90"/>
+    </line>
+    <point id="81CB950" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="True" name="" extra="0">
+      <parent ref="8169848"/>
+      <parent ref="8159BD0"/>
+    </point>
+    <line id="81CC6A8" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="True" name="">
+      <parent ref="8157F48"/>
+      <parent ref="81CB950"/>
+    </line>
+    <point id="81CCF68" type="Intersection" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="" extra="0">
+      <parent ref="81C42E8"/>
+      <parent ref="81CC6A8"/>
+    </point>
+    <segment id="81CCEC8" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="8159F90"/>
+      <parent ref="81CCF68"/>
+    </segment>
+    <segment id="81CE180" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81CCF68"/>
+      <parent ref="815A050"/>
+    </segment>
+  </drgeo>
+</drgenius>

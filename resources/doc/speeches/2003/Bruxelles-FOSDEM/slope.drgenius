@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<drgenius>
+  <drgeo name="slope-cos.drgenius">
+    <point id="81C74F8" type="Free" color="Blue" thickness="Dashed" style="Rectangular" filled="False" masked="True" name="">
+      <x>-8.450000</x>
+      <y>-5.683333</y>
+    </point>
+    <point id="81C7770" type="Free" color="Blue" thickness="Dashed" style="Rectangular" filled="False" masked="True" name="">
+      <x>-1.783333</x>
+      <y>-5.716666</y>
+    </point>
+    <segment id="81C9890" type="2pts" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81C74F8"/>
+      <parent ref="81C7770"/>
+    </segment>
+    <point id="81CA6B8" type="On_curve" color="Bordeaux" thickness="Thick" style="RectangularEmpty" filled="False" masked="False" name="Move me!">
+      <value>0.384865</value>
+      <parent ref="81C9890"/>
+    </point>
+    <script id="81CA4C8" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="Xo">
+      <x>1.916667</x>
+      <y>-4.750000</y>
+      <parent ref="81CA6B8"/>
+      <code>(define x (getAbscissa a1))
+(* 20  (- x 0.5))</code>
+    </script>
+    <script id="81603D8" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="Yo">
+      <x>2.216667</x>
+      <y>-5.316667</y>
+      <parent ref="81CA4C8"/>
+      <code>(define x (getValue a1))
+(cos x)</code>
+    </script>
+    <point id="815C868" type="Coordinate" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="Mo">
+      <parent ref="81CA4C8"/>
+      <parent ref="81603D8"/>
+    </point>
+    <locus id="8209600" type="None" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81CA6B8"/>
+      <parent ref="815C868"/>
+    </locus>
+    <script id="81CACA0" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="slope at Mo">
+      <x>4.616667</x>
+      <y>-4.550000</y>
+      <parent ref="81CA4C8"/>
+      <code>(- 0 (sin (getValue a1)))</code>
+    </script>
+    <script id="81F6B20" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="X1">
+      <x>7.183333</x>
+      <y>-4.416667</y>
+      <parent ref="81CA4C8"/>
+      <code>(define x1 (getValue a1))
+(+ x1 2)</code>
+    </script>
+    <script id="8208C08" type="nitems" color="Black" thickness="Normal" style="Cross" filled="False" masked="False" name="Y1">
+      <x>7.483333</x>
+      <y>-5.483333</y>
+      <parent ref="815C868"/>
+      <parent ref="81CACA0"/>
+      <parent ref="81F6B20"/>
+      <code>(define x0 (car (getCoordinates a1)))
+(define y0 (cadr (getCoordinates a1)))
+(define m (getValue a2))
+(define x1 (getValue a3))
+(+ (* m (- x1 x0)) y0)</code>
+    </script>
+    <point id="81B8228" type="Coordinate" color="Red" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81F6B20"/>
+      <parent ref="8208C08"/>
+    </point>
+    <line id="81FA1F0" type="2pts" color="DarkBlue" thickness="Normal" style="Cross" filled="False" masked="False" name="">
+      <parent ref="815C868"/>
+      <parent ref="81B8228"/>
+    </line>
+    <point id="815E3F0" type="Coordinate" color="Red" thickness="Dashed" style="RectangularEmpty" filled="False" masked="True" name="">
+      <parent ref="81F6B20"/>
+      <parent ref="81603D8"/>
+    </point>
+    <segment id="820AF18" type="2pts" color="Blue" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="81B8228"/>
+      <parent ref="815E3F0"/>
+    </segment>
+    <segment id="81B46F8" type="2pts" color="Blue" thickness="Dashed" style="Cross" filled="False" masked="False" name="">
+      <parent ref="815C868"/>
+      <parent ref="815E3F0"/>
+    </segment>
+  </drgeo>
+</drgenius>

@@ -1,0 +1,11 @@
+
+Dr. Genius & LaTeX - Comparaisons (7)
+
+Chacune des méthodes à ses avantages
+
+Une image PostScript peut être redimensionnée, mais elle ne peut pas être éditée;
+
+Une image LaTeX/PSTricks peut être éditée (pour renommer des objets par exemple), mais elle ne peut pas être redimensionnée facilement.
+
+Le format LaTeX/PSTricks est insensible au zoom, il exporte toujours dans la même unité (A vérifier).
+

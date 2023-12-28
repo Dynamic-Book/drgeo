@@ -1,0 +1,8 @@
+
+Fonctionnalités avancées - DGS (4)
+
+Un DGS est une fonction en Scheme encadrée dans un objet géométrique (au sens interne de Dr.Genius)
+En tant que fonction, il reçoit des paramètres en entrée et retourne une valeur numérique.
+Les paramètres en entrée sont des références vers des objets géométriques de la figure courante. Au moment de la création d'un DGS, l'utilisateur sélectionne les objets géométriques d'entée.
+La valeur retournée par le DGS est la dernière valeur calculée du script.
+

@@ -1,0 +1,15 @@
+
+Pourquoi Dr. Genius ? (2)
+
+L'idée de base était de fournir un outil qui permet :
+
+d'être librement utilisable à l'école, à la maison;
+
+d'être disponible dans plusieurs langues.
+
+puis avec Dr. Geo/GTK+ et Dr. Genius un outil :
+
+adaptable;
+
+librement distribuable selon les termes de la GPL.
+
