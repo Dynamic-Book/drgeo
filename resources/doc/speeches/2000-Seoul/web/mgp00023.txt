@@ -1,0 +1,9 @@
+
+OFSET - Objectives (3)
+
+Documenting Gnome RAD tools as Python + Glade + Libglade
+
+to ease development under Gnome
+
+to empower teacher
+

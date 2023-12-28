@@ -1,0 +1,13 @@
+
+DrGenius - Features (2)
+
+Dr. Genius Refer to Geometry Exploration and Numeric Intuitive User System
+
+Gnome interface
+
+Interactive geometry
+
+Console calculator
+
+The canvas, a function grapher
+

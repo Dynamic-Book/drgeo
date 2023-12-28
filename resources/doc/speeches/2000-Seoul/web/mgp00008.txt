@@ -1,0 +1,10 @@
+
+DrGenius - Features (4)
+
+The geometric engine
+
+Geometric engine rewritten from scratch:
+better code readability
+more easy to extend and maintain
+
+

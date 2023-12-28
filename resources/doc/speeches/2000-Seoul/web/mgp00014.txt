@@ -1,0 +1,13 @@
+
+DrGenius - Road Map (2)
+
+
+Integration with Gnome2:
+using the new MDI interface
+
+Implementing Corba & Bonobo services:
+exporting geometric view
+exporting services for other applications
+
+
+

@@ -1,0 +1,9 @@
+
+OFSET - Objectives (2)
+
+Compiling free edu soft	
+
+package to ease deployment in Gnome
+
+a community service		
+

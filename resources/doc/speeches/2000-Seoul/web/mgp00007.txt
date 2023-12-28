@@ -1,0 +1,12 @@
+
+DrGenius - Features (3)
+
+
+GEL, Genius Extension Language
+
+A math. lib. written in GEL
+
+XML file format for session save
+
+LaTeX export filter
+

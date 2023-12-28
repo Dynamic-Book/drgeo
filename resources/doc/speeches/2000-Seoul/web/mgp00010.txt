@@ -1,0 +1,13 @@
+
+DrGenius - Features (6)
+
+GEL, the extension language
+
+interpreted & procedural	
+
+nice math. syntax:
+function f(x) = |x-5|		
+
+used to write the Dr. Genius math. lib.
+
+

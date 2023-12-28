@@ -1,0 +1,9 @@
+
+DrGeo & DrGenius - History (1)
+
+The first implementation - sept.1996 to Dec.1998
+
+DOS implementation
+
+Free development tools under DOS
+

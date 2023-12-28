@@ -1,0 +1,10 @@
+
+DrGenius - Features (7)
+
+The canvas
+
+2D plotter, GTKPlot based
+
+3D plotter
+
+

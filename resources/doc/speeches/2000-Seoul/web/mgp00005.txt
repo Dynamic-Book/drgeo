@@ -1,0 +1,11 @@
+
+DrGeo - Features (1)
+
+Dr. Geo Refer to Geometry Exploration Observatory
+
+Interactive geometry under GTK
+
+Intuitive interface
+
+Small power requirement
+
