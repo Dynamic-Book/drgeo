@@ -1,7 +1,0 @@
-
-Dr. Genius & LaTeX - PSTricks (4)
-
-Pour exporter sous ce format, redimensionner l'image comme lors d'une exportation PostScript;
-Exporter depuis le menu Fichier->Exporter sous...
-
-

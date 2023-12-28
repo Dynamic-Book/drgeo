@@ -1,7 +1,0 @@
-
-Dr. Genius & TeXmacs (3)
-
-Comment faire ? (suite)
-On exporte la figure, menu Fichier->Exporter sous...
-
-

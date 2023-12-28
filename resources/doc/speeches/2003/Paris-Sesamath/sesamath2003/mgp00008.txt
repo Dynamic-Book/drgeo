@@ -1,9 +1,0 @@
-
-Interface et outils géométriques (4)
-
-Accès aux outils géométriques
-
-Menu contextuel
-
-
-

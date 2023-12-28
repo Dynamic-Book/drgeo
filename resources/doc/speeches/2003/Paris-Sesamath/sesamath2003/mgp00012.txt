@@ -1,9 +1,0 @@
-
-Documentation (3)
-
-La documentation en ligne de Dr. Genius est écrite avec HyperLaTeX.
-C'est un dérivé de LaTeX pour écrire à la fois de la documentation en ligne (HTML) et papier (PostScript, PDF), il gère:
-Les tables des matières
-Les indexes
-
-
