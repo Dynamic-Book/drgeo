@@ -1,0 +1,471 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Title: spitri.ps
+%%Creator: drgenius (fred's ps exporter)
+%%CreationDate: domenica 13 giugno 2004
+%%Pages: 1
+%%DocumentFonts:
+%%BoundingBox: 0 0 335.481100 309.020619
+% define /ISOLatin1Encoding only if it's not already there.  If it is
+% there, save the memory you otherwise would have wasted with the array:
+/ISOLatin1Encoding where { pop save true }{ false } ifelse
+    /ISOLatin1Encoding [ %def
+      /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+      /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+      /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+      /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+      /space/exclam/quotedbl/numbersign/dollar/percent/ampersand/quoteright
+      /parenleft/parenright/asterisk/plus/comma/minus/period/slash
+      /zero/one/two/three/four/five/six/seven/eight/nine/colon/semicolon
+      /less/equal/greater/question/at/A/B/C/D/E/F/G/H/I/J/K/L/M/N
+      /O/P/Q/R/S/T/U/V/W/X/Y/Z/bracketleft/backslash/bracketright
+      /asciicircum/underscore/quoteleft/a/b/c/d/e/f/g/h/i/j/k/l/m
+      /n/o/p/q/r/s/t/u/v/w/x/y/z/braceleft/bar/braceright/asciitilde
+      /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+      /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+      /.notdef/dotlessi/grave/acute/circumflex/tilde/macron/breve
+      /dotaccent/dieresis/.notdef/ring/cedilla/.notdef/hungarumlaut
+      /ogonek/caron/space/exclamdown/cent/sterling/currency/yen/brokenbar
+      /section/dieresis/copyright/ordfeminine/guillemotleft/logicalnot
+      /hyphen/registered/macron/degree/plusminus/twosuperior/threesuperior
+      /acute/mu/paragraph/periodcentered/cedilla/onesuperior/ordmasculine
+      /guillemotright/onequarter/onehalf/threequarters/questiondown
+      /Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla
+      /Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex
+      /Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis
+      /multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute
+      /Thorn/germandbls/agrave/aacute/acircumflex/atilde/adieresis
+      /aring/ae/ccedilla/egrave/eacute/ecircumflex/edieresis/igrave
+      /iacute/icircumflex/idieresis/eth/ntilde/ograve/oacute/ocircumflex
+      /otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis
+      /yacute/thorn/ydieresis
+    ] def
+% boolean still on stack from previous "ifelse" statement
+{ restore } if
+
+/STDfindfont /findfont load def
+
+% Redefine findfont so that the font will have an ISO-8859 a.k.a. ISO-latin1
+% encoding. We only do this if we have /StandardEncoding as we don't want
+% to do it for the different symbol fonts.
+
+/findfont { %def
+    dup  % save name for definefont
+    STDfindfont
+ dup /Encoding get StandardEncoding eq { %ifelse
+     dup length dict begin
+     { 1 index /FID ne {def}{pop pop} ifelse } forall
+     /Encoding ISOLatin1Encoding def
+     currentdict end definefont
+    } { %else
+% We already have a non-standard encoding, don't redefine
+     exch pop % remove fontname
+    } ifelse
+} bind def
+% set color to red
+0.92156862745 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% point rond
+19.010309 29.716259 moveto 17.010309 29.716259 2.000000 0 360 arc fill
+% set color to black
+0 0 0 setrgbcolor
+% Text
+/Times findfont 10 scalefont setfont 19.845361 32.551311 moveto (L) show
+% set color to red
+0.92156862745 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% point rond
+302.515464 29.716259 moveto 300.515464 29.716259 2.000000 0 360 arc fill
+% set color to black
+0 0 0 setrgbcolor
+% Text
+/Times findfont 10 scalefont setfont 303.350515 32.551311 moveto (M) show
+% set color to red
+0.92156862745 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% point rond
+160.762887 275.238925 moveto 158.762887 275.238925 2.000000 0 360 arc fill
+% set color to black
+0 0 0 setrgbcolor
+% Text
+/Times findfont 10 scalefont setfont 161.597938 278.073977 moveto (N) show
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+17.010309 29.716259 moveto 300.515464 29.716259 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+300.515464 29.716259 moveto 158.762887 275.238925 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+158.762887 275.238925 moveto 17.010309 29.716259 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+45.360825 29.716259 moveto 286.340206 54.268526 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+286.340206 54.268526 moveto 144.587629 250.686659 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+144.587629 250.686659 moveto 45.360825 29.716259 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+69.458763 32.171486 moveto 272.164948 73.910339 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+272.164948 73.910339 moveto 134.664948 228.589619 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+134.664948 228.589619 moveto 69.458763 32.171486 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+89.729381 36.345371 moveto 258.414948 89.378267 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+258.414948 89.378267 moveto 128.144330 208.947806 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+128.144330 208.947806 moveto 89.729381 36.345371 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+106.597938 41.648661 moveto 245.387887 101.335221 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+245.387887 101.335221 moveto 124.302835 191.687562 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+124.302835 191.687562 moveto 106.597938 41.648661 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+120.476933 47.617317 moveto 233.279381 110.370455 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+233.279381 110.370455 moveto 122.532345 176.683672 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+122.532345 176.683672 moveto 120.476933 47.617317 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+131.757178 53.892631 moveto 222.204678 117.001777 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+222.204678 117.001777 moveto 122.326804 163.777037 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+122.326804 163.777037 moveto 131.757178 53.892631 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+140.801928 60.203545 moveto 212.216890 121.679303 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+212.216890 121.679303 moveto 123.269841 152.788596 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+123.269841 152.788596 moveto 140.801928 60.203545 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+147.943424 66.351121 moveto 203.322186 124.790232 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+203.322186 124.790232 moveto 125.023050 143.530091 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+125.023050 143.530091 moveto 147.943424 66.351121 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+153.481300 72.195032 moveto 195.492272 126.664218 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+195.492272 126.664218 moveto 127.315088 135.812194 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+127.315088 135.812194 moveto 153.481300 72.195032 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+157.682397 77.641951 moveto 188.674554 127.579016 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+188.674554 127.579016 moveto 129.931709 129.450478 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+129.931709 129.450478 moveto 157.682397 77.641951 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+160.781613 82.635657 moveto 182.800269 127.766162 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+182.800269 127.766162 moveto 132.706778 124.269625 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+132.706778 124.269625 moveto 160.781613 82.635657 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+162.983479 87.148708 moveto 177.790920 127.416508 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+177.790920 127.416508 moveto 135.514261 120.106228 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+135.514261 120.106228 moveto 162.983479 87.148708 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+164.464223 91.175488 moveto 173.563254 126.685480 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+173.563254 126.685480 moveto 138.261183 116.810476 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+138.261183 116.810476 moveto 164.464223 91.175488 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+165.374126 94.726487 moveto 170.033047 125.697980 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+170.033047 125.697980 moveto 140.881487 114.246977 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+140.881487 114.246977 moveto 165.374126 94.726487 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+165.840018 97.823636 moveto 167.117891 124.552880 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+167.117891 124.552880 moveto 143.330751 112.294928 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+143.330751 112.294928 moveto 165.840018 97.823636 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+165.967805 100.496561 moveto 164.739177 123.327084 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+164.739177 123.327084 moveto 145.581678 110.847799 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+145.581678 110.847799 moveto 165.967805 100.496561 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+165.844942 102.779613 moveto 162.823427 122.079156 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+162.823427 122.079156 moveto 147.620290 109.812675 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+147.620290 109.812675 moveto 165.844942 102.779613 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+165.542791 104.709567 moveto 161.303113 120.852508 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+161.303113 120.852508 moveto 149.442756 109.109369 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+149.442756 109.109369 moveto 165.542791 104.709567 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+165.118823 106.323861 moveto 160.117078 119.678194 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+160.117078 119.678194 moveto 151.052759 108.669389 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+151.052759 108.669389 moveto 165.118823 106.323861 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+164.618649 107.659295 moveto 159.210646 118.577314 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+159.210646 118.577314 moveto 152.459365 108.434836 lineto stroke
+% set color to black
+0 0 0 setrgbcolor
+% set line style to Normal
+0.8 setlinewidth [] 0 setdash
+% Segment
+152.459365 108.434836 moveto 164.618649 107.659295 lineto stroke
