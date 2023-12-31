@@ -1,6 +1,6 @@
-'From Cuis6.0 [latest update: #6118] on 25 December 2023 at 7:29:12 pm'!
+'From Cuis6.0 [latest update: #6154] on 31 December 2023 at 12:27:14 pm'!
 'Description '!
-!provides: 'DrGeo' 1 664!
+!provides: 'DrGeo' 1 665!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7194,6 +7194,14 @@ newToolbar
 		addMorph: (self button: #doc action: #toggleHelp state: #isDocVisible help: 'Dr. Geo tutorial' translated)
 		yourself! !
 
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 12/31/2023 12:25:34'!
+plugDebugger
+" Install the debugger window at the place of the code viewer "
+	debugger layoutMorph borderWidth: 1.
+	codeAndViewPanel replaceSubmorph: codeView by: debugger layoutMorph.			
+	debugger model when: #closeViews send: #stopDebbuger to: self.
+	debugger 	contextVariableInspector selectionIndex: 3! !
+
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/6/2022 12:44:50'!
 switchToPauseButton
 " 
@@ -7345,8 +7353,9 @@ compiledSketch: aSketch
 		removeAllMorphs;
 		addMorph: aSketch view.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 2/22/2023 22:10:10'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 12/31/2023 12:25:54'!
 debugSketch
+" Execute the sketch step by step in a debugger "
 	model ifEmpty: [^ self].
 	self stopSketch.
 	self isDocVisible ifTrue: [self toggleHelp].
@@ -7356,46 +7365,46 @@ debugSketch
 		afterCompiling: model 
 		do:  [ :compiler :method :receiver :context | 
 			(method notNil and: [method isQuick not]) ifTrue: [
-				debugger _ Debugger 
+				debugger := Debugger 
 					openMinimalDebugging: [
 						method
 							valueWithReceiver: receiver 
 							arguments: (context ifNil: [ #() ] ifNotNil: [ { context } ])]
 					to: method.
-				debugger layoutMorph borderWidth: 1.
-				codeAndViewPanel replaceSubmorph: codeView by: debugger layoutMorph.			
-				debugger model when: #closeViews send: #stopDebbuger to: self.
-				debugger 	contextVariableInspector selectionIndex: 3.]
-			]
+				self plugDebugger ]			]
 		ifFail: [].! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 10/19/2022 21:21:13'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 12/31/2023 11:51:35'!
 debugWindowSketch
 	self stopSketch.
 	codeView scroller acceptContents.
 	codeView editor 
 		afterCompiling: model 
 		do:  [ :compiler :method :receiver :context | method ifNotNil: [ | window |
-			window _ Debugger 
+			window := Debugger 
 				openMinimalDebugging: [
 					method
 						valueWithReceiver: receiver 
 						arguments: (context ifNil: [ #() ] ifNotNil: [ { context } ])]
-				to: method 
-				label: 'Execute step by step' translated.
+				to: method.
 			window 	contextVariableInspector selectionIndex: 3.]
 			]
 		ifFail: [].! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 2/22/2023 11:55:13'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 12/31/2023 12:26:16'!
 executeSketch
 	self stopSketch.
 	codeView scroller acceptContents.
 	self switchToPauseButton.
 	DrGeoSketch when: #newSmalltalkSketch send: #compiledSketch: to: self.
-	sketchProcess _ [ | t |
-		t _ DateAndTime now.
-		Compiler evaluate: model.
+	sketchProcess := [ | t |
+		t := DateAndTime now.
+		[Compiler evaluate: model] 
+			on: Exception 
+			do: [debugger := Debugger 
+					openMinimalDebuggingProcess: sketchProcess 
+					context: thisContext "sketchProcess suspendedContext 	".
+				self plugDebugger ].
 		" When we get there, sketch has been entirely executed, switch back to play button "
 		self switchToPlayButton.
 		Transcript show: DateAndTime now - t ;cr] newProcess.
@@ -33859,18 +33868,6 @@ openMinimalMorphic
 	self toggleContextStackIndex: oldContextStackIndex.
 	^ window! !
 
-!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 10/19/2022 21:16:36'!
-openMinimalMorphicLabel: aLabelString
-	"Open a morphic debugger with the given label"
-
-	| oldContextStackIndex window |
-	oldContextStackIndex _ contextStackIndex.
-	self expandStack. "Sets contextStackIndex to zero."
-
-	window _ DrGDebuggerWindow open: self label: aLabelString.
-	self toggleContextStackIndex: oldContextStackIndex.
-	^ window! !
-
 !Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 10/19/2022 21:20:06'!
 openMinimalDebugging: aBlock to: aCompiledMethod 
 	"Create a new process to debug aBlock, and step into it."
@@ -33884,18 +33881,16 @@ openMinimalDebugging: aBlock to: aCompiledMethod
 		whileFalse: [debugger send].
 	^ window ! !
 
-!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 10/13/2022 20:04:34'!
-openMinimalDebugging: aBlock to: aCompiledMethod label: aString
-	"Create a new process to debug aBlock, and step into it."
+!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 12/31/2023 11:59:44'!
+openMinimalDebuggingProcess: process context: context
+"Open a Minimal Debugger on an existing process."
+	| debugger |
+	<primitive: 19> "Simulation guard"
 
-	| processToDebug debugger window |
-	debugger _ self new.
-	processToDebug _ aBlock newProcess name: 'debugIt'.
-	debugger process: processToDebug context: processToDebug suspendedContext.
-	window _ debugger openMinimalMorphicLabel: aString.
-	[debugger interruptedContext method == aCompiledMethod]
-		whileFalse: [debugger send].
-	^ window ! !
+	debugger := self new.
+	debugger process: process context: context.
+	^ debugger openMinimalMorphic.
+	! !
 
 !Number methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2020 23:32:17'!
 closeTo: num
