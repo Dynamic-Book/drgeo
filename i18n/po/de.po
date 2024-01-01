@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: eToys\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-18 18:22+0000\n"
-"PO-Revision-Date: 2022-12-11 11:32+0000\n"
+"PO-Revision-Date: 2023-12-31 13:12+0000\n"
 "Last-Translator: Markus Schlager <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-11-24 06:28+0000\n"
-"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
+"X-Launchpad-Export-Date: 2024-01-01 04:38+0000\n"
+"X-Generator: Launchpad (build e1eeab5b20e19239bd7d5f36676f7a52988db88b)\n"
 "X-Etoys-SystemVersion: etoys4.1 of 29 April 2010 update 2383 (repo v1295 of "
 "25 August 2010)\n"
 "Language: de\n"
@@ -935,7 +935,7 @@ msgstr "Skripte bearbeiten oder erzeugen"
 
 #: DrGeo-Main,DrGeoPresenter>>exportToImageAs
 msgid "Name the image to keep."
-msgstr ""
+msgstr "Benenne das Bild zum Speichern"
 
 #: DrGeo-Main,DrGeoPresenter>>gridWording
 msgid "<no> Grid"
@@ -995,7 +995,7 @@ msgstr "Geometrischer Ort"
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid "Autoname new object"
-msgstr ""
+msgstr "Benenne neues Objekt automatisch"
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid ""
@@ -1003,10 +1003,14 @@ msgid ""
 "image. An empty path locates these resources in the Dr. Geo application "
 "folder. Relative path accepted, home/user directory is then prepended"
 msgstr ""
+"Pfad für benutzereigene Dateien wie Zeichnungen, Smalltalk-Zeichnungen oder "
+"exportierte Bilder. Bei leerem Pfad werden diese Dateien im "
+"Anwendungsverzeichnis von Dr. Geo abgespeichert. Relative Pfade sind "
+"zulässig, es wird dann das Heimat- bzw. Benutzerverzeichnis vorangestellt."
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid "miscellaneous"
-msgstr ""
+msgstr "Verschiedenes"
 
 #: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>shapeWidget
 msgid "Shape"
@@ -1106,11 +1110,11 @@ msgstr "Die ox- und oy-Achsen anzeigen oder verbergen."
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>exportImageButtonData
 msgid "Export this sketch as SVG image."
-msgstr ""
+msgstr "Exportiere diese Zeichnung als SVG-Bild"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>exportImageButtonData
 msgid "Save as image"
-msgstr ""
+msgstr "Als Bild speichern"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>gridButtonData
 msgid "Show or hide grid."
