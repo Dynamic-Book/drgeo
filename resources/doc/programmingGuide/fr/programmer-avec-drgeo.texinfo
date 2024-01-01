@@ -3,10 +3,10 @@
 @documentlanguage fr
 @documentencoding UTF-8
 @settitle  Programmer avec Dr.Geo
-@set timeStamp Time-stamp: <2019-08-31 12:42:33 hilaire>
+@set timeStamp Time-stamp: <2024-01-01 16:37:06 hilaire>
 @paragraphindent 0
 @exampleindent 1
-@set drgeoVersion 19.09
+@set drgeoVersion 23.12
 @set txicodequoteundirected ON 
 @setfilename programmer-avec-drgeo.info
 @include ../../userGuide/drgeoMacro.texinfo
@@ -26,11 +26,11 @@ Merci aux relecteurs de ce manuel : Alain Busser, Aubin Jarry, Georges Khaznadar
 Ce manuel est pour GNU Dr.Geo (version @value{drgeoVersion}), un
 environnement de géométrie interactive et de programmation.
 
-Copyright @copyright{} 2019 Hilaire Fernandes
+Copyright @copyright{} 2019,2024 Hilaire Fernandes
 
 Compilation : @today{}
 
-Source de la documentation : @url{https://bazaar.launchpad.net/~drgeo-developers/drgeo} 
+Source de la documentation : @url{https://github.com/hilaire/drgeo/tree/main/resources/doc/programmingGuide} 
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -46,7 +46,7 @@ Texts.  A copy of the license is included in the section entitled
 @titlepage
 @title Programmer avec Dr.Geo @value{drgeoVersion}
 @subtitle Faire des mathématiques en programmant 
-@author Hilaire Fernandes (@email{hilaire@@drgeo.eu})
+@author Hilaire Fernandes (@email{hilaire@@gnu.org})
 @iftex
    @page
    @vskip 0pt plus 1filll
@@ -58,7 +58,7 @@ Texts.  A copy of the license is included in the section entitled
 
 @headings off
 @everyheading BROUILLON  @| @thispage @| @thischapter
-@everyfooting @| @| @today
+@everyfooting @| @| @today{}
 
 @iftex
 @shortcontents
@@ -77,7 +77,7 @@ Texts.  A copy of the license is included in the section entitled
 * Nombres et opérations::Programmer avec des nombres
 * Espace::Programmer de la géométrie
 * Fonctions::Programmer avec des fonctions
-* Figure Pharo::Descriptions exhaustives des commandes
+* Figure Smalltalk::Descriptions exhaustives des commandes
 * Outils du développeur::Outils pour la programmation
 * GNU Free Documentation License::La licence de partage de ce livre
 * Copyright des documents::Droits des documents tiers de ce livre
@@ -115,7 +115,7 @@ Texts.  A copy of the license is included in the section entitled
 @c==================================================
 @c:PART3 - Pour aller plus loin
 @part Partie III @*Pour aller plus loin dans la programmation
-@c:Le langage Pharo
+@c:Le langage Smalltalk
 @include SmalltalkFigure/SmalltalkFigure.texinfo
 @c:Les outils du développeur
 @include Tools/tools.texinfo

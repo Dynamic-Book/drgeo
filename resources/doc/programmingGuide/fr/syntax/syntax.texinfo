@@ -1,4 +1,4 @@
-@c La syntaxe Pharo par l'exemple
+@c La syntaxe Smalltalk par l'exemple
 @node La syntaxe par l'exemple
 @chapter La syntaxe par l'exemple
 
@@ -20,7 +20,7 @@
 @node La syntaxe
 @section La syntaxe, c'est quoi ?
 Tout langage de programmation s'appuie sur un ensemble de mots clés et
-de règles. Pharo est très simple, il en impose une vingtaine, et
+de règles. Smalltalk est très simple, il en impose une vingtaine, et
 en ce qui nous concerne moins d'une quinzaine seront utilisés dans ce
 guide.
 
@@ -30,7 +30,7 @@ source la conséquence à ne pas respecter la syntaxe est plus
 embêtante@tie{}: le programme refusera de fonctionner. Un texte en
 français avec une grammaire ou une conjugaison approximative pourra
 toujours être compris par le lecteur humain, c'est la différence entre
-nous et les machines. Mais pas d'inquiétude, l'environnement Pharo de
+nous et les machines. Mais pas d'inquiétude, l'environnement Smalltalk de
 @drgeo{} offre plusieurs solutions lorsque le code comporte des
 erreurs de syntaxe.
 
@@ -40,16 +40,14 @@ source. C'est formateur et ils sont toujours courts. En prolongement
 des exemples, des exercices accessibles sont proposés,
 faites-les@tie{}!
 
-@cindex espace de travail
-@cindex playground
+@cindex éditeur de figure Smalltalk
 @node Saisir le code
 @section Où saisir le code ?
-Le code source est saisi au clavier dans un ``espace de travail'' --
-nommé ``Playground'' en anglais qui veut dire espace de jeu,
-programmer est donc une activité ludique !
+Le code source est saisi au clavier dans un éditeur de figure
+Smalltalk.
 
 Cet outil ressemble à s'y méprendre à un éditeur de texte. Mais c'est
-en fait une console d'édition de code Pharo@tie{}: pour écrire,
+en fait une console d'édition de code Smalltalk@tie{}: pour écrire,
 compiler et exécuter du code source. Il est bien sûr possible d'y
 coller un code source copié ailleurs, par exemple depuis une version
 web de ce guide. Mais saisir le code source au clavier offre
@@ -57,14 +55,11 @@ l'agréable sentiment de composer son programme et de réfléchir au rôle
 de chacune des instructions saisies. Les exemples sont de toute façon
 très courts.
 
-Revenons à notre ``espace de travail'', pour l'afficher faire
-...@clicksequence{Clic arrière-plan @click{} Outils @click{} Espace de
-travail}...  ou cliquer sur l'arrière-plan et faire
-@kbd{Alt-k}@footnote{Selon votre système d'exploitation, remplacer
-@kbd{Alt} par @kbd{Ctrl}.}.
+Revenons à notre ``éditeur de figure Smalltalk'', pour l'afficher faire
+...@clicksequence{Clic arrière-plan @click{} Outils @click{} Editeur de figure Smalltalk}....
 
-@drgeoFigure{Notre ``Espace de travail'' ou ``Playground'' avec un
-code source d'une ligne !,playground,8}
+@drgeoFigure{Notre ``Editeur de figure Smalltalk'' avec un code source
+d'une ligne !,editorSmalltalk,10}
 
 @strong{Consigne Importante.} Pour s'y retrouver dans les exemples et
 les exercices recopiés ou écrits, il faut @strong{d'abord} renommer à
@@ -76,7 +71,7 @@ et valider avec le touche clavier @kbd{Enter}.
 @cindex message
 @node Les messages
 @section Hermès, messager des dieux
-Avec le langage Pharo tout est histoire de @emph{demander} quelque
+Avec le langage Smalltalk tout est histoire de @emph{demander} quelque
 chose à @emph{quelqu'un} pour obtenir ce que nous souhaitons@tie{}:
 afficher une nouvelle figure, faire un calcul, afficher un point dans
 une figure, afficher une phrase. Pour demander il suffit d'envoyer un
@@ -265,7 +260,7 @@ DrGeoFigure nouveau afficherAxes vecteur: 3 @@ 1.5}
 
 @cindex message, types
 @subheading Résumons !
-Pharo propose donc 3 types différents de message pour écrire notre
+Smalltalk propose donc 3 types différents de message pour écrire notre
 code informatique.
 
 @itemize
@@ -645,7 +640,7 @@ mathématiques@tie{}: elle commence par une accolade ouvrante @{ et se
 termine par une accolade fermante @}. L'ensemble des diviseurs de 12
 est @{1@tie{}; 2@tie{}; 3@tie{}; 4@tie{}; 6@tie{}; 12@} en écriture
 mathématiques et @{1@tie{}. 2@tie{}. 3@tie{}. 4@tie{}. 6@tie{}. 12@}
-en Pharo.
+en Smalltalk.
 
 @drgeoExercise{Parallélogramme facile,exeArrayParallelogram, @emph{A
 l'aide d'une collection et du message} @code{polygone:} @emph{code un

@@ -40,10 +40,10 @@ parents et aux jeunes souhaitant découvrir la programmation d'une
 façon originale et attrayante.
 
 La programmation avec @drgeo{} se pratique avec le langage
-informatique Pharo@footnote{@url{http://pharo.org}}, c'est le même
-langage avec lequel @drgeo{} est développé. Pharo est une
-implémentation et une extension moderne de Smalltalk qui fut mis au
-point au
+informatique Cuis-Smalltalk@footnote{@url{http://cuis.st}}, c'est le
+même langage avec lequel @drgeo{} est développé. Cuis-Smalltalk est
+une implémentation et une extension moderne de Smalltalk qui fut mis
+au point au
 PARC@footnote{@url{https://fr.wikipedia.org/wiki/Palo_Alto_Research_Center}},
 au cours d'un lent processus de raffinement d'une dizaine d'années, de
 1972 à 1983. Ce langage fut conçu pour inventer l'informatique
@@ -55,9 +55,9 @@ compris aux plus jeunes.
 @section Contenu
 La partie I présente la programmation à travers une série d'exemples
 et d'exercices progressifs, leur correction se trouve en annexe.
-L'écriture du code informatique est en français, sans caractère
-accentué, le langage de programmation est Pharo. L'environnement
-de programmation est @drgeo{} basé sur celui de Pharo.
+L'écriture du code informatique est en français, avec caractères
+accentués, le langage de programmation est Smalltalk. L'environnement
+de programmation est @drgeo{} basé sur celui de Cuis-Smalltalk.
 
 La partie II propose une série d'activités adaptés aux enseignements
 mathématiques en secondaire 1. Selon le système éducatif, le
