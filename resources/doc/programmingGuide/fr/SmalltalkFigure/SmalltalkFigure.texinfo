@@ -1,45 +1,45 @@
-@c Les figures Pharo
+@c Les figures Smalltalk
 
-@node Figure Pharo
+@node Figure Smalltalk
 
-@chapter Figure Pharo
+@chapter Figure Smalltalk
 @cindex figure programmée
 @anchor{figureSmalltalk}
 
 @menu
-* Exemples de figure Pharo::      Exemples de codes source de figures
+* Exemples de figure Smalltalk::      Exemples de codes source de figures
 * Interface de programmation::        Description des méthodes pour programmer une figure
-* Exemples supplémentaires de figures Pharo::
+* Exemples supplémentaires de figures Smalltalk::
 @end menu
 
 
-Les @emph{Figures Pharo de @drgeo{}} -- ou plus simplement figure dans
+Les @emph{Figures Smalltalk de @drgeo{}} -- ou plus simplement figure dans
 la suite de ce texte -- sont des figures écrites en langage
-Pharo. Il ne s'agit donc plus de construire une figure à l'aide de
+Smalltalk. Il ne s'agit donc plus de construire une figure à l'aide de
 l'interface graphique de @drgeo{} mais plutôt de décrire une figure
-avec le langage Pharo et une @acronym{API,interface de
+avec le langage Smalltalk et une @acronym{API,interface de
 programmation
 dédiée}@footnote{@url{https://fr.wikipedia.org/wiki/Interface_de_programmation}}.
 
-@node Exemples de figure Pharo
+@node Exemples de figure Smalltalk
 @cindex figure programmée, exemples
-@section Exemples de figure Pharo
+@section Exemples de figure Smalltalk
  
-En lui-même Pharo est un langage de très haut niveau. Lorsqu'une
+En lui-même Smalltalk est un langage de très haut niveau. Lorsqu'une
 figure est définie dans ce langage, nous disposons également de toute
 sa puissance pour par exemple définir récursivement telle partie de la
 figure, ou bien pour placer aléatoirement certains objets de telle
 sorte qu'à chaque ouverture de la figure, celle-ci soit légèrement
 différente. Bref, les FSD sont libérées du carcan de l'interface
-graphique tout en étant renforcées par le langage Pharo.
+graphique tout en étant renforcées par le langage Smalltalk.
 
 @cindex figure programmée, exécuter
 
-Une FSD est un code source Pharo à exécuter dans un espace de
+Une FSD est un code source Smalltalk à exécuter dans un espace de
 travail ...@clicksequence{Clic arrière-plan @click{} Outils @click{}
 Espace de travail}...@footnote{Le raccourci @kbd{Alt-k} fonctionne
 aussi lorsqu'aucune fenêtre est sélectionnée.} C'est une fenêtre texte
-depuis laquelle du code Pharo est écrit et exécuté.  On peut aussi
+depuis laquelle du code Smalltalk est écrit et exécuté.  On peut aussi
 y coller du texte par @kbd{Ctrl-v}. @xref{workspace}, pour plus
 d'information sur cet outil.
 
@@ -103,9 +103,9 @@ Poursuivons avec un troisième exemple@tie{}:
 @example
 | c triangle hasard m n p |
 triangle := [:p1 :p2 :p3 |
-	c segmentDe: p1 a: p2.
-	c segmentDe: p2 a: p3.
-	c segmentDe: p3 a: p1].
+	c segmentDe: p1 à: p2.
+	c segmentDe: p2 à: p3.
+	c segmentDe: p3 à: p1].
 hasard := [5 - 10 auHasard].
 c := DrGeoFigure nouveau.
 m := c point: hasard valeur @@ 0.
@@ -158,13 +158,13 @@ Deux points et une droite sont créés. Ensuite des commandes sont
 utilisées pour modifier l'aspect des objets, voire pour en cacher.
 
 Nous avons terminé notre petite visite guidée des @emph{Figures
-  Pharo}. Dans les sections suivantes nous exposons l'ensemble des
+  Smalltalk}. Dans les sections suivantes nous exposons l'ensemble des
   commandes disponibles.
 
 
 @node Interface de programmation
 
-@section Méthodes de référence pour les Figures Pharo
+@section Méthodes de référence pour les Figures Smalltalk
 @menu
 * Commandes générales:: Instructions pour créer et manipuler des figures
 * Point::               Point libre ou contraint      
@@ -212,15 +212,6 @@ figure := DrGeoFigure nouveau.
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <une DrGeoFigure> minimal
-
-@result{} Figure et affiche celle-ci dans une fenêtre @b{sans
-décoration}.
-
-C'est une alternative à la méthode @code{nouveau} pour créer une figure.
-@end deftypemethod
-
-
 @defmethod DrGeoFigure supprimer
 
 Supprime la figure et ferme sa fenêtre
@@ -236,7 +227,7 @@ figure supprimer
 
 
 @defmethod DrGeoFigure faire: bloc
-  @var{bloc}, bloc de code Pharo contenant des
+  @var{bloc}, bloc de code Smalltalk contenant des
     instructions de construction et/ou d'animation de la figure
     interactive.
   
@@ -249,8 +240,8 @@ ou bien lorsque la figure est animée.
 figure := DrGeoFigure nouveau.
 point := figure point: 0@@0.
 figure do: [ 
-   -5 a: 5 par: 0.1 faire: [:x |
-      point deplacerA: x@@(x cos * 3).
+   -5 à: 5 par: 0.1 faire: [:x |
+      point déplacerA: x@@(x cos * 3).
       (Delay forMilliseconds: 100) wait.
       figure actualiser]
 ]
@@ -262,12 +253,6 @@ figure do: [
   
 Mise à jour de la figure après modification des attributs de quelques
 items. La plupart du temps ce n'est pas nécessaire.
-
-@end defmethod
-
-@defmethod DrGeoFigure pleinEcran
-  
-La fenêtre de la figure est étendue pour couvrir tout l'écran.
 
 @end defmethod
 
@@ -288,14 +273,14 @@ figure centrerVueEn: 5@@0
 @end example
 @end defmethod
 
-@defmethod DrGeoFigure echelle: unEntier
+@defmethod DrGeoFigure échelle: unEntier
   @var{unEntier}, échelle de la figure. Une unité représente
   approximativement 1 pixel.
   
 Modifie l'échelle de la figure.
 
 @example  
-figure echelle: 10
+figure échelle: 10
 @end example  
 @end defmethod
 
@@ -334,7 +319,7 @@ figure
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpPoint> pointSurLigne:a: curve a
+@deftypemethod DrGeoFigure <WrpPoint> pointSurLigne:à: curve a
   @var{curve}, référence d'une ligne (droite, demi-droite, segment,
   etc.)
 
@@ -406,7 +391,7 @@ figure autreIntersectionDe: droite et: circle.
 | figure s mobile c block |
 figure := DrGeoFigure nouveau.
 s := figure segment: -5@@0 to: 5@@0.
-mobile := figure pointSurLigne: s a: 0.1.
+mobile := figure pointSurLigne: s à: 0.1.
 block := [:mathItem | |x|
    x := mathItem point x.
    x @@ (x * x * x / 25 - x)].
@@ -454,7 +439,7 @@ figure droitePassantPar: p1 et: 1@@2.
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpCurve> paralleleA:passantPar: d p
+@deftypemethod DrGeoFigure <WrpCurve> parallèleA:passantPar: d p
   @var{d}, référence d'une direction (droite, segment, vecteur,...)
 
   @var{p}, référence d'un point ou d'un couple de coordonnées
@@ -464,7 +449,7 @@ figure droitePassantPar: p1 et: 1@@2.
 @example  
 | a |
 a := figure point: 1@@5.
-figure paralleleA: d passantPar: a.
+figure parallèleA: d passantPar: a.
 @end example
 @end deftypemethod
 
@@ -481,23 +466,23 @@ figure perpendiculaireA: d passantPar: 1@@5.
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpCurve> mediatriceDe: s  
+@deftypemethod DrGeoFigure <WrpCurve> médiatriceDe: s  
   @var{s}, référence d'un segment
 
   @result{} référence de la médiatrice du segment @var{s}
 @example  
-c mediatriceDe: (c segmentDe: 0@@0 a: 4@@4)
+c médiatriceDe: (c segmentDe: 0@@0 à: 4@@4)
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpCurve> mediatriceDe:a: a b  
+@deftypemethod DrGeoFigure <WrpCurve> médiatriceDe:à: a b  
   @var{a}, référence d'un point ou d'un couple de coordonnées
 
   @var{b}, référence d'un point ou d'un couple de coordonnées
 
   @result{} référence de la médiatrice du segment @var{ab}
 @example
-figure mediatriceDe: 0@@0 a: 4@@4
+figure médiatriceDe: 0@@0 à: 4@@4
 @end example
 @end deftypemethod
 
@@ -510,12 +495,12 @@ figure bissectrice: angle
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpCurve> bissectriceSommet:cote1:cote2 a b c  
+@deftypemethod DrGeoFigure <WrpCurve> bissectriceSommet:côté1:côté2 a b c  
   @var{a,b,c}, points définissant l'angle géométrique bac
 
   @result{} référence de la bissectrice de l'angle bac
 @example  
-figure bissectriceSommet: 0@@0 cote1: 1@@0 cote2: 0@@1
+figure bissectriceSommet: 0@@0 côté1: 1@@0 côté2: 0@@1
 @end example
 @end deftypemethod
 
@@ -542,7 +527,7 @@ figure demiDroiteOrigine: 0@@0 passantPar: a.
 @node Segment
 @subsection Segment
 
-@deftypemethod DrGeoFigure <WrpSegment> segmentDe:a: p1 p2
+@deftypemethod DrGeoFigure <WrpSegment> segmentDe:à: p1 p2
   @var{p1}, référence d'un point ou d'un couple de coordonnées
 
   @var{p2}, référence d'un point ou d'un couple de coordonnées
@@ -551,7 +536,7 @@ figure demiDroiteOrigine: 0@@0 passantPar: a.
 @example  
 | a |
 a := figure point: 5@@5.
-figure segmentDe: 10@@10 a: a.
+figure segmentDe: 10@@10 à: a.
 @end example
 @end deftypemethod
 
@@ -600,7 +585,7 @@ figure cercleCentre: 4@@4 rayon: 5
 @example  
 | a s |
 a := figure point: 1@@5.
-s := figure segmentDe: 0@@0 a: 3@@0.
+s := figure segmentDe: 0@@0 à: 3@@0.
 figure cercleCentre: a segment: s.
 @end example
 @end deftypemethod
@@ -609,7 +594,7 @@ figure cercleCentre: a segment: s.
 @node Arc de cercle
 @subsection Arc de cercle
 
-@deftypemethod DrGeoFigure <WrpFinitCurve> arcDe:a:passantPar: p1 p2 p3
+@deftypemethod DrGeoFigure <WrpFinitCurve> arcDe:à:passantPar: p1 p2 p3
   @var{p1}, référence d'un point ou d'un couple de coordonnées, 1ère
   extrémité de l'arc
 
@@ -626,11 +611,11 @@ figure cercleCentre: a segment: s.
 | a b |
 a := figure point: 1@@5.
 b := figure point: 0@@5.
-figure arcDe: a a: -1 @@ -2 passantPar: b.
+figure arcDe: a à: -1 @@ -2 passantPar: b.
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpFinitCurve> arcCentre:de:a: O A B
+@deftypemethod DrGeoFigure <WrpFinitCurve> arcCentre:de:à: O A B
   @var{O}, référence d'un point ou d'un couple de coordonnées, centre
   de l'arc
 
@@ -647,7 +632,7 @@ figure arcDe: a a: -1 @@ -2 passantPar: b.
 | a b |
 a := figure point: 1@@5.
 b := figure point: 0@@5.
-figure arcCentre: a de: b a: -1 @@ -2.
+figure arcCentre: a de: b à: -1 @@ -2.
 @end example
 @end deftypemethod
 
@@ -667,7 +652,7 @@ figure polygone: @{1@@2. b. 0@@0. d@}
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpFilledCurve> polygoneRegulierCentre:sommet:cotes: c s n
+@deftypemethod DrGeoFigure <WrpFilledCurve> polygoneRégulierCentre:sommet:côtés: c s n
   @var{c}, référence d'un point ou d'un couple de coordonnées, centre
     du polygone
    
@@ -683,7 +668,7 @@ figure polygone: @{1@@2. b. 0@@0. d@}
 @example
 | b |
 b := figure point: 1@@3.
-figure polygoneRegulierCentre: b sommet: 1@@1 cotes: 7.
+figure polygoneRégulierCentre: b sommet: 1@@1 côtés: 7.
 @end example
 @end deftypemethod
 
@@ -696,7 +681,7 @@ tranformés d'objets. Elles s'appliquent à des références d'objets de
 type point, segment, droite, demi-droite, vecteur, cercle, arc de
 cercle, polygone et lieu de point.
 
-@deftypemethod DrGeoFigure <WrpCurve> rotationDe:parCentre:etAangle: i c a  
+@deftypemethod DrGeoFigure <WrpCurve> rotationDe:parCentre:etAngle: i c a  
   @var{i}, référence de l'objet à transformer (point, segment,
     droite, demi-droite, vecteur, cercle, arc-cercle, polygone)
 
@@ -717,7 +702,7 @@ figure rotationDe: l parCentre: 0@@0 etAngle: Float pi / 3.
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpCurve> homothetieDe:parCentre:etFacteur: i c k  
+@deftypemethod DrGeoFigure <WrpCurve> homothétieDe:parCentre:etFacteur: i c k  
   @var{i}, référence de l'objet à transformer (point, segment,
     droite, demi-droite, vecteur, cercle, arc-cercle, polygone)
 
@@ -733,13 +718,13 @@ figure rotationDe: l parCentre: 0@@0 etAngle: Float pi / 3.
 c := figure point: 5@@5.
 k := -3.
 l := figure droitePassantPar: 0@@0 et: 5@@5.
-figure homothetieDe: l parCentre: c etFacteur: k.
-figure homothetieDe: l parCentre: 0@@0 etFacteur: 5.
+figure homothétieDe: l parCentre: c etFacteur: k.
+figure homothétieDe: l parCentre: 0@@0 etFacteur: 5.
 @end example
 
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpCurve> symetriqueDe:selonCentre i c  
+@deftypemethod DrGeoFigure <WrpCurve> symétriqueDe:selonCentre i c  
   @var{i}, référence de l'objet à transformer (point, segment,
     droite, demi-droite, vecteur, cercle, arc-cercle, polygone)
    
@@ -749,18 +734,18 @@ figure homothetieDe: l parCentre: 0@@0 etFacteur: 5.
 @example  
 | a |
 a := figure point: 4@@2.
-figure symetriqueDe: a selonCentre: 0@@0
+figure symétriqueDe: a selonCentre: 0@@0
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpCurve> symetriqueDe:selonAxe: i axe
+@deftypemethod DrGeoFigure <WrpCurve> symétriqueDe:selonAxe: i axe
   @var{i}, référence de l'objet à transformer (point, segment,
     droite, demi-droite, vecteur, cercle, arc-cercle, polygone)
    
   @var{axe}, référence d'une droite, axe de la réflexion
 
   @result{} référence de l'objet transformé
-@example   symetriqueDe: polygone selonAxe: d1
+@example   symétriqueDe: polygone selonAxe: d1
 @end example
 @end deftypemethod
 
@@ -773,7 +758,7 @@ figure symetriqueDe: a selonCentre: 0@@0
   @result{} référence de l'objet transformé
   @example
 | u a|
-u := figure vecteurOrigine: 1@@1 extremite: 3@@2.
+u := figure vecteurOrigine: 1@@1 extrémité: 3@@2.
 a := figure translationDe: (figure point: 2@@1) parVecteur: u
 @end example
 
@@ -802,7 +787,7 @@ figure lieuDe: p lorsqueBouge: mobile
 @node Vecteur
 @subsection Vecteur
 
-@deftypemethod DrGeoFigure <WrpCurve> vecteurOrigine:extremite: o e
+@deftypemethod DrGeoFigure <WrpCurve> vecteurOrigine:extrémité: o e
   @var{o}, référence d'un point ou d'un couple de coordonnées, origine
   du vecteur
 
@@ -813,7 +798,7 @@ figure lieuDe: p lorsqueBouge: mobile
 @example  
 | b |
 b := figure point: 0@@5.
-figure vecteurOrigine: b extremite: -1 @@ -2
+figure vecteurOrigine: b extrémité: -1 @@ -2
 @end example
 @end deftypemethod
 
@@ -837,12 +822,12 @@ figure vecteur: -5 @@ -5
 @node Valeur numérique
 @subsection Valeur numérique
 
- @deftypemethod WrpPoint <Point> coordonnees
+ @deftypemethod WrpPoint <Point> coordonnées
    @result{} coordonnées (statiques) d'un point
    @example
 | c p |
-p := pointSurLigne: segment a: 0.5.
-c := p coordonnees.
+p := pointSurLigne: segment à: 0.5.
+c := p coordonnées.
 c x
 @end example
  @end deftypemethod
@@ -858,14 +843,14 @@ x := figure abscisseDe: m
 @end example
  @end deftypemethod
 
- @deftypemethod DrGeoFigure <WrpValue> ordonneeDe: item
+ @deftypemethod DrGeoFigure <WrpValue> ordonnéeDe: item
    @var{item}, un point ou un vecteur
 
    @result{} ordonnée (dynamique) de @var{item}
 @example
 | m x |
 m := figure milieuDe: 10@@5 et: 7@@8.
-x := figure ordonneesDe: m
+x := figure ordonnéesDe: m
 @end example
 @end deftypemethod
 
@@ -898,7 +883,7 @@ figure longueurDe: v1
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpValue> distanceDe:a: item point
+@deftypemethod DrGeoFigure <WrpValue> distanceDe:à: item point
   @var{item}, référence d'une droite ou d'un point
 
   @var{point}, référence d'un point
@@ -908,8 +893,8 @@ figure longueurDe: v1
 
 @example
 d := figure droitePassantPar: 0@@0 et: 1@@1.
-figure distanceDe: d a: 12@@2.
-figure distanceDe: 0@@0 a: 12@@2
+figure distanceDe: d à: 12@@2.
+figure distanceDe: 0@@0 à: 12@@2
 @end example
 @end deftypemethod
 
@@ -928,7 +913,7 @@ p := figure pendteDe: d
 @node Angle
 @subsection Angle
 @cindex angle, orienté (méthodes)
-@deftypemethod DrGeoFigure <WrpValue> angleCentre:de:a a b c
+@deftypemethod DrGeoFigure <WrpValue> angleSommet:de:a a b c
 
   @var{a}, référence d'un point, sommet de l'angle
 
@@ -939,7 +924,7 @@ p := figure pendteDe: d
   @result{} référence d'un angle orienté bac dont la mesure
   appartient à [0 ; 360[.
 @example
-figure angleCentre: 0@@0 de: 3@@1 a: -2@@3
+figure angleSommet: 0@@0 de: 3@@1 à: -2@@3
 @end example
 @end deftypemethod
 
@@ -952,14 +937,14 @@ figure angleCentre: 0@@0 de: 3@@1 a: -2@@3
   dont la mesure appartient à [-180 ; 180[.
 @example  
 | v1 v2 a |
-v1 := figure vecteurOrigine: a extremite: b.
-v2 := figure vecteurOrigine: a extremite: c.
+v1 := figure vecteurOrigine: a extrémité: b.
+v2 := figure vecteurOrigine: a extrémité: c.
 a := figure angleVecteur: v1 et: v2
 @end example
 @end deftypemethod
 
 @cindex angle, géométrique (méthodes)
-@deftypemethod DrGeoFigure <WrpValue> angleGeometriqueCentre:de:a a b c
+@deftypemethod DrGeoFigure <WrpValue> angleGéométriqueSommet:de:a a b c
 
   @var{a}, référence d'un point, sommet de l'angle
 
@@ -970,7 +955,7 @@ a := figure angleVecteur: v1 et: v2
   @result{} référence d'un angle géométrique bac dont la mesure
   appartient à [0 ; 180[.
 @example
-figure angleGeometriqueCentre: a de: b a: c
+figure angleGéométriqueSommet: a de: b à: c
 @end example
 @end deftypemethod
 
@@ -979,14 +964,14 @@ figure angleGeometriqueCentre: a de: b a: c
 @node Equation
 @subsection Équation
 
-@deftypemethod DrGeoFigure <WrpValue> equationDe: item
+@deftypemethod DrGeoFigure <WrpValue> équationDe: item
   @var{item}, référence d'une droite ou d'un cercle
 
   @result{} référence d'une équation de la droite ou du cercle
 @example
 | e d |
 d := figure droitePassantPar: 0@@0 et: 15@@13.
-e := figure equationDe: e
+e := figure équationDe: e
 @end example
 @end deftypemethod
 
@@ -1011,7 +996,7 @@ figure texte: 'Hello'
   @result{} référence d'un objet texte positionné à aPoint
 @example  
 figure texte: 'Hello,
-  je suis heureux !' a: 0@@0
+  je suis heureux !' à: 0@@0
 @end example
 @end deftypemethod
 
@@ -1032,7 +1017,7 @@ monTexte texte: 'Au revoir'
 @subsection Style et attribut
 
 @subsubheading Lecture des attributs
-@deftypemethod WrpPoint <Point> coordonnees
+@deftypemethod WrpPoint <Point> coordonnées
 @result{} instance de @code{Point}, coordonnées du point
 @end deftypemethod
 
@@ -1045,7 +1030,7 @@ monTexte texte: 'Au revoir'
 @example
 a := figure point: 0@@10.
 figure assert: [a y = 10].
-figure assert: [a coordonnees = (0@@10)]
+figure assert: [a coordonnées = (0@@10)]
 @end example
 @end deftypemethod
 
@@ -1131,12 +1116,12 @@ arc normal
 @end example
 @end defmethod
 
-@defmethod WrpCurve epais
+@defmethod WrpCurve épais
 Donne une épaisseur large à une ligne (droite, demi-droite, cercle,
 lieu, etc.).
 
 @example
-polygon epais
+polygon épais
 @end example
 @end defmethod
 
@@ -1167,36 +1152,36 @@ arc pointille
 @end example
 @end defmethod
 
-@defmethod wrpFinitCurve flecheDebut
+@defmethod wrpFinitCurve flècheDebut
 Ajoute à un @strong{arc} ou un @strong{segment} une flèche en début de
 ligne.
 
 @example
 | figure segment |
 figure := DrGeoFigure nouveau.
-segment := figure segmentDe: 0@@0 a: 5@@1.
-segment flecheDebut
+segment := figure segmentDe: 0@@0 à: 5@@1.
+segment flècheDebut
 @end example
 @end defmethod
 
-@defmethod wrpFinitCurve flecheFin
+@defmethod wrpFinitCurve flècheFin
 Ajoute à un @strong{arc} ou un @strong{segment} une flèche en fin
 ligne.
 
 @example
-segment flechefin
+segment flèchefin
 @end example
 @end defmethod
 
-@defmethod wrpFinitCurve fleches
+@defmethod wrpFinitCurve flèches
 Ajoute à un @strong{arc} ou un @strong{segment} des flèches en début
 et en fin de ligne.
 
 @example
 | figure arc |
 figure := DrGeoFigure nouveau.
-arc := figure arcDe: 0@@0 a: 5@@3 passantPar: 2@@1.
-arc fleches
+arc := figure arcDe: 0@@0 à: 5@@3 passantPar: 2@@1.
+arc flèches
 @end example
 @end defmethod
 
@@ -1267,19 +1252,27 @@ a rond
 @end example
 @end defmethod
 
-@defmethod WrpPoint carre
+@defmethod WrpPoint carré
 Donne une forme carrée à un point.
 
 @example  
-a carre
+a carré
 @end example
 @end defmethod
 
-@defmethod WrpPoint small
+@defmethod WrpPoint petit
 Donne une petite taille à un point.
 
 @example
-a small
+a petit
+@end example
+@end defmethod
+
+@defmethod WrpPoint moyen
+Donne une taille moyenne à un point.
+
+@example
+a moyen
 @end example
 @end defmethod
 
@@ -1299,7 +1292,7 @@ Bloque un item à sa position actuelle, pour peu que cela ait un sens.
 | figure cercle |
 figure := DrGeoFigure nouveau.
 cercle := figure cercleCentre: 0@@0 passantPar: 5@@0.
-figure := segmentDe: 0@@0 a: (figure pointSurLigne: cercle a: 0.2).
+figure := segmentDe: 0@@0 à: (figure pointSurLigne: cercle à: 0.2).
 (figure point: 0@@0) bloquer
 @end example
 @end defmethod
@@ -1315,7 +1308,7 @@ nouvellement créés sont débloqués par défaut.
 @end example
 @end defmethod
 
-@defmethod WrpItem deplacerA: point
+@defmethod WrpItem déplacerA: point
 @var{point}, couple de coordonnées
   
 Déplace un point ou une valeur à la position donnée, pour peu que cela
@@ -1324,7 +1317,7 @@ ait un sens.
 @example
 | a |
 a := figure point: 0@@0.
-a deplacerA: 5@@5.
+a déplacerA: 5@@5.
 figure actualiser
 @end example
 @end defmethod
@@ -1336,7 +1329,7 @@ La classe @code{DrGeoFigure} propose dans la catégorie
 @t{helpers} des méthodes supplémentaires pour faciliter la
 réalisation de figures interactives complexes.
 
-@defmethod DrGeoFigure courbeDe:de:a: block x0 x1
+@defmethod DrGeoFigure courbeDe:de:à: block x0 x1
 @var{block}, un bloc de code à un argument décrivant une fonction
 
 @var{x0}, nombre, abscisse inférieure de la courbe
@@ -1348,27 +1341,27 @@ code de x0 à x1.
 
 @example
 | figure |
-figure courbeDe: [:x| x * x] de: -3 a: 3
+figure courbeDe: [:x| x * x] de: -3 à: 3
 @end example
 @end defmethod
 
 
-@deftypemethod DrGeoFigure <BlockClosure> decimal:a:min:max f1 p f2 f3
+@deftypemethod DrGeoFigure <BlockClosure> décimal:à:min:max f1 p f2 f3
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <BlockClosure> decimal:a:min:max:nom: f1 p f2 f3 s
+@deftypemethod DrGeoFigure <BlockClosure> décimal:à:min:max:nom: f1 p f2 f3 s
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <BlockClosure> decimal:a:min:max:nom:affciherValeur: v1 p v2 v3 s b
+@deftypemethod DrGeoFigure <BlockClosure> décimal:à:min:max:nom:affciherValeur: v1 p v2 v3 s b
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <BlockClosure> entier:a:min:max v1 p v2 v3
+@deftypemethod DrGeoFigure <BlockClosure> entier:à:min:max v1 p v2 v3
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <BlockClosure> eniter:a:min:max:nom: v1 p v2 v3 s
+@deftypemethod DrGeoFigure <BlockClosure> eniter:à:min:max:nom: v1 p v2 v3 s
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <BlockClosure> entier:a:min:max:nom:affciherValeur: v1 p v2 v3 s b
+@deftypemethod DrGeoFigure <BlockClosure> entier:à:min:max:nom:affciherValeur: v1 p v2 v3 s b
 
   @var{v1}, valeur initiale
 
@@ -1389,8 +1382,8 @@ figure courbeDe: [:x| x * x] de: -3 a: 3
 Construis une réglette à la position indiquée avec une plage de valeur
 dans [f2@tie{};@tie{}f3].
 @example
-A := figure decimal: 1 a: -10@@4 min: 0 max: 10 nom: 'A'.
-F := figure entier: 3 a: -10@@3 min: 0 max: 10 nom: 'F' afficherValeur: true.
+A := figure décimal: 1 à: -10@@4 min: 0 max: 10 nom: 'A'.
+F := figure entier: 3 à: -10@@3 min: 0 max: 10 nom: 'F' afficherValeur: true.
 A value + F value
 @end example
 @end deftypemethod
@@ -1401,27 +1394,27 @@ Il existe d'autres variantes, dont certaines pour des nombres entiers.
    @var{nomFichier}, une chaîne de caractère représentant le chemin et
     le nom du fichier où exporter la figure
 
-Exporte la figure dans un fichier bitmap au format PNG.
+Exporte la figure dans un fichier vectoriel au format SVG.
 @example
 | figure |
 figure := DrGeoFigure minimal.
 figure point: 0@@0.
 figure afficherAxes.
-figure exporterVersImage: '/tmp/Toto.png'.
+figure exporterVersImage: '/tmp/Toto.svg'.
 figure supprimer
 @end example
 @end defmethod
 
 
-@node Exemples supplémentaires de figures Pharo
+@node Exemples supplémentaires de figures Smalltalk
 @cindex exemples (figure programmée)
-@section Galerie d'exemples de figures Pharo
+@section Galerie d'exemples de figures Smalltalk
 
-Pour illustrer l'utilisation des Figures Pharo @drgeo{}, nous vous
+Pour illustrer l'utilisation des Figures Smalltalk @drgeo{}, nous vous
 proposons une petite série d'exemples. Ceux-ci vous montrent leurs
 importantes possibilités et nous espérons qu'ils seront également une
 source d'inspiration. Pour chacun de ces exemples, nous donnons le
-code source Pharo de la figure puis son résultat. Le code source
+code source Smalltalk de la figure puis son résultat. Le code source
 doit être copié dans un espace de travail (...@clicksequence{Clic
 arrière-plan @click{} Outils @click{} Espace de travail}...) puis
 exécuté.
@@ -1429,7 +1422,7 @@ exécuté.
 @cindex animation (figure programmée)
 @subheading Animer une figure
 Ces exemples s'appuient sur la gestion du temps et celle des processus
-programmés en Pharo.
+programmés en Smalltalk.
 
 Un premier exemple simple pour comprendre le principe@tie{}:
 
@@ -1439,8 +1432,8 @@ figure:=DrGeoFigure nouveau.
 p := figure point: 0@@0.
 pause := Delay forSeconds: 0.2.
 figure faire: [ 
-   100 foisRepete: [
-      p deplacerA: (p coordonnees + (0.1@@0)).
+   100 foisRépéter: [
+      p déplacerA: (p coordonnées + (0.1@@0)).
       figure actualiser.
       pause wait]]
 @end example
@@ -1449,13 +1442,13 @@ Un deuxième exemple avec une figure plus élaborée@tie{}:
 
 @example
 | figure s r u pause |
-figure := DrGeoFigure nouveau pleinEcran.
-s := figure segmentDe: 0@@@ -1 a: 4@@ -1.
-r := figure pointSurLigne: s a: 0.8.
-s := figure segmentDe: 0@@0 a: 0@@1.
-u := figure pointSurLigne: s a: 0.7.
+figure := DrGeoFigure nouveau.
+s := figure segmentDe: 0@@@ -1 à: 4@@ -1.
+r := figure pointSurLigne: s à: 0.8.
+s := figure segmentDe: 0@@0 à: 0@@1.
+u := figure pointSurLigne: s à: 0.7.
 u rond petit; couleurr: Color blue.
-1 a: 100 faire: [:n|
+1 à: 100 faire: [:n|
    u := figure 
       point: [:parents| |y t|
          y := parents first y.
@@ -1465,7 +1458,7 @@ u rond petit; couleurr: Color blue.
    u rond petit; couleur: Color blue].
 pause := Delay forSeconds: 0.1.
 figure faire: [
-   0 a: 1 par: 0.05 faire: [:x | 
+   0 à: 1 par: 0.05 faire: [:x | 
       r mathItem setCurveAbscissa: x.
       figure actualiser.
       pause wait]]
@@ -1481,9 +1474,9 @@ c := DrGeoFigure nouveau.
 triangle := [].
 
 triangle := [:s1 :s2 :s3 :n |
-    c segmentDe: s1 a: s2;
-        segmentDe: s2 a: s3;
-        segmentDe: s3 a: s1.
+    c segmentDe: s1 à: s2;
+        segmentDe: s2 à: s3;
+        segmentDe: s3 à: s1.
     n >0 ifTrue:
         [triangle
             valeur: s1

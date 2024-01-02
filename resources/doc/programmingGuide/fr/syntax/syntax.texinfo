@@ -344,7 +344,7 @@ A toi de jouer maintenant avec les exercices suivants.
 @drgeoExercise{Mon premier segment,exeFirstSegment,
 @emph{Construire un segment passant par les points (2;1) et (0;0).}
 @*
-@emph{Utiliser le message} @code{segmentDe:a:}}
+@emph{Utiliser le message} @code{segmentDe:à:}}
 
 @cindex demi-droite
 @drgeoExercise{Ma première demi-droite,exeFirstRay,
@@ -408,8 +408,8 @@ mot-clé. Cela n'est pas possible sans.
 DrGeoFigure nouveau
    afficherAxes;
    afficherGrille;
-   segmentDe: 0 @@ 0 a: 1 @@ 1;
-   segmentDe: 0 @@ 0 a: -1 @@ 1}
+   segmentDe: 0 @@ 0 à: 1 @@ 1;
+   segmentDe: 0 @@ 0 à: -1 @@ 1}
 
 @drgeoExercise{Un carré,exeFirstSquare,@emph{Construire une figure avec
  ses axes, sa grille et avec un carré de coté 4
@@ -464,8 +464,8 @@ L'intérêt d'une variable est son utilisation multiple dans le code.
 | maFigure |
 maFigure := DrGeoFigure nouveau.
 maFigure afficherGrille.
-maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
-maFigure segmentDe: 4 @@ 0 a: 0 @@ 4}
+maFigure segmentDe: 0 @@ 0 à: 4 @@ 4.
+maFigure segmentDe: 4 @@ 0 à: 0 @@ 4}
 
 @strong{Remarques.} Le point en fin de chaque ligne est un séparateur
 d'instructions. C'est pour cette raison que dans
@@ -495,7 +495,7 @@ utilisée pour créer le milieu du segment.
 | maFigure segment |
 maFigure := DrGeoFigure nouveau.
 maFigure afficherGrille.
-segment := maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
+segment := maFigure segmentDe: 0 @@ 0 à: 4 @@ 4.
 maFigure milieuDe: segment}
 
 @cindex point, intersection
@@ -507,8 +507,8 @@ segments et observe.
 | maFigure segment1 segment2 |
 maFigure := DrGeoFigure nouveau.
 maFigure afficherGrille.
-segment1 := maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
-segment2 := maFigure segmentDe: 2 @@ 3 a: 4 @@ 0.
+segment1 := maFigure segmentDe: 0 @@ 0 à: 4 @@ 4.
+segment2 := maFigure segmentDe: 2 @@ 3 à: 4 @@ 0.
 maFigure intersectionDe: segment1 et: segment2}
 
 
@@ -528,10 +528,10 @@ couleur, etc.
 Voici quelques possibilités pour modifier l'aspect d'un segment :
 @drgeoExample{Variable et attributs, variableAttribut,
 | segment |
-segment := DrGeoFigure nouveau segmentDe: 0 @@ 0 a: 5 @@ 5.
+segment := DrGeoFigure nouveau segmentDe: 0 @@ 0 à: 5 @@ 5.
 segment nommer: 'S'.
 segment	couleur: Color blue.
-segment	epais.
+segment	épais.
 segment	marquerAvecDisque}
 
 @drgeoFigure{Attributs d'un segment,SegmentAttributs,4}
@@ -555,11 +555,11 @@ clair. @ref{variableAttribut} devient alors@tie{}:
 
 @example
 | segment |
-segment := DrGeoFigure nouveau segmentDe: 0 @@ 0 a: 5 @@ 5.
+segment := DrGeoFigure nouveau segmentDe: 0 @@ 0 à: 5 @@ 5.
 segment
    nommer: 'S';
    couleur: Color blue;
-   epais;
+   épais;
    marquerAvecDisque
 @end example
 
@@ -574,16 +574,16 @@ d'un point@tie{}:
 @cindex couleur
 @table @strong
  @item Forme de point.
- @code{croix} @code{carre} @code{rond}
+ @code{croix} @code{carré} @code{rond}
 
  @item Taille de point.
  @code{petit} @code{moyen} @code{large}
 
  @item Épaisseur de ligne.
- @code{fin} @code{normal} @code{epais}
+ @code{fin} @code{normal} @code{épais}
 
  @item Style de ligne.
- @code{plein} @code{tiret} @code{pointille}
+ @code{plein} @code{tiret} @code{pointillé}
 
  @item Codage de segment
  @code{marquerAvecCercle} @code{marquerAvecDisque} @code{marquerAvecSimpleTrait}
@@ -619,8 +619,8 @@ plusieurs.
 "ceci est une nouvelle figure"
 maFigure := DrGeoFigure nouveau. 
 maFigure afficherGrille.
-segment1 := maFigure segmentDe: 0 @@ 0 a: 4 @@ 4.
-segment2 := maFigure segmentDe: 2 @@ 3 a: 4 @@ 0.
+segment1 := maFigure segmentDe: 0 @@ 0 à: 4 @@ 4.
+segment2 := maFigure segmentDe: 2 @@ 3 à: 4 @@ 0.
 "Construire l'intersection:"
 maFigure intersectionDe: segment1 et: segment2}
 
@@ -764,7 +764,7 @@ Pour revenir à notre point farceur, pour le forcer à rester sur la
 diagonale il suffit que ses abscisse et ordonnée soient égales. Pour
 cela, nous utilisons une variable qui est locale au bloc de code et
 que nous déclarons au début du bloc avec le code
-@code{|@tie{}coordonnee@tie{}|}. Cette variable contient alors
+@code{|@tie{}coordonnée@tie{}|}. Cette variable contient alors
 l'unique calcul d'une coordonnée tirée au hasard.
 
 @cindex bloc de code, valeur de retour
@@ -773,15 +773,15 @@ DrGeoFigure nouveau
    afficherAxes;
    afficherGrille;
    point: [
-      | coordonnee |
-      coordonnee := 50 auHasard / 10.
-      coordonnee @@ coordonnee
+      | coordonnée |
+      coordonnée := 50 auHasard / 10.
+      coordonnée @@ coordonnée
    ];
    droitePassantPar: 0@@0 et: 1@@1}
 
 A remarquer comment le bloc de code s'est étoffé sur plusieurs
 lignes. C'est en fait souvent le cas. La dernière ligne du bloc --
-@code{coordonnee @@ coordonnee} -- est la valeur retournée et qui sert
+@code{coordonnée @@ coordonnée} -- est la valeur retournée et qui sert
 à fixer les coordonnées du point farceur.
 
 Pour plus de clarté, nous introduisons une variable @code{figure} pour
@@ -796,9 +796,9 @@ figure
    afficherAxes;
    afficherGrille.
 figure point: [
-   | coordonnee |
-   coordonnee := 50 auHasard / 10.
-   coordonnee @@ coordonnee].
+   | coordonnée |
+   coordonnée := 50 auHasard / 10.
+   coordonnée @@ coordonnée].
 figure droitePassantPar: 0@@0 et: 1@@1}
 
 
@@ -847,11 +847,11 @@ d'abscisse de 1 à 10. Cela donne le code suivant :
 @drgeoExample{Boucle de 1 à 10,loop1To10,
 | figure |
 figure := DrGeoFigure nouveau afficherAxes.
-1 a: 10 faire: [:abscisse |
+1 à: 10 faire: [:abscisse |
    figure point: abscisse @@ 0]}
 
-@cindex boucle, a:faire:
-Ici, nous introduisons un nouveau message à mot clé @code{a:faire:}
+@cindex boucle, à:faire:
+Ici, nous introduisons un nouveau message à mot clé @code{à:faire:}
 avec deux paramètres. Ce message permet d'exécuter un code pour un
 intervalle de valeur, ici de 1 à 10, de 1 en 1.
 
@@ -866,7 +866,7 @@ figure point: abscisse @@ 0]} est répété 10 fois et le paramètre
 
 Dans le bloc de code la première ligne @code{[:abscisse|} déclare son
 paramètre. Si le bloc avait nécessité deux paramètres, nous écririons
-cette première ligne @code{[:abscisse :ordonnees|}. Le nom des
+cette première ligne @code{[:abscisse :ordonnée|}. Le nom des
 paramètres est libre.
 
 @drgeoExercise{Sur l'axe des abscisses@comma{} les négatifs
@@ -881,20 +881,20 @@ boucle pour placer sur l'axe des ordonnées les points d'ordonnée de 1
 @emph{Écrire une boucle pour placer sur la diagonale des axes des
 abscisses et des ordonnées les points de coordonnée de 1 à 10}}
 
-@cindex boucle, a:par:faire:
+@cindex boucle, à:par:faire:
 Nous constatons l'efficacité des boucles pour répéter un grand nombre
 de fois du code. Nous avons fait une boucle sur les valeurs entières
 de 1 à 10. Serait-il possible de le faire avec un pas de 0,5, comme 1
 ; 1,5 ; 2 ; 2,5 etc. ?
 
-Oui, il suffit d'utiliser le message @code{a:par:faire:} pour indiquer
+Oui, il suffit d'utiliser le message @code{à:par:faire:} pour indiquer
 dans le 3ème paramètre le pas de progression dans la boucle. Notre
 code devient alors :
 
 @drgeoExample{Boucle de 1 à 10 à demi-pas,loop1To10Step,
 | figure |
 figure := DrGeoFigure nouveau afficherAxes.
-1 a: 10 par: 0.5 faire: [:abscisse |
+1 à: 10 par: 0.5 faire: [:abscisse |
    figure point: abscisse @@ 0]}
 
 @drgeoExercise{Des pas de lilliputiens,exeLoopStep0dot1,
@@ -961,7 +961,7 @@ la figure pour mieux voir :
 | figure |
 figure := DrGeoFigure nouveau afficherAxes.
 figure échelle: 5.
-1 a: 100 faire: [:abscisse |
+1 à: 100 faire: [:abscisse |
    abscisse pair siVrai: [figure point: abscisse @@ 0]
 ]}
 

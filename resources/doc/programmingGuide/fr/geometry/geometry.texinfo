@@ -34,9 +34,9 @@ figure := DrGeoFigure nouveau.
 d1 := figure droitePassantPar: 0 @@ 5 et: 2 @@ 0.
 d1 nommer: 'd1'.
 (figure point: 0 @@ 5) montrer.
-d2 := figure paralleleA: d1 passantPar: 5 @@ 0.
+d2 := figure parallèleA: d1 passantPar: 5 @@ 0.
 d2 nommer: 'd2'.
-d3 := figure paralleleA: d1 passantPar: 6 @@ 0.
+d3 := figure parallèleA: d1 passantPar: 6 @@ 0.
 d3 nommer: 'd3'}
 
 Dans la figure, déplacer le point rouge et observer.
@@ -90,7 +90,7 @@ figure := DrGeoFigure nouveau.
 d1 := figure droitePassantPar: 0 @@ 5 et: 2 @@ 0.
 d1 nommer: 'd1'.
 (figure point: 0 @@ 5) montrer.
-3 a: 12 faire: [:abscisse |  
+3 à: 12 faire: [:abscisse |  
    droite := figure perpendiculaireA: d1 passantPar: abscisse @@ 0.
    abscisse pair
       siVrai: [droite couleur: Color red]
@@ -98,7 +98,7 @@ d1 nommer: 'd1'.
 ]}
 
 La perpendiculaire créée est affectée à une variable @code{droite}.
-La boucle @code{a:faire:} parcourt les abscisses entières de 3 à
+La boucle @code{à:faire:} parcourt les abscisses entières de 3 à
 12. Dans cette boucle, la condition @code{abscisse pair} teste avec le
 message à mot clé @code{siVrai:siFaux:} si l'abscisse est paire ou
 impaire. Selon le cas, la droite est colorée en rouge ou en bleu.
@@ -132,8 +132,8 @@ figure := DrGeoFigure nouveau afficherAxes.
 ptA := figure point: 2 @@ 3.
 ptA nommer: 'A'.
 ptB := (figure point: 3 @@ -2) nommer: 'B'.
-figure segmentDe: ptA a: ptB.
-(figure distanceDe: ptA a: ptB) montrer}
+figure segmentDe: ptA à: ptB.
+(figure distanceDe: ptA à: ptB) montrer}
 
 Dans la figure, en déplaçant à la souris les points A ou B, la
 distance est automatiquement actualisée. En attrapant la distance, des
@@ -161,7 +161,7 @@ droite := figure droitePassantPar: 5 @@ 5 et: 7 @@ -2.
 pointA := figure point: -5 @@ -5.
 perp := figure perpendiculaireA: droite passantPar: pointA.
 intersection := figure intersectionDe: droite et: perp.
-(figure distanceDe: pointA a: intersection) montrer}
+(figure distanceDe: pointA à: intersection) montrer}
 
 @cindex distance, droites parallèles
 @subsubsection Distance entre deux droites parallèles
@@ -186,7 +186,7 @@ figure := DrGeoFigure nouveau afficherAxes.
 @*
 droite1 := figure droitePassantPar: 5 @@ 5 et: 7 @@ -2.
 @*
-droite2 := figure paralleleA: droite1 passantPar: 0 @@ 0.
+droite2 := figure parallèleA: droite1 passantPar: 0 @@ 0.
 @*
 perp := figure perpendiculaireA: droite2 passantPar: -5 @@ 0.
 @*
@@ -213,15 +213,15 @@ grande que la distance !
 | figure droite1 droite2 perp pointA autrePoint|
 figure := DrGeoFigure nouveau afficherAxes.
 droite1 := figure droitePassantPar: 5 @@ 5 et: 7 @@ -2.
-droite2 := figure paralleleA: droite1 passantPar: 0 @@ 0.
+droite2 := figure parallèleA: droite1 passantPar: 0 @@ 0.
 perp := figure perpendiculaireA: droite2 passantPar: -5 @@ 0.
 pointA := figure intersectionDe: droite1 et: perp.
-autrePoint := figure pointSurLigne: droite2 a: 0.8.
-(figure segmentDe: autrePoint a: pointA) pointille}
+autrePoint := figure pointSurLigne: droite2 à: 0.8.
+(figure segmentDe: autrePoint à: pointA) pointillé}
 
 @cindex point, sur ligne
 Cet exemple introduit un nouveau message à mot clé
-@code{pointSurLigne:a:}. Il place un point sur une ligne. Son premier
+@code{pointSurLigne:à:}. Il place un point sur une ligne. Son premier
 paramètre est une ligne -- ici @code{droite2} -- et le deuxième
 paramètre est l'abscisse du point sur la ligne. Cette abscisse est une
 valeur décimale entre 0 et 1.
@@ -230,7 +230,7 @@ valeur décimale entre 0 et 1.
 @emph{En adaptant l'@ref{altPath}@comma{} construire une série de
 segments d'extrémités @code{pointA} et des points sur
 @code{droite2}. Ces derniers sont construits à l'aide d'une boucle
-@code{a:par:faire:} de 0 à 1 par un pas de 0.01.}}
+@code{à:par:faire:} de 0 à 1 par un pas de 0.01.}}
 
 Dans la figure déplacer la perpendiculaire et observer l'effet
 graphique !
@@ -261,14 +261,14 @@ figure := DrGeoFigure nouveau.
 a := (figure point: 1 @@ 1) nommer: 'A'.
 b := (figure point: 5 @@ 2) nommer: 'B'.
 c := (figure point: 6 @@ 6) nommer: 'C'.
-ab := figure segmentDe: a a: b.
-bc := figure segmentDe: b a: c.
+ab := figure segmentDe: a à: b.
+bc := figure segmentDe: b à: c.
 d := figure
-  intersectionDe: (figure paralleleA: ab passantPar: c) cacher
-  et: (figure paralleleA: bc passantPar: a) cacher.
+  intersectionDe: (figure parallèleA: ab passantPar: c) cacher
+  et: (figure parallèleA: bc passantPar: a) cacher.
 d nommer: 'D'.
-figure segmentDe: a a: d.
-figure segmentDe: c a: d}
+figure segmentDe: a à: d.
+figure segmentDe: c à: d}
 
 
 @drgeoExercise{Toujours parallélogramme,exeParallelogramStill,
@@ -296,16 +296,16 @@ figure := DrGeoFigure nouveau.
 m := (figure point: -5 @@ 2) nommer: 'M'.
 n := (figure point: 3 @@ 2) nommer: 'N'.
 p := (figure point: 1 @@ -5) nommer: 'P'.
-mn := figure segmentDe: m a: n.
-pm := figure segmentDe: p a: m.
+mn := figure segmentDe: m à: n.
+pm := figure segmentDe: p à: m.
 cercle1 := figure cercleCentre: p segment: mn.
 cercle1 tiret.
 cercle2 := figure cercleCentre: n segment: pm.
 cercle2 tiret.
 o := figure intersectionDe: cercle1 et: cercle2.
 o nommer: 'O'.
-figure segmentDe: o a: n.
-figure segmentDe: o a: p}
+figure segmentDe: o à: n.
+figure segmentDe: o à: p}
 
 Une fois le code exécutée, dans la figure attraper et déplacer les
 points M, N ou P et observer la figure pour bien la comprendre.
@@ -339,7 +339,7 @@ construire le point I milieu de AC. Utiliser le message à mot clé}
 L'@ref{exeParallelogramCenter} construit le point I, centre du
 parallélogramme. Pour construire le parallélogramme ABCD, le point D
 est construit comme symétrique de B par rapport à I avec le message
-@code{symetriqueDe:selonCentre:}.
+@code{symétriqueDe:selonCentre:}.
 
 @drgeoExercise{Parallélogramme et symétrie,exeParallelogramSymmetry,
 @emph{A partir de l'@ref{exeParallelogramCenter} construire le
@@ -362,7 +362,7 @@ point C.
 @emph{Programmer une figure avec les points A(0;0) et B(5;1)@comma{}
 puis construire le cercle de centre B et passant par A. Sur ce cercle
 placer le point C d'abscisse 0.2}. Utiliser les messages à mots clés
-@code{cercleCentre:passantPar:} et @code{pointSurLigne:a:}}
+@code{cercleCentre:passantPar:} et @code{pointSurLigne:à:}}
 
 @unnumberedsubsubsec Par les côtés opposés
 Une fois que les points A, B et C sont placés tel que BA=BC, il suffit
@@ -416,7 +416,7 @@ cette droite un point C.
 puis construire la droite passant par B et perpendiculaire à la droite
 AB. Sur cette droite placer le point C d'abscisse 0.1} Utiliser les
 messages à mots clés @code{perpendiculaireA:passantPar:} et
-@code{pointSurLigne:a:}}
+@code{pointSurLigne:à:}}
 
 @unnumberedsubsubsec Par les côtés opposés
 Une fois les trois points A, B et C placés comme dans
@@ -465,7 +465,7 @@ entre la droite IB et le cercle.
 @emph{Placer le point B d'abscisse 0.4 sur le cercle. Construire la
 droite IB et le point D comme d'intersection de IB et du
 cercle. Construire le polygone ABCD. @strong{Indices@tie{}:} utiliser
-les messages à mots clés @code{pointSurLigne:a:}@comma{}
+les messages à mots clés @code{pointSurLigne:à:}@comma{}
 @code{droitePassantPar:et:} et @code{intersectionDe:et:}}}
 
 
@@ -586,7 +586,7 @@ ABC.}
 symétrie,exeTriangleIsoscele2, @emph{Connaissant B(5;1) et
 C(0;0)@comma{} construire un point A sur la médiatrice du segment BC
 puis le triangle ABC.} Utiliser les messages à mots-clés
-@code{mediatrice:} et @code{pointSurLigne:a:}}
+@code{médiatrice:} et @code{pointSurLigne:à:}}
 
 @unnumberedsubsubsec Angles isométriques
 @drgeoMath{Un triangle ABC isocèle en A a ses angles B et C
@@ -626,7 +626,7 @@ d'origine C format un angle donné avec BC.
 figure := DrGeoFigure nouveau.
 b := (figure point: 5@@1) nommer: 'B'.
 c := (figure point: 0@@0) nommer: 'C'.
-alpha1 := figure angleCentre: 10@@10 de: 12@@10 a: 12@@13.
+alpha1 := figure angleSommet: 10@@10 de: 12@@10 à: 12@@13.
 b1 := figure rotationDe: b parCentre: c etAngle: alpha1.
 demiDroite1 := figure demiDroiteOrigine: c passantPar: b1}
 
@@ -699,7 +699,7 @@ dans la figure finale.}}
 @emph{Connaissant B(5;1) et C(0;0)@comma{} construire un point A sur
 la droite perpendiculaire au segment BC en B. Construire ensuite le
 triangle ABC.}  Utiliser les messages à mots-clés
-@code{perpendiculaireA:passantPar:} et @code{pointSurLigne:a:}}
+@code{perpendiculaireA:passantPar:} et @code{pointSurLigne:à:}}
 
 @cindex triangle, rectangle isocèle
 @subsection Triangle rectangle isocèle
@@ -721,7 +721,7 @@ codé,exeTriangleRectangleIsosceleMark, @emph{Reprendre la solution de
 l'@ref{exeTriangleRectangleIsoscele} pour cacher les constructions
 intermédiaires@comma{} marquer les segments isométriques et afficher
 la valeur de l'angle droit.}  Utiliser les messages à mots-clés
-@code{angleGeometriqueCentre:de:a:} et @code{marquerAvecSimpleTrait}}
+@code{angleGéométriqueSommet:de:à:} et @code{marquerAvecSimpleTrait}}
 
 
 @node Droites remarquables du triangle
@@ -740,8 +740,8 @@ médiatrices, les bissectrices, les hauteurs et les médianes.
 Pour rappel, la médiatrice d'un segment est une droite perpendiculaire
 à ce segment en son milieu.}
 
-Une figure @drgeo{} comprend les messages @code{mediatriceDe:} et
-@code{meditraiceDe:a:} pour construire une médiatrice à partir d'un
+Une figure @drgeo{} comprend les messages @code{médiatriceDe:} et
+@code{médiatriceDe:à:} pour construire une médiatrice à partir d'un
 segment ou de deux points -- voir l'annexe des méthodes pour leur
 utilisation.
 
@@ -770,7 +770,7 @@ Pour rappel, la bissectrice d'un angle coupe celui-ci en deux angles
 isométriques.}
 
 Une figure @drgeo{} comprend les messages @code{bissectriceDe:} et
-@code{bissectriceSommet:cote1:cote2:} pour construire une bissectrice
+@code{bissectriceSommet:côté1:côté2:} pour construire une bissectrice
 à partir d'un angle géométrique ou de trois points.
 
 @drgeoExercise{Bissectrices du
@@ -830,12 +830,12 @@ partir de trois points@tie{}:
 
   @item un angle géométrique dont la mesure est comprise entre
   0@textdegree{} et 180@textdegree{}. Le message à envoyer à la figure
-  est @code{angleGeometriqueCentre:de:a:}.
+  est @code{angleGéométriqueSommet:de:à:}.
 
   @item un angle orienté dont la mesure est comprise entre
   0@textdegree{} et 360@textdegree{}. L'angle est orienté dans le sens
   contraire des aiguilles d'une montre. Le message à envoyer à la
-  figure est @code{angleCentre:de:a:}.
+  figure est @code{angleSommet:de:à:}.
 
 @end itemize
 
@@ -848,8 +848,8 @@ sont construits à partir des mêmes points.
 figure := DrGeoFigure nouveau.
 figure demiDroiteOrigine: 0@@0 passantPar: -2@@2.
 figure demiDroiteOrigine: 0@@0 passantPar: 3@@1.
-(figure angleGeometriqueCentre: 0@@0 de: -2@@2 a: 3@@1) couleur: Color blue.
-(figure angleCentre: 0@@0 de: -2@@2 a: 3@@1) couleur: Color brown}
+(figure angleGéométriqueSommet: 0@@0 de: -2@@2 à: 3@@1) couleur: Color blue.
+(figure angleSommet: 0@@0 de: -2@@2 à: 3@@1) couleur: Color brown}
 
 @drgeoFigure{Angles géométrique (bleu) et orienté (marron avec
 flèche),angleGeometricOriented,7}
@@ -877,11 +877,11 @@ b:= (figure point: 5@@0) nommer: 'B'.
 c:= (figure point: 1@@3) nommer: 'C'.
 d1 := figure droitePassantPar: a et: b.
 d2 := figure droitePassantPar: a et: c.
-d3 := figure paralleleA: d2 passantPar: b.
-d:= (figure pointSurLigne: d3 a: 0.85) nommer: 'D'.
-e:= (figure pointSurLigne: d1 a: 0.96) nommer: 'E'.
-figure angleGeometriqueCentre: a de: b a: c.
-figure angleGeometriqueCentre: b de: e a: d}
+d3 := figure parallèleA: d2 passantPar: b.
+d:= (figure pointSurLigne: d3 à: 0.85) nommer: 'D'.
+e:= (figure pointSurLigne: d1 à: 0.96) nommer: 'E'.
+figure angleGéométriqueSommet: a de: b à: c.
+figure angleGéométriqueSommet: b de: e à: d}
 
 @cindex angle, alterne-interne
 @subsection Angles alternes-internes
@@ -907,11 +907,11 @@ b:= (figure point: 5@@0) nommer: 'B'.
 c:= (figure point: 1@@3) nommer: 'C'.
 d1 := figure droitePassantPar: a et: b.
 d2 := figure droitePassantPar: a et: c.
-d3 := figure paralleleA: d2 passantPar: b.
-d:= (figure pointSurLigne: d3 a: 0.15) nommer: 'D'.
-e:= (figure pointSurLigne: d1 a: 0.85) nommer: 'E'.
-figure angleGeometriqueCentre: a de: b a: c.
-figure angleGeometriqueCentre: b de: e a: d}
+d3 := figure parallèleA: d2 passantPar: b.
+d:= (figure pointSurLigne: d3 à: 0.15) nommer: 'D'.
+e:= (figure pointSurLigne: d1 à: 0.85) nommer: 'E'.
+figure angleGéométriqueSommet: a de: b à: c.
+figure angleGéométriqueSommet: b de: e à: d}
 
 @cindex triangle, somme des angles
 @subsection Somme des angles d'un triangle
@@ -928,13 +928,13 @@ figure := DrGeoFigure nouveau.
 a := (figure point: 0@@0) nommer: 'A'.
 b := (figure point: 6@@0) nommer: 'B'.
 c := (figure point: 4@@9) nommer: 'C'.
-(figure segmentDe: a a: b) normal.
+(figure segmentDe: a à: b) normal.
 ab := figure droitePassantPar: a et: b.
-bc := (figure segmentDe: b a: c) normal.
-(figure segmentDe: a a: c) normal.
-(figure angleGeometriqueCentre: b de: a a: c) couleur: Color red.
-(figure angleGeometriqueCentre: a de: b a: c) couleur: Color blue.
-(figure angleGeometriqueCentre: c de: a a: b) couleur: Color brown}
+bc := (figure segmentDe: b à: c) normal.
+(figure segmentDe: a à: c) normal.
+(figure angleGéométriqueSommet: b de: a à: c) couleur: Color red.
+(figure angleGéométriqueSommet: a de: b à: c) couleur: Color blue.
+(figure angleGéométriqueSommet: c de: a à: b) couleur: Color brown}
 
 Complétons maintenant ce code pour mettre en évidence deux angles
 particuliers de cette figure.
@@ -985,18 +985,18 @@ Cette figure est produite avec le code suivant :
 | figure ancre a b c d |
 figure := DrGeoFigure nouveau.
 figure polygone: @{ 0@@0. 6@@0. 4@@9. -3@@8 @}.
-(figure droitePassantPar: 0@@0 et: 4@@9) pointille.
-a := figure angleCentre: 0@@0 de: 6@@0 a: -3@@8.
-b := figure angleCentre: 6@@0 de: 4@@9 a: 0@@0.
-c := figure angleCentre: 4@@9 de: -3@@8 a: 6@@0.
-d := figure angleCentre: -3@@8 de: 0@@0 a: 4@@9.
+(figure droitePassantPar: 0@@0 et: 4@@9) pointillé.
+a := figure angleSommet: 0@@0 de: 6@@0 à: -3@@8.
+b := figure angleSommet: 6@@0 de: 4@@9 à: 0@@0.
+c := figure angleSommet: 4@@9 de: -3@@8 à: 6@@0.
+d := figure angleSommet: -3@@8 de: 0@@0 à: 4@@9.
 ancre := figure point: -2 @@ -2.
 figure point: [ 
    ancre nommer: 'Somme des angles : '@comma{}
       (a mathItem  degreeAngle
       + b mathItem degreeAngle 
       + c mathItem degreeAngle
-      + d mathItem degreeAngle) rounded asString]}
+      + d mathItem degreeAngle) arrondir asString]}
 
 Observer comment la somme des angles est calculée@tie{}: à chaque
 angle @code{a}, @code{b}, @code{c} et @code{d} il est demandé son
@@ -1027,7 +1027,7 @@ orientés dans le code source ne convient pas dans ce cas.
 @emph{Modifier le code de l'@ref{quadConvexAngle} pour afficher
 correctement les angles d'un quadrilatère croisé et ainsi avoir la
 somme correcte de ses angles.} Indice : construire des angles
-géométriques avec le message @code{angleGeometriqueCentre:de:a:}.}
+géométriques avec le message @code{angleGéométriqueSommet:de:à:}.}
 
 Dans la figure interactive alors produite, et en manipulant la
 diagonale, que conclure sur la somme des angles d'un quadrilatère
@@ -1059,7 +1059,7 @@ par la symétrie de centre O(-1;-1).
 figure := DrGeoFigure nouveau.
 o := figure point: -1 @@ -1.
 triangle := figure polygone: @{ 0@@0. 3@@4. 5@@2 @}.
-figure symetriqueDe: triangle selonCentre: o}
+figure symétriqueDe: triangle selonCentre: o}
 
 Maintenant s'entraîner avec l'exercice suivant.
 
@@ -1083,7 +1083,7 @@ la symétrie d'axe la droite @emph{d} passant par les points (-3;0) et
 figure := DrGeoFigure nouveau.
 d := figure droitePassantPar: -3 @@ 0 et: 5 @@ -5.
 triangle := figure polygone: @{ 0@@0. 3@@4. 5@@2 @}.
-figure symetriqueDe: triangle selonAxe: d}
+figure symétriqueDe: triangle selonAxe: d}
 
 Maintenant s'entraîner avec l'exercice suivant.
 
@@ -1108,7 +1108,7 @@ le vecteur @emph{v} d'origine le point A(1;1) et d'extrémité B(6;5).
 figure := DrGeoFigure nouveau.
 a := figure point: 1 @@ 1.
 b := figure point: 6 @@ 5.
-v := figure vecteurOrigine: a extremite: b.
+v := figure vecteurOrigine: a extrémité: b.
 triangle := figure polygone: @{ 1@@3. 3@@7. 5@@5 @}.
 figure translationDe: triangle parVecteur: v}
 
@@ -1174,9 +1174,9 @@ o := figure point: 8 @@ 7.
 k1 := 1/4.
 k2 := -1/3.
 triangle := figure polygone: @{ 1@@3. 3@@7. 5@@5 @}.
-(figure homothetieDe: triangle parCentre: o etFacteur: k1)
+(figure homothétieDe: triangle parCentre: o etFacteur: k1)
    nommer: Réduite et dans le même sens'.
-(figure homothetieDe: triangle parCentre: o etFacteur: k2)
+(figure homothétieDe: triangle parCentre: o etFacteur: k2)
    nommer: 'Réduite et inversée'}
 
 Lorsque le rapport @emph{k} est supérieur à 1 ou inférieur à -1, la
@@ -1189,9 +1189,9 @@ o := figure point: 8 @@ 7.
 k1 := 3.
 k2 := -2.
 triangle := figure polygone: @{ 1@@3. 3@@7. 5@@5 @}.
-(figure homothetieDe: triangle parCentre: o etFacteur: k1)
+(figure homothétieDe: triangle parCentre: o etFacteur: k1)
    nommer: 'Agrandie et dans le même sens'.
-(figure homothetieDe: triangle parCentre: o etFacteur: k2)
+(figure homothétieDe: triangle parCentre: o etFacteur: k2)
    nommer: 'Agrandie et inversée'}
 
 Maintenant s'entraîner avec l'exercice suivant.
@@ -1214,17 +1214,17 @@ cercle.
 @drgeoExample{Symétrique d'un carré et d'un cercle inscrit,squareCircleTransformed,
 | figure c1 c2 c3 c4 cercle d |
 figure := DrGeoFigure nouveau.
-c1 := figure segmentDe: -2 @@ 2 a: 2 @@ 2.
-c2 := figure segmentDe: 2 @@ 2 a: 2 @@ -2.
-c3 := figure segmentDe: 2 @@ -2 a: -2 @@ -2.
-c4 := figure segmentDe: -2 @@ -2 a: -2 @@ 2.
+c1 := figure segmentDe: -2 @@ 2 à: 2 @@ 2.
+c2 := figure segmentDe: 2 @@ 2 à: 2 @@ -2.
+c3 := figure segmentDe: 2 @@ -2 à: -2 @@ -2.
+c4 := figure segmentDe: -2 @@ -2 à: -2 @@ 2.
 cercle := figure cercleCentre: 0 @@ 0 rayon: 2.
 d := figure droitePassantPar: -7 @@ 0 et: 0 @@ -8.
-figure symetriqueDe: c1 selonAxe: d.
-figure symetriqueDe: c2 selonAxe: d.
-figure symetriqueDe: c3 selonAxe: d.
-figure symetriqueDe: c4 selonAxe: d.
-figure symetriqueDe: cercle selonAxe: d}
+figure symétriqueDe: c1 selonAxe: d.
+figure symétriqueDe: c2 selonAxe: d.
+figure symétriqueDe: c3 selonAxe: d.
+figure symétriqueDe: c4 selonAxe: d.
+figure symétriqueDe: cercle selonAxe: d}
 
 Nous remarquons que les 5 dernières lignes du code sont quasiment
 identiques. Cela indique souvent que ce code peut-être modifié afin
@@ -1247,12 +1247,12 @@ réécrit.
 | figure collection d |
 figure := DrGeoFigure nouveau.
 d := figure droitePassantPar: -7 @@ 0 et: 0 @@ -8.
-collection := @{figure segmentDe: -2 @@ 2 a: 2 @@ 2 .
-   figure segmentDe: 2 @@ 2 a: 2 @@ -2 .
-   figure segmentDe: 2 @@ -2 a: -2 @@ -2 .
-   figure segmentDe: -2 @@ -2 a: -2 @@ 2 .
+collection := @{figure segmentDe: -2 @@ 2 à: 2 @@ 2 .
+   figure segmentDe: 2 @@ 2 à: 2 @@ -2 .
+   figure segmentDe: 2 @@ -2 à: -2 @@ -2 .
+   figure segmentDe: -2 @@ -2 à: -2 @@ 2 .
    figure cercleCentre: 0 @@ 0 rayon: 2@}.
-collection faire: [:forme | figure symetriqueDe: forme selonAxe: d]}
+collection faire: [:forme | figure symétriqueDe: forme selonAxe: d]}
 
 Lors de la création de la collection, les instructions pour créer les
 parties constituantes de la figure sont séparées par des
@@ -1309,9 +1309,9 @@ transformés. Recopier le code de l'@ref{multipleTriangles}.
 | figure collection v |
 figure := DrGeoFigure nouveau.
 v := figure vecteur: 2 @@ 0.
-collection := @{figure segmentDe: 0 @@ 0 a: 1 @@ 3.
-   figure segmentDe: 1 @@ 3 a: 1 @@ 3.
-   figure segmentDe: 1 @@ 3 a: 2 @@ 0@}.
+collection := @{figure segmentDe: 0 @@ 0 à: 1 @@ 3.
+   figure segmentDe: 1 @@ 3 à: 1 @@ 3.
+   figure segmentDe: 1 @@ 3 à: 2 @@ 0@}.
 5 foisRepete: [ 
    collection := collection collecter: [ :forme |
       figure translationDe: forme parVecteur:  v ] ]}
@@ -1334,21 +1334,21 @@ esthétiquement.
 @drgeoExample{Spirales à gogo,multipleSpirals,
 | figure collection d1 d2 d3 d4 d5|
 figure := DrGeoFigure nouveau.
-d1 := (figure droitePassantPar: 4@@0 et: 4@@5) pointille.
-d2 := (figure droitePassantPar: 1@@0 et: 1@@5) pointille.
-d3 := (figure droitePassantPar: -2@@0 et: -2@@5) pointille.
-d4 := (figure droitePassantPar: -5@@0 et: -5@@5) pointille.
-d5 := (figure droitePassantPar: -8@@0 et: -8@@5) pointille.
-collection := @{(figure segmentDe: 7@@1 a: 4@@1) normal.
-   (figure segmentDe: 4@@1 a: 4@@4) normal.
-   (figure segmentDe: 4@@4 a: 7@@4) normal.
-   (figure segmentDe: 7@@4 a: 7@@2) normal.
-   (figure segmentDe: 7@@2 a: 5@@2) normal.
-   (figure segmentDe: 5@@2 a: 5@@3) normal.
-   (figure segmentDe: 5@@3 a: 6@@3) normal@}.
+d1 := (figure droitePassantPar: 4@@0 et: 4@@5) pointillé.
+d2 := (figure droitePassantPar: 1@@0 et: 1@@5) pointillé.
+d3 := (figure droitePassantPar: -2@@0 et: -2@@5) pointillé.
+d4 := (figure droitePassantPar: -5@@0 et: -5@@5) pointillé.
+d5 := (figure droitePassantPar: -8@@0 et: -8@@5) pointillé.
+collection := @{(figure segmentDe: 7@@1 à: 4@@1) normal.
+   (figure segmentDe: 4@@1 à: 4@@4) normal.
+   (figure segmentDe: 4@@4 à: 7@@4) normal.
+   (figure segmentDe: 7@@4 à: 7@@2) normal.
+   (figure segmentDe: 7@@2 à: 5@@2) normal.
+   (figure segmentDe: 5@@2 à: 5@@3) normal.
+   (figure segmentDe: 5@@3 à: 6@@3) normal@}.
 @{d1 . d2 . d3 . d4 . d5@} faire: [:axe |
    collection := collection collecter: [:forme |
-      figure symetriqueDe: forme selonAxe: axe] ]}
+      figure symétriqueDe: forme selonAxe: axe] ]}
 
 @drgeoFigure{Frise de spirales,Frise1,12}
 
@@ -1498,22 +1498,22 @@ informatique nouveau, nous montrons comment le faire dans l'exemple
 ci-dessous.
 
 @cindex collection, ajouterTout:
-@cindex collection, commeCollectionOrdonnee
+@cindex collection, commeCollectionOrdonnée
 @drgeoExample{Compléter le motif élémentaire,completeElementartMotif,
-| figure collection symetriques axe |
+| figure collection symétriques axe |
 figure := DrGeoFigure nouveau.
 axe := figure droitePassantPar: 1@@0 et: 1@@3.
-collection := @{figure segmentDe: 0@@0 a: (1/2)@@0.
-   figure segmentDe: (1/2)@@0 a: (1/2)@@2.
-   figure segmentDe: (1/2)@@2 a: 1@@2@} commeCollectionOrdonnee.
-symetriques := collection collecter: [:forme |
-   figure symetriqueDe: forme selonAxe: axe].
-collection ajouterTout: symetriques}
+collection := @{figure segmentDe: 0@@0 à: (1/2)@@0.
+   figure segmentDe: (1/2)@@0 à: (1/2)@@2.
+   figure segmentDe: (1/2)@@2 à: 1@@2@} commeCollectionOrdonnée.
+symétriques := collection collecter: [:forme |
+   figure symétriqueDe: forme selonAxe: axe].
+collection ajouterTout: symétriques}
 
 Il y a deux nouveaux messages dans ce code informatique.
 @itemize
 
- @item Le message unaire @code{commeCollectionOrdonnee} envoyé à la
+ @item Le message unaire @code{commeCollectionOrdonnée} envoyé à la
  collection créée avec le motif élémentaire. Ce message transforme la
  collection en une collection ordonnée où il est possible d'y ajouter
  des objets ultérieurement.

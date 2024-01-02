@@ -39,7 +39,7 @@ figure.
 | figure f |
 figure := DrGeoFigure nouveau afficherAxes afficherGrille.
 f := [:x | 3 * x].
-figure courbeDe: f de: -5 a: 5}
+figure courbeDe: f de: -5 à: 5}
 
 Ici la droite est tracée pour x variant de -5 à 5.
 
@@ -64,12 +64,12 @@ comme montré dans l'exemple ci-dessous.
 @drgeoExample{Fonction linéaire à pente un nombre entier variable,plotLinearFunctionDynamic,
 | figure f a |
 figure := DrGeoFigure nouveau afficherAxes afficherGrille echelle: 50.
-a := figure entier: 1 a: 5 @@ -5 min: -8 max: 8 nom: 'a' afficherValeur: true.
+a := figure entier: 1 à: 5 @@ -5 min: -8 max: 8 nom: 'a' afficherValeur: true.
 f := [:x | a valeur * x].
-figure courbeDe: f de: -10 a: 10}
+figure courbeDe: f de: -10 à: 10}
 
 La réglette est créée avec le message à mot clé
-@code{entier:a:min:max:nom:afficherValeur:}, elle est affectée à la
+@code{entier:à:min:max:nom:afficherValeur:}, elle est affectée à la
 variable @code{a}@tie{}:
 
 @itemize
