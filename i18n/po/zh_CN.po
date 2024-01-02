@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: Pharo\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-18 18:22+0000\n"
-"PO-Revision-Date: 2018-06-27 01:12+0000\n"
+"PO-Revision-Date: 2024-01-02 03:10+0000\n"
 "Last-Translator: ttkk1024 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-11-24 06:29+0000\n"
-"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
+"X-Launchpad-Export-Date: 2024-01-02 07:29+0000\n"
+"X-Generator: Launchpad (build e1eeab5b20e19239bd7d5f36676f7a52988db88b)\n"
 "Language: \n"
 "X-Pharo-Domain: DrGeoII\n"
 "X-Pharo-SystemVersion: Pharo1.4 of 18 April 2012 update 14438\n"
@@ -28,26 +28,26 @@ msgstr "角平分线"
 msgid ""
 "Geometric angle defined by three points, the second point is the vertex. Its "
 "measure belongs to [0 ; 180]."
-msgstr ""
+msgstr "由三个点定义的几何角，其中第二个点是顶点。其度量值属于 [0 ; 180]。"
 
 #: DrGeo-Core-Builders,DrGAngleGeometricBuilder_class>>title
 msgid "Geometric angle"
-msgstr ""
+msgstr "几何角度"
 
 #: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>description
 msgid ""
 "Oriented angle defined by three points or two vectors. When defined from "
 "three points, the second point is the vertex. Its measure belongs to [0 ; "
 "360[ or ]-180 ; 180]. "
-msgstr ""
+msgstr "由三个点或两个向量定义的方向角。当由三个点定义时，第二个点是顶点。其度量值属于 [0 ; 360[ 或 ]-180 ; 180] "
 
 #: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>title
 msgid "Oriented angle"
-msgstr ""
+msgstr "有向角"
 
 #: DrGeo-Core-Builders,DrGArcBuilder_class>>description
 msgid "Arc defined by three points."
-msgstr "由三点定义的圆弧"
+msgstr "由三点定义的圆弧。"
 
 #: DrGeo-Core-Builders,DrGArcBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Arc"
@@ -64,7 +64,7 @@ msgstr "圆弧(圆心)"
 #: DrGeo-Core-Builders,DrGBitmapBuilder_class>>description
 msgid ""
 "Picture: drag and drop a picture in the canvas. It can be moved and scaled."
-msgstr "图片：在画布拖放图片。可以移动和缩放"
+msgstr "图片：在画布中拖放图片。可以移动和缩放。"
 
 #: DrGeo-Core-Builders,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
 msgid "Picture"
@@ -74,7 +74,7 @@ msgstr "图片"
 msgid ""
 "Circle defined by its center and a point or by its center and radius, a "
 "value."
-msgstr "以圆心和另一点或以圆心和半径值定义圆。"
+msgstr "圆由其圆心和一个位置或者由其圆心和半径、一个数值来定义。"
 
 #: DrGeo-Core-Builders,DrGCircleBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Circle"
@@ -108,11 +108,11 @@ msgstr "点"
 msgid ""
 "Homothety: select a center, a value and a geometric object. The first "
 "selected point is the homothety center."
-msgstr "相似放大：选择一个中心，一个数值和一个几何对象。 第一个选择的点是同心中心。"
+msgstr "同源变换：选择一个中心、一个值和一个几何对象。第一个选中的点是同源变换中心。"
 
 #: DrGeo-Core-Builders,DrGHomothetyBuilder_class>>title
 msgid "Homothety (scale)"
-msgstr "比例"
+msgstr "比例（比例尺）"
 
 #: DrGeo-Core-Builders,DrGLineBuilder_class>>description
 msgid "Line defined by two points"
@@ -150,7 +150,7 @@ msgstr "请输入一个正确的标题和描述"
 msgid ""
 "Execute a pre-built macro-construction on selected input items. To edit a "
 "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-msgstr "对选定的输入项目执行预编译的宏构造器。 要编辑宏描述，请编辑它的文本然后使用快捷键[alt / ctrl] + s。"
+msgstr "使用预先内置的宏结构在选定输入项目上执行。若要编辑宏描述，编辑其文字，然后按 [alt/ctrl]+s 键应用。"
 
 #: DrGeo-Core-Builders,DrGMacroPlayer_class>>title
 msgid "Execute/edit macro"
@@ -167,7 +167,7 @@ msgstr "中点"
 #: DrGeo-Core-Builders,DrGParallelBuilder_class>>description
 msgid ""
 "Line passing through one point and parallel to a line, half-line, etc."
-msgstr "通过一点并平行于另一直线，射线等的直线。"
+msgstr "过一点且与某直线、射线等平行的线、射线等"
 
 #: DrGeo-Core-Builders,DrGParallelBuilder_class>>title
 msgid "Parallel"
@@ -188,7 +188,7 @@ msgstr "通过一点并垂直于另一直线，射线等的直线。"
 
 #: DrGeo-Core-Builders,DrGPerpendicularBuilder_class>>title
 msgid "Perpendicular"
-msgstr "垂直线"
+msgstr "垂线"
 
 #: DrGeo-Core-Builders,DrGPointByCoordinatesBuilder_class>>description
 msgid ""
@@ -210,7 +210,7 @@ msgstr "交点"
 #: DrGeo-Core-Builders,DrGPolygonBuilder_class>>description
 msgid ""
 "Polygon by n points: last point must be the initial point to terminate."
-msgstr "n点的多边形：最后一个点与初始点相连"
+msgstr "n点的多边形：最后一个点必须是起始点，以闭合多边形。"
 
 #: DrGeo-Core-Builders,DrGPolygonBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Polygon"
@@ -247,7 +247,7 @@ msgstr "映射线"
 msgid ""
 "Rotation: select a point, a value and a geometric object. The first selected "
 "point is the rotation center."
-msgstr "旋转：选择一点，一个值和一个几何对象。第一个选择的点是旋转中心"
+msgstr "旋转：选择一个点、一个数值和一个几何对象。第一个选择的点是旋转中心。"
 
 #: DrGeo-Core-Builders,DrGRotationBuilder_class>>title
 msgid "Rotation"
@@ -456,7 +456,7 @@ msgstr "数学项目 %1"
 
 #: DrGeo-Item-Models,DrGPointCoordinateItem>>editPropertyIn:,DrGPointFreeItem>>editPropertyIn:
 msgid "Edit the coordinates"
-msgstr ""
+msgstr "编辑坐标"
 
 #: DrGeo-Item-Models,DrGPointItem>>adaptiveDescriptiveName
 msgid "This point %1"
@@ -464,7 +464,7 @@ msgstr "点 %1"
 
 #: DrGeo-Item-Models,DrGPointOncurveItem>>editPropertyIn:
 msgid "Edit this curvilinear abscissa in [0;1]"
-msgstr ""
+msgstr "编辑此曲线的横坐标在[0;1]内。"
 
 #: DrGeo-Item-Models,DrGPolygonItem>>adaptiveDescriptiveName
 msgid "This polygon %1"
@@ -480,7 +480,7 @@ msgstr "三角形％1"
 
 #: DrGeo-Item-Models,DrGPolygonItem>>printOn:
 msgid " edges="
-msgstr ""
+msgstr " 边缘="
 
 #: DrGeo-Item-Models,DrGRayItem>>adaptiveDescriptiveName
 msgid "This half-line %1"
@@ -496,11 +496,11 @@ msgstr "文本"
 
 #: DrGeo-Item-Models,DrGTextItem>>editPropertyIn:
 msgid "Edit this text"
-msgstr ""
+msgstr "编辑这段文本。"
 
 #: DrGeo-Item-Models,DrGTextItem>>initialize
 msgid "Edit me"
-msgstr "编辑"
+msgstr "编辑我"
 
 #: DrGeo-Item-Models,DrGValueArclengthItem>>adaptiveDescriptiveName
 msgid "This arc length %1"
@@ -532,11 +532,11 @@ msgstr "多边形周长"
 
 #: DrGeo-Item-Models,DrGValuePtabscissaItem>>adaptiveDescriptiveName
 msgid "This point abscissa %1"
-msgstr "点横坐标 %1"
+msgstr "这个点的横坐标 %1"
 
 #: DrGeo-Item-Models,DrGValuePtordinateItem>>adaptiveDescriptiveName
 msgid "This point ordinate %1"
-msgstr "点坐标 %1"
+msgstr "这个点的纵坐标 %1"
 
 #: DrGeo-Item-Models,DrGValueScriptItem>>adaptiveDescriptiveName
 msgid "This script \"{1}\""
@@ -572,11 +572,11 @@ msgstr "向量的横坐标  %1"
 
 #: DrGeo-Item-Models,DrGValueVectornormItem>>adaptiveDescriptiveName
 msgid "This Vector's norm %1"
-msgstr "标准向量 %1"
+msgstr "这个向量的范数  %1"
 
 #: DrGeo-Item-Models,DrGValueVectorordinateItem>>adaptiveDescriptiveName
 msgid "This vector ordinate %1"
-msgstr "向量的坐标  %1"
+msgstr "这个向量纵坐标  %1"
 
 #: DrGeo-Item-Models,DrGVectorItem>>adaptiveDescriptiveName
 msgid "This vector %1"
@@ -584,105 +584,105 @@ msgstr "向量 %1"
 
 #: DrGeo-Item-Styles,DrGCurveStyle>>lineWidget
 msgid "Set the style of the line."
-msgstr ""
+msgstr "设置线条的样式。"
 
 #: DrGeo-Item-Styles,DrGCurveStyle>>lineWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
 msgid "Style"
-msgstr ""
+msgstr "样式"
 
 #: DrGeo-Item-Styles,DrGCurveStyle>>thicknessWidget
 msgid "Set the thickness of the line."
-msgstr ""
+msgstr "设置线条的粗细。"
 
 #: DrGeo-Item-Styles,DrGCurveStyle>>thicknessWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>vectorPreferences
 msgid "Thickness"
-msgstr ""
+msgstr "厚度"
 
 #: DrGeo-Item-Styles,DrGFilledStyle>>fillWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
 msgid "Fill"
-msgstr ""
+msgstr "填充"
 
 #: DrGeo-Item-Styles,DrGFilledStyle>>fillWidget
 msgid "Toggle to fill the object."
-msgstr ""
+msgstr "切换以填充对象。"
 
 #: DrGeo-Item-Styles,DrGFilledStyle>>translucentWidget
 msgid "Toggle the translucency of the object."
-msgstr ""
+msgstr "切换对象的半透明度"
 
 #: DrGeo-Item-Styles,DrGFilledStyle>>translucentWidget,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>polygonPreferences
 msgid "Translucent"
-msgstr ""
+msgstr "透明度"
 
 #: DrGeo-Item-Styles,DrGFinitCurveStyle>>arrowWidget,DrGPlatform>>arcPreferences,DrGPlatform>>segmentPreferences
 msgid "Arrow"
-msgstr ""
+msgstr "箭头"
 
 #: DrGeo-Item-Styles,DrGFinitCurveStyle>>arrowWidget
 msgid "Set arrow(s) to the line."
-msgstr ""
+msgstr "将箭头(箭头)设置到线上。"
 
 #: DrGeo-Item-Styles,DrGPointStyle>>shapeWidget
 msgid "Set the shape of the point."
-msgstr ""
+msgstr "设置点的形状。"
 
 #: DrGeo-Item-Styles,DrGPointStyle>>sizeWidget
 msgid "Set the size of the point."
-msgstr ""
+msgstr "设置点的大小。"
 
 #: DrGeo-Item-Styles,DrGSegmentStyle>>markWidget
 msgid "Set a mark to the segment."
-msgstr ""
+msgstr "在该段落上设置一个标记。"
 
 #: DrGeo-Item-Styles,DrGStyle>>colorWidget
 msgid "Set the colour."
-msgstr ""
+msgstr "设置颜色。"
 
 #: DrGeo-Item-Styles,DrGStyle>>feedbackWidget
 msgid "Feedback"
-msgstr ""
+msgstr "反馈"
 
 #: DrGeo-Item-Styles,DrGStyle>>feedbackWidget
 msgid ""
 "Toggle to provide feedback and interaction when the mouse cursor is over the "
 "object."
-msgstr ""
+msgstr "当鼠标光标悬停在对象上时，切换以提供反馈和交互。"
 
 #: DrGeo-Item-Styles,DrGStyle>>hiddenWidget
 msgid "Hide"
-msgstr ""
+msgstr "隐藏"
 
 #: DrGeo-Item-Styles,DrGStyle>>hiddenWidget
 msgid "Toggle to hide the object."
-msgstr ""
+msgstr "切换以隐藏对象。"
 
 #: DrGeo-Item-Styles,DrGStyle>>lockedWidget
 msgid "Lock"
-msgstr ""
+msgstr "锁定"
 
 #: DrGeo-Item-Styles,DrGStyle>>lockedWidget
 msgid "Toggle to lock the object to its position."
-msgstr ""
+msgstr "切换以将对象锁定在其位置。"
 
 #: DrGeo-Item-Styles,DrGStyle>>nameWidget
 msgid "Rename this object."
-msgstr ""
+msgstr "重命名此对象。"
 
 #: DrGeo-Item-Styles,DrGTextStyle>>backgroundWidget
 msgid "Set the background colour."
-msgstr ""
+msgstr "设置背景颜色。"
 
 #: DrGeo-Item-Styles,DrGTextStyle>>borderWidget
 msgid "Set the border colour."
-msgstr ""
+msgstr "设置边框颜色。"
 
 #: DrGeo-Item-Styles,DrGTextStyle>>fontSizeWidget
 msgid "Font size"
-msgstr ""
+msgstr "字体大小"
 
 #: DrGeo-Item-Styles,DrGTextStyle>>fontSizeWidget
 msgid "Set the font size."
-msgstr ""
+msgstr "设置字体大小。"
 
 #: DrGeo-Item-Styles,DrGValueStyle>>rename,DrGValueStyle>>rename
 msgid "Name this value"
@@ -708,6 +708,17 @@ msgid ""
 "\n"
 "LICENSE: GPL"
 msgstr ""
+"Dr. Geo 是关于交互式几何和编程的。\n"
+"{1}\n"
+"\n"
+"它允许创建几何图形并进行交互操作，\n"
+"在教学情境中可用于小学到大学层次的数学、物理和编程。\n"
+"\n"
+"它简单而有效，具有一些独特的功能，如 Smalltalk 脚本和编程的交互式草图。\n"
+"\n"
+"{2}\n"
+"\n"
+"许可证：GPL"
 
 #: DrGeo-Main,DrGeo_class>>drgeoVersion
 msgid "Installed version: "
@@ -730,6 +741,8 @@ msgid ""
 "There is unsaved data! \n"
 "Are you sure to quit Dr. Geo environment?"
 msgstr ""
+"有未保存的数据！\n"
+"确定要退出Dr. Geo环境吗？"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid ""
@@ -737,41 +750,42 @@ msgid ""
 "browser on the DrGeoSketch class you can study to design your own Smalltalk "
 "sketch."
 msgstr ""
+"一个源代码浏览器，用于查看、编辑和保存Dr. Geo代码。我在DrGeoSketch类上打开浏览器，你可以学习设计自己的Smalltalk草图。"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid ""
 "A tool to browse and to test both system and personal Smalltalk Sketches."
-msgstr ""
+msgstr "一个用于浏览和测试系统和个人Smalltalk草图的工具。"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid ""
 "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
 "can be entered, stored, edited, and evaluated."
-msgstr ""
+msgstr "一个用作草稿区域的窗口，可以输入、存储、编辑和评估Cuis-Smalltalk代码片段。"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "An editor to write and to test new Smalltalk sketch."
-msgstr ""
+msgstr "一个用于编写和测试新的Smalltalk素材的编辑器。"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "Browse"
-msgstr ""
+msgstr "浏览文件"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "Browse Smalltalk Sketches"
-msgstr ""
+msgstr "浏览 Smalltalk 素材"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "Edit Smalltalk Sketch"
-msgstr ""
+msgstr "编辑 Smalltalk 素材"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "Open a file"
-msgstr "打开一个文件"
+msgstr "打开文件"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "Open the filer on your personal sketches collection."
-msgstr "在个人草图集合中打开过滤器"
+msgstr "打开你个人的素材收藏夹。"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "Save session"
@@ -783,7 +797,7 @@ msgstr "保存该Dr.Geo会话"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "Smalltalk Sketch Editor"
-msgstr ""
+msgstr "Smalltalk素材编辑器"
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "System Browser"
@@ -803,7 +817,7 @@ msgstr "关于"
 
 #: DrGeo-Main,DrGeo_class>>worldMenu:
 msgid "Dr. Geo Preferences"
-msgstr ""
+msgstr "Dr. Geo首选项"
 
 #: DrGeo-Main,DrGeo_class>>worldMenu:
 msgid "New sketch"
@@ -827,7 +841,7 @@ msgstr "当它关闭时候切换到全屏模式，当它打开时即关闭"
 
 #: DrGeo-Main,DrGeoMiniView>>label
 msgid "A Dr. Geo sketch"
-msgstr ""
+msgstr "Dr. Geo素材"
 
 #: DrGeo-Main,DrGeoPresenter>>askForImageToExport
 msgid "Name the bitmap to export:"
@@ -835,23 +849,23 @@ msgstr "图像导出的文件名："
 
 #: DrGeo-Main,DrGeoPresenter>>axesWording
 msgid "<no> Axes"
-msgstr ""
+msgstr "<否> 轴"
 
 #: DrGeo-Main,DrGeoPresenter>>axesWording
 msgid "<yes> Axes"
-msgstr ""
+msgstr "<是> 轴"
 
 #: DrGeo-Main,DrGeoPresenter>>createMultipleModeWording
 msgid "<no> Create Multiple"
-msgstr ""
+msgstr "<否> 创建多个"
 
 #: DrGeo-Main,DrGeoPresenter>>createMultipleModeWording
 msgid "<yes> Create Multiple"
-msgstr ""
+msgstr "<是> 创建多个"
 
 #: DrGeo-Main,DrGeoPresenter>>createScript
 msgid "Build a new script"
-msgstr ""
+msgstr "构建一个新的脚本"
 
 #: DrGeo-Main,DrGeoPresenter>>editScript,DrGeoPresenter>>editScript:
 msgid "Edit or create scripts"
@@ -859,29 +873,31 @@ msgstr "编辑或创建脚本"
 
 #: DrGeo-Main,DrGeoPresenter>>exportToImageAs
 msgid "Name the image to keep."
-msgstr ""
+msgstr "命名要保留的图像。"
 
 #: DrGeo-Main,DrGeoPresenter>>gridWording
 msgid "<no> Grid"
-msgstr ""
+msgstr "<否> 网格"
 
 #: DrGeo-Main,DrGeoPresenter>>gridWording
 msgid "<yes> Grid"
-msgstr ""
+msgstr "<是> 网格"
 
 #: DrGeo-Main,DrGeoPresenter>>magneticGridWording
 msgid "<no> Magnetic Grid"
-msgstr ""
+msgstr "<否> 磁性网格"
 
 #: DrGeo-Main,DrGeoPresenter>>magneticGridWording
 msgid "<yes> Magnetic Grid"
-msgstr ""
+msgstr "<是> 磁性网格"
 
 #: DrGeo-Main,DrGeoPresenter>>save,DrGeoPresenter>>saveWithinLimitedTime:
 msgid ""
 "I can't save the sketch.\n"
 "Check the local resource or the server."
 msgstr ""
+"我无法保存草图。\n"
+"检查本地资源或服务器。"
 
 #: DrGeo-Script-Sketch,DrGeoSketch>>canTransform:
 msgid "Only geometric object can be transformed."
@@ -889,35 +905,35 @@ msgstr "只有几何对象可以转换。"
 
 #: DrGeo-Script-User,DrGeoUserScript_class>>description
 msgid "I am the description of this script. Please edit me."
-msgstr ""
+msgstr "我是这个脚本的描述。请编辑我。"
 
 #: DrGeo-Script-User,DrGeoUserScript_class>>scriptName
 msgid "A script"
-msgstr ""
+msgstr "一个脚本"
 
 #: DrGeo-System,DrGPlatform>>arcPreferences,DrGPlatform>>circlePreferences,DrGPlatform>>linePreferences,DrGPlatform>>locusPreferences,DrGPlatform>>pointPreferences,DrGPlatform>>polygonPreferences,DrGPlatform>>rayPreferences,DrGPlatform>>segmentPreferences,DrGPlatform>>textPreferences,DrGPlatform>>valuePreferences,DrGPlatform>>vectorPreferences,DrGStyle>>colorWidget
 msgid "Colour"
-msgstr ""
+msgstr "颜色"
 
 #: DrGeo-System,DrGPlatform>>arcPreferences
 msgid "arc"
-msgstr ""
+msgstr "圆弧"
 
 #: DrGeo-System,DrGPlatform>>circlePreferences
 msgid "circle"
-msgstr ""
+msgstr "圆"
 
 #: DrGeo-System,DrGPlatform>>linePreferences
 msgid "line"
-msgstr ""
+msgstr "行"
 
 #: DrGeo-System,DrGPlatform>>locusPreferences
 msgid "locus"
-msgstr ""
+msgstr "轨迹"
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid "Autoname new object"
-msgstr ""
+msgstr "自动命名新对象"
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid ""
@@ -925,46 +941,48 @@ msgid ""
 "image. An empty path locates these resources in the Dr. Geo application "
 "folder. Relative path accepted, home/user directory is then prepended"
 msgstr ""
+"用户创建资源的路径，例如素描、Smalltalk素描、导出的图像。空路径将这些资源定位在Dr. "
+"Geo应用程序文件夹中。接受相对路径，然后在home/user目录之前添加。"
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid "miscellaneous"
-msgstr ""
+msgstr "杂类"
 
 #: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>shapeWidget
 msgid "Shape"
-msgstr ""
+msgstr "形状"
 
 #: DrGeo-System,DrGPlatform>>pointPreferences,DrGPointStyle>>sizeWidget
 msgid "Size"
-msgstr ""
+msgstr "尺寸"
 
 #: DrGeo-System,DrGPlatform>>pointPreferences
 msgid "point"
-msgstr ""
+msgstr "点"
 
 #: DrGeo-System,DrGPlatform>>polygonPreferences
 msgid "polygon"
-msgstr ""
+msgstr "多边形"
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
-msgstr ""
+msgstr "代码补全中"
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "programming"
-msgstr ""
+msgstr "编程"
 
 #: DrGeo-System,DrGPlatform>>rayPreferences
 msgid "ray"
-msgstr ""
+msgstr "射线"
 
 #: DrGeo-System,DrGPlatform>>segmentPreferences,DrGSegmentStyle>>markWidget
 msgid "Mark"
-msgstr ""
+msgstr "标记"
 
 #: DrGeo-System,DrGPlatform>>segmentPreferences
 msgid "segment"
-msgstr ""
+msgstr "线段"
 
 #: DrGeo-System,DrGPlatform>>textPreferences,DrGTextStyle>>backgroundWidget
 msgid "Background"
@@ -972,23 +990,23 @@ msgstr "背景"
 
 #: DrGeo-System,DrGPlatform>>textPreferences,DrGTextStyle>>borderWidget
 msgid "Border"
-msgstr ""
+msgstr "边框"
 
 #: DrGeo-System,DrGPlatform>>textPreferences
 msgid "text"
-msgstr ""
+msgstr "文本"
 
 #: DrGeo-System,DrGPlatform>>valuePreferences
 msgid "Number of decimal"
-msgstr ""
+msgstr "小数位数"
 
 #: DrGeo-System,DrGPlatform>>valuePreferences
 msgid "value"
-msgstr ""
+msgstr "值"
 
 #: DrGeo-System,DrGPlatform>>vectorPreferences
 msgid "vector"
-msgstr ""
+msgstr "向量"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>animate1ButtonData
 msgid "Animate at speed 1."
@@ -1028,11 +1046,11 @@ msgstr "显示或隐藏ox和oy轴"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>exportImageButtonData
 msgid "Export this sketch as SVG image."
-msgstr ""
+msgstr "导出这个草图为SVG图像。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>exportImageButtonData
 msgid "Save as image"
-msgstr ""
+msgstr "另存为图片"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>gridButtonData
 msgid "Show or hide grid."
@@ -1044,7 +1062,7 @@ msgstr "永久保存草图"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>keepButtonData
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>macroDeleteButtonData
 msgid "Delete a macro-construction from the registry."
@@ -1060,11 +1078,11 @@ msgstr "对齐网格。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>menuButtonData
 msgid "An unobtrusive menu with all Dr. Geo tools."
-msgstr ""
+msgstr "一个不显眼的菜单，包含所有Dr. Geo工具。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>menuButtonData
 msgid "Menu"
-msgstr ""
+msgstr "菜单"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>multipleModeButtonData
 msgid ""
@@ -1094,15 +1112,15 @@ msgstr "重做上个操作。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>scriptCreateButtonData
 msgid "Create a Smalltalk script."
-msgstr ""
+msgstr "创建一个Smalltalk脚本"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>scriptCreateButtonData
 msgid "Create a script"
-msgstr ""
+msgstr "创建一个脚本"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>scriptEditButtonData
 msgid "Edit a Smalltalk script."
-msgstr ""
+msgstr "编辑一个Smalltalk脚本。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>scriptEditButtonData
 msgid "Edit a script"
@@ -1110,15 +1128,15 @@ msgstr "编辑脚本"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>stylerFor:
 msgid "Edit style"
-msgstr ""
+msgstr "编辑样式"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>treeButtonData
 msgid "Construction tree"
-msgstr ""
+msgstr "建构树"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>treeButtonData
 msgid "The hierarchy tree presenting the visible constructed items."
-msgstr ""
+msgstr "呈现可见构建项的层次树。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>undoButtonData
 msgid "Undo"
@@ -1130,35 +1148,35 @@ msgstr "撤消上一个操作"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>wheelXButtonData
 msgid "A wheel to move horizontally the sketch."
-msgstr ""
+msgstr "一个用于水平移动草图的轮子。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>wheelXButtonData
 msgid "Horizontal wheel"
-msgstr ""
+msgstr "水平方向的轮子"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>wheelYButtonData
 msgid "A wheel to move vertically the sketch."
-msgstr ""
+msgstr "垂直移动素描的轮子。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>wheelYButtonData
 msgid "Vertical wheel"
-msgstr ""
+msgstr "垂直滚轮"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>wheelZButtonData
 msgid "A wheel to zoom in, zoom out the sketch."
-msgstr ""
+msgstr "一个用于放大、缩小草图的滚轮。"
 
 #: DrGeo-UI-Data,DrGUIControlsManager>>wheelZButtonData
 msgid "Zoom wheel"
-msgstr ""
+msgstr "缩放轮"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>editMenu
 msgid "Copy"
-msgstr ""
+msgstr "复制"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>editMenu
 msgid "Copy with transparency"
-msgstr ""
+msgstr "以透明度复制"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>fileMenu
 msgid "Keep this sketch under a different name."
@@ -1185,33 +1203,33 @@ msgstr "构建或执行宏构造器。宏是可以应用到草图项目中的构
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid ""
 "Create different curve types: line, half-line, segment, vector, circle..."
-msgstr ""
+msgstr "创建不同类型的曲线：直线、半直线、线段、向量、圆..."
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Create points: free, on curve, intersection or middle point."
-msgstr ""
+msgstr "创建点：自由点、曲线上的点、交点或中点。"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid ""
 "Create several numeric objects: free value, distance, length, angle, "
 "coordinates, equation and text."
-msgstr ""
+msgstr "创建多个数值对象：自由值、距离、长度、角度、坐标、方程和文本。"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Erase or edit style and properties of items."
-msgstr ""
+msgstr "删除或编辑项目的样式和属性。"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Lines"
-msgstr ""
+msgstr "行数"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Load, save or export Dr. Geo figure."
-msgstr ""
+msgstr "加载、保存或导出Dr. Geo图形。"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Macro-construction"
@@ -1219,7 +1237,7 @@ msgstr "录制宏"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Numerics & Text"
-msgstr ""
+msgstr "数字与文本"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Points"
@@ -1227,17 +1245,17 @@ msgstr "点"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Script"
-msgstr ""
+msgstr "脚本"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Script: use, edit or create script to plug in the sketch."
-msgstr ""
+msgstr "脚本：使用、编辑或创建脚本以插入草图。"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid ""
 "Transform an object with a geometric transformation: symmetry, reflexion, "
 "rotation, translation or homothety (scale)."
-msgstr ""
+msgstr "用几何变换改变一个对象：对称、反射、旋转、平移或相似性变换（缩放）。"
 
 #: DrGeo-UI-Data,DrGUIMinimalControlsManager>>mainMenu
 msgid "Transformations"
@@ -1245,55 +1263,55 @@ msgstr "变换"
 
 #: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
 msgid "Execute the code up to the cursor position."
-msgstr ""
+msgstr "执行代码直到光标位置。"
 
 #: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
 msgid "Execute the current message and go to the next message."
-msgstr ""
+msgstr "执行当前消息并转到下一条消息。"
 
 #: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
 msgid "Restart"
-msgstr ""
+msgstr "重启"
 
 #: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
 msgid "Restart the step by step execution from its start."
-msgstr ""
+msgstr "重新从头开始逐步执行。"
 
 #: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
 msgid "Run to Cursor"
-msgstr ""
+msgstr "运行到光标处"
 
 #: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
 msgid "Step"
-msgstr ""
+msgstr "步"
 
 #: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
 msgid "Step into"
-msgstr ""
+msgstr "进入"
 
 #: DrGeo-UI-Widgets,DrGDebuggerWindow>>customButtonSpecs
 msgid "Step into a block."
-msgstr ""
+msgstr "进入一个块"
 
 #: DrGeo-UI-Widgets,DrGFileOpenMorph_class>>open,DrGeo_class>>worldMenu:
 msgid "Open a sketch"
-msgstr ""
+msgstr "打开草图"
 
 #: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGScriptDesignerDialog>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea,DrGSmalltalkSketchEditor>>newButtonArea
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Examples"
-msgstr ""
+msgstr "示例"
 
 #: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "My Sketches"
-msgstr ""
+msgstr "我的素描"
 
 #: DrGeo-UI-Widgets,DrGFileOpenMorph>>newButtonArea,DrGUIControlsManager>>openButtonData
 msgid "Open"
-msgstr ""
+msgstr "打开"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Angle"
@@ -1301,11 +1319,11 @@ msgstr "角度"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Any type"
-msgstr ""
+msgstr "任何类型"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Direction"
-msgstr ""
+msgstr "方向"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses,DrGSegmentBuilder_class>>title
 msgid "Segment"
@@ -1313,7 +1331,7 @@ msgstr "线段"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Value"
-msgstr ""
+msgstr "值"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog_class>>labelsAndClasses,DrGVectorBuilder_class>>title
 msgid "Vector"
@@ -1321,69 +1339,69 @@ msgstr "向量"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>addArgument
 msgid "Remove this script argument."
-msgstr ""
+msgstr "删除此脚本参数。"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newAddArgumentButton
 msgid "Add an argument to this script."
-msgstr ""
+msgstr "给这个脚本添加一个参数。"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newAddArgumentButton
 msgid "Add argument"
-msgstr ""
+msgstr "添加参数"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newButtonArea
 msgid "Build"
-msgstr ""
+msgstr "构建"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newButtonArea
 msgid "Build a script with these settings."
-msgstr ""
+msgstr "使用这些设置构建一个脚本。"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newDescriptionMorph
 msgid ""
 "A description of the script. To help the user, describe carefully what the "
 "script does and the input arguments to select to use it."
-msgstr ""
+msgstr "脚本描述。为了帮助用户，仔细描述脚本的功能以及选择使用它时的输入参数。"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
 msgid "Arguments"
-msgstr ""
+msgstr "参数"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
 msgid "Description"
-msgstr ""
+msgstr "说明"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newPane,DrGStyle>>nameWidget
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: DrGeo-UI-Widgets,DrGScriptDesignerDialog>>newScriptNameMorph
 msgid "The name of the script."
-msgstr ""
+msgstr "脚本的名称。"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete permanently this Smalltalk Sketch from disk."
-msgstr ""
+msgstr "永久删除磁盘上的这个 Smalltalk 草图。"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newButtonArea,DrGUIMinimalControlsManager>>mainMenu
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchBrowser>>newSketchesColumn
 msgid "Code"
-msgstr ""
+msgstr "代码"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>browseSketches
 msgid "Select a Smalltalk sketch"
-msgstr ""
+msgstr "选择一个Smalltalk草图"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>debugWindowSketch
 msgid "Execute step by step"
-msgstr ""
+msgstr "逐步执行"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>keepSketch,DrGeoPresenter>>saveSketchAs
 msgid "Name the sketch to keep."
@@ -1391,39 +1409,39 @@ msgstr "为保存的草图命名"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Debug the Smalltalk sketch."
-msgstr ""
+msgstr "调试Smalltalk草图。"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Dr. Geo tutorial"
-msgstr ""
+msgstr "Dr. Geo教程"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Edit a Smalltalk sketch."
-msgstr ""
+msgstr "编辑一个Smalltalk草图。"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar,DrGSmalltalkSketchEditor>>switchToPlayButton
 msgid "Play the Smalltalk sketch."
-msgstr ""
+msgstr "演出Smalltalk素描。"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Save this Smalltalk sketch."
-msgstr ""
+msgstr "保存这个Smalltalk草图。"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>newToolbar
 msgid "Stop the execution of the Smalltalk sketch."
-msgstr ""
+msgstr "停止执行Smalltalk草图。"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>switchToPauseButton
 msgid "Pause the Smalltalk sketch."
-msgstr ""
+msgstr "暂停 Smalltalk 草图。"
 
 #: DrGeo-UI-Widgets,DrGSmalltalkSketchEditor>>switchToResumeButton
 msgid "Resume the Smalltalk sketch."
-msgstr ""
+msgstr "继续 Smalltalk 草图。"
 
 #: DrGeo-UI-Widgets,DrGWizardMacroBuild>>firstPage
 msgid "Build a macro-construction"
-msgstr "建立宏"
+msgstr "构建宏观结构"
 
 #: DrGeo-UI-Widgets,DrGWizardMacroBuild>>firstPage
 msgid ""
@@ -1434,6 +1452,11 @@ msgid ""
 " 3. Next chose a name and a description,\n"
 " 4. Last apply the selection."
 msgstr ""
+"构建宏构造，\n"
+"1. 首先选择输入参数，\n"
+"2. 接下来选择输出参数，\n"
+"3. 然后选择名称和描述，\n"
+"4. 最后应用所选内容。"
 
 #: DrGeo-UI-Widgets,DrGWizardMacroBuild>>fourthPage,DrGWizardMacroPlay>>secondPage
 msgid "Description:"
@@ -1470,6 +1493,12 @@ msgid ""
 " automaticly executed.\n"
 " To start press the 'next' button."
 msgstr ""
+"执行宏构建时，\n"
+"1. 从列表中首先选择一个宏构建，\n"
+"2. 在图上选择项目。\n"
+"只有与所选宏构建相关的项目才可选择。\n"
+"一旦足够的项目被选择，宏将自动执行。\n"
+"要开始，请按“下一步”按钮。"
 
 #: DrGeo-UI-Widgets,DrGWizardMacroPlay>>secondPage
 msgid "Select a macro-construction then the figure items"
@@ -1486,19 +1515,27 @@ msgid ""
 " inserted in the sketch, at the user selected position.\n"
 " To start press the 'next' button."
 msgstr ""
+"使用脚本的步骤如下： \n"
+"1. 从列表中首先选择一个脚本，\n"
+" 2. 在素描中选择项目，\n"
+"3. 在背景的某处单击。 \n"
+"一旦足够的项目被选择，\n"
+"脚本将被插入到素描中，\n"
+"位于用户选择的位置。 \n"
+"要开始，请按‘下一步’按钮。"
 
 #: DrGeo-UI-Widgets,DrGWizardScript>>firstPage
 msgid "Use a script in the sketch"
-msgstr ""
+msgstr "在素描中使用脚本"
 
 #: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
 msgid "Script name"
-msgstr ""
+msgstr "脚本名称"
 
 #: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
 msgid "Select a script then items in the sketch"
-msgstr ""
+msgstr "选择一个脚本，然后在草图中选择项目。"
 
 #: DrGeo-UI-Widgets,DrGWizardScript>>secondPage
 msgid "The arguments accepted by this script."
-msgstr ""
+msgstr "选择一个脚本，然后在草图中选择项目。"

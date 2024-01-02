@@ -40,7 +40,7 @@ source. C'est formateur et ils sont toujours courts. En prolongement
 des exemples, des exercices accessibles sont proposés,
 faites-les@tie{}!
 
-@cindex éditeur de figure Smalltalk
+@cindex @sortas{editeur} éditeur de figure Smalltalk
 @node Saisir le code
 @section Où saisir le code ?
 Le code source est saisi au clavier dans un éditeur de figure
@@ -62,11 +62,16 @@ Revenons à notre ``éditeur de figure Smalltalk'', pour l'afficher faire
 d'une ligne !,editorSmalltalk,10}
 
 @strong{Consigne Importante.} Pour s'y retrouver dans les exemples et
-les exercices recopiés ou écrits, il faut @strong{d'abord} renommer à
-chaque fois la page de l'espace de travail. Par exemple, lors de la
-recopie d'un exemple nommé @emph{Exemple 2.1}@tie{}: double cliquer
-sur l'onglet @emph{Page} en haut à gauche puis écrire ``Exemple 2.1''
-et valider avec le touche clavier @kbd{Enter}.
+les exercices recopiés ou écrits, sauvegarder régulièrement le code
+source à l'aide du deuxième bouton de la barre d'outils de
+l'éditeur. C'est le bouton représenté par une flèche rouge qui rentre
+dans un dossier. A chacune de ses utilisations, il demande le nom à
+utiliser pour le fichier source.
+
+Par exemple, lors de la recopie d'un exemple nommé @emph{Exemple
+2.1}@tie{}: choisir ``Exemple 2.1'' comme nom de fichier. Le code
+source est enregistré à l'emplacement
+@file{DrGeo/Resources/MySmalltalkSketches/Exemple 2.1}.
 
 @cindex message
 @node Les messages
@@ -83,8 +88,12 @@ est souvent utilisé aussi -- il suffit de sélectionner le code à la
 souris puis de faire ...@clicksequence{Clic bouton droit @click{}
 @emph{Do it(d)} dans le menu contextuel}. Ces deux opérations se font
 également avec le raccourci clavier @kbd{Ctrl-a} suivi de
-@kbd{Ctrl-d}. Vous obtenez alors immédiatement le résultat de ce
-programme, à savoir une figure vide@tie{}!
+@kbd{Ctrl-d}. Le code s'exécute aussi directement par un clic sur le
+bouton vert @emph{Jouer} -- le 3ème dans la barre d'outils de
+l'éditeur.
+
+Vous obtenez alors immédiatement le résultat de ce programme, à savoir
+une figure vide@tie{}!
 
 @cindex figure programmée, nouvelle
 @drgeoExample{Premier programme,firstCode,DrGeoFigure nouveau}
@@ -127,15 +136,15 @@ vers la droite, comme une phrase en français, mais en plus simple car
 il n'y pas vraiment de conjugaison ou grammaire bizarre.
 
 @cindex grille
-@cindex plein écran (figure)
+@cindex axes des abscisses et ordonnées
 Et donc nous envoyons des messages comme nous enfilons des perles dans
-un collier. La figure affichée est trop petite ! On envoie le message
-@code{pleinEcran}. Pas de grille ! On envoie le message
+un collier. La figure n'a pas d'axes ! On envoie le message
+@code{afficherAxes}. Pas de grille ! On envoie le message
 @code{afficherGrille}. Il suffit donc d'envoyer les messages
 appropriés@tie{}:
 
 @drgeoExample{Des messages comme des perles sur un collier,firstManyMessages,
-DrGeoFigure nouveau afficherAxes afficherGrille pleinEcran}
+DrGeoFigure nouveau afficherAxes afficherGrille}
 
 La phrase commence à être longue ! Ces messages que nous envoyons en
 enfilade sont des messages @emph{unaire} que la figure est capable de
@@ -154,12 +163,12 @@ préciser de combien@tie{}? Et bien il suffit de l'écrire avec le
 message@tie{}:
 
 @drgeoExample{Changement d'échelle,firstScale,
-DrGeoFigure nouveau afficherAxes pleinEcran echelle: 100}
+DrGeoFigure nouveau afficherAxes échelle: 100}
 
 La phrase est tellement longue que le message @code{afficherGrille} a
 été enlevé, mais vous pouvez le laisser.
 
-Ici le message est @code{echelle:} avec en plus la valeur @code{100},
+Ici le message est @code{échelle:} avec en plus la valeur @code{100},
 cela s'appelle un @emph{paramètre}. Remarquer que le message se
 termine par ``@strong{:}'', cela veut dire qu'un paramètre est attendu
 tout de suite après. Un tel message est dit à @emph{mot clé}, et il
@@ -167,7 +176,7 @@ est possible d'avoir plusieurs paramètres, donc plusieurs mots clés,
 nous le verrons plus tard.
 
 Pour résumer, nous avons demandé avec le message à mot clé
-@code{echelle: 100} un changement d'échelle à 100, cela veut dire
+@code{échelle: 100} un changement d'échelle à 100, cela veut dire
 ``100 points écran = 1 unité''.
 
 @drgeoExercise{Echelle 1,exeScale1,@emph{Modifier l'@ref{firstScale} pour
@@ -180,7 +189,7 @@ Voici un autre exemple de message à mot clé pour afficher un texte
 dans une figure.
 
 @drgeoExample{Bonjour tout le monde,helloWorld,
-DrGeoFigure nouveau pleinEcran
+DrGeoFigure nouveau
    texte: 'Bonjour. Je suis Eric Dupont'}
 
 @cindex chaîne de caractères
@@ -266,10 +275,10 @@ code informatique.
 @itemize
 
  @item Le message @emph{unaire}, par exemple @code{afficherAxes} ou
- @code{pleinEcran}. La priorité d'envoi des messages est de la gauche
+ @code{afficherGrille}. La priorité d'envoi des messages est de la gauche
  vers la droite.
 
- @item Le message à @emph{mot clé}, par exemple @code{echelle:} ou
+ @item Le message à @emph{mot clé}, par exemple @code{échelle:} ou
  @code{point:} Il se termine par un ``:'' et attend à sa droite un
  paramètre.
 
@@ -360,7 +369,7 @@ séparant par un ``@strong{;}''. @ref{firstManyMessages} se réécrit
 alors comme suit.
 
 @drgeoExample{Des messages en cascade,firstCascade,
-DrGeoFigure nouveau afficherAxes; afficherGrille; pleinEcran}
+DrGeoFigure nouveau afficherAxes; afficherGrille; échelle: 10}
 
 Pour rendre le code plus lisible, nous l'écrivons sur plusieurs lignes
 en insérant quelques espaces en début de lignes.
@@ -369,7 +378,7 @@ en insérant quelques espaces en début de lignes.
 DrGeoFigure nouveau
    afficherAxes;
    afficherGrille;
-   pleinEcran}
+   échelle: 10}
 
 Lorsque les messages sont envoyés de cette façon à un même objet, cela
 s'appelle une cascade de messages. Comme une cascade avec de l'eau qui
@@ -385,7 +394,7 @@ Que se passe-t-il dans cette cascade de messages ?
 
  @item @code{afficherGrille} est envoyé à @emph{la figure}
 
- @item @code{pleinEcran} est envoyé à @emph{la figure}
+ @item @code{échelle:} avec comme argument @code{10} est envoyé à @emph{la figure}
 @end enumerate
 
 @drgeoExercise{Premier de cascade,exeCascadeQuestion,@emph{Pourquoi n'y
@@ -396,14 +405,14 @@ Avec les cascades, nous pouvons écrire plusieurs messages à
 mot-clé. Cela n'est pas possible sans.
 
 @drgeoExample{Cascade avec toutes sortes de messages,cascadeVariousMessages,
-DrGeoFigure nouveau pleinEcran;
+DrGeoFigure nouveau
    afficherAxes;
    afficherGrille;
    segmentDe: 0 @@ 0 a: 1 @@ 1;
    segmentDe: 0 @@ 0 a: -1 @@ 1}
 
 @drgeoExercise{Un carré,exeFirstSquare,@emph{Construire une figure avec
- ses axes, sa grille, en plein écran et avec un carré de coté 4
+ ses axes, sa grille et avec un carré de coté 4
  unités.}}
 
 @drgeoExercise{Un carré et un cercle,exeFirstSquareCircle,@emph{Dans ce
@@ -951,7 +960,7 @@ la figure pour mieux voir :
 @drgeoExample{Abscisse pair,evenAbscissa,
 | figure |
 figure := DrGeoFigure nouveau afficherAxes.
-figure echelle: 5.
+figure échelle: 5.
 1 a: 100 faire: [:abscisse |
    abscisse pair siVrai: [figure point: abscisse @@ 0]
 ]}
