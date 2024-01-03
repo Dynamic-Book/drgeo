@@ -274,10 +274,10 @@ figure centrerVueEn: 5@@0
 @end defmethod
 
 @defmethod DrGeoFigure échelle: unEntier
-  @var{unEntier}, échelle de la figure. Une unité représente
-  approximativement 1 pixel.
-  
-Modifie l'échelle de la figure.
+  @var{unEntier}, échelle de la figure.
+
+Modifie l'échelle de la figure. Une unité de la figure est alors
+représentée approximativement par @var{unEntier} points de l'écran.
 
 @example  
 figure échelle: 10
@@ -1415,9 +1415,7 @@ proposons une petite série d'exemples. Ceux-ci vous montrent leurs
 importantes possibilités et nous espérons qu'ils seront également une
 source d'inspiration. Pour chacun de ces exemples, nous donnons le
 code source Smalltalk de la figure puis son résultat. Le code source
-doit être copié dans un espace de travail (...@clicksequence{Clic
-arrière-plan @click{} Outils @click{} Espace de travail}...) puis
-exécuté.
+doit être copié dans un éditeur de figure Smalltalk puis exécuté.
 
 @cindex animation (figure programmée)
 @subheading Animer une figure
@@ -1447,7 +1445,7 @@ s := figure segmentDe: 0@@@ -1 à: 4@@ -1.
 r := figure pointSurLigne: s à: 0.8.
 s := figure segmentDe: 0@@0 à: 0@@1.
 u := figure pointSurLigne: s à: 0.7.
-u rond petit; couleurr: Color blue.
+u rond petit; couleur: Color blue.
 1 à: 100 faire: [:n|
    u := figure 
       point: [:parents| |y t|
