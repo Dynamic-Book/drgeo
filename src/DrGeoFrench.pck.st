@@ -1,26 +1,26 @@
-'From Cuis 6.0 [latest update: #5667] on 13 March 2023 at 9:35:50 pm'!
+'From Cuis6.0 [latest update: #6154] on 3 January 2024 at 11:07:46 am'!
 'Description '!
-!provides: 'DrGeoFrench' 1 8!
-SystemOrganization addCategory: 'DrGeoFrench'!
+!provides: 'DrGeoFrench' 1 9!
+SystemOrganization addCategory: #DrGeoFrench!
 
 
-!classDefinition: #DrGeoTutorial category: 'DrGeoFrench'!
+!classDefinition: #DrGeoTutorial category: #DrGeoFrench!
 EruditeBook subclass: #DrGeoTutorial
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeoFrench'!
-!classDefinition: 'DrGeoTutorial class' category: 'DrGeoFrench'!
+!classDefinition: 'DrGeoTutorial class' category: #DrGeoFrench!
 DrGeoTutorial class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGeoFigure category: 'DrGeoFrench'!
+!classDefinition: #DrGeoFigure category: #DrGeoFrench!
 DrGeoSketch subclass: #DrGeoFigure
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeoFrench'!
-!classDefinition: 'DrGeoFigure class' category: 'DrGeoFrench'!
+!classDefinition: 'DrGeoFigure class' category: #DrGeoFrench!
 DrGeoFigure class
 	instanceVariableNames: ''!
 
@@ -2277,6 +2277,10 @@ de: unArgument de: unAutre
 de: unArgument de: unAutre de: unTroisieme
 	^self value: unArgument value: unAutre value: unTroisieme.! !
 
+!BlockClosure methodsFor: '*DrGeoFrench' stamp: 'hlsf 1/3/2024 11:05:57'!
+de: unArgument de: unAutre de: unTroisieme de: unQuatrieme
+	^self value: unArgument value: unAutre value: unTroisieme value: unQuatrieme .! !
+
 !BlockClosure methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:42:27'!
 jusquàVrai: unBloc
 
@@ -2315,6 +2319,10 @@ valeur: unArgument valeur: unAutre
 !BlockClosure methodsFor: '*DrGeoFrench'!
 valeur: unArgument valeur: unAutre valeur: unTroisieme	
 	^self value: unArgument value: unAutre value: unTroisieme.! !
+
+!BlockClosure methodsFor: '*DrGeoFrench' stamp: 'hlsf 1/3/2024 11:06:08'!
+valeur: unArgument valeur: unAutre valeur: unTroisieme	 valeur: unQuatrieme
+	^self value: unArgument value: unAutre value: unTroisieme value: unQuatrieme .! !
 
 !Collection methodsFor: '*DrGeoFrench'!
 ajouter: unObjet
