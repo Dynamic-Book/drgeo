@@ -2,7 +2,6 @@
 @node La syntaxe par l'exemple
 @chapter La syntaxe par l'exemple
 
-
 @menu
 * La syntaxe::La syntaxe en quelques mots
 * Saisir le code::Editer le code

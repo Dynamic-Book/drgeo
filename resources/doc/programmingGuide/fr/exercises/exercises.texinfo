@@ -1124,56 +1124,56 @@ figure point: [
 
 @subheading @ref{exeCentralSymmetry}
 @example
-| figure carre o |
+| figure carré o |
 figure := DrGeoFigure nouveau.
 o := figure point: 3 @@ -2.
-carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
-figure symétriqueDe: carre selonCentre: o
+carré := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure symétriqueDe: carré selonCentre: o
 @end example
 
 @subheading @ref{exeAxialSymmetry}
 @example
-| figure carre d |
+| figure carré d |
 figure := DrGeoFigure nouveau.
 d := figure droitePassantPar: -3 @@ 3 et: -8 @@ 0.
-carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
-figure symétriqueDe: carre selonAxe: d
+carré := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure symétriqueDe: carré selonAxe: d
 @end example
 
 @subheading @ref{exeTranslation}
 @example
-| figure carre a b v |
+| figure carré a b v |
 figure := DrGeoFigure nouveau.
 a := figure point: -1 @@ -1.
 b := figure point: -4 @@ -3.
 v := figure vecteurOrigine: a extrémité: b.
-carre := figure polygone: @{ 1@@0. 5@@0. 5@@4 . 1@@4 @}.
-figure translationDe: carre parVecteur: v
+carré := figure polygone: @{ 1@@0. 5@@0. 5@@4 . 1@@4 @}.
+figure translationDe: carré parVecteur: v
 @end example
 
 @subheading @ref{exeRotations}
 @example
-| figure carre o a1 a2 |
+| figure carré o a1 a2 |
 figure := DrGeoFigure nouveau.
 o := figure point: 0 @@ 0.
 a1 := 90 degreesToRadians.
 a2 := -90 degreesToRadians.
-carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
-figure rotationDe: carre parCentre: o etAngle: a1.
-figure rotationDe: carre parCentre: o etAngle: a2
+carré := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure rotationDe: carré parCentre: o etAngle: a1.
+figure rotationDe: carré parCentre: o etAngle: a2
 @end example
 
 @subheading @ref{exeScales}
 @example
-| figure carre a b k1 k2 |
+| figure carré a b k1 k2 |
 figure := DrGeoFigure nouveau afficherAxes afficherGrille.
 a := figure point: -8 @@ 5.
 b := figure point: 4 @@ -7.
 k1 := -1/2.
 k2 := 5/2.
-carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
-figure homothétieDe: carre parCentre: a etFacteur: k1.
-figure homothétieDe: carre parCentre: b etFacteur: k2
+carré := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure homothétieDe: carré parCentre: a etFacteur: k1.
+figure homothétieDe: carré parCentre: b etFacteur: k2
 @end example
 
 @subheading @ref{exeCollectionTransformed1}
@@ -1628,56 +1628,56 @@ figure point: [
 
 @subheading @ref{exeCentralSymmetry}
 @example
-| figure carre o |
+| figure carré o |
 figure := DrGeoFigure nouveau.
 o := figure point: 3 @@ -2.
-carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
-figure symétriqueDe: carre selonCentre: o
+carré := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure symétriqueDe: carré selonCentre: o
 @end example
 
 @subheading @ref{exeAxialSymmetry}
 @example
-| figure carre d |
+| figure carré d |
 figure := DrGeoFigure nouveau.
 d := figure droitePassantPar: -3 @@ 3 et: -8 @@ 0.
-carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
-figure symétriqueDe: carre selonAxe: d
+carré := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure symétriqueDe: carré selonAxe: d
 @end example
 
 @subheading @ref{exeTranslation}
 @example
-| figure carre a b v |
+| figure carré a b v |
 figure := DrGeoFigure nouveau.
 a := figure point: -1 @@ -1.
 b := figure point: -4 @@ -3.
 v := figure vecteurOrigine: a extrémité: b.
-carre := figure polygone: @{ 1@@0. 5@@0. 5@@4 . 1@@4 @}.
-figure translationDe: carre parVecteur: v
+carré := figure polygone: @{ 1@@0. 5@@0. 5@@4 . 1@@4 @}.
+figure translationDe: carré parVecteur: v
 @end example
 
 @subheading @ref{exeRotations}
 @example
-| figure carre o a1 a2 |
+| figure carré o a1 a2 |
 figure := DrGeoFigure nouveau.
 o := figure point: 0 @@ 0.
 a1 := 90 degreesToRadians.
 a2 := -90 degreesToRadians.
-carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
-figure rotationDe: carre parCentre: o etAngle: a1.
-figure rotationDe: carre parCentre: o etAngle: a2
+carré := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure rotationDe: carré parCentre: o etAngle: a1.
+figure rotationDe: carré parCentre: o etAngle: a2
 @end example
 
 @subheading @ref{exeScales}
 @example
-| figure carre a b k1 k2 |
+| figure carré a b k1 k2 |
 figure := DrGeoFigure nouveau afficherAxes afficherGrille.
 a := figure point: -8 @@ 5.
 b := figure point: 4 @@ -7.
 k1 := -1/2.
 k2 := 5/2.
-carre := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
-figure homothétieDe: carre parCentre: a etFacteur: k1.
-figure homothétieDe: carre parCentre: b etFacteur: k2
+carré := figure polygone: @{ 0@@0. 4@@0. 4@@4 . 0@@4 @}.
+figure homothétieDe: carré parCentre: a etFacteur: k1.
+figure homothétieDe: carré parCentre: b etFacteur: k2
 @end example
 
 @subheading @ref{exeCollectionTransformed1}

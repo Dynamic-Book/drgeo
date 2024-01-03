@@ -12,6 +12,7 @@ nombres travaillés, l'écriture de ces nombres et les opérations
 étudiées.
 @author  Plan d'Études Romand
 @end quotation
+@*
 
 @menu
 * Ensembles de nombres::Représentation des nombres entiers, décimaux et rationnels

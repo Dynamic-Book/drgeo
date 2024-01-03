@@ -3,24 +3,24 @@
 @documentlanguage fr
 @documentencoding UTF-8
 @settitle  Programmer avec Dr.Geo
-@set timeStamp Time-stamp: <2024-01-01 16:37:06 hilaire>
+@set timeStamp Time-stamp: <2024-01-03 12:14:11 hilaire>
 @paragraphindent 0
 @exampleindent 1
 @set drgeoVersion 23.12
 @set txicodequoteundirected ON 
 @setfilename programmer-avec-drgeo.info
+@c Remove ugly black rectangle
+@finalout
+@afourwide
+@c @afourlatex
+@c 7x9.25 inches 17.8x23.5 cm
+@c @smallbook
 @include ../../userGuide/drgeoMacro.texinfo
 @include ../programmingGuideMacro.texinfo
 
 @macro thanks
 Merci aux relecteurs de ce manuel : Alain Busser, Aubin Jarry, Georges Khaznadar.
 @end macro
-
-@afourwide
-@c @afourlatex
-@c 7x9.25 inches 17.8x23.5
-@c @smallbook
-@c %**end of header
 
 @copying
 Ce manuel est pour GNU Dr.Geo (version @value{drgeoVersion}), un
@@ -56,9 +56,9 @@ Texts.  A copy of the license is included in the section entitled
 @end iftex
 @end titlepage
 
-@headings off
-@everyheading BROUILLON  @| @thispage @| @thischapter
-@everyfooting @| @| @today{}
+@c@headings off
+@c@everyheading BROUILLON  @| @thispage @| @thischapter
+@c@everyfooting @| @| @today{}
 
 @iftex
 @shortcontents
@@ -77,14 +77,12 @@ Texts.  A copy of the license is included in the section entitled
 * Nombres et opérations::Programmer avec des nombres
 * Espace::Programmer de la géométrie
 * Fonctions::Programmer avec des fonctions
-* Figure Smalltalk::Descriptions exhaustives des commandes
-* Outils du développeur::Outils pour la programmation
+* Méthodes de référence::Descriptions exhaustives des commandes
 * GNU Free Documentation License::La licence de partage de ce livre
 * Copyright des documents::Droits des documents tiers de ce livre
+* Liste des exemples::
 * Liste des exercices::
 * Solutions des exercices::Les corrections de tous les exercices
-* Liste des exemples::
-* Liste des figures::
 * Aides::Des aides pour résoudre les exercices
 * Index::Des indexes pour rechercher des concepts ou des méthodes informatiques
 @end menu
@@ -98,52 +96,34 @@ Texts.  A copy of the license is included in the section entitled
 @c==================================================
 @c:INTRODUCTION
 @include introduction/introduction.texinfo
-@c==================================================
-@c:PART1 -- Pour bien démarrer
-@part Partie I @*Pour bien démarrer
 @c:La syntaxe par l'exemple
 @include syntax/syntax.texinfo
-@c==================================================
-@c:PART 2 -- Programmer au secondaire I
-@part Partie II @*Programmer au secondaire I
 @c:Nombres et opérations
 @include numbers/numbers.texinfo
 @c:Espace
 @include geometry/geometry.texinfo
 @c:Fonctions
 @include functions/functions.texinfo
-@c==================================================
-@c:PART3 - Pour aller plus loin
-@part Partie III @*Pour aller plus loin dans la programmation
-@c:Le langage Smalltalk
+@c:Fonctions de référence
 @include SmalltalkFigure/SmalltalkFigure.texinfo
-@c:Les outils du développeur
-@include Tools/tools.texinfo
-@c:Etendre les possibilités de Dr.Geo
-@include expandDrgeo/expandDrgeo.texinfo
-@c:Trouver et corriger des erreurs
-@include handlingError/handlingError.texinfo
 @c==================================================
-@c:PART4 - ANNEXE
-@part Partie IV @*Annexes
-@c License
-@include ../../userGuide/fdl.texinfo
-@c Copyrighted document used in the book
-@include copyright.texinfo
+@c: ANNEXE
+@c @part @*Annexes
+@c List of examples
+@node Liste des exemples
+@appendix Liste des exemples
+@listoffloats Exemple
 @c List of exercises
 @node Liste des exercices
 @appendix Liste des exercices
 @listoffloats Exercice
 @c Solutions of exercises
 @include exercises/exercises.texinfo
-@c List of examples
-@node Liste des exemples
-@appendix Liste des exemples
-@listoffloats Exemple
-@c List of figures
-@node Liste des figures
-@appendix Liste des figures
-@listoffloats Figure
+@c Copyrighted document used in the book
+@include copyright.texinfo
+@c License
+@include ../../userGuide/fdl.texinfo
+
 @c Espace de recherche
 @node Aides
 @appendix Aides

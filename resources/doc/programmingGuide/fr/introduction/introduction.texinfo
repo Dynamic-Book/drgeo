@@ -2,12 +2,12 @@
 @chapter Introduction
 
 @section À propos de @drgeo{}
-@drgeo{}@footnote{@url{http://drgeo.eu}} est l'environnement de
-géométrie interactive et de programmation du projet libre
-GNU@footnote{@url{http://gnu.org}}. Outre son interface graphique
-classique de géométrie interactive, il permet de concevoir des figures
-interactives par l'écriture d'un code informatique. Les figures
-géométriques sont ainsi programmées et non plus conçues à la
+@drgeo{} est l'environnement de géométrie interactive et de
+programmation du projet libre
+GNU@footnote{@url{http://gnu.org/s/dr-geo}}. Outre son interface
+graphique classique de géométrie interactive, il permet de concevoir
+des figures interactives par l'écriture d'un code informatique. Les
+figures géométriques sont ainsi programmées et non plus conçues à la
 souris. Cette approche s'appuie sur les spécificités du code telles
 que les structures de contrôle, les boucles, les collections,
 etc. pour produire un résultat visuel et interactif.
@@ -28,11 +28,10 @@ Le guide utilisateur de
 @drgeo{}@footnote{@url{https://www.gnu.org/software/dr-geo/doc/fr}}
 présente déjà en détail, de façon assez technique, toutes les
 possibilités offertes en termes de programmation. Mais ce guide est
-essentiellement techinque et n'a que faiblement une visée
-pédagogique. Ici nous proposons une approche progressive s'appuyant
-sur de nombreux exemples et exercices directement liés aux contenus
-mathématiques enseignés dans le secondaire. Les exercices sont
-corrigés en annexe.
+essentiellement techinque et non pas pédagogique. Ici nous proposons
+une approche progressive s'appuyant sur de nombreux exemples et
+exercices directement liés aux contenus mathématiques enseignés dans
+le secondaire. Les exercices sont corrigés en annexe.
 
 Ce guide est donc destiné aux enseignants de mathématiques ou
 d'informatique, aux animateurs d'activités extra-scolaires, aux
@@ -53,19 +52,20 @@ une dimension programmation par l'utilisateur accessible à tous, y
 compris aux plus jeunes.
 
 @section Contenu
-La partie I présente la programmation à travers une série d'exemples
-et d'exercices progressifs, leur correction se trouve en annexe.
-L'écriture du code informatique est en français, avec caractères
-accentués, le langage de programmation est Smalltalk. L'environnement
-de programmation est @drgeo{} basé sur celui de Cuis-Smalltalk.
+Le livre introduit la programmation à travers une série d'exemples et
+d'exercices progressifs (@xref{La syntaxe par l'exemple}). Leur correction se
+trouve en annexe.  L'écriture du code informatique est en français,
+avec caractères accentués, le langage de programmation est
+Smalltalk. L'environnement de programmation est @drgeo{} basé sur
+celui de Cuis-Smalltalk.
 
-La partie II propose une série d'activités adaptés aux enseignements
-mathématiques en secondaire 1. Selon le système éducatif, le
-secondaire 1 correspond à des tranches d'âges de 11 à 14 ans. Les
-thèmes mathématiques abordés couvrent des éléments de la géométrie
-euclidienne, le repère cartésien, les fonctions affines, quadratiques,
-puissances n-ième, les équations et systèmes d'équations,
-transformations géométriques, etc.
+La suite du livre propose une série d'activités adaptés aux
+enseignements mathématiques en secondaire 1. Selon le système
+éducatif, le secondaire 1 correspond à des tranches d'âges de 11 à 14
+ans. Les thèmes mathématiques abordés couvrent les nombres et
+opérations, la géométrie euclidienne, le repère cartésien, les
+fonctions affines, quadratiques, puissances n-ième, les équations et
+systèmes d'équations, les transformations géométriques, etc.
 
 Les activités proposées puisent dans ce vivier mathématiques, sans
 aucune réelle volonté d'exhaustivité. Le fil conducteur est plus
@@ -77,10 +77,9 @@ Parfois l'objectif recherché sera la simple illustration sous la forme
 d'une figure géométrique interactive, produit du programme
 informatique.
 
-La partie III présente plus précisément plusieurs aspects techniques
-de @drgeo{}@tie{}: un description détaillée des méthodes pour
-programmer et les outils pour développer du code informatique
+La dernière partie présente de façon exhaustive les méthodes pour
+programmer les figures ().
 
-En annexe, partie IV du document, le lecteur trouvera plusieurs
-indexes dont un sur les méthodes, des aides pour résoudre les
-exercices, les solutions des exercices, etc.
+En annexe, le lecteur trouvera plusieurs indexes dont un sur les
+méthodes, des aides pour résoudre les exercices, les solutions des
+exercices, etc.

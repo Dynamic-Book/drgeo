@@ -1,8 +1,7 @@
 @c Les figures Smalltalk
 
-@node Figure Smalltalk
-
-@chapter Figure Smalltalk
+@node Méthode de référence
+@chapter Méthodes de référence
 @cindex figure programmée
 @anchor{figureSmalltalk}
 
@@ -13,11 +12,11 @@
 @end menu
 
 
-Les @emph{Figures Smalltalk de @drgeo{}} -- ou plus simplement figure dans
-la suite de ce texte -- sont des figures écrites en langage
-Smalltalk. Il ne s'agit donc plus de construire une figure à l'aide de
-l'interface graphique de @drgeo{} mais plutôt de décrire une figure
-avec le langage Smalltalk et une @acronym{API,interface de
+Les @emph{Figures Smalltalk de @drgeo{}} -- ou plus simplement figure,
+figure Smalltalk dans la suite de ce texte -- sont des figures écrites
+en langage Smalltalk. Il ne s'agit donc plus de construire une figure
+à l'aide de l'interface graphique de @drgeo{} mais plutôt de décrire
+une figure avec le langage Smalltalk et une @acronym{API,interface de
 programmation
 dédiée}@footnote{@url{https://fr.wikipedia.org/wiki/Interface_de_programmation}}.
 
@@ -25,29 +24,31 @@ dédiée}@footnote{@url{https://fr.wikipedia.org/wiki/Interface_de_programmation
 @cindex figure programmée, exemples
 @section Exemples de figure Smalltalk
  
-En lui-même Smalltalk est un langage de très haut niveau. Lorsqu'une
+En lui-même, Smalltalk est un langage de très haut niveau. Lorsqu'une
 figure est définie dans ce langage, nous disposons également de toute
-sa puissance pour par exemple définir récursivement telle partie de la
+sa puissance pour, par exemple, définir récursivement telle partie de la
 figure, ou bien pour placer aléatoirement certains objets de telle
 sorte qu'à chaque ouverture de la figure, celle-ci soit légèrement
-différente. Bref, les FSD sont libérées du carcan de l'interface
+différente. Bref, les figures sont libérées du carcan de l'interface
 graphique tout en étant renforcées par le langage Smalltalk.
 
 @cindex figure programmée, exécuter
 
-Une FSD est un code source Smalltalk à exécuter dans un espace de
-travail ...@clicksequence{Clic arrière-plan @click{} Outils @click{}
-Espace de travail}...@footnote{Le raccourci @kbd{Alt-k} fonctionne
-aussi lorsqu'aucune fenêtre est sélectionnée.} C'est une fenêtre texte
-depuis laquelle du code Smalltalk est écrit et exécuté.  On peut aussi
-y coller du texte par @kbd{Ctrl-v}. @xref{workspace}, pour plus
-d'information sur cet outil.
+Une figure Smalltalk est un code source Smalltalk à exécuter dans un
+outil dédié, l'éditeur de figure Smalltalk@tie{}:
+...@clicksequence{Clic arrière-plan @click{} Outils @click{} Editeur
+de figure Smalltalk}... Dans cet outil, à gauche l'éditeur de code
+source et à droite une vue sur la figure géométrique résultante une
+fois le code source compilé.
+
+@drgeoFigure{Editeur de figure Smalltalk,editeurFigureSmalltalk,12}
 
 Nous allons étudier plusieurs exemples, chacun d'eux sera écrit dans
-un espace de travail et exécuté en sélectionnant le code puis la
-séquence de touches @kbd{Ctrl-d} pour
-@emph{Do-it!}@footnote{Alternativement, c'est l'entrée à choisir dans
-le menu contextuel de l'espace de travail.}.
+l'éditeur et exécuté en pressant le bouton vert @emph{Jouer}. Le même
+effet est obtenu avec la séquence de touches @kbd{Ctrl-a} et
+@kbd{Ctrl-d} pour @emph{Do-it!}@footnote{Alternativement, c'est
+l'entrée à choisir dans le menu contextuel de l'éditeur.}. Il est
+également possible d'y coller un code source par @kbd{Ctrl-v}.
 
 Commençons par étudier un exemple simple@tie{}:
 
@@ -988,7 +989,7 @@ figure texte: 'Hello'
 @end example
 @end deftypemethod
 
-@deftypemethod DrGeoFigure <WrpText> texte:a string point
+@deftypemethod DrGeoFigure <WrpText> texte:à string point
   @var{string}, une chaîne de caractères
 
   @var{point}, un couple de coordonnées
