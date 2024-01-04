@@ -8,11 +8,8 @@ textDest="drgeoText"
 masterDoc="programmer-avec-drgeo.texinfo"
 
 
-chapters="expandDrgeo handlingError introduction numbers geometry functions smalltalk syntax tools SmalltalkFigure Tools"
+chapters="introduction numbers geometry functions smalltalk syntax SmalltalkFigure"
 
-imgPath="./expandDrgeo/figures:./firstSketches/figures:./handlingError/figures:./introduction/figures:./numbers/figures:./geometry/figures:./functions/figures:./SmalltalkFigure/figures:./syntax/figures:./Tools/figures"
-
-imgPath=""
 for chapter in $chapters
 do
    imgPath="$imgPath:./$chapter/figures"
@@ -42,9 +39,10 @@ function doInfo {
 
 function doHtml {
     prepareDestination $htmlDest
-    cp ../userGuide/style.css $lang/$htmlDest
+    cp misc/style.css $lang/$htmlDest
     cd $lang
-    texi2any -I $imgPath --output=$htmlDest/ --html --css-ref=style.css $masterDoc
+    texi2any -I $imgPath --output=$htmlDest/ --html -c FORMAT_MENU=menu \
+	     -c CONTENTS_OUTPUT_LOCATION=inline --css-ref=style.css $masterDoc
     cd -
 }
 

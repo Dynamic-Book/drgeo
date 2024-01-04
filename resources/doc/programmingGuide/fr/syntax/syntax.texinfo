@@ -2,22 +2,7 @@
 @node La syntaxe par l'exemple
 @chapter La syntaxe par l'exemple
 
-@menu
-* La syntaxe::La syntaxe en quelques mots
-* Saisir le code::Editer le code
-* Les messages::Programmer par l'envoi de messages
-* Cascade de messages::Envoyer une série des messages à un même objet
-* Les variables::Déclarer et utiliser des variables informatiques
-* Commentaire::Documenter son code
-* Collection::Regrouper des objets dans les collections
-* Bloc de code::Du code embarqué
-* Structures de contrôle::Contrôler le déroulement d'un programme
-@end menu
-
-
-@cindex syntaxe
-@node La syntaxe
-@section La syntaxe, c'est quoi ?
+@strong{La syntaxe, c'est quoi ?} 
 Tout langage de programmation s'appuie sur un ensemble de mots clés et
 de règles. Smalltalk est très simple, il en impose une vingtaine, et
 en ce qui nous concerne moins d'une quinzaine seront utilisés dans ce
@@ -38,6 +23,18 @@ chaque élément de syntaxe. Vous êtes invités à recopier leur code
 source. C'est formateur et ils sont toujours courts. En prolongement
 des exemples, des exercices accessibles sont proposés,
 faites-les@tie{}!
+
+
+@menu
+* Saisir le code::Editer le code
+* Les messages::Programmer par l'envoi de messages
+* Cascade de messages::Envoyer une série des messages à un même objet
+* Les variables::Déclarer et utiliser des variables informatiques
+* Commentaire::Documenter son code
+* Collection::Regrouper des objets dans les collections
+* Bloc de code::Du code embarqué
+* Structures de contrôle::Contrôler le déroulement d'un programme
+@end menu
 
 @cindex @sortas{editeur} éditeur de figure Smalltalk
 @node Saisir le code

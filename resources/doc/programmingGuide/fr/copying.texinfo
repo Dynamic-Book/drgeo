@@ -1,0 +1,19 @@
+@copying
+Ce manuel est pour GNU Dr.Geo @value{drgeoVersion}, un environnement
+de géométrie interactive et de programmation.
+
+Copyright @copyright{} 2019, 2024 Hilaire Fernandes
+
+Compilation : @today{}
+
+Source de la documentation : @url{https://github.com/hilaire/drgeo/tree/main/resources/doc/programmingGuide} 
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+``GNU Free Documentation License''.
+@end quotation
+@end copying

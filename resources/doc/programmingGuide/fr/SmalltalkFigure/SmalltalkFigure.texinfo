@@ -1,6 +1,6 @@
 @c Les figures Smalltalk
 
-@node Méthode de référence
+@node Méthodes de référence
 @chapter Méthodes de référence
 @cindex figure programmée
 @anchor{figureSmalltalk}
@@ -864,7 +864,7 @@ v := figure valeurLibre: (-1 arcCos)
 @end example
 @end deftypemethod
 
-@defmethod WrpValue valeur: unNumbre
+@defmethod WrpValue valeur: aNumber
   @var{aNumber}, un nombre
   
 Modifie la valeur d'un objet nombre libre

@@ -1,6 +1,25 @@
-@c Macro definitions
+@c Preferences
+@settitle  Programmer avec Dr.Geo
 
+@paragraphindent 0
+@exampleindent 1
+@set drgeoVersion 23.12
+@set txicodequoteundirected ON
+@setfilename programmer-avec-drgeo.info
+@c Remove ugly black rectangle
+@finalout
+@afourwide
+@c @afourlatex
+@c 7x9.25 inches 17.8x23.5 cm
+@c @smallbook
+
+@c ========================
+@c Macro definitions
 @c Mathemtatic knowledge
+@macro thanks
+Merci aux relecteurs de ce manuel : Alain Busser, Aubin Jarry, Georges Khaznadar.
+@end macro
+@c
 @macro drgeoMath{text}
 @indentedblock
 @strong{Résultat mathématique.}

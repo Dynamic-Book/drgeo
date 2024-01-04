@@ -32,7 +32,7 @@ graphique est une droite passant par l'origine des axes.}
 @drgeo{} sait afficher les représentations graphiques -- courbes --
 des fonctions. Il suffit de définir une fonction sous la forme d'un
 bloc de code ayant un argument, par exemple @code{[:x | 3 * x]} et
-d'utiliser le message à mot clé @code{courbeDe:de:a} envoyé à une
+d'utiliser le message à mot clé @code{courbeDe:de:à:} envoyé à une
 figure.
 
 @drgeoExample{Fonction linéaire de pente 3,plotLineraFunction,
@@ -143,7 +143,7 @@ La représentation graphique d'une fonction quadratique est une
 
 Pour comprendre le comportement de cette parabole selon les valeurs
 des nombres @emph{a}, @emph{b} et @emph{c}, nous programmons une
-figure interactive où ces trois valeurs peuvent être modifiées par
+figure interactive où ces trois valeurs sont modifiables par
 l'utilisateur.
 
 @drgeoExercise{Fonction quadratique dynamique,exePlotQuadratiqueFunction,

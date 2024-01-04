@@ -78,7 +78,7 @@ d'une figure géométrique interactive, produit du programme
 informatique.
 
 La dernière partie présente de façon exhaustive les méthodes pour
-programmer les figures ().
+programmer les figures (@xref{Méthodes de référence}).
 
 En annexe, le lecteur trouvera plusieurs indexes dont un sur les
 méthodes, des aides pour résoudre les exercices, les solutions des
