@@ -1,0 +1,6 @@
+Install into the DrGeo/VM folder the content of a Linux OpenSmalltalk virtual
+machine.
+
+The folder DrGeo/VM should contain:
+    - bin and lib folders
+    - squeak start up script

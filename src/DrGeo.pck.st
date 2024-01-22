@@ -1,6 +1,6 @@
-'From Cuis6.0 [latest update: #6154] on 3 January 2024 at 11:07:55 am'!
+'From Cuis6.2 [latest update: #6156] on 21 January 2024 at 6:44:22 pm'!
 'Description '!
-!provides: 'DrGeo' 1 666!
+!provides: 'DrGeo' 1 667!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -33412,12 +33412,12 @@ resourcesPath
 "	The resources are in the Dr. Geo source code local repository "
 	^ self rootPath / 'drgeo' / 'resources'! !
 
-!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 8/16/2022 11:40:41'!
+!DrGDevelopment methodsFor: 'path' stamp: 'hlsf 1/21/2024 18:42:11'!
 rootPath
 "	Regarding the development environement, we consider the root path to be 
 	Cuis-Smalltalk-Dev from where is taking place the DrGeo development "
 
-	^ DirectoryEntry smalltalkImageDirectory! !
+	^ DirectoryEntry smalltalkImageDirectory parent! !
 
 !DrGDevelopment methodsFor: 'font' stamp: 'hlsf 8/12/2023 14:05:12'!
 setFontPreferences
