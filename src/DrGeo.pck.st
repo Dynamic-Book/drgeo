@@ -1,6 +1,6 @@
-'From Cuis6.2 [latest update: #6156] on 21 January 2024 at 6:44:22 pm'!
+'From Cuis6.2 [latest update: #6156] on 28 January 2024 at 4:14:45 pm'!
 'Description '!
-!provides: 'DrGeo' 1 667!
+!provides: 'DrGeo' 1 668!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -28760,9 +28760,9 @@ aboutDrgeo
 		(PopUpMenu labels: ' Ok ' icons: {DrGIcons drgeo}) 
 			startUpNonModalWithCaption:  self drgeoInformationString ]! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/3/2023 21:46:06'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 1/28/2024 16:14:31'!
 drgeoCopyright
-	^ 'Source code application: Copyright 1996-2023 Hilaire Fernandes
+	^ 'Source code application: Copyright 1996-2024 Hilaire Fernandes
 Icons: Copyright 1999 Frédéric Toussaint
 Icons: Copyright 2021-2022 David Caula (imppao)'! !
 
@@ -28784,10 +28784,10 @@ and programmed interactive sketches.
 LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright}.
 	^ text! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/5/2023 14:26:39'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 1/28/2024 16:14:24'!
 drgeoVersion
 	^ 'Installed version: ' translated, 
-		'23.12a beta (code revision ', 
+		'24.03a beta (code revision ', 
 		(String streamContents: [:str | 	(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]),
 		')'! !
 

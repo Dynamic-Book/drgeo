@@ -7,7 +7,7 @@
 # When dealing with rolling versions numbers of Cuis
 # release=`ls Cuis6.0-????.image | cut -d - -f 2 | cut -d . -f 1`
 # Stable release, number is stable
-cuisVersion=`cat cuisVersion`
+cuisVersion=`cat drgeo/cuisVersion`
 imageFolder=CuisImage
 cuis=Cuis$cuisVersion
 ide=drgeoIDE
