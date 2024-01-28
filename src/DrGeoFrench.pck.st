@@ -1,6 +1,6 @@
-'From Cuis6.0 [latest update: #6154] on 3 January 2024 at 11:07:46 am'!
+'From Cuis6.2 [latest update: #6156] on 28 January 2024 at 5:23:05 pm'!
 'Description '!
-!provides: 'DrGeoFrench' 1 9!
+!provides: 'DrGeoFrench' 1 10!
 SystemOrganization addCategory: #DrGeoFrench!
 
 
@@ -2073,6 +2073,11 @@ Par exemple, 2 racine tronquerA: 0.01 renvoie 1.41"
 commeFraction
 
 	^self asFraction.! !
+
+!Float methodsFor: '*DrGeoFrench' stamp: 'hlsf 1/28/2024 17:18:32'!
+commeFractionApprochée
+
+	^self asApproximateFraction ! !
 
 !Float methodsFor: '*DrGeoFrench'!
 commeVraieFraction
