@@ -1,33 +1,22 @@
-Instructions to install [Dr. Geo](https://www.gnu.org/s/dr-geo/) in a Cuis-Smalltalk developer environment.
+Instructions to install [Dr. Geo](https://www.gnu.org/s/dr-geo/) with
+Cuis-Smalltalk 6-2 release.
 
 # Set-up
-Set up your Cuis-Smalltalk dev environment:
+Set up your development environment:
 ```bash
 mkdir Cuis
 cd Cuis
 ```
 
-## Cuis-Smalltalk code
-Fetch and install Cuis-Smalltalk images and packages
+## Cuis-Smalltalk code & VM
+Fetch and install Cuis-Smalltalk image, VM and needed additional packages
 ```bash
-git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev.git
-git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI.git
-git clone --depth 1 https://github.com/Cuis-Smalltalk/Erudite.git
-git clone --depth 1 https://github.com/Cuis-Smalltalk/Numerics.git
+git clone https://github.com/Cuis-Smalltalk/Cuis6-2
+git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI
+git clone --depth 1 https://github.com/Cuis-Smalltalk/Erudite
+git clone --depth 1 https://github.com/Cuis-Smalltalk/Numerics
 
-cd Cuis-Smalltalk-Dev
-./clonePackageRepos.sh
-./pullAllRepos.sh
-```
-
-## VM
-Install virtual machine
-
-```bash
-cd Cuis
-wget -O cogspur.tgz https://github.com/OpenSmalltalk/opensmalltalk-vm/releases/latest/download/squeak.cog.spur_linux64x64.tar.gz
-tar -zxvf cogspur.tgz
-mv ./sqcogspur64linuxht ./VM
+cd Cuis6-2
 ```
 
 ## Dr. Geo code
@@ -35,13 +24,13 @@ mv ./sqcogspur64linuxht ./VM
 Fetch the Dr. Geo repository, with source and script
 
 ```bash
-cd Cuis/Cuis-Smalltalk-Dev
-git clone --depth 1 https://github.com/hilaire/drgeo.git
+cd Cuis/Cuis6-2
+git clone --depth 1 https://github.com/hilaire/drgeo
 ```
 
 ## Dr. Geo IDE
 
-Run the Dr. Geo IDE script. It installs DrGeo code and realted
+Run the Dr. Geo IDE script. It installs DrGeo code and related
 packages into its development environment.
 
 ```bash
@@ -61,7 +50,5 @@ To start Dr. Geo execute:
 ```smalltalk
 DrGeo new
 ```
-
-
 
 Have an interesting exploration!
