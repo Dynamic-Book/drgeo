@@ -11,7 +11,6 @@ cuisVersion=`cat drgeo/cuisVersion`
 imageFolder=CuisImage
 cuis=Cuis$cuisVersion
 ide=drgeoIDE
-VM=./RunCuisOnLinux.sh
 VM=CuisVM.app/Contents/Linux-x86_64/squeak
 
 # Install image for DrGeo IDE

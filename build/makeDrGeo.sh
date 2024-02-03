@@ -2,8 +2,8 @@
 #
 # Build DrGeo image and package bundle
 #
-# Link the drgeo repository in the Cuis-Smalltalk-Dev folder.
-# Execute the script from Cuis-Smalltalk-Dev folder.
+# Link the drgeo repository in the Cuis release folder.
+# Execute the script from Cuis release folder.
 # If necessary, in the Path section below, adjust drgeoRepo, vmExec variables.
 # Adjust below the rel variable to the wished Dr. Geo release number
 
@@ -69,18 +69,18 @@ makeBundle () {
 	;;
 	mac)
 	    bundleApp="$bundlePath/DrGeoApp"
-	    cuisVM="$bundlePath/MacOS"
+	    cuisVM="CuisVM.app/Contents/MacOS" # subfolder Resources to be considered
 	;;
     esac
     bundleResources="$bundleApp/Resources"
     # INSTALL BUNDLES...
     rm -rf $bundlePath
     # ...template
-    rsync -a --exclude '.bzr' --exclude '*~' $bundleTemplate $bundlesPath
+    rsync -a  --exclude '*~' $bundleTemplate $bundlesPath
     # ...sketches files
-    rsync -a --exclude '.bzr' "$resources/Sketches" $bundleResources
+    rsync -a "$resources/Sketches" $bundleResources
     # ...smalltalk sketches files
-    rsync -a --exclude '.bzr' "$resources/SmalltalkSketches" $bundleResources
+    rsync -a "$resources/SmalltalkSketches" $bundleResources
     # ...user sketches and exports folder, graphics
     mkdir $bundleResources/MySketches
     mkdir $bundleResources/MyExports
@@ -111,7 +111,7 @@ makeBundle () {
 	    chmod +x $bundleApp/VM/squeak
 	    ;;
 	mac)
-	    chmod +x $bundleApp/VM/squeak
+	    chmod +x $bundleApp/Contents/MacOS/squeak
 	    ;;
     esac
 
