@@ -1,26 +1,26 @@
-'From Cuis 6.0 [latest update: #5435] on 4 August 2022 at 11:05:05 pm'!
+'From Cuis6.2 [latest update: #6156] on 11 February 2024 at 3:05:12 pm'!
 'Description '!
-!provides: 'Commander' 1 4!
-SystemOrganization addCategory: 'Commander'!
+!provides: 'Commander' 1 5!
+SystemOrganization addCategory: #Commander!
 
 
-!classDefinition: #CommandBuilder category: 'Commander'!
+!classDefinition: #CommandBuilder category: #Commander!
 Object subclass: #CommandBuilder
 	instanceVariableNames: 'cmdPragma commands model'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Commander'!
-!classDefinition: 'CommandBuilder class' category: 'Commander'!
+!classDefinition: 'CommandBuilder class' category: #Commander!
 CommandBuilder class
 	instanceVariableNames: ''!
 
-!classDefinition: #CommandRecord category: 'Commander'!
+!classDefinition: #CommandRecord category: #Commander!
 Object subclass: #CommandRecord
 	instanceVariableNames: 'id order icon label target selector arguments help'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Commander'!
-!classDefinition: 'CommandRecord class' category: 'Commander'!
+!classDefinition: 'CommandRecord class' category: #Commander!
 CommandRecord class
 	instanceVariableNames: ''!
 
@@ -132,16 +132,16 @@ on: aPragmaKeyord with: aModel
 		pragma: aPragmaKeyord;
 		model: aModel! !
 
-!CommandBuilder class methodsFor: 'examples' stamp: 'hlsf 8/4/2022 20:53:46'!
+!CommandBuilder class methodsFor: 'examples' stamp: 'hlsf 2/11/2024 12:02:45'!
 example1_1: menuBuilder
 	<exampleCommand>
 	menuBuilder newEntry: #entry1 ::
 		label: 'Menu entry 1';
 		icon: #worldIcon;
-		target: Workspace; selector: #openWorkspace;
+		target: Workspace; selector: #open;
 		order: 500.
 	menuBuilder newEntry: #entry2 ::
-		action: [BrowserWindow openBrowser];
+		action: [Browser open];
 		label: 'Menu entry 2';
 		help: 'I can have help too';
 		order: 100! !

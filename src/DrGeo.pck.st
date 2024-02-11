@@ -1,6 +1,6 @@
-'From Cuis6.2 [latest update: #6156] on 28 January 2024 at 5:22:59 pm'!
+'From Cuis6.2 [latest update: #6158] on 11 February 2024 at 11:48:38 pm'!
 'Description '!
-!provides: 'DrGeo' 1 669!
+!provides: 'DrGeo' 1 672!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -28806,7 +28806,7 @@ quit
 Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
 	Smalltalk quitPrimitive! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/3/2023 21:48:27'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 2/11/2024 12:54:10'!
 toolsMenu: builder
 	<drgeoWorldMenu>
 	builder newEntry: 'System Browser' translated in: 'Tools' translated ::
@@ -28829,13 +28829,13 @@ toolsMenu: builder
 
 	builder newEntry: 'Workspace' translated in: 'Tools' translated ::
 		icon: #terminalIcon;
-		action: [Workspace openWorkspace ];
+		action: [Workspace open ];
 		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated.'	translated;
 		order: 30.
 		
 	builder newEntry: 'Open a file' translated in: 'Tools' translated ::
 		icon: #systemFileManagerIcon;
-		action: [FileListWindow openFileList];
+		action: [FileList open];
 		help: 'Open the filer on your personal sketches collection.' translated;
 		order: 50.
 		
@@ -33440,12 +33440,10 @@ initialize
 		at: #defaultFontSize put: 12.
 	UISupervisor ui taskbar scale: 1/2.! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 6/24/2023 22:32:43'!
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 2/11/2024 23:34:00'!
 startUp
 	super startUp.
 	Utilities setAuthorName: 'DrGeoUser' initials: 'drgeo'.
-	"self backgroundImage.
-	Transcript show: '[DrGeo] Background done'; cr."
 	self splash.
 	Transcript show: '[DrGeo] Splash done'; cr.! !
 
@@ -33453,7 +33451,7 @@ startUp
 isWorkstation
 	^ true! !
 
-!DrGWorkstation methodsFor: 'as yet unclassified' stamp: 'drgeo 8/17/2022 17:14:00'!
+!DrGWorkstation methodsFor: 'path' stamp: 'drgeo 8/17/2022 17:14:00'!
 rootPath
 " 	Test purpose, point to the bundle "
 "	^ DirectoryEntry smalltalkImageDirectory / 'drgeo' / 'build' / 'bundles' / 'gnulinux' / 'DrGeo'"
@@ -33625,7 +33623,7 @@ isiPad
 cleanUp
 	"Smalltalk reduceCuis "! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 11/2/2023 17:00:49'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 2/11/2024 23:48:31'!
 install
 	| world |
 	"Report by any mean installation and run time"
@@ -33657,6 +33655,7 @@ install
 	(Delay forSeconds: 1) wait.
 	UISupervisor whenUIinSafeState: 	[
 		"Adjust taskbar size"
+		world showTaskbar 
 		world taskbar scale: 1/2.
 		'Task bar rescaled' print.
 		Display fullScreenMode: true.
