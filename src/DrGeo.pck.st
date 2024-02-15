@@ -1,6 +1,6 @@
 'From Cuis6.2 [latest update: #6158] on 11 February 2024 at 11:48:38 pm'!
 'Description '!
-!provides: 'DrGeo' 1 672!
+!provides: 'DrGeo' 1 673!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -3193,8 +3193,8 @@ A class to encapsulate math item for user friendly use when doing Smalltalk figu
 Domain Specific Language (DSL) abstraction to construct programmatically interactive sketch.
 
 | sketch a |
-sketch _ DrGeoSketch new.
-a _ sketch point: 1@1.
+sketch := DrGeoSketch new.
+a := sketch point: 1@1.
 sketch line: a to: 0@0
 !
 
@@ -3518,9 +3518,9 @@ Associate several LocaleIDs (fr_FR, zh_TW, zh_CN, ko) (with or without country c
 !DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 3/9/2023 17:26:59'!
 initialize
 	super initialize.
-	factory _ DrGMathItemFactory new.
-	cmdManager _ DrGCommandManager new domain: self.
-	pointNameIndex _ 0! !
+	factory := DrGMathItemFactory new.
+	cmdManager := DrGCommandManager new domain: self.
+	pointNameIndex := 0! !
 
 !DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 4/24/2020 12:56:07'!
 release
@@ -3581,7 +3581,7 @@ deleteMathItem: aMathItem
 in: macroTree replaceParent: item with: newItem 
 	| index |
 	macroTree do: [ :anItem | 
-		(anItem parents notNil and: [ (index _ anItem parents indexOf: item) ~= 0 ])
+		(anItem parents notNil and: [ (index := anItem parents indexOf: item) ~= 0 ])
 			ifTrue: [anItem parents at: index put: newItem ] ]! !
 
 !DrGeoDomain methodsFor: 'building'!
@@ -3643,7 +3643,7 @@ moveEvent: aMathItem inDirection: aPoint withDirty: mathItems
 !DrGeoDomain methodsFor: 'updating'!
 mutate: aPointItem asFreeOn: aCurveItem at: aPosition
 	|item|
-	item _ DrGPointOncurveItem newWith: {aCurveItem .  aPosition}.
+	item := DrGPointOncurveItem newWith: {aCurveItem .  aPosition}.
 	item name: aPointItem name.
 	item actionMap: aPointItem actionMap.
 	aPointItem become: item.
@@ -3652,7 +3652,7 @@ mutate: aPointItem asFreeOn: aCurveItem at: aPosition
 !DrGeoDomain methodsFor: 'updating'!
 mutate: aPointItem asIntersectionWith: curveA and: curveB at: aPosition
 	|item|
-	item _  DrGPointIntersectionItem newWith: {curveA. curveB.  aPosition}.
+	item :=  DrGPointIntersectionItem newWith: {curveA. curveB.  aPosition}.
 	item name: aPointItem name.
 	item actionMap: aPointItem actionMap.
 	aPointItem become: item.
@@ -3662,7 +3662,7 @@ mutate: aPointItem asIntersectionWith: curveA and: curveB at: aPosition
 mutateAsFreePoint: aPointItem
 	|freePointItem|
 	(aPointItem isFreePointItem and: [aPointItem isPointItemOnCurve not]) ifTrue: [^aPointItem].
-	freePointItem _ DrGPointFreeItem new point: aPointItem point.
+	freePointItem := DrGPointFreeItem new point: aPointItem point.
 	freePointItem name: aPointItem name.
 	freePointItem actionMap: aPointItem actionMap.
 	aPointItem become: freePointItem.
@@ -3708,10 +3708,10 @@ autoname: aMathItem
 !DrGeoDomain methodsFor: 'autoname' stamp: 'hlsf 3/9/2023 17:36:01'!
 autonamePoint: pointItem
 	| name letter index |
-	letter _ ((pointNameIndex \\ 26) + 65) asCharacter.
-	index _ pointNameIndex // 26.
-	pointNameIndex _ pointNameIndex + 1.
-	name _ index isZero 
+	letter := ((pointNameIndex \\ 26) + 65) asCharacter.
+	index := pointNameIndex // 26.
+	pointNameIndex := pointNameIndex + 1.
+	name := index isZero 
 		ifTrue: [letter asString]
 		ifFalse: [letter asString, index asString].
 	pointItem name: name
@@ -3794,8 +3794,8 @@ getItem
 addToFlyingItem: anItem
  "Add an item to the flying item representing the item built by this builder "
 	self isNotInteractive ifTrue: [^self].
-	movingPoint _ DrGPointFreeItem new point: point + (0.1 @ 0.1).
-	flyingItem _ self mathItemClass newWith: self flyingMathItemArguments.
+	movingPoint := DrGPointFreeItem new point: point + (0.1 @ 0.1).
+	flyingItem := self mathItemClass newWith: self flyingMathItemArguments.
 	self initializeFlyingMorph
 ! !
 
@@ -3827,17 +3827,17 @@ redrawFlyingMorph
 basicItemFrom: node
 | type itemClass item|
 	"build the item class name from the node description"
-	type _ ((node  attributeAt: #type) copyWithoutAll: '_') capitalized.
-	itemClass _ Smalltalk
+	type := ((node  attributeAt: #type) copyWithoutAll: '_') capitalized.
+	itemClass := Smalltalk
 		classNamed: ('DrG' , node tag capitalized , type , 'Item') asSymbol.
-	item _ itemClass new yourself.
+	item := itemClass new yourself.
 	self postProcess: item from: node.
 	^ item! !
 
 !DrGMathItemBuilder methodsFor: 'xml' stamp: 'hlsf 9/28/2022 17:24:10'!
 itemFrom: node
 	|item|
-	item _ self itemInstanceFrom: node.
+	item := self itemInstanceFrom: node.
 	self postProcess: item from: node.
 	^ {self domain createFromMathItemNoCommandNoFactoryCheck: item. true}! !
 
@@ -3853,7 +3853,7 @@ parentsById: node
 "return a collection of the item parent given theirs id in the attribute
 elements <parent id=xxx>"
 	|collection|
-	collection _ OrderedCollection new.
+	collection := OrderedCollection new.
 	node elementsDo: [:each | 
 		(each tag = #parent) ifTrue: [
 			collection add: (self factory findInPoolById: (each attributeAt: 'ref') asSymbol)]].
@@ -3862,8 +3862,8 @@ elements <parent id=xxx>"
 !DrGMathItemBuilder methodsFor: 'xml'!
 parseValuePosition: node
 	| x y |
-	x _ (node contentStringAt: #x) asNumber.
-	y _ (node contentStringAt: #y) asNumber.
+	x := (node contentStringAt: #x) asNumber.
+	y := (node contentStringAt: #y) asNumber.
 	^ x@y.! !
 
 !DrGMathItemBuilder methodsFor: 'xml'!
@@ -3885,14 +3885,14 @@ mathItemClass
 
 !DrGMathItemBuilder methodsFor: 'updating' stamp: 'hlsf 4/12/2021 22:04:51'!
 reset
-	point _ nil.
+	point := nil.
 	flyingMorph ifNotNil:
 		[flyingMorph release.
-		flyingMorph _ nil]! !
+		flyingMorph := nil]! !
 
 !DrGMathItemBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
-	point _ aPoint.! !
+	point := aPoint.! !
 
 !DrGMathItemBuilder methodsFor: 'private'!
 addToggleItem: aMathItemCollection in: aCollection
@@ -3920,7 +3920,7 @@ title
 basicItemFrom: node
 "create a basic item (unitialised) from this node and add it to the domain, return an item partially initialized. Used for macro node"
 	| builder |
-	builder _ self new.
+	builder := self new.
 	^ builder basicItemFrom: node! !
 
 !DrGMathItemBuilder class methodsFor: 'xml' stamp: 'hlsf 8/4/2023 17:09:44'!
@@ -3933,7 +3933,7 @@ itemFrom: node in: aPresenter
 !DrGAngleGeometricBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:39'!
 reset
 	super reset.
-	pointA _ pointB _ pointC _ nil! !
+	pointA := pointB := pointC := nil! !
 
 !DrGAngleGeometricBuilder methodsFor: 'testing'!
 isWanted: aMathItemCollection
@@ -3953,12 +3953,12 @@ addItem: aMathItemCollection at: aPoint
 	aMathItemCollection first isPointItem
 		ifTrue:
 			[pointA ifNil: 
-				[pointA _ aMathItemCollection first.
+				[pointA := aMathItemCollection first.
 				^self].
 			pointB ifNil:
-				[pointB _ aMathItemCollection first.
+				[pointB := aMathItemCollection first.
 				^self].
-			pointC _ aMathItemCollection first]! !
+			pointC := aMathItemCollection first]! !
 
 !DrGAngleGeometricBuilder methodsFor: 'constant'!
 mathItemClass
@@ -4007,7 +4007,7 @@ readyToBuild
 !DrGAngleOrientedBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:42'!
 reset
 	super reset.
-	vectorA _ vectorB _ nil! !
+	vectorA := vectorB := nil! !
 
 !DrGAngleOrientedBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
@@ -4015,9 +4015,9 @@ addItem: aMathItemCollection at: aPoint
 	aMathItemCollection first isPointItem
 		ifFalse:
 			[vectorA ifNil:
-				[vectorA _ aMathItemCollection first.
+				[vectorA := aMathItemCollection first.
 				^self].
-			vectorB _ aMathItemCollection first]! !
+			vectorB := aMathItemCollection first]! !
 
 !DrGAngleOrientedBuilder methodsFor: 'constant'!
 mathItemClass
@@ -4053,11 +4053,11 @@ flyingMorphClass
 !DrGArcBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint.
-	pointA ifNil: [^ pointA _ aMathItemCollection first].
+	pointA ifNil: [^ pointA := aMathItemCollection first].
 	pointB ifNil: 
-		[pointB _ aMathItemCollection first.
+		[pointB := aMathItemCollection first.
 		^ self addToFlyingItem: pointB].
-	pointC ifNil: [pointC _ aMathItemCollection first].
+	pointC ifNil: [pointC := aMathItemCollection first].
 	! !
 
 !DrGArcBuilder methodsFor: 'testing'!
@@ -4074,7 +4074,7 @@ readyToBuild
 !DrGArcBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:49'!
 reset
 	super reset.
-	pointA _ pointB _ pointC _ nil! !
+	pointA := pointB := pointC := nil! !
 
 !DrGArcBuilder class methodsFor: 'documentation'!
 description 
@@ -4096,7 +4096,7 @@ arguments
 isWanted: aMathItemCollection 
 | item |
 	^ aMathItemCollection notEmpty 
-		and: [(item _ aMathItemCollection first) isPointItem 
+		and: [(item := aMathItemCollection first) isPointItem 
 		and: [item ~= center 
 		and: [item ~= origin]]]! !
 
@@ -4107,16 +4107,16 @@ readyToBuild
 !DrGArcCenterBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
-	center ifNil: [^ center _ aMathItemCollection first].
+	center ifNil: [^ center := aMathItemCollection first].
 	origin ifNil: [
-		origin _ aMathItemCollection first.
+		origin := aMathItemCollection first.
 		^ self addToFlyingItem: origin].
-	extremity ifNil: [extremity _ aMathItemCollection first]! !
+	extremity ifNil: [extremity := aMathItemCollection first]! !
 
 !DrGArcCenterBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:55'!
 reset
 	super reset.
-	origin _ center _ extremity _ nil! !
+	origin := center := extremity := nil! !
 
 !DrGArcCenterBuilder methodsFor: 'flying costume' stamp: 'hlsf 4/12/2021 22:14:28'!
 flyingMathItemArguments
@@ -4146,7 +4146,7 @@ postProcess: item from: node
 	| form |
 	super postProcess: item from: node.
 	self parseValuePosition: node of: item.
-	form _ PNGReadWriter formFromStream: (node contentStringAt: #data) base64Decoded asByteArray readStream.
+	form := PNGReadWriter formFromStream: (node contentStringAt: #data) base64Decoded asByteArray readStream.
 	item 
 		insertAtScale: (node contentStringAt: #insertAtScale) asNumber;
 		magnifyBy: (node contentStringAt: #magnify) asNumber;
@@ -4180,7 +4180,7 @@ title
 !DrGCloneBuilder methodsFor: 'updating'!
 reset
 	super reset.
-	item _ nil! !
+	item := nil! !
 
 !DrGCloneBuilder methodsFor: 'testing'!
 isWanted: aMathItemCollection 
@@ -4194,7 +4194,7 @@ readyToBuild
 !DrGCloneBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
-	item _ aMathItemCollection first! !
+	item := aMathItemCollection first! !
 
 !DrGCloneBuilder methodsFor: 'building'!
 buildItem
@@ -4204,12 +4204,12 @@ buildItem
 !DrGCoordinatesBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
 	| item |
-	point _ aPoint.
-	item _ aMathItemCollection first.
-	item isPointItem ifTrue: [^ pointA _ item].
-	item isCircleItem ifTrue: [^ circle _ item].
-	item isLineItem ifTrue: [^ line _ item].
-	item isVectorItem ifTrue: [^ vector _ item]! !
+	point := aPoint.
+	item := aMathItemCollection first.
+	item isPointItem ifTrue: [^ pointA := item].
+	item isCircleItem ifTrue: [^ circle := item].
+	item isLineItem ifTrue: [^ line := item].
+	item isVectorItem ifTrue: [^ vector := item]! !
 
 !DrGCoordinatesBuilder methodsFor: 'as yet unclassified'!
 itemInstanceFrom: node
@@ -4218,7 +4218,7 @@ itemInstanceFrom: node
 to select the one we want"
 	| nodeType |
 	(self parentsById: node) do: [:each |	self addItem: {each} at: 0@0].
-	nodeType _ (node  attributeAt: #type) asSymbol.
+	nodeType := (node  attributeAt: #type) asSymbol.
 	^ self getItem detect: [:item | item nodeType = nodeType]
 ! !
 
@@ -4234,7 +4234,7 @@ arguments
 !DrGCoordinatesBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:23:04'!
 reset
 	super reset.
-	pointA _ vector _ circle _ line _ nil! !
+	pointA := vector := circle := line := nil! !
 
 !DrGCoordinatesBuilder methodsFor: 'testing'!
 isWanted: aMathItemCollection 
@@ -4298,15 +4298,15 @@ addItem: aMathItemCollection at: aPoint
 to create the interesection the user clicks on two curves at the same time"
 	super addItem: aMathItemCollection at: aPoint.
 	aMathItemCollection ifNotEmpty: 
-		[curveItemA _ aMathItemCollection first].
+		[curveItemA := aMathItemCollection first].
 	aMathItemCollection size >= 2 ifTrue:
-		[curveItemB _ aMathItemCollection second]! !
+		[curveItemB := aMathItemCollection second]! !
 
 !DrGFlyPointBuilder methodsFor: 'private'!
 restoreState: anArray
-	curveItemA _ anArray first.
-	curveItemB _ anArray second.
-	point _ anArray third! !
+	curveItemA := anArray first.
+	curveItemB := anArray second.
+	point := anArray third! !
 
 !DrGFlyPointBuilder methodsFor: 'private'!
 saveState
@@ -4315,7 +4315,7 @@ saveState
 !DrGFlyPointBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:20:49'!
 reset
 	super reset.
-	curveItemA _ curveItemB _ nil! !
+	curveItemA := curveItemB := nil! !
 
 !DrGFlyPointBuilder methodsFor: 'xml'!
 itemInstanceFrom: node
@@ -4324,9 +4324,9 @@ itemInstanceFrom: node
 !DrGFlyPointBuilder methodsFor: 'testing'!
 isCurveIntersectionValid: aCollection
 	| item state |
-	state _ self saveState.
+	state := self saveState.
 	self restoreState: aCollection.
-	[item _ self buildItem]
+	[item := self buildItem]
 		on: Error 
 		do: [self restoreState: state.
 			^false].
@@ -4378,15 +4378,15 @@ postProcess: item from: node
 		ifFalse: [
 			item setCurveAbscissa: (node contentStringAt: #value) asNumber] 
 		ifTrue: [ |x y|
-			x _ (node contentStringAt: #x) asNumber.
-			y _ (node contentStringAt: #y) asNumber.
+			x := (node contentStringAt: #x) asNumber.
+			y := (node contentStringAt: #y) asNumber.
 			item point: x@y]
 ! !
 
 !DrGFreePointBuilder methodsFor: 'updating'!
 reset
 	super reset.
-	curveItem _ nil.! !
+	curveItem := nil.! !
 
 !DrGFreePointBuilder methodsFor: 'accessing'!
 arguments
@@ -4401,7 +4401,7 @@ arguments
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint.
 	aMathItemCollection 
-		ifNotEmpty: [curveItem _ aMathItemCollection first].! !
+		ifNotEmpty: [curveItem := aMathItemCollection first].! !
 
 !DrGFreePointBuilder methodsFor: 'constant'!
 mathItemClass
@@ -4422,22 +4422,22 @@ readyToBuild
 !DrGLocusBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:20:58'!
 reset
 	super reset.
-	freePoint _ constrainedPoint _ nil! !
+	freePoint := constrainedPoint := nil! !
 
 !DrGLocusBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint 
 	super addItem: aMathItemCollection at: aPoint.
 	aMathItemCollection first isPointItemOnCurve
 		ifTrue: [freePoint
-				ifNil: [freePoint _ aMathItemCollection first.
+				ifNil: [freePoint := aMathItemCollection first.
 					^ self].
 			constrainedPoint
-				ifNil: [constrainedPoint _ aMathItemCollection first]]
+				ifNil: [constrainedPoint := aMathItemCollection first]]
 		ifFalse: [constrainedPoint
-				ifNil: [constrainedPoint _ aMathItemCollection first.
+				ifNil: [constrainedPoint := aMathItemCollection first.
 					^ self].
 			freePoint
-				ifNil: [freePoint _ aMathItemCollection first]]! !
+				ifNil: [freePoint := aMathItemCollection first]]! !
 
 !DrGLocusBuilder methodsFor: 'constant'!
 mathItemClass
@@ -4514,7 +4514,7 @@ description
 
 !DrGMacroBuilder methodsFor: 'accessing'!
 description: string
-	description _ string asString! !
+	description := string asString! !
 
 !DrGMacroBuilder methodsFor: 'accessing'!
 input
@@ -4542,7 +4542,7 @@ title
 
 !DrGMacroBuilder methodsFor: 'accessing'!
 title: string
-	title _ string! !
+	title := string! !
 
 !DrGMacroBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
@@ -4575,9 +4575,9 @@ page: integer
 	"we receive notification from the wizard the user change the wizard
 	current page"
 	| newState |
-	(integer = 1 or: [ integer = 4 ]) ifTrue: [ newState _ DrGMacroToolStateNeutral ].
-	integer = 2 ifTrue: [ newState _ DrGMacroBuildToolStateInput ].
-	integer = 3 ifTrue: [ newState _ DrGMacroBuildToolStateOutput ].
+	(integer = 1 or: [ integer = 4 ]) ifTrue: [ newState := DrGMacroToolStateNeutral ].
+	integer = 2 ifTrue: [ newState := DrGMacroBuildToolStateInput ].
+	integer = 3 ifTrue: [ newState := DrGMacroBuildToolStateOutput ].
 	integer = 4 ifTrue: [DrGeoSystem showVirtualKeyboard: true].
 	self 
 		triggerEvent: #changedState
@@ -4590,7 +4590,7 @@ buildItem
 !DrGMacroBuilder methodsFor: 'building'!
 buildItem: domain 
 	| macro |
-	macro _ DrGMacro new
+	macro := DrGMacro new
 		title: title; description: description.
 	macro 	from: input to: output 	in: domain.
 	^ macro! !
@@ -4608,7 +4608,7 @@ getItem: domain
 !DrGMacroBuilder methodsFor: 'initialize-release' stamp: 'hlsf 4/6/2022 16:35:50'!
 initialize
 	self reset.
-	wizard _ DrGWizardMacroBuild open: self ::
+	wizard := (DrGWizardMacroBuild open: self) 
 		addPages;
 		openInWorld.
 	wizard morphPosition: 0@0.
@@ -4620,15 +4620,15 @@ initialize
 release
 	wizard removeActionsWithReceiver: self.
 	wizard delete.
-	wizard _ nil! !
+	wizard := nil! !
 
 !DrGMacroBuilder methodsFor: 'updating' stamp: 'hlsf 11/3/2021 19:07:55'!
 reset
 	super reset.
-	input _ OrderedCollection new.
-	output _ OrderedCollection new.
-	title _ self defaultTitle.
-	description _ self defaultDescription.
+	input := OrderedCollection new.
+	output := OrderedCollection new.
+	title := self defaultTitle.
+	description := self defaultDescription.
 	self changed: #inputNames.
 	self changed: #ouputNames.
 	self changed: #title.
@@ -4669,8 +4669,8 @@ page: integer
 	current page"
 	| newState |
 	integer = 1 
-		ifTrue: [ newState _ DrGMacroToolStateNeutral ]
-		ifFalse: [ newState _ DrGMacroPlayToolStateSelect].
+		ifTrue: [ newState := DrGMacroToolStateNeutral ]
+		ifFalse: [ newState := DrGMacroPlayToolStateSelect].
 	self 
 		triggerEvent: #changedState
 		with: newState! !
@@ -4706,17 +4706,17 @@ selectedMacro
 !DrGMacroPlayer methodsFor: 'accessing'!
 selectedMacro: aMacro
 	"Some cleaning are needed"
-	selectedMacro _ aMacro.
-	input _ OrderedCollection new.
+	selectedMacro := aMacro.
+	input := OrderedCollection new.
 	self triggerEvent: #changedMacro.! !
 
 !DrGMacroPlayer methodsFor: 'initialize-release' stamp: 'hlsf 4/6/2022 16:34:27'!
 initialize
-	wizard _ DrGWizardMacroPlay open: self :: 
+	wizard := (DrGWizardMacroPlay open: self) 
 		addPages;
 		openInWorld.
 	wizard morphPosition: 0@0.
-	input _ OrderedCollection new.
+	input := OrderedCollection new.
 	wizard when: #page send: #page: to: self.
 	wizard when: #cancel send: #cancel to: self! !
 
@@ -4724,7 +4724,7 @@ initialize
 release
 	wizard removeActionsWithReceiver: self.
 	wizard delete.
-	wizard _ nil! !
+	wizard := nil! !
 
 !DrGMacroPlayer methodsFor: 'testing'!
 isWanted: aMathItemCollection
@@ -4739,8 +4739,8 @@ readyToBuild
 !DrGMacroPlayer methodsFor: 'updating' stamp: 'hlsf 11/19/2021 11:01:22'!
 reset
 	super reset.
-	input _ OrderedCollection new.
-	selectedMacro _ nil.
+	input := OrderedCollection new.
+	selectedMacro := nil.
 	self changed: #description.
 	self flag: #drgeoTodo
 	"wizard changed: #selectedMacro"! !
@@ -4755,7 +4755,7 @@ title
 
 !DrGMacroPlayerHeadless methodsFor: 'initialize-release'!
 initialize 
-	input _ OrderedCollection new.
+	input := OrderedCollection new.
 ! !
 
 !DrGMacroPlayerHeadless methodsFor: 'initialize-release'!
@@ -4764,7 +4764,7 @@ release! !
 !DrGMiddleBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:21:14'!
 reset
 	super reset.
-	pointA _ pointB _ segment _ nil! !
+	pointA := pointB := segment := nil! !
 
 !DrGMiddleBuilder methodsFor: 'accessing'!
 arguments
@@ -4793,12 +4793,12 @@ addItem: aMathItemCollection at: aPoint
 	aMathItemCollection first isPointItem 
 		ifTrue:
 			[pointA ifNil: 
-				[pointA _ aMathItemCollection first.
+				[pointA := aMathItemCollection first.
 				^self].
 			pointB ifNil:
-				[pointB _ aMathItemCollection  first.
+				[pointB := aMathItemCollection  first.
 				^self]]
-		ifFalse: [segment _ aMathItemCollection  first]! !
+		ifFalse: [segment := aMathItemCollection  first]! !
 
 !DrGMiddleBuilder class methodsFor: 'documentation'!
 description 
@@ -4819,11 +4819,11 @@ addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	aMathItemCollection first isScriptItem 
 		ifTrue: 
-			[script _ aMathItemCollection first]
+			[script := aMathItemCollection first]
 		ifFalse: 
 			[valueX 
-				ifNil: [valueX _ aMathItemCollection first.]
-				ifNotNil: [valueY ifNil: [valueY _ aMathItemCollection first]]]! !
+				ifNil: [valueX := aMathItemCollection first.]
+				ifNotNil: [valueY ifNil: [valueY := aMathItemCollection first]]]! !
 
 !DrGPointByCoordinatesBuilder methodsFor: 'accessing'!
 arguments
@@ -4849,7 +4849,7 @@ readyToBuild
 !DrGPointByCoordinatesBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:21:26'!
 reset
 	super reset.
-	script _ valueX _ valueY _ nil! !
+	script := valueX := valueY := nil! !
 
 !DrGPointByCoordinatesBuilder class methodsFor: 'documentation'!
 description
@@ -4867,9 +4867,9 @@ arguments
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	curveItemA ifNil: [
-		curveItemA _ aMathItemCollection first.
+		curveItemA := aMathItemCollection first.
 		^self].
-	curveItemB ifNil: [curveItemB _ aMathItemCollection first]
+	curveItemB ifNil: [curveItemB := aMathItemCollection first]
 ! !
 
 !DrGPointIntersectionBuilder methodsFor: 'testing'!
@@ -4896,7 +4896,7 @@ mathItemClass
 postProcess: item from: node
 	|k|
 	super postProcess: item from: node.
-	k _  (node attributeAt: 'extra') asNumber = 0 ifTrue: [-1] ifFalse: [1].
+	k :=  (node attributeAt: 'extra') asNumber = 0 ifTrue: [-1] ifFalse: [1].
 	item k: k! !
 
 !DrGPointIntersectionBuilder methodsFor: 'updating'!
@@ -4910,15 +4910,15 @@ buildItem
 !DrGPointIntersectionBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:21:30'!
 reset
 	super reset.
-	curveItemA _ curveItemB _ nil! !
+	curveItemA := curveItemB := nil! !
 
 !DrGPointIntersectionBuilder methodsFor: 'xml' stamp: 'hlsf 9/25/2021 14:44:19'!
 itemInstanceFrom: node
 	"We only want intersection point"
 	|arguments k|
-	arguments _ self parentsById: node.
+	arguments := self parentsById: node.
 	"We by-pass the builder because it requires the user mouse position at intersection request "
-	k _  (node attributeAt: 'extra') asNumber = 0 ifTrue: [-1] ifFalse: [1].
+	k :=  (node attributeAt: 'extra') asNumber = 0 ifTrue: [-1] ifFalse: [1].
 	^self mathItemClass newWith: arguments k: k.! !
 
 !DrGPointIntersectionBuilder class methodsFor: 'documentation'!
@@ -4933,12 +4933,12 @@ title
 addToFlyingItem: anItem
 	self isNotInteractive ifTrue: [^self].
 	points size = 2 ifTrue: [
-		movingPoint _ DrGPointFreeItem new point: anItem point + (0.1 @ 0.1).
-		flyingItem _ self mathItemClass 
+		movingPoint := DrGPointFreeItem new point: anItem point + (0.1 @ 0.1).
+		flyingItem := self mathItemClass 
 			newWith: ((OrderedCollection withAll: points) add: movingPoint; yourself).
 		self initializeFlyingMorph].
 	points size > 2 ifTrue: [
-		movingPoint _ DrGPointFreeItem new point: anItem point + (0.1 @ 0.1).
+		movingPoint := DrGPointFreeItem new point: anItem point + (0.1 @ 0.1).
 		flyingItem parents: (flyingItem parents
 								add: movingPoint;
 								yourself).
@@ -4954,7 +4954,7 @@ mathItemClass
 
 !DrGPolygonBuilder methodsFor: 'initialize-release'!
 initialize
-	points _ OrderedCollection new.
+	points := OrderedCollection new.
 ! !
 
 !DrGPolygonBuilder methodsFor: 'accessing'!
@@ -4983,14 +4983,14 @@ addItem: aMathItemCollection at: aPoint
 parentsById: node
 	|arguments|
 	"To instantiate a polygon we need the first summit to be duplucated at the end of the point collection"
-	arguments _ super parentsById: node.
+	arguments := super parentsById: node.
 	arguments addLast: arguments first.
 	^ arguments ! !
 
 !DrGPolygonBuilder methodsFor: 'updating'!
 reset
 	super reset.
-	points _ OrderedCollection new! !
+	points := OrderedCollection new! !
 
 !DrGPolygonBuilder class methodsFor: 'documentation'!
 description
@@ -5004,12 +5004,12 @@ title
 addItem: aMathItemCollection at: aPoint
 | item |
 	super addItem: aMathItemCollection at: aPoint.
-	item _ aMathItemCollection first.
+	item := aMathItemCollection first.
 	item isPointItem ifTrue: [
-		center isNil ifTrue: [^ center _ item].
-		pointA isNil ifTrue: [^ pointA _ item]].
+		center isNil ifTrue: [^ center := item].
+		pointA isNil ifTrue: [^ pointA := item]].
 	(item isValueItem and: [value isNil]) ifTrue: [
-		value _ item]! !
+		value := item]! !
 
 !DrGPolygonRegularBuilder methodsFor: 'accessing'!
 arguments
@@ -5028,7 +5028,7 @@ readyToBuild
 !DrGPolygonRegularBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:21:37'!
 reset
 	super reset.
-	center _ pointA _ value _ nil! !
+	center := pointA := value := nil! !
 
 !DrGPolygonRegularBuilder methodsFor: 'constant'!
 mathItemClass 
@@ -5052,8 +5052,8 @@ page: integer
 	current page"
 	| newState |
 	integer = 1 
-		ifTrue: [ newState _ DrGMacroToolStateNeutral ]
-		ifFalse: [ newState _ DrGMacroPlayToolStateSelect].
+		ifTrue: [ newState := DrGMacroToolStateNeutral ]
+		ifFalse: [ newState := DrGMacroPlayToolStateSelect].
 	self 
 		triggerEvent: #changedState
 		with: newState! !
@@ -5062,7 +5062,7 @@ page: integer
 basicItemFrom: node
 "create a scrip item then set its script from the xml node information"
 | item |
-	item _ super basicItemFrom: node.
+	item := super basicItemFrom: node.
 	item script: (node attributeAt: #class) asClass.
 	^ item! !
 
@@ -5082,13 +5082,13 @@ postProcess: item from: node
 release
 	self removeEvents.
 	wizard delete.
-	wizard _ nil! !
+	wizard := nil! !
 
 !DrGScriptPlayer methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
 "Take the point position only when the user clic somewhere in the background"
 	aMathItemCollection ifEmpty: 
-		[point _ aPoint.
+		[point := aPoint.
 		^self].
 	input size < scriptClass argumentsType size
 		ifTrue: [self addToggleItem: aMathItemCollection in: input]
@@ -5118,7 +5118,7 @@ readyToBuild
 !DrGScriptPlayer methodsFor: 'testing'!
 reset
 	super reset.
-	input _ OrderedCollection new.! !
+	input := OrderedCollection new.! !
 
 !DrGScriptPlayer methodsFor: 'accessing'!
 arguments
@@ -5133,7 +5133,7 @@ description
 	^ scriptClass
 		ifNil: ['']
 		ifNotNil: 
-			[comment _ scriptClass description.
+			[comment := scriptClass description.
 			comment isEmpty 
 				ifTrue: ['No description, write one in the description method of this script.' translated]
 				ifFalse: [comment]]! !
@@ -5153,20 +5153,20 @@ scriptClass
 
 !DrGScriptPlayer methodsFor: 'accessing'!
 scriptClass: anObject
-	scriptClass _ anObject.
-	input _ OrderedCollection new.
+	scriptClass := anObject.
+	input := OrderedCollection new.
 	self triggerEvent: #changedScript.! !
 
 !DrGScriptPlayer methodsFor: 'initialize-release'!
 basicInitialize
-	input _ OrderedCollection new.! !
+	input := OrderedCollection new.! !
 
 !DrGScriptPlayer methodsFor: 'initialize-release' stamp: 'hlsf 4/6/2022 16:36:57'!
 initialize
-	wizard _ DrGWizardScript open: self ::
+	wizard := (DrGWizardScript open: self)
 		addPages;
 		openInWorld.
-	input _ OrderedCollection new.
+	input := OrderedCollection new.
 	wizard when: #page send: #page: to: self.
 	wizard when: #cancel send: #cancel to: self.! !
 
@@ -5178,7 +5178,7 @@ removeEvents
 basicItemFrom: node
 "create a basic item (unitialised) from this node and add it to the domain, return an item partially initialized. Use for macro node"
 	| builder |
-	builder _ self basicNew basicInitialize.
+	builder := self basicNew basicInitialize.
 	^ builder basicItemFrom: node! !
 
 !DrGScriptPlayer class methodsFor: 'xml' stamp: 'hlsf 8/4/2023 17:29:25'!
@@ -5198,7 +5198,7 @@ title
 
 !DrGScriptPlayerHeadless methodsFor: 'as yet unclassified'!
 initialize
-	input _ OrderedCollection new.! !
+	input := OrderedCollection new.! !
 
 !DrGScriptPlayerHeadless methodsFor: 'as yet unclassified'!
 release! !
@@ -5216,7 +5216,7 @@ readyToBuild
 !DrGSegmentBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:21:41'!
 reset
 	super reset.
-	pointA _ pointB _ nil! !
+	pointA := pointB := nil! !
 
 !DrGSegmentBuilder methodsFor: 'accessing'!
 arguments
@@ -5239,10 +5239,10 @@ flyingMorphClass
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint.
 	pointA ifNil: 
-		[pointA _ aMathItemCollection first.
+		[pointA := aMathItemCollection first.
 		self addToFlyingItem: pointA.
 		^ self].
-	pointB ifNil: [	pointB _ aMathItemCollection first]
+	pointB ifNil: [	pointB := aMathItemCollection first]
 	! !
 
 !DrGSegmentBuilder class methodsFor: 'documentation'!
@@ -5274,15 +5274,15 @@ readyToBuild
 !DrGCircleBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint 
 	|item|
-	point _ aPoint.
-	(item _ aMathItemCollection first) isSegmentItem ifTrue: [
-		^ segment ifNil: [segment _ item]].
+	point := aPoint.
+	(item := aMathItemCollection first) isSegmentItem ifTrue: [
+		^ segment ifNil: [segment := item]].
 	item isValueItem ifTrue: [
-		^ radius ifNil: [radius _ item]].
+		^ radius ifNil: [radius := item]].
 	^ pointA 
-		ifNil: [pointA _ item.
+		ifNil: [pointA := item.
 			self addToFlyingItem: pointA]
-		ifNotNil: [pointB _ item]! !
+		ifNotNil: [pointB := item]! !
 
 !DrGCircleBuilder methodsFor: 'flying costume' stamp: 'hlsf 4/12/2021 22:04:35'!
 flyingMorphClass
@@ -5299,8 +5299,8 @@ arguments
 !DrGCircleBuilder methodsFor: 'updating'!
 reset
 	super reset.
-	radius _ nil.
-	segment _ nil.! !
+	radius := nil.
+	segment := nil.! !
 
 !DrGCircleBuilder methodsFor: 'constant'!
 mathItemClass
@@ -5338,14 +5338,14 @@ title
 !DrGAngleBisectorBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
 	| item |
-	point _ aPoint.
-	(item _ aMathItemCollection first) isAngleItem ifTrue: [^ angle ifNil: [angle := item]].
+	point := aPoint.
+	(item := aMathItemCollection first) isAngleItem ifTrue: [^ angle ifNil: [angle := item]].
 	pointA 
-		ifNil: [pointA _ item] 
+		ifNil: [pointA := item] 
 		ifNotNil: [pointB 
-			ifNil: [pointB _ item.
+			ifNil: [pointB := item.
 				self addToFlyingItem: pointB] 
-			ifNotNil: [pointC _ item]]! !
+			ifNotNil: [pointC := item]]! !
 
 !DrGAngleBisectorBuilder methodsFor: 'accessing'!
 arguments
@@ -5356,7 +5356,7 @@ arguments
 !DrGAngleBisectorBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:21:47'!
 reset
 	super reset.
-	pointC _ angle _ nil
+	pointC := angle := nil
 	! !
 
 !DrGAngleBisectorBuilder methodsFor: 'constant'!
@@ -5373,7 +5373,7 @@ flyingMathItemArguments
 isWanted: aMathItemCollection
 	| item |
 	^ aMathItemCollection notEmpty 
-		and: [((item _ aMathItemCollection first) isPointItem 
+		and: [((item := aMathItemCollection first) isPointItem 
 				and: [item ~= pointA 
 				and: [item  ~= pointB]])
 			or:	[item isAngleItem and: [pointA isNil and: [item nodeType = #'3pts']]]]	! !
@@ -5415,15 +5415,15 @@ flyingMathItemArguments
 !DrGParallelBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:00'!
 reset
 	super reset.
-	pointA _ direction _ nil! !
+	pointA := direction := nil! !
 
 !DrGParallelBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
-	point _ aPoint.
+	point := aPoint.
 	aMathItemCollection first isPointItem 
-		ifTrue: [pointA _ aMathItemCollection first].
+		ifTrue: [pointA := aMathItemCollection first].
 	aMathItemCollection first isDirectionItem 
-		ifTrue:[direction _ aMathItemCollection first.
+		ifTrue:[direction := aMathItemCollection first.
 			self addToFlyingItem: direction].
 	! !
 
@@ -5455,7 +5455,7 @@ title
 isWanted: aMathItemCollection
 | item |
 	^ aMathItemCollection notEmpty 
-		and: [((item _ aMathItemCollection first) isPointItem 
+		and: [((item := aMathItemCollection first) isPointItem 
 		and: [item ~= pointA])
 			or: [item isSegmentItem and: [pointA isNil]]]! !
 
@@ -5467,7 +5467,7 @@ readyToBuild
 !DrGPerpendicularBisectorBuilder methodsFor: 'updating'!
 reset
 	super reset.
-	segment _ nil! !
+	segment := nil! !
 
 !DrGPerpendicularBisectorBuilder methodsFor: 'accessing'!
 arguments 
@@ -5478,13 +5478,13 @@ arguments
 !DrGPerpendicularBisectorBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
 	| item |
-	point _ aPoint.
-	(item _ aMathItemCollection first) isSegmentItem ifTrue: 
-		[^segment ifNil: [segment _ item]].
+	point := aPoint.
+	(item := aMathItemCollection first) isSegmentItem ifTrue: 
+		[^segment ifNil: [segment := item]].
 	pointA 
-		ifNil: [pointA _ item.
+		ifNil: [pointA := item.
 			self addToFlyingItem: pointA.]
-		ifNotNil: [pointB _ item]
+		ifNotNil: [pointB := item]
 	! !
 
 !DrGPerpendicularBisectorBuilder methodsFor: 'constant'!
@@ -5594,7 +5594,7 @@ buildItem
 !DrGReflectionBuilder methodsFor: 'constant' stamp: 'hlsf 5/31/2021 18:57:50'!
 mathItemClass: aMathItem
 	|className|
-	className _ 'DrG', aMathItem basicType capitalized, 'ReflexionItem'.
+	className := 'DrG', aMathItem basicType capitalized, 'ReflexionItem'.
 	^(Smalltalk classNamed: className)! !
 
 !DrGReflectionBuilder methodsFor: 'accessing'!
@@ -5617,13 +5617,13 @@ readyToBuild
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection  at: aPoint.
 	(aMathItemCollection first isLineItem and: [axe isNil])
-		ifTrue: [axe _ aMathItemCollection first]
-		ifFalse: [mathItem _ aMathItemCollection first]! !
+		ifTrue: [axe := aMathItemCollection first]
+		ifFalse: [mathItem := aMathItemCollection first]! !
 
 !DrGReflectionBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:05'!
 reset
 	super reset.
-	axe _ mathItem _ nil! !
+	axe := mathItem := nil! !
 
 !DrGReflectionBuilder class methodsFor: 'documentation'!
 description
@@ -5648,10 +5648,10 @@ readyToBuild
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	(aMathItemCollection first isPointItem and: [center isNil])
-		ifTrue: [center _ aMathItemCollection first. ^self].
+		ifTrue: [center := aMathItemCollection first. ^self].
 	(aMathItemCollection first isValueItem and: [value isNil])
-		ifTrue: [value _ aMathItemCollection first. ^self].
-	mathItem _ aMathItemCollection first! !
+		ifTrue: [value := aMathItemCollection first. ^self].
+	mathItem := aMathItemCollection first! !
 
 !DrGRotationBuilder methodsFor: 'accessing'!
 arguments: aMathItem
@@ -5660,12 +5660,12 @@ arguments: aMathItem
 !DrGRotationBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:14'!
 reset
 	super reset.
-	center _ value _ mathItem _ nil! !
+	center := value := mathItem := nil! !
 
 !DrGRotationBuilder methodsFor: 'constant' stamp: 'hlsf 5/31/2021 18:57:54'!
 mathItemClass: aMathItem
 	|className|
-	className _ 'DrG', aMathItem basicType capitalized, 'RotationItem'.
+	className := 'DrG', aMathItem basicType capitalized, 'RotationItem'.
 	^(Smalltalk classNamed: className)! !
 
 !DrGRotationBuilder class methodsFor: 'documentation'!
@@ -5679,7 +5679,7 @@ title
 !DrGHomothetyBuilder methodsFor: 'constant' stamp: 'hlsf 5/31/2021 18:57:39'!
 mathItemClass: aMathItem
 	|className|
-	className _ 'DrG', aMathItem basicType capitalized, 'HomothetyItem'.
+	className := 'DrG', aMathItem basicType capitalized, 'HomothetyItem'.
 	^(Smalltalk classNamed: className)! !
 
 !DrGHomothetyBuilder class methodsFor: 'documentation'!
@@ -5697,7 +5697,7 @@ arguments: aMathItem
 !DrGSymmetryBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:17'!
 reset
 	super reset.
-	mathItem _ center _ nil! !
+	mathItem := center := nil! !
 
 !DrGSymmetryBuilder methodsFor: 'testing'!
 isWanted: aMathItemCollection 
@@ -5715,13 +5715,13 @@ readyToBuild
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	(aMathItemCollection first isPointItem and: [center isNil])
-		ifTrue: [center _ aMathItemCollection first]
-		ifFalse: [mathItem _ aMathItemCollection first]! !
+		ifTrue: [center := aMathItemCollection first]
+		ifFalse: [mathItem := aMathItemCollection first]! !
 
 !DrGSymmetryBuilder methodsFor: 'constant' stamp: 'hlsf 5/31/2021 18:58:02'!
 mathItemClass: aMathItem
 	|className|
-	className _ 'DrG', aMathItem basicType capitalized, 'SymmetryItem'.
+	className := 'DrG', aMathItem basicType capitalized, 'SymmetryItem'.
 	^(Smalltalk classNamed: className)! !
 
 !DrGSymmetryBuilder class methodsFor: 'documentation'!
@@ -5735,7 +5735,7 @@ title
 !DrGTranslationBuilder methodsFor: 'constant' stamp: 'hlsf 5/31/2021 18:58:11'!
 mathItemClass: aMathItem
 	|className|
-	className _ 'DrG', aMathItem basicType capitalized, 'TranslationItem'.
+	className := 'DrG', aMathItem basicType capitalized, 'TranslationItem'.
 	^(Smalltalk classNamed: className)! !
 
 !DrGTranslationBuilder methodsFor: 'accessing'!
@@ -5758,14 +5758,14 @@ readyToBuild
 !DrGTranslationBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:22'!
 reset
 	super reset.
-	vector _ mathItem _ nil.! !
+	vector := mathItem := nil.! !
 
 !DrGTranslationBuilder methodsFor: 'private'!
 addItem: aMathItemCollection at: aPoint
 	super addItem: aMathItemCollection at: aPoint.
 	(aMathItemCollection first isVectorItem and: [vector isNil])
-		ifTrue: [vector _ aMathItemCollection first]
-		ifFalse: [mathItem _ aMathItemCollection first]! !
+		ifTrue: [vector := aMathItemCollection first]
+		ifFalse: [mathItem := aMathItemCollection first]! !
 
 !DrGTranslationBuilder class methodsFor: 'documentation'!
 description
@@ -5790,12 +5790,12 @@ addItem: aMathItemCollection at: aPoint
 	aMathItemCollection first isPointItem 
 		ifTrue: 
 			[pointA ifNil:
-				[pointA _ aMathItemCollection first.
+				[pointA := aMathItemCollection first.
 				^self].
 			pointB ifNil:
-				[pointB _ aMathItemCollection first.
+				[pointB := aMathItemCollection first.
 				^self]]
-		ifFalse: [curveItem _ aMathItemCollection first]! !
+		ifFalse: [curveItem := aMathItemCollection first]! !
 
 !DrGValueBuilder methodsFor: 'xml'!
 itemInstanceFrom: node
@@ -5839,7 +5839,7 @@ mathItemClass
 !DrGValueBuilder methodsFor: 'updating' stamp: 'hlsf 6/20/2021 11:22:28'!
 reset
 	super reset.
-	pointA _ pointB _ curveItem _ nil! !
+	pointA := pointB := curveItem := nil! !
 
 !DrGValueBuilder methodsFor: 'testing'!
 isWanted: aMathItemCollection 
@@ -5879,8 +5879,8 @@ title
 !DrGCommandStack methodsFor: 'private'!
 truncate
 	|oldReadLimit|
-	oldReadLimit _ readLimit.
-	readLimit _ position.
+	oldReadLimit := readLimit.
+	readLimit := position.
 	oldReadLimit > readLimit ifTrue:
 			[readLimit to: oldReadLimit do:
 				[:index| collection at: index + 1 put: nil]]! !
@@ -5919,11 +5919,11 @@ offScreen
 
 !DrGLocusSample methodsFor: 'accessing'!
 isValid: aBoolean
-	^ exist _ aBoolean ! !
+	^ exist := aBoolean ! !
 
 !DrGLocusSample methodsFor: 'accessing'!
 offScreen: aBoolean
-	offScreen  _ aBoolean ! !
+	offScreen  := aBoolean ! !
 
 !DrGLocusSample methodsFor: 'accessing'!
 pointScreen
@@ -5933,7 +5933,7 @@ pointScreen
 !DrGLocusSample methodsFor: 'accessing'!
 pointScreen: anObject
 
-	pointScreen _ anObject! !
+	pointScreen := anObject! !
 
 !DrGLocusSample methodsFor: 'accessing'!
 pointWorld
@@ -5943,7 +5943,7 @@ pointWorld
 !DrGLocusSample methodsFor: 'accessing'!
 pointWorld: anObject
 
-	pointWorld _ anObject! !
+	pointWorld := anObject! !
 
 !DrGLocusSample methodsFor: 'accessing'!
 x
@@ -5953,7 +5953,7 @@ x
 !DrGLocusSample methodsFor: 'accessing'!
 x: anObject
 
-	abscissa _ anObject! !
+	abscissa := anObject! !
 
 !DrGeoMiniView methodsFor: 'accessing' stamp: 'hlsf 6/19/2021 10:07:28'!
 drawable
@@ -6019,7 +6019,7 @@ clipsSubmorphs
 
 !DrGeoMiniView class methodsFor: 'instance creation' stamp: 'hlsf 8/4/2023 13:05:08'!
 for: aPresenter
-	^ self basicNew ::
+	^ self basicNew 
 		presenter: aPresenter ;
 		initialize;
 		beColumn;
@@ -6048,17 +6048,17 @@ mouseMove: evt localPosition: deltaVector
 !DrGLabel methodsFor: 'initialization' stamp: 'hlsf 4/11/2021 11:56:54'!
 initialize
 	super initialize.
-	blink _ false.
+	blink := false.
 	self font: DrGeoSystem canvasFont
 ! !
 
 !DrGLabel methodsFor: 'accessing' stamp: 'hlsf 4/11/2021 11:56:58'!
 morph: aDrGMorph
-	itemMorph _ aDrGMorph! !
+	itemMorph := aDrGMorph! !
 
 !DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 4/11/2021 11:57:02'!
 startBlinking
-	blink _ true.
+	blink := true.
 	self startStepping ! !
 
 !DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 6/3/2022 11:37:32'!
@@ -6071,7 +6071,7 @@ step
 
 !DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 4/11/2021 11:57:18'!
 stopBlinking
-	blink _ false.
+	blink := false.
 	self stopStepping.! !
 
 !DrGLabel methodsFor: 'stepping and presenter' stamp: 'hlsf 4/11/2021 11:57:23'!
@@ -6089,7 +6089,7 @@ includeInNewMorphMenu
 
 !DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 10/13/2022 15:09:14'!
 buildLowerPanes
-	^ LayoutMorph newColumn ::
+	^ LayoutMorph newColumn 
 		addMorph: self customButtonRow fixedHeight: self defaultButtonPaneHeight;
 		addMorph: self buildMorphicCodePane proportionalHeight: 1.0;
 		yourself! !
@@ -6105,7 +6105,7 @@ buildMorphicWindow
 	"Instantiate, but not used on the GUI"
 	self receiverInspectorText.
 	
-	bottomMorph _ LayoutMorph newRow.
+	bottomMorph := LayoutMorph newRow.
 	bottomMorph
 		addAdjusterAndMorph: self contextVariableInspector proportionalWidth: 0.30;
 		addAdjusterAndMorph: self contextVariableInspectorText proportionalWidth: 0.70.
@@ -6135,7 +6135,7 @@ layerNumber
 
 !DrGDebuggerWindow class methodsFor: 'instance creation' stamp: 'hlsf 10/19/2022 21:20:35'!
 open: model
-	^ self new ::
+	^ self new 
 		model: model;
 		buildMorphicWindow;
 		yourself
@@ -6227,7 +6227,7 @@ fourthPage
 	descriptionLabel := LabelMorph contents: 'Description:' translated.
 	labelsWidth := titleLabel morphWidth max: descriptionLabel morphWidth.
 	row addMorph: titleLabel fixedWidth: labelsWidth.
-	tMorph := TextModelMorph textProvider: model textGetter: #title textSetter: #title: ::
+	tMorph := (TextModelMorph textProvider: model textGetter: #title textSetter: #title:)
 		hideScrollBarsIndefinitely; 
 		askBeforeDiscardingEdits: false.
 	tMorph scroller 
@@ -6239,7 +6239,7 @@ fourthPage
 	pane addMorph: row fixedHeight: titleLabel morphHeight.
 	row :=  LayoutMorph newRow separation: 4.
 	row addMorph: descriptionLabel fixedWidth: labelsWidth .
-	descrMorph := TextModelMorph textProvider: model textGetter: #description textSetter: #description: ::
+	descrMorph := (TextModelMorph textProvider: model textGetter: #description textSetter: #description:)
 		askBeforeDiscardingEdits: false.
 	descrMorph scroller 
 		setProperty: #keyStroke: 
@@ -6255,12 +6255,12 @@ fourthPage
 !DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
 secondPage
 | list pane |
-	list _ PluggableListMorph 
+	list := PluggableListMorph 
 		model: model
 		listGetter: #inputNames
 		indexGetter:  nil
 		indexSetter: nil.
-	pane _ self emptyPane 
+	pane := self emptyPane 
 		addMorphUseAll: list;
 		yourself.
 	^ (WizardPage standardPage: 'Select input parameters' translated on: self)
@@ -6271,12 +6271,12 @@ secondPage
 !DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
 thirdPage
 | list pane |
-	list _ PluggableListMorph 
+	list := PluggableListMorph 
 		model: model
 		listGetter: #outputNames
 		indexGetter:  nil
 		indexSetter: nil.
-	pane _ self emptyPane 
+	pane := self emptyPane 
 		addMorphUseAll: list;
 		yourself.
 	^ (WizardPage standardPage: 'Select output parameters' translated on: self)
@@ -6314,7 +6314,7 @@ addPages
 !DrGWizardMacroPlay methodsFor: 'initialize-release' stamp: 'hlsf 12/27/2021 11:03:24'!
 initialize
 	super initialize.
-	macroFactories _ DrGMacroFactory new! !
+	macroFactories := DrGMacroFactory new! !
 
 !DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
 firstPage
@@ -6331,17 +6331,17 @@ firstPage
 !DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
 secondPage
 | pane morph |
-	morph _ PluggableListMorph 
+	morph := PluggableListMorph 
 		model: self
 		listGetter: #macroList
 		indexGetter: #selectedMacro
 		indexSetter: #selectedMacro:.
-	pane  _ self emptyPane
+	pane  := self emptyPane
 		addMorphKeepMorphHeight: (LabelMorph contents: 'Title:' translated);
 		addMorph: morph proportionalHeight: 0.3;
 		addMorphKeepMorphHeight: (LabelMorph contents: 'Description:' translated);		
 		yourself.
-	morph _ TextModelMorph textProvider: model textGetter: #description textSetter: #description:.
+	morph := TextModelMorph textProvider: model textGetter: #description textSetter: #description:.
 	morph hideScrollBarsIndefinitely; askBeforeDiscardingEdits: false.
 	pane addMorphUseAll: morph.
 	^ (WizardPage applyPage: 'Select a macro-construction then the figure items' translated on: self)
@@ -6378,13 +6378,13 @@ argumentsName
 	^ model scriptClass 
 		ifNil: [ #() ]
 		ifNotNil: [
-			labels _ DrGScriptDesignerDialog classesAndLabels.
+			labels := DrGScriptDesignerDialog classesAndLabels.
 			model scriptClass argumentsType collect: [ :type | labels at: type ]
 		]! !
 
 !DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 4/7/2022 15:40:01'!
 scripts
-	^ scripts 	ifNil: [ 	scripts _ DrGWizardScript sortedScripts ]! !
+	^ scripts 	ifNil: [ 	scripts := DrGWizardScript sortedScripts ]! !
 
 !DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 4/6/2022 16:55:26'!
 scriptsName
@@ -6423,27 +6423,27 @@ firstPage
 !DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 4/7/2022 15:42:08'!
 secondPage
 	| list argumentList page textMorph |
-	list _ PluggableListMorph 
+	list := PluggableListMorph 
 		model: self listGetter: #scriptsName indexGetter: #selectedScript 		indexSetter: #selectedScript:. 
-	argumentList _ PluggableListMorph 
-		model: self 		listGetter: #argumentsName indexGetter: nil indexSetter: 	nil ::
+	argumentList := (PluggableListMorph 
+		model: self listGetter: #argumentsName indexGetter: nil indexSetter: nil)
 		setBalloonText: 'The arguments accepted by this script.' translated;
 		yourself.
-	textMorph _ TextModelMorph textProvider: model textGetter: #description textSetter: #description: ::
+	textMorph := (TextModelMorph textProvider: model textGetter: #description textSetter: #description:)
 		askBeforeDiscardingEdits: false;
 		yourself.
-	page _ LabelGroup with: { 
+	page := LabelGroup with: { 
 		'Script name' translated -> list.
 		'Description' translated -> textMorph.
 		'Arguments' translated -> argumentList}.
 
-	^ WizardPage applyPage: 'Select a script then items in the sketch' translated on: self ::
+	^ (WizardPage applyPage: 'Select a script then items in the sketch' translated on: self)
 		 contents: page! !
 
 !DrGWizardScript methodsFor: 'open/close' stamp: 'hlsf 4/7/2022 12:34:54'!
 delete
 	super delete.
-	model _ nil! !
+	model := nil! !
 
 !DrGWizardScript methodsFor: 'navigation' stamp: 'hlsf 4/7/2022 15:54:58'!
 goPage: integer
@@ -6495,10 +6495,10 @@ computePreviewFor: aSketchFile
 !DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 4/11/2022 21:24:20'!
 newButtonArea
 	| rowLeft rowRight |	
-	buttonArea _ LayoutMorph newRow :: 
+	buttonArea := LayoutMorph newRow 
 		separation: 8@0; 
 		yourself.
-	rowLeft _ LayoutMorph newRow.
+	rowLeft := LayoutMorph newRow.
 	rowLeft 
 		axisEdgeWeight: #rowLeft;
 		addMorph: (PluggableButtonMorph 
@@ -6511,7 +6511,7 @@ newButtonArea
 			stateGetter: #isMySketches
 			action: #switchToMySketches
 			label: 'My Sketches' translated).
-	rowRight _ LayoutMorph newRow.
+	rowRight := LayoutMorph newRow.
 	rowRight 
 		axisEdgeWeight: #rowRight;		
 		addMorph: (PluggableButtonMorph
@@ -6550,10 +6550,10 @@ previewFor: aSketchEntry
 !DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 5/4/2023 15:40:22'!
 previewMorphFor: sketchEntry
 	| preview  |
-	preview := FilePreviewMorph 		
+	preview := (FilePreviewMorph 		
 		file: sketchEntry 
 		image: (self previewFor: sketchEntry ) 
-		buttons: nil ::
+		buttons: nil)
 		when: #selected send: #update: to: self;
 		when: #doubleClick send: #open: to: self.
 	previews add: preview.
@@ -6574,7 +6574,7 @@ selectedPreview
 deleteSketch
 "Delete the selected sketch"
 	self canDelete ifTrue: [ | file |
-		file _ self selectedFile.
+		file := self selectedFile.
 		file delete.
 		((file pathName allButLast: 4), 'png') asFileEntry delete.
 		self selectedPreview delete		]
@@ -6597,12 +6597,12 @@ open: previewMorph
 
 !DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 10/17/2021 12:29:46'!
 switchToExamples
-	model _ DrGeoSystem examplesPath.
+	model := DrGeoSystem examplesPath.
 	self updateButtonsAndPreviews ! !
 
 !DrGFileOpenMorph methodsFor: 'actions' stamp: 'hlsf 10/17/2021 12:30:00'!
 switchToMySketches
-	model _ DrGeoSystem mySketchesPath.
+	model := DrGeoSystem mySketchesPath.
 	self updateButtonsAndPreviews ! !
 
 !DrGFileOpenMorph methodsFor: 'states' stamp: 'hlsf 10/25/2021 09:46:28'!
@@ -6632,7 +6632,7 @@ updateButtonsAndPreviews
 !DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 10/29/2021 12:12:00'!
 initialize
 	super initialize.
-	previews _ #()! !
+	previews := #()! !
 
 !DrGFileOpenMorph methodsFor: 'geometry' stamp: 'hlsf 11/7/2023 14:21:35'!
 minimumExtent
@@ -6646,7 +6646,7 @@ open
 arguments 
 "The arguments as selected by the user"
 |alignments|
-	alignments _ argumentsMorph submorphs select: [ :morph | morph class = LayoutMorph].
+	alignments := argumentsMorph submorphs select: [ :morph | morph class = LayoutMorph].
 	^  alignments reverse collect: [ :each | each submorphs first selectedItem].
 	! !
 
@@ -6654,7 +6654,7 @@ arguments
 argumentsClass
 "The arguments type as selected by the user, tpye=class from the MathItem hierarchy"
 |dict|
-	dict _ self class labelsAndClasses .
+	dict := self class labelsAndClasses .
 	^ self arguments collect: [:aLabel | dict at: aLabel]! !
 
 !DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 4/6/2022 14:52:28'!
@@ -6663,7 +6663,7 @@ description
 
 !DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 4/2/2022 09:10:06'!
 description: aString
-	description _ aString ! !
+	description := aString ! !
 
 !DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 4/6/2022 14:52:35'!
 scriptName
@@ -6671,11 +6671,11 @@ scriptName
 
 !DrGScriptDesignerDialog methodsFor: 'accessing' stamp: 'hlsf 4/2/2022 09:09:41'!
 scriptName: aString
-	scriptName _ aString ! !
+	scriptName := aString ! !
 
 !DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 4/4/2022 12:54:13'!
 newAddArgumentButton
-	^ PluggableButtonMorph model: self action:  #addArgument label: 'Add argument' translated ::
+	^ (PluggableButtonMorph model: self action:  #addArgument label: 'Add argument' translated)
 			setBalloonText: 'Add an argument to this script.' translated;
 			yourself! !
 
@@ -6691,16 +6691,16 @@ newArgumentMorph
 newButtonArea
 	buttonArea := LayoutMorph newRow
 		separation: 8@0;
-		addMorph: (PluggableButtonMorph model: self action:  #build label: 'Build' translated ::
+		addMorph: ((PluggableButtonMorph model: self action: #build label: 'Build' translated)
 				enableSelector: #isValid; 
 				setBalloonText: 'Build a script with these settings.' translated;
 				yourself)
-		layoutSpec: (LayoutSpec new ::
+		layoutSpec: (LayoutSpec new
 			useMorphWidth ;
 			proportionalHeight:  1;
 			offAxisEdgeWeight: #center);
 		addMorph: (PluggableButtonMorph model: self action:  #cancel label: 'Cancel' translated)
-		layoutSpec: (LayoutSpec new ::
+		layoutSpec: (LayoutSpec new
 			useMorphWidth ;
 			proportionalHeight:  1;
 			offAxisEdgeWeight: #center);
@@ -6711,7 +6711,7 @@ newButtonArea
 !DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 4/4/2022 20:10:51'!
 newDescriptionMorph
 | morph |
-	morph _ TextModelMorph textProvider: self textGetter: #description textSetter: #description: ::
+	morph := (TextModelMorph textProvider: self textGetter: #description textSetter: #description:)
 		askBeforeDiscardingEdits: false;
 		setBalloonText:  'A description of the script. To help the user, describe carefully what the script does and the input arguments to select to use it.' translated;
 		yourself	.
@@ -6725,13 +6725,13 @@ newPane
 	^ LabelGroup with: {
 		'Name' translated -> self newScriptNameMorph .
 		'Description' translated -> self newDescriptionMorph .
-		'Arguments' translated -> (argumentsMorph _  self newArgumentMorph)	
+		'Arguments' translated -> (argumentsMorph :=  self newArgumentMorph)	
 	}! !
 
 !DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 4/4/2022 20:10:48'!
 newScriptNameMorph
 | morph |
-	morph _ TextModelMorph textProvider: self textGetter: #scriptName textSetter:  #scriptName: ::
+	morph := (TextModelMorph textProvider: self textGetter: #scriptName textSetter:  #scriptName:)
 		hideScrollBarsIndefinitely;
 		askBeforeDiscardingEdits: false;
 		acceptOnCR: true;
@@ -6746,17 +6746,17 @@ newScriptNameMorph
 !DrGScriptDesignerDialog methodsFor: 'initialization' stamp: 'hlsf 4/5/2022 21:02:25'!
 initialize
 	super initialize.
-	scriptName _ ''.
-	description _ ''! !
+	scriptName := ''.
+	description := ''! !
 
 !DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 5/27/2023 12:12:17'!
 addArgument
 	| newArgument |
-	newArgument := LayoutMorph newRow ::
+	newArgument := LayoutMorph newRow
 		adoptWidgetsColor: widgetsColor;
 		borderWidth: 1;
 		yourself.
-	newArgument addMorph: (PluggableButtonMorph model: self action: #removeArgument: ::
+	newArgument addMorph: ((PluggableButtonMorph model: self action: #removeArgument:)
 			icon: Theme current deleteIcon;
 			actionArgument: newArgument;
 			borderWidth: 0;
@@ -6764,10 +6764,10 @@ addArgument
 			setBalloonText:  'Remove this script argument.' translated;
 			yourself);		
 		addMorph: (DropDownListMorph 
-			model: (ListModel with: self class labels)
+			model: ((ListModel with: self class labels)
 			listGetter: #list
 			indexGetter:  #listIndex
-			indexSetter: #listIndex: ::
+			indexSetter: #listIndex:)
 			adoptWidgetsColor: widgetsColor ).
 	argumentsMorph addMorph: newArgument.
 	self morphExtent: self minimumExtent ! !
@@ -6839,7 +6839,7 @@ removeArgument: aRowArgument
 !DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 4/2/2022 12:50:48'!
 classesAndLabels
 	| dict |
-	dict _ Dictionary new.
+	dict := Dictionary new.
 	self labelsAndClasses associationsDo: [ :assoc | 
 		dict add: assoc value -> assoc key ].
 	^ dict
@@ -6895,19 +6895,19 @@ edit
 
 !DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 4/9/2022 11:05:19'!
 model: aDirectoryEntry
-	model _ aDirectoryEntry .
-	sketches _ nil! !
+	model := aDirectoryEntry .
+	sketches := nil! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 4/12/2022 21:24:54'!
 showCode: aCheckButtonMorph 
 | drgeoFraction |
 	aCheckButtonMorph isSelected 
 		ifTrue: 	[
-			drgeoFraction _ 0.7.
+			drgeoFraction := 0.7.
 			pane addMorph: codeView proportionalHeight: 1 - drgeoFraction.
 			codeView adoptWidgetsColor: self widgetsColor ]
 		 ifFalse: [
-			drgeoFraction _ 1.
+			drgeoFraction := 1.
 			pane removeMorph: codeView].
 	drgeoView layoutSpec: (LayoutSpec proportionalHeight: drgeoFraction)! !
 
@@ -6937,7 +6937,7 @@ sketch: anIndex
 !DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 9/28/2022 16:32:35'!
 sketches
 " The skteches files in the current path"
-	^ sketches ifNil: [sketches _ (model files 
+	^ sketches ifNil: [sketches := (model files 
 			select: [:aFile | aFile extension = 'st']
 			thenCollect: [:aFile | aFile baseName ]) sorted ]
 			! !
@@ -6950,12 +6950,12 @@ sourceCode
 
 !DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 4/11/2022 21:54:35'!
 switchToExamples
-	model _ DrGeoSystem smalltalkSketchesPath.
+	model := DrGeoSystem smalltalkSketchesPath.
 	self updateButtonsAndPreviews! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 4/11/2022 21:55:43'!
 switchToMySketches
-	model _ DrGeoSystem mySmalltalkSketchesPath.
+	model := DrGeoSystem mySmalltalkSketchesPath.
 	self updateButtonsAndPreviews! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/14/2022 15:16:01'!
@@ -6966,10 +6966,10 @@ buildMorphicWindow
 !DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 7/9/2022 12:04:06'!
 newButtonArea
 	| rowLeft rowRight |	
-	buttonArea _ LayoutMorph newRow :: 
+	buttonArea := LayoutMorph newRow 
 		separation: 8@0; 
 		yourself.
-	rowLeft _ LayoutMorph newRow.
+	rowLeft := LayoutMorph newRow.
 	rowLeft 
 		axisEdgeWeight: #rowLeft;
 		addMorph: (PluggableButtonMorph 
@@ -6982,7 +6982,7 @@ newButtonArea
 			stateGetter: #isMySketches
 			action: #switchToMySketches
 			label: 'My Sketches' translated).
-	rowRight _ LayoutMorph newRow.
+	rowRight := LayoutMorph newRow.
 	rowRight 
 		axisEdgeWeight: #rowRight;		
 		addMorph: ((PluggableButtonMorph
@@ -7010,14 +7010,14 @@ newButtonArea
 !DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/12/2022 23:31:48'!
 newDrGeoColumn
 " the DrGeo view and an optional code view"
-	^ pane _ LayoutMorph newColumn ::
+	^ pane := LayoutMorph newColumn
 		addMorph: drgeoView proportionalHeight: 1;
 		addAdjusterMorph ;
 		yourself! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/12/2022 19:34:44'!
 newPane
-	^ LayoutMorph newRow ::
+	^ LayoutMorph newRow
 		separation: self defaultSeparation ;
 		addMorph: self newSketchesColumn layoutSpec: (LayoutSpec new useMorphWidth );
 		addMorphUseAll: self newDrGeoColumn;
@@ -7027,9 +7027,9 @@ newPane
 newSketchesColumn
 " The list of the sketch and an option to view the code"
 	| checkGtoup |
-	checkGtoup _ CheckGroup fromList: {'Code' translated}.
+	checkGtoup := CheckGroup fromList: {'Code' translated}.
 	checkGtoup buttons first when: #checkSelection send: #showCode: to: self.
-	^ LayoutMorph newColumn ::
+	^ LayoutMorph newColumn
 		addMorph: sketchesListMorph layoutSpec: (LayoutSpec new useMorphWidth);
 		addMorphKeepMorphHeight: checkGtoup ;
 		yourself
@@ -7037,7 +7037,7 @@ newSketchesColumn
 
 !DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 4/12/2022 18:56:10'!
 emptyView
-	^ BoxedMorph new ::
+	^ BoxedMorph new
 		color: self color;
 		borderWidth: 1;
 		layoutSpec: LayoutSpec useAll! !
@@ -7045,10 +7045,10 @@ emptyView
 !DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 2/22/2023 11:22:05'!
 initialize
 	super initialize.
-	sketchesListMorph _ PluggableListMorph 
+	sketchesListMorph := PluggableListMorph 
 		model: self 		listGetter: #sketches 		indexGetter: #sketch indexSetter: #sketch:.
-	drgeoView _ self emptyView.
-	codeView _ TextModelMorph textProvider: self textGetter: #sourceCode ::
+	drgeoView := self emptyView.
+	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode)
 		disableEditing;
 		yourself.! !
 
@@ -7058,7 +7058,7 @@ minimumExtent
 
 !DrGSmalltalkSketchBrowser methodsFor: 'update' stamp: 'hlsf 7/9/2022 12:07:45'!
 updateButtonsAndPreviews
-	sketches _ nil.
+	sketches := nil.
 	self changed: #isExamples.
 	self changed: #isMySketches.
 	self changed: #sketches.
@@ -7128,7 +7128,7 @@ buildMorphicWindow
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/14/2022 16:36:45'!
 button: iconSymbol action: actionSelector help: helpString
-	^ ButtonMorph model: self action: actionSelector ::
+	^ (ButtonMorph model: self action: actionSelector)
 			icon: (DrGIcons for: iconSymbol );
 			setBalloonText: helpString ;
 			color: DrGUIControlsManager buttonColor;
@@ -7140,7 +7140,7 @@ button: iconSymbol action: actionSelector help: helpString
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/28/2022 11:13:31'!
 button: iconSymbol action: actionSelector state: getStateSel help: helpString
-	^ ButtonMorph model: self stateGetter: getStateSel action: actionSelector ::
+	^ (ButtonMorph model: self stateGetter: getStateSel action: actionSelector)
 			icon: (DrGIcons for: iconSymbol );
 			setBalloonText: helpString ;
 			color: DrGUIControlsManager buttonColor;
@@ -7152,7 +7152,7 @@ button: iconSymbol action: actionSelector state: getStateSel help: helpString
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/14/2022 16:43:31'!
 newButtonArea
-	buttonArea _ LayoutMorph newRow :: 
+	buttonArea := LayoutMorph newRow 
 		axisEdgeWeight: #rowRight;
 		addMorph: (PluggableButtonMorph
 			model: self
@@ -7162,10 +7162,10 @@ newButtonArea
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 11/2/2022 19:39:02'!
 newCodeAndView
-	^ LayoutMorph newRow ::
+	^ LayoutMorph newRow
 		separation: self defaultSeparation;
-		addMorph: (codeAndViewPanel _ LayoutMorph newColumn ::
-			addMorph: 		codeView proportionalHeight: 0.7;
+		addMorph: (codeAndViewPanel := LayoutMorph newColumn
+			addMorph: codeView proportionalHeight: 0.7;
 			addAdjusterMorph;
 			addMorph: docView proportionalHeight: 0.3) 
 		proportionalWidth: 0.5;
@@ -7175,7 +7175,7 @@ newCodeAndView
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/19/2022 21:31:20'!
 newPane
-	^ LayoutMorph newColumn ::
+	^ LayoutMorph newColumn
 		separation: self defaultSeparation ;
 		addMorphKeepMorphHeight: self newToolbar;
 		addMorphUseAll: self newCodeAndView;
@@ -7183,11 +7183,11 @@ newPane
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/28/2022 11:15:20'!
 newToolbar
-	^ LayoutMorph newRow ::
+	^ LayoutMorph newRow
 		separation: 5@0 ;
 		addMorph: (self button: #open action: #browseSketches help: 'Edit a Smalltalk sketch.' translated);
 		addMorph: (self button: #keep action: #keepSketch help: 'Save this Smalltalk sketch.' translated);
-		addMorph: (playButton _ self button: #play action: #executeSketch help: 'Play the Smalltalk sketch.' translated);
+		addMorph: (playButton := self button: #play action: #executeSketch help: 'Play the Smalltalk sketch.' translated);
 		addMorph: (self button: #debug action: #debugSketch help: 'Debug the Smalltalk sketch.' translated);
 		addMorph: (self button: #stop action: #stopSketch help: 'Stop the execution of the Smalltalk sketch.' translated);
 		addMorph: self transparentMorph layoutSpec: (LayoutSpec proportionalWidth: 1.0);
@@ -7246,17 +7246,17 @@ transparentMorph
 initialize
 	| book |
 	super initialize.
-	book _ EruditeBookReaderMorph new.
-	docView _ book
+	book := EruditeBookReaderMorph new.
+	docView := book
 		model: DrGeoTutorial new; 
 		buildMorphicWindow;
 		layoutMorph.
 	book when: #askToCopyCode send: #sourceCode: to: self.
 	
-	codeView _ TextModelMorph textProvider: self textGetter: #sourceCode textSetter: #sourceCode: ::
+	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode textSetter: #sourceCode:)
 		askBeforeDiscardingEdits: false;
 		yourself.
-	drgeoView _  LayoutMorph new ::
+	drgeoView :=  LayoutMorph new
 		color: self color;
 		borderWidth: 1;
 		layoutSpec: LayoutSpec useAll! !
@@ -7268,7 +7268,7 @@ isDocVisible
 !DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 4/14/2022 16:35:00'!
 model: sourceCode
 "Set an initial source code (string)"
-	model _ sourceCode
+	model := sourceCode
 ! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 10/30/2022 20:45:35'!
@@ -7418,19 +7418,19 @@ keepSketch
 | modelName |
 	DrGeoSystem showVirtualKeyboard: true.
 	codeView scroller acceptContents.
-	modelName _ ValueHolder with: self sketchName :: 
+	modelName := (ValueHolder with: self sketchName)
 	action: [:aString | 
 		self setLabel: aString.
-		file _ DrGeoSystem mySmalltalkSketchesPath // (aString, '.st').
+		file := DrGeoSystem mySmalltalkSketchesPath // (aString, '.st').
 		file < model].
-	StringEntryPanel openWide: modelName label: 'Name the sketch to keep.' translated ::
+	(StringEntryPanel openWide: modelName label: 'Name the sketch to keep.' translated)
 		morphCenter: self fullBoundsInOwner center;
 		setProperty: #layerNumber toValue: 20! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 2/22/2023 11:31:05'!
 loadSketch: afileEntry
 " we are informed by the browser we want a file "
-	file _ afileEntry.
+	file := afileEntry.
 	self setLabel: self sketchName.
 	self sourceCode: file fileContents! !
 
@@ -7452,7 +7452,7 @@ stopDebbuger
 	debugger ifNotNil: [
 		codeAndViewPanel replaceSubmorph: debugger layoutMorph by: codeView.
 		debugger closeView.
-		debugger _ nil]
+		debugger := nil]
 		
 		! !
 
@@ -7519,8 +7519,8 @@ buildMorphicWindow
 	titleMorph showButtonsNamed: #(#close).
 	self layoutMorph separation: 4 ;
 		axisEdgeWeight: #columnTop.
-	widgets _ model styleWidget.
-	labelWidth _ widgets max: [:rowOfMorph | (self searchLabelIn: 		rowOfMorph) morphWidth].
+	widgets := model styleWidget.
+	labelWidth := widgets max: [:rowOfMorph | (self searchLabelIn: 		rowOfMorph) morphWidth].
 	widgets do: [:rowOfMorph |
 		(self searchLabelIn: rowOfMorph) morphWidth: labelWidth.
 		self addMorph: rowOfMorph].
@@ -7567,7 +7567,7 @@ selectItem: aMenuItem
 
 !DrGDrawableMenu methodsFor: 'accessing' stamp: 'hlsf 5/6/2020 14:17:28'!
 tool: aDrGeoTool
-	tool _ aDrGeoTool ! !
+	tool := aDrGeoTool ! !
 
 !DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 17:42:50'!
 domain
@@ -7590,7 +7590,7 @@ ox
 
 !DrGDrawable methodsFor: 'accessing'!
 ox: integer
-	ox _ integer asNumber! !
+	ox := integer asNumber! !
 
 !DrGDrawable methodsFor: 'accessing'!
 oy
@@ -7599,7 +7599,7 @@ oy
 
 !DrGDrawable methodsFor: 'accessing'!
 oy: integer
-	oy _ integer asNumber! !
+	oy := integer asNumber! !
 
 !DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 12:44:35'!
 presenter
@@ -7634,14 +7634,14 @@ scale: increment
 
 !DrGDrawable methodsFor: 'accessing'!
 scaleNoRedraw: increment
-	scale _ (scale + increment) .
-	scale < 1 ifTrue: [scale _ 1.0].
-	scale > 1000 ifTrue: [scale _ 1000.0].
+	scale := (scale + increment) .
+	scale < 1 ifTrue: [scale := 1.0].
+	scale > 1000 ifTrue: [scale := 1000.0].
 ! !
 
 !DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/16/2022 17:53:55'!
 setScaleTo: number
-	scale _ number asNumber.
+	scale := number asNumber.
 	self updateGrid.
 	self redrawNeeded ! !
 
@@ -7676,31 +7676,31 @@ gridVisibleOnOff
 
 !DrGDrawable methodsFor: 'callback' stamp: 'hlsf 5/1/2020 16:37:02'!
 moveOx: increment
-	ox _ ox - increment.
+	ox := ox - increment.
 	self redrawNeeded! !
 
 !DrGDrawable methodsFor: 'callback' stamp: 'hlsf 5/1/2020 16:34:10'!
 moveOxy: pointIncrement
-	ox _ ox - pointIncrement x.
-	oy _ oy - pointIncrement y.
+	ox := ox - pointIncrement x.
+	oy := oy - pointIncrement y.
 	self redrawNeeded.! !
 
 !DrGDrawable methodsFor: 'callback' stamp: 'hlsf 5/1/2020 16:34:27'!
 moveOy: increment
-	oy _ oy + increment.
+	oy := oy + increment.
 	self redrawNeeded! !
 
 !DrGDrawable methodsFor: 'callback' stamp: 'hlsf 8/5/2021 12:48:46'!
 zoom: anExtent
-	scale _ (scale + ((anExtent x + anExtent y) / 5)) asInteger.
-	scale _ scale min: 200.
+	scale := (scale + ((anExtent x + anExtent y) / 5)) asInteger.
+	scale := scale min: 200.
 	self updateGrid.
 	self redrawNeeded! !
 
 !DrGDrawable methodsFor: 'coordinates' stamp: 'hlsf 5/1/2020 16:59:05'!
 defaultScalePosition
-	ox _ oy := 0.0.
-	scale _ 34.0.
+	ox := oy := 0.0.
+	scale := 34.0.
 	self updateGrid.
 	self redrawNeeded! !
 
@@ -7808,8 +7808,8 @@ drawOn: aCanvas
 removeDottedLinesToParents
 	valueItem ifNil: [^self].
 	dottedLines do: [:line | self removeMorph: line].
-	dottedLines _ nil.
-	valueItem _ nil! !
+	dottedLines := nil.
+	valueItem := nil! !
 
 !DrGDrawable methodsFor: 'drawing' stamp: 'hlsf 8/4/2023 12:19:10'!
 updateDottedLinesToParents
@@ -7826,15 +7826,15 @@ updateDottedLinesToParents
 !DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 3/17/2022 15:25:39'!
 drawAxesOn: aCanvas
 	| origin worldBound font p start |
-	origin _ self worldToMorph: 0@0.
-	worldBound _ self worldBound.
-	font _ DrGeoSystem canvasFont.
+	origin := self worldToMorph: 0@0.
+	worldBound := self worldBound.
+	font := DrGeoSystem canvasFont.
 	
 	"x-axis"
 	(origin y > 0 and: [origin y < extent y]) ifTrue: [
 		aCanvas line: 0 @ origin y  to: extent x @ origin y width: 1 color: Color lightGray.		
 		"x labels in [0 ; +inf["
-		start _ worldBound origin x > gridScale 
+		start := worldBound origin x > gridScale 
 			ifTrue: [worldBound origin x roundUpTo: gridScale] 
 			ifFalse: [gridScale].
 		start to: (worldBound corner x roundDownTo: gridScale) by: gridScale do: [:x | 
@@ -7843,7 +7843,7 @@ drawAxesOn: aCanvas
 		gridScale negated to: (worldBound origin x roundUpTo: gridScale) by: gridScale negated do: [:x |
 			self drawGradX: x origin: origin on: aCanvas font: font].
 		"orientation"
-		p _ extent x - 2 @ origin y.
+		p := extent x - 2 @ origin y.
 		aCanvas line: p  to: p - `4 @ 4` width: 1 color: Color lightGray;
 			line: p to: p - `4 @ -4` width: 1 color: Color lightGray].
 	
@@ -7854,13 +7854,13 @@ drawAxesOn: aCanvas
 		gridScale to: (worldBound corner y roundDownTo: gridScale) by: gridScale do: [:y | 
 			self drawGradY: y origin: origin on: aCanvas font: font].
 		"y labels in ]-inf ; 0["
-		start _ worldBound corner y < gridScale negated
+		start := worldBound corner y < gridScale negated
 			ifTrue: [worldBound corner y roundDownTo: gridScale] 
 			ifFalse: [gridScale negated].
 		start to: (worldBound origin y roundUpTo: gridScale) by: gridScale negated do: [:y |
 			self drawGradY: y origin: origin on: aCanvas font: font].
 		"orientations"
-		p _  origin x @ 0.
+		p :=  origin x @ 0.
 		aCanvas line: p  to: p + `4 @ 4` width: 1 color: Color lightGray;
 			line: p to: p + `-4 @ 4` width: 1 color: Color lightGray].
 
@@ -7873,9 +7873,9 @@ drawAxesOn: aCanvas
 drawGradX: x origin: origin on: canvas font: font
 "Draw a tick on the (ox) axis with a graduation value"
 	| str pos shift |
-	pos _ (self worldAbscissaToMorph: x asFloat) @ origin y.
-	str _ self labelForAxes: x.
-	shift _ self gridVisible ifTrue: [2@6] ifFalse: [(font widthOfString: str) / -2.0 @6].
+	pos := (self worldAbscissaToMorph: x asFloat) @ origin y.
+	str := self labelForAxes: x.
+	shift := self gridVisible ifTrue: [2@6] ifFalse: [(font widthOfString: str) / -2.0 @6].
 	canvas drawString: str  at: pos + shift font: font color: Color lightGray.
 	canvas line: pos - `0@2` to: pos + `0@2` width: 1.5 color: Color lightGray.! !
 
@@ -7883,8 +7883,8 @@ drawGradX: x origin: origin on: canvas font: font
 drawGradY: y origin: origin on: canvas font: font
 "Draw a tick on the (oy) axis with a graduation value"
 	| pos shift |
-	pos _ origin x @ (self worldOrdinateToMorph: y asFloat).
-	shift _ self gridVisible ifTrue: [5@2] ifFalse: [5 @ (font lineSpacing / -2.0)].
+	pos := origin x @ (self worldOrdinateToMorph: y asFloat).
+	shift := self gridVisible ifTrue: [5@2] ifFalse: [5 @ (font lineSpacing / -2.0)].
 	canvas 
 		drawString: (self labelForAxes: y)  
 		at: pos + shift 
@@ -7895,21 +7895,21 @@ drawGradY: y origin: origin on: canvas font: font
 !DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 11/1/2022 20:30:25'!
 drawGridOn: aCanvas
 	| worldBound end start length step |
-	worldBound _ self worldBound.
-	step _ self worldToPixel: gridScale.
+	worldBound := self worldBound.
+	step := self worldToPixel: gridScale.
 	"horizontal lines"
-	length _ extent x.
-	start _ self worldOrdinateToMorph: (worldBound corner y 	roundTo: gridScale).
-	start < 0 ifTrue: [start _ start + step].
-	end _ extent y.
+	length := extent x.
+	start := self worldOrdinateToMorph: (worldBound corner y 	roundTo: gridScale).
+	start < 0 ifTrue: [start := start + step].
+	end := extent y.
 	start to: end by: step do: [:y |
 		aCanvas line: 0 @ y to: length @ y  width: 0.4 color: Color lightGray].
 	""
 	"vertical lines"
-	length _ extent y.
-	start _ self worldAbscissaToMorph: (worldBound origin x 	roundTo: gridScale).
-	start < 0 ifTrue: [start _ start + step].
-	end _ extent x.
+	length := extent y.
+	start := self worldAbscissaToMorph: (worldBound origin x 	roundTo: gridScale).
+	start < 0 ifTrue: [start := start + step].
+	end := extent x.
 	start to: end by: step do: [:x |
 		aCanvas line: x @ 0 to: x @ length width: 0.4 color: Color lightGray]! !
 
@@ -7917,7 +7917,7 @@ drawGridOn: aCanvas
 labelForAxes: number
 	gridScale isFloat 
 		ifTrue: [|integer|
-			integer _ number asInteger.
+			integer := number asInteger.
 			integer = number ifTrue: [^ integer printString]].
 		^ (number isInteger not and: [number isFraction]) 
 			ifTrue: [number printString allButFirst allButLast]
@@ -7928,7 +7928,7 @@ acceptDroppingMorph: dropped event: evt
 "Here we encapsulated the image morph (dropped) in a DrGBitmapItem.
 We do not really need a builder to do so but we have to process it in the command stack"
 	| item |
-	item _ (DrGBitmapItem newWith: {self morphToWorld: evt eventPosition})
+	item := (DrGBitmapItem newWith: {self morphToWorld: evt eventPosition})
 		data: (self resizeImage: dropped form);
 		insertAtScale: self scale.
 	self domain createFromMathItem: item.! !
@@ -7937,12 +7937,12 @@ We do not really need a builder to do so but we have to process it in the comman
 resizeImage: aForm
 "Reszie the image to a maximum pixel number"
 	| resizedForm maxPixels size ratio |
-	maxPixels _ 250000.
-	size _ aForm extent x * aForm extent y.
+	maxPixels := 250000.
+	size := aForm extent x * aForm extent y.
 	size > maxPixels 
-		ifTrue: [ratio _ (maxPixels  / size) sqrt.
-			resizedForm _ aForm magnifyBy: ratio]
-		ifFalse: [resizedForm  _ aForm].
+		ifTrue: [ratio := (maxPixels  / size) sqrt.
+			resizedForm := aForm magnifyBy: ratio]
+		ifFalse: [resizedForm  := aForm].
 	^ resizedForm ! !
 
 !DrGDrawable methodsFor: 'event handling testing' stamp: 'hlsf 5/1/2020 17:16:55'!
@@ -8008,7 +8008,7 @@ mouseHover: evt localPosition: localEventPosition
 	evt shiftPressed 
 		ifTrue: [self tool handleShiftKeyMouseAt: localEventPosition]
 		ifFalse: [self tool handleMouseAt: localEventPosition].
-	prevMousePos _ localEventPosition! !
+	prevMousePos := localEventPosition! !
 
 !DrGDrawable methodsFor: 'events' stamp: 'hlsf 6/21/2021 21:27:06'!
 mouseLeave: evt
@@ -8026,24 +8026,24 @@ mouseMove: evt localPosition: localEventPosition
 				ifFalse: [self mouseMoveOxy: localEventPosition]
 		].		
 	self updateUnderMouseMorphPosition.
-	prevMousePos _ localEventPosition.
+	prevMousePos := localEventPosition.
 ! !
 
 !DrGDrawable methodsFor: 'events' stamp: 'hlsf 4/28/2020 12:21:19'!
 mouseMoveOxy: newPosition
 "move the whole sketch in the Oxy plane"
 	|delta| 
-	delta _ newPosition - prevMousePos.
+	delta := newPosition - prevMousePos.
 	delta r  < 100 ifTrue: "we need to check because in tablet mode, previous mouse position can be far away"
 		[self moveOxy: (self pixelVectorToWorldVector: delta)]! !
 
 !DrGDrawable methodsFor: 'events' stamp: 'hlsf 8/5/2021 12:51:36'!
 mouseScroll: evt localPosition: localEventPosition
 	| increment orginalWorldCursorPoint |
-	orginalWorldCursorPoint _ self morphToWorld: localEventPosition.
+	orginalWorldCursorPoint := self morphToWorld: localEventPosition.
 "	WAIT for proper wheel event with modifier keys always on
-	increment _ evt shiftPressed ifTrue: [10] ifFalse: [2]."
-	increment _ 0.5.
+	increment := evt shiftPressed ifTrue: [10] ifFalse: [2]."
+	increment := 0.5.
 	evt direction == #down
 		ifTrue: [ self scaleNoRedraw: increment ].
 	evt direction == #up
@@ -8112,17 +8112,17 @@ updateGrid
 
 !DrGDrawable methodsFor: 'gridding' stamp: 'hlsf 4/30/2020 18:11:39'!
 updateGridScaleForAxes
-	gridScale _ 50 / scale.
+	gridScale := 50 / scale.
 	gridScale >= 1 
 		ifTrue: [
-			gridScale _ gridScale roundTo: 0.5.
-			gridScale asInteger = gridScale ifTrue: [gridScale _ gridScale asInteger]] 
+			gridScale := gridScale roundTo: 0.5.
+			gridScale asInteger = gridScale ifTrue: [gridScale := gridScale asInteger]] 
 		ifFalse: [
-			gridScale _ 1 / ((1 / gridScale) rounded)]! !
+			gridScale := 1 / ((1 / gridScale) rounded)]! !
 
 !DrGDrawable methodsFor: 'gridding' stamp: 'hlsf 4/26/2020 14:46:44'!
 updateGridScaleForGrid
-	gridScale _ 5! !
+	gridScale := 5! !
 
 !DrGDrawable methodsFor: 'halos and balloon help' stamp: 'hlsf 6/21/2021 21:55:43'!
 wantsHalo
@@ -8272,7 +8272,7 @@ wantsSteps
 addMorph: newMorph
 	| aLabel |
 	newMorph class == DrGLabel ifTrue: [^ self addMorphFront: newMorph].
-	aLabel _ self mostBehindLabel.
+	aLabel := self mostBehindLabel.
 	aLabel 
 		ifNil: [self addMorphFront: newMorph]  
 		ifNotNil: [self addMorph: newMorph behind: aLabel]! !
@@ -8294,7 +8294,7 @@ tip: aText at: aPoint
 
 !DrGDrawable methodsFor: 'tip'!
 toggleTip
-	tipOn _ tipOn not! !
+	tipOn := tipOn not! !
 
 !DrGDrawable methodsFor: 'under mouse'!
 showUnderMouseMorph
@@ -8327,7 +8327,7 @@ includeInNewMorphMenu
 drawOn: aCanvas
 "	| areaUnderHand |
 	super drawOn: aCanvas.
-	areaUnderHand _ Form fromDisplay: (Rectangle 
+	areaUnderHand := Form fromDisplay: (Rectangle 
 			center: ActiveHand position 
 			extent: self extent - (self borderWidth * 2)).
 	aCanvas drawImage: areaUnderHand at: self position + self borderWidth"! !
@@ -8338,7 +8338,7 @@ includeInNewMorphMenu
 
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 5/23/2021 12:43:28'!
 color: aColor
-	color _ aColor! !
+	color := aColor! !
 
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 11:00:13'!
 domain
@@ -8373,7 +8373,7 @@ mathItem
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 3/30/2021 13:55:46'!
 mathItem: aMathItem
 	self removeEvents.
-	mathItem _ aMathItem.
+	mathItem := aMathItem.
 	self registerEvents.! !
 
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 8/5/2021 16:05:18'!
@@ -8402,7 +8402,7 @@ style
 
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 3/30/2021 13:56:33'!
 style: aStyle
-	style _	aStyle ! !
+	style := aStyle ! !
 
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:52:49'!
 styleClass
@@ -8436,8 +8436,8 @@ addMyMorph
 !DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 3/9/2023 16:36:08'!
 initialize
 	super initialize.
-	blink _ false.
-	labelPositionDelta _ 7@7.
+	blink := false.
+	labelPositionDelta := 7@7.
 	self style: (self styleClass newWith: self).
 	self labelMorph: mathItem name.! !
 
@@ -8485,15 +8485,15 @@ removeEvents
 removeLabelMorph
 	labelMorph ifNotNil:
 		[self drawable removeMorph: labelMorph.
-		labelMorph _ nil]! !
+		labelMorph := nil]! !
 
 !DrGMorph methodsFor: 'label' stamp: 'hlsf 3/14/2023 21:01:38'!
 computeLabelPositionDelta: aVector
 	| distance  |
 	labelMorph ifNil: [ ^ `0 @ 0` ].
 	"Authorized distance to the item"
-	distance _ aVector r min: 40.
-	labelPositionDelta _ aVector normalized * distance - labelMorph morphCenter! !
+	distance := aVector r min: 40.
+	labelPositionDelta := aVector normalized * distance - labelMorph morphCenter! !
 
 !DrGMorph methodsFor: 'label' stamp: 'hlsf 4/3/2021 15:16:31'!
 constrainedLabelPosition: aVector
@@ -8510,7 +8510,7 @@ labelMorph: aString
 	aString isEmptyOrNil
 		ifTrue: 	[self removeLabelMorph]
 		ifFalse: 	[labelMorph 
-			ifNil: 	[labelMorph _ DrGLabel new contents: aString.
+			ifNil: 	[labelMorph := DrGLabel new contents: aString.
 				labelMorph morph: self.
 				self canBeDrawn ifTrue: [self drawable addMorph: labelMorph.
 					labelMorph morphPosition: self labelPosition]]
@@ -8524,7 +8524,7 @@ labelPosition
 !DrGMorph methodsFor: 'label' stamp: 'hlsf 4/3/2021 15:15:02'!
 labelPositionDelta: aPoint
 "The position of the label from its math object"
-	labelPositionDelta _ aPoint! !
+	labelPositionDelta := aPoint! !
 
 !DrGMorph methodsFor: 'label' stamp: 'hlsf 5/20/2023 10:36:17'!
 updateLabelStatus
@@ -8535,7 +8535,7 @@ updateLabelStatus
 
 !DrGMorph methodsFor: 'stepping and presenter'!
 startBlinking
-	blink _ true.
+	blink := true.
 	self startStepping ! !
 
 !DrGMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 6/3/2022 11:37:36'!
@@ -8543,8 +8543,8 @@ step
 	blink ifFalse: [^self].
 	super step.
 	color = DrGTypeColor blinkingColor 
-		ifTrue: [color _ style color]
-		ifFalse: [color _ DrGTypeColor blinkingColor].
+		ifTrue: [color := style color]
+		ifFalse: [color := DrGTypeColor blinkingColor].
 	self redrawNeeded! !
 
 !DrGMorph methodsFor: 'stepping and presenter'!
@@ -8553,7 +8553,7 @@ stepTime
 
 !DrGMorph methodsFor: 'stepping and presenter'!
 stopBlinking
-	blink _ false.
+	blink := false.
 	self stopStepping.! !
 
 !DrGMorph methodsFor: 'stepping and presenter' stamp: 'drgeo 9/10/2022 14:49:17'!
@@ -8576,8 +8576,8 @@ containsPointInWorld: localPoint
 Other straight line morph use VectorGraphics detection, see contrainsPoint:"
 	| worldPoint closestPoint |
 	self canBeDrawn ifFalse: [^ false].
-	worldPoint _ self drawable morphToWorld: localPoint	.
-	closestPoint _ mathItem closestPointTo: worldPoint.
+	worldPoint := self drawable morphToWorld: localPoint	.
+	closestPoint := mathItem closestPointTo: worldPoint.
 	^ (closestPoint squaredDistanceTo: worldPoint ) <= (self drawable pixelToWorld: 5) squared
 	! !
 
@@ -8678,7 +8678,7 @@ isVector
 
 !DrGMorph methodsFor: 'updating' stamp: 'drgeo 9/10/2022 14:43:34'!
 forceHiddenColor
-	color _ DrGTypeColor hiddenColor.
+	color := DrGTypeColor hiddenColor.
 ! !
 
 !DrGMorph methodsFor: 'updating' stamp: 'drgeo 9/10/2022 14:44:16'!
@@ -8703,7 +8703,7 @@ hide
 
 !DrGMorph methodsFor: 'updating' stamp: 'drgeo 9/10/2022 14:44:04'!
 restoreNormalColor
-	color _ style color! !
+	color := style color! !
 
 !DrGMorph methodsFor: 'updating' stamp: 'hlsf 4/18/2021 08:50:14'!
 show
@@ -8802,33 +8802,33 @@ isAngle
 !DrGAngleGeometricMorph methodsFor: 'label' stamp: 'hlsf 9/25/2021 14:34:10'!
 labelPosition
 	|angle|
-	angle _ self length negated / 2 + origin negated.
+	angle := self length negated / 2 + origin negated.
 	^ (self drawable worldToMorph: center) + (35 * (angle cos @ angle sin))! !
 
 !DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 5/15/2021 10:51:54'!
 canComputeArcData
 " Check the angle can be computed and compute its origin and length in radian "
 	| parents end |
-	parents _ mathItem parents.
-	center _ parents second point.
-	vector1 _ parents first point - center.
-	vector2 _ parents third point - center.
+	parents := mathItem parents.
+	center := parents second point.
+	vector1 := parents first point - center.
+	vector2 := parents third point - center.
 	(vector1 = (0@0) or: [vector2 = (0@0)]) ifTrue: [^false].
-	origin _ vector1 y asFloat arcTan: vector1 x.
-	end _ vector2 y asFloat arcTan: vector2 x.
-	origin < 0 ifTrue: [origin _ origin + Float twoPi].
-	end < 0 ifTrue: [end _ end + Float twoPi].
-	length _ (end - origin) cos arcCos.
+	origin := vector1 y asFloat arcTan: vector1 x.
+	end := vector2 y asFloat arcTan: vector2 x.
+	origin < 0 ifTrue: [origin := origin + Float twoPi].
+	end < 0 ifTrue: [end := end + Float twoPi].
+	length := (end - origin) cos arcCos.
 	(end - origin > Float pi 	or: [end - origin < 0 		and: [end - origin > Float pi negated]])	
-		ifTrue: [length _ length negated].
+		ifTrue: [length := length negated].
 	^ true! !
 
 !DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 6/5/2021 10:01:36'!
 drawArcOn: canvas
 	| radius |
-	radius _ self drawable pixelToWorld: 15.
-	vector1 _ self drawable worldToMorph: (center  + (radius * vector1 / vector1 r)).
-	vector2 _ self drawable worldToMorph: (center + (radius * vector2 / vector2 r)).
+	radius := self drawable pixelToWorld: 15.
+	vector1 := self drawable worldToMorph: (center  + (radius * vector1 / vector1 r)).
+	vector2 := self drawable worldToMorph: (center + (radius * vector2 / vector2 r)).
 	canvas strokeWidth: 1 color: style color do: [
 		canvas moveTo: vector1.
 		canvas 
@@ -8847,8 +8847,8 @@ drawOn: canvas
 	(mathItem radianAngle closeTo: Float halfPi)
 		ifTrue: 	[self drawRecOn: canvas]
 		ifFalse: 	[self drawArcOn: canvas].
-	font _ DrGeoSystem canvasFont.
-	angleString _ self roundedValueString.
+	font := DrGeoSystem canvasFont.
+	angleString := self roundedValueString.
 	canvas 
 		drawString: angleString 
 		at: self labelPosition - ((font widthOfString: angleString) @ font pointSize / 2.0)
@@ -8858,16 +8858,16 @@ drawOn: canvas
 !DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 6/5/2021 10:01:59'!
 drawRecOn: canvas
 	| size p |
-	size _ self drawable pixelToWorld: 10.
-	vector1 _ self drawable vectorToMorph: (size * vector1 / vector1 r).
-	vector2 _ self drawable vectorToMorph: (size * vector2 / vector2 r).
-	screenCenter _ self drawable worldToMorph: center.
+	size := self drawable pixelToWorld: 10.
+	vector1 := self drawable vectorToMorph: (size * vector1 / vector1 r).
+	vector2 := self drawable vectorToMorph: (size * vector2 / vector2 r).
+	screenCenter := self drawable worldToMorph: center.
 	canvas strokeWidth: 1 color: style color do: [
-		p _ screenCenter + vector1.
+		p := screenCenter + vector1.
 		canvas moveTo: p.
-		p _ p + vector2.
+		p := p + vector2.
 		canvas lineTo: p.
-		p _ screenCenter + vector2.
+		p := screenCenter + vector2.
 		canvas lineTo: p	]
 ! !
 
@@ -8878,13 +8878,13 @@ wantsContour
 !DrGAngleOrientedMorph methodsFor: 'drawing' stamp: 'hlsf 5/15/2021 10:55:35'!
 canComputeArcData
 	|parents |
-	parents _ mathItem parents.
-	center _ parents second point.
-	vector1 _ parents first point - center.
-	vector2 _ parents third point - center.
+	parents := mathItem parents.
+	center := parents second point.
+	vector1 := parents first point - center.
+	vector2 := parents third point - center.
 	(vector1 = (0@0) or: [vector2 = (0@0)]) ifTrue: [^false].
-	origin _ vector1 y asFloat arcTan: vector1 x.
-	(length _ mathItem radianAngle) < 0 ifTrue: [ length _ length + Float twoPi].
+	origin := vector1 y asFloat arcTan: vector1 x.
+	(length := mathItem radianAngle) < 0 ifTrue: [ length := length + Float twoPi].
 	^ true! !
 
 !DrGBitmapMorph methodsFor: 'accessing'!
@@ -8896,10 +8896,10 @@ extent
 !DrGBitmapMorph methodsFor: 'accessing' stamp: 'hlsf 12/9/2022 22:18:01'!
 extent: aPoint
 "	| newExtent |
-	newExtent _ (self borderWidth * 2) asPoint + (aPoint * costume myScale) asIntegerPoint.
+	newExtent := (self borderWidth * 2) asPoint + (aPoint * costume myScale) asIntegerPoint.
 	(bounds extent closeTo: newExtent ) ifTrue: [ ^self ].
 	self changed.
-	bounds _ (bounds topLeft extent: newExtent).
+	bounds := (bounds topLeft extent: newExtent).
 	self layoutChanged.
 	self changed."! !
 
@@ -8918,7 +8918,7 @@ myScale
 
 !DrGBitmapMorph methodsFor: 'accessing'!
 paintResource: anAthensPaint
-	paintResource _ anAthensPaint .
+	paintResource := anAthensPaint .
 	self changed! !
 
 !DrGBitmapMorph methodsFor: 'drawing' stamp: 'hlsf 4/6/2021 19:06:52'!
@@ -8939,8 +8939,8 @@ labelPosition
 !DrGBitmapMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/6/2021 19:10:01'!
 initialize 
 	super initialize.
-	previousScale _ mathItem insertAtScale.
-	previousMagnify _ mathItem magnifyBy.
+	previousScale := mathItem insertAtScale.
+	previousMagnify := mathItem magnifyBy.
 	style color: Color black! !
 
 !DrGBitmapMorph methodsFor: 'testing type' stamp: 'hlsf 4/6/2021 19:10:42'!
@@ -8949,19 +8949,19 @@ isBitmap
 
 !DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 4/4/2021 19:06:06'!
 anchorAbscissa: number
-	anchorAbscissa _ number ! !
+	anchorAbscissa := number ! !
 
 !DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 5/23/2021 13:13:59'!
 borderColor: aColor
-	borderColor _ aColor ! !
+	borderColor := aColor ! !
 
 !DrGCurveMorph methodsFor: 'accessing' stamp: 'hlsf 12/2/2021 10:53:50'!
 borderWidth: pixels
-	borderWidth _ pixels! !
+	borderWidth := pixels! !
 
 !DrGCurveMorph methodsFor: 'dashes' stamp: 'hlsf 8/5/2021 15:41:30'!
 dashedBorder: dashSpec
-	dashedBorder _ dashSpec.! !
+	dashedBorder := dashSpec.! !
 
 !DrGCurveMorph methodsFor: 'initialize-release' stamp: 'hlsf 8/5/2023 14:46:17'!
 initialize
@@ -8974,9 +8974,9 @@ initialize
 !DrGCurveMorph methodsFor: 'label' stamp: 'hlsf 5/29/2021 17:18:35'!
 constrainedLabelPosition: aPosition
 	| center |
-	center _ mathItem closestPointTo: (self drawable morphToWorld: aPosition).
-	anchorAbscissa _ mathItem abscissaOf: center.
-	center _ self drawable worldToMorph: center.
+	center := mathItem closestPointTo: (self drawable morphToWorld: aPosition).
+	anchorAbscissa := mathItem abscissaOf: center.
+	center := self drawable worldToMorph: center.
 	self computeLabelPositionDelta: aPosition - center.
 ! !
 
@@ -8989,8 +8989,8 @@ step
 	blink ifFalse: [^self].
 	super step.
 	borderColor = DrGTypeColor blinkingColor 
-		ifTrue: [borderColor _ style borderColor]
-		ifFalse: [borderColor _ DrGTypeColor blinkingColor]! !
+		ifTrue: [borderColor := style borderColor]
+		ifFalse: [borderColor := DrGTypeColor blinkingColor]! !
 
 !DrGCurveMorph methodsFor: 'testing type' stamp: 'hlsf 4/4/2021 19:06:59'!
 isCurve
@@ -9008,13 +9008,13 @@ writeAttributesTo: aNode
 
 !DrGCurveMorph methodsFor: 'updating' stamp: 'drgeo 9/10/2022 14:50:30'!
 forceHiddenColor
-	color _ (style isFilled ifTrue: [DrGTypeColor hiddenColor] ifFalse: [Color transparent]).
-	borderColor _ DrGTypeColor hiddenColor.! !
+	color := (style isFilled ifTrue: [DrGTypeColor hiddenColor] ifFalse: [Color transparent]).
+	borderColor := DrGTypeColor hiddenColor.! !
 
 !DrGCurveMorph methodsFor: 'updating' stamp: 'drgeo 9/10/2022 14:48:46'!
 restoreNormalColor
-	color _  (style isFilled ifTrue: [style color] ifFalse: [Color transparent]).
-	borderColor _ style borderColor! !
+	color :=  (style isFilled ifTrue: [style color] ifFalse: [Color transparent]).
+	borderColor := style borderColor! !
 
 !DrGArcMorph methodsFor: 'testing type' stamp: 'hlsf 4/4/2021 19:23:09'!
 isArc
@@ -9137,11 +9137,11 @@ lineSegmentsDo: endPointsBlock
 	vertices size < 1
 		ifTrue: [^ self].
 	"test too few vertices first"
-	beginPoint _ nil.
+	beginPoint := nil.
 	vertices do: [:vert | 
 		beginPoint ifNotNil: [
 			endPointsBlock value: beginPoint value: vert].
-			beginPoint _ vert].
+			beginPoint := vert].
 		(closed or: [vertices size = 1]) ifTrue: [
 			endPointsBlock value: beginPoint value: vertices first].
 ! !
@@ -9162,23 +9162,23 @@ vertices
 
 !DrGPolylineMorph methodsFor: 'accessing' stamp: 'hlsf 5/16/2021 21:24:17'!
 vertices: newVertices
-	vertices _ newVertices.! !
+	vertices := newVertices.! !
 
 !DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 2/12/2022 15:46:40'!
 arrow: aSymbol
 "Accepted values: #none #back #forward #both "
-	arrows _ aSymbol ! !
+	arrows := aSymbol ! !
 
 !DrGPolylineMorph methodsFor: 'arrow' stamp: 'hlsf 12/2/2021 10:48:25'!
 arrowBoundsAt: endPoint from: priorPoint 
 	"Answer a triangle oriented along the line from priorPoint to endPoint."
 	| d v angle wingBase arrowSpec length width |
-	v _ endPoint - priorPoint.
-	angle _ v degrees.
-	d _ borderWidth max: 1.
-	arrowSpec _ self valueOfProperty: #arrowSpec ifAbsent: [DrGPolylineMorph defaultArrowSpec].
-	length _ arrowSpec x abs.  width _ arrowSpec y abs.
-	wingBase _ endPoint + (Point r: d * length degrees: angle + 180.0).
+	v := endPoint - priorPoint.
+	angle := v degrees.
+	d := borderWidth max: 1.
+	arrowSpec := self valueOfProperty: #arrowSpec ifAbsent: [DrGPolylineMorph defaultArrowSpec].
+	length := arrowSpec x abs.  width := arrowSpec y abs.
+	wingBase := endPoint + (Point r: d * length degrees: angle + 180.0).
 	arrowSpec x >= 0
 		ifTrue: [^ {	endPoint.
 					wingBase + (Point r: d * width degrees: angle + 125.0).
@@ -9215,18 +9215,18 @@ adjustSegmentPointsForArrows
 	Returned the adjusted vertices, and if any the arrow bound"
 	| verts arrowsBound |
 	self hasArrows ifFalse: [ ^ Array with: vertices with: nil].
-	verts _ vertices copy.
-	arrowsBound _ Array new: 2.
+	verts := vertices copy.
+	arrowsBound := Array new: 2.
 	(arrows == #back or: [ arrows == #both ])
 		ifTrue: [ | arrow |
-			arrow _ self arrowBoundsAt: verts first from: verts second.
+			arrow := self arrowBoundsAt: verts first from: verts second.
 			arrowsBound at: 1 put: arrow.
 			arrow size = 4
 				ifTrue: [ verts at: 1 put: arrow third ]
 				ifFalse: [ verts at: 1 put: (arrow copyFrom: 2 to: 3) average ] ].
 	(arrows == #forward or: [ arrows == #both ])
 		ifTrue: [ | arrow |
-			arrow _ self arrowBoundsAt: verts last from: (verts at: (verts size - 1)).
+			arrow := self arrowBoundsAt: verts last from: (verts at: (verts size - 1)).
 			arrowsBound at: 2 put: arrow.
 			arrow size = 4
 				ifTrue: [ verts at: verts size put: arrow third ]
@@ -9238,7 +9238,7 @@ drawArrow: pts on: aCanvas at: endPoint from: priorPoint
 	"Draw a triangle oriented along the line from priorPoint to  
 	endPoint. Answer the wingBase."
 	| spec  |
-	spec _ self valueOfProperty: #arrowSpec ifAbsent: [DrGPolylineMorph defaultArrowSpec].
+	spec := self valueOfProperty: #arrowSpec ifAbsent: [DrGPolylineMorph defaultArrowSpec].
 	spec x sign = spec y sign 
 		ifTrue: [aCanvas fillColor: borderColor do: [aCanvas polyLine: pts]]			
 		ifFalse: 
@@ -9287,60 +9287,60 @@ drawOn: aCanvas
 !DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 8/5/2021 12:22:15'!
 closestPointTo: aPoint 
 	| closestPoint minDist |
-	closestPoint _ minDist _ nil.
+	closestPoint := minDist := nil.
 	self lineSegmentsDo: 
 			[:p1 :p2 | | dist curvePoint | 
-			curvePoint _ aPoint nearestPointOnLineFrom: p1 to: p2.
-			dist _ curvePoint squaredDistanceTo: aPoint.
+			curvePoint := aPoint nearestPointOnLineFrom: p1 to: p2.
+			dist := curvePoint squaredDistanceTo: aPoint.
 			(closestPoint isNil or: [dist < minDist]) 
 				ifTrue: 
-					[closestPoint _ curvePoint.
-					minDist _ dist]].
+					[closestPoint := curvePoint.
+					minDist := dist]].
 	^closestPoint! !
 
 !DrGPolylineMorph methodsFor: 'geometry'!
 closestSegmentTo: aPoint
 	"Answer the starting index of my (big) segment nearest to aPoint"
 	| closestPoint minDist vertexIndex closestVertexIndex |
-	vertexIndex _ 0.
-	closestVertexIndex _ 0.
-	closestPoint _ minDist _ nil.
+	vertexIndex := 0.
+	closestVertexIndex := 0.
+	closestPoint := minDist := nil.
 	self lineSegmentsDo:
 		[:p1 :p2 | | curvePoint dist | 
 		(p1 = (self vertices at: vertexIndex + 1))
-			ifTrue: [ vertexIndex _ vertexIndex + 1 ].
-		curvePoint _ aPoint nearestPointOnLineFrom: p1 to: p2.
-		dist _ curvePoint distanceTo: aPoint.
+			ifTrue: [ vertexIndex := vertexIndex + 1 ].
+		curvePoint := aPoint nearestPointOnLineFrom: p1 to: p2.
+		dist := curvePoint distanceTo: aPoint.
 		(closestPoint isNil or: [dist < minDist])
-			ifTrue: [closestPoint _ curvePoint.
-					minDist _ dist.
-					closestVertexIndex _ vertexIndex. ]].
+			ifTrue: [closestPoint := curvePoint.
+					minDist := dist.
+					closestVertexIndex := vertexIndex. ]].
 	^ closestVertexIndex! !
 
 !DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 7/4/2020 11:14:00'!
 makeClosed
-	closed _ true! !
+	closed := true! !
 
 !DrGPolylineMorph methodsFor: 'geometry' stamp: 'hlsf 7/3/2020 23:17:40'!
 makeOpen
-	closed _ false.! !
+	closed := false.! !
 
 !DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 4/24/2021 19:56:19'!
 initialize
 	super initialize.
-	closed _ false.
-	arrows _ #none! !
+	closed := false.
+	arrows := #none! !
 
 !DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 8/5/2021 15:35:30'!
 vertices: verts color: aColor borderColor: anotherColor 
-	color _ aColor.
-	borderColor _ anotherColor.
+	color := aColor.
+	borderColor := anotherColor.
 	self vertices: verts.
-	closed _ vertices size > 2.! !
+	closed := vertices size > 2.! !
 
 !DrGPolylineMorph methodsFor: 'initialization' stamp: 'hlsf 8/5/2021 15:35:40'!
 vertices: verts color: aColor borderWidth: width borderColor: anotherColor 
-	borderWidth _ width.
+	borderWidth := width.
 	self vertices: verts color: aColor borderColor: anotherColor ! !
 
 !DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 5/24/2023 17:52:39'!
@@ -9371,7 +9371,7 @@ example2
 example3
 	"self example3"
 	| poly | 
-	poly _ DrGPolylineMorph
+	poly := DrGPolylineMorph
 				vertices: {61@100. 88@219. 102@95. 22@50. 41@83}
 				color: Color blue
 				borderColor: Color black.
@@ -9382,7 +9382,7 @@ example3
 example4
 	"self example4"
 	| poly | 
-	poly _  (DrGPolylineMorph
+	poly :=  (DrGPolylineMorph
 		vertices: {61@100. 88@219. 102@95. 22@50. 41@83}
 		color: Color blue
 		borderColor: Color black).
@@ -9399,7 +9399,7 @@ arrowPrototype
 	"DrGPolylineMorph arrowPrototype openInWorld"
 	
 	| aa |
-	aa _ self vertices: (Array with: 0@0 with: 40@40) 
+	aa := self vertices: (Array with: 0@0 with: 40@40) 
 		color: Color black 
 		borderWidth: 2 
 		borderColor: Color black.
@@ -9434,11 +9434,11 @@ from: startPoint to: endPoint
 !DrGCurveStraightMorph methodsFor: 'initialization' stamp: 'hlsf 4/24/2021 20:16:46'!
 initialize
 	super initialize.
-	vertices _ Array new: 2.! !
+	vertices := Array new: 2.! !
 
 !DrGCurveStraightMorph class methodsFor: 'instance creation' stamp: 'hlsf 2/11/2022 10:37:09'!
 from: start to: end color: color
-	^ self new ::
+	^ self new
 		from: start to: end;
 		borderColor: color
 		! !
@@ -9446,7 +9446,7 @@ from: start to: end color: color
 !DrGLineMorph methodsFor: 'accessing' stamp: 'hlsf 4/30/2021 22:14:15'!
 from: origin direction: u
 	| points |
-	points _ self class extend: origin inDirection: u toBorder: self drawable morphExtent.
+	points := self class extend: origin inDirection: u toBorder: self drawable morphExtent.
 	points size < 2 
 		ifTrue: [self from: `-1 @0` to: `-1 @0` "off-limit, empy draw"]
 		ifFalse: [	self from: points first to: points second]! !
@@ -9469,23 +9469,23 @@ isLine
 !DrGLineMorph class methodsFor: 'helper' stamp: 'hlsf 4/30/2021 22:13:01'!
 extend: origin inDirection: u toBorder: extent
 	| points c ex ey coordinate |
-	points _ OrderedCollection new.
-	c _ (origin x * u y - (origin y * u x)) asFloat.
-	ex _ extent x.
-	ey _ extent y.
+	points := OrderedCollection new.
+	c := (origin x * u y - (origin y * u x)) asFloat.
+	ex := extent x.
+	ey := extent y.
 	"Intersections with horizontal borders A, B"
 	"A"
-	[coordinate _ (extent y * u x + c) / u y] on: ZeroDivide do: [coordinate _ -1].
+	[coordinate := (extent y * u x + c) / u y] on: ZeroDivide do: [coordinate := -1].
 	(coordinate between: 0 and: ex) ifTrue: [points add: coordinate @ ey].
 	"B"
-	[coordinate _ c / u y] on: ZeroDivide do: [coordinate _ -1].
+	[coordinate := c / u y] on: ZeroDivide do: [coordinate := -1].
 	(coordinate between: 0 and: ex) ifTrue: [points add: coordinate @ 0].
 	"Vertical borders P, Q"
 	"P"
-	[coordinate _ c negated / u x] on: ZeroDivide do: [coordinate _ -1].
+	[coordinate := c negated / u x] on: ZeroDivide do: [coordinate := -1].
 	(coordinate between: 0 and: ey) ifTrue: [points add: 0 @ coordinate].
 	"Q"
-	[coordinate _ (ex * u y) - c / u x] on: ZeroDivide do: [coordinate _ -1].
+	[coordinate := (ex * u y) - c / u x] on: ZeroDivide do: [coordinate := -1].
 	(coordinate between: 0 and: ey) ifTrue: [points add: ex @ coordinate].
 	^ points
 ! !
@@ -9493,20 +9493,20 @@ extend: origin inDirection: u toBorder: extent
 !DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 3/26/2022 10:43:58'!
 extendFrom: origin direction: u
 	| border r borderY |
-	r _ u x asFloat / u y.
+	r := u x asFloat / u y.
 	u y > 0
 		ifTrue: [
-			borderY _ self drawable morphExtent y.
-			border _ (borderY - origin y) * r + origin x @ borderY]
-		ifFalse: [ border _ (0 - origin y) * r + origin x @ 0].
+			borderY := self drawable morphExtent y.
+			border := (borderY - origin y) * r + origin x @ borderY]
+		ifFalse: [ border := (0 - origin y) * r + origin x @ 0].
 	self from: origin to: border! !
 
 !DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 1/3/2022 10:02:31'!
 extendHorizontally: origin direction: u
 	| border |
 	u x > 0
-		ifTrue: [ border _ self drawable morphExtent x @ origin y ]
-		ifFalse: [ border _ 0 @ origin y ].
+		ifTrue: [ border := self drawable morphExtent x @ origin y ]
+		ifFalse: [ border := 0 @ origin y ].
 	self from: origin to: border! !
 
 !DrGRayMorph methodsFor: 'accessing'!
@@ -9544,28 +9544,28 @@ styleClass
 !DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 12/2/2021 10:48:46'!
 drawCircleOn: aCanvas 
 	| center |
-	center _ vertices first + vertices second / 2.0.
+	center := vertices first + vertices second / 2.0.
 	aCanvas strokeWidth: borderWidth color: borderColor do: [
 		aCanvas circleCenter: center radius:  2 + borderWidth]! !
 
 !DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 12/2/2021 10:47:52'!
 drawDiscOn: aCanvas 
 	| center |
-	center _ vertices first + vertices second / 2.0.
+	center := vertices first + vertices second / 2.0.
 	aCanvas fillColor:  borderColor do: [
 		aCanvas circleCenter: center radius: 2 + borderWidth]! !
 
 !DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 12/2/2021 10:48:58'!
 drawMark1On: aCanvas 
 	|center vector u n startPoint endPoint |
-	startPoint _ vertices at: 1.
-	endPoint _ vertices at: 2.
+	startPoint := vertices at: 1.
+	endPoint := vertices at: 2.
 	(startPoint squaredDistanceTo: endPoint) < borderWidth squared ifTrue: [^ self].
-	center _ startPoint + endPoint / 2.0.
-	vector _ endPoint - startPoint.
-	[u _ vector normalized] on: ZeroDivide do: [u _ 0@1].
-	n _ u y @ u x negated.
-	vector _  (u + n ) normalized * (borderWidth + 1 * 3).
+	center := startPoint + endPoint / 2.0.
+	vector := endPoint - startPoint.
+	[u := vector normalized] on: ZeroDivide do: [u := 0@1].
+	n := u y @ u x negated.
+	vector :=  (u + n ) normalized * (borderWidth + 1 * 3).
 	aCanvas 
 		line: center - vector
 		to: center + vector
@@ -9575,37 +9575,37 @@ drawMark1On: aCanvas
 !DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 12/2/2021 10:49:13'!
 drawMark2On: aCanvas 
 	|center vector u n startPoint endPoint |
-	startPoint _ vertices at: 1.
-	endPoint _ vertices at: 2.
+	startPoint := vertices at: 1.
+	endPoint := vertices at: 2.
 	(startPoint squaredDistanceTo: endPoint) < (borderWidth * 4) squared ifTrue: [^ self].
-	vector _ endPoint - startPoint.
-	[u _ vector normalized] on: ZeroDivide do: [u _ 0@1].
-	n _ u y @ u x negated.
-	vector _  (u + n ) normalized * (borderWidth + 1 * 3).
-	center _ (startPoint + endPoint / 2) - (u * (borderWidth * 1.5)).
+	vector := endPoint - startPoint.
+	[u := vector normalized] on: ZeroDivide do: [u := 0@1].
+	n := u y @ u x negated.
+	vector :=  (u + n ) normalized * (borderWidth + 1 * 3).
+	center := (startPoint + endPoint / 2) - (u * (borderWidth * 1.5)).
 	2 timesRepeat: [
 		aCanvas line: center - vector to: center + vector width: borderWidth color: borderColor.
-		center _ center + (u * (borderWidth  * 3))].! !
+		center := center + (u * (borderWidth  * 3))].! !
 
 !DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 12/2/2021 10:49:28'!
 drawMark3On: aCanvas 
 	|center vector u n startPoint endPoint |
-	startPoint _ vertices at: 1.
-	endPoint _ vertices at: 2.
+	startPoint := vertices at: 1.
+	endPoint := vertices at: 2.
 	(startPoint squaredDistanceTo: endPoint) < (borderWidth * 7) squared ifTrue: [^ self].
-	vector _ endPoint - startPoint.
-	[u _ vector normalized] on: ZeroDivide do: [u _ 0@1].
-	n _ u y @ u x negated.
-	vector _  (u + n ) normalized * (borderWidth + 1 * 3).
-	center _ (startPoint + endPoint / 2) - (u * (borderWidth * 3)).
+	vector := endPoint - startPoint.
+	[u := vector normalized] on: ZeroDivide do: [u := 0@1].
+	n := u y @ u x negated.
+	vector :=  (u + n ) normalized * (borderWidth + 1 * 3).
+	center := (startPoint + endPoint / 2) - (u * (borderWidth * 3)).
 	3 timesRepeat: [
 		aCanvas line: center - vector to: center + vector width: borderWidth color: borderColor.
-		center _ center + (u * (borderWidth  * 3))].! !
+		center := center + (u * (borderWidth  * 3))].! !
 
 !DrGSegmentMorph methodsFor: 'drawing' stamp: 'hlsf 1/6/2022 19:56:25'!
 drawMarkOn: aCanvas
 	|mark|
-	mark _ self style mark.
+	mark := self style mark.
 	mark == #none ifTrue: [^self].
 	mark == #mark1 ifTrue: [^ self drawMark1On: aCanvas].
 	mark == #mark2 ifTrue: [^ self drawMark2On: aCanvas].
@@ -9679,9 +9679,9 @@ styleClass
 !DrGLocusMorph methodsFor: 'initialization' stamp: 'hlsf 9/25/2021 18:18:52'!
 initialize
 	super initialize.
-	minAbscissaDelta _ 1e-5.
-	maxScreenDelta _ 64.
-	maxAbscissaDelta _ 1e-1! !
+	minAbscissaDelta := 1e-5.
+	maxScreenDelta := 64.
+	maxAbscissaDelta := 1e-1! !
 
 !DrGLocusMorph methodsFor: 'drawing' stamp: 'hlsf 5/31/2023 20:01:53'!
 drawOn: aCanvas 
@@ -9706,31 +9706,31 @@ drawOn: aCanvas
 !DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 8/15/2021 16:20:40'!
 free: freeItem constrained: constrainedItem 
 	| link0 link1 x0 validSamples factory  |
-	x0 _ freeItem abscissa.
-	factory _ self factory.
-	worldBound _ self drawable worldBound.
-	free _ freeItem.
-	constrained _ constrainedItem.
-	freeIndex _ factory indexOf: free.
-	constrainedIndex _ factory indexOf: constrained.
-	"maxAbscissaDelta _ self drawable scale > 100 ifTrue: [1e-4] ifFalse: [1e-3]."
-	samples _ LinkedList new.
-	link0 _ samples add: (self sample: minAbscissaDelta ).
-	link1 _ samples add: (self sample: 1 - minAbscissaDelta) afterLink: link0.
+	x0 := freeItem abscissa.
+	factory := self factory.
+	worldBound := self drawable worldBound.
+	free := freeItem.
+	constrained := constrainedItem.
+	freeIndex := factory indexOf: free.
+	constrainedIndex := factory indexOf: constrained.
+	"maxAbscissaDelta := self drawable scale > 100 ifTrue: [1e-4] ifFalse: [1e-3]."
+	samples := LinkedList new.
+	link0 := samples add: (self sample: minAbscissaDelta ).
+	link1 := samples add: (self sample: 1 - minAbscissaDelta) afterLink: link0.
 	self samplingFrom: link0 to: link1.
-	validSamples _ self selectValidSamples.
+	validSamples := self selectValidSamples.
 	free abscissa: x0.
 	factory updateAllMathItemsButLocusFrom: freeIndex to: constrainedIndex.
 	mathItem
 		points: (validSamples	 collect: [:s | s pointWorld]);
 		samplesQty: validSamples size.
-	vertices _ validSamples collect: [:s | s pointScreen].! !
+	vertices := validSamples collect: [:s | s pointScreen].! !
 
 !DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 5/30/2021 15:37:34'!
 sample: abscissa 
 "Create a new sample with the given curvilinear abscissa"
 	| sample |
-	sample _ DrGLocusSample new x: abscissa.
+	sample := DrGLocusSample new x: abscissa.
 	free abscissa: abscissa.
 	self factory updateAllMathItemsButLocusFrom: freeIndex to: constrainedIndex.
 	(sample isValid: constrained exist) ifTrue: 
@@ -9742,15 +9742,15 @@ sample: abscissa
 !DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 9/25/2021 18:09:54'!
 samplingFrom: sample1 to: sample2
 	| newSample screenSamplesDistance samplesDelta|
-	samplesDelta _ sample2 x - sample1 x.
-	screenSamplesDistance _ 10.
+	samplesDelta := sample2 x - sample1 x.
+	screenSamplesDistance := 10.
 	(samplesDelta > minAbscissaDelta
 		and: [(sample1 isNotValid or: [sample2 isNotValid]) 
 			or: [samplesDelta > maxAbscissaDelta
-				or: [(screenSamplesDistance  _ sample1 pointScreen squaredDistanceTo: sample2 pointScreen) > maxScreenDelta]]])
+				or: [(screenSamplesDistance  := sample1 pointScreen squaredDistanceTo: sample2 pointScreen) > maxScreenDelta]]])
 		ifTrue: [
 			(screenSamplesDistance < 2 and: [samplesDelta < maxAbscissaDelta] ) ifTrue: [^ self].
-			newSample _ self sample: sample1 x + sample2 x / 2.0.
+			newSample := self sample: sample1 x + sample2 x / 2.0.
 			samples add: newSample afterLink: sample1.
 			self samplingFrom: sample1 to: newSample.
 			self samplingFrom: newSample to: sample2			]! !
@@ -9758,8 +9758,8 @@ samplingFrom: sample1 to: sample2
 !DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 5/30/2021 15:46:46'!
 selectValidSamples
 	| validSamples prevLink|
-	validSamples _ OrderedCollection new.
-	prevLink _ DrGLocusSample new isValid: false; yourself.
+	validSamples := OrderedCollection new.
+	prevLink := DrGLocusSample new isValid: false; yourself.
 	samples 	linksDo: [:sample | 
 		sample isValidAndOnScreen 		
 			ifTrue: [validSamples add: sample]
@@ -9774,7 +9774,7 @@ selectValidSamples
 							]
 						]
 					].
-				prevLink _ sample].
+				prevLink := sample].
 	^ validSamples ! !
 
 !DrGLocusMorph methodsFor: 'testing type' stamp: 'hlsf 4/5/2021 11:22:27'!
@@ -9801,7 +9801,7 @@ updateLabelStatus
 
 !DrGLocusTransformedMorph methodsFor: 'accessing' stamp: 'hlsf 5/31/2021 18:24:46'!
 getVertices
-	vertices _ 	mathItem points collect: [:point | self drawable worldToMorph: point].! !
+	vertices := 	mathItem points collect: [:point | self drawable worldToMorph: point].! !
 
 !DrGPolygonMorph methodsFor: 'initialization'!
 initialize
@@ -9811,11 +9811,11 @@ initialize
 !DrGPolygonMorph methodsFor: 'label' stamp: 'hlsf 5/29/2021 17:18:24'!
 constrainedLabelPosition: aPoint
 |center vector answer|
-	answer _ mathItem closestPointInfoTo: (self drawable morphToWorld: aPoint).
-	center _ answer first.
-	anchorAbscissa _ answer second.
-	center _ self drawable worldToMorph: center.
-	vector _ aPoint - center.
+	answer := mathItem closestPointInfoTo: (self drawable morphToWorld: aPoint).
+	center := answer first.
+	anchorAbscissa := answer second.
+	center := self drawable worldToMorph: center.
+	vector := aPoint - center.
 	self computeLabelPositionDelta: vector.
 ! !
 
@@ -9859,7 +9859,7 @@ drawOn: aCanvas
 !DrGPointMorph methodsFor: 'label' stamp: 'hlsf 5/29/2021 17:17:00'!
 constrainedLabelPosition: unconstrainedPosition
 	|center |
-	center _ self drawable worldToMorph: mathItem point.
+	center := self drawable worldToMorph: mathItem point.
 	self computeLabelPositionDelta: unconstrainedPosition - center
 	! !
 
@@ -10032,49 +10032,49 @@ hasContents
 
 !DrGeoTreeNode methodsFor: 'as yet unclassified' stamp: 'hlsf 2/10/2022 17:10:52'!
 hasContents: boolean
-	hasContents _ boolean ! !
+	hasContents := boolean ! !
 
 !DrGeoTreeNode methodsFor: 'initialization' stamp: 'hlsf 2/10/2022 17:09:34'!
 initialize
 	super initialize.
-	hasContents _ false.! !
+	hasContents := false.! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointByCoordinates
 	|x y p|
-	x _ sketch freeValue: 12.
-	y _ sketch freeValue: -18.
-	p _ sketch pointX: x Y: y.
+	x := sketch freeValue: 12.
+	y := sketch freeValue: -18.
+	p := sketch pointX: x Y: y.
 	self assert: p coordinates = (12 @ -18)   ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointByCoordinatesUnicity
 	|x y p q|
-	x _ sketch freeValue: 12.
-	y _ sketch freeValue: -18.
-	p _ sketch pointX: x Y: y.
-	q _ sketch pointX: x Y: y.
+	x := sketch freeValue: 12.
+	y := sketch freeValue: -18.
+	p := sketch pointX: x Y: y.
+	q := sketch pointX: x Y: y.
 	self should: p mathItem == q mathItem.
-	q _ sketch pointX: x Y:  (sketch freeValue: -18.1).
+	q := sketch pointX: x Y:  (sketch freeValue: -18.1).
 	self shouldnt: p mathItem == q mathItem    ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointFree
 	| a b |
-	a _ sketch point: 55 @ 5.
+	a := sketch point: 55 @ 5.
 	self assert: a coordinates = (55 @ 5).
-	b _ sketch point: -35 @ -45.
+	b := sketch point: -35 @ -45.
 	self assert: b coordinates = (-35 @ -45).
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointFreeUnicity
 	| a b |
-	a _ sketch point: 788@985.
-	b _ sketch point: 788@985.
+	a := sketch point: 788@985.
+	b := sketch point: 788@985.
 	self assert: a mathItem == b mathItem.
 	""
-	b _ sketch point: 788 @ 986.
+	b := sketch point: 788 @ 986.
 	b moveTo: 788@985.
 	sketch update.  
 	self shouldnt: a mathItem == b mathItem.
@@ -10083,44 +10083,44 @@ testPointFreeUnicity
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointMiddle
 	| a b m s |
-	a _ sketch point: 5 @ 5.
-	b _ sketch point: -5 @ -5.
-	m _ sketch middleOf: a and: b.
+	a := sketch point: 5 @ 5.
+	b := sketch point: -5 @ -5.
+	m := sketch middleOf: a and: b.
 	self assert: m coordinates = (0 @ 0).
-	b _ sketch point: -13 @ 8.
-	m _ sketch middleOf: a and: b.
+	b := sketch point: -13 @ 8.
+	m := sketch middleOf: a and: b.
 	self assert: m coordinates = (-4 @ (13 / 2)).
-	s _ sketch
+	s := sketch
 				segment: (sketch point: 8 @ 7)
 				to: (sketch point: -15 @ -10).
-	m _ sketch middleOf: s.
+	m := sketch middleOf: s.
 	self assert: m coordinates = (-7 / 2 @ (-3 / 2))! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointMiddleUnicity
 	| a b s p q |
-	a _ sketch point: 5 @ 5.
-	b _ sketch point: -5 @ -5.
-	p _ sketch middleOf: a and: b.
-	q _ sketch middleOf: a and: b.
+	a := sketch point: 5 @ 5.
+	b := sketch point: -5 @ -5.
+	p := sketch middleOf: a and: b.
+	q := sketch middleOf: a and: b.
 	self should: p mathItem == q mathItem.
-	q _ sketch middleOf: b and: a.
+	q := sketch middleOf: b and: a.
 	self should: p mathItem == q mathItem.
 	""
-	s _ sketch	segment: (sketch point: 8 @ 7) to: (sketch point: -15 @ -10).
-	p _ sketch middleOf: s.
-	q _ sketch middleOf: s.
+	s := sketch	segment: (sketch point: 8 @ 7) to: (sketch point: -15 @ -10).
+	p := sketch middleOf: s.
+	q := sketch middleOf: s.
 	self should: p mathItem == q mathItem  ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnArc
 	| a b c curve p |
-	a _ sketch point: -5 @ 0.
-	b _ sketch point: 0 @ 5.
-	c _ sketch point: 5 @ 0.
-	curve _ sketch arc: a to: b to: c.
+	a := sketch point: -5 @ 0.
+	b := sketch point: 0 @ 5.
+	c := sketch point: 5 @ 0.
+	curve := sketch arc: a to: b to: c.
 	""
-	p _ sketch pointOnLine: curve at: 0.
+	p := sketch pointOnLine: curve at: 0.
 	self assert: (p coordinates closeTo: -5 @ 0).
 	""
 	p mathItem setCurveAbscissa: 0.5.
@@ -10135,54 +10135,54 @@ testPointOnArc
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnArcUnicity
 	| a b c curve p q|
-	a _ sketch point: -5 @ 0.
-	b _ sketch point: 0 @ 5.
-	c _ sketch point: 5 @ 0.
-	curve _ sketch arc: a to: b to: c.
+	a := sketch point: -5 @ 0.
+	b := sketch point: 0 @ 5.
+	c := sketch point: 5 @ 0.
+	curve := sketch arc: a to: b to: c.
 	""
-	p _ sketch pointOnLine: curve at: 0.9.
-	q _ sketch pointOnLine: curve at: 0.9.
+	p := sketch pointOnLine: curve at: 0.9.
+	q := sketch pointOnLine: curve at: 0.9.
 	self should: p mathItem == q mathItem.
 	""  
-	q _ sketch pointOnLine: curve at: 0.89.
+	q := sketch pointOnLine: curve at: 0.89.
 	self shouldnt: p mathItem == q mathItem   
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnCircle
 	| a b curve p |
-	a _ sketch point: -5 @ -5.
-	b _ sketch point: 0 @ -5.
-	curve _ sketch circleCenter: a to: b.
+	a := sketch point: -5 @ -5.
+	b := sketch point: 0 @ -5.
+	curve := sketch circleCenter: a to: b.
 	""
-	p _ sketch pointOnLine: curve at: 0.
+	p := sketch pointOnLine: curve at: 0.
 	self assert: (p coordinates closeTo: 0 @ -5).
 	""
-	p _ sketch pointOnLine: curve at: 1/4.
+	p := sketch pointOnLine: curve at: 1/4.
 	self assert: (p coordinates closeTo: -5 @ 0).
 	""
-	p _ sketch pointOnLine: curve at: 1/2.
+	p := sketch pointOnLine: curve at: 1/2.
 	self assert: (p coordinates closeTo: -10 @ -5).
 	""
-	p _ sketch pointOnLine: curve at: 3/4.
+	p := sketch pointOnLine: curve at: 3/4.
 	self assert: (p coordinates closeTo: -5 @ -10).
 	""
-	p _ sketch pointOnLine: curve at: 3/8.
+	p := sketch pointOnLine: curve at: 3/8.
 	self assert: (p coordinates closeTo: -8.5355 @ -1.4645).
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnCircleUnicity
 	| a b curve p q |
-	a _ sketch point: -5 @ -5.
-	b _ sketch point: 0 @ -5.
-	curve _ sketch circleCenter: a to: b.
+	a := sketch point: -5 @ -5.
+	b := sketch point: 0 @ -5.
+	curve := sketch circleCenter: a to: b.
 	""
-	p _ sketch pointOnLine: curve at: 0.4.
-	q _ sketch pointOnLine: curve at: 0.4.
+	p := sketch pointOnLine: curve at: 0.4.
+	q := sketch pointOnLine: curve at: 0.4.
 	self should: p mathItem == q mathItem.
 	""
-	q _ sketch pointOnLine: curve at: 0.41.
+	q := sketch pointOnLine: curve at: 0.41.
 	self shouldnt: p mathItem == q mathItem  
 
 ! !
@@ -10190,34 +10190,34 @@ testPointOnCircleUnicity
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnLine
 	| a b curve p |
-	a _ sketch point: -15 @ -45.
-	b _ sketch point: -13 @ -44.
-	curve _ sketch line: a to: b.
-	p _ sketch pointOnLine: curve at: 0.35.
+	a := sketch point: -15 @ -45.
+	b := sketch point: -13 @ -44.
+	curve := sketch line: a to: b.
+	p := sketch pointOnLine: curve at: 0.35.
 	self
 		assert: (p coordinates closeTo: -15.4557 @ -45.2279)! !
 
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnLineUnicity
 	| a b curve p q|
-	a _ sketch point: -15 @ -45.
-	b _ sketch point: -13 @ -44.
-	curve _ sketch line: a to: b.
-	p _ sketch pointOnLine: curve at: 0.35.
-	q _ sketch pointOnLine: curve at: 0.35.
+	a := sketch point: -15 @ -45.
+	b := sketch point: -13 @ -44.
+	curve := sketch line: a to: b.
+	p := sketch pointOnLine: curve at: 0.35.
+	q := sketch pointOnLine: curve at: 0.35.
 	self should: p mathItem == q mathItem.
 	""
-	q _ sketch pointOnLine: curve at: 0.34.
+	q := sketch pointOnLine: curve at: 0.34.
 	self shouldnt: p mathItem == q mathItem.
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnRay
 	| a b curve p |
-	a _ sketch point: -15 @ -45.
-	b _ sketch point: -13 @ -44.
-	curve _ sketch ray: a to: b.
-	p _ sketch pointOnLine: curve at: 0.
+	a := sketch point: -15 @ -45.
+	b := sketch point: -13 @ -44.
+	curve := sketch ray: a to: b.
+	p := sketch pointOnLine: curve at: 0.
 	self assert: p coordinates = (-15 @ -45).
 	""
 	p mathItem setCurveAbscissa: 0.5.
@@ -10227,23 +10227,23 @@ testPointOnRay
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnRayUnicity
 	| a b curve p q|
-	a _ sketch point: -15 @ -45.
-	b _ sketch point: -13 @ -44.
-	curve _ sketch ray: a to: b.
-	p _ sketch pointOnLine: curve at: 0.21.
-	q _ sketch pointOnLine: curve at: 0.21.
+	a := sketch point: -15 @ -45.
+	b := sketch point: -13 @ -44.
+	curve := sketch ray: a to: b.
+	p := sketch pointOnLine: curve at: 0.21.
+	q := sketch pointOnLine: curve at: 0.21.
 	self should: p mathItem == q mathItem.
 	""
-	q _ sketch pointOnLine: curve at: 0.22.
+	q := sketch pointOnLine: curve at: 0.22.
 	self shouldnt: p mathItem == q mathItem   ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnSegment
 	| a b curve p |
-	a _ sketch point: -5 @ -5.
-	b _ sketch point: 5 @ 5.
-	curve _ sketch segment: a to: b.
-	p _ sketch pointOnLine: curve at: 0.
+	a := sketch point: -5 @ -5.
+	b := sketch point: 5 @ 5.
+	curve := sketch segment: a to: b.
+	p := sketch pointOnLine: curve at: 0.
 	self assert: p coordinates = (-5 @ -5).
 	p mathItem setCurveAbscissa: 1.
 	self assert: p coordinates = (5 @ 5).
@@ -10260,123 +10260,123 @@ testPointOnSegment
 !DrGeoScriptTest methodsFor: 'testing-point' stamp: 'HilaireFernandes 5/23/2019 11:11'!
 testPointOnSegmentUnicity
 	| a b curve p q |
-	a _ sketch point: -25 @ -5.
-	b _ sketch point: 25 @ 5.
-	curve _ sketch segment: a to: b.
-	p _ sketch pointOnLine: curve at: 0.7.
-	q _ sketch pointOnLine: curve at: 0.7.
+	a := sketch point: -25 @ -5.
+	b := sketch point: 25 @ 5.
+	curve := sketch segment: a to: b.
+	p := sketch pointOnLine: curve at: 0.7.
+	q := sketch pointOnLine: curve at: 0.7.
 	self should: p mathItem == q mathItem.
-	q _ sketch pointOnLine: curve at: 0.71.
+	q := sketch pointOnLine: curve at: 0.71.
 	self shouldnt: p mathItem = q mathItem   ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointReflexion
 	| d a b|
-	d _ sketch line: (sketch point: 0@0) to: (sketch point: 1@2).
+	d := sketch line: (sketch point: 0@0) to: (sketch point: 1@2).
 	""
-	a _ sketch point: 1@0.
-	b _ sketch reflect: a axis: d.  
+	a := sketch point: 1@0.
+	b := sketch reflect: a axis: d.  
 	self assert: (b coordinates closeTo: -0.6@0.8).
 	""
-	a _ sketch point: 1@2.
-	b _ sketch reflect: a axis: d.  
+	a := sketch point: 1@2.
+	b := sketch reflect: a axis: d.  
 	self assert: (b coordinates = (1@2)).
 	""
-	a _ sketch point: 0@3.
-	b _ sketch reflect: a axis: d.  
+	a := sketch point: 0@3.
+	b := sketch reflect: a axis: d.  
 	self assert: (b coordinates closeTo:  2.4@1.8).
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointRotation
 	| c v a b|
-	c _ sketch point: 1@1.
-	v _ sketch freeValue: Float pi / 3.  
+	c := sketch point: 1@1.
+	v := sketch freeValue: Float pi / 3.  
 	""
-	a _ sketch point: 2@1.
-	b _ sketch rotate: a center: c angle: v.
+	a := sketch point: 2@1.
+	b := sketch rotate: a center: c angle: v.
 	self assert: (b coordinates closeTo: 1.5@1.8660).
 	""
-	v _ sketch freeValue:  (Float pi / 3) negated.  
-	b _ sketch rotate: a center: c angle: v.
+	v := sketch freeValue:  (Float pi / 3) negated.  
+	b := sketch rotate: a center: c angle: v.
 	self assert: (b coordinates closeTo: 1.5@0.13397).
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointScale
 	| c k a b|
-	c _ sketch point: 1@1.
-	k _ sketch freeValue: 3.  
+	c := sketch point: 1@1.
+	k := sketch freeValue: 3.  
 	""
-	a _ sketch point: 2@1.
-	b _ sketch scale: a center: c factor: k.
+	a := sketch point: 2@1.
+	b := sketch scale: a center: c factor: k.
 	self assert: b coordinates = (4@1).
 	""
-	a _ sketch point: 3@2.
-	b _ sketch scale: a center: c factor: k.
+	a := sketch point: 3@2.
+	b := sketch scale: a center: c factor: k.
 	self assert: b coordinates = (7@4).
 	""
-	a _ sketch point: 2@1.
-	k _ sketch freeValue: -3.  
-	b _ sketch scale: a center: c factor: k.
+	a := sketch point: 2@1.
+	k := sketch freeValue: -3.  
+	b := sketch scale: a center: c factor: k.
 	self assert: b coordinates = (-2@1).
 	""
-	a _ sketch point: 3@2.
-	b _ sketch scale: a center: c factor: k.
+	a := sketch point: 3@2.
+	b := sketch scale: a center: c factor: k.
 	self assert: b coordinates = (-5@ -2).
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointSymmetry
 	| c a b|
-	c _ sketch point: 2@2.
+	c := sketch point: 2@2.
 	""
-	a _ sketch point: 4@2.
-	b _ sketch symmetry: a center:  c.
+	a := sketch point: 4@2.
+	b := sketch symmetry: a center:  c.
 	self assert: b coordinates = (0@2).
 	""
-	a _ sketch point: 4@3.
-	b _ sketch symmetry: a center:  c.
+	a := sketch point: 4@3.
+	b := sketch symmetry: a center:  c.
 	self assert: b coordinates = (0@1).
 	""
-	a _ sketch point: 4@4.
-	b _ sketch symmetry: a center:  c.
+	a := sketch point: 4@4.
+	b := sketch symmetry: a center:  c.
 	self assert: b coordinates = (0@0)! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
 testPointTranslation
 	| u a|
-	u _ sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
-	a _ sketch translate: (sketch point: 2@1) vector: u.
+	u := sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
+	a := sketch translate: (sketch point: 2@1) vector: u.
 	self assert: a coordinates = (4@2).
 	""
-	u _ sketch vector: (sketch point: 3@2) to: (sketch point: 1@1).
-	a _ sketch translate: (sketch point: 2@1) vector: u.
+	u := sketch vector: (sketch point: 3@2) to: (sketch point: 1@1).
+	a := sketch translate: (sketch point: 2@1) vector: u.
 	self assert: a coordinates = (0@0).
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testAbscissaOfPoint
 	| coordinate point |
-	point _ sketch point: 10@15.
-	coordinate _ sketch abscissaOf: point.
+	point := sketch point: 10@15.
+	coordinate := sketch abscissaOf: point.
 	self should: (coordinate mathItem valueItem closeTo: 10).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testAbscissaOfVector
 	| coordinate vector |
-	vector _ sketch vector: 10@15.
-	coordinate _ sketch abscissaOf: vector.
+	vector := sketch vector: 10@15.
+	coordinate := sketch abscissaOf: vector.
 	self should: (coordinate mathItem valueItem closeTo: 10).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testAngleGeometric
 	| angle |
-	angle _ sketch geometricAngle: 1@0 to: 1@1 to: 0@1.
+	angle := sketch geometricAngle: 1@0 to: 1@1 to: 0@1.
 	self assert: (angle mathItem degreeAngle closeTo: 90).
 	self assert: (angle mathItem radianAngle closeTo: Float pi / 2).
 	""
-	angle _ sketch geometricAngle: 2@1 to: 1@1 to: 2@2.
+	angle := sketch geometricAngle: 2@1 to: 1@1 to: 2@2.
 	self assert: (angle mathItem degreeAngle closeTo: 45).
 	self assert: (angle mathItem radianAngle closeTo: Float pi / 4).
 ! !
@@ -10384,11 +10384,11 @@ testAngleGeometric
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testAngleOriented3Points
 	| angle |
-	angle _ sketch angle: 1@0 to: 1@1 to: 0@1.
+	angle := sketch angle: 1@0 to: 1@1 to: 0@1.
 	self assert: (angle mathItem degreeAngle closeTo: 270).
 	self assert: (angle mathItem radianAngle closeTo: (Float pi / 2) negated ).
 	""
-	angle _ sketch angle: 2@1 to: 1@1 to: 2@2.
+	angle := sketch angle: 2@1 to: 1@1 to: 2@2.
 	self assert: (angle mathItem degreeAngle closeTo: 45).
 	self assert: (angle mathItem radianAngle closeTo: Float pi / 4).
 ! !
@@ -10397,19 +10397,19 @@ testAngleOriented3Points
 testAngleOrientedVector
 "Oriented angle from two vectors"
 	| angle |
-	angle _ sketch angle: 1@0 to: 0@1.
+	angle := sketch angle: 1@0 to: 0@1.
 	self assert: (angle mathItem degreeAngle closeTo: 90).
 	self assert: (angle mathItem radianAngle closeTo: Float pi / 2).
 	""
-	angle _ sketch angle: 0@1 to: 1@0.
+	angle := sketch angle: 0@1 to: 1@0.
 	self assert: (angle mathItem degreeAngle closeTo: 90 negated).
 	self assert: (angle mathItem radianAngle closeTo: Float pi negated / 2).
 	""
-	angle _ sketch angle: 1@1 to: -1@1.
+	angle := sketch angle: 1@1 to: -1@1.
 	self assert: (angle mathItem degreeAngle closeTo: 90).
 	self assert: (angle mathItem radianAngle closeTo: Float pi / 2).
 	""
-	angle _ sketch angle: -1@0 to: 1@1.
+	angle := sketch angle: -1@0 to: 1@1.
 	self assert: (angle mathItem degreeAngle closeTo: 135 negated).
 	self assert: (angle mathItem radianAngle closeTo: Float pi negated * 3 / 4).
 ! !
@@ -10417,90 +10417,90 @@ testAngleOrientedVector
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testDistancePointLine
 	| distance a d recomputed|
-	a _ sketch point: 10@15.
-	d _ sketch line: -5 @ -5 to: 2@3.
-	distance _ sketch distance: a to: d.
-	recomputed _ ((10@15 - (-5 @ -5)) dotProduct: (d mathItem normal)) abs.
+	a := sketch point: 10@15.
+	d := sketch line: -5 @ -5 to: 2@3.
+	distance := sketch distance: a to: d.
+	recomputed := ((10@15 - (-5 @ -5)) dotProduct: (d mathItem normal)) abs.
 	self should: (distance mathItem valueItem closeTo: recomputed).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testDistancePoints
 	| distance a b |
-	a _ sketch point: 10@15.
-	b _ sketch point: -5 @ -5.
-	distance _ sketch distance: a to: b.
+	a := sketch point: 10@15.
+	b := sketch point: -5 @ -5.
+	distance := sketch distance: a to: b.
 	self should: (distance mathItem valueItem closeTo: (400 + 225) sqrt).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testLengthArc
 	| length arc |
-	arc _ sketch arc: 8@2 to: 6@6 to: 3@7.
-	length _ sketch lengthOf: arc.
+	arc := sketch arc: 8@2 to: 6@6 to: 3@7.
+	length := sketch lengthOf: arc.
 	self should: (length mathItem valueItem closeTo: 7.853981633974483).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testLengthCircle
 	| length circle |
-	circle _ sketch circleCenter: 8@2 to: 6@6.
-	length _ sketch lengthOf: circle.
+	circle := sketch circleCenter: 8@2 to: 6@6.
+	length := sketch lengthOf: circle.
 	self should: (length mathItem valueItem closeTo: 20 sqrt * 2 * Float pi).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testLengthPolygon
 	| length polygon |
-	polygon _ sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
-	length _ sketch lengthOf: polygon.
+	polygon := sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
+	length := sketch lengthOf: polygon.
 	self should: (length mathItem valueItem closeTo: 8).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testLengthSegment
 	| length segment |
-	segment _ sketch segment: 8@2 to: 6@6.
-	length _ sketch lengthOf: segment.
+	segment := sketch segment: 8@2 to: 6@6.
+	length := sketch lengthOf: segment.
 	self should: (length mathItem valueItem closeTo: 20 sqrt).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testLengthVector
 	| length vector |
-	vector _ sketch segment: 8@2 to: 6@6.
-	length _ sketch lengthOf: vector.
+	vector := sketch segment: 8@2 to: 6@6.
+	length := sketch lengthOf: vector.
 	self should: (length mathItem valueItem closeTo: 20 sqrt).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testOrdianteOfPoint
 	| coordinate point |
-	point _ sketch point: 10@15.
-	coordinate _ sketch ordinateOf: point.
+	point := sketch point: 10@15.
+	coordinate := sketch ordinateOf: point.
 	self should: (coordinate mathItem valueItem closeTo: 15).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testOrdianteOfVector
 	| coordinate vector |
-	vector _ sketch vector: 10@15.
-	coordinate _ sketch ordinateOf: vector.
+	vector := sketch vector: 10@15.
+	coordinate := sketch ordinateOf: vector.
 	self should: (coordinate mathItem valueItem closeTo: 15).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testSlope
 	| slope recomputed|
-	slope _ sketch slopeOf: (sketch line: -5 @ -5 to: 2@3).
-	recomputed _ (3 - -5) / (2 - -5).
+	slope := sketch slopeOf: (sketch line: -5 @ -5 to: 2@3).
+	recomputed := (3 - -5) / (2 - -5).
 	self should: (slope mathItem valueItem closeTo: recomputed).! !
 
 !DrGeoScriptTest methodsFor: 'testing-value'!
 testValueFree
 	| v |
-	v _ sketch freeValue: Float pi / 3.  
+	v := sketch freeValue: Float pi / 3.  
 	self assert: (v mathItem valueItem closeTo: Float pi / 3).
 	""
-	v _ sketch freeValue: 0.00001.  
+	v := sketch freeValue: 0.00001.  
 	self assert: (v mathItem valueItem closeTo: 0.00001).
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircle
 	| c|
-	c _ sketch circleCenter: (sketch point: 3@2) to: (sketch point: 6@6).
+	c := sketch circleCenter: (sketch point: 3@2) to: (sketch point: 6@6).
 	self assert: c mathItem isCircleItem.
 	self assert: c mathItem isGeometricItem.
 	self assert: c mathItem isCurveItem.
@@ -10512,7 +10512,7 @@ testCircle
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleRadius
 	| c |
-	c _ sketch circleCenter: (sketch point: 3@2) radius: (sketch freeValue: 5).
+	c := sketch circleCenter: (sketch point: 3@2) radius: (sketch freeValue: 5).
 	self assert: c mathItem isCircleItem.
 	self assert: c mathItem isGeometricItem.
 	self assert: c mathItem isCurveItem.
@@ -10524,22 +10524,22 @@ testCircleRadius
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleRadiusUnicity
 	| a r c1 c2|
-	a _ sketch point: 788@985.
-	r _ sketch freeValue: 5.
-	c1 _ sketch circleCenter: a radius: r.   
-	c2 _ sketch circleCenter: a radius: r.  
+	a := sketch point: 788@985.
+	r := sketch freeValue: 5.
+	c1 := sketch circleCenter: a radius: r.   
+	c2 := sketch circleCenter: a radius: r.  
 	self assert: c1 mathItem == c2 mathItem.
 	""
-	r _ sketch freeValue: 5.
-	c2 _ sketch circleCenter: a radius: r.  
+	r := sketch freeValue: 5.
+	c2 := sketch circleCenter: a radius: r.  
 	self shouldnt: c1 mathItem == c2 mathItem.! !
 
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleReflexion
 	| d c1 c2|
-	d _ sketch line: 0@0 to: 1@2.
-	c1 _ sketch circleCenter: 1@0 to: 6@0.
-	c2 _ sketch reflect: c1 axis: d.
+	d := sketch line: 0@0 to: 1@2.
+	c1 := sketch circleCenter: 1@0 to: 6@0.
+	c2 := sketch reflect: c1 axis: d.
 	""
 	self assert: c2 mathItem isCircleItem.
 	self assert: c2 mathItem isGeometricItem.
@@ -10552,8 +10552,8 @@ testCircleReflexion
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleRotation
 	| c1 c2|
-	c1 _ sketch circleCenter: 3@2 to: 3@12.
-	c2 _ sketch rotate: c1 center: 1@1 angle: Float pi / 3.
+	c1 := sketch circleCenter: 3@2 to: 3@12.
+	c2 := sketch rotate: c1 center: 1@1 angle: Float pi / 3.
 	""
 	self assert: c2 mathItem isCircleItem.
 	self assert: c2 mathItem isGeometricItem.
@@ -10566,8 +10566,8 @@ testCircleRotation
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleScale
 	| c1 c2|
-	c1 _ sketch circleCenter: 3@2 to: 3@12.
-	c2 _ sketch scale: c1 center: 1@1 factor: 3.
+	c1 := sketch circleCenter: 3@2 to: 3@12.
+	c2 := sketch scale: c1 center: 1@1 factor: 3.
 	""
 	self assert: c2 mathItem isCircleItem.
 	self assert: c2 mathItem isGeometricItem.
@@ -10576,7 +10576,7 @@ testCircleScale
 	self should: (c2 mathItem radius closeTo: 30).
 	self should: (c2 mathItem center closeTo: 7@4).
 	""
-	c2 _ sketch scale: c1 center: 1@1 factor: -3.	
+	c2 := sketch scale: c1 center: 1@1 factor: -3.	
 	self should: (c2 mathItem radius closeTo: 30).
 	self should: (c2 mathItem center closeTo: -5@ -2).
 	! !
@@ -10584,7 +10584,7 @@ testCircleScale
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleSegment
 	| c|
-	c _ sketch circleCenter: (sketch point: 3@2) segment: (sketch segment: 10@6 to: 20@6).
+	c := sketch circleCenter: (sketch point: 3@2) segment: (sketch segment: 10@6 to: 20@6).
 	self assert: c mathItem isCircleItem.
 	self assert: c mathItem isGeometricItem.
 	self assert: c mathItem isCurveItem.
@@ -10597,8 +10597,8 @@ testCircleSegment
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleSymmetry
 	| c1 c2|
-	c1 _ sketch circleCenter: 3@2 to: 3@12.
-	c2 _ sketch symmetry: c1 center: 2@2.
+	c1 := sketch circleCenter: 3@2 to: 3@12.
+	c2 := sketch symmetry: c1 center: 2@2.
 	""
 	self assert: c2 mathItem isCircleItem.
 	self assert: c2 mathItem isGeometricItem.
@@ -10610,8 +10610,8 @@ testCircleSymmetry
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleTranslation
 	| c1 c2|
-	c1 _ sketch circleCenter: 3@2 to: 3@12.
-	c2 _ sketch translate: c1 vector: 2@1.
+	c1 := sketch circleCenter: 3@2 to: 3@12.
+	c2 := sketch translate: c1 vector: 2@1.
 	""
 	self assert: c2 mathItem isCircleItem.
 	self assert: c2 mathItem isGeometricItem.
@@ -10620,7 +10620,7 @@ testCircleTranslation
 	self should: (c2 mathItem radius closeTo: 10).
 	self should: (c2 mathItem center closeTo: 5@3).
 	""
-	c2 _ sketch translate: c1 vector: -2@ -1.
+	c2 := sketch translate: c1 vector: -2@ -1.
 	self should: (c2 mathItem radius closeTo: 10).
 	self should: (c2 mathItem center closeTo: 1@1).
 ! !
@@ -10628,26 +10628,26 @@ testCircleTranslation
 !DrGeoScriptTest methodsFor: 'testing-circle'!
 testCircleUnicity
 	| a b c1 c2|
-	a _ sketch point: 788@985.
-	b _ sketch point: 788@1085.
-	c1 _ sketch circleCenter:  a to: b.
-	c2 _ sketch circleCenter: a to: b.  
+	a := sketch point: 788@985.
+	b := sketch point: 788@1085.
+	c1 := sketch circleCenter:  a to: b.
+	c2 := sketch circleCenter: a to: b.  
 	self assert: c1 mathItem == c2 mathItem.
 	""
-	c2 _ sketch circleCenter: b to: a.  
+	c2 := sketch circleCenter: b to: a.  
 	self shouldnt: c1 mathItem == c2 mathItem.
 	""
-	b _ sketch point: 780 @ 900.
-	c2 _ sketch circleCenter: a to:  b.
+	b := sketch point: 780 @ 900.
+	c2 := sketch circleCenter: a to:  b.
 	self shouldnt: c1 mathItem == c2 mathItem   
 	! !
 
 !DrGeoScriptTest methodsFor: 'testing-ray'!
 testRay
 	| a b r|
-	a _ sketch point: 88@985.
-	b _ sketch point: 98@1085.
-	r _ sketch ray: a to: b.
+	a := sketch point: 88@985.
+	b := sketch point: 98@1085.
+	r := sketch ray: a to: b.
 	self assert: r mathItem isCurveItem.
 	self assert: r mathItem isGeometricItem.
 	self assert: r mathItem isDirectionItem.
@@ -10661,10 +10661,10 @@ testRay
 !DrGeoScriptTest methodsFor: 'testing-ray'!
 testRayReflexion
 	| axe r1 r2  |
-	axe _ sketch line: (sketch point: 0 @ 0) to: (sketch point: 1 @ 2).
+	axe := sketch line: (sketch point: 0 @ 0) to: (sketch point: 1 @ 2).
 	""
-	r1 _ sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
-	r2 _ sketch reflect: r1 axis: axe.
+	r1 := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
+	r2 := sketch reflect: r1 axis: axe.
 	self assert:(r2 mathItem origin closeTo:  -0.2@3.6).
 	self assert: (r2 mathItem direction closeTo: 2.2@0.4)  
 ! !
@@ -10672,11 +10672,11 @@ testRayReflexion
 !DrGeoScriptTest methodsFor: 'testing-ray'!
 testRayRotation
 	| r1 r2 c k |
-	c _ sketch point: 1 @ 1.
-	k _ sketch freeValue: Float pi / 3.
+	c := sketch point: 1 @ 1.
+	k := sketch freeValue: Float pi / 3.
 	""
-	r1 _ sketch ray: 3@2 to: 2@4.
-	r2 _ sketch rotate: r1 center: c angle: k.
+	r1 := sketch ray: 3@2 to: 2@4.
+	r2 := sketch rotate: r1 center: c angle: k.
 	self assert:(r2 mathItem origin closeTo:  1.13397@3.23205).
 	self assert: (r2 mathItem direction closeTo: -2.23205@0.133974)  
 ! !
@@ -10684,16 +10684,16 @@ testRayRotation
 !DrGeoScriptTest methodsFor: 'testing-ray'!
 testRayScale
 	| r1 r2 c k |
-	c _ sketch point: 1 @ 1.
-	k _ sketch freeValue: 3.
+	c := sketch point: 1 @ 1.
+	k := sketch freeValue: 3.
 	""
-	r1 _ sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
-	r2 _ sketch scale: r1 center: c factor: k.
+	r1 := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
+	r2 := sketch scale: r1 center: c factor: k.
 	self assert: (r2 mathItem origin closeTo: 7@4).
 	self assert: (r2 mathItem direction = (r1 mathItem direction * 3)).
 	""
-	k _ sketch freeValue: -3.
-	r2 _ sketch scale: r1 center: c factor: k.
+	k := sketch freeValue: -3.
+	r2 := sketch scale: r1 center: c factor: k.
 	self assert: (r2 mathItem origin closeTo: -5@ -2).
 	self assert: (r2 mathItem direction = (r1 mathItem direction * -3))  
 ! !
@@ -10701,10 +10701,10 @@ testRayScale
 !DrGeoScriptTest methodsFor: 'testing-ray'!
 testRaySymmetry
 	| c r1 r2|
-	c _ sketch point: 2@2.
+	c := sketch point: 2@2.
 	""
-	r1 _ sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
-	r2 _ sketch symmetry: r1 center:  c.
+	r1 := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
+	r2 := sketch symmetry: r1 center:  c.
 	self assert: r2 mathItem origin = (1@2).
 	self assert: r2 mathItem direction = r1 mathItem direction negated 
 ! !
@@ -10712,15 +10712,15 @@ testRaySymmetry
 !DrGeoScriptTest methodsFor: 'testing-ray'!
 testRayTranslation
 	| r1 r2 t |
-	r1 _ sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
-	t _ sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
+	r1 := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
+	t := sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
 	""
-	r2 _ sketch translate: r1 vector:  t.  
+	r2 := sketch translate: r1 vector:  t.  
 	self assert: r2 mathItem origin = (5@3).
 	self assert: r2 mathItem direction = r1 mathItem direction.
 	""  
-	t _ sketch vector: (sketch point: 3@2) to: (sketch point: 1@1).
-	r2 _ sketch translate: r1 vector:  t.  
+	t := sketch vector: (sketch point: 3@2) to: (sketch point: 1@1).
+	r2 := sketch translate: r1 vector:  t.  
 	self assert: r2 mathItem origin = (1@1).
 	self assert: r2 mathItem direction = r1 mathItem direction.
 ! !
@@ -10728,25 +10728,25 @@ testRayTranslation
 !DrGeoScriptTest methodsFor: 'testing-ray'!
 testRayUnicity
 	| a b s1 s2|
-	a _ sketch point: 788@985.
-	b _ sketch point: 788@1085.
-	s1 _ sketch ray: a to: b.
-	s2 _ sketch ray: a to: b.  
+	a := sketch point: 788@985.
+	b := sketch point: 788@1085.
+	s1 := sketch ray: a to: b.
+	s2 := sketch ray: a to: b.  
 	self assert: s1 mathItem == s2 mathItem.
 	""
-	s2 _ sketch ray: b to: a.  
+	s2 := sketch ray: b to: a.  
 	self shouldnt: s1 mathItem == s2 mathItem.
 	""
-	b _ sketch point: 780 @ 900.
-	s2 _ sketch ray: a to:  b.
+	b := sketch point: 780 @ 900.
+	s2 := sketch ray: a to:  b.
 	self shouldnt: s1 mathItem == s2 mathItem   
 	! !
 
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testAngleBisector
 	| bisector geometricAngle |
-	geometricAngle _ sketch angle: 1@0 to: 0@0 to: 0@1.
-	bisector _ sketch angleBisector: geometricAngle.
+	geometricAngle := sketch angle: 1@0 to: 0@0 to: 0@1.
+	bisector := sketch angleBisector: geometricAngle.
 	""
 	self assert: (bisector mathItem contains: 0@0).
 	self assert: (bisector mathItem contains: 1@1).
@@ -10758,7 +10758,7 @@ testAngleBisector
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testAngleBisector3Points
 	| bisector |
-	bisector _ sketch angleBisectorSummit: 0@0 side1: 1@0 side2: 0@1.
+	bisector := sketch angleBisectorSummit: 0@0 side1: 1@0 side2: 0@1.
 	""
 	self assert: (bisector mathItem contains: 0@0).
 	self assert: (bisector mathItem contains: 1@1).
@@ -10771,7 +10771,7 @@ testAngleBisector3Points
 testAngleBisectorVectors
 "there is no such things as bisector to an angle formed with two vectors"
 	| orientedAngle |
-	orientedAngle _ sketch angle: 1@0 to: 0@1.
+	orientedAngle := sketch angle: 1@0 to: 0@1.
 	self should: [sketch angleBisector: orientedAngle] raise: MessageNotUnderstood.
 
 ! !
@@ -10779,9 +10779,9 @@ testAngleBisectorVectors
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testLine
 	| a b l|
-	a _ sketch point: 88@985.
-	b _ sketch point: 98@1085.
-	l _ sketch line: a to: b.
+	a := sketch point: 88@985.
+	b := sketch point: 98@1085.
+	l := sketch line: a to: b.
 	self assert: l mathItem isCurveItem.
 	self assert: l mathItem isGeometricItem.
 	self assert: l mathItem isDirectionItem.
@@ -10795,10 +10795,10 @@ testLine
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testLineReflexion
 	| axe l1 l2  |
-	axe _ sketch line: (sketch point: 0 @ 0) to: (sketch point: 1 @ 2).
+	axe := sketch line: (sketch point: 0 @ 0) to: (sketch point: 1 @ 2).
 	""
-	l1 _ sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
-	l2 _ sketch reflect: l1 axis: axe.
+	l1 := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
+	l2 := sketch reflect: l1 axis: axe.
 	self assert:(l2 mathItem origin closeTo:  -0.2@3.6).
 	self assert: (l2 mathItem direction closeTo: 2.2@0.4)  
 ! !
@@ -10806,11 +10806,11 @@ testLineReflexion
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testLineRotation
 	| l1 l2 c k |
-	c _ sketch point: 1 @ 1.
-	k _ sketch freeValue: Float pi / 3.
+	c := sketch point: 1 @ 1.
+	k := sketch freeValue: Float pi / 3.
 	""
-	l1 _ sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
-	l2 _ sketch rotate: l1 center: c angle: k.
+	l1 := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
+	l2 := sketch rotate: l1 center: c angle: k.
 	self assert:( l2 mathItem origin closeTo:  1.13397@3.23205).
 	self assert: (l2 mathItem direction closeTo: -2.23205@0.133974)  
 ! !
@@ -10818,16 +10818,16 @@ testLineRotation
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testLineScale
 	| l1 l2 c k |
-	c _ sketch point: 1 @ 1.
-	k _ sketch freeValue: 3.
+	c := sketch point: 1 @ 1.
+	k := sketch freeValue: 3.
 	""
-	l1 _ sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
-	l2 _ sketch scale: l1 center: c factor: k.
+	l1 := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
+	l2 := sketch scale: l1 center: c factor: k.
 	self assert: (l2 mathItem origin closeTo: 7@4).
 	self assert: (l2 mathItem direction = (l1 mathItem direction * 3)).
 	""
-	k _ sketch freeValue: -3.
-	l2 _ sketch scale: l1 center: c factor: k.
+	k := sketch freeValue: -3.
+	l2 := sketch scale: l1 center: c factor: k.
 	self assert: (l2 mathItem origin closeTo: -5@ -2).
 	self assert: (l2 mathItem direction = (l1 mathItem direction * -3))  
 ! !
@@ -10835,10 +10835,10 @@ testLineScale
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testLineSymmetry
 	| c l1 l2|
-	c _ sketch point: 2@2.
+	c := sketch point: 2@2.
 	""
-	l1 _ sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
-	l2 _ sketch symmetry: l1 center:  c.
+	l1 := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
+	l2 := sketch symmetry: l1 center:  c.
 	self assert: l2 mathItem origin = (1@2).
 	self assert: l2 mathItem direction = l1 mathItem direction negated 
 ! !
@@ -10846,15 +10846,15 @@ testLineSymmetry
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testLineTranslation
 	| l1 l2 t |
-	l1 _ sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
-	t _ sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
+	l1 := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
+	t := sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
 	""
-	l2 _ sketch translate: l1 vector:  t.  
+	l2 := sketch translate: l1 vector:  t.  
 	self assert: l2 mathItem origin = (5@3).
 	self assert: l2 mathItem direction = l1 mathItem direction.
 	""  
-	t _ sketch vector: (sketch point: 3@2) to: (sketch point: 1@1).
-	l2 _ sketch translate: l1 vector:  t.  
+	t := sketch vector: (sketch point: 3@2) to: (sketch point: 1@1).
+	l2 := sketch translate: l1 vector:  t.  
 	self assert: l2 mathItem origin = (1@1).
 	self assert: l2 mathItem direction = l1 mathItem direction.
 ! !
@@ -10862,25 +10862,25 @@ testLineTranslation
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testLineUnicity
 	| a b s1 s2|
-	a _ sketch point: 788@985.
-	b _ sketch point: 788@1085.
-	s1 _ sketch line: a to: b.
-	s2 _ sketch line: a to: b.  
+	a := sketch point: 788@985.
+	b := sketch point: 788@1085.
+	s1 := sketch line: a to: b.
+	s2 := sketch line: a to: b.  
 	self assert: s1 mathItem == s2 mathItem.
 	"Lines are oriented"
-	s2 _ sketch line: b to: a.  
+	s2 := sketch line: b to: a.  
 	self shouldnt: s1 mathItem == s2 mathItem.
 	""
-	b _ sketch point: 780 @ 900.
-	s2 _ sketch line: a to:  b.
+	b := sketch point: 780 @ 900.
+	s2 := sketch line: a to:  b.
 	self shouldnt: s1 mathItem == s2 mathItem   
 	! !
 
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testParallelLine
 	| l p |
-	l _ sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
-	p _ sketch parallel: l at: 2@2.
+	l := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
+	p := sketch parallel: l at: 2@2.
 	""
 	self assert: (p mathItem contains: 2@2).
 	self assert: ((p mathItem direction crossProduct: l mathItem direction) closeTo: 0).
@@ -10890,8 +10890,8 @@ testParallelLine
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testParallelRay
 	| r p |
-	r _ sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
-	p _ sketch parallel: r at: 2@2.
+	r := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
+	p := sketch parallel: r at: 2@2.
 	""
 	self assert: (p mathItem contains: 2@2).
 	self assert: ((p mathItem direction crossProduct: r mathItem direction) closeTo: 0).
@@ -10901,8 +10901,8 @@ testParallelRay
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testParallelSegment
 	| s p |
-	s _ sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
-	p _ sketch parallel: s at: 2@2.
+	s := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
+	p := sketch parallel: s at: 2@2.
 	""
 	self assert: (p mathItem contains: 2@2).
 	self assert: ((p mathItem direction crossProduct: s mathItem direction) closeTo: 0).
@@ -10912,8 +10912,8 @@ testParallelSegment
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testPerpendicularBisector
 	| s p |
-	s _ sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
-	p _ sketch perpendicularBisector: s.
+	s := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
+	p := sketch perpendicularBisector: s.
 	""
 	self assert: (p mathItem contains: (3@2 + (2@4) / 2)).
 	self assert: ((p mathItem direction dotProduct: s mathItem direction) closeTo: 0).
@@ -10922,7 +10922,7 @@ testPerpendicularBisector
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testPerpendicularBisector2Points
 	| p |
-	p _ sketch perpendicularBisector: 3@2 to: 2@4.
+	p := sketch perpendicularBisector: 3@2 to: 2@4.
 	""
 	self assert: (p mathItem contains: (3@2 + (2@4) / 2)).
 	self assert: ((p mathItem direction dotProduct: (2@4 - (3@2))) closeTo: 0).
@@ -10931,8 +10931,8 @@ testPerpendicularBisector2Points
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testPerpendicularLine
 	| l p |
-	l _ sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
-	p _ sketch perpendicular: l at: 2@2.
+	l := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
+	p := sketch perpendicular: l at: 2@2.
 	""
 	self assert: (p mathItem contains: 2@2).
 	self assert: ((p mathItem direction dotProduct: l mathItem direction) closeTo: 0).
@@ -10942,8 +10942,8 @@ testPerpendicularLine
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testPerpendicularRay
 	| r p |
-	r _ sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
-	p _ sketch perpendicular: r at: 2@2.
+	r := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
+	p := sketch perpendicular: r at: 2@2.
 	""
 	self assert: (p mathItem contains: 2@2).
 	self assert: ((p mathItem direction dotProduct: r mathItem direction) closeTo: 0).
@@ -10952,8 +10952,8 @@ testPerpendicularRay
 !DrGeoScriptTest methodsFor: 'testing-line'!
 testPerpendicularSegment
 	| s p |
-	s _ sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
-	p _ sketch perpendicular: s at: 2@2.
+	s := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
+	p := sketch perpendicular: s at: 2@2.
 	""
 	self assert: (p mathItem contains: 2@2).
 	self assert: ((p mathItem direction dotProduct: s mathItem direction) closeTo: 0).
@@ -10961,16 +10961,16 @@ testPerpendicularSegment
 
 !DrGeoScriptTest methodsFor: 'running'!
 setUp 
-	sketch _ DrGeoScriptTestResource current sketch! !
+	sketch := DrGeoScriptTestResource current sketch! !
 
 !DrGeoScriptTest methodsFor: 'running'!
 tearDown 
-	sketch _ nil! !
+	sketch := nil! !
 
 !DrGeoScriptTest methodsFor: 'testing-arc'!
 testArc
 	| arc|
-	arc _ sketch arc: (sketch point: 8@2) to:  (sketch point: 6@6) to: (sketch point: 3@7).
+	arc := sketch arc: (sketch point: 8@2) to:  (sketch point: 6@6) to: (sketch point: 3@7).
 	self assert: arc mathItem isArcItem.
 	self assert: arc mathItem isGeometricItem.
 	self assert: arc mathItem isCurveItem.
@@ -10985,9 +10985,9 @@ testArc
 !DrGeoScriptTest methodsFor: 'testing-arc'!
 testArcReflexion
 	| arc1 arc2 d|
-	d _ sketch line: 0@0 to: 1@2.
-	arc1 _ sketch arc: 8@2 to:  6@6 to: 3@7.
-	arc2 _ sketch reflect: arc1 axis: d.
+	d := sketch line: 0@0 to: 1@2.
+	arc1 := sketch arc: 8@2 to:  6@6 to: 3@7.
+	arc2 := sketch reflect: arc1 axis: d.
 	""
 	self should: (arc2 mathItem radius closeTo: 5).
 	self should: (arc2 mathItem center closeTo: (-0.2@3.6)).
@@ -11000,8 +11000,8 @@ testArcReflexion
 !DrGeoScriptTest methodsFor: 'testing-arc'!
 testArcRotation
 	| arc1 arc2 |
-	arc1 _ sketch arc: 8@2 to: 6@6 to: 3@7.
-	arc2 _ sketch rotate: arc1 center: 1@1 angle: Float pi / 3.
+	arc1 := sketch arc: 8@2 to: 6@6 to: 3@7.
+	arc2 := sketch rotate: arc1 center: 1@1 angle: Float pi / 3.
 	""
 	self should: (arc2 mathItem radius closeTo: 5).
 	self should: (arc2 mathItem center closeTo: (1.1339745962155614@3.232050807568877)).
@@ -11014,8 +11014,8 @@ testArcRotation
 !DrGeoScriptTest methodsFor: 'testing-arc'!
 testArcScale
 	| arc1 arc2 |
-	arc1 _ sketch arc: 8@2 to: 6@6 to: 3@7.
-	arc2 _ sketch scale: arc1 center: 1@1 factor: 3.
+	arc1 := sketch arc: 8@2 to: 6@6 to: 3@7.
+	arc2 := sketch scale: arc1 center: 1@1 factor: 3.
 	""
 	self should: (arc2 mathItem radius closeTo: 5 * 3).
 	self should: (arc2 mathItem center closeTo: 7@4).
@@ -11029,8 +11029,8 @@ testArcScale
 !DrGeoScriptTest methodsFor: 'testing-arc'!
 testArcTranslation
 	| arc1 arc2 |
-	arc1 _ sketch arc: 8@2 to: 6@6 to: 3@7.
-	arc2 _ sketch translate: arc1 vector: 2@1.
+	arc1 := sketch arc: 8@2 to: 6@6 to: 3@7.
+	arc2 := sketch translate: arc1 vector: 2@1.
 	""
 	self should: (arc2 mathItem radius closeTo: 5 ).
 	self should: (arc2 mathItem center closeTo: 5@3).
@@ -11043,31 +11043,31 @@ testArcTranslation
 !DrGeoScriptTest methodsFor: 'testing-arc'!
 testArcUnicity
 	| arc1 arc2 a b c |
-	a _ sketch point: 788@985.
-	b _ sketch point: 700@980.
-	c _ sketch point: 650@900.
-	arc1 _ sketch arc: a to: b to: c. 
-	arc2 _ sketch arc: a to: b to: c.
+	a := sketch point: 788@985.
+	b := sketch point: 700@980.
+	c := sketch point: 650@900.
+	arc1 := sketch arc: a to: b to: c. 
+	arc2 := sketch arc: a to: b to: c.
 	self assert: arc1 mathItem == arc2 mathItem.
 	""
-	arc2 _ sketch arc: c to: b to: a.   
+	arc2 := sketch arc: c to: b to: a.   
 	self assert: arc1 mathItem == arc2 mathItem.
 	""
-	arc2 _ sketch arc: a to: c to: b.   
+	arc2 := sketch arc: a to: c to: b.   
 	self shouldnt: arc1 mathItem == arc2 mathItem.
 	""
-	arc2 _ sketch arc: b to: a to: c.   
+	arc2 := sketch arc: b to: a to: c.   
 	self shouldnt: arc1 mathItem == arc2 mathItem.! !
 
 !DrGeoScriptTest methodsFor: 'testing-polygon'!
 testPolygon
 	| polygon summit |
-	summit _ Array withAll: {
+	summit := Array withAll: {
 		sketch point: -3@ -3.
 		sketch point: -3@3.
 		sketch point: 3@3.
 		sketch point: 3@ -3}.
-	polygon _ sketch polygon: summit.
+	polygon := sketch polygon: summit.
 	self assert: polygon mathItem isGeometricItem.
 	self assert: polygon mathItem isPolygonItem. 
 	self assert: polygon mathItem isCurveItem.
@@ -11076,8 +11076,8 @@ testPolygon
 !DrGeoScriptTest methodsFor: 'testing-polygon'!
 testPolygonReflexion
 	| p1 p2 |
-	p1 _ sketch regularPolygonCenter: 3@2 vertex: 2@4 sides: 4.
-	p2 _ sketch reflect: p1 axis: (sketch line: 0@0 to: 1@2).
+	p1 := sketch regularPolygonCenter: 3@2 vertex: 2@4 sides: 4.
+	p2 := sketch reflect: p1 axis: (sketch line: 0@0 to: 1@2).
 	""
 	self should: (p2 mathItem length closeTo: 4 * 10 sqrt).
 	self should: p2 mathItem points size = 4.
@@ -11088,22 +11088,22 @@ testPolygonReflexion
 testPolygonRegular
 	| polygon vertices|
 	"Test a square as a regular polygon"
-	polygon _ sketch regularPolygonCenter: 1@1 vertex: 0@2 sides: 4.
+	polygon := sketch regularPolygonCenter: 1@1 vertex: 0@2 sides: 4.
 	self assert: polygon mathItem isGeometricItem.
 	self assert: polygon mathItem isPolygonItem. 
 	self assert: polygon mathItem isCurveItem.
 	self should: polygon mathItem length = 8.
 	""
-	vertices	_ polygon mathItem points.
+	vertices := polygon mathItem points.
 	self should: vertices size = 4.
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 0@2]).
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 2@2]).
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 2@0]).
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 0@0]).
 	""
-	polygon _ sketch regularPolygonCenter: 3@2 vertex: 2@4 sides: 4.
+	polygon := sketch regularPolygonCenter: 3@2 vertex: 2@4 sides: 4.
 	self should: (polygon mathItem length closeTo: 4 * 10 sqrt).
-	vertices	_ polygon mathItem points.
+	vertices := polygon mathItem points.
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 2@4]).
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 5@3]).
 	self should: (vertices anySatisfy: [:aPoint | aPoint closeTo: 4@0]).
@@ -11112,8 +11112,8 @@ testPolygonRegular
 !DrGeoScriptTest methodsFor: 'testing-polygon'!
 testPolygonRotation
 	| p1 p2 |
-	p1 _ sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
-	p2 _ sketch rotate: p1 center: 1@1 angle: Float pi / 3.
+	p1 := sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
+	p2 := sketch rotate: p1 center: 1@1 angle: Float pi / 3.
 	""
 	self should: (p2 mathItem length closeTo: 8).
 	self should: p2 mathItem points size = 4.
@@ -11123,8 +11123,8 @@ testPolygonRotation
 !DrGeoScriptTest methodsFor: 'testing-polygon'!
 testPolygonSymmetry
 	| p1 p2 |
-	p1 _ sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
-	p2 _ sketch symmetry: p1 center: 2@2.
+	p1 := sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
+	p2 := sketch symmetry: p1 center: 2@2.
 	""
 	self should: (p2 mathItem length closeTo: 8).
 	self should: p2 mathItem points size = 4.
@@ -11134,8 +11134,8 @@ testPolygonSymmetry
 !DrGeoScriptTest methodsFor: 'testing-polygon'!
 testPolygonTranslation
 	| p1 p2 |
-	p1 _ sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
-	p2 _ sketch translate: p1 vector: 2@1.
+	p1 := sketch regularPolygonCenter: 4@1 vertex: 3@2 sides: 4.
+	p2 := sketch translate: p1 vector: 2@1.
 	""
 	self should: (p2 mathItem length closeTo: 8).
 	self should: p2 mathItem points size = 4.
@@ -11145,75 +11145,75 @@ testPolygonTranslation
 !DrGeoScriptTest methodsFor: 'testing-polygon'!
 testPolygonUnicity
 	| p1 p2 summit |
-	summit _ Array withAll: {
+	summit := Array withAll: {
 		sketch point: -3@ -3.
 		sketch point: -3@3.
 		sketch point: 3@3.
 		sketch point: 3@ -3}.
-	p1 _ sketch polygon: summit.
-	summit _ Array withAll: {
+	p1 := sketch polygon: summit.
+	summit := Array withAll: {
 		sketch point: 3@ -3.
 		sketch point: -3@ -3.
 		sketch point: -3@3.
 		sketch point: 3@3}.
-	p2 _ sketch polygon: summit.
+	p2 := sketch polygon: summit.
 	"we not handle polygon unicity yet"
 	self deny: p1 mathItem == p2 mathItem.
 	""
-	summit _ Array withAll: {
+	summit := Array withAll: {
 		sketch point: -3@3.
 		sketch point: -3@ -3.
 		sketch point: 3@3.
 		sketch point: 3@ -3}.
-	p2 _ sketch polygon: summit.
+	p2 := sketch polygon: summit.
 	self deny: p1 mathItem == p2 mathItem   ! !
 
 !DrGeoScriptTest methodsFor: 'testing-direction'!
 testDirectionCollinear
 	| d1 d2|
-	d1 _ sketch segment: (sketch point: 5@5) to: (sketch point: 8 @7).
-	d2 _ sketch segment: (sketch point: 5@5) to: (sketch point: 8 @13).
+	d1 := sketch segment: (sketch point: 5@5) to: (sketch point: 8 @7).
+	d2 := sketch segment: (sketch point: 5@5) to: (sketch point: 8 @13).
 	self shouldnt: (d1 mathItem isCollinearWith: d2 mathItem).
-	d2 _ sketch segment: (sketch point: 15@5) to: (sketch point: 18@7).
+	d2 := sketch segment: (sketch point: 15@5) to: (sketch point: 18@7).
 	self should: (d1 mathItem isCollinearWith: d2 mathItem).
 	""
-	d2 _ sketch line: (sketch point: 6@5) to: (sketch point: 9@7) .
+	d2 := sketch line: (sketch point: 6@5) to: (sketch point: 9@7) .
 	self should: (d1 mathItem isCollinearWith: d2 mathItem)  .
 	""
-	d2 _ sketch ray: (sketch point: 6@4) to: (sketch point: 9@6) .
+	d2 := sketch ray: (sketch point: 6@4) to: (sketch point: 9@6) .
 	self should: (d1 mathItem isCollinearWith: d2 mathItem)  .
 	""
-	d2 _ sketch vector: (sketch point: 3@2) to: (sketch point: 6@4) .
+	d2 := sketch vector: (sketch point: 3@2) to: (sketch point: 6@4) .
 	self should: (d1 mathItem isCollinearWith: d2 mathItem)  
 ! !
 
 !DrGeoScriptTest methodsFor: 'testing-direction'!
 testDirectionDirection
 	| d n v |
-	d _ sketch segment: (sketch point: 5@5) to: (sketch point: 8 @7).
-	v _ d mathItem direction.
+	d := sketch segment: (sketch point: 5@5) to: (sketch point: 8 @7).
+	v := d mathItem direction.
 	self should: v = (3@2).
-	n _ d mathItem normal.
+	n := d mathItem normal.
 	self should: ((n dotProduct:  v) closeTo: 0).
 	self should: (n x * n x + (n y * n y) closeTo: 1)  ! !
 
 !DrGeoScriptTest methodsFor: 'testing-direction'!
 testDirectionIntersection
 	| d1 d2|
-	d1 _ sketch segment: (sketch point: -5@ -5) to: (sketch point: 5 @5).
-	d2 _ sketch segment: (sketch point: -5@5) to: (sketch point: 5@ -5).
+	d1 := sketch segment: (sketch point: -5@ -5) to: (sketch point: 5 @5).
+	d2 := sketch segment: (sketch point: -5@5) to: (sketch point: 5@ -5).
 	"only test if not collinenear in fact"
 	self should: (((d1 mathItem intersectionWithDirection: d2 mathItem) closeTo: 0@0)).
 	""
-	d2 _ sketch segment: (sketch point: -4@ -5) to: (sketch point: 6@ 5).
+	d2 := sketch segment: (sketch point: -4@ -5) to: (sketch point: 6@ 5).
 	self assert: (d1 mathItem intersectionWithDirection: d2 mathItem) isNil! !
 
 !DrGeoScriptTest methodsFor: 'testing-vector'!
 testVector
 	| a b v|
-	a _ sketch point: 88@985.
-	b _ sketch point: 98@1085.
-	v _ sketch vector: a to: b.
+	a := sketch point: 88@985.
+	b := sketch point: 98@1085.
+	v := sketch vector: a to: b.
 	self deny: v mathItem isCurveItem.
 	self assert: v mathItem isGeometricItem.
 	self assert: v mathItem isDirectionItem.
@@ -11230,27 +11230,27 @@ testVector
 !DrGeoScriptTest methodsFor: 'testing-vector'!
 testVectorUnicity
 	| a b v u|
-	a _ sketch point: 2@5.
-	b _ sketch point: 4@8.
-	u _ sketch vector: a to: b.
-	v _ sketch vector: a to: b.
+	a := sketch point: 2@5.
+	b := sketch point: 4@8.
+	u := sketch vector: a to: b.
+	v := sketch vector: a to: b.
 	self assert: u mathItem == v mathItem.
 	""  
-	v _ sketch vector: b to: a.
+	v := sketch vector: b to: a.
 	self deny: u mathItem == v mathItem.
 	""
-	a _ sketch point: -4@ -5.
-	b _ sketch point: -2@ -2.
-	v _ sketch vector: a to: b.
+	a := sketch point: -4@ -5.
+	b := sketch point: -2@ -2.
+	v := sketch vector: a to: b.
 	self deny: u mathItem == v mathItem.
 	self assert: u mathItem direction = v mathItem direction   ! !
 
 !DrGeoScriptTest methodsFor: 'testing-segment'!
 testSegment
 	| a b s|
-	a _ sketch point: 88@985.
-	b _ sketch point: 98@1085.
-	s _ sketch segment: a to: b.
+	a := sketch point: 88@985.
+	b := sketch point: 98@1085.
+	s := sketch segment: a to: b.
 	self assert: s mathItem isCurveItem.
 	self assert: s mathItem isGeometricItem.
 	self assert: s mathItem isDirectionItem.
@@ -11264,12 +11264,12 @@ testSegment
 !DrGeoScriptTest methodsFor: 'testing-segment'!
 testSegmentReflexion
 	| d u v|
-	d _ sketch
+	d := sketch
 				line: (sketch point: 0 @ 0)
 				to: (sketch point: 1 @ 2).
 	""
-	u _ sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
-	v _ sketch reflect: u axis:  d.
+	u := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
+	v := sketch reflect: u axis:  d.
 	self assert:( v mathItem origin closeTo:  -0.2@3.6).
 	self assert: (v mathItem direction closeTo: 2.2@0.4)  
 ! !
@@ -11277,11 +11277,11 @@ testSegmentReflexion
 !DrGeoScriptTest methodsFor: 'testing-segment'!
 testSegmentRotation
 	| u v c k |
-	c _ sketch point: 1 @ 1.
-	k _ sketch freeValue: Float pi / 3.
+	c := sketch point: 1 @ 1.
+	k := sketch freeValue: Float pi / 3.
 	""
-	u _ sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
-	v _ sketch rotate: u center: c angle: k.
+	u := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
+	v := sketch rotate: u center: c angle: k.
 	self assert:( v mathItem origin closeTo:  1.13397@3.23205).
 	self assert: (v mathItem direction closeTo: -2.23205@0.133974)  
 ! !
@@ -11289,16 +11289,16 @@ testSegmentRotation
 !DrGeoScriptTest methodsFor: 'testing-segment'!
 testSegmentScale
 	| u v c k |
-	c _ sketch point: 1 @ 1.
-	k _ sketch freeValue: 3.
+	c := sketch point: 1 @ 1.
+	k := sketch freeValue: 3.
 	""
-	u _ sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
-	v _ sketch scale: u center: c factor: k.
+	u := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
+	v := sketch scale: u center: c factor: k.
 	self assert: (v mathItem origin closeTo: 7@4).
 	self assert: (v mathItem direction = (u mathItem direction * 3)). 
 	""
-	k _ sketch freeValue: -3.
-	v _ sketch scale: u center: c factor: k.
+	k := sketch freeValue: -3.
+	v := sketch scale: u center: c factor: k.
 	self assert: (v mathItem origin closeTo: -5@ -2).
 	self assert: (v mathItem direction = (u mathItem direction * -3))  
 ! !
@@ -11306,10 +11306,10 @@ testSegmentScale
 !DrGeoScriptTest methodsFor: 'testing-segment'!
 testSegmentSymmetry
 	| c u v|
-	c _ sketch point: 2@2.
+	c := sketch point: 2@2.
 	""
-	u _ sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
-	v _ sketch symmetry: u center:  c.
+	u := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
+	v := sketch symmetry: u center:  c.
 	self assert: v mathItem origin = (1@2).
 	self assert: v mathItem direction = u mathItem direction negated 
 ! !
@@ -11317,15 +11317,15 @@ testSegmentSymmetry
 !DrGeoScriptTest methodsFor: 'testing-segment'!
 testSegmentTranslation
 	| u v t |
-	u _ sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
-	t _ sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
+	u := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
+	t := sketch vector: (sketch point: 1@1) to: (sketch point: 3@2).
 	""
-	v _ sketch translate: u vector:  t.  
+	v := sketch translate: u vector:  t.  
 	self assert: v mathItem origin = (5@3).
 	self assert: v mathItem direction = u mathItem direction.
 	""  
-	t _ sketch vector: (sketch point: 3@2) to: (sketch point: 1@1).
-	v _ sketch translate: u vector:  t.  
+	t := sketch vector: (sketch point: 3@2) to: (sketch point: 1@1).
+	v := sketch translate: u vector:  t.  
 	self assert: v mathItem origin = (1@1).
 	self assert: v mathItem direction = u mathItem direction.
 ! !
@@ -11333,17 +11333,17 @@ testSegmentTranslation
 !DrGeoScriptTest methodsFor: 'testing-segment'!
 testSegmentUnicity
 	| a b s1 s2|
-	a _ sketch point: 788@985.
-	b _ sketch point: 788@1085.
-	s1 _ sketch segment: a to: b.
-	"s2 _ canvas segment: a to: b.  
+	a := sketch point: 788@985.
+	b := sketch point: 788@1085.
+	s1 := sketch segment: a to: b.
+	"s2 := canvas segment: a to: b.  
 	self assert: s1 mathItem == s2 mathItem."
 	""
-	s2 _ sketch segment: b to: a.  
+	s2 := sketch segment: b to: a.  
 	self assert: s1 mathItem == s2 mathItem.
 	""
-	b _ sketch point: 780 @ 901.
-	s2 _ sketch segment: a to:  b.
+	b := sketch point: 780 @ 901.
+	s2 := sketch segment: a to:  b.
 	self deny: s1 mathItem == s2 mathItem   
 	! !
 
@@ -11532,12 +11532,12 @@ testThai
 
 !DrGeoScriptTestResource methodsFor: 'running' stamp: 'hlsf 4/10/2022 19:24:35'!
 setUp
-	sketch _ DrGeoSketch new! !
+	sketch := DrGeoSketch new! !
 
 !DrGeoScriptTestResource methodsFor: 'running'!
 tearDown
 	sketch release.
-	sketch _ nil! !
+	sketch := nil! !
 
 !DrGeoScriptTestResource methodsFor: 'accessing'!
 sketch 
@@ -11813,7 +11813,7 @@ widthFor: aThickness
 !DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 2/10/2022 11:51:56'!
 mathItem: aMathItem
 "select given a math item"
-	selectedItem _ self pool detect: [:wrappedItem | wrappedItem item == aMathItem] ifNone: [nil].
+	selectedItem := self pool detect: [:wrappedItem | wrappedItem item == aMathItem] ifNone: [nil].
 	self changed: #selectedItem.! !
 
 !DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 12:50:29'!
@@ -11821,7 +11821,7 @@ pool
 	^ presenter drawable itemViews 
 		select: [:aMorph | aMorph itemExist and: [aMorph style isNotHidden]] 
 		thenCollect: [:aMorph | 
-			DrGeoTreeNode with: aMorph mathItem ::
+			(DrGeoTreeNode with: aMorph mathItem)
 				hasContents: aMorph mathItem parents isNil not ;
 				yourself]! !
 
@@ -11853,7 +11853,7 @@ update: symbol
 
 !DrGeoTree class methodsFor: 'instance creation' stamp: 'hlsf 8/4/2023 12:49:23'!
 on: aPresenter
-	^ self new ::
+	^ self new
 		presenter: aPresenter ;
 		yourself! !
 
@@ -11901,7 +11901,7 @@ morph
 
 !DrGWrappedItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:19:13'!
 morph: aCostume
-	morph _ aCostume ! !
+	morph := aCostume ! !
 
 !DrGWrappedItem methodsFor: 'accessing' stamp: 'hlsf 6/13/2021 12:06:25'!
 style
@@ -12101,21 +12101,21 @@ regularPolygonCenter: wrpCenter vertex: wrpVertex sides: wrpValue
 altIntersectionOf: wrpCurve1 and: wrpCurve2 
 "use this one when you want the intersection point when non straight line are involved"
 	| item |
-	item _ DrGPointIntersectionItem newWith: {wrpCurve1 mathItem. wrpCurve2 mathItem. 0 @ 0}.
+	item := DrGPointIntersectionItem newWith: {wrpCurve1 mathItem. wrpCurve2 mathItem. 0 @ 0}.
 	item k: 1.
 	^ self finalizePoint: item! !
 
 !DrGeoSketch methodsFor: 'point' stamp: 'hlsf 9/28/2022 17:31:22'!
 finalizePoint: item
 	| wrappedPoint |
-	wrappedPoint _ DrGWrappedPoint wrap: (self morphOf: item).
+	wrappedPoint := DrGWrappedPoint wrap: (self morphOf: item).
 	wrappedPoint square.
 	^ wrappedPoint! !
 
 !DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/16/2022 22:39:17'!
 intersectionOf: wrpCurve1 and: wrpCurve2 
 |item|
-	item _ DrGPointIntersectionItem newWith: {wrpCurve1 mathItem. wrpCurve2 mathItem. 0 @ 0}.
+	item := DrGPointIntersectionItem newWith: {wrpCurve1 mathItem. wrpCurve2 mathItem. 0 @ 0}.
 	item k: -1.
 	^ self
 		finalizePoint: (item)! !
@@ -12139,21 +12139,21 @@ point: aPointOrBlock
 !DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/16/2022 22:40:12'!
 point: block parent: wrpValue
 	|collection|
-	collection _ OrderedCollection with: block.
+	collection := OrderedCollection with: block.
 	collection add: wrpValue mathItem.
 	^ self finalizePoint: (DrGPointBlockItem newWith: collection)! !
 
 !DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/16/2022 22:40:16'!
 point: block parents: wrpValueArray
 	|collection|
-	collection _ OrderedCollection with: block.
+	collection := OrderedCollection with: block.
 	collection addAll: (wrpValueArray collect: [:wrp | wrp mathItem]).
 	^ self finalizePoint: (DrGPointBlockItem newWith: collection)! !
 
 !DrGeoSketch methodsFor: 'point' stamp: 'hlsf 9/28/2022 17:34:43'!
 pointOnLine: wrpCurve at: abscissa 
 	| item |
-	item _ DrGPointOncurveItem newWith: {wrpCurve mathItem. 0 @ 0}.
+	item := DrGPointOncurveItem newWith: {wrpCurve mathItem. 0 @ 0}.
 	item setCurveAbscissa: abscissa.
 	^ self finalizePoint: item! !
 
@@ -12231,8 +12231,8 @@ canTransform: wrptItem
 !DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 5/31/2021 18:57:29'!
 finalizeTransformation: string with: arguments 
 	| class item |
-	class _ Smalltalk classNamed: 'DrG', arguments first basicType capitalized, string, 'Item'.
-	item _ class newWith: arguments.
+	class := Smalltalk classNamed: 'DrG', arguments first basicType capitalized, string, 'Item'.
+	item := class newWith: arguments.
 	item isPointItem
 		ifTrue: [^ self finalizePoint: item].
 	^ self finalizeCurve: item! !
@@ -12255,7 +12255,7 @@ rotate: wrpItem center: wrpCenter angle: wrpValue
 rotate: wrpItem center: wrpCenter angleDegrees: wrpValue 
 "Only work when wrpVAlue is a number and not an already existing value item, otherwise it is ignored"
 	| convertedValue |
-	convertedValue _ wrpValue 	isNumber 	ifTrue: [wrpValue degreesToRadians] 		ifFalse: [wrpValue].
+	convertedValue := wrpValue 	isNumber 	ifTrue: [wrpValue degreesToRadians] 		ifFalse: [wrpValue].
 	^ self rotate: wrpItem center: wrpCenter angle: convertedValue ! !
 
 !DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 4/16/2022 22:41:02'!
@@ -12285,7 +12285,7 @@ translate: wrpItem vector: wrpVector
 do: aBlock
 	"Execute the given construction in a forked process so the user can see the on going construction or animation"
 	doProcess ifNotNil: [doProcess terminate].
-	doProcess _ aBlock newProcess.
+	doProcess := aBlock newProcess.
 	doProcess priority: Processor userBackgroundPriority.
 	doProcess resume! !
 
@@ -12307,8 +12307,8 @@ float: aValue at: aPoint from: startValue to: endValue name: name
 float: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
 "A valueslider ranging between startValue and endValue"
 	| segment mobile|
-	segment _ self segment: aPoint to: aPoint + (170 / presenter drawable scale @0).
-	mobile _ self pointOnLine:  segment at: (aValue - startValue) / (endValue - startValue).
+	segment := self segment: aPoint to: aPoint + (170 / presenter drawable scale @0).
+	mobile := self pointOnLine:  segment at: (aValue - startValue) / (endValue - startValue).
 	segment color: Color black; large.
 	mobile name: name;
 		color: Color black;
@@ -12316,7 +12316,7 @@ float: aValue at: aPoint from: startValue to: endValue name: name showValue: isV
 		large.	
 	^ isValueDisplay 
 		ifTrue:  [[|value |
-			value _ mobile mathItem abscissa * ( endValue - startValue) + startValue.
+			value := mobile mathItem abscissa * ( endValue - startValue) + startValue.
 			mobile morph labelMorph contents: name,  ' = ', (value printShowingDecimalPlaces: 2).
 			value]]
 		ifFalse: [[mobile mathItem abscissa * ( endValue - startValue) + startValue]]  	
@@ -12335,8 +12335,8 @@ integer: aValue at: aPoint from: startValue to: endValue name: name
 integer: aValue at: aPoint from: startValue to: endValue name: name showValue: isValueDisplay
 "A valueslider ranging between startValue and endValue"
 	| segment mobile|
-	segment _ self segment: aPoint to: aPoint + (170 / presenter drawable scale @0).
-	mobile _ self pointOnLine:  segment at: (aValue - startValue) / (endValue - startValue).
+	segment := self segment: aPoint to: aPoint + (170 / presenter drawable scale @0).
+	mobile := self pointOnLine:  segment at: (aValue - startValue) / (endValue - startValue).
 	segment color: Color black; large.
 	mobile name: name;
 		color: Color black;
@@ -12344,7 +12344,7 @@ integer: aValue at: aPoint from: startValue to: endValue name: name showValue: i
 		large.	
 	^ isValueDisplay 
 		ifTrue:  [[|value |
-			value _ (mobile mathItem abscissa * ( endValue - startValue) + startValue) floor.
+			value := (mobile mathItem abscissa * ( endValue - startValue) + startValue) floor.
 			mobile morph labelMorph contents: name,  ' = ', value printString.
 			value]]
 		ifFalse: [[(mobile mathItem abscissa * ( endValue - startValue) + startValue) floor]]  	
@@ -12353,9 +12353,9 @@ integer: aValue at: aPoint from: startValue to: endValue name: name showValue: i
 !DrGeoSketch methodsFor: 'helpers'!
 plot: f from: x0 to: x1
 | mobile s pen|
-	s _ self segment: x0@0 to: x1@0.
-	mobile _ self pointOnLine: s at: 0.
-	pen _ self
+	s := self segment: x0@0 to: x1@0.
+	mobile := self pointOnLine: s at: 0.
+	pen := self
 		point: [:item | item point x @ (f value: item point x)] 
 		parent: mobile.
 	^ (self locusOf: pen when: mobile) color: Color blue
@@ -12365,7 +12365,7 @@ plot: f from: x0 to: x1
 terminateDo
 	doProcess  ifNotNil: [
 		doProcess terminate.
-		doProcess _ nil]! !
+		doProcess := nil]! !
 
 !DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 4/16/2022 22:38:19'!
 arc: wrpPt1 to: wrpPt2 to: wrpPt3
@@ -12486,11 +12486,11 @@ ray: wrpPt1 to: wrpPt2
 !DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/16/2022 22:37:51'!
 abscissaOf: wrpPointOrWrpVectorOrPoint
 	| class wrapped|
-	wrapped _ self wrappedPoint: wrpPointOrWrpVectorOrPoint.
+	wrapped := self wrappedPoint: wrpPointOrWrpVectorOrPoint.
 	wrapped mathItem isPointItem
-		ifTrue: [class _ DrGValuePtabscissaItem].
+		ifTrue: [class := DrGValuePtabscissaItem].
 	wrapped mathItem isVectorItem
-		ifTrue: [class _ DrGValueVectorabscissaItem].
+		ifTrue: [class := DrGValueVectorabscissaItem].
 	^ self
 		finalizeValue: (class newWith: {wrapped mathItem. self aPosition})! !
 
@@ -12518,13 +12518,13 @@ distance: item1 to: item2
 	"Distance from a point to a line or another point"
 	| arg class wrpItem1 wrpItem2 |
 	"Try to wrap to point in case the user provided point coordinates"
-	wrpItem1 _ self wrappedPoint: item1.
-	wrpItem2 _ self wrappedPoint: item2.
-	arg _ OrderedCollection newFrom: {wrpItem1 mathItem. wrpItem2 mathItem}.
+	wrpItem1 := self wrappedPoint: item1.
+	wrpItem2 := self wrappedPoint: item2.
+	arg := OrderedCollection newFrom: {wrpItem1 mathItem. wrpItem2 mathItem}.
 	(arg first isLineItem or: [arg second isLineItem])
-		ifTrue: [class _ DrGValueDistanceptlineItem.
-			arg first isLineItem ifTrue: [arg _ arg reverse]]
-		ifFalse: [class _ DrGValueDistance2ptsItem].
+		ifTrue: [class := DrGValueDistanceptlineItem.
+			arg first isLineItem ifTrue: [arg := arg reverse]]
+		ifFalse: [class := DrGValueDistance2ptsItem].
 	arg addLast: self aPosition.
 	^ self 	finalizeValue: (class newWith: arg)! !
 
@@ -12537,7 +12537,7 @@ finalizeValue: item
 finalizeValue: item hide: hide
 "By default we hide the value"
 	| wrappedItem |
-	wrappedItem _ DrGWrappedValue wrap: (self morphOf: item).
+	wrappedItem := DrGWrappedValue wrap: (self morphOf: item).
 	 hide ifTrue: [ wrappedItem hide ].
 	^ wrappedItem! !
 
@@ -12567,15 +12567,15 @@ geometricAngle: wrpPt1 to: wrpPt2 to: wrpPt3
 lengthOf: wrpSegmentOrCircleOrArcOrVectorOrPolygon
 	| class |
 	wrpSegmentOrCircleOrArcOrVectorOrPolygon mathItem isSegmentItem
-		ifTrue: [class _ DrGValueSegmentlengthItem].
+		ifTrue: [class := DrGValueSegmentlengthItem].
 	wrpSegmentOrCircleOrArcOrVectorOrPolygon mathItem isCircleItem
-		ifTrue: [class _ DrGValueCircleperimeterItem].
+		ifTrue: [class := DrGValueCircleperimeterItem].
 	wrpSegmentOrCircleOrArcOrVectorOrPolygon mathItem isArcItem
-		ifTrue: [class _ DrGValueArclengthItem].
+		ifTrue: [class := DrGValueArclengthItem].
 	wrpSegmentOrCircleOrArcOrVectorOrPolygon mathItem isVectorItem
-		ifTrue: [class _ DrGValueVectornormItem].
+		ifTrue: [class := DrGValueVectornormItem].
 	wrpSegmentOrCircleOrArcOrVectorOrPolygon mathItem isPolygonItem
-		ifTrue: [class _ DrGValuePolygonperimeterItem].
+		ifTrue: [class := DrGValuePolygonperimeterItem].
 
 	^ self
 		finalizeValue: (class newWith: {wrpSegmentOrCircleOrArcOrVectorOrPolygon mathItem. self aPosition})! !
@@ -12583,11 +12583,11 @@ lengthOf: wrpSegmentOrCircleOrArcOrVectorOrPolygon
 !DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/16/2022 22:39:44'!
 ordinateOf: wrpPointOrWrpVectorOrPoint 
 	| class wrapped |
-	wrapped _ self wrappedPoint: wrpPointOrWrpVectorOrPoint.
+	wrapped := self wrappedPoint: wrpPointOrWrpVectorOrPoint.
 	wrapped mathItem isPointItem
-		ifTrue: [class _ DrGValuePtordinateItem].
+		ifTrue: [class := DrGValuePtordinateItem].
 	wrapped mathItem isVectorItem
-		ifTrue: [class _ DrGValueVectorordinateItem].
+		ifTrue: [class := DrGValueVectorordinateItem].
 	^ self
 		finalizeValue: (class newWith: {wrapped mathItem. self aPosition})! !
 
@@ -12607,9 +12607,9 @@ wrappedValue: aNumberOrWrappedValueItem
 equationOf: wrpLineOrCircle
 	| class |
 	wrpLineOrCircle mathItem isLineItem 
-		ifTrue: [class _ DrGEquationLineItem ].
+		ifTrue: [class := DrGEquationLineItem ].
 	wrpLineOrCircle mathItem isCircleItem
-		ifTrue: [class _ DrGEquationCircleItem].
+		ifTrue: [class := DrGEquationCircleItem].
 	^ self
 		finalizeValue: (class newWith: {wrpLineOrCircle mathItem. self aPosition})! !
 
@@ -12648,7 +12648,7 @@ initialize
 !DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 8/4/2023 20:05:38'!
 release
 	presenter ifNotNil: [presenter release].
-	presenter _ nil.
+	presenter := nil.
 	self terminateDo ! !
 
 !DrGeoSketch methodsFor: 'obsolete' stamp: 'hlsf 4/10/2022 20:30:29'!
@@ -12671,7 +12671,7 @@ exist
 
 !DrGMathItem methodsFor: 'accessing'!
 exist: aBoolean
-	exist _ aBoolean! !
+	exist := aBoolean! !
 
 !DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 2/11/2022 08:56:49'!
 icon
@@ -12683,7 +12683,7 @@ id
 
 !DrGMathItem methodsFor: 'accessing'!
 id: aSymbol
-	id _ aSymbol! !
+	id := aSymbol! !
 
 !DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:27:45'!
 morphClass
@@ -12695,7 +12695,7 @@ name
 
 !DrGMathItem methodsFor: 'accessing'!
 name: aString
-	name _ aString ! !
+	name := aString ! !
 
 !DrGMathItem methodsFor: 'accessing'!
 parents
@@ -12703,7 +12703,7 @@ parents
 
 !DrGMathItem methodsFor: 'accessing'!
 parents: aCollection
-	parents _ aCollection.! !
+	parents := aCollection.! !
 
 !DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 17:11:29'!
 parents: aCollection in: presenter
@@ -12716,7 +12716,7 @@ position
 !DrGMathItem methodsFor: 'accessing'!
 safeName
 	| itsName |
-	itsName _ self name.
+	itsName := self name.
 	^ (itsName isNil or: [itsName isEmpty]) 
 		ifTrue: [''] 
 		ifFalse: [itsName]! !
@@ -12782,16 +12782,16 @@ parentsIncludes: aMathItem
 
 !DrGMathItem methodsFor: 'comparing'!
 rehash
-	^ hash _ (parents hash bitXor: self nodeType hash) bitXor: self basicType hash! !
+	^ hash := (parents hash bitXor: self nodeType hash) bitXor: self basicType hash! !
 
 !DrGMathItem methodsFor: 'event' stamp: 'hlsf 5/4/2020 21:23:26'!
 actionMap: anObject
-	'actionMap _ anObject '! !
+	'actionMap := anObject '! !
 
 !DrGMathItem methodsFor: 'initialize-release'!
 initialize
-	parents _ nil.
-	exist _ true.! !
+	parents := nil.
+	exist := true.! !
 
 !DrGMathItem methodsFor: 'initialize-release'!
 initialize: theParents
@@ -12816,7 +12816,7 @@ writeAsXmlTo: aNode
 	"return the newly created element"
 	| node |
 	self rehash.
-	node _  XMLElement named: self basicType attributes: Dictionary new.
+	node :=  XMLElement named: self basicType attributes: Dictionary new.
 	node attributeAt: #type put: self nodeType;
 		attributeAt: #name put: (name ifNil: ['']);
 		attributeAt: #id put: self hash asString.
@@ -12829,7 +12829,7 @@ writeParents: collection asXmlTo: aNode
 "write parents reference in the natural order"
 |attr|
 	collection do: [:each | 
-		attr _ Dictionary new.
+		attr := Dictionary new.
 		attr at: #ref put: each hash asString.
 		aNode addElement: (XMLElement named: #parent attributes: attr)]! !
 
@@ -12913,12 +12913,12 @@ contains: aPoint
 
 !DrGMathItem methodsFor: 'testing'!
 doParentsExist
-	exist _ true.
+	exist := true.
 	parents 
 		ifNotNil: 
 			[parents do: [:parent |
-			parent exist ifFalse: [^ exist _ false]]]
-		ifNil: [exist _ false].
+			parent exist ifFalse: [^ exist := false]]]
+		ifNil: [exist := false].
 	^exist
 				! !
 
@@ -13081,30 +13081,30 @@ adaptiveDescriptiveName
 angleOf: aPoint
 	"Compute the angle position of aPoint in the circle"
 	| angleM pointM |
-	pointM _ aPoint - center.
-	angleM _ (pointM y asFloat arcTan: pointM x) - origin.
+	pointM := aPoint - center.
+	angleM := (pointM y asFloat arcTan: pointM x) - origin.
 	length > 0
 		ifTrue: [
-			angleM < 0 ifTrue: [ angleM _ angleM + Float twoPi ].
-			angleM _ angleM min: length ]
+			angleM < 0 ifTrue: [ angleM := angleM + Float twoPi ].
+			angleM := angleM min: length ]
 		ifFalse: [
-			angleM > 0 ifTrue: [ angleM _ angleM - Float twoPi ].
-			angleM _ angleM max: length ].
+			angleM > 0 ifTrue: [ angleM := angleM - Float twoPi ].
+			angleM := angleM max: length ].
 	^ angleM! !
 
 !DrGArcItem methodsFor: 'computing'!
 clone
 	|pointA pointB pointC clone|
-	pointA _ DrGPointFreeItem newWith: {(self pointAt: 0) + (0.2@0.2)}.
-	pointB _ DrGPointFreeItem newWith: {(self pointAt: 0.5) + (0.2@0.2)}.
-	pointC _ DrGPointFreeItem newWith: {(self pointAt: 1) + (0.2@0.2)}.
-	clone _ DrGArc3ptsItem newWith: {pointA . pointB . pointC}.
+	pointA := DrGPointFreeItem newWith: {(self pointAt: 0) + (0.2@0.2)}.
+	pointB := DrGPointFreeItem newWith: {(self pointAt: 0.5) + (0.2@0.2)}.
+	pointC := DrGPointFreeItem newWith: {(self pointAt: 1) + (0.2@0.2)}.
+	clone := DrGArc3ptsItem newWith: {pointA . pointB . pointC}.
 	^ {pointA . pointB . pointC. clone}! !
 
 !DrGArcItem methodsFor: 'computing'!
 closestPointTo: aPoint
 	| angle |
-	angle _ self angleOf: aPoint.
+	angle := self angleOf: aPoint.
 	^center + (radius * ((origin + angle) cos @ (origin + angle) sin))! !
 
 !DrGArcItem methodsFor: 'computing'!
@@ -13112,28 +13112,28 @@ intersectionWith: aCurveItem flag: aFlag
 	| aPoint |
 	aCurveItem isLineItem 
 		ifTrue: 
-			[aPoint _ self intersectionWithDirection: aCurveItem flag: aFlag.
+			[aPoint := self intersectionWithDirection: aCurveItem flag: aFlag.
 			aPoint ifNil: [^nil].
 			(self contains: aPoint)
 				ifTrue: [^aPoint]
 				ifFalse: [^nil]].
 	(aCurveItem isRayItem or: [aCurveItem isSegmentItem])
 		ifTrue:
-			[aPoint _ self intersectionWithDirection: aCurveItem flag: aFlag.
+			[aPoint := self intersectionWithDirection: aCurveItem flag: aFlag.
 			aPoint ifNil: [^nil].
 			((self contains: aPoint) and: [aCurveItem contains: aPoint])
 				ifTrue: [^aPoint]
 				ifFalse: [^nil]].
 	aCurveItem isCircleItem
 		ifTrue:
-			[aPoint _ self intersectionWithCircle: aCurveItem flag: aFlag.
+			[aPoint := self intersectionWithCircle: aCurveItem flag: aFlag.
 			aPoint ifNil: [^nil].
 			(self contains: aPoint)
 				ifTrue: [^aPoint]
 				ifFalse: [^nil]].
 	aCurveItem isArcItem
 		ifTrue:
-			[aPoint _ self intersectionWithCircle: aCurveItem flag: aFlag.
+			[aPoint := self intersectionWithCircle: aCurveItem flag: aFlag.
 			aPoint ifNil: [^nil].
 			((self contains: aPoint) and: [aCurveItem contains: aPoint])
 				ifTrue: [^aPoint]
@@ -13143,7 +13143,7 @@ intersectionWith: aCurveItem flag: aFlag
 !DrGArcItem methodsFor: 'computing'!
 intersectionWithCircle: aCircleOrArcItem flag: aFlag 
 	| circleItem |
-	circleItem _ (DrGCircleItem new)
+	circleItem := (DrGCircleItem new)
 				center: self center;
 				radius: self radius.
 	^circleItem intersectionWithCircle: aCircleOrArcItem flag: aFlag! !
@@ -13151,7 +13151,7 @@ intersectionWithCircle: aCircleOrArcItem flag: aFlag
 !DrGArcItem methodsFor: 'computing'!
 intersectionWithDirection: aDirectionItem flag: aFlag 
 	| circleItem |
-	circleItem _ (DrGCircleItem new)
+	circleItem := (DrGCircleItem new)
 				center: self center;
 				radius: self radius.
 	^circleItem intersectionWithDirection: aDirectionItem flag: aFlag! !
@@ -13159,7 +13159,7 @@ intersectionWithDirection: aDirectionItem flag: aFlag
 !DrGArcItem methodsFor: 'computing'!
 pointAt: anAbscissa
 	|angle|
-	angle _ origin + (anAbscissa * length).
+	angle := origin + (anAbscissa * length).
 	^center + (radius * (angle cos @ angle sin))
 	! !
 
@@ -13167,14 +13167,14 @@ pointAt: anAbscissa
 contains: aPoint 
 	| angleM pointM |
 	((center dist: aPoint) closeTo: radius) ifFalse: [^false].
-	pointM _ aPoint - center.
-	angleM _ (pointM y asFloat arcTan: pointM x) - origin.
+	pointM := aPoint - center.
+	angleM := (pointM y asFloat arcTan: pointM x) - origin.
 	^ length > 0 
 		ifTrue: 
-			[angleM < 0 ifTrue: [angleM _ angleM + Float twoPi].
+			[angleM < 0 ifTrue: [angleM := angleM + Float twoPi].
 			length >= angleM]
 		ifFalse: 
-			[angleM > 0 ifTrue: [angleM _ angleM - Float twoPi].
+			[angleM > 0 ifTrue: [angleM := angleM - Float twoPi].
 			length <= angleM]! !
 
 !DrGArcItem methodsFor: 'testing'!
@@ -13195,7 +13195,7 @@ center
 
 !DrGArcItem methodsFor: 'accessing'!
 center: aPoint
-	center _ aPoint ! !
+	center := aPoint ! !
 
 !DrGArcItem methodsFor: 'accessing'!
 length
@@ -13204,7 +13204,7 @@ length
 
 !DrGArcItem methodsFor: 'accessing'!
 length: aFloat
-	length _ aFloat ! !
+	length := aFloat ! !
 
 !DrGArcItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:27:45'!
 morphClass 
@@ -13216,7 +13216,7 @@ origin
 
 !DrGArcItem methodsFor: 'accessing'!
 origin: aFloat
-	origin _ aFloat ! !
+	origin := aFloat ! !
 
 !DrGArcItem methodsFor: 'accessing'!
 radius
@@ -13224,7 +13224,7 @@ radius
 
 !DrGArcItem methodsFor: 'accessing'!
 radius: aFloat
-	radius _ aFloat! !
+	radius := aFloat! !
 
 !DrGArcItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:22:39'!
 isArcItem
@@ -13242,39 +13242,39 @@ isGeometricItem
 update
 	| direction1 direction2 a b c ab |
 	self doParentsExist ifTrue: 
-		[a _ parents first point.
-		b _ parents second point.
-		c _ parents third point.
-		(a = b or: [c = b]) ifTrue: [^exist _ false].
-		direction1 _ (DrGDirectionItem new)
+		[a := parents first point.
+		b := parents second point.
+		c := parents third point.
+		(a = b or: [c = b]) ifTrue: [^exist := false].
+		direction1 := (DrGDirectionItem new)
 					origin: (a + b) / 2;
 					direction: (a - b) normal.
-		direction2 _ (DrGDirectionItem new)
+		direction2 := (DrGDirectionItem new)
 					origin: (b + c) / 2;
 					direction: (b - c) normal.
-		center _ direction1 intersectionWithDirection: direction2.
+		center := direction1 intersectionWithDirection: direction2.
 		center ifNil: [^self updateAsSegmentOrRay].
-		a _ a - center.
-		b _ b - center.
-		c _ c - center.
-		radius _ a r.
-		origin _ a y asFloat arcTan: a x.
-		ab _ (b y asFloat arcTan: b x) - origin.
-		length _ (c y asFloat arcTan: c x) - origin.
-		length = 0 ifTrue: [^exist _ false].
+		a := a - center.
+		b := b - center.
+		c := c - center.
+		radius := a r.
+		origin := a y asFloat arcTan: a x.
+		ab := (b y asFloat arcTan: b x) - origin.
+		length := (c y asFloat arcTan: c x) - origin.
+		length = 0 ifTrue: [^exist := false].
 		(length < 0 and: [ab < length or: [ab > 0]])  ifTrue: 
-			[^length _ length + Float twoPi].
+			[^length := length + Float twoPi].
 		(length > 0 and: [ab > length or: [ab < 0]]) 	ifTrue: 
-			[length _ length - Float twoPi]].! !
+			[length := length - Float twoPi]].! !
 
 !DrGArc3ptsItem methodsFor: 'updating'!
 updateAsSegmentOrRay
 "the three point are aligned, the arc is a segment"
-	exist _ false.! !
+	exist := false.! !
 
 !DrGArc3ptsItem methodsFor: 'as yet unclassified'!
 rehash
- ^ hash _ ((parents hash bitXor: parents reverse hash) bitXor: self nodeType hash) bitXor: self basicType hash! !
+ ^ hash := ((parents hash bitXor: parents reverse hash) bitXor: self nodeType hash) bitXor: self basicType hash! !
 
 !DrGArc3ptsItem methodsFor: 'xml writing'!
 nodeType
@@ -13289,16 +13289,16 @@ parentsEqual: aMathItem
 update
 | u v |
 	self doParentsExist ifTrue: 
-		[center _ parents first point.
-		u _ parents second point - center.
-		v _ parents third point - center.
+		[center := parents first point.
+		u := parents second point - center.
+		v := parents third point - center.
 		(u = (0@0) or: [v = (0@0)]) 
-			ifTrue: [exist _ false]
+			ifTrue: [exist := false]
 			ifFalse: 
-				[radius _ u r.
-				origin _ u y asFloat arcTan: u x.
-				length _ (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
-				length < 0 ifTrue: [ length _ length + Float twoPi]]]! !
+				[radius := u r.
+				origin := u y asFloat arcTan: u x.
+				length := (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
+				length < 0 ifTrue: [ length := length + Float twoPi]]]! !
 
 !DrGArcCenterAngleItem methodsFor: 'xml writing'!
 nodeType
@@ -13316,13 +13316,13 @@ moveParent: aPoint
 update
 |arcItem centerHomothety|
 	self doParentsExist ifTrue:
-		[arcItem _ parents first.
-		centerHomothety _ parents second point.
-		center _ centerHomothety +
+		[arcItem := parents first.
+		centerHomothety := parents second point.
+		center := centerHomothety +
 			(parents third valueItem * (arcItem center - centerHomothety)).
-		radius _ arcItem radius * parents third valueItem abs.
-		origin _ arcItem origin + (parents third valueItem sign -1 * Float halfPi).
-		length _ arcItem length].! !
+		radius := arcItem radius * parents third valueItem abs.
+		origin := arcItem origin + (parents third valueItem sign -1 * Float halfPi).
+		length := arcItem length].! !
 
 !DrGArcReflexionItem methodsFor: 'xml writing'!
 nodeType
@@ -13336,17 +13336,17 @@ moveParent: aPoint
 update
 |pointA|
 	self doParentsExist ifTrue:
-		[origin _ parents first origin.
-		radius _ parents first radius.
-		center _ parents first center.
-		length _ parents first length negated.
-		pointA _ center + (radius * (origin cos @ origin sin)).
-		pointA _ pointA reflexionBy: parents second origin 
+		[origin := parents first origin.
+		radius := parents first radius.
+		center := parents first center.
+		length := parents first length negated.
+		pointA := center + (radius * (origin cos @ origin sin)).
+		pointA := pointA reflexionBy: parents second origin 
 						direction: parents second direction.
-		center _ center reflexionBy: parents second origin 
+		center := center reflexionBy: parents second origin 
 						direction: parents second direction.
-		pointA _ pointA - center.
-		origin _ pointA y asFloat arcTan: pointA x].
+		pointA := pointA - center.
+		origin := pointA y asFloat arcTan: pointA x].
 ! !
 
 !DrGArcRotationItem methodsFor: 'xml writing'!
@@ -13361,13 +13361,13 @@ moveParent: aPoint
 update
 |arcItem|
 	self doParentsExist ifTrue:
-		[arcItem _ parents first.
-		center _ arcItem center
+		[arcItem := parents first.
+		center := arcItem center
 			rotateBy: parents third valueItem negated 
 			about: parents second point.
-		origin _ arcItem origin + parents third valueItem.
-		length _ arcItem length.
-		radius _ arcItem radius].
+		origin := arcItem origin + parents third valueItem.
+		length := arcItem length.
+		radius := arcItem radius].
 ! !
 
 !DrGArcSymmetryItem methodsFor: 'updating'!
@@ -13378,11 +13378,11 @@ moveParent: aPoint
 update
 	self doParentsExist 
 		ifTrue: 
-			[origin _ parents first origin + Float pi.
-			origin > Float pi ifTrue: [origin _ origin - Float twoPi].
-			radius _ parents first radius.
-			center _ 2 * parents second point - parents first center.
-			length _ parents first length].
+			[origin := parents first origin + Float pi.
+			origin > Float pi ifTrue: [origin := origin - Float twoPi].
+			radius := parents first radius.
+			center := 2 * parents second point - parents first center.
+			length := parents first length].
 ! !
 
 !DrGArcSymmetryItem methodsFor: 'xml writing'!
@@ -13400,10 +13400,10 @@ moveParent: aPoint
 !DrGArcTranslationItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[origin _ parents first origin.
-		radius _ parents first radius.
-		center _ parents first center + parents second direction.
-		length _ parents first length].
+		[origin := parents first origin.
+		radius := parents first radius.
+		center := parents first center + parents second direction.
+		length := parents first length].
 ! !
 
 !DrGBitmapItem methodsFor: 'printing'!
@@ -13425,7 +13425,7 @@ isPropertyEditable
 
 !DrGBitmapItem methodsFor: 'updating'!
 move: aPoint
-	self isLocked ifFalse: [position _ position + aPoint]! !
+	self isLocked ifFalse: [position := position + aPoint]! !
 
 !DrGBitmapItem methodsFor: 'updating'!
 moveParent: aPoint
@@ -13448,10 +13448,10 @@ writeAsXmlPositionTo: aNode
 !DrGBitmapItem methodsFor: 'xml writing' stamp: 'hlsf 4/21/2020 21:33:52'!
 writeAsXmlTo: aNode
 	|node stream |
-	stream _ ByteArray new writeStream.
+	stream := ByteArray new writeStream.
 	PNGReadWriter putForm: data asForm onStream: stream.
 	DrGeoSystem stopSpinner.
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	self writeAsXmlPositionTo: node.
 	node
 		addElement: ((XMLElement named: #insertAtScale) 
@@ -13471,7 +13471,7 @@ writeAsXmlTo: aNode
 
 !DrGBitmapItem methodsFor: 'comparing'!
 rehash
-	^ hash _ data hash bitXor: position hash! !
+	^ hash := data hash bitXor: position hash! !
 
 !DrGBitmapItem methodsFor: 'accessing'!
 basicType
@@ -13483,7 +13483,7 @@ data
 
 !DrGBitmapItem methodsFor: 'accessing'!
 data: anAthensPaint
-	data _ anAthensPaint ! !
+	data := anAthensPaint ! !
 
 !DrGBitmapItem methodsFor: 'accessing'!
 descriptiveName 
@@ -13500,15 +13500,15 @@ insertAtScale
 
 !DrGBitmapItem methodsFor: 'accessing'!
 insertAtScale: aScale
-	canvasScaleAtInsertion  _ aScale ! !
+	canvasScaleAtInsertion  := aScale ! !
 
 !DrGBitmapItem methodsFor: 'accessing'!
 isLocked
-	^ locked ifNil: [locked _ false]! !
+	^ locked ifNil: [locked := false]! !
 
 !DrGBitmapItem methodsFor: 'accessing'!
 locked: aBoolean
-	locked _ aBoolean ! !
+	locked := aBoolean ! !
 
 !DrGBitmapItem methodsFor: 'accessing'!
 magnifiedScale
@@ -13521,7 +13521,7 @@ magnifyBy
 
 !DrGBitmapItem methodsFor: 'accessing'!
 magnifyBy: aFloat
-	magnifyBy _ aFloat ! !
+	magnifyBy := aFloat ! !
 
 !DrGBitmapItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:27:45'!
 morphClass
@@ -13529,7 +13529,7 @@ morphClass
 
 !DrGBitmapItem methodsFor: 'accessing'!
 parents: aCollection
-	parents _ nil.
+	parents := nil.
 ! !
 
 !DrGBitmapItem methodsFor: 'accessing'!
@@ -13538,7 +13538,7 @@ position
 
 !DrGBitmapItem methodsFor: 'accessing'!
 position: aPoint 
-	position _ aPoint.! !
+	position := aPoint.! !
 
 !DrGBitmapItem methodsFor: 'accessing'!
 topCenter
@@ -13548,7 +13548,7 @@ topCenter
 !DrGBitmapItem methodsFor: 'initialize-release'!
 initialize
 	super initialize.
-	magnifyBy _ 1.! !
+	magnifyBy := 1.! !
 
 !DrGBitmapItem methodsFor: 'initialize-release'!
 initialize: theParents
@@ -13586,9 +13586,9 @@ isCloneable
 !DrGCircleItem methodsFor: 'computing'!
 clone
 	|pointA pointB clone|
-	pointA _ DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
-	pointB _ DrGPointFreeItem newWith: {(self pointAt: 0) + (0.2@0.2)}.
-	clone _ DrGCircle2ptsItem newWith: {pointA . pointB}.
+	pointA := DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
+	pointB := DrGPointFreeItem newWith: {(self pointAt: 0) + (0.2@0.2)}.
+	clone := DrGCircle2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
 !DrGCircleItem methodsFor: 'computing'!
@@ -13598,7 +13598,7 @@ intersectionWith: aCurveItem flag: aFlag
 		ifTrue: [^self intersectionWithDirection: aCurveItem  flag: aFlag].
 	(aCurveItem isSegmentItem or: [aCurveItem isRayItem])
 		ifTrue:
-			[aPoint _ self intersectionWithDirection: aCurveItem  flag: aFlag.
+			[aPoint := self intersectionWithDirection: aCurveItem  flag: aFlag.
 			aPoint ifNil: [^nil].
 			(aCurveItem contains: aPoint)
 				ifTrue: [^aPoint]
@@ -13611,12 +13611,12 @@ intersectionWith: aCurveItem flag: aFlag
 !DrGCircleItem methodsFor: 'computing'!
 intersectionWithCircle: aCircleItem flag: aFlag 
 	| directionItem aVector aRadius x d |
-	directionItem _ DrGDirectionItem new.
-	aVector _ aCircleItem center - center.
-	aRadius _ aCircleItem radius.
-	d _ aVector dotProduct: aVector.
+	directionItem := DrGDirectionItem new.
+	aVector := aCircleItem center - center.
+	aRadius := aCircleItem radius.
+	d := aVector dotProduct: aVector.
 	d = 0 ifTrue: [ ^ nil ].
-	x _ (d + radius squared - aRadius squared) / (2 * d).
+	x := (d + radius squared - aRadius squared) / (2 * d).
 	directionItem direction: aVector normal.
 	directionItem origin: x * aVector + center.
 	^self intersectionWithDirection: directionItem flag: aFlag! !
@@ -13624,21 +13624,21 @@ intersectionWithCircle: aCircleItem flag: aFlag
 !DrGCircleItem methodsFor: 'computing'!
 intersectionWithDirection: aDirectionItem flag: aFlag
 |a b c d k vector|
-	vector _ aDirectionItem direction.
-	a _ vector dotProduct: vector.
-	b _ vector dotProduct: (aDirectionItem origin - self center).
-	c _ (aDirectionItem origin squaredDistanceTo: self center) - self radius squared.
-	d _ b squared - (a * c).
+	vector := aDirectionItem direction.
+	a := vector dotProduct: vector.
+	b := vector dotProduct: (aDirectionItem origin - self center).
+	c := (aDirectionItem origin squaredDistanceTo: self center) - self radius squared.
+	d := b squared - (a * c).
 	(d < 0 or: [a = 0]) ifTrue: [^ nil].
-	k _ (b negated + (aFlag * d sqrt)) / a.
+	k := (b negated + (aFlag * d sqrt)) / a.
 	^ aDirectionItem origin + (k * vector)! !
 
 !DrGCircleItem methodsFor: 'accessing'!
 abscissaOf: aPoint 
 	| angle vector |
-	vector _ aPoint - self center.
-	angle _ vector y arcTan: vector x.
-	angle < 0 ifTrue: [angle _ angle + (2 * Float pi)].
+	vector := aPoint - self center.
+	angle := vector y arcTan: vector x.
+	angle < 0 ifTrue: [angle := angle + (2 * Float pi)].
 	^angle * 0.5 * DrGDirectionItem invPi! !
 
 !DrGCircleItem methodsFor: 'accessing'!
@@ -13651,12 +13651,12 @@ center
 
 !DrGCircleItem methodsFor: 'accessing'!
 center: aPoint
-	center _ aPoint ! !
+	center := aPoint ! !
 
 !DrGCircleItem methodsFor: 'accessing'!
 closestPointTo: aPoint
 | v | 
-	[v _ (aPoint - self center) normalized] on: ZeroDivide do: [ v _ 0 @ 0 ].
+	[v := (aPoint - self center) normalized] on: ZeroDivide do: [ v := 0 @ 0 ].
 	^self center + (self radius * v)! !
 
 !DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:27:45'!
@@ -13666,7 +13666,7 @@ morphClass
 !DrGCircleItem methodsFor: 'accessing'!
 pointAt: anAbscissa
 	|angle|
-	angle _ 2 * Float pi * anAbscissa.
+	angle := 2 * Float pi * anAbscissa.
 	^ (Point x: angle cos y: angle sin) * self radius + self center.! !
 
 !DrGCircleItem methodsFor: 'accessing'!
@@ -13675,7 +13675,7 @@ radius
 
 !DrGCircleItem methodsFor: 'accessing'!
 radius: aFlaot
-	radius _ aFlaot ! !
+	radius := aFlaot ! !
 
 !DrGCircleItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:24:23'!
 isCircleItem
@@ -13696,8 +13696,8 @@ nodeType
 !DrGCircle2ptsItem methodsFor: 'updating'!
 update
 	self doParentsExist
-		ifTrue: [center _ parents first point.
-					radius _ center dist: parents second point].! !
+		ifTrue: [center := parents first point.
+					radius := center dist: parents second point].! !
 
 !DrGCircleHomothetyItem methodsFor: 'xml writing'!
 nodeType
@@ -13711,17 +13711,17 @@ moveParent: aPoint
 update
 |centerHomothety|
 	self doParentsExist ifTrue:
-		[centerHomothety _ parents second point.
-		radius _ parents first radius * parents third valueItem abs.
-		center _ centerHomothety +
+		[centerHomothety := parents second point.
+		radius := parents first radius * parents third valueItem abs.
+		center := centerHomothety +
 			(parents third valueItem * (parents first center - centerHomothety))].! !
 
 !DrGCircleRadiusItem methodsFor: 'computing'!
 clone
 	|pointA clone radiusItem |
-	pointA _ DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
-	radiusItem _ parents second.
-	clone _ DrGCircleRadiusItem newWith: {pointA . radiusItem}.
+	pointA := DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
+	radiusItem := parents second.
+	clone := DrGCircleRadiusItem newWith: {pointA . radiusItem}.
 	^ {pointA . clone}! !
 
 !DrGCircleRadiusItem methodsFor: 'updating'!
@@ -13731,15 +13731,15 @@ moveParent: aPoint
 			noneSatisfy: [:item | item isValueItem or: [item isSegmentItem]])
 		ifTrue: [^ super moveParent: aPoint].
 	"we just want to move the center point, not the radius value"
-	thePoint _ parents first.
+	thePoint := parents first.
 	thePoint moveEvent: aPoint.
 	^ true! !
 
 !DrGCircleRadiusItem methodsFor: 'updating'!
 update
 	self doParentsExist
-		ifTrue: [center _ parents first point.
-			radius _ parents second valueItem abs].! !
+		ifTrue: [center := parents first point.
+			radius := parents second valueItem abs].! !
 
 !DrGCircleRadiusItem methodsFor: 'xml writing'!
 nodeType
@@ -13748,9 +13748,9 @@ nodeType
 !DrGCircleSegmentItem methodsFor: 'computing'!
 clone
 	|pointA clone segmentItem |
-	pointA _ DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
-	segmentItem _ parents second.
-	clone _ DrGCircleSegmentItem newWith: {pointA . segmentItem}.
+	pointA := DrGPointFreeItem newWith: {self center + (0.2@0.2)}.
+	segmentItem := parents second.
+	clone := DrGCircleSegmentItem newWith: {pointA . segmentItem}.
 	^ {pointA . clone}! !
 
 !DrGCircleSegmentItem methodsFor: 'xml writing'!
@@ -13760,8 +13760,8 @@ nodeType
 !DrGCircleSegmentItem methodsFor: 'updating'!
 update
 	self doParentsExist
-		ifTrue: [center _ parents first point.
-			radius _ parents second direction r]! !
+		ifTrue: [center := parents first point.
+			radius := parents second direction r]! !
 
 !DrGCircleReflexionItem methodsFor: 'xml writing'!
 nodeType
@@ -13787,8 +13787,8 @@ moveParent: aPoint
 !DrGCircleRotationItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[radius _ parents first radius.
-		center _ parents first center
+		[radius := parents first radius.
+		center := parents first center
 			rotateBy: parents third valueItem negated 
 			about: parents second point].
 ! !
@@ -13848,7 +13848,7 @@ subItems
 
 !DrGCompositeItem methodsFor: 'accessing'!
 subItems: theSubItems
-	subItems _ theSubItems ! !
+	subItems := theSubItems ! !
 
 !DrGCompositeItem methodsFor: 'updating'!
 move: aPoint
@@ -13890,10 +13890,10 @@ printOn: aStream
 homothetyUpdate
 |center|
 	self doParentsExist ifTrue:
-		[center _ parents second point.
-		origin _ center +
+		[center := parents second point.
+		origin := center +
 			(parents third valueItem * (parents first origin - center)).
-		vector _ parents first direction * parents third valueItem].! !
+		vector := parents first direction * parents third valueItem].! !
 
 !DrGDirectionItem methodsFor: 'updating'!
 reflexionUpdate
@@ -13907,10 +13907,10 @@ reflexionUpdate
 !DrGDirectionItem methodsFor: 'updating'!
 rotationUpdate
 	self doParentsExist ifTrue:
-		[origin _ parents first origin
+		[origin := parents first origin
 			rotateBy: parents third valueItem negated
 			about: parents second point.
-		vector _ parents first direction 
+		vector := parents first direction 
 			rotateVector: parents third valueItem].! !
 
 !DrGDirectionItem methodsFor: 'updating'!
@@ -13931,7 +13931,7 @@ update
 		["default behavior for segment, line and ray defined by 2 points"
 		self origin: (parents at: 1) point.
 		self direction: (parents at: 2) point - (self origin).
-		self direction =( 0@0) ifTrue: [exist _ false]].! !
+		self direction =( 0@0) ifTrue: [exist := false]].! !
 
 !DrGDirectionItem methodsFor: 'testing'!
 isCloneable
@@ -13952,7 +13952,7 @@ direction
 
 !DrGDirectionItem methodsFor: 'accessing'!
 direction: aDirection
-	vector _ aDirection ! !
+	vector := aDirection ! !
 
 !DrGDirectionItem methodsFor: 'accessing'!
 normal
@@ -13964,7 +13964,7 @@ origin
 
 !DrGDirectionItem methodsFor: 'accessing'!
 origin: anOrigin
-	origin _ anOrigin ! !
+	origin := anOrigin ! !
 
 !DrGDirectionItem methodsFor: 'computing' stamp: 'hlsf 3/23/2023 20:57:58'!
 intersectionWithDirection: aDirectionItem
@@ -13998,8 +13998,8 @@ invPi
 
 !DrGDirectionItem class methodsFor: 'class initialization'!
 initialize
-	InvPi _ 0.31830988618379067154.
-	Inv2Pi _ 0.636619772367581.! !
+	InvPi := 0.31830988618379067154.
+	Inv2Pi := 0.636619772367581.! !
 
 !DrGLineItem methodsFor: 'printing'!
 printOn: aStream 
@@ -14008,22 +14008,22 @@ printOn: aStream
 !DrGLineItem methodsFor: 'computing'!
 abscissaOf: aPoint 
 	| v | 
-	[ v _ vector normalized ] on: ZeroDivide do: [ v _ 0 @ 0 ].
+	[ v := vector normalized ] on: ZeroDivide do: [ v := 0 @ 0 ].
 	^(aPoint - origin dotProduct: v) arcTan 
 		* DrGDirectionItem invPi + 0.5! !
 
 !DrGLineItem methodsFor: 'computing'!
 clone
 	|pointA pointB clone|
-	pointA _ DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
-	pointB _ DrGPointFreeItem newWith: {self origin + self direction + (0.2@0.2)}.
-	clone _ DrGLine2ptsItem newWith: {pointA . pointB}.
+	pointA := DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
+	pointB := DrGPointFreeItem newWith: {self origin + self direction + (0.2@0.2)}.
+	clone := DrGLine2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
 !DrGLineItem methodsFor: 'computing'!
 closestPointTo: aPoint
 	|unitVector|
-	[ unitVector _ vector normalized ] on: ZeroDivide do: [ unitVector _ 0 @ 0 ].
+	[ unitVector := vector normalized ] on: ZeroDivide do: [ unitVector := 0 @ 0 ].
 	^origin + (((aPoint - origin) dotProduct: unitVector) * unitVector)! !
 
 !DrGLineItem methodsFor: 'computing'!
@@ -14044,20 +14044,20 @@ intersectionWith: aCurveItem flag: aFlag
 pointAt:	anAbscissa
 	|point abscissa v |
 	"In the interval [-0.5 ; 0.5]"
-	abscissa _ anAbscissa - 0.5.
+	abscissa := anAbscissa - 0.5.
 	(abscissa = 0.5 or: [abscissa = -0.5]) 
 		ifTrue:
-			[point _ abscissa * vector.
+			[point := abscissa * vector.
 			point x > 0 
-				ifTrue: [point _ Float infinity @ point y] 
-				ifFalse: [point _ 0 - Float infinity @ point y].
+				ifTrue: [point := Float infinity @ point y] 
+				ifFalse: [point := 0 - Float infinity @ point y].
 			point y > 0
-				ifTrue: [point _ point x @ Float infinity] 
-				ifFalse: [point _ point x @ (0 - Float infinity)]]
+				ifTrue: [point := point x @ Float infinity] 
+				ifFalse: [point := point x @ (0 - Float infinity)]]
 		ifFalse:
-			[abscissa _ abscissa * Float pi.
-			[ v _ vector normalized ] on: ZeroDivide do: [ v _ 0 @ 0 ].
-			point _ origin + (abscissa tan * v)].
+			[abscissa := abscissa * Float pi.
+			[ v := vector normalized ] on: ZeroDivide do: [ v := 0 @ 0 ].
+			point := origin + (abscissa tan * v)].
 	^point! !
 
 !DrGLineItem methodsFor: 'accessing'!
@@ -14090,11 +14090,11 @@ update
 	self doParentsExist ifTrue: [
 		| v1 v2 |
 		self origin: parents second point.
-		((parents first point = origin) or: [parents third point = origin]) ifTrue: [^ exist _ false].
-		[ v1 _ (parents first point - origin) normalized ] on: ZeroDivide do: [ v1 _ 0 @ 0 ].
-		[ v2 _ (parents third point - origin) normalized ] on: ZeroDivide do: [ v2 _ 0 @ 0 ].
+		((parents first point = origin) or: [parents third point = origin]) ifTrue: [^ exist := false].
+		[ v1 := (parents first point - origin) normalized ] on: ZeroDivide do: [ v1 := 0 @ 0 ].
+		[ v2 := (parents third point - origin) normalized ] on: ZeroDivide do: [ v2 := 0 @ 0 ].
 		self direction:  v1 + v2.
-		self direction = (0@0) ifTrue: [exist _ false]]! !
+		self direction = (0@0) ifTrue: [exist := false]]! !
 
 !DrGAngleBisector3ptsItem methodsFor: 'private'!
 adaptiveDescriptiveName
@@ -14112,12 +14112,12 @@ adaptiveDescriptiveName
 update
 	self doParentsExist ifTrue: [
 		| angle v1 v2 |
-		angle _ parents first.
+		angle := parents first.
 		self origin: angle summit point.
-		[ v1 _ (angle side1 point - origin) normalized ] on: ZeroDivide do: [ v1 _ 0 @ 0 ].
-		[ v2 _ (angle side2 point - origin) normalized ] on: ZeroDivide do: [ v2 _ 0 @ 0 ].
+		[ v1 := (angle side1 point - origin) normalized ] on: ZeroDivide do: [ v1 := 0 @ 0 ].
+		[ v2 := (angle side2 point - origin) normalized ] on: ZeroDivide do: [ v2 := 0 @ 0 ].
 		self direction: v1+ v2.
-		self direction = (0@0) ifTrue: [exist _ false]]! !
+		self direction = (0@0) ifTrue: [exist := false]]! !
 
 !DrGLineAngleBisectorItem methodsFor: 'xml writing'!
 nodeType 
@@ -14141,7 +14141,7 @@ nodeType
 
 !DrGLineParallelItem methodsFor: 'updating'!
 move: aPoint
-	parents size = 1 ifTrue: [origin _ origin + aPoint].
+	parents size = 1 ifTrue: [origin := origin + aPoint].
 ! !
 
 !DrGLineParallelItem methodsFor: 'updating'!
@@ -14244,7 +14244,7 @@ equalOtherNodeType: aMathItem
 !DrGPerpendicularBisectorItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue: [ |segment |
-		segment _ parents first.
+		segment := parents first.
 		self direction: segment normal.
 		self origin: segment middle]! !
 
@@ -14288,7 +14288,7 @@ update
 			ifFalse: [
 				self direction: (parents first point - parents second point) normal.
 				self origin: parents first point + parents second point / 2]
-			ifTrue: [exist _ false]
+			ifTrue: [exist := false]
 		]! !
 
 !DrGLinePerpendicularBisector2ptsItem methodsFor: 'xml writing'!
@@ -14320,24 +14320,24 @@ morphClass
 !DrGRayItem methodsFor: 'computing'!
 abscissaOf: aPoint 
 	| v |
-	[ v _ vector normalized ] on: ZeroDivide do: [ v _ 0 @ 0 ].
+	[ v := vector normalized ] on: ZeroDivide do: [ v := 0 @ 0 ].
 	^(aPoint - origin dotProduct: v) arcTan 
 		* DrGDirectionItem inv2Pi! !
 
 !DrGRayItem methodsFor: 'computing'!
 clone
 	|pointA pointB clone|
-	pointA _ DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
-	pointB _ DrGPointFreeItem newWith: {self origin + self direction + (0.2@0.2)}.
-	clone _ DrGRay2ptsItem newWith: {pointA . pointB}.
+	pointA := DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
+	pointB := DrGPointFreeItem newWith: {self origin + self direction + (0.2@0.2)}.
+	clone := DrGRay2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
 !DrGRayItem methodsFor: 'computing'!
 closestPointTo: aPoint
 	|unitVector abscissa|
-	[ unitVector _ vector normalized ] on: ZeroDivide do: [ unitVector _ 0 @ 0 ].	
-	abscissa _ aPoint - origin dotProduct: unitVector.
-	abscissa < 0 ifTrue: [abscissa _ 0].
+	[ unitVector := vector normalized ] on: ZeroDivide do: [ unitVector := 0 @ 0 ].	
+	abscissa := aPoint - origin dotProduct: unitVector.
+	abscissa < 0 ifTrue: [abscissa := 0].
 	^origin + (abscissa * unitVector)! !
 
 !DrGRayItem methodsFor: 'computing'!
@@ -14345,13 +14345,13 @@ intersectionWith: aCurveItem flag: aFlag
 |aPoint|
 	aCurveItem isLineItem 
 		ifTrue: 
-			[aPoint _ self intersectionWithDirection: aCurveItem.
+			[aPoint := self intersectionWithDirection: aCurveItem.
 			(self contains: aPoint)
 				ifTrue: [^aPoint]
 				ifFalse: [^nil]].
 	(aCurveItem isSegmentItem or: [aCurveItem isRayItem])
 		ifTrue:
-			[aPoint _ self intersectionWithDirection: aCurveItem.
+			[aPoint := self intersectionWithDirection: aCurveItem.
 			((self contains: aPoint) and: [aCurveItem contains: aPoint])
 				ifTrue: [^aPoint]
 				ifFalse: [^nil]].
@@ -14366,21 +14366,21 @@ pointAt: anAbscissa
 	anAbscissa = 1 
 		ifTrue:
 			[|infX infY|
-			point _ vector.
+			point := vector.
 			point x > 0 
-				ifTrue: [infX _ Float infinity] 
-				ifFalse: [infX _ 0 - Float infinity].
+				ifTrue: [infX := Float infinity] 
+				ifFalse: [infX := 0 - Float infinity].
 			point y > 0
-				ifTrue: [infY _	Float infinity] 
-				ifFalse: [infY _ 0 - Float infinity].
-			point _ infX@infY]
+				ifTrue: [infY :=	Float infinity] 
+				ifFalse: [infY := 0 - Float infinity].
+			point := infX@infY]
 		ifFalse:
 			[anAbscissa = 0
-				ifTrue: [point _ origin]
+				ifTrue: [point := origin]
 				ifFalse:
 					[| v |
-					[ v _ vector normalized ] on: ZeroDivide do: [ v _ 0 @ 0 ].
-					point _ origin + ((anAbscissa * Float halfPi) tan * v)]].
+					[ v := vector normalized ] on: ZeroDivide do: [ v := 0 @ 0 ].
+					point := origin + ((anAbscissa * Float halfPi) tan * v)]].
 	^point
 ! !
 
@@ -14462,7 +14462,7 @@ printOn: aStream
 contains: aPoint
 |anAbscissa|
 	^ ((vector crossProduct: (aPoint - origin)) closeTo: 0) 
-		and: [(anAbscissa _ self abscissaOf: aPoint) >= 0
+		and: [(anAbscissa := self abscissaOf: aPoint) >= 0
 			and: [anAbscissa <= 1]]! !
 
 !DrGSegmentItem methodsFor: 'accessing'!
@@ -14496,17 +14496,17 @@ abscissaOf: aPoint
 !DrGSegmentItem methodsFor: 'computing'!
 clone
 	|pointA pointB clone|
-	pointA _ DrGPointFreeItem newWith: {self extremity1 + (0.2@0.2)}.
-	pointB _ DrGPointFreeItem newWith: {self extremity2 + (0.2@0.2)}.
-	clone _ DrGSegment2ptsItem newWith: {pointA . pointB}.
+	pointA := DrGPointFreeItem newWith: {self extremity1 + (0.2@0.2)}.
+	pointB := DrGPointFreeItem newWith: {self extremity2 + (0.2@0.2)}.
+	clone := DrGSegment2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
 !DrGSegmentItem methodsFor: 'computing' stamp: 'hlsf 6/20/2021 11:05:29'!
 closestPointTo: aPoint
 	|abscissa squareNorm|
-	abscissa _ (aPoint - origin) dotProduct: vector.
-	squareNorm _ vector dotProduct: vector.
-	abscissa _ abscissa min: squareNorm max: 0.
+	abscissa := (aPoint - origin) dotProduct: vector.
+	squareNorm := vector dotProduct: vector.
+	abscissa := abscissa min: squareNorm max: 0.
 	^ [origin + (abscissa * vector / squareNorm asFloat)] on: ZeroDivide do: [origin]! !
 
 !DrGSegmentItem methodsFor: 'computing'!
@@ -14514,14 +14514,14 @@ intersectionWith: aCurveItem flag: aFlag
 |aPoint|
 	aCurveItem isLineItem
 		ifTrue:
-			[aPoint _ self intersectionWithDirection: aCurveItem.
+			[aPoint := self intersectionWithDirection: aCurveItem.
 			aPoint ifNil: [^nil].
 			(self contains: aPoint)
 				ifTrue: [^aPoint]
 				ifFalse: [^nil]].
 	aCurveItem isSegmentItem
 		ifTrue:
-			[aPoint _ self intersectionWithDirection: aCurveItem.
+			[aPoint := self intersectionWithDirection: aCurveItem.
 			aPoint ifNil: [^nil].
 			((self contains: aPoint) and: [aCurveItem contains: aPoint])
 				ifTrue: [^aPoint]
@@ -14556,7 +14556,7 @@ parentsEqual: aMathItem
 
 !DrGSegment2ptsItem methodsFor: 'comparing'!
 rehash
-	^ hash _ ((parents sorted: [:ptA :ptB | ptA point <= ptB point]) hash bitXor: self nodeType hash) bitXor: self basicType hash! !
+	^ hash := ((parents sorted: [:ptA :ptB | ptA point <= ptB point]) hash bitXor: self nodeType hash) bitXor: self basicType hash! !
 
 !DrGSegment2ptsItem methodsFor: 'xml writing'!
 nodeType
@@ -14630,7 +14630,7 @@ printOn: aStream
 !DrGVectorItem methodsFor: 'xml writing'!
 writeAsXmlTo: aNode
 	|node|
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	node attributeAt: #origin put: origin asString.
 	^ node! !
 
@@ -14641,9 +14641,9 @@ adaptiveDescriptiveName
 !DrGVectorItem methodsFor: 'computing'!
 clone
 	|pointA pointB clone|
-	pointA _ DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
-	pointB _ DrGPointFreeItem newWith: {self origin + self direction + (0.2@0.2)}.
-	clone _ DrGVector2ptsItem newWith: {pointA . pointB}.
+	pointA := DrGPointFreeItem newWith: {self origin + (0.2@0.2)}.
+	pointB := DrGPointFreeItem newWith: {self origin + self direction + (0.2@0.2)}.
+	clone := DrGVector2ptsItem newWith: {pointA . pointB}.
 	^ {pointA . pointB . clone}! !
 
 !DrGVectorItem methodsFor: 'accessing'!
@@ -14656,7 +14656,7 @@ morphClass
 
 !DrGVectorItem methodsFor: 'updating'!
 move: aPoint
-	origin _ origin + aPoint.
+	origin := origin + aPoint.
 ! !
 
 !DrGVectorItem methodsFor: 'updating'!
@@ -14703,7 +14703,7 @@ moveParent: aPoint
 !DrGVectorHomothetyItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[vector _ parents first direction * parents third valueItem].! !
+		[vector := parents first direction * parents third valueItem].! !
 
 !DrGVectorHomothetyItem methodsFor: 'xml writing'!
 nodeType
@@ -14736,7 +14736,7 @@ moveParent: aPoint
 !DrGVectorRotationItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[vector _ parents first direction 
+		[vector := parents first direction 
 			rotateVector: parents third valueItem].
 ! !
 
@@ -14792,12 +14792,12 @@ Indeed, a Locus is sampled from its view, because it depends on the visible port
 !DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 6/13/2021 11:26:20'!
 abscissaOf: aPoint 
 	| i distance |
-	distance _ self squareNorm: aPoint - (p at: 1).
-	i _ 1.
+	distance := self squareNorm: aPoint - (p at: 1).
+	i := 1.
 	2 to: samplesQty do: [:n | 
 		(self squareNorm: (p at: n) - aPoint)	< distance ifTrue: 
-			[distance _ self squareNorm: aPoint - (p at: n).
-			i _ n]].
+			[distance := self squareNorm: aPoint - (p at: n).
+			i := n]].
 	^ (i / samplesQty) asFloat! !
 
 !DrGLocus2ptsItem methodsFor: 'accessing'!
@@ -14807,13 +14807,13 @@ basicType
 !DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 6/13/2021 11:26:20'!
 closestPointTo: aPoint 
 	| distance d m |
-	m _ p at: 1.
-	distance _ self squareNorm: aPoint - m.
+	m := p at: 1.
+	distance := self squareNorm: aPoint - m.
 	2 to: samplesQty do: [:n | 
-		d _ self squareNorm: (p at: n) - aPoint.
+		d := self squareNorm: (p at: n) - aPoint.
 		d < distance ifTrue: 
-			[m _ p at: n.
-			distance _ d]].
+			[m := p at: n.
+			distance := d]].
 	^ m! !
 
 !DrGLocus2ptsItem methodsFor: 'accessing'!
@@ -14832,8 +14832,8 @@ morphClass
 pointAt: anAbscissa 
 	| m |
 	samplesQty ifNil: [^0@0].
-	m _ (anAbscissa * samplesQty) rounded.
-	m = 0 ifTrue: [m _ 1].
+	m := (anAbscissa * samplesQty) rounded.
+	m = 0 ifTrue: [m := 1].
 	^ p at: m! !
 
 !DrGLocus2ptsItem methodsFor: 'accessing'!
@@ -14842,7 +14842,7 @@ points
 
 !DrGLocus2ptsItem methodsFor: 'accessing'!
 points: aCollection 
-	p _ aCollection! !
+	p := aCollection! !
 
 !DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 6/13/2021 11:26:20'!
 samplesQty
@@ -14850,7 +14850,7 @@ samplesQty
 
 !DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 6/13/2021 11:26:20'!
 samplesQty: aNumber 
-	samplesQty _ aNumber! !
+	samplesQty := aNumber! !
 
 !DrGLocus2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:30:31'!
 isCurveItem
@@ -14879,10 +14879,10 @@ nodeType
 !DrGLocusTranslationItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:32:47'!
 update
 	self doParentsExist ifTrue: [| locusPoints direction|
-		direction _ parents second direction.
-		locusPoints _ parents first points.
-		samplesQty _ parents first samplesQty.
-		p _ Array new: samplesQty.
+		direction := parents second direction.
+		locusPoints := parents first points.
+		samplesQty := parents first samplesQty.
+		p := Array new: samplesQty.
 		1 to: samplesQty do: [:i |
 			p at: i put: (locusPoints at: i) + direction]]! !
 
@@ -14910,16 +14910,16 @@ samplesQty: anInteger
 doParentsExist
 "As a locus is sampled from its view, we need to check if the sampling occured in the view.
 If not we will wait for the next round of view update"
-	^ exist _ super doParentsExist and: [parents first isSampled]! !
+	^ exist := super doParentsExist and: [parents first isSampled]! !
 
 !DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:26:20'!
 update
 	self doParentsExist ifTrue: [| locusPoints center factor|
-		center _ parents second point.
-		factor _ parents third valueItem.
-		locusPoints _ parents first points.
-		samplesQty _ parents first samplesQty.
-		p _ Array new: samplesQty.
+		center := parents second point.
+		factor := parents third valueItem.
+		locusPoints := parents first points.
+		samplesQty := parents first samplesQty.
+		p := Array new: samplesQty.
 		1 to: samplesQty do: [:i |
 			p at: i put: center + (factor * ((locusPoints at: i) - center))]]! !
 
@@ -14930,10 +14930,10 @@ nodeType
 !DrGLocusReflexionItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:26:20'!
 update
 	self doParentsExist ifTrue: [| locusPoints axe|
-		axe _ parents second.
-		locusPoints _ parents first points.
-		samplesQty _ parents first samplesQty.
-		p _ Array new: samplesQty.
+		axe := parents second.
+		locusPoints := parents first points.
+		samplesQty := parents first samplesQty.
+		p := Array new: samplesQty.
 		1 to: samplesQty do: [:i |
 			p at: i put: ((locusPoints at: i) reflexionBy: axe origin direction: axe direction)]]! !
 
@@ -14944,11 +14944,11 @@ nodeType
 !DrGLocusRotationItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:26:20'!
 update
 	self doParentsExist ifTrue: [| locusPoints center angle|
-		center _ parents second point.
-		angle _ parents third valueItem.
-		locusPoints _ parents first points.
-		samplesQty _ parents first samplesQty.
-		p _ Array new: samplesQty.
+		center := parents second point.
+		angle := parents third valueItem.
+		locusPoints := parents first points.
+		samplesQty := parents first samplesQty.
+		p := Array new: samplesQty.
 		1 to: samplesQty do: [:i |
 			p at: i put: ((locusPoints at: i) rotateBy: angle about: center)]]! !
 
@@ -14959,10 +14959,10 @@ nodeType
 !DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:26:20'!
 update
 	self doParentsExist ifTrue: [| locusPoints center|
-		center _ parents second point.
-		locusPoints _ parents first points.
-		samplesQty _ parents first samplesQty.
-		p _ Array new: samplesQty.
+		center := parents second point.
+		locusPoints := parents first points.
+		samplesQty := parents first samplesQty.
+		p := Array new: samplesQty.
 		1 to: samplesQty do: [:i |
 			p at: i put: 2 * center - (locusPoints at: i)]]! !
 
@@ -15012,7 +15012,7 @@ point
 
 !DrGPointItem methodsFor: 'accessing'!
 point: aPoint
-	point _ aPoint .! !
+	point := aPoint .! !
 
 !DrGPointItem methodsFor: 'accessing'!
 x
@@ -15062,11 +15062,11 @@ update
 | result |
 	self doParentsExist ifTrue:
 		[parents  
-			ifEmpty: [result _ [ pointBlock value ] on: Error do: [exist _ false]]
+			ifEmpty: [result := [ pointBlock value ] on: Error do: [exist := false]]
 			ifNotEmpty: [
 				parents size = 1
-				ifTrue: [result _ [ pointBlock value: parents first ] on: Error do: [exist _ false]]
-				ifFalse: [result _ [pointBlock value: parents] on: Error do: [exist _ false]]
+				ifTrue: [result := [ pointBlock value: parents first ] on: Error do: [exist := false]]
+				ifFalse: [result := [pointBlock value: parents] on: Error do: [exist := false]]
 			].
 	exist ifTrue: [ self point: result ].
 	]! !
@@ -15077,7 +15077,7 @@ update
 
 !DrGPointBlockItem methodsFor: 'comparing'!
 rehash
-	^ hash _ super rehash bitXor: pointBlock hash! !
+	^ hash := super rehash bitXor: pointBlock hash! !
 
 !DrGPointBlockItem methodsFor: 'xml writing'!
 nodeType
@@ -15086,20 +15086,20 @@ nodeType
 !DrGPointBlockItem methodsFor: 'xml writing'!
 writeAsXmlTo: aNode
 	|node|
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	node addElement: ((XMLElement named: #code) addContent: (XMLStringNode string: pointBlock asString)).
 	^node! !
 
 !DrGPointBlockItem methodsFor: 'accessing' stamp: 'hlsf 11/2/2022 23:04:49'!
 parents: aCollection
 	aCollection isEmptyOrNil ifTrue: [
-		parents _ aCollection.
+		parents := aCollection.
 		^ self].
 	aCollection first isBlock 
 		ifTrue: [
 			self pointBlock: aCollection first.
-			parents _ aCollection allButFirst]
-		ifFalse: [parents _ aCollection].
+			parents := aCollection allButFirst]
+		ifFalse: [parents := aCollection].
 ! !
 
 !DrGPointBlockItem methodsFor: 'accessing'!
@@ -15108,7 +15108,7 @@ pointBlock
 
 !DrGPointBlockItem methodsFor: 'accessing'!
 pointBlock: aBlock
-	pointBlock _ aBlock ! !
+	pointBlock := aBlock ! !
 
 !DrGPointBlockItem methodsFor: 'testing'!
 doParentsExist 
@@ -15127,15 +15127,15 @@ nodeType
 
 !DrGPointFreeItem methodsFor: 'accessing'!
 isLocked
-	^ locked ifNil: [locked _ false]! !
+	^ locked ifNil: [locked := false]! !
 
 !DrGPointFreeItem methodsFor: 'accessing'!
 locked: aBoolean
-	locked _ aBoolean ! !
+	locked := aBoolean ! !
 
 !DrGPointFreeItem methodsFor: 'accessing'!
 parents: aCollection
-	parents _ nil.
+	parents := nil.
 ! !
 
 !DrGPointFreeItem methodsFor: 'accessing'!
@@ -15159,7 +15159,7 @@ parentsEqual: aMathItem
 
 !DrGPointFreeItem methodsFor: 'comparing'!
 rehash
-	^hash _ super rehash bitXor: point hash! !
+	^hash := super rehash bitXor: point hash! !
 
 !DrGPointFreeItem methodsFor: 'initialize-release'!
 initialize: theParents
@@ -15174,7 +15174,7 @@ nodeType
 writeAsXmlTo: aNode
 	"It is important to return the node"
 	| node|
-	node _  super writeAsXmlTo: aNode.
+	node :=  super writeAsXmlTo: aNode.
 	node addElement:  ((XMLElement named: #x) addContent: (XMLStringNode string: point x asString));
 		addElement: ((XMLElement named: #y) addContent: (XMLStringNode string: point y asString)).
 	^node! !
@@ -15226,8 +15226,8 @@ isFreePointOnPlaneItem
 update
 |center|
 	self doParentsExist ifTrue:
-		[center _ parents second point.
-		point _ center + 
+		[center := parents second point.
+		point := center + 
 			(parents third valueItem * (parents first point - center))].! !
 
 !DrGPointHomothetyItem methodsFor: 'xml writing'!
@@ -15242,11 +15242,11 @@ isConstrainedPointItem
 update
 	|aPoint|
 	self doParentsExist ifTrue:
-		[aPoint _ [(parents first intersectionWith: parents second flag: k)] on: Error do: [nil].
+		[aPoint := [(parents first intersectionWith: parents second flag: k)] on: Error do: [nil].
 		aPoint 
-			ifNil: [exist _ false]
+			ifNil: [exist := false]
 			ifNotNil: 
-				[exist _ true.
+				[exist := true.
 				self point: aPoint]].! !
 
 !DrGPointIntersectionItem methodsFor: 'accessing'!
@@ -15255,7 +15255,7 @@ k
 
 !DrGPointIntersectionItem methodsFor: 'accessing'!
 k: integer 
-	k _ integer.
+	k := integer.
 	self update.
 	self rehash! !
 
@@ -15264,9 +15264,9 @@ parents: aCollection
 	"We only need the 1st and 2nd mathItem in the collection. 
 The 3rd one is a Point instance (position the user clicked) only used at initialization time"
 	aCollection isEmptyOrNil ifTrue: 
-		[parents _ aCollection.
+		[parents := aCollection.
 		^self].
-	parents _ OrderedCollection new
+	parents := OrderedCollection new
 		add: aCollection first;
 		add: aCollection second;
 		yourself.
@@ -15279,7 +15279,7 @@ nodeType
 !DrGPointIntersectionItem methodsFor: 'xml writing'!
 writeAsXmlTo: aNode 
 	| node |
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	node
 		attributeAt: #extra
 		put: (k = 1
@@ -15292,17 +15292,17 @@ initialize: theParents
 "check for the right intersection point when one parent is a circle or an arc"
 |pointA pointB clicPoint|
 	super initialize: theParents.
-	k _ 0. "0 when only one intersection"
+	k := 0. "0 when only one intersection"
 	(theParents first isCircleItem 
 		or: [theParents second isCircleItem
 	 		or: [theParents first isArcItem
 				or: [theParents second isArcItem]]])
 		ifFalse: [^self].
-	pointA _ [theParents first intersectionWith: theParents second flag: -1] on: Error do: [nil].
-	pointB _ [theParents first intersectionWith: theParents second flag: 1] on: Error do: [nil].
+	pointA := [theParents first intersectionWith: theParents second flag: -1] on: Error do: [nil].
+	pointB := [theParents first intersectionWith: theParents second flag: 1] on: Error do: [nil].
 	pointA ifNil: [^ self k: 1].
 	pointB ifNil: [^ self k: -1].
-	clicPoint _ theParents third.
+	clicPoint := theParents third.
 	(pointA squaredDistanceTo: clicPoint) < (pointB squaredDistanceTo: clicPoint)
 		ifTrue: [self k: -1] 
 		ifFalse: [self k: 1]! !
@@ -15313,7 +15313,7 @@ initialize: theParents
 
 !DrGPointIntersectionItem methodsFor: 'comparing'!
 rehash
-	^hash _ (super rehash bitXor: k ) bitXor: point hash ! !
+	^hash := (super rehash bitXor: k ) bitXor: point hash ! !
 
 !DrGPointIntersectionItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:37:52'!
 isConstrainedPointItem
@@ -15349,7 +15349,7 @@ parentsEqual: aMathItem
 
 !DrGPointMiddle2ptsItem methodsFor: 'comparing'!
 rehash
-	^ hash _ ((parents sorted: [:ptA :ptB | ptA point <= ptB point]) hash bitXor: self nodeType hash) bitXor: self basicType hash! !
+	^ hash := ((parents sorted: [:ptA :ptB | ptA point <= ptB point]) hash bitXor: self nodeType hash) bitXor: self basicType hash! !
 
 !DrGPointMiddle2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:45:16'!
 update
@@ -15404,7 +15404,7 @@ moveAt: aPoint
 update
 	self doParentsExist ifTrue:
 		[self point: (parents first pointAt: abscissa).
-		(point x isInfinite or: [point y isInfinite ]) ifTrue: [exist _ false]].
+		(point x isInfinite or: [point y isInfinite ]) ifTrue: [exist := false]].
 ! !
 
 !DrGPointOncurveItem methodsFor: 'testing'!
@@ -15425,27 +15425,27 @@ abscissa
 
 !DrGPointOncurveItem methodsFor: 'accessing'!
 abscissa: anAbscissa
-	abscissa _ anAbscissa.
-	abscissa > 1 ifTrue: [abscissa _ 1].
-	abscissa < 0 ifTrue: [abscissa _ 0].
+	abscissa := anAbscissa.
+	abscissa > 1 ifTrue: [abscissa := 1].
+	abscissa < 0 ifTrue: [abscissa := 0].
 	self rehash! !
 
 !DrGPointOncurveItem methodsFor: 'accessing'!
 isLocked
-	^ locked ifNil: [locked _ false]! !
+	^ locked ifNil: [locked := false]! !
 
 !DrGPointOncurveItem methodsFor: 'accessing'!
 locked: aBoolean
-	locked _ aBoolean ! !
+	locked := aBoolean ! !
 
 !DrGPointOncurveItem methodsFor: 'accessing'!
 parents: aCollection
 "We only need the first mathItem in the collection. 
 The second one is a Point instance (position the user clicked) only used at initialization time"
 	aCollection isEmptyOrNil ifTrue: 
-		[parents _ aCollection.
+		[parents := aCollection.
 		^self].
-	parents _ OrderedCollection new add: aCollection first;yourself.
+	parents := OrderedCollection new add: aCollection first;yourself.
 ! !
 
 !DrGPointOncurveItem methodsFor: 'accessing'!
@@ -15463,7 +15463,7 @@ property: aProperty
 
 !DrGPointOncurveItem methodsFor: 'comparing'!
 rehash
-	^hash _ super rehash bitXor: abscissa hash! !
+	^hash := super rehash bitXor: abscissa hash! !
 
 !DrGPointOncurveItem methodsFor: 'xml writing'!
 nodeType
@@ -15473,7 +15473,7 @@ nodeType
 writeAsXmlTo: aNode
 	"It is important to return the node"
 	| node|
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	node addElement:  ((XMLElement named: #value) addContent: (XMLStringNode string: abscissa  asString)).
 	^node! !
 
@@ -15582,17 +15582,17 @@ isCloneable
 
 !DrGPolygonItem methodsFor: 'updating'!
 computeLength
-	length _ 0.
-	sidesLength _ OrderedCollection new.
+	length := 0.
+	sidesLength := OrderedCollection new.
 	points  withIndexDo: [:p :i |
-		length _ length + 
+		length := length + 
 			(sidesLength add: (p dist: (points at: i + 1 ifAbsent: [points at: 1])))].
 	^length! !
 
 !DrGPolygonItem methodsFor: 'private'!
 adaptiveDescriptiveName
 | sides |
-	sides _ self points size.
+	sides := self points size.
 	sides = 3 ifTrue: [^ 'This triangle %1' translated].
 	sides = 4 ifTrue: [^ 'This quadrilateral %1' translated].
 	^ 'This polygon %1' translated! !
@@ -15605,34 +15605,34 @@ abscissaOf: aPoint
 abscissaOf: aPoint in: side
 "To speed up calculs, we better know the side where is the point"
 |distanceToPoint|
-	distanceToPoint _ 0.
+	distanceToPoint := 0.
 	1 to: side - 1 do: [:i |
-		distanceToPoint _ distanceToPoint + (sidesLength at: i)].
-	distanceToPoint _ distanceToPoint + (aPoint dist: (points at: side)).
+		distanceToPoint := distanceToPoint + (sidesLength at: i)].
+	distanceToPoint := distanceToPoint + (aPoint dist: (points at: side)).
 	^ distanceToPoint / length! !
 
 !DrGPolygonItem methodsFor: 'computing'!
 clone
 	|clonedPoints clone|
-	clonedPoints _ points collect: [:aPoint | DrGPointFreeItem newWith: {aPoint + (0.2@0.2)}].
-	clone _ DrGPolygonNptsItem newWith: clonedPoints.
+	clonedPoints := points collect: [:aPoint | DrGPointFreeItem newWith: {aPoint + (0.2@0.2)}].
+	clone := DrGPolygonNptsItem newWith: clonedPoints.
 	^ (OrderedCollection withAll: clonedPoints) add: clone; yourself! !
 
 !DrGPolygonItem methodsFor: 'computing'!
 closestPointInfoTo: aPoint
 "the closest point on the polygon and its curvilinear abscissa in [0 ; 1]"
 |closestPoint smallestDistance side|
-	smallestDistance _ 1e9.
+	smallestDistance := 1e9.
 	points withIndexDo: [:p :i | | distance point |
-		point _ self closestPointTo: aPoint 
+		point := self closestPointTo: aPoint 
 					from: p
 					to:  (points at: i + 1 ifAbsent: [points at: 1]).
-		distance _ aPoint dist: point.
+		distance := aPoint dist: point.
 		distance < smallestDistance
 			ifTrue:
-				[smallestDistance _ distance.
-				closestPoint _ point.
-				side _ i]].
+				[smallestDistance := distance.
+				closestPoint := point.
+				side := i]].
 	^{closestPoint . self abscissaOf: closestPoint in: side}! !
 
 !DrGPolygonItem methodsFor: 'computing'!
@@ -15643,32 +15643,32 @@ closestPointTo: aPoint
 closestPointTo: aPoint from: pointA to: pointB
 "the closest point to aPoint in [AB]"
 |abscissa vector squareNorm|
-	vector _ pointB - pointA.
-	squareNorm _ vector dotProduct: vector.
-	abscissa _ (aPoint - pointA) dotProduct: vector.
-	abscissa < 0 ifTrue: [abscissa _ 0].
+	vector := pointB - pointA.
+	squareNorm := vector dotProduct: vector.
+	abscissa := (aPoint - pointA) dotProduct: vector.
+	abscissa < 0 ifTrue: [abscissa := 0].
 	abscissa > squareNorm ifTrue: 
-		[abscissa _ squareNorm].
+		[abscissa := squareNorm].
 	^ pointA + (abscissa * vector / squareNorm asFloat)! !
 
 !DrGPolygonItem methodsFor: 'computing'!
 pointAt: anAbscissa
 |distanceToPoint leftDistanceToPoint sum|
-	distanceToPoint _ leftDistanceToPoint _ anAbscissa * length.
-	sum _ 0.
+	distanceToPoint := leftDistanceToPoint := anAbscissa * length.
+	sum := 0.
 	sidesLength withIndexDo: [:s :i |
-		sum _ sum + s.
+		sum := sum + s.
 		sum >= distanceToPoint 
 			ifTrue:
 				["point is on this side"
 				|pointA pointB vector|
-				pointA _ points at: i.
-				pointB _ points at: i + 1 ifAbsent: [points at: 1].
+				pointA := points at: i.
+				pointB := points at: i + 1 ifAbsent: [points at: 1].
 				pointA = pointB 
-					ifTrue: [vector _ 0@0]
-					ifFalse:	[vector _ (pointB - pointA) / (pointA dist: pointB)].
+					ifTrue: [vector := 0@0]
+					ifFalse:	[vector := (pointB - pointA) / (pointA dist: pointB)].
 				^pointA + (vector * leftDistanceToPoint)].
-		leftDistanceToPoint _ leftDistanceToPoint - s]! !
+		leftDistanceToPoint := leftDistanceToPoint - s]! !
 
 !DrGPolygonItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:40:51'!
 isCurveItem 
@@ -15698,9 +15698,9 @@ moveParent: aPoint
 update
 |center factor|
 	self doParentsExist ifTrue: [
-		center _ parents second point.
-		factor _ parents third valueItem.
-		points _ OrderedCollection new.
+		center := parents second point.
+		factor := parents third valueItem.
+		points := OrderedCollection new.
 		parents first points do: [:point | 			points add: (center + (factor * (point - center)))].
 		self computeLength].! !
 
@@ -15708,20 +15708,20 @@ update
 parentsEqual: aPolygon
 	|shiftedCollection|
 	parents size = aPolygon parents size ifFalse: [^false].
-	shiftedCollection _ parents.
+	shiftedCollection := parents.
 	shiftedCollection size timesRepeat: [
 		shiftedCollection = aPolygon parents ifTrue: [^true].
-		shiftedCollection _ shiftedCollection shiftRight].
-	shiftedCollection _ parents reverse.
+		shiftedCollection := shiftedCollection shiftRight].
+	shiftedCollection := parents reverse.
 	shiftedCollection size timesRepeat: [
 		shiftedCollection = aPolygon parents ifTrue: [^true].
-		shiftedCollection _ shiftedCollection shiftRight].
+		shiftedCollection := shiftedCollection shiftRight].
 	^ false! !
 
 !DrGPolygonNptsItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:47:01'!
 update
 	self doParentsExist ifTrue: [
-		points _ OrderedCollection new.
+		points := OrderedCollection new.
 		parents do: [:pointItem | points add: pointItem point].
 		self computeLength].
 ! !
@@ -15742,8 +15742,8 @@ moveParent: aPoint
 update
 |axe|
 	self doParentsExist 	ifTrue: 		[
-		axe _ parents second.
-		points _ OrderedCollection new.
+		axe := parents second.
+		points := OrderedCollection new.
 		parents first points do: [:point |
 			points add: (point reflexionBy: axe origin direction: axe direction)].
 		self computeLength].
@@ -15760,13 +15760,13 @@ moveParent: aPoint
 update
 |center pointA angle sides|
 	self doParentsExist ifTrue: [
-		center _ parents first point.
-		pointA _ parents second point.
-		sides _ parents third valueItem rounded abs.
-		sides < 3 ifTrue: [^ exist _ false].
-		angle _ Float twoPi / sides.
-		points _ OrderedCollection new.
-		sides timesRepeat: [			pointA _ points add: (pointA rotateBy: angle about: center)].
+		center := parents first point.
+		pointA := parents second point.
+		sides := parents third valueItem rounded abs.
+		sides < 3 ifTrue: [^ exist := false].
+		angle := Float twoPi / sides.
+		points := OrderedCollection new.
+		sides timesRepeat: [			pointA := points add: (pointA rotateBy: angle about: center)].
 		self computeLength]! !
 
 !DrGPolygonRegularItem methodsFor: 'xml writing'!
@@ -15785,9 +15785,9 @@ moveParent: aPoint
 update
 |center angle|
 	self doParentsExist ifTrue: [
-		center _ parents second point.
-		angle _ parents third valueItem negated.
-		points _ OrderedCollection new.
+		center := parents second point.
+		angle := parents third valueItem negated.
+		points := OrderedCollection new.
 		parents first points do: [:point |			points add: (point rotateBy: angle about: center)].
 		self computeLength].
 ! !
@@ -15804,8 +15804,8 @@ moveParent: aPoint
 update
 |center|
 	self doParentsExist 	ifTrue: [
-		center _ parents second point.
-		points _ OrderedCollection new.
+		center := parents second point.
+		points := OrderedCollection new.
 		parents first points do: [:point | points add: (2 * center - point)].
 		self computeLength].
 ! !
@@ -15818,8 +15818,8 @@ moveParent: aPoint
 update
 |translation|
 	self doParentsExist 	ifTrue: [
-		translation _ parents second direction.
-		points _ OrderedCollection new.
+		translation := parents second direction.
+		points := OrderedCollection new.
 		parents first points do: [:point | points add: point + translation].
 		self computeLength].
 ! !
@@ -15835,7 +15835,7 @@ printOn: aStream
 !DrGTextItem methodsFor: 'initialize-release'!
 initialize 
 	super initialize.
-	text _ 'Edit me' translated! !
+	text := 'Edit me' translated! !
 
 !DrGTextItem methodsFor: 'initialize-release'!
 initialize: theParents
@@ -15859,7 +15859,7 @@ writeAsXmlPositionTo: aNode
 !DrGTextItem methodsFor: 'xml writing'!
 writeAsXmlTo: aNode
 	|node|
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	node addElement:  ((XMLElement named: #contents) addContent: (XMLStringNode string: self text)).
 	^ self writeAsXmlPositionTo: node
 ! !
@@ -15875,11 +15875,11 @@ descriptiveName
 
 !DrGTextItem methodsFor: 'accessing'!
 isLocked
-	^ locked ifNil: [locked _ false]! !
+	^ locked ifNil: [locked := false]! !
 
 !DrGTextItem methodsFor: 'accessing'!
 locked: aBoolean
-	locked _ aBoolean ! !
+	locked := aBoolean ! !
 
 !DrGTextItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:27:45'!
 morphClass 
@@ -15887,7 +15887,7 @@ morphClass
 
 !DrGTextItem methodsFor: 'accessing'!
 parents: aCollection
-	parents _ nil.
+	parents := nil.
 ! !
 
 !DrGTextItem methodsFor: 'accessing'!
@@ -15896,7 +15896,7 @@ position
 
 !DrGTextItem methodsFor: 'accessing'!
 position: aPoint 
-	position _ aPoint.
+	position := aPoint.
 	self rehash! !
 
 !DrGTextItem methodsFor: 'accessing'!
@@ -15905,7 +15905,7 @@ text
 
 !DrGTextItem methodsFor: 'accessing'!
 text: aText
-	text _ aText.
+	text := aText.
 	self rehash! !
 
 !DrGTextItem methodsFor: 'updating' stamp: 'hlsf 8/4/2023 17:22:39'!
@@ -15917,7 +15917,7 @@ editPropertyIn: presenter
 
 !DrGTextItem methodsFor: 'updating'!
 move: aPoint
-	self isLocked ifFalse: [position _ position + aPoint]! !
+	self isLocked ifFalse: [position := position + aPoint]! !
 
 !DrGTextItem methodsFor: 'updating'!
 moveParent: aPoint
@@ -15953,7 +15953,7 @@ isPropertyEditable
 
 !DrGTextItem methodsFor: 'comparing'!
 rehash
-	^ hash _ (self basicType hash bitXor: text hash) bitXor: position hash! !
+	^ hash := (self basicType hash bitXor: text hash) bitXor: position hash! !
 
 !DrGTextItem methodsFor: 'private'!
 adaptiveDescriptiveName
@@ -15977,7 +15977,7 @@ printOn: aStream
 printTypeOn: aStream
 |safeName|
 	self printNameOn: aStream.
-	(safeName _ self safeName) ifNotEmpty: [	
+	(safeName := self safeName) ifNotEmpty: [	
 		aStream nextPutAll: self safeName;
 			nextPutAll: ' = '].
 ! !
@@ -15999,7 +15999,7 @@ moveParent: aPoint
 !DrGValueItem methodsFor: 'initialize-release'!
 initialize
 	super initialize.
-	value _ 0! !
+	value := 0! !
 
 !DrGValueItem methodsFor: 'initialize-release'!
 initialize: theParents
@@ -16030,11 +16030,11 @@ basicType
 
 !DrGValueItem methodsFor: 'accessing'!
 isLocked
-	^ locked ifNil: [locked _ false]! !
+	^ locked ifNil: [locked := false]! !
 
 !DrGValueItem methodsFor: 'accessing'!
 locked: aBoolean
-	locked _ aBoolean ! !
+	locked := aBoolean ! !
 
 !DrGValueItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:27:45'!
 morphClass 
@@ -16044,11 +16044,11 @@ morphClass
 parents: aCollection 
 	"last is the initial screen position of the value"
 	aCollection isEmptyOrNil ifTrue: 
-		[ parents _ aCollection.
+		[ parents := aCollection.
 		^ self ].
 	aCollection last isPoint 
-		ifTrue: [ parents _ aCollection allButLast ]
-		ifFalse: [ parents _ aCollection ].
+		ifTrue: [ parents := aCollection allButLast ]
+		ifFalse: [ parents := aCollection ].
 ! !
 
 !DrGValueItem methodsFor: 'accessing'!
@@ -16057,7 +16057,7 @@ position
 
 !DrGValueItem methodsFor: 'accessing'!
 position: aPoint
-	position _ aPoint.! !
+	position := aPoint.! !
 
 !DrGValueItem methodsFor: 'accessing'!
 valueItem
@@ -16108,14 +16108,14 @@ move: aPoint
 update
 |u v center|
 	self doParentsExist ifTrue:
-		[center _ parents second point.
-		u _ parents first point - center.
-		v _ parents third point - center.
+		[center := parents second point.
+		u := parents first point - center.
+		v := parents third point - center.
 		(u = (0@0) or: [v = (0@0)]) 
-			ifTrue: [exist _ false]
+			ifTrue: [exist := false]
 			ifFalse:
-				[radianValue _ value _ (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
-				degreeValue _ radianValue radiansToDegrees + 360 \\ 360]].! !
+				[radianValue := value := (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
+				degreeValue := radianValue radiansToDegrees + 360 \\ 360]].! !
 
 !DrGAngle3ptsOrientedItem methodsFor: 'xml writing'!
 nodeType
@@ -16157,14 +16157,14 @@ update
 "Update for an angle in [0 ; 180]"
 |u v center|
 	self doParentsExist ifTrue:
-		[center _ parents second point.
-		u _ parents first point - center.
-		v _ parents third point - center.
+		[center := parents second point.
+		u := parents first point - center.
+		v := parents third point - center.
 		(u = (0@0) or: [v = (0@0)]) 
-			ifTrue: [exist _ false]
+			ifTrue: [exist := false]
 			ifFalse:
-				[radianValue _ value _ ((u crossProduct: v) asFloat arcTan: (u dotProduct: v)) abs.
-				degreeValue _ radianValue radiansToDegrees]].! !
+				[radianValue := value := ((u crossProduct: v) asFloat arcTan: (u dotProduct: v)) abs.
+				degreeValue := radianValue radiansToDegrees]].! !
 
 !DrGAngle3ptsItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:27:45'!
 morphClass
@@ -16196,32 +16196,32 @@ writeAsXmlPositionTo: aNode
 writeAsXmlTo: aNode 
 	"return the newly created element"
 	| node |
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	^ self writeAsXmlPositionTo: node.! !
 
 !DrGAngleVectorsItem methodsFor: 'updating' stamp: 'hlsf 6/5/2021 20:17:23'!
 update
 |u v|
 	self doParentsExist ifTrue:
-		[u _ parents first direction.
-		v _ parents second direction.
+		[u := parents first direction.
+		v := parents second direction.
 		(u = (0@0) or: [v = (0@0)]) 
-			ifTrue: [exist _ false]
+			ifTrue: [exist := false]
 			ifFalse:
-				[radianValue _ value _ ((u crossProduct: v) asFloat arcTan: (u dotProduct: v)).
-				degreeValue _ radianValue radiansToDegrees]].	! !
+				[radianValue := value := ((u crossProduct: v) asFloat arcTan: (u dotProduct: v)).
+				degreeValue := radianValue radiansToDegrees]].	! !
 
 !DrGComputedValueItem methodsFor: 'xml writing'!
 writeAsXmlTo: aNode 
 	"return the newly created element"
 	| node |
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	^ self writeAsXmlPositionTo: node.! !
 
 !DrGComputedValueItem methodsFor: 'initialize-release' stamp: 'hlsf 10/19/2022 16:03:46'!
 initialize
 	super initialize.
-	value _ ''! !
+	value := ''! !
 
 !DrGEquationItem methodsFor: 'printing'!
 printOn: aStream
@@ -16268,8 +16268,8 @@ equation
 !DrGEquationCircleItem methodsFor: 'updating' stamp: 'hlsf 10/19/2022 16:34:38'!
 update
 	self doParentsExist ifTrue: [| circle |
-		circle _ parents first.
-		value _ String streamContents: [:stream |
+		circle := parents first.
+		value := String streamContents: [:stream |
 		 stream nextPutAll: '(x';
 			nextPut: (circle center x negated > 0 ifTrue: [$+] ifFalse: [$-]).
 		self printDecimal: circle center x abs on: stream.
@@ -16290,8 +16290,8 @@ nodeType
 !DrGEquationLineItem methodsFor: 'updating' stamp: 'hlsf 12/21/2022 14:58:02'!
 update
 	self doParentsExist ifTrue: [ |u origin|
-		u _ parents first direction.
-		origin _ parents first origin.
+		u := parents first direction.
+		origin := parents first origin.
 		self a: u y.
 		self b: u x negated.
 		self c: origin y * u x - (origin x * u y)]! !
@@ -16306,7 +16306,7 @@ a
 
 !DrGEquationLineItem methodsFor: 'accessing'!
 a: aNumber
-	a _ aNumber! !
+	a := aNumber! !
 
 !DrGEquationLineItem methodsFor: 'accessing'!
 b
@@ -16314,7 +16314,7 @@ b
 
 !DrGEquationLineItem methodsFor: 'accessing'!
 b: aNumber
-	b _ aNumber! !
+	b := aNumber! !
 
 !DrGEquationLineItem methodsFor: 'accessing'!
 c
@@ -16322,11 +16322,11 @@ c
 
 !DrGEquationLineItem methodsFor: 'accessing'!
 c: aNumber
-	c _ aNumber! !
+	c := aNumber! !
 
 !DrGEquationLineItem methodsFor: 'accessing'!
 equation 
-	^ value _ self reducedEquation ! !
+	^ value := self reducedEquation ! !
 
 !DrGEquationLineItem methodsFor: 'accessing' stamp: 'hlsf 10/19/2022 16:13:37'!
 originY
@@ -16340,13 +16340,13 @@ reducedEquation
 			self printDecimal: c negated / a on: stream]]
 		ifFalse: [
 			| slope originY |
-			originY _ self originY.			
+			originY := self originY.			
 			String streamContents: [:stream |
 			stream nextPutAll: 'y = '.
 			a isZero 
 				ifTrue: [originY printParenthesisOn: stream] 
 				ifFalse: [
-					slope _ self slope.
+					slope := self slope.
 					slope printParenthesisOn: stream.
 					stream nextPutAll: ' * x'.
 					c isZero ifFalse: [
@@ -16364,7 +16364,7 @@ isVerifiedBy: aPoint
 !DrGValueArclengthItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue: 
-		[value _ parents first length abs * parents first radius].
+		[value := parents first length abs * parents first radius].
 ! !
 
 !DrGValueArclengthItem methodsFor: 'xml writing'!
@@ -16382,7 +16382,7 @@ nodeType
 !DrGValueCircleperimeterItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[value _ parents first radius * Float twoPi].
+		[value := parents first radius * Float twoPi].
 ! !
 
 !DrGValueCircleperimeterItem methodsFor: 'private'!
@@ -16407,7 +16407,7 @@ adaptiveDescriptiveName
 !DrGValueDistance2ptsItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[value _ parents first point dist: parents second point].
+		[value := parents first point dist: parents second point].
 ! !
 
 !DrGValueDistance2ptsItem methodsFor: 'xml writing'!
@@ -16417,7 +16417,7 @@ nodeType
 !DrGValueDistanceptlineItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[value _ ((parents first point - parents second origin) 
+		[value := ((parents first point - parents second origin) 
 					dotProduct: parents second direction normal) abs].
 ! !
 
@@ -16440,7 +16440,7 @@ nodeType
 !DrGValuePolygonperimeterItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[value _ parents first length].
+		[value := parents first length].
 ! !
 
 !DrGValuePtabscissaItem methodsFor: 'private'!
@@ -16450,7 +16450,7 @@ adaptiveDescriptiveName
 !DrGValuePtabscissaItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue: [
-		value _ parents first point x]! !
+		value := parents first point x]! !
 
 !DrGValuePtabscissaItem methodsFor: 'xml writing'!
 nodeType 
@@ -16463,7 +16463,7 @@ adaptiveDescriptiveName
 !DrGValuePtordinateItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue: [
-		value _ parents first point y]! !
+		value := parents first point y]! !
 
 !DrGValuePtordinateItem methodsFor: 'xml writing'!
 nodeType 
@@ -16476,7 +16476,7 @@ nodeType
 !DrGValueSegmentlengthItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[value _ parents first direction r].
+		[value := parents first direction r].
 ! !
 
 !DrGValueSegmentlengthItem methodsFor: 'private'!
@@ -16503,9 +16503,9 @@ adaptiveDescriptiveName
 update
 	|v|
 	self doParentsExist ifTrue:
-		[v _ parents first direction.
-		v x= 0 ifTrue: [exist _ false]
-		ifFalse: [value _ v y / v x.]].
+		[v := parents first direction.
+		v x= 0 ifTrue: [exist := false]
+		ifFalse: [value := v y / v x.]].
 ! !
 
 !DrGValueVectorabscissaItem methodsFor: 'xml writing'!
@@ -16519,7 +16519,7 @@ adaptiveDescriptiveName
 !DrGValueVectorabscissaItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue: [
-		value _ parents first direction x]! !
+		value := parents first direction x]! !
 
 !DrGValueVectorordinateItem methodsFor: 'xml writing'!
 nodeType 
@@ -16528,7 +16528,7 @@ nodeType
 !DrGValueVectorordinateItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue: [
-		value _ parents first direction y]! !
+		value := parents first direction y]! !
 
 !DrGValueVectorordinateItem methodsFor: 'private'!
 adaptiveDescriptiveName
@@ -16541,7 +16541,7 @@ initialize: theParentsCostume
 
 !DrGValueScriptItem methodsFor: 'updating'!
 update
-	self doParentsExist ifTrue: [ value _ script compute]! !
+	self doParentsExist ifTrue: [ value := script compute]! !
 
 !DrGValueScriptItem methodsFor: 'printing'!
 printNameOn: aStream
@@ -16573,14 +16573,14 @@ morphs
 parents: aCollection 
 	"last is the initial screen position of the value, and previous last is the script class"
 	aCollection isEmptyOrNil ifTrue: 
-		[parents _ aCollection.
-		parentMorphs _ aCollection.
+		[parents := aCollection.
+		parentMorphs := aCollection.
 		^ self ].
 	aCollection last isPoint 
-		ifTrue: [ parents _ aCollection allButLast: 2 ]
+		ifTrue: [ parents := aCollection allButLast: 2 ]
 		ifFalse: 
 			[ "play nicely with macro"
-			parents _ aCollection ].
+			parents := aCollection ].
 ! !
 
 !DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 17:11:23'!
@@ -16597,7 +16597,7 @@ script
 
 !DrGValueScriptItem methodsFor: 'accessing' stamp: 'hlsf 4/9/2021 19:50:40'!
 script: aScriptClass
-	script _ aScriptClass new arguments: self morphs.
+	script := aScriptClass new arguments: self morphs.
 	self rehash ! !
 
 !DrGValueScriptItem methodsFor: 'xml writing'!
@@ -16607,7 +16607,7 @@ nodeType
 !DrGValueScriptItem methodsFor: 'xml writing'!
 writeAsXmlTo: aNode
 	|node|
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	node attributeAt: #class put: script class printString.
 	node addElement: (
 		(XMLElement named: #code) addContent: (
@@ -16620,7 +16620,7 @@ writeAsXmlTo: aNode
 
 !DrGValueScriptItem methodsFor: 'comparing'!
 rehash
-	^hash _ super rehash bitXor: script class hash! !
+	^hash := super rehash bitXor: script class hash! !
 
 !DrGValueScriptItem methodsFor: 'testing'!
 isPropertyEditable
@@ -16636,12 +16636,12 @@ isScriptItem
 adaptiveDescriptiveName
 	| string |
 	parents size > 0 
-		ifFalse: [string _ 'This script "{1}"' translated]
+		ifFalse: [string := 'This script "{1}"' translated]
 		ifTrue: 
 			[parents size = 1 
-				ifTrue: [string _ 'This script "{1}" with argument: %2' translated]
-				ifFalse: [string _ 'This script "{1}" with arguments: %2' translated].
-			string _ string copyReplaceAll: '%2' with: self argumentsName].
+				ifTrue: [string := 'This script "{1}" with argument: %2' translated]
+				ifFalse: [string := 'This script "{1}" with arguments: %2' translated].
+			string := string copyReplaceAll: '%2' with: self argumentsName].
 	^string format: {script class scriptName}.! !
 
 !DrGValueScriptItem methodsFor: 'private'!
@@ -16649,7 +16649,7 @@ argumentsName
 	"collect parents name in a string as A, B, C"
 	| stream |
 	parents size = 0 ifTrue: [ ^ '' ].
-	stream _ ReadWriteStream on: String new.
+	stream := ReadWriteStream on: String new.
 	parents allButLast do: 
 		[ :item | 
 		stream
@@ -16670,7 +16670,7 @@ nodeType
 writeAsXmlTo: aNode 
 	"return the newly created element"
 	| node |
-	node _ super writeAsXmlTo: aNode.
+	node := super writeAsXmlTo: aNode.
 	node addElement:  ((XMLElement named: #value) addContent: (XMLStringNode string: value asFloat asString)).
 	^ self writeAsXmlPositionTo: node.! !
 
@@ -16682,7 +16682,7 @@ writeAsXmlTo: aNode
 
 !DrGValueValueItem methodsFor: 'comparing'!
 rehash
-	^ hash _ (super rehash bitXor: position hash) bitXor: value hash! !
+	^ hash := (super rehash bitXor: position hash) bitXor: value hash! !
 
 !DrGValueValueItem methodsFor: 'updating' stamp: 'hlsf 8/4/2023 17:22:55'!
 editPropertyIn: presenter
@@ -16701,12 +16701,12 @@ property: aProperty
 
 !DrGValueValueItem methodsFor: 'accessing'!
 position: aPoint
-	position _ aPoint.
+	position := aPoint.
 	self rehash! !
 
 !DrGValueValueItem methodsFor: 'accessing'!
 valueItem: aValue
-	value _ aValue.
+	value := aValue.
 	self rehash! !
 
 !DrGValueValueItem methodsFor: 'testing'!
@@ -16722,7 +16722,7 @@ writeAsXmlTo: aNode
 	| node |
 	self saved: true.
 	self cleanNodes.
-	node _ XMLElement named: 'macro' attributes: Dictionary new.
+	node := XMLElement named: 'macro' attributes: Dictionary new.
 	node attributeAt: #name put: title asString.
 	node addElement: ((XMLElement named: #description) addContent: (XMLStringNode string: description asString)).
 	node 
@@ -16735,14 +16735,14 @@ writeAsXmlTo: aNode
 !DrGMacro methodsFor: 'xml writting'!
 writeInputAsXml
 	| element |
-	element _ XMLElement named: 'input'.
+	element := XMLElement named: 'input'.
 	self inputNodes do: [:aMacroNode | aMacroNode writeAsXmlTo: element].
 	^ element ! !
 
 !DrGMacro methodsFor: 'xml writting'!
 writeOutputAsXml
 	| element |
-	element _ XMLElement named: 'output'.
+	element := XMLElement named: 'output'.
 	self allButInputNodes do: [:aMacroNode | aMacroNode writeAsXmlTo: element].
 	^ element 
 ! !
@@ -16778,7 +16778,7 @@ description
 
 !DrGMacro methodsFor: 'accessing'!
 description: anObject
-	description _ anObject. 
+	description := anObject. 
 	self saved: false.! !
 
 !DrGMacro methodsFor: 'accessing'!
@@ -16808,7 +16808,7 @@ outputNodes
 
 !DrGMacro methodsFor: 'accessing'!
 saved: bool
-	saved _ bool.! !
+	saved := bool.! !
 
 !DrGMacro methodsFor: 'accessing'!
 title
@@ -16816,7 +16816,7 @@ title
 
 !DrGMacro methodsFor: 'accessing'!
 title: anObject
-	title _ anObject! !
+	title := anObject! !
 
 !DrGMacro methodsFor: 'private'!
 cleanNodes
@@ -16832,13 +16832,13 @@ extractItemsFrom: inputs to: outputs in: domain
 	"extract the items to define the whole macro structure"
 
 	| items parents tmp |
-	items _ (Set withAll: inputs)
+	items := (Set withAll: inputs)
 		addAll: outputs;
 		yourself.
-	parents _ outputs.
+	parents := outputs.
 	[ (inputs includesAllOf: parents) | parents isEmpty ]
-		whileFalse: [ tmp _ parents.
-			parents _ Set new.
+		whileFalse: [ tmp := parents.
+			parents := Set new.
 			tmp
 				do: [ :item | item parents ifNotNil: [ parents addAll: item parents ] ].
 			items addAll: parents ].
@@ -16863,11 +16863,11 @@ isSaved
 from: inputs to: outputs in: domain 
 	"build the tree nodes"
 	| items |
-	items _ self 
+	items := self 
 		extractItemsFrom: inputs
 		to: outputs
 		in: domain.
-	nodes _ items collect: 
+	nodes := items collect: 
 		[ :item | 
 		DrGMacroNode 
 			on: item
@@ -16878,8 +16878,8 @@ from: inputs to: outputs in: domain
 
 !DrGMacro methodsFor: 'initialize-release'!
 initialize 
-	nodes _ OrderedCollection new.
-	saved _ false! !
+	nodes := OrderedCollection new.
+	saved := false! !
 
 !DrGMacro methodsFor: 'initialize-release' stamp: 'hlsf 8/5/2023 14:35:47'!
 release! !
@@ -16901,7 +16901,7 @@ isValidWith: inputs and: outputs
 	"check the validity of a macro defined with these input and output items"
 
 	| parents |
-	parents _ Set new.
+	parents := Set new.
 	outputs
 		do: [ :item | 
 			(inputs includes: item)
@@ -16921,7 +16921,7 @@ basicType
 
 !DrGMacroMathItem methodsFor: 'accessing'!
 basicType: symbol
-	basicType _ symbol ! !
+	basicType := symbol ! !
 
 !DrGMacroMathItem methodsFor: 'accessing'!
 id 
@@ -16929,7 +16929,7 @@ id
 
 !DrGMacroMathItem methodsFor: 'accessing'!
 id: aSymbol
-	id _ aSymbol ! !
+	id := aSymbol ! !
 
 !DrGMacroMathItem methodsFor: 'accessing'!
 parents
@@ -16943,7 +16943,7 @@ parents: object
 writeAsXmlTo: aNode
 	"return the newly created element"
 	| node |
-	node _  XMLElement named: self basicType attributes: Dictionary new.
+	node :=  XMLElement named: self basicType attributes: Dictionary new.
 	node attributeAt: #type put: 'inputMacroMathItem';
 		attributeAt: #id put: self id.
 	aNode addElement: node.
@@ -16975,7 +16975,7 @@ itemTemplate
 
 !DrGMacroNode methodsFor: 'accessing'!
 itemTemplate: anItem
-	itemTemplate _ anItem! !
+	itemTemplate := anItem! !
 
 !DrGMacroNode methodsFor: 'xml writting'!
 writeAsXmlTo: aNode
@@ -16987,7 +16987,7 @@ writeAsXmlTo: aNode
 Handle carrefully when this is a script node"
 
 | answer |
-	answer _ self basicType = aNode basicType 
+	answer := self basicType = aNode basicType 
 		and: [itemTemplate basicType = aNode itemTemplate basicType
 			and: [itemTemplate  nodeType = aNode itemTemplate nodeType]].
 	^ answer & itemTemplate isScriptItem 
@@ -16998,24 +16998,24 @@ Handle carrefully when this is a script node"
 !DrGMacroNode methodsFor: 'comparing'!
 hash
 | hash |
-	hash _ itemTemplate basicType hash bitXor: 
+	hash := itemTemplate basicType hash bitXor: 
 		(itemTemplate nodeType hash bitXor: self basicType hash).
-	itemTemplate isScriptItem ifTrue: [hash _ hash bitXor: itemTemplate script hash].
+	itemTemplate isScriptItem ifTrue: [hash := hash bitXor: itemTemplate script hash].
 	^ hash! !
 
 !DrGMacroNode class methodsFor: 'as yet unclassified'!
 on: item from: inputs to: outputs
 "return the appropriate nodes depending on the item is an input, output or intermediate item"
 	| class |
-	class _ DrGMacroHiddenNode.
-	(inputs includes: item) ifTrue: [class _ DrGMacroInputNode].
-	(outputs includes: item) ifTrue: [class _ DrGMacroOutputNode].
+	class := DrGMacroHiddenNode.
+	(inputs includes: item) ifTrue: [class := DrGMacroInputNode].
+	(outputs includes: item) ifTrue: [class := DrGMacroOutputNode].
 	^ class new itemTemplate: item! !
 
 !DrGMacroHiddenNode methodsFor: 'initialize-release'!
 initialize 
 	super initialize.
-	parentNodes _ OrderedCollection new.! !
+	parentNodes := OrderedCollection new.! !
 
 !DrGMacroHiddenNode methodsFor: 'xml writting'!
 statusElement
@@ -17025,10 +17025,10 @@ statusElement
 !DrGMacroHiddenNode methodsFor: 'xml writting'!
 writeAsXmlTo: aNode
 	| element statusElement|
-	statusElement _ self statusElement.
+	statusElement := self statusElement.
 	aNode addElement: statusElement.
 	itemTemplate parents: (parentNodes collect: [:each | each itemTemplate]).
-	element _ itemTemplate writeAsXmlTo: statusElement.
+	element := itemTemplate writeAsXmlTo: statusElement.
 	^ statusElement ! !
 
 !DrGMacroHiddenNode methodsFor: 'accessing'!
@@ -17041,7 +17041,7 @@ parentNodes
 
 !DrGMacroHiddenNode methodsFor: 'accessing'!
 parentNodes: anObject
-	parentNodes _ anObject! !
+	parentNodes := anObject! !
 
 !DrGMacroHiddenNode methodsFor: 'testing'!
 isHiddenNode
@@ -17145,7 +17145,7 @@ presenter
 
 !DrGeoUserScript methodsFor: 'private'!
 arguments: aCollectionOfCostume
-	arguments _ aCollectionOfCostume ! !
+	arguments := aCollectionOfCostume ! !
 
 !DrGeoUserScript methodsFor: 'public'!
 compute
@@ -17155,7 +17155,7 @@ compute
 !DrGeoUserScript class methodsFor: 'private'!
 argumentsType
 "return a collection of Math item, one for each argument type for this script"
-	^ argumentsType ifNil: [ argumentsType _ self newArgumentsType ]! !
+	^ argumentsType ifNil: [ argumentsType := self newArgumentsType ]! !
 
 !DrGeoUserScript class methodsFor: 'private' stamp: 'hlsf 4/7/2022 15:12:50'!
 newArgumentsType
@@ -17164,7 +17164,7 @@ newArgumentsType
 
 !DrGeoUserScript class methodsFor: 'private'!
 reset
-	argumentsType _ nil.! !
+	argumentsType := nil.! !
 
 !DrGeoUserScript class methodsFor: 'public'!
 description
@@ -17228,7 +17228,7 @@ eraser
 
 !DrGIcons class methodsFor: 'accessing' stamp: 'hlsf 2/11/2022 21:40:33'!
 forms
-	^ forms ifNil: [forms _ Dictionary new]! !
+	^ forms ifNil: [forms := Dictionary new]! !
 
 !DrGIcons class methodsFor: 'accessing'!
 freePoint
@@ -27030,15 +27030,15 @@ vector
 !DrGIcons class methodsFor: 'form' stamp: 'hlsf 2/11/2022 21:52:16'!
 colorForm: aColor
  | graphic |
-	graphic _  aColor isTransparent
+	graphic :=  aColor isTransparent
 		ifFalse: [
-			BoxedMorph new ::
+			BoxedMorph new
 			morphExtent: self menuExtent;
 			color: aColor;
 			borderWidth: 1;
 			borderColor: Color black;
 			yourself] 
-		ifTrue: [Form extent: self menuExtent depth: 32 ::
+		ifTrue: [(Form extent: self menuExtent depth: 32)
 			fillShape: self hatchForm fillColor: `Color white`;
 			yourself].
 	^ self iconWithBackground: graphic! !
@@ -27062,11 +27062,11 @@ iconWith: morphOrForm background: aColor
 iconWith: morphOrForm extent: extent inset: inset background: aColor
 	| form imageForm  |
 	(morphOrForm is: #Morph)
-		ifTrue: [	imageForm _ morphOrForm 
+		ifTrue: [	imageForm := morphOrForm 
 			imageForm: morphOrForm morphExtentInOwner + (0@1)
 			depth: 32.] 
-		ifFalse: [imageForm _ morphOrForm].
-	form _ (Form extent: extent + (inset * 2) depth: 32) fillColor: aColor.
+		ifFalse: [imageForm := morphOrForm].
+	form := (Form extent: extent + (inset * 2) depth: 32) fillColor: aColor.
 	form 
 		copy: imageForm  boundingBox 
 		from: imageForm 
@@ -27089,7 +27089,7 @@ point: pointSize color: color shape: shape
 !DrGIcons class methodsFor: 'form' stamp: 'hlsf 1/6/2022 21:55:51'!
 pointMorph: sizeSymbol color: color shape: shapeSymbol
 	| morph |
-	morph _ DrGIconPointMorph new ::
+	morph := DrGIconPointMorph new
 		color: color.
 	(morph style) shape: shapeSymbol ;
 		pointSize: sizeSymbol.
@@ -27105,7 +27105,7 @@ segment: thick color: color dash: dash
 segment: thick color: color dash: dash arrow: symbol
 "#makeBackArrow #makeForwardArrow #makeBothArrows"
 	| morph |
-	morph _ self segmentMorph: thick color: color dash: dash.
+	morph := self segmentMorph: thick color: color dash: dash.
 	morph arrow: symbol.
 	^ self iconWithBackground: morph
 ! !
@@ -27114,7 +27114,7 @@ segment: thick color: color dash: dash arrow: symbol
 segment: thick color: color mark: mark
 " #none #mark1 #mark2 #mark3 #disc #circle "
 	| morph |
-	morph _ self segmentMorph: thick color: color dash: nil :: 
+	morph := (self segmentMorph: thick color: color dash: nil)
 		forcedMark: mark;
 		yourself.
 	^ self iconWithBackground: morph.
@@ -27122,7 +27122,7 @@ segment: thick color: color mark: mark
 
 !DrGIcons class methodsFor: 'form' stamp: 'hlsf 5/31/2023 18:02:30'!
 segmentMorph: thick color: color dash: dash
-	^ DrGIconSegmentMorph from: 0@0 to: self menuExtent x @0 color: color ::  
+	^ (DrGIconSegmentMorph from: 0@0 to: self menuExtent x @0 color: color)
 		borderWidth: thick;
 		dashedBorder: dash;
 		yourself! !
@@ -27136,8 +27136,8 @@ for: symbol
 iconUI: symbol
 "The icons as display in the UI"
 	| finalForm iconForm |
-	iconForm _ DrGIcons for: symbol.
-	finalForm _ (Form extent: (DrGeoSystem toolbarIconSize + 4) asPoint depth: 32) 
+	iconForm := DrGIcons for: symbol.
+	finalForm := (Form extent: (DrGeoSystem toolbarIconSize + 4) asPoint depth: 32) 
 		fillColor: DrGUIControlsManager buttonColor.
 	finalForm border: finalForm boundingBox width: 2 fillColor: DrGUIControlsManager buttonColor muchDarker.
 	finalForm 
@@ -27158,22 +27158,22 @@ menuInset
 !DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 10/19/2022 15:51:51'!
 scale: symbol to: integer
 | formSymbol |
-	formSymbol _ (symbol, integer asString) asSymbol.
+	formSymbol := (symbol, integer asString) asSymbol.
 	^ self forms 
 		at: formSymbol 
 		ifAbsentPut: [ |svg |
-			svg _ [SVGMainMorph fromFile: DrGeoSystem iconsPath // (symbol, '.svg')] 
+			svg := [SVGMainMorph fromFile: DrGeoSystem iconsPath // (symbol, '.svg')] 
 				on: SVGWarning 
 				do: [:warning | warning resume].
 			svg imageForm: integer asPoint depth: 32]! !
 
 !DrGIcons class methodsFor: 'initialize-release'!
 reset
-	forms _ nil! !
+	forms := nil! !
 
 !DrGUIControlsManager methodsFor: 'accessing'!
 presenter: aPresenter
-	presenter _ aPresenter! !
+	presenter := aPresenter! !
 
 !DrGUIControlsManager methodsFor: 'accessing' stamp: 'hlsf 4/10/2022 12:25:59'!
 view
@@ -27219,12 +27219,12 @@ installTools
 
 !DrGUIControlsManager methodsFor: 'initialization' stamp: 'hlsf 4/10/2022 14:48:23'!
 release
-	presenter _ nil.
+	presenter := nil.
 	tools ifNotNil: [
 		tools delete.
-		tools _ nil].
+		tools := nil].
 	view release.
-	view _ nil! !
+	view := nil! !
 
 !DrGUIControlsManager methodsFor: 'tools collections'!
 animateTools
@@ -27510,8 +27510,8 @@ addChevron: symbolOrArray to: aToolbar
 	array fourth = help string	"	
 	| array |
 	symbolOrArray isSymbol 
-		ifTrue: [	array _ self perform: (symbolOrArray, #ButtonData) asSymbol]
-		ifFalse: [ array _ symbolOrArray].
+		ifTrue: [	array := self perform: (symbolOrArray, #ButtonData) asSymbol]
+		ifFalse: [ array := symbolOrArray].
 	^ (aToolbar addButton: (DrGIcons for: array second))
 		model: presenter;
 		action: array third;
@@ -27528,10 +27528,10 @@ button: symbolOrArray
 	array fourth = help string	"	
 	| array stateGetter |
 	array := self perform: (symbolOrArray, #ButtonData) asSymbol.
-	^ ButtonMorph 
+	^ (ButtonMorph 
 		model: presenter
 		stateGetter: (stateGetter := array at: 5 ifAbsent: [ #isTool: ])
-		action: array third ::
+		action: array third)
 		stateArgument: (stateGetter isUnary ifTrue: [nil] ifFalse: [array second]);
 		icon: (DrGIcons for: array second);
 		setBalloonText: array fourth;
@@ -27546,7 +27546,7 @@ button: symbolOrArray
 horizontalWheel 
 	| array |
 	array := self wheelXButtonData.
-	^ WheelMorph target: presenter actionSelector: array third :: 
+	^ (WheelMorph target: presenter actionSelector: array third)
 		beHorizontal; 
 		factor: 0.05; 
 		setBalloonText: array first;
@@ -27576,7 +27576,7 @@ propertyFor: aMathItem
 !DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 14:48:13'!
 quickToolbar
 	quickToolbar ifNotNil: [^ quickToolbar].
-	quickToolbar _ LayoutMorph newRow ::
+	quickToolbar := LayoutMorph newRow
 		separation: 5;
 		yourself.
 	self miscTools do: [:dataTool | 		quickToolbar addMorph: (self button: dataTool )		].
@@ -27609,9 +27609,9 @@ stylerFor: aStyle
 "Open a style Panel to edit aStyle"
 	editPanel 	ifNotNil: [
 		editPanel delete.
-		editPanel _ nil].
+		editPanel := nil].
 	aStyle ifNotNil: [
-		editPanel _ 		DrGStylePanel open: aStyle label: 'Edit style' translated.
+		editPanel := 		DrGStylePanel open: aStyle label: 'Edit style' translated.
 		self contextualEditingFor: editPanel ]
 		! !
 
@@ -27619,17 +27619,17 @@ stylerFor: aStyle
 tools
 	| toolsData dropDown |
 	tools ifNotNil: [^ tools].
-	toolsData _ OrderedCollection new
+	toolsData := OrderedCollection new
 		add: self pointTools; 		add: self curveTools; 		add: self transformationTools;
 		add: self numericTools; 		add: self scriptTools;		add: self macroTools;
 		add: self animateTools; 		yourself.
-	tools _ CircularToolbarMorph new.
+	tools := CircularToolbarMorph new.
 	tools 
 		color: self buttonColor;
 		selectedColor: self buttonSelectedColor;
 		buttonSize: DrGeoSystem toolbarIconSize.
 	toolsData do: [:dataTool | 
-		dropDown _ (self addChevron: dataTool first to: tools) addDropDown.
+		dropDown := (self addChevron: dataTool first to: tools) addDropDown.
 		dataTool do: [:tool | self addChevron: tool to: dropDown subtoolbar]].
 	^ tools
 	
@@ -27642,7 +27642,7 @@ tree
 
 !DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 12:07:48'!
 treeView
-	^ treeView ifNil: [treeView _ HierarchicalListMorph 
+	^ treeView ifNil: [treeView := HierarchicalListMorph 
 		model: self tree
 		listGetter: #pool
 		indexGetter: #selectedItem
@@ -27655,7 +27655,7 @@ treeView
 verticalWheel 
 	| array |
 	array := self wheelYButtonData.
-	^  WheelMorph target: presenter actionSelector: array third :: 
+	^  (WheelMorph target: presenter actionSelector: array third)
 		beVertical; 
 		factor: 0.05; 
 		setBalloonText: array first; 
@@ -27669,7 +27669,7 @@ verticalWheel
 zoomWheel 
 	| array |
 	array := self wheelZButtonData.
-	^  WheelMorph target: presenter actionSelector: array third :: 
+	^  (WheelMorph target: presenter actionSelector: array third)
 		beVertical; 
 		factor: 1; 
 		setBalloonText: array first; 
@@ -27690,7 +27690,7 @@ buttonSelectedColor
 contextualEditingFor: panel
 "Ensure the panel is located close to the user mouse action"
 	| mousePosition |
-	mousePosition _ self activeHand morphPosition.
+	mousePosition := self activeHand morphPosition.
 	mousePosition x > (self runningWorld morphWidth - panel morphWidth - 20)
 		ifTrue: [panel morphPosition: mousePosition 
 			+ (-20 - panel morphWidth @ ((panel morphHeight  // -2)))]
@@ -27709,7 +27709,7 @@ transparentMorph
 updateStylerFor: aStyle
 "Update the styler if any matching the given style"
 	(editPanel 	notNil and: [editPanel model == aStyle]) ifTrue: [ | position |
-		position _ editPanel morphPosition.
+		position := editPanel morphPosition.
 		self stylerFor: aStyle.
 		editPanel morphPosition: position]
 		! !
@@ -27719,16 +27719,16 @@ exportIconSet
 "Export the icon set: name, description and icon as a PNG file
  See addButton:to: for icon data description"
 	| buttons data path|
-	path _ '/tmp/DrGeoIcons/' asDirectoryEntry recursiveDelete assureExistence.
-	data _ self new.
-	buttons _ OrderedCollection new
+	path := '/tmp/DrGeoIcons/' asDirectoryEntry recursiveDelete assureExistence.
+	data := self new.
+	buttons := OrderedCollection new
 		addAll: data miscTools;
 		addAll: data pointTools; 		addAll: data curveTools; 		addAll: data transformationTools;
 		addAll: data numericTools; 		addAll: data scriptTools;		addAll: data macroTools;
 		addAll: data animateTools; 		yourself.
 	buttons do: [:aButton | | iconDescription iconName |  		
-		iconDescription _ data perform: (aButton, #ButtonData) asSymbol.
-		iconName _ iconDescription second.
+		iconDescription := data perform: (aButton, #ButtonData) asSymbol.
+		iconName := iconDescription second.
 		(path / iconName) assureExistence.
 		(path / iconName // 'description.txt') assureExistence 
 			fileContents: iconDescription fourth.
@@ -27739,7 +27739,7 @@ exportIconSet
 
 !DrGUIControlsManager class methodsFor: 'instance creation' stamp: 'hlsf 8/4/2023 18:23:17'!
 for: aPresenter
-	^ self basicNew :: 
+	^ self basicNew
 		presenter: aPresenter;
 		initialize! !
 
@@ -27757,7 +27757,7 @@ buttonSelectedColor
 addMenuItem: toolSymbol to: menu
 	| array |
 	"access the buttonData method from the tool symbol"
-	array _ toolSymbol isSymbol
+	array := toolSymbol isSymbol
 		ifTrue: [ self perform: (toolSymbol , #ButtonData) asSymbol ]
 		ifFalse: [ toolSymbol ].
 	(menu add: array first action: array third) 		setBalloonText: array fourth.
@@ -27773,7 +27773,7 @@ addUpdatingMenuItem: array to: menu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:55:54'!
 animateMenu
 	| menu |
-	menu _ self newMenu.
+	menu := self newMenu.
 	self animateTools do: [ :symbol | self addMenuItem: symbol to: menu ].
 	^ menu
 		! !
@@ -27781,14 +27781,14 @@ animateMenu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:55:59'!
 curveMenu
 	| lineMenu |
-	lineMenu _ self newMenu.
+	lineMenu := self newMenu.
 	self curveTools  do: [ :symbol | self addMenuItem: symbol to: lineMenu ].
 	^ lineMenu! !
 
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:06'!
 editMenu
 	| menu |
-	menu _ self newMenu.
+	menu := self newMenu.
 	self addMenuItem: self moveButtonData to: menu.
 	menu addLine.
 	self addMenuItem: self undoButtonData to: menu.
@@ -27835,44 +27835,44 @@ fileMenu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:14'!
 macroconstructionMenu
 	| menu |
-	self view macroMenu: (menu _ self newMenu).
+	self view macroMenu: (menu := self newMenu).
 	 self macroTools do: [ :symbol | self addMenuItem: symbol to: menu].
 	^ menu! !
 
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:18'!
 mainMenu
 	| mainMenu menu |
-	mainMenu _ MenuMorph entitled: self view label.
+	mainMenu := MenuMorph entitled: self view label.
 	" File menu "
-	menu _ mainMenu add: 'File' translated subMenu: self fileMenu.
+	menu := mainMenu add: 'File' translated subMenu: self fileMenu.
 	menu 	setBalloonText: 'Load, save or export Dr. Geo figure.' translated.
 	" Edit menu "
-	menu _ mainMenu add: 'Edit' translated subMenu: self editMenu.
+	menu := mainMenu add: 'Edit' translated subMenu: self editMenu.
 	menu setBalloonText: 'Erase or edit style and properties of items.' translated.
 	" Points menu "
-	menu _ mainMenu 		add: 'Points' translated subMenu: self pointMenu.
+	menu := mainMenu 		add: 'Points' translated subMenu: self pointMenu.
 	menu setBalloonText: 'Create points: free, on curve, intersection or middle point.' translated.
 	" Lines menu "
-	menu _ mainMenu add: 'Lines' translated subMenu: self curveMenu.
+	menu := mainMenu add: 'Lines' translated subMenu: self curveMenu.
 	menu setBalloonText: 'Create different curve types: line, half-line, segment, vector, circle...' translated.
 	" Transformations menu "
-	menu _ mainMenu add: 'Transformations' translated subMenu: self transformationMenu.
+	menu := mainMenu add: 'Transformations' translated subMenu: self transformationMenu.
 	menu setBalloonText: 'Transform an object with a geometric transformation: symmetry, reflexion, rotation, translation or homothety (scale).' translated.
 	" Numerics and Text menu "
 	mainMenu add: 'Numerics & Text' translated subMenu: self numericMenu.
 	menu setBalloonText: 'Create several numeric objects: free value, distance, length, angle, coordinates, equation and text.' translated.
 	" Script menu "
-	menu _ mainMenu add: 'Script' translated subMenu: self scriptMenu.
+	menu := mainMenu add: 'Script' translated subMenu: self scriptMenu.
 	menu setBalloonText: 'Script: use, edit or create script to plug in the sketch.' translated.
 	self flag: #drgeoTodo.
 	"menu	on: #mouseEnter send: #updateScriptMenu	to: self."	
 	" Macro-construction menu "	
-	menu _ mainMenu add: 'Macro-construction' translated 		subMenu: self macroconstructionMenu.
+	menu := mainMenu add: 'Macro-construction' translated 		subMenu: self macroconstructionMenu.
 	menu setBalloonText: 'Build or execute macro-construction. A macro is a construction template you can apply to items in the sketch area.' translated.
 	self flag: #drgeoTodo.
 	"menu	on: #mouseEnter send: #updateMacroMenu to: self."
 	" Animation menu "	
-	menu _ mainMenu add: 'Animate' translated subMenu: self animateMenu.
+	menu := mainMenu add: 'Animate' translated subMenu: self animateMenu.
 	menu setBalloonText: 'Animate a free point on curve.' translated.
 	^ mainMenu 
 ! !
@@ -27886,7 +27886,7 @@ newMenu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:25'!
 numericMenu
 	| menu |
-	menu _ self newMenu.
+	menu := self newMenu.
 	self numericTools do: [ :symbol | self addMenuItem: symbol to: menu ].
 	^ menu
 		! !
@@ -27894,7 +27894,7 @@ numericMenu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:28'!
 pointMenu
 	| pointMenu |
-	pointMenu _ self newMenu.
+	pointMenu := self newMenu.
 	self pointTools do: [ :symbol | self addMenuItem: symbol to: pointMenu ].
 	^ pointMenu
 		! !
@@ -27902,7 +27902,7 @@ pointMenu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:31'!
 scriptMenu
 	| menu |
-	self view scriptMenu: (menu _ self newMenu).
+	self view scriptMenu: (menu := self newMenu).
 	 self scriptTools do: [ :symbol | self addMenuItem: symbol to: menu].
 	^ menu 
 		! !
@@ -27910,7 +27910,7 @@ scriptMenu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:36'!
 transformationMenu
 	| menu |
-	menu _ self newMenu.
+	menu := self newMenu.
 	self transformationTools do: [ :symbol | self addMenuItem: symbol to: menu ].
 	^ menu
 		! !
@@ -27918,7 +27918,7 @@ transformationMenu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:40'!
 updateMacroMenu
 	| macroMenu |
-	macroMenu _ self view macroMenu.
+	macroMenu := self view macroMenu.
 	macroMenu removeAllMorphs.
 	self macroTools do: [ :symbol |  self addMenuItem: symbol to: macroMenu].
 	DrGMacroFactory new pool ifNotEmpty: [ macroMenu addLine ].
@@ -27935,10 +27935,10 @@ updateMacroMenu
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:56:44'!
 updateScriptMenu
 	| scripts scriptMenu |
-	scriptMenu _ self view scriptMenu.
+	scriptMenu := self view scriptMenu.
 	scriptMenu removeAllMorphs.
 	self scriptTools do: [ :symbol |  self addMenuItem: symbol to: scriptMenu].
-	scripts _ DrGeoUserScript subclasses sorted: [:script1 :script2 | 
+	scripts := DrGeoUserScript subclasses sorted: [:script1 :script2 | 
 		script1 scriptName asLowercase < script2 scriptName asLowercase].
 	scripts ifNotEmpty: [scriptMenu addLine].
 	scripts do: [:aScript |
@@ -27993,7 +27993,7 @@ setStatusBarMessage: aString
 
 !DrGUIMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 16:25:16'!
 tools
-	^ tools ifNil: [tools _ self mainMenu]! !
+	^ tools ifNil: [tools := self mainMenu]! !
 
 !DrGeo methodsFor: 'accessing' stamp: 'hlsf 6/19/2021 15:18:35'!
 axesWording
@@ -28068,7 +28068,7 @@ tool
 !DrGeo methodsFor: 'accessing' stamp: 'hlsf 4/9/2022 21:48:04'!
 tool: aTool 
 	tool ifNotNil: [tool release].
-	tool _ aTool.
+	tool := aTool.
 	tool ifNotNil: [tool registerDependant: self].
 	(tool notNil and: [self view notNil])  ifTrue: [
 		controlsManager setStatusBarMessage: tool description]! !
@@ -28083,7 +28083,7 @@ exportToClipboard: isBackgroundTransparent
 	self 
 		exportToBitmap: (DrGeoSystem myExportsPath / 'clipboard.png') ensureDelete binaryWriteStream
 		transparent: isBackgroundTransparent.
-	command _ String streamContents: [ :str | 
+	command := String streamContents: [ :str | 
 		str << 'xclip -selection clipboard -t image/png '
 			<< (DrGeoSystem myExportsPath / 'clipboard.png') pathString].
 	OSPlatform current runCommand: command."! !
@@ -28119,11 +28119,11 @@ Check the local resource or the server.' translated].
 exportToImageAs
 	| model |
 	DrGeoSystem showVirtualKeyboard: true.
-	model := ValueHolder with: (exportImageName ifNotNil: [:name | name] ifNil: ['']) :: 
+	model := (ValueHolder with: (exportImageName ifNotNil: [:name | name] ifNil: ['']))
 	action: [:aString | 
 		exportImageName := aString.
 		self exportToImage: exportImageName ].
-	StringEntryPanel openWide: model label: 'Name the image to keep.' translated ::
+	(StringEntryPanel openWide: model label: 'Name the image to keep.' translated)
 		morphCenter: self view fullBoundsInOwner center;
 		setProperty: #layerNumber toValue: 20! !
 
@@ -28167,11 +28167,11 @@ saveSketch
 saveSketchAs
 | model |
 	DrGeoSystem showVirtualKeyboard: true.
-	model _ ValueHolder with:'' :: 
+	model := (ValueHolder with:'')
 	action: [:aString | 
-		sketchName _ aString.
+		sketchName := aString.
 		self saveSketch].
-	StringEntryPanel openWide: model label: 'Name the sketch to keep.' translated ::
+	(StringEntryPanel openWide: model label: 'Name the sketch to keep.' translated)
 		morphCenter: self view fullBoundsInOwner center;
 		setProperty: #layerNumber toValue: 20! !
 
@@ -28188,7 +28188,7 @@ Check the local resource or the server.' translated].! !
 animate
 	selectedTool == #animate 	ifFalse: [
 		self selectTool: DrGAnimateTool.
-		selectedTool _ #animate].
+		selectedTool := #animate].
 	self changed! !
 
 !DrGeo methodsFor: 'callback canvas'!
@@ -28222,7 +28222,7 @@ axesOnOff
 
 !DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 6/19/2021 16:57:23'!
 createMultipleOnOff
-	isCreateMultipleMode _ isCreateMultipleMode not! !
+	isCreateMultipleMode := isCreateMultipleMode not! !
 
 !DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 6/19/2021 17:15:21'!
 gridOnOff
@@ -28230,12 +28230,12 @@ gridOnOff
 
 !DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 6/19/2021 16:57:50'!
 gridStuckOnOff
-	gridStuck _ gridStuck not.! !
+	gridStuck := gridStuck not.! !
 
 !DrGeo methodsFor: 'callback canvas'!
 move
 	self selectTool: DrGSelectTool.
-	selectedTool _ #move.
+	selectedTool := #move.
 	self changed! !
 
 !DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 6/19/2021 10:07:28'!
@@ -28274,152 +28274,152 @@ undo
 !DrGeo methodsFor: 'callback create'!
 createAngleBisector
 	self selectTool: DrGFlyBuildTool with: DrGAngleBisectorBuilder.
-	selectedTool _ #angleBisector.
+	selectedTool := #angleBisector.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 12/9/2021 15:59:49'!
 createAngleGeometric
 	self selectTool: DrGBuildTool with: DrGAngleGeometricBuilder.
-	selectedTool _ #geometricAngle.
+	selectedTool := #geometricAngle.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 12/9/2021 15:59:16'!
 createAngleOriented
 	self selectTool: DrGBuildTool with: DrGAngleOrientedBuilder.
-	selectedTool _ #orientedAngle.
+	selectedTool := #orientedAngle.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createArc
 	self selectTool: DrGFlyBuildTool with: DrGArcBuilder.
-	selectedTool _ #arc.
+	selectedTool := #arc.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createArcCenter
 	self selectTool: DrGFlyBuildTool with: DrGArcCenterBuilder.
-	selectedTool _ #arcCenter.
+	selectedTool := #arcCenter.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/23/2021 11:50:33'!
 createCircle
 	self selectTool: DrGFlyBuildTouchTool with: DrGCircleBuilder.
-	selectedTool _ #circle.
+	selectedTool := #circle.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createCoordinatePoint
 	self selectTool: DrGBuildTool with: DrGPointByCoordinatesBuilder.
-	selectedTool _ #pointDefinedByCoordindates.
+	selectedTool := #pointDefinedByCoordindates.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createCoordinates
 	self selectTool: DrGBuildTool with: DrGCoordinatesBuilder.
-	selectedTool _ #coordinates.
+	selectedTool := #coordinates.
 	self changed
 ! !
 
 !DrGeo methodsFor: 'callback create'!
 createDistance
 	self selectTool: DrGBuildTool with: DrGValueBuilder.
-	selectedTool _ #distance.
+	selectedTool := #distance.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createFreePoint
 	self selectTool: DrGFlyPointBuildTool with: DrGFlyPointBuilder.
-	selectedTool _ #freePoint.
+	selectedTool := #freePoint.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createHomothety
 	self selectTool: DrGBuildTool with: DrGHomothetyBuilder.
-	selectedTool _ #scale.
+	selectedTool := #scale.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createLine
 	self selectTool: DrGFlyBuildTouchTool with: DrGLineBuilder.
-	selectedTool _ #line.
+	selectedTool := #line.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createLocus
 	self selectTool: DrGBuildTool with: DrGLocusBuilder.
-	selectedTool _ #locus.
+	selectedTool := #locus.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createMacro
 	self selectTool: DrGMacroBuildTool with: DrGMacroBuilder.
-	selectedTool _ #macroBuild.
+	selectedTool := #macroBuild.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createMiddlePoint
 	self selectTool: DrGBuildTool with: DrGMiddleBuilder.
-	selectedTool _ #middle.
+	selectedTool := #middle.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/23/2021 11:50:28'!
 createParallel
 	self selectTool: DrGFlyBuildTouchTool with: DrGParallelBuilder.
-	selectedTool _ #parallel.
+	selectedTool := #parallel.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/23/2021 11:50:42'!
 createPerpendicular
 	self selectTool: DrGFlyBuildTouchTool with: DrGPerpendicularBuilder.
-	selectedTool _ #perpendicular.
+	selectedTool := #perpendicular.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createPerpendicularBisector
 	self selectTool: DrGFlyBuildTouchTool with: DrGPerpendicularBisectorBuilder.
-	selectedTool _ #perpendicularBisector.
+	selectedTool := #perpendicularBisector.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createPointByCoordinates
 	self selectTool: DrGBuildTool with: DrGPointByCoordinatesBuilder.
-	selectedTool _ #pointDefinedByCoordinates.
+	selectedTool := #pointDefinedByCoordinates.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createPointIntersection
 	self selectTool: DrGBuildTool with: DrGPointIntersectionBuilder.
-	selectedTool _ #intersection.
+	selectedTool := #intersection.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createPolygon
 	self selectTool: DrGFlyBuildTool with: DrGPolygonBuilder.
-	selectedTool _ #polygon.
+	selectedTool := #polygon.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createPolygonRegular
 	self selectTool: DrGFlyBuildTool with: DrGPolygonRegularBuilder.
-	selectedTool _ #polygonRegular.
+	selectedTool := #polygonRegular.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createRay
 	self selectTool: DrGFlyBuildTouchTool with: DrGRayBuilder.
-	selectedTool _ #ray.
+	selectedTool := #ray.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createReflection
 	self selectTool: DrGBuildTool with: DrGReflectionBuilder.
-	selectedTool _ #axialSymmetry.
+	selectedTool := #axialSymmetry.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createRotation
 	self selectTool: DrGBuildTool with: DrGRotationBuilder.
-	selectedTool _ #rotation.
+	selectedTool := #rotation.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 8/4/2023 17:38:21'!
@@ -28432,37 +28432,37 @@ createScript
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 8/4/2021 12:10:22'!
 createSegment
 	self selectTool: DrGFlyBuildTouchTool with: DrGSegmentBuilder.
-	selectedTool _ #segment.
+	selectedTool := #segment.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createSymmetry
 	self selectTool: DrGBuildTool with: DrGSymmetryBuilder.
-	selectedTool _ #centralSymmetry.
+	selectedTool := #centralSymmetry.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createText
 	self selectTool: DrGBuildTool with: DrGTextBuilder.
-	selectedTool _ #text.
+	selectedTool := #text.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createTranslation
 	self selectTool: DrGBuildTool with: DrGTranslationBuilder.
-	selectedTool _ #translation.
+	selectedTool := #translation.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 createVector
 	self selectTool: DrGFlyBuildTouchTool with: DrGVectorBuilder.
-	selectedTool _ #vector.
+	selectedTool := #vector.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 deleteMacro
 	self selectTool: DrGSelectTool.
-	selectedTool _ #deleteMacro.
+	selectedTool := #deleteMacro.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/7/2022 15:40:15'!
@@ -28470,13 +28470,13 @@ editScript
 	| menu |
 	"We force to select mode, then open a browser on the script classes"
 	self move.
-	menu _ MenuMorph entitled: 'Edit or create scripts' translated.
+	menu := MenuMorph entitled: 'Edit or create scripts' translated.
 	DrGWizardScript sortedScripts do: [:aScriptClass |
-		menu 
+		(menu 
 			add: aScriptClass scriptName 
 			target: self 
 			action: #editScript: 
-			argument: aScriptClass ::
+			argument: aScriptClass)
 			setBalloonText: aScriptClass description].
 	menu popUpInWorld.
 	self changed! !
@@ -28484,9 +28484,9 @@ editScript
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/7/2022 18:05:34'!
 editScript: aScriptClass
 	|  browser |
-	browser _ Browser new setClass: aScriptClass selector: #compute.
+	browser := Browser new setClass: aScriptClass selector: #compute.
 	browser when: #annotationChanged send: #updateAllMathItems to: self domain.
-	^ MessageSetWindow new model: browser ::
+	^ (MessageSetWindow new model: browser)
 		buildNoSysCatMorphicWindow;
 		setLabel:  'Edit or create scripts' translated;
 		openInWorld;
@@ -28504,13 +28504,13 @@ eraser
 !DrGeo methodsFor: 'callback create'!
 executeMacro
 	self selectTool: DrGMacroPlayTool with: DrGMacroPlayer.
-	selectedTool _ #macroExecute.
+	selectedTool := #macroExecute.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 executeMacro: aMacro
 	self selectTool: DrGMacroPlayTool with: DrGMacroPlayerHeadless.
-	selectedTool _ #macroExecute. 
+	selectedTool := #macroExecute. 
 	self tool builder selectedMacro: aMacro.
 	self tool switchState: DrGMacroPlayToolStateSelect.
 	self changed! !
@@ -28518,19 +28518,19 @@ executeMacro: aMacro
 !DrGeo methodsFor: 'callback create'!
 property 
 	self selectTool: DrGPropertyTool.
-	selectedTool _ #property.
+	selectedTool := #property.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 useScript
 	self selectTool: DrGScriptPlayTool with: DrGScriptPlayer.
-	selectedTool _ #useScript.
+	selectedTool := #useScript.
 	self changed! !
 
 !DrGeo methodsFor: 'callback create'!
 useScript: aScript
 	self selectTool: DrGScriptPlayTool with: DrGScriptPlayerHeadless.
-	selectedTool _ #useScript.
+	selectedTool := #useScript.
 	self tool builder scriptClass: aScript.
 	self tool switchState: DrGMacroPlayToolStateSelect.
 	self changed! !
@@ -28644,7 +28644,7 @@ selectionCleanUp
 |createdItem|
 	"a mathItem is just been created, do some clean up"
 	self tool reset.
-	createdItem _ self domain factory last.
+	createdItem := self domain factory last.
 	"eventually if not in createMultipleMode we escape from this tool"
 	(createdItem isFreePointItem 
 		or: [createdItem isIntersectionPointItem 
@@ -28675,7 +28675,7 @@ readyToBuildClone
 	|answer|
 	"readyToBuild event sent from the SelectTool. The builder is ready to clone an items and its parents,
 	 request to the domain the construction of the math item under the builder"
-	answer _ self domain createMathItem: self tool builder.
+	answer := self domain createMathItem: self tool builder.
 	self tool grabClone: answer first last.! !
 
 !DrGeo methodsFor: 'updating'!
@@ -28714,7 +28714,7 @@ serviceXml: fileEntry
 !DrGeo class methodsFor: 'instance creation' stamp: 'hlsf 8/4/2023 18:03:35'!
 service
 "instanciate a DrGeo service, to embbed in third party Morph. It is just the canvas without surounding menu and icon"
-	^ self basicNew ::
+	^ self basicNew
 		initializeService;
 		yourself! !
 
@@ -28809,37 +28809,37 @@ Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
 !DrGeo class methodsFor: 'user interface' stamp: 'hlsf 2/11/2024 12:54:10'!
 toolsMenu: builder
 	<drgeoWorldMenu>
-	builder newEntry: 'System Browser' translated in: 'Tools' translated ::
+	(builder newEntry: 'System Browser' translated in: 'Tools' translated)
 		icon: #developmentIcon;
 		action: [HierarchyBrowserWindow onClass: DrGeoSketch selector: nil];
-		help:'A source code browser to view, edit and save Dr. Geo code. I open the browser on the DrGeoSketch class you can study to design your own Smalltalk sketch.'	translated;
+		help:'A source code browser to view, edit and save Dr. Geo code. I open the browser on the DrGeoSketch class you can study to design your own Smalltalk sketch.' translated;
 		order: 40.
 
-	builder newEntry: 'Smalltalk Sketch Editor' translated in: 'Tools' translated ::
+	(builder newEntry: 'Smalltalk Sketch Editor' translated in: 'Tools' translated)
 		icon: #textEditorIcon;
 		help: 'An editor to write and to test new Smalltalk sketch.' 	translated;
 		action: [DrGSmalltalkSketchEditor open: '' label: 'Edit Smalltalk Sketch' translated.];
 		order: 20.
 
-	builder newEntry: 'Browse Smalltalk Sketches' translated in: 'Tools' translated ::
+	(builder newEntry: 'Browse Smalltalk Sketches' translated in: 'Tools' translated)
 		icon: #scriptIcon;
 		help: 'A tool to browse and to test both system and personal Smalltalk Sketches.' 	translated;
 		action: [DrGSmalltalkSketchBrowser open: DrGeoSystem smalltalkSketchesPath label: 'Browse' translated.];
 		order: 10.
 
-	builder newEntry: 'Workspace' translated in: 'Tools' translated ::
+	(builder newEntry: 'Workspace' translated in: 'Tools' translated)
 		icon: #terminalIcon;
 		action: [Workspace open ];
 		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated.'	translated;
 		order: 30.
 		
-	builder newEntry: 'Open a file' translated in: 'Tools' translated ::
+	(builder newEntry: 'Open a file' translated in: 'Tools' translated)
 		icon: #systemFileManagerIcon;
 		action: [FileList open];
 		help: 'Open the filer on your personal sketches collection.' translated;
 		order: 50.
 		
-	builder newEntry: 'Save session' translated in: 'Tools' translated ::
+	(builder newEntry: 'Save session' translated in: 'Tools' translated)
 		order: 999;
 		action: [Smalltalk saveImage];
 		icon:	 #saveIcon;
@@ -28848,29 +28848,29 @@ toolsMenu: builder
 !DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/8/2023 19:13:55'!
 worldMenu: builder
 	<drgeoWorldMenu>
-	builder newEntry: 'New sketch' translated ::
+	(builder newEntry: 'New sketch' translated)
 		icon: #newIcon;
 		action: [DrGeo new];
 		order: 0.
-	builder newEntry: 'Open a sketch' translated ::
+	(builder newEntry: 'Open a sketch' translated)
 		icon: #openIcon;
 		action: [DrGFileOpenMorph open];
 		order: 1.
-	builder newEntry: 'Toggle full screen mode' translated ::
+	(builder newEntry: 'Toggle full screen mode' translated)
 		icon: #viewFullscreenIcon;
 		action: [DrGeoSystem toggleFullscreen];
 		help: 'Turn full screen mode on when it is off, off when it is on.'	translated;
 		order: 2.
-	builder newEntry: 'Settings' translated ::
+	(builder newEntry: 'Settings' translated)
 		icon: #preferencesIcon;
 		action: [PreferenceBrowser open: DrGeoSystem preferences label: 'Dr. Geo Preferences' translated.];
 		order: 3.
-	builder newEntry: 'Tools' translated ::
+	(builder newEntry: 'Tools' translated)
 		icon:	 #systemIcon.
-	builder newEntry: 'About' translated ::
+	(builder newEntry: 'About' translated)
 		action: [ DrGeo aboutDrgeo ];
 		order: 7.
-	builder newEntry:  'Quit' translated ::
+	(builder newEntry:  'Quit' translated)
 		action: [ DrGeo quit ];
 		icon: #quitIcon;
 		order: 999! !
@@ -28882,7 +28882,7 @@ chooseMorph: morphs
 !DrGTool methodsFor: 'handling' stamp: 'hlsf 8/3/2021 13:00:01'!
 chooseMorph: morphs title: aTitle
 	| menu |
-	menu _ DrGDrawableMenu entitled: aTitle.
+	menu := DrGDrawableMenu entitled: aTitle.
 	menu tool: self.
 	morphs do: [ :aMorph | 
 		menu add: aMorph asString target: self action: #handleChoice: argument: {aMorph}].
@@ -28937,7 +28937,7 @@ switchState: aStateClass
 
 !DrGTool methodsFor: 'initialize-release' stamp: 'hlsf 4/11/2021 12:03:29'!
 initialize
-	morph _ nil.
+	morph := nil.
 	self last: 0@0.! !
 
 !DrGTool methodsFor: 'initialize-release'!
@@ -28952,7 +28952,7 @@ reset
 	self morph: nil;
 		last: nil;
 		spot: nil.
-	mathItemUnderMouse _ nil! !
+	mathItemUnderMouse := nil! !
 
 !DrGTool methodsFor: 'initialize-release'!
 resetForFreshStart 
@@ -28980,7 +28980,7 @@ last
 
 !DrGTool methodsFor: 'accessing'!
 last: aPoint
-	last _ aPoint! !
+	last := aPoint! !
 
 !DrGTool methodsFor: 'accessing' stamp: 'hlsf 4/11/2021 12:46:23'!
 mathItem
@@ -28995,7 +28995,7 @@ morph: aMorph
 	morph ifNotNil: [
 		morph stopBlinking.
 		presenter controlsManager tree ifNotNil: [:aTree | aTree mathItem: nil]].
-	morph _ aMorph.
+	morph := aMorph.
 	morph ifNotNil: [
 		morph startBlinking.
 		presenter controlsManager tree ifNotNil: [:aTree | aTree mathItem: morph mathItem]
@@ -29008,7 +29008,7 @@ presenter
 
 !DrGTool methodsFor: 'accessing'!
 presenter: aPresenter
-	presenter _ aPresenter ! !
+	presenter := aPresenter ! !
 
 !DrGTool methodsFor: 'accessing' stamp: 'hlsf 6/23/2021 15:47:53'!
 relevantMorphsNear: aPoint
@@ -29021,7 +29021,7 @@ spot
 
 !DrGTool methodsFor: 'accessing'!
 spot: aPoint
-	spot _ aPoint ! !
+	spot := aPoint ! !
 
 !DrGTool methodsFor: 'accessing'!
 state
@@ -29029,7 +29029,7 @@ state
 
 !DrGTool methodsFor: 'accessing'!
 state: aState
-	state _	aState ! !
+	state :=	aState ! !
 
 !DrGTool methodsFor: 'private' stamp: 'hlsf 8/4/2023 11:39:29'!
 myMorphsNear: aPoint
@@ -29044,8 +29044,8 @@ pointMorphsFirstNear: aPoint
 	"When the user moves the mouse over a collection of geometric items, if there
 are any point items, we discard all the other geometric items"
 	| myMorphs pointMorphs |
-	myMorphs _ self myMorphsNear: aPoint.
-	pointMorphs _ myMorphs select: [:aMorph | aMorph isPoint].
+	myMorphs := self myMorphsNear: aPoint.
+	pointMorphs := myMorphs select: [:aMorph | aMorph isPoint].
 	pointMorphs ifNotEmpty: [ ^ pointMorphs ].
 	^ myMorphs! !
 
@@ -29077,7 +29077,7 @@ new
 
 !DrGTool class methodsFor: 'instance creation' stamp: 'hlsf 2/13/2022 11:06:20'!
 presenter: aPresenter
-	^ self basicNew ::
+	^ self basicNew
 		presenter: aPresenter;
 		initialize;
 		yourself! !
@@ -29088,7 +29088,7 @@ animateStep
 
 !DrGAnimateTool methodsFor: 'accessing'!
 animateStep: aFloat
-	animateStep _ aFloat ! !
+	animateStep := aFloat ! !
 
 !DrGAnimateTool methodsFor: 'accessing'!
 description 
@@ -29140,7 +29140,7 @@ add: aMorph
 initialize
 	super initialize.
 	self switchState:  DrGBuildToolState.
-	selectedMorphs _ OrderedCollection new! !
+	selectedMorphs := OrderedCollection new! !
 
 !DrGBuildTool methodsFor: 'initialize-release'!
 registerDependant: anObject
@@ -29161,7 +29161,7 @@ reset
 	super reset.
 	self stopBlinking.
 	self builder reset.
-	selectedMorphs _ OrderedCollection new! !
+	selectedMorphs := OrderedCollection new! !
 
 !DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 4/11/2021 12:28:26'!
 startBlinking
@@ -29177,7 +29177,7 @@ builder
 
 !DrGBuildTool methodsFor: 'accessing'!
 builder: aBuilder
-	builder _ aBuilder ! !
+	builder := aBuilder ! !
 
 !DrGBuildTool methodsFor: 'accessing'!
 description 
@@ -29190,7 +29190,7 @@ presenter: aPresenter
 
 !DrGBuildTool class methodsFor: 'instance creation' stamp: 'hlsf 2/13/2022 11:09:38'!
 builder: aBuilderClassName presenter: aPresenter
-	^self basicNew ::
+	^self basicNew
 		builder: aBuilderClassName new;
 		presenter: aPresenter;
 		initialize;
@@ -29215,13 +29215,13 @@ intersectableCurves: aCollection at: aPoint
 !DrGFlyPointBuildTool methodsFor: 'accessing' stamp: 'hlsf 6/23/2021 15:47:53'!
 relevantMorphsNear: aPoint
 	| intersectables curves | 
-	intersectables _ self 
+	intersectables := self 
 		intersectableCurves: (
 			(self myMorphsNear: aPoint) select: [:aMorph | aMorph mathItem isIntersectableItem])
 		at: aPoint.
 	"if no intersectable, return the non intersectable only if one, otherwise it is considered for interesction"
 	^ intersectables ifEmpty: [
-		curves _ (self myMorphsNear: aPoint) select: [:aMorph | aMorph isCurve].
+		curves := (self myMorphsNear: aPoint) select: [:aMorph | aMorph isCurve].
 		curves size > 1 
 			ifTrue: [ #() ]
 			ifFalse: [ curves]]! !
@@ -29376,11 +29376,11 @@ mathItemTool
 !DrGFlyBuildTool methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 11:13:01'!
 mathItemTool: aBuilderClassName
 	mathItemTool ifNil: 
-		[mathItemTool _ DrGBuildTool builder: aBuilderClassName presenter: presenter] ! !
+		[mathItemTool := DrGBuildTool builder: aBuilderClassName presenter: presenter] ! !
 
 !DrGFlyBuildTool class methodsFor: 'as yet unclassified' stamp: 'hlsf 2/13/2022 11:18:03'!
 builder: aBuilderClass presenter: aPresenter
-	^self basicNew ::
+	^self basicNew
 		presenter: aPresenter ;
 		mathItemTool: aBuilderClass ;
 		initialize ;
@@ -29406,7 +29406,7 @@ isCloning
 !DrGSelectTool methodsFor: 'initialize-release'!
 initialize
 	self reset.
-	builder _ DrGCloneBuilder new.! !
+	builder := DrGCloneBuilder new.! !
 
 !DrGSelectTool methodsFor: 'initialize-release'!
 registerDependant: anObject
@@ -29420,12 +29420,12 @@ builder
 curvesToMutatePointIntoNear: aPoint
 "Search for the curves the point can mutate into. In priority intersectable curves, then curves."
 	| curves intersectables |
-	curves _ (self myMorphsNear: aPoint) select: [:aMorph | 		aMorph mathItem isCurveItem 
+	curves := (self myMorphsNear: aPoint) select: [:aMorph | 		aMorph mathItem isCurveItem 
 		and: [self domain factory is: aMorph mathItem before: self mathItem]].
 	"if several curves check for the intersectables"
 	^ curves size > 1 
 		ifTrue: [  
-			intersectables _ curves select: [ :aMorph |  aMorph mathItem isIntersectableItem].
+			intersectables := curves select: [ :aMorph |  aMorph mathItem isIntersectableItem].
 			intersectables size > 1
 				ifTrue: [intersectables]
 				ifFalse: [#()]]
@@ -29447,7 +29447,7 @@ morphs
 mutableMorphsAt: aPoint
 "select the morph we can mutate"
 	^ (self relevantMorphsNear: aPoint) select: [:aMorph | |item|
-		item _ aMorph mathItem.
+		item := aMorph mathItem.
 		item isFreePointOnPlaneItem 
 			or: [(item isPointItemOnCurve and: [(self factory is: item parentWithTest: #isLocusItem) not])
 				or: [item isIntersectionPointItem]]]! !
@@ -29476,7 +29476,7 @@ start
 
 !DrGSelectTool methodsFor: 'accessing'!
 start: aPoint
-	start _ aPoint ! !
+	start := aPoint ! !
 
 !DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 8/4/2023 12:19:10'!
 grabClone: clone
@@ -29489,9 +29489,9 @@ grabClone: clone
 !DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 5/6/2020 14:23:57'!
 reset
 	super reset.
-	start _ nil.
+	start := nil.
 	self switchState: DrGSelectToolStateNeutral.
-	mathItems _ nil.
+	mathItems := nil.
 	builder ifNotNil: [builder reset].! !
 
 !DrGSelectTool methodsFor: 'updating' stamp: 'hlsf 8/4/2023 11:39:39'!
@@ -29609,14 +29609,14 @@ handleChoice: aMorphCollection! !
 handleMouseAt: aPoint 
 	"Return true if we can process something or we are over something"
 	| morphs aTip feedback |
-	feedback _ true.
-	morphs _ self context relevantMorphsNear: aPoint.
+	feedback := true.
+	morphs := self context relevantMorphsNear: aPoint.
 	morphs size = 1
 		ifTrue: [
-			aTip _ morphs first mathItem descriptiveName.
-			feedback _ morphs first style isFeedback].
+			aTip := morphs first mathItem descriptiveName.
+			feedback := morphs first style isFeedback].
 	morphs size > 1
-		ifTrue: [aTip _ 'Several objects can be selected. Please, choose one.' translated. ].
+		ifTrue: [aTip := 'Several objects can be selected. Please, choose one.' translated. ].
 	(aTip isNil or: [ feedback not ])
 		ifTrue: [self drawable hideTip]
 		ifFalse: [self drawable tip: aTip at: aPoint].
@@ -29664,7 +29664,7 @@ context
 
 !DrGToolState methodsFor: 'accessing'!
 context: aContext
-	context _ aContext ! !
+	context := aContext ! !
 
 !DrGToolState methodsFor: 'accessing' stamp: 'hlsf 6/19/2021 10:07:28'!
 drawable
@@ -29681,7 +29681,7 @@ view
 !DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 8/4/2021 11:48:00'!
 handleChoice: aMorphCollection
 |aMathItemCollection|
-	aMathItemCollection _ OrderedCollection new.
+	aMathItemCollection := OrderedCollection new.
 	aMorphCollection do: [:aMorph|
 		aMathItemCollection add: aMorph mathItem.
 		self context add: aMorph].
@@ -29695,7 +29695,7 @@ handlePress: aPoint
 	| morphs |
 	self drawable hideTip.
 	self context last: aPoint.
-	morphs _ self context relevantMorphsNear: aPoint.
+	morphs := self context relevantMorphsNear: aPoint.
 	morphs size = 1 	ifTrue: [
 		self handleChoice: morphs.
 		^true].
@@ -29712,11 +29712,11 @@ handlePress: aPoint
 !DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
 handleMouseAt: aPoint 
 	| morphs aTip |
-	morphs _ self context relevantMorphsNear: aPoint.
+	morphs := self context relevantMorphsNear: aPoint.
 	morphs size = 1
-		ifTrue: [aTip _ morphs first mathItem descriptiveName].
+		ifTrue: [aTip := morphs first mathItem descriptiveName].
 	morphs size > 1
-		ifTrue: [aTip _ 'This intersection' translated].
+		ifTrue: [aTip := 'This intersection' translated].
 	aTip
 		ifNil: [self drawable hideTip]
 		ifNotNil: [self drawable tip: aTip at: aPoint].
@@ -29814,7 +29814,7 @@ handleRelease: aPoint
 !DrGFlyBuildTouchToolState methodsFor: 'handling' stamp: 'hlsf 8/4/2021 15:06:04'!
 handlePress: aPoint
 	| answer |
-	answer _ super handlePress: aPoint.
+	answer := super handlePress: aPoint.
 	answer ifTrue: [			self switchState: DrGFlyBuildTouchToolStateGrabbed].
 	^ answer! !
 
@@ -29888,14 +29888,14 @@ handleChoice: aMorphCollection
 handleMouseAt: aPoint
 |gridded|
 	(self context isGridded and: [self mathItem isFreePointItem])
-		ifFalse: [gridded _ self drawable gridWorldVector: aPoint - self context last.
+		ifFalse: [gridded := self drawable gridWorldVector: aPoint - self context last.
 			self context domain 
 				moveEvent: self mathItem
 				inDirection: gridded 
 				withDirty: self context mathItems.
 			"If no movement, keep previous last position in reference"
 			(gridded closeTo: 0@0) ifFalse: [self context last: (self context gridPoint: aPoint)]]
-		ifTrue: [gridded _ self context gridPoint: aPoint.
+		ifTrue: [gridded := self context gridPoint: aPoint.
 			self context domain 
 				moveEvent: self mathItem
 				at: (self drawable gridWorldPoint: gridded)
@@ -29919,7 +29919,7 @@ handleRelease: aPoint
 !DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 4/11/2021 12:50:56'!
 handleStillPress: aPoint
 	|merger|
-	(merger _ self context pointMorphToMergeWithAt: aPoint) notEmpty  ifTrue: 
+	(merger := self context pointMorphToMergeWithAt: aPoint) notEmpty  ifTrue: 
 		["I keep pressing while holding a free point"
 		merger size = 1 
 			ifTrue: [self handleChoice: merger]
@@ -29935,13 +29935,13 @@ handleMouseAt: aPoint
 	"First handle the redraw"
 	super handleMouseAt: aPoint.
 	"Detect for mutation candidate"
-	morphs _ self context curvesToMutatePointIntoNear: aPoint.
+	morphs := self context curvesToMutatePointIntoNear: aPoint.
 	(morphs isEmpty and: [self isMutantFreePoint not]) ifTrue: [
-		aTip _ 'Change as a free point on the plane.' translated].
+		aTip := 'Change as a free point on the plane.' translated].
 	morphs size = 1 ifTrue: [
-		aTip _ 'Change as a free point on this curve.' translated].
+		aTip := 'Change as a free point on this curve.' translated].
 	morphs size > 1 ifTrue: [
-		aTip _ 'Change as this intersection.' translated].
+		aTip := 'Change as this intersection.' translated].
 	aTip 
 		ifNil: [self drawable hideTip]
 		ifNotNil: [self drawable tip: aTip at: aPoint].
@@ -29972,44 +29972,44 @@ handleRelease: aPoint
 !DrGMutatorToolStateDragged methodsFor: 'accessing'!
 context: aContext
 	super context: aContext.
-	originalPointClass _ context mathItem class.! !
+	originalPointClass := context mathItem class.! !
 
 !DrGSelectToolStateDraggedBitmap methodsFor: 'accessing' stamp: 'hlsf 4/11/2021 12:46:23'!
 context: aContext
 	super context: aContext.
-	draggedCorner _ self context morph isAnyCornerIn: self context start.! !
+	draggedCorner := self context morph isAnyCornerIn: self context start.! !
 
 !DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 6/19/2021 09:35:00'!
 handleMouseAt: aPoint 
 	| processSomething |
 	draggedCorner 
-		ifNil: [processSomething _ super handleMouseAt: aPoint]
+		ifNil: [processSomething := super handleMouseAt: aPoint]
 		ifNotNil: [self magnifyBitmap: aPoint.
-			processSomething _ true].
+			processSomething := true].
 	^ processSomething 
 ! !
 
 !DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 4/11/2021 12:46:23'!
 magnifyBitmap: aPoint
 	| displacement unitVector image factor griddedPoint |
-	griddedPoint _ self context gridPoint: aPoint.
-	displacement _ griddedPoint - self context start.
-	image _ self context morph morph.
+	griddedPoint := self context gridPoint: aPoint.
+	displacement := griddedPoint - self context start.
+	image := self context morph morph.
 	draggedCorner = #topLeft ifTrue: [
-		corner ifNil: [corner _ image position].
-		[unitVector _ (image center - corner) normalized] on: ZeroDivide do: [unitVector := 0@0]].
+		corner ifNil: [corner := image position].
+		[unitVector := (image center - corner) normalized] on: ZeroDivide do: [unitVector := 0@0]].
 	draggedCorner =#bottomRight ifTrue: [
-		corner ifNil: [corner _ image position].
-		[unitVector _ (corner - image center) normalized] on: ZeroDivide do: [unitVector := 0@0]].
+		corner ifNil: [corner := image position].
+		[unitVector := (corner - image center) normalized] on: ZeroDivide do: [unitVector := 0@0]].
 	draggedCorner = #topRight ifTrue: [
-		corner ifNil: [corner _ image topRight].
-		[unitVector _ (image center - corner) normalized] on: ZeroDivide do: [unitVector := 0@0]].
+		corner ifNil: [corner := image topRight].
+		[unitVector := (image center - corner) normalized] on: ZeroDivide do: [unitVector := 0@0]].
 	draggedCorner = #bottomLeft ifTrue: [
-		corner ifNil: [corner _ image topRight].
-		[unitVector _ (corner - image center) normalized] on: ZeroDivide do: [unitVector := 0@0]].
-	factor _ (displacement dotProduct: unitVector) / (corner dist: image center).
-	factor > 1 ifTrue: [factor _ 0.9].
-	originalMagnifyBy ifNil: [originalMagnifyBy _ self context mathItem magnifyBy].
+		corner ifNil: [corner := image topRight].
+		[unitVector := (corner - image center) normalized] on: ZeroDivide do: [unitVector := 0@0]].
+	factor := (displacement dotProduct: unitVector) / (corner dist: image center).
+	factor > 1 ifTrue: [factor := 0.9].
+	originalMagnifyBy ifNil: [originalMagnifyBy := self context mathItem magnifyBy].
 	self context mathItem magnifyBy: (1 - factor) * originalMagnifyBy.
 	self context domain updateAllMathItems.
 	self context last: griddedPoint.! !
@@ -30047,7 +30047,7 @@ handleMouseAt: aPoint
 	"The user is moving, detach the point as a free point and switch to dragging state"
 	|griddedPoint|
 	self switchState: DrGMutatorToolStateDragged.
-	griddedPoint _ self context gridPoint: aPoint.
+	griddedPoint := self context gridPoint: aPoint.
 	self context
 		start: griddedPoint;
 		last: griddedPoint.
@@ -30059,7 +30059,7 @@ handleMouseAt: aPoint
 !DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 6/21/2021 21:26:29'!
 handleMouseAt: aPoint
 	| processSomething |
-	(processSomething _ super handleMouseAt: aPoint)
+	(processSomething := super handleMouseAt: aPoint)
 		ifTrue: [	Cursor webLinkCursor activateCursor] 
 		ifFalse: [Cursor normalCursorWithMask activateCursor].
 	^ processSomething ! !
@@ -30068,8 +30068,8 @@ handleMouseAt: aPoint
 handlePress: aPoint 
 	| morphs griddedPoint|
 	self drawable hideTip.
-	griddedPoint _ self context gridPoint: aPoint.
-	morphs _ self context relevantMorphsNear: aPoint.
+	griddedPoint := self context gridPoint: aPoint.
+	morphs := self context relevantMorphsNear: aPoint.
 	morphs size = 1 
 		ifTrue: 
 			[self context last: griddedPoint.
@@ -30091,8 +30091,8 @@ handlePress: aPoint
 handlePressShiftKey: aPoint 
 	| morphs griddedPoint|
 	self drawable hideTip.
-	griddedPoint _ self context gridPoint: aPoint.
-	morphs _ self context mutableMorphsAt: aPoint.
+	griddedPoint := self context gridPoint: aPoint.
+	morphs := self context mutableMorphsAt: aPoint.
 	morphs size = 1 
 		ifTrue: 
 			[self context last: griddedPoint.
@@ -30115,13 +30115,13 @@ handlePressShiftKey: aPoint
 handleShiftKeyMouseAt: aPoint
 	"Let's inform about the mutate mode"
 	| morphs aTip |
-	morphs _ self context mutableMorphsAt: aPoint.
+	morphs := self context mutableMorphsAt: aPoint.
 	morphs ifEmpty: [
-		aTip _ 'Pressing down the [Shift] key you can drag and change the nature of free point or intersection point.' translated].
+		aTip := 'Pressing down the [Shift] key you can drag and change the nature of free point or intersection point.' translated].
 	morphs size = 1 ifTrue: [
-		aTip _ 'Drag this point to change its nature.' translated].
+		aTip := 'Drag this point to change its nature.' translated].
 	morphs size > 1 ifTrue: [
-		aTip _ 'Several objects can be selected. Please, select one clicking the mouse.' translated. ].
+		aTip := 'Several objects can be selected. Please, select one clicking the mouse.' translated. ].
 	self drawable tip: aTip at: aPoint.
 	^ aTip notNil! !
 
@@ -30132,7 +30132,7 @@ isSelectNeutral
 !DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
 handleMouseAt: aPoint
 	| morphs |
-	morphs _ self context relevantMorphsNear: aPoint.
+	morphs := self context relevantMorphsNear: aPoint.
 	^ (morphs includes: self context morph)
 		ifTrue:
 			[self drawable 	tip: self mathItem descriptiveName				at: aPoint.
@@ -30181,7 +30181,7 @@ handleChoice: aMorphCollection
 handlePress: aPoint
 	|costumes|
 	self drawable hideTip.
-	costumes _ self context relevantMorphsNear: aPoint.
+	costumes := self context relevantMorphsNear: aPoint.
 	costumes size = 1 ifTrue:
 		[self context last: aPoint.
 		self handleChoice: costumes.
@@ -30231,14 +30231,14 @@ stopAnimating
 !DrGAnimateToolStateSelected methodsFor: 'animate'!
 animate
 	| a | 
-	a _ self mathItem abscissa + self animateStep.
-	a > 1.0 ifTrue: [a _ 0].
+	a := self mathItem abscissa + self animateStep.
+	a > 1.0 ifTrue: [a := 0].
 	self mathItem abscissa: a.
 	self context domain updateAllMathItems ! !
 
 !DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 6/19/2021 10:07:28'!
 startAnimating
-	abscissa _ self mathItem abscissa.
+	abscissa := self mathItem abscissa.
 	self drawable arrangeToStartStepping.! !
 
 !DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 6/19/2021 10:07:28'!
@@ -30282,7 +30282,7 @@ unexecute
 
 !DrGCommand methodsFor: 'accessing'!
 domain: aDomain
-	domain _ aDomain.! !
+	domain := aDomain.! !
 
 !DrGCommand methodsFor: 'as yet unclassified' stamp: 'hlsf 5/2/2020 00:06:31'!
 release
@@ -30290,8 +30290,8 @@ release
 
 !DrGCompositeCommand methodsFor: 'as yet unclassified'!
 compileComposite: theMathItems
-	mathItems _ theMathItems.
-	compositeItem _ DrGCompositeItem newWith: theMathItems.! !
+	mathItems := theMathItems.
+	compositeItem := DrGCompositeItem newWith: theMathItems.! !
 
 !DrGCompositeCommand methodsFor: 'as yet unclassified'!
 execute
@@ -30314,7 +30314,7 @@ with: theMathItems in: aDomain
 
 !DrGDeleteCommand methodsFor: 'as yet unclassified'!
 deleteMathItem: aMathItem 
-	mathItems _ domain factory orderedDependentMathItem: aMathItem.! !
+	mathItems := domain factory orderedDependentMathItem: aMathItem.! !
 
 !DrGDeleteCommand methodsFor: 'as yet unclassified' stamp: 'hlsf 4/29/2020 23:55:22'!
 release
@@ -30341,13 +30341,13 @@ for: aMathItem in: aDomain
 
 !DrGMathItemCommand methodsFor: 'accessing' stamp: 'hlsf 3/9/2023 17:24:03'!
 createMathItem: aBuilder
-	mathItems _ aBuilder getItem.
+	mathItems := aBuilder getItem.
 	mathItems do: [:each | domain autoname: each]
 ! !
 
 !DrGMathItemCommand methodsFor: 'accessing'!
 fromMathItem: aMathItem
-	mathItems _ {aMathItem}.
+	mathItems := {aMathItem}.
 ! !
 
 !DrGMathItemCommand methodsFor: 'dependents access' stamp: 'hlsf 4/29/2020 23:56:37'!
@@ -30405,11 +30405,11 @@ unexecute
 !DrGMergeCommand methodsFor: 'initialize-release'!
 merge: aMathItem with: aTarget
 	|children|
-	mathItem _ aMathItem.
-	target _ aTarget.
-	mathItemIndex _ domain factory indexOf: mathItem.
-	children _ domain factory directChildrenOf: mathItem.
-	directChildren _ OrderedCollection new.
+	mathItem := aMathItem.
+	target := aTarget.
+	mathItemIndex := domain factory indexOf: mathItem.
+	children := domain factory directChildrenOf: mathItem.
+	directChildren := OrderedCollection new.
 	children do:[:aChild |
 		directChildren add: (
 			Array 
@@ -30432,11 +30432,11 @@ unexecute
 
 !DrGMoveCommand methodsFor: 'accessing'!
 mathItem: aMathItem
-	mathItem _ aMathItem ! !
+	mathItem := aMathItem ! !
 
 !DrGMoveCommand methodsFor: 'accessing'!
 vector: aPoint
-	vector _ aPoint
+	vector := aPoint
 	! !
 
 !DrGMoveCommand class methodsFor: 'as yet unclassified'!
@@ -30448,18 +30448,18 @@ for: aMathItem with: aPoint in: aDomain
 
 !DrGPropertyCommand methodsFor: 'accessing'!
 mathItem: aMathItem 
-	mathItem _ aMathItem ! !
+	mathItem := aMathItem ! !
 
 !DrGPropertyCommand methodsFor: 'accessing'!
 property: aProperty
-	property _ aProperty ! !
+	property := aProperty ! !
 
 !DrGPropertyCommand methodsFor: 'command'!
 execute
 	|temp|
-	temp _ mathItem property.
+	temp := mathItem property.
 	mathItem property: property.
-	property _ temp. 
+	property := temp. 
 	mathItem changed! !
 
 !DrGPropertyCommand methodsFor: 'command'!
@@ -30479,37 +30479,37 @@ release
 
 !DrGCommandManager methodsFor: 'initialization'!
 initialize
-	stack _ DrGCommandStack new! !
+	stack := DrGCommandStack new! !
 
 !DrGCommandManager methodsFor: 'command exec'!
 buildCommandFor: aMathItem
 	|command|
-	command _ stack nextPut: (DrGMathItemCommand for: aMathItem in: domain).
+	command := stack nextPut: (DrGMathItemCommand for: aMathItem in: domain).
 	^command execute! !
 
 !DrGCommandManager methodsFor: 'command exec'!
 buildCommandWith: aBuilder
 	|command|
-	command _ stack nextPut: (DrGMathItemCommand with: aBuilder in: domain).
+	command := stack nextPut: (DrGMathItemCommand with: aBuilder in: domain).
 	^command execute! !
 
 !DrGCommandManager methodsFor: 'command exec'!
 compositeCommandFor: aMathItemSelection
 |command|
-	command _ stack nextPut: (DrGCompositeCommand with: aMathItemSelection in: domain).
+	command := stack nextPut: (DrGCompositeCommand with: aMathItemSelection in: domain).
 	command execute.! !
 
 !DrGCommandManager methodsFor: 'command exec'!
 deleteCommandFor: aMathItem
 |command|
-	command _ stack nextPut: (DrGDeleteCommand for: aMathItem in: domain).
+	command := stack nextPut: (DrGDeleteCommand for: aMathItem in: domain).
 	command execute! !
 
 !DrGCommandManager methodsFor: 'command exec'!
 mergeCommandFor: aMathItem with: aTarget
 "create a merge command"
 |command|
-	command _ stack nextPut: (DrGMergeCommand merge: aMathItem with: aTarget in: domain).
+	command := stack nextPut: (DrGMergeCommand merge: aMathItem with: aTarget in: domain).
 	command execute! !
 
 !DrGCommandManager methodsFor: 'command exec'!
@@ -30519,24 +30519,24 @@ moveCommandFor: aMathItem with: aPoint
 !DrGCommandManager methodsFor: 'command exec'!
 propertyCommandFor: aMathItem with: aProperty
 	|command|
-	command _ stack nextPut: (DrGPropertyCommand for: aMathItem with: aProperty in: domain).
+	command := stack nextPut: (DrGPropertyCommand for: aMathItem with: aProperty in: domain).
 	command execute! !
 
 !DrGCommandManager methodsFor: 'command exec'!
 redo
 |command|
-	command _ stack next.
+	command := stack next.
 	command ifNotNil:	[command execute]! !
 
 !DrGCommandManager methodsFor: 'command exec'!
 undo
 |command|
-	command _ stack previous.
+	command := stack previous.
 	command ifNotNil: [command unexecute]! !
 
 !DrGCommandManager methodsFor: 'accessing'!
 domain: aDomain
-	domain _ aDomain! !
+	domain := aDomain! !
 
 !DrGFactory methodsFor: 'accessing' stamp: 'hlsf 2/10/2022 10:03:01'!
 add: item 
@@ -30581,7 +30581,7 @@ last
 last: item 
 	"push item as the last instantiated item in the pool, purelly artificial however
 	as the items order in the pool is not changed"
-	last _ item! !
+	last := item! !
 
 !DrGFactory methodsFor: 'accessing'!
 pool
@@ -30600,7 +30600,7 @@ subPool: item from: aPool
 !DrGFactory methodsFor: 'removing' stamp: 'hlsf 2/10/2022 09:03:23'!
 purge
 	pool do: [ :aMathItem | aMathItem release].
-	pool _ OrderedCollection new.
+	pool := OrderedCollection new.
 	self changed: #pool! !
 
 !DrGFactory methodsFor: 'removing' stamp: 'hlsf 5/25/2023 18:59:55'!
@@ -30612,8 +30612,8 @@ remove: itemCollection
 !DrGFactory methodsFor: 'removing' stamp: 'hlsf 2/10/2022 10:05:07'!
 removeAt: index
 	| item |
-	item _ self at: index.
-	last = item ifTrue: [last _ nil].
+	item := self at: index.
+	last = item ifTrue: [last := nil].
 	pool removeAt: index! !
 
 !DrGFactory methodsFor: 'enumerating'!
@@ -30625,7 +30625,7 @@ from: item do: aBlock
 !DrGFactory methodsFor: 'initialize-release'!
 initialize
 	super initialize.
-	pool _ OrderedCollection new.
+	pool := OrderedCollection new.
 ! !
 
 !DrGFactory methodsFor: 'initialize-release' stamp: 'hlsf 4/24/2020 12:56:14'!
@@ -30671,7 +30671,7 @@ purge
 
 !DrGMacroFactory class methodsFor: 'instance creation'!
 new
-	^ uniqueInstance ifNil: [uniqueInstance _ super new]! !
+	^ uniqueInstance ifNil: [uniqueInstance := super new]! !
 
 !DrGMathItemFactory methodsFor: 'testing'!
 is: item parentWithTest: testSelector
@@ -30683,8 +30683,8 @@ is: item parentWithTest: testSelector
 !DrGMathItemFactory methodsFor: 'accessing'!
 childrenOf: mathItemIndex
 	|children directChildren|
-	directChildren _ OrderedCollection withAll: (self directChildrenOf: mathItemIndex).
-	children _ Set new addAll: directChildren; yourself.
+	directChildren := OrderedCollection withAll: (self directChildrenOf: mathItemIndex).
+	children := Set new addAll: directChildren; yourself.
 	directChildren do: [:childIndex | children addAll: (self childrenOf: childIndex)].
 	^ children! !
 
@@ -30698,7 +30698,7 @@ dependentMathItem: theMathItem
 dependentMathItem: dependentItem in: subPool
 	"Return a collection of the dependents items of theMathItem in a subpool"
 	| dependents |
-	dependents _ IdentitySet with: dependentItem.
+	dependents := IdentitySet with: dependentItem.
 	subPool do: [:aMathItem |
 		(aMathItem parentsIncludes: dependentItem) ifTrue: 
 			[dependents addAll: 
@@ -30709,7 +30709,7 @@ dependentMathItem: dependentItem in: subPool
 directChildrenOf: parent
 "return the collection of my direct child"
 	^ pool select: [:item| | parents|
-		parents _ item parents.
+		parents := item parents.
 		parents notNil and: [(parents anySatisfy: [:aParent | aParent = parent])]].
 ! !
 
@@ -30724,9 +30724,9 @@ moveableParentsOf: theMathItem in: parents
 	"Return a collection of the parents items of theMathItem, sensidble to reverse dragging
 	Caution: we may have duplicated item"
 	| safeParents areParentsMoveable |
-	safeParents _ theMathItem parents.
+	safeParents := theMathItem parents.
 	theMathItem parents: #().
-	areParentsMoveable _ theMathItem moveParent: 0@0.
+	areParentsMoveable := theMathItem moveParent: 0@0.
 	theMathItem parents: safeParents.
 	areParentsMoveable ifTrue: [
 		(parents addAll: safeParents) do: [:aParent |
@@ -31060,16 +31060,16 @@ checkForFile: aString
 !DrGeoCommandLineHandler methodsFor: 'as yet unclassified' stamp: 'hlsf 12/9/2022 22:12:01'!
 loadScript: aString
 "	| workspace utfString |
-	utfString _ aString convertFromWithConverter: UTF8TextConverter new.
+	utfString := aString convertFromWithConverter: UTF8TextConverter new.
 	self checkForFile: utfString.
-	workspace _  Workspace openContents: utfString asFileReference contents.
+	workspace :=  Workspace openContents: utfString asFileReference contents.
 	workspace containingWindow fullscreen.
 	Smalltalk compiler evaluate: workspace contents"! !
 
 !DrGeoCommandLineHandler methodsFor: 'as yet unclassified' stamp: 'hlsf 12/9/2022 22:12:09'!
 loadSketch: aString
 "	| utfString |
-	utfString _ aString convertFromWithConverter: UTF8TextConverter new.
+	utfString := aString convertFromWithConverter: UTF8TextConverter new.
 	self checkForFile: utfString.
 	DrGeo fileFullscreen: utfString"! !
 
@@ -31134,7 +31134,7 @@ parentsById: aNode
 	"return a collection of the item parent given theirs id in the attribute
 	elements <parent id=xxx>"
 	|collection|
-	collection _ OrderedCollection new.
+	collection := OrderedCollection new.
 	aNode	elementsDo: [:each | (each tag = #parent) ifTrue: [collection
 				add: (self factory findInPoolById: (each attributeAt: 'ref') asSymbol)]].
 	^collection ! !
@@ -31692,7 +31692,7 @@ parseVectorSymmetry: aNode
 !DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 9/10/2022 21:22:36'!
 parseArrowWith: aNode 
 	| arrow |
-	arrow _ (aNode attributeAt: #arrow ifAbsent: [#none]) asSymbol.
+	arrow := (aNode attributeAt: #arrow ifAbsent: [#none]) asSymbol.
 	"Compatible with version <= 19.09"
 	^ arrow 
 		caseOf:  {
@@ -31706,12 +31706,12 @@ parseArrowWith: aNode
 !DrGeoXml methodsFor: 'parse style'!
 parseColorAt: colorAttribute with: aNode 
 | attribute |
-	attribute _ (aNode attributeAt: colorAttribute ifAbsent: ['Transparent']) asLowercase.
-	(attribute = 'darkgrey' or: [attribute = 'darkgray'])	ifTrue: [attribute _ #darkGray].
-	(attribute = 'grey' or: [attribute = 'gray']) ifTrue: [attribute _ #gray].
-	attribute = 'darkgreen' ifTrue: [attribute _ #green].
-	attribute = 'darkblue' ifTrue: [attribute _ #blue].
-	attribute = 'bordeaux' ifTrue: [attribute _ #red].
+	attribute := (aNode attributeAt: colorAttribute ifAbsent: ['Transparent']) asLowercase.
+	(attribute = 'darkgrey' or: [attribute = 'darkgray'])	ifTrue: [attribute := #darkGray].
+	(attribute = 'grey' or: [attribute = 'gray']) ifTrue: [attribute := #gray].
+	attribute = 'darkgreen' ifTrue: [attribute := #green].
+	attribute = 'darkblue' ifTrue: [attribute := #blue].
+	attribute = 'bordeaux' ifTrue: [attribute := #red].
 	^ Color perform: attribute asSymbol! !
 
 !DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 9/25/2021 14:31:47'!
@@ -31729,7 +31729,7 @@ parseStyleOfAngle: item with: aNode
 !DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 9/10/2022 21:24:05'!
 parseStyleOfArc: item with: aNode 
 	|costume|
-	costume _ self parseStyleOfCurve: item with: aNode.
+	costume := self parseStyleOfCurve: item with: aNode.
 	costume style arrow: (self parseArrowWith: aNode).
 	self parseStyleOfFilledCircle: costume with: aNode! !
 
@@ -31746,7 +31746,7 @@ parseStyleOfBitmap: item with: aNode
 !DrGeoXml methodsFor: 'parse style'!
 parseStyleOfCircle: item with: aNode 
 	|costume|
-	costume _ self parseStyleOfCurve: item with: aNode.
+	costume := self parseStyleOfCurve: item with: aNode.
 	self parseStyleOfFilledCircle: costume with: aNode! !
 
 !DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 8/4/2023 11:13:07'!
@@ -31825,7 +31825,7 @@ parseStyleOfPoint: item with: aNode
 !DrGeoXml methodsFor: 'parse style'!
 parseStyleOfPolygon: item with: aNode 
 	| costume |
-	costume _ self parseStyleOfCurve: item with: aNode.
+	costume := self parseStyleOfCurve: item with: aNode.
 	self parseStyleOfFilledPolygon: costume with: aNode! !
 
 !DrGeoXml methodsFor: 'parse style'!
@@ -31835,7 +31835,7 @@ parseStyleOfRay: item with: aNode
 !DrGeoXml methodsFor: 'parse style' stamp: 'drgeo 9/10/2022 21:23:07'!
 parseStyleOfSegment: item with: aNode 
 	| costume |
-	costume _ self parseStyleOfCurve: item with: aNode.
+	costume := self parseStyleOfCurve: item with: aNode.
 	costume style mark: (aNode attributeAt: #mark ifAbsent: [#none]) asSymbol.
 	costume style arrow: (self parseArrowWith: aNode)! !
 
@@ -31902,7 +31902,7 @@ loadFigureFrom: doc for: constructor
 "One XML document may contain several drgeo figure instances, parse it all,
 and return a DrGeo for each one"
 	|instances |
-	instances _ OrderedCollection new.
+	instances := OrderedCollection new.
 	(doc elementAt: #drgenius) ifNil: [^nil].
 	(doc elementAt: #drgenius)
 		tagsNamed: #drgeo
@@ -31914,7 +31914,7 @@ loadFrom: stream for: constructor
 "One XML document may contain several drgeo figure instances, parse it all,
 and return a DrGeo for each one"
 	| doc instances |
-	doc _ XMLDOMParser parseDocumentFrom: stream.
+	doc := XMLDOMParser parseDocumentFrom: stream.
 	stream close.
 	self loadMacroFrom: doc.
 	^ self loadFigureFrom: doc for: constructor.! !
@@ -31932,7 +31932,7 @@ loadOnlyFigureFrom: stream for: constructor
 "One XML document may contain several drgeo figure instances, parse it all,
 and return a DrGeo for each one"
 	| doc |
-	doc _ XMLDOMParser parseDocumentFrom: stream.
+	doc := XMLDOMParser parseDocumentFrom: stream.
 	stream close.
 	^ self loadFigureFrom: doc	for: constructor! !
 
@@ -31994,7 +31994,7 @@ instantiateStyle: aNode for: item
 methodToParse: aNode
  "find which method to use to parse this node"
 	|type|
-	type _ ((aNode attributeAt: #type) copyWithoutAll: '_' ) capitalized asSymbol.
+	type := ((aNode attributeAt: #type) copyWithoutAll: '_' ) capitalized asSymbol.
 	 ^(#parse , aNode tag capitalized , type , #':') asSymbol ! !
 
 !DrGeoXml methodsFor: 'xml read macro'!
@@ -32002,7 +32002,7 @@ parentMacroNodesIn: macro from: aNode
 	"return a collection of parent macro nodes  given theirs id in the attribute
 	elements <parent id=xxx>"
 	|collection|
-	collection _ OrderedCollection new.
+	collection := OrderedCollection new.
 	aNode	elementsDo: [:each | 
 		(each tag = #parent) ifTrue: [
 			collection add: (macro detectId: (each attributeAt: 'ref') asSymbol)]].
@@ -32011,7 +32011,7 @@ parentMacroNodesIn: macro from: aNode
 !DrGeoXml methodsFor: 'xml read macro'!
 parseInput: node inMacro: macro
 	(node elementAt: #input) elementsDo: [:each | |item|
-		item _ DrGMacroMathItem new
+		item := DrGMacroMathItem new
 			id: (each attributeAt: #id) asSymbol; 
 			basicType: each tag;
 			yourself.
@@ -32021,7 +32021,7 @@ parseInput: node inMacro: macro
 parseOneMacro: node
 " parse one macro and return it"
 	| macro|
-	macro _ DrGMacro new.
+	macro := DrGMacro new.
 	macro title: (node attributeAt: #name).
 	macro description: (node contentStringAt: #description).
 	self parseInput: node inMacro: macro.
@@ -32032,8 +32032,8 @@ parseOneMacro: node
 !DrGeoXml methodsFor: 'xml read macro'!
 parseOutput: node inMacro: macro
 	(node elementAt: #output) elementsDo: [:aNode | |macroNodeClass|
-		aNode tag = #hidden ifTrue: [macroNodeClass _ DrGMacroHiddenNode].
-		aNode tag = #final ifTrue: [macroNodeClass _ DrGMacroOutputNode].
+		aNode tag = #hidden ifTrue: [macroNodeClass := DrGMacroHiddenNode].
+		aNode tag = #final ifTrue: [macroNodeClass := DrGMacroOutputNode].
 		aNode elementsDo: [:child | 
 			macro addNode: (
 				macroNodeClass new 
@@ -32058,9 +32058,9 @@ saveMultiple: sketchesAndMacros on: stream
 !DrGeoXml methodsFor: 'xml write'!
 saveOn: stream
 	| doc writer root |
-	doc _ XMLDocument new version: '1.0'.
-	writer _ XMLWriter on: stream.
-	root _ XMLElement named: #drgenius.
+	doc := XMLDocument new version: '1.0'.
+	writer := XMLWriter on: stream.
+	root := XMLElement named: #drgenius.
 	self writeFigureAsXmlTo: root.
 	doc addElement: root.
 	doc printXMLOn: writer.! !
@@ -32101,7 +32101,7 @@ color
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 5/23/2021 12:46:18'!
 color: anObject
 	"Set the value of color"
-	color _ anObject.
+	color := anObject.
 	morph 
 		color: self color;
 		redrawNeeded! !
@@ -32113,7 +32113,7 @@ feedback
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 2/12/2022 11:37:46'!
 feedback: aBoolean
 " Do I provide feedback when mouse over me?"
-	feedback _ aBoolean.
+	feedback := aBoolean.
 	self changed: #feedback:! !
 
 !DrGStyle methodsFor: 'accessing'!
@@ -32123,7 +32123,7 @@ hidden
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 2/16/2022 23:14:39'!
 hidden: anObject 
 	"Set the value to isHidden"
-	hidden _ anObject.
+	hidden := anObject.
 	hidden 	ifFalse: [morph color: self color].
 	morph redrawNeeded.
 	self changed: #hidden:! !
@@ -32132,7 +32132,7 @@ hidden: anObject
 isHidden
 	"Answer the value of isHidden"
 
-	^ hidden ifNil: [hidden _ false]! !
+	^ hidden ifNil: [hidden := false]! !
 
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
 mathItem
@@ -32144,7 +32144,7 @@ morph
 
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:51:37'!
 morph: aMorph
-	morph _ aMorph ! !
+	morph := aMorph ! !
 
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
 view
@@ -32152,9 +32152,9 @@ view
 
 !DrGStyle methodsFor: 'initialize-release' stamp: 'hlsf 5/23/2021 13:16:46'!
 initialize
-	feedback _ true.
-	hidden _ false.
-	color _ Color black! !
+	feedback := true.
+	hidden := false.
+	color := Color black! !
 
 !DrGStyle methodsFor: 'testing'!
 isFeedback
@@ -32190,11 +32190,11 @@ colorMorphCollection
 !DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:24'!
 colorWidget
 	^ self 	widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self 
 			listGetter: #colorMorphCollection 
 			indexGetter: #colorIndex
-			indexSetter: #colorIndex: ::
+			indexSetter: #colorIndex:)
 			autoDeselect: false;
 			yourself)
 		named:  'Colour' translated
@@ -32202,34 +32202,31 @@ colorWidget
 
 !DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:42:43'!
 feedbackWidget
-	^ PluggableCheckboxMorph 
+	^ (PluggableCheckboxMorph 
 		model: self 
 		getSelected: #feedback 
 		setSelected:  #feedback:
-		label: 'Feedback' translated 
-		::
+		label: 'Feedback' translated)
 		setBalloonText:  'Toggle to provide feedback and interaction when the mouse cursor is over the object.' translated;
 		yourself! !
 
 !DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:43:09'!
 hiddenWidget
-	^ PluggableCheckboxMorph 
+	^ (PluggableCheckboxMorph 
 		model: self 
 		getSelected: #hidden 
 		setSelected: #hidden:
-		label: 'Hide' translated 
-		::
+		label: 'Hide' translated)		
 		setBalloonText:  'Toggle to hide the object.' translated;
 		yourself! !
 
 !DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:43:28'!
 lockedWidget
-	^ PluggableCheckboxMorph 
+	^ (PluggableCheckboxMorph 
 		model: morph
 		getSelected: #locked
 		setSelected: #locked: 
-		label:  'Lock' translated 
-		::
+		label:  'Lock' translated)
 		setBalloonText: 'Toggle to lock the object to its position.' translated;
 		yourself! !
 
@@ -32241,7 +32238,7 @@ myWidgets
 !DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:56:27'!
 nameWidget
  | inputWidget |
-	inputWidget _ TextModelMorph 			textProvider: morph 			textGetter: #name 			textSetter: #name: ::
+	inputWidget := (TextModelMorph textProvider: morph textGetter: #name textSetter: #name:)
 			hideScrollBarsIndefinitely;
 			askBeforeDiscardingEdits: false;
 			acceptOnCR: true;
@@ -32255,7 +32252,7 @@ nameWidget
 !DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 23:59:23'!
 styleWidget
 | controls |
-	controls _ 	OrderedCollection new
+	controls := 	OrderedCollection new
 		add: self nameWidget;
 		add: self colorWidget;
 		yourself.
@@ -32268,11 +32265,11 @@ styleWidget
 !DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/14/2022 09:01:21'!
 widget: aWidget named: aLabel help: aString
 | label |
-	^ LayoutMorph newRow ::
+	^ LayoutMorph newRow
 		separation: 5;
 		color: Color transparent;
 		axisEdgeWeight: #rowLeft;
-		addMorph: (label _ LabelMorph contents: aLabel);
+		addMorph: (label := LabelMorph contents: aLabel);
 		addMorph: aWidget layoutSpec: (LayoutSpec fixedHeight: label morphHeight) ;
 		setBalloonText: aString;
 		yourself.
@@ -32304,11 +32301,11 @@ lineStyleIndex: integer
 !DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:38:11'!
 lineWidget
 	^ self widget:  (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self 
 			listGetter: #styleMorphCollection
 			indexGetter: #lineStyleIndex
-			indexSetter: #lineStyleIndex:	 ::
+			indexSetter: #lineStyleIndex:)
 			autoDeselect: false;
 			yourself)
 		named: 'Style' translated 
@@ -32341,11 +32338,11 @@ thicknessMorphCollection
 !DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:49'!
 thicknessWidget
 	^ self widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self 
 			listGetter: #thicknessMorphCollection 
 			indexGetter: #thicknessIndex 
-			indexSetter: #thicknessIndex: ::
+			indexSetter: #thicknessIndex:)
 			autoDeselect: false;
 			yourself)			
 		named: 'Thickness' translated
@@ -32369,7 +32366,7 @@ color
 !DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 5/23/2021 12:53:09'!
 color: aColor
 "Set the value of fill color and border color"
-	color _ self isTranslucent ifTrue: [aColor alpha: 0.3] ifFalse: [aColor alpha: 1].
+	color := self isTranslucent ifTrue: [aColor alpha: 0.3] ifFalse: [aColor alpha: 1].
 	morph 
 		borderColor: self borderColor;
 		color: self color;
@@ -32384,7 +32381,7 @@ lineStyle
 !DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:41:02'!
 lineStyle: aSymbol
 	"Set the value of lineStyle"
-	lineStyle _ aSymbol.
+	lineStyle := aSymbol.
 	morph dashedBorder: (DrGTypeStyle styleDataFor: aSymbol).
 	morph redrawNeeded! !
 
@@ -32397,7 +32394,7 @@ thickness
 !DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 12/2/2021 10:46:49'!
 thickness: anObject
 	"Set the value of thickness"
-	thickness _ anObject.
+	thickness := anObject.
 	morph borderWidth: self borderWidth.
 	morph redrawNeeded! !
 
@@ -32416,7 +32413,7 @@ arrow
 !DrGFinitCurveStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 17:50:00'!
 arrow: anObject
 	"Set the value of arrows"
-	arrow _ anObject.
+	arrow := anObject.
 	morph arrow: anObject;
 		redrawNeeded ! !
 
@@ -32444,11 +32441,11 @@ arrowMorphCollection
 !DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:55'!
 arrowWidget
 	^ self widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self
 			listGetter: #arrowMorphCollection  
 			indexGetter: #arrowIndex 
-			indexSetter: #arrowIndex: ::
+			indexSetter: #arrowIndex:)
 			autoDeselect: false;
 			yourself)
 		named: 'Arrow' translated 
@@ -32466,7 +32463,7 @@ shape
 
 !DrGCompositeStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
 shape: anObject
-	shape _ anObject.
+	shape := anObject.
 	morph shape: anObject! !
 
 !DrGFilledStyle methodsFor: 'xml writing'!
@@ -32477,12 +32474,11 @@ writeAttributesTo: aNode
 
 !DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 15:59:50'!
 fillWidget
-	^ PluggableCheckboxMorph 
+	^ (PluggableCheckboxMorph 
 		model: self
 		getSelected: #fill
 		setSelected:  #fill:
-		label: 'Fill' translated
-		::
+		label: 'Fill' translated)
 		setBalloonText:  'Toggle to fill the object.' translated;
 		yourself! !
 
@@ -32492,12 +32488,11 @@ myWidgets
 
 !DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 15:58:11'!
 translucentWidget
-	^ PluggableCheckboxMorph 
+	^ (PluggableCheckboxMorph 
 		model: self
 		getSelected: #translucent 
 		setSelected: #translucent:
-		label: 'Translucent' translated
-		::
+		label: 'Translucent' translated)
 		setBalloonText: 'Toggle the translucency of the object.' translated;
 		yourself! !
 
@@ -32514,11 +32509,11 @@ fill: boolean
 
 !DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 18:10:25'!
 isFilled
-	^ fill ifNil: [fill _ true]! !
+	^ fill ifNil: [fill := true]! !
 
 !DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 18:10:10'!
 isTranslucent
-	^ translucent ifNil: [translucent _ true]! !
+	^ translucent ifNil: [translucent := true]! !
 
 !DrGFilledStyle methodsFor: 'accessing'!
 toggleFilled
@@ -32535,14 +32530,14 @@ translucent
 
 !DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 22:35:25'!
 translucent: boolean
-	translucent _ boolean.
+	translucent := boolean.
 	self color: color.
 	self changed: #translucent:.
 	morph redrawNeeded! !
 
 !DrGArcStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:26:41'!
 fill: boolean
-	(fill _ boolean) 
+	(fill := boolean) 
 		ifTrue: ["morph morph makeClosed"]
 		ifFalse: ["morph morph makeOpen"].
 	self changed: #fill:.
@@ -32584,7 +32579,7 @@ writeAttributesTo: aNode
 
 !DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:14:37'!
 markIndex
-	mark ifNil: [mark _ #none].
+	mark ifNil: [mark := #none].
 	^DrGTypeMark markIndexOf: mark! !
 
 !DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:14:02'!
@@ -32599,11 +32594,11 @@ markMorphCollection
 !DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:22'!
 markWidget
 	^ self widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self
 			listGetter: #markMorphCollection
 			indexGetter: #markIndex
-			indexSetter: #markIndex: ::
+			indexSetter: #markIndex:)
 			autoDeselect: false;
 			yourself)
 		named: 'Mark' translated 
@@ -32615,11 +32610,11 @@ myWidgets
 
 !DrGSegmentStyle methodsFor: 'accessing'!
 mark
-	^ mark ifNil: [mark _ #none]! !
+	^ mark ifNil: [mark := #none]! !
 
 !DrGSegmentStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:27:22'!
 mark: aSymbol
-	mark _ aSymbol.
+	mark := aSymbol.
 	morph redrawNeeded! !
 
 !DrGSegmentStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/3/2022 22:44:29'!
@@ -32670,11 +32665,11 @@ shapeMorphCollection
 !DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:43'!
 shapeWidget
 	^  self widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self 
 			listGetter: #shapeMorphCollection 
 			indexGetter: #shapeIndex 
-			indexSetter: #shapeIndex: ::
+			indexSetter: #shapeIndex:)
 			autoDeselect: false;
 			yourself)
 		named:  'Shape' translated
@@ -32687,11 +32682,11 @@ sizeMorphCollection
 !DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:49'!
 sizeWidget
 	^ self widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self 
 			listGetter: #sizeMorphCollection 
 			indexGetter: #pointSizeIndex
-			indexSetter: #pointSizeIndex: ::
+			indexSetter: #pointSizeIndex:)
 			autoDeselect: false;
 			yourself)
 		named: 'Size' translated 
@@ -32715,7 +32710,7 @@ abscissa
 !DrGPointStyle methodsFor: 'accessing'!
 abscissa: aText
 	|number|
-	[number _ aText asString asNumber]
+	[number := aText asString asNumber]
 		on: Error
 		do: [^ false].
 	self mathItem x: number.
@@ -32729,7 +32724,7 @@ curvilinearAbscissa
 !DrGPointStyle methodsFor: 'accessing'!
 curvilinearAbscissa: aText
 	|number|
-	[number _ aText asString asNumber]
+	[number := aText asString asNumber]
 		on: Error
 		do: [^ false].
 	self mathItem abscissa: number.
@@ -32743,7 +32738,7 @@ ordinate
 !DrGPointStyle methodsFor: 'accessing'!
 ordinate: aText
 	|number|
-	[number _ aText asString asNumber]
+	[number := aText asString asNumber]
 		on: Error
 		do: [^ false].
 	self mathItem y: number.
@@ -32763,7 +32758,7 @@ pointSize
 !DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:34:43'!
 pointSize: anObject
 	"Set the value of thickness"
-	pointSize _ anObject.
+	pointSize := anObject.
 	morph redrawNeeded
 ! !
 
@@ -32787,7 +32782,7 @@ shape
 !DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 09:20:45'!
 shape: anObject
 	"Set the value of shape"
-	shape _ anObject.
+	shape := anObject.
 	morph redrawNeeded! !
 
 !DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 10:54:33'!
@@ -32806,13 +32801,13 @@ shapeIndex: index
 writeAttributesTo: aNode
 	|attr|
 	super writeAttributesTo: aNode.
-	self pointSize = #small ifTrue: [attr _ 'Dashed'].
-	self pointSize = #medium ifTrue: [attr _ 'Normal'].
-	self pointSize = #large ifTrue: [attr _ 'Thick'].
+	self pointSize = #small ifTrue: [attr := 'Dashed'].
+	self pointSize = #medium ifTrue: [attr := 'Normal'].
+	self pointSize = #large ifTrue: [attr := 'Thick'].
 	aNode attributeAt: #thickness put: attr.
-	attr _ self shape asString capitalized.
-	self shape = #square ifTrue: [attr _ 'Rectangular'].
-	self shape = #round ifTrue: [attr _ 'Round'].
+	attr := self shape asString capitalized.
+	self shape = #square ifTrue: [attr := 'Rectangular'].
+	self shape = #round ifTrue: [attr := 'Round'].
 	aNode attributeAt: #style put: attr! !
 
 !DrGTextStyle methodsFor: 'accessing'!
@@ -32821,7 +32816,7 @@ backgroundColor
 
 !DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 5/15/2021 21:38:26'!
 backgroundColor: aColor
-	backgroundColor _ aColor.
+	backgroundColor := aColor.
 	self changed! !
 
 !DrGTextStyle methodsFor: 'accessing'!
@@ -32832,7 +32827,7 @@ backgroundColorIndex
 !DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:29:08'!
 backgroundColorIndex: index
 	| aColor |
-	aColor _ Color perform: (self class backgroundColorSymbols at: index).
+	aColor := Color perform: (self class backgroundColorSymbols at: index).
 	self setTranslucent: aColor.
 	self changed: #backgroundColorIndex:
 ! !
@@ -32850,7 +32845,7 @@ borderColor
 
 !DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:26:36'!
 borderColor: aColor
-	borderColor _ aColor.
+	borderColor := aColor.
 	morph redrawNeeded! !
 
 !DrGTextStyle methodsFor: 'accessing'!
@@ -32860,7 +32855,7 @@ borderColorIndex
 !DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:29:24'!
 borderColorIndex: index
 	| aColor |
-	aColor _ Color perform: (self class backgroundColorSymbols at: index).
+	aColor := Color perform: (self class backgroundColorSymbols at: index).
 	self borderColor: aColor.
 	self changed: #borderColorIndex:
 ! !
@@ -32897,11 +32892,11 @@ backgroundMorphCollection
 !DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:58'!
 backgroundWidget
 	^  self widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self 
 			listGetter: #backgroundMorphCollection 
 			indexGetter: #backgroundColorIndex  
-			indexSetter: #backgroundColorIndex: ::
+			indexSetter: #backgroundColorIndex:)
 			autoDeselect: false;
 			yourself)
 		named: 'Background' translated 
@@ -32910,11 +32905,11 @@ backgroundWidget
 !DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:15:31'!
 borderWidget
 	^  self widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self 
 			listGetter: #backgroundMorphCollection 
 			indexGetter: #borderColorIndex  
-			indexSetter: #borderColorIndex: ::
+			indexSetter: #borderColorIndex:)
 			autoDeselect: false;
 			yourself)
 		named: 'Border' translated 
@@ -32923,11 +32918,11 @@ borderWidget
 !DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:37:47'!
 fontSizeWidget
 	^ self widget: (
-		DropDownButtonMorph 
+		(DropDownButtonMorph 
 			model: self 
 			listGetter:  #fontSizesMorphCollection
 			indexGetter:  #fontSizeIndex 
-			indexSetter: #fontSizeIndex: ::
+			indexSetter: #fontSizeIndex:)
 			autoDeselect: false;
 			yourself)
 		named: 'Font size' translated
@@ -32954,7 +32949,7 @@ myWidgets
 styleWidget
 | controls |
 " There is no name for text object"
-	controls _ 	OrderedCollection new
+	controls := 	OrderedCollection new
 		add: self colorWidget;
 		yourself.
 	controls addAll: self myWidgets.
@@ -32997,16 +32992,16 @@ rename
 	DrGeoSystem showVirtualKeyboard: true.
 	self mathItem name 
 		ifNotNil:	[
-			answer _ self view 
+			answer := self view 
 				textEntry:  'Rename this value' translated 
 				title: 'Rename this value' translated 
 				entryText: self mathItem name.]
 		ifNil: [
-			answer _ self view 
+			answer := self view 
 				textEntry:  'Name this value' translated 
 				title: 'Name this value' translated].
 	answer ifNil: [^self].
-	answer isEmpty ifTrue: [answer _ nil].
+	answer isEmpty ifTrue: [answer := nil].
 	self mathItem name: answer.
 	morph redrawNeeded.
 	self changed! !
@@ -33020,7 +33015,7 @@ initialize
 !DrGValueStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 16:59:01'!
 styleWidget
 | controls |
-	controls _ 	OrderedCollection new
+	controls := 	OrderedCollection new
 		add: self nameWidget;
 		add: self colorWidget;
 		yourself.
@@ -33034,7 +33029,7 @@ styleWidget
 arcPreferences
 " name - description - category - type - value "
 | category |
-	category _ #arc translated asSymbol.
+	category := #arc translated asSymbol.
 	^ {
 	{#arcColor. 'Colour' translated. category.	DrGTypeColor with: #arcColor in: preferences. Color black} .
 	{#arcThickness.	'Thickness' translated. category. DrGTypeThickness with: #arcThickness in: preferences. #small}.
@@ -33048,7 +33043,7 @@ arcPreferences
 circlePreferences
 " name - description - category - type - value "
 | category |
-	category _ #circle translated asSymbol.
+	category := #circle translated asSymbol.
 	^ {
 	{#circleColor. 'Colour' translated. category. DrGTypeColor with: #circleColor in: preferences. Color black} .
 	{#circleThickness. 'Thickness' translated. category. DrGTypeThickness with: #circleThickness in: preferences. #small} .
@@ -33061,7 +33056,7 @@ circlePreferences
 linePreferences
 " name - description - category - type - value "
 | category |
-	category _ #line translated asSymbol.
+	category := #line translated asSymbol.
 	^ {
 	{#lineColor. 'Colour' translated. category. DrGTypeColor with: #lineColor in: preferences. Color black} .
 	{#lineThickness. 'Thickness' translated. category. DrGTypeThickness with: #lineThickness in: preferences. #small} .
@@ -33072,7 +33067,7 @@ linePreferences
 locusPreferences
 " name - description - category - type - value "
 | category |
-	category _ #locus translated asSymbol.
+	category := #locus translated asSymbol.
 	^ {
 	{#locusColor. 'Colour' translated. category. DrGTypeColor with: #locusColor in: preferences. Color black} .
 	{#locusThickness. 'Thickness' translated. category. DrGTypeThickness with: #locusThickness in: preferences. #small} .
@@ -33083,7 +33078,7 @@ locusPreferences
 miscPreferences
 " name - description - category - type - value "
 | category |
-	category _ #miscellaneous translated asSymbol.
+	category := #miscellaneous translated asSymbol.
 	^ {
 	{#userPath. 'Path for user created resources as sketches, Smalltalk sketches, exported image. An empty path locates these resources in the Dr. Geo application folder. Relative path accepted, home/user directory is then prepended' translated. category. nil. ''} .
 	{#autoName. 'Autoname new object' translated. category. Boolean. false}
@@ -33093,7 +33088,7 @@ miscPreferences
 pointPreferences
 " name - description - category - type - value "
 | category |
-	category _ #point translated asSymbol.
+	category := #point translated asSymbol.
 	^ {
 	{#pointColor. 'Colour' translated. category. DrGTypeColor with: #pointColor in: preferences. Color red} .
 	{#pointSize. 'Size' translated. category. DrGTypePointSize with: #pointSize in: preferences. #small}	.
@@ -33104,7 +33099,7 @@ pointPreferences
 polygonPreferences
 " name - description - category - type - value "
 | category |
-	category _ #polygon translated asSymbol.
+	category := #polygon translated asSymbol.
 	^ {
 	{#polygonColor. 'Colour' translated. category. DrGTypeColor with: #polygonColor in: preferences. Color black} .
 	{#polygonThickness. 'Thickness' translated. category. DrGTypeThickness with: #polygonThickness in: preferences. #small} .
@@ -33117,7 +33112,7 @@ polygonPreferences
 programmingPreferences
 " name - description - category - type - value "
 | category |
-	category _ #programming translated asSymbol.
+	category := #programming translated asSymbol.
 	^ {
 	{#programmingCodeCompletion. 'Code completion on' translated. category. nil . DrGeoSketch}
 	}! !
@@ -33126,7 +33121,7 @@ programmingPreferences
 rayPreferences
 " name - description - category - type - value "
 | category |
-	category _ #ray translated asSymbol.
+	category := #ray translated asSymbol.
 	^ {
 	{#rayColor. 'Colour' translated. category. DrGTypeColor with: #rayColor in: preferences. Color black}.
 	{#rayThickness. 'Thickness' translated. category.	DrGTypeThickness with: #rayThickness in: preferences. #small} .
@@ -33137,7 +33132,7 @@ rayPreferences
 segmentPreferences
 " name - description - category - type - value "
 | category |
-	category _ #segment translated asSymbol.
+	category := #segment translated asSymbol.
 	^ {
 	{#segmentColor. 'Colour' translated. category.	DrGTypeColor with: #segmentColor in: preferences. Color black} .
 	{#segmentThickness.	'Thickness' translated. category. DrGTypeThickness with: #segmentThickness in: preferences. #small} .
@@ -33150,7 +33145,7 @@ segmentPreferences
 textPreferences
 " name - description - category - type - value "
 | category |
-	category _ #text translated asSymbol.
+	category := #text translated asSymbol.
 	^ {
 	{#textColor. 'Colour' translated. category. DrGTypeColor with: #textColor in: preferences. Color black} .
 	{#textBackgroundColor. 'Background' translated. category. DrGTypeColor with: #textBackgroundColor in: preferences. Color white }.
@@ -33161,7 +33156,7 @@ textPreferences
 valuePreferences
 " name - description - category - type - value "
 | category |
-	category _ #value translated asSymbol.
+	category := #value translated asSymbol.
 	^ {
 	{#valueColor. 'Colour' translated. category. DrGTypeColor with: #valueColor in: preferences. Color black} .
 	{#valueDecimal. 'Number of decimal' translated. category. (0 to: 9) asArray. 2}
@@ -33171,7 +33166,7 @@ valuePreferences
 vectorPreferences
 " name - description - category - type - value "
 | category |
-	category _ #vector translated asSymbol.
+	category := #vector translated asSymbol.
 	^ {
 	{#vectorColor. 'Colour' translated. category. DrGTypeColor with: #vectorColor in: preferences. Color black} .
 	{#vectorThickness. 'Thickness' translated. category. DrGTypeThickness with: #vectorThickness in: preferences. #small} .
@@ -33191,8 +33186,8 @@ checkForPaths
 
 !DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:25:01'!
 reset
-	toolbarIconSize _ nil.
-	preferences _ nil! !
+	toolbarIconSize := nil.
+	preferences := nil! !
 
 !DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 12/14/2023 09:03:33'!
 setCodeCompletion
@@ -33207,7 +33202,7 @@ setCodeCompletion
 
 !DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 2/23/2023 11:35:38'!
 setDefaultPreferences
-	preferences _ PreferenceSet new.
+	preferences := PreferenceSet new.
 	#(pointPreferences linePreferences 	rayPreferences segmentPreferences 	circlePreferences 
 	arcPreferences polygonPreferences vectorPreferences locusPreferences
 	textPreferences valuePreferences programmingPreferences miscPreferences) do: [:preferencesData|
@@ -33223,11 +33218,11 @@ setDefaultPreferences
 !DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 8/16/2022 12:30:47'!
 splash
 | splash copy  background position |
-	splash _ ImageReadWriter formFromFileEntry: (DrGeoSystem iconsPath // 'splash.bmp').
-	position _ Display center - (splash extent // 2).
-	background _ Form fromDisplay: (position extent: splash extent).
+	splash := ImageReadWriter formFromFileEntry: (DrGeoSystem iconsPath // 'splash.bmp').
+	position := Display center - (splash extent // 2).
+	background := Form fromDisplay: (position extent: splash extent).
 	0.0 to: 1.0 by: 0.2 do: [:t |
-		copy _ background copy.
+		copy := background copy.
 		copy copyBits: splash at: 0@0 translucent: t.
 		copy displayAt:  position.
 		(Delay forMilliseconds: 100) wait].
@@ -33289,7 +33284,7 @@ userPath
 "Where are located user created resources as sketch, Smalltalk sketch and exported sketch to image"
 	^ (self preferences at: #userPath) 
 		ifNotEmpty: [:userPath | | userDirectoryEntry |
-			userDirectoryEntry _ userPath asDirectoryEntry .
+			userDirectoryEntry := userPath asDirectoryEntry .
 			" Check if it is a relative path or an absolute path "
 			userDirectoryEntry pathName = userPath
 				ifTrue: [userDirectoryEntry "Absolute path"]
@@ -33307,7 +33302,7 @@ showVirtualKeyboard: boolean
 !DrGPlatform methodsFor: 'user interface' stamp: 'hlsf 8/4/2022 23:06:44'!
 toggleFullscreen
 	| isFullscreen |
-	isFullscreen _ [ Preferences at: #fullscreen ] 
+	isFullscreen := [ Preferences at: #fullscreen ] 
 		on: Error 
 		do: [Preferences name: #fullscreen category: #gui value: true.
 			true].
@@ -33476,14 +33471,14 @@ startUp
 beDevelopment
 	"Be like the Cuis environment as the DrGeo development environment"
 	"self beDevelopment"
-	platform _ DrGDevelopment new.
+	platform := DrGDevelopment new.
 	self removeStartUp.
 	platform startUp. "manual startUp for additional initialization occuring at system start up"! !
 
 !DrGeoSystem class methodsFor: 'class initialization' stamp: 'drgeo 8/27/2022 15:56:59'!
 beWorkstation
 	"self beWorkstation"
-	platform _ DrGWorkstation new.
+	platform := DrGWorkstation new.
 	self addStartUp! !
 
 !DrGeoSystem class methodsFor: 'class initialization' stamp: 'Install-DrGeoFrench 12/7/2022 16:16:08'!
@@ -33860,10 +33855,10 @@ openMinimalMorphic
 	"Open a panel debugger"
 
 	| oldContextStackIndex window |
-	oldContextStackIndex _ contextStackIndex.
+	oldContextStackIndex := contextStackIndex.
 	self expandStack. "Sets contextStackIndex to zero."
 
-	window _ DrGDebuggerWindow open: self .
+	window := DrGDebuggerWindow open: self .
 	self toggleContextStackIndex: oldContextStackIndex.
 	^ window! !
 
@@ -33872,10 +33867,10 @@ openMinimalDebugging: aBlock to: aCompiledMethod
 	"Create a new process to debug aBlock, and step into it."
 
 	| processToDebug debugger window |
-	debugger _ self new.
-	processToDebug _ aBlock newProcess name: 'debugIt'.
+	debugger := self new.
+	processToDebug := aBlock newProcess name: 'debugIt'.
 	debugger process: processToDebug context: processToDebug suspendedContext.
-	window _ debugger openMinimalMorphic.
+	window := debugger openMinimalMorphic.
 	[debugger interruptedContext method == aCompiledMethod]
 		whileFalse: [debugger send].
 	^ window ! !
@@ -34008,7 +34003,7 @@ subclass: t instanceVariableNames: f classVariableNames: d package: cat
 "This is a hack to import DrGeo Pharo code"
 	
 	| answer |
-	answer _ ClassBuilder new
+	answer := ClassBuilder new
 		superclass: self
 		subclass: t
 		instanceVariableNames: f
@@ -34031,7 +34026,7 @@ add: aLink afterLink: otherLink
 	"Add otherLink  after link in the list. Answer aLink."
 	| savedLink |
 	lastLink == otherLink ifTrue: [^ self addLast: aLink].
-	savedLink _ otherLink nextLink.
+	savedLink := otherLink nextLink.
 	otherLink nextLink: aLink.
 	aLink nextLink:  savedLink.
 	^aLink.! !
@@ -34039,23 +34034,23 @@ add: aLink afterLink: otherLink
 !LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 5/30/2021 11:57:04'!
 linksDo: aBlock
 	| aLink |
-	aLink _ firstLink.
+	aLink := firstLink.
 	[aLink == nil ] whileFalse: 		[
 		aBlock value: aLink.
-		aLink _ aLink nextLink]! !
+		aLink := aLink nextLink]! !
 
 !RealEstateAgent class methodsFor: '*DrGeo' stamp: 'hlsf 4/24/2020 12:36:51'!
 leftMaximumUsableArea
 "Return the left half of the usable area"
 	| rectangle |
-	rectangle _ self maximumUsableArea.
+	rectangle := self maximumUsableArea.
 	^ rectangle origin corner: rectangle bottomCenter! !
 
 !RealEstateAgent class methodsFor: '*DrGeo' stamp: 'hlsf 4/24/2020 12:36:28'!
 rightMaximumUsableArea
 	"Return the left half of the usable area"
 	| rectangle |
-	rectangle _ self maximumUsableArea.
+	rectangle := self maximumUsableArea.
 	^ rectangle topCenter corner: rectangle corner! !
 
 !Point methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2020 23:35:38'!
@@ -34091,11 +34086,11 @@ printShowingDecimalPlaces: placeDesired
 "do not round when coordinate is a fraction"
 	|stringX stringY|
 	x isFraction
-		ifTrue: [stringX _ x printString]
-		ifFalse: [stringX _ x printShowingDecimalPlaces: placeDesired].
+		ifTrue: [stringX := x printString]
+		ifFalse: [stringX := x printShowingDecimalPlaces: placeDesired].
 	y isFraction
-		ifTrue: [stringY _ y printString] 
-		ifFalse: [stringY _ y printShowingDecimalPlaces: placeDesired].		
+		ifTrue: [stringY := y printString] 
+		ifFalse: [stringY := y printShowingDecimalPlaces: placeDesired].		
 	^ stringX, '@', stringY! !
 
 !Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:38:18'!
@@ -34109,16 +34104,16 @@ rotateBy: angle about: center
 	around the #center point of an #angle given as parameter. The #angle provided as 
 	parameter is interpreted as being in radian."
 	| p r theta |
-	p _ self - center.
-	r _ p r.
-	theta _ angle asFloat - p theta.
+	p := self - center.
+	r := p r.
+	theta := angle asFloat - p theta.
 	^ (center x asFloat + (r * theta cos)) @ (center y asFloat - (r * theta sin))! !
 
 !Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:39:43'!
 rotateVector: anAngle
 |cosa sina|
-	cosa _ anAngle cos.
-	sina _ anAngle sin.
+	cosa := anAngle cos.
+	sina := anAngle sin.
 	^ (x * cosa - (y * sina))@(x * sina + (y * cosa))! !
 
 !Point methodsFor: '*DrGeo' stamp: 'hlsf 8/4/2021 12:08:01'!
@@ -34129,11 +34124,11 @@ roundTo: quantum
 vectorReflexionBy: aDirection
 "the reflected vector according to the direction"
 	| unit normal |
-	[unit _ aDirection normalized.
-	normal _ unit normal] 
+	[unit := aDirection normalized.
+	normal := unit normal] 
 		on: ZeroDivide 
-		do: [	unit _ 0@0.
-			normal _ 0@0].
+		do: [	unit := 0@0.
+			normal := 0@0].
 	^((self dotProduct: unit) * unit) - ((self dotProduct: normal) * normal)
 ! !
 
@@ -34155,7 +34150,7 @@ createButton: aForm action: aBlock balloonText: balloonText
 
 	| button |
 	
-	button _ ImageMorph new image: aForm; yourself.
+	button := ImageMorph new image: aForm; yourself.
 	button setBalloonText: balloonText.
 	button setProperty: #handlesMouseDown: toValue: true.
 	button setProperty: #'mouseButton1Down:localPosition:' toValue: [:keyEvent :pos | aBlock value].
@@ -34174,9 +34169,9 @@ renderCodeWithDrGeoActions: aDocCode
 
 	|text button textModel |
 	
-	text _ Text string: aDocCode code.							.
+	text := Text string: aDocCode code.							.
 							
-	textModel _ EruditeSmalltalkTextModel withText: text.
+	textModel := EruditeSmalltalkTextModel withText: text.
 	textModel formatAndStyle.
 		
 	stream nextPut: textModel actualContents.
@@ -34184,14 +34179,14 @@ renderCodeWithDrGeoActions: aDocCode
 	
 	"Add as many buttons as you need here: "
 	
-	button _ self createButton: Theme current openIcon 
+	button := self createButton: Theme current openIcon 
 			action: [requestor triggerEvent: #askToCopyCode with: aDocCode code]
 			balloonText: 'Copy to the code editor.' translated. 
 	stream nextPut: (Text streamContents: [:s | button printOn: s]).
 	
 	stream nextPut: ' '. "separation between buttons"
 	" No additional DrGeo action for now...
-	button _ self createButton: Theme current imageIcon 
+	button := self createButton: Theme current imageIcon 
 			action: [ self someDrGeoAction: aDocCode]
 			balloonText: 'Preview the resulting Sketch when this code is executed.' translated. 
 	stream nextPut: (Text streamContents: [:s | button printOn: s]).
@@ -34205,11 +34200,11 @@ someDrGeoAction: aDocCode
 !PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:34'!
 visitDrGTypeArrowPreference: aPref
 	| listMorph |
-	listMorph  _ DropDownButtonMorph 
+	listMorph  := (DropDownButtonMorph 
 		model: aPref type 
 		listGetter: #arrowMorphCollection 
 		indexGetter: #arrowIndex 
-		indexSetter: #arrowIndex: ::
+		indexSetter: #arrowIndex:)
 		autoDeselect: false;
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
@@ -34217,11 +34212,11 @@ visitDrGTypeArrowPreference: aPref
 !PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:40'!
 visitDrGTypeColorPreference: aPref
 	| listMorph |
-	listMorph  _ DropDownButtonMorph 
+	listMorph  := (DropDownButtonMorph 
 		model: aPref type 
 		listGetter: #colorMorphCollection 
 		indexGetter: #colorIndex 
-		indexSetter: #colorIndex: ::
+		indexSetter: #colorIndex:)
 		autoDeselect: false;
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
@@ -34229,11 +34224,11 @@ visitDrGTypeColorPreference: aPref
 !PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:46'!
 visitDrGTypeMarkPreference: aPref
 	| listMorph |
-	listMorph  _ DropDownButtonMorph 
+	listMorph  := (DropDownButtonMorph 
 		model: aPref type 
 		listGetter: #markMorphCollection 
 		indexGetter: #markIndex 
-		indexSetter: #markIndex: ::
+		indexSetter: #markIndex:)
 		autoDeselect: false;
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
@@ -34241,11 +34236,11 @@ visitDrGTypeMarkPreference: aPref
 !PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:51'!
 visitDrGTypePointShapePreference: aPref
 	| listMorph |
-	listMorph  _ DropDownButtonMorph 
+	listMorph  := (DropDownButtonMorph 
 		model: aPref type 
 		listGetter: #shapeMorphCollection 
 		indexGetter: #pointShapeIndex 
-		indexSetter: #pointShapeIndex: ::
+		indexSetter: #pointShapeIndex:)
 		autoDeselect: false;
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
@@ -34253,11 +34248,11 @@ visitDrGTypePointShapePreference: aPref
 !PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:58'!
 visitDrGTypePointSizePreference: aPref
 	| listMorph |
-	listMorph  _ DropDownButtonMorph 
+	listMorph  := (DropDownButtonMorph 
 		model: aPref type 
 		listGetter: #sizeMorphCollection 
 		indexGetter: #pointSizeIndex 
-		indexSetter: #pointSizeIndex: ::
+		indexSetter: #pointSizeIndex:)
 		autoDeselect: false;
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
@@ -34265,11 +34260,11 @@ visitDrGTypePointSizePreference: aPref
 !PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:54:04'!
 visitDrGTypeStylePreference: aPref
 	| listMorph |
-	listMorph  _ DropDownButtonMorph 
+	listMorph  := (DropDownButtonMorph 
 		model: aPref type 
 		listGetter: #styleMorphCollection 
 		indexGetter: #styleIndex 
-		indexSetter: #styleIndex: ::
+		indexSetter: #styleIndex:)
 		autoDeselect: false;
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
@@ -34277,11 +34272,11 @@ visitDrGTypeStylePreference: aPref
 !PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:54:09'!
 visitDrGTypeThicknessPreference: aPref
 	| listMorph |
-	listMorph  _ DropDownButtonMorph 
+	listMorph  := (DropDownButtonMorph 
 		model: aPref type 
 		listGetter: #thicknessMorphCollection 
 		indexGetter: #thicknessIndex 
-		indexSetter: #thicknessIndex: ::
+		indexSetter: #thicknessIndex:)
 		autoDeselect: false;
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
