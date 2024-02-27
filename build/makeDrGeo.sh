@@ -8,7 +8,7 @@
 # Adjust below the rel variable to the wished Dr. Geo release number
 
 # DrGeo release number
-rel="23.12a-beta"
+rel="24.03a-beta"
 
 # Smalltalk image version
 cuisVersion=`cat drgeo/cuisVersion`
@@ -57,19 +57,23 @@ makeBundle () {
     mkdir $bundlesPath
     bundlePath="$bundlesPath/$1"
     bundleTemplate="$buildPath/bundleTemplates/$1"
-
+    cuisVMPath="CuisVM.app/Contents"
     case "$1" in
 	gnulinux)
 	    bundleApp="$bundlePath/DrGeo"
-	    cuisVM="CuisVM.app/Contents/Linux-x86_64"
+	    cuisVM="Linux-x86_64"
+	    destVM="VM"
 	;;
 	windows)
 	    bundleApp="$bundlePath/DrGeo"
-	    cuisVM="CuisVM.app/Contents/Windows-x86_64"
+	    cuisVM="Windows-x86_64"
+	    destVM="VM"
 	;;
 	mac)
-	    bundleApp="$bundlePath/DrGeoApp"
-	    cuisVM="CuisVM.app/Contents/MacOS" # subfolder Resources to be considered
+	    bundleApp="$bundlePath/DrGeo.app"
+	    cuisVM="MacOS Resources"
+	    # Subfolder Resources to be considered as well
+	    destVM="Contents"
 	;;
     esac
     bundleResources="$bundleApp/Resources"
@@ -87,7 +91,10 @@ makeBundle () {
     rsync -a $resources/graphics/banner/splash.bmp $bundleResources/icons
     rsync -a $resources/graphics/iconsSVG/* $bundleResources/icons
     # ...vm
-    rsync -a $cuisVM/* $bundleApp/VM
+    for i in $cuisVM
+    do
+	rsync -a $cuisVMPath/$i $bundleApp/$destVM/
+    done
     # ...smalltalk image
     rsync -a $imagePath/drgeo.{image,changes} $bundleResources/image
     # ...smalltalk source
@@ -104,14 +111,14 @@ makeBundle () {
     cp $resources/doc/ChangeLog $bundleApp
     mkdir $bundleResources/doc
     cp $resources/doc/README.*.txt $resources/doc/README.txt $bundleResources/doc
-    # set exec flag
+    # set exec flag and any additional specific files installation
     case "$1" in
 	gnulinux)
 	    chmod +x $bundleApp/DrGeo.sh
 	    chmod +x $bundleApp/VM/squeak
 	    ;;
 	mac)
-	    chmod +x $bundleApp/Contents/MacOS/squeak
+	    chmod +x $bundleApp/Contents/MacOS/Squeak
 	    ;;
     esac
 

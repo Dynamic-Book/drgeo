@@ -1,6 +1,6 @@
-'From Cuis6.2 [latest update: #6158] on 11 February 2024 at 11:48:38 pm'!
+'From Cuis6.2 [latest update: #6158] on 25 February 2024 at 12:33:55 am'!
 'Description '!
-!provides: 'DrGeo' 1 673!
+!provides: 'DrGeo' 1 674!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -13633,12 +13633,12 @@ intersectionWithDirection: aDirectionItem flag: aFlag
 	k := (b negated + (aFlag * d sqrt)) / a.
 	^ aDirectionItem origin + (k * vector)! !
 
-!DrGCircleItem methodsFor: 'accessing'!
+!DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 2/25/2024 00:31:13'!
 abscissaOf: aPoint 
 	| angle vector |
 	vector := aPoint - self center.
 	angle := vector y arcTan: vector x.
-	angle < 0 ifTrue: [angle := angle + (2 * Float pi)].
+	angle < 0 ifTrue: [angle := angle + Float twoPi].
 	^angle * 0.5 * DrGDirectionItem invPi! !
 
 !DrGCircleItem methodsFor: 'accessing'!
@@ -13663,10 +13663,10 @@ closestPointTo: aPoint
 morphClass 
 	^DrGCircleMorph! !
 
-!DrGCircleItem methodsFor: 'accessing'!
+!DrGCircleItem methodsFor: 'accessing' stamp: 'hlsf 2/25/2024 00:31:48'!
 pointAt: anAbscissa
 	|angle|
-	angle := 2 * Float pi * anAbscissa.
+	angle := Float twoPi * anAbscissa.
 	^ (Point x: angle cos y: angle sin) * self radius + self center.! !
 
 !DrGCircleItem methodsFor: 'accessing'!
