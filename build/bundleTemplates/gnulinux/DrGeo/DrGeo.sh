@@ -7,7 +7,7 @@
 ROOT=`readlink -f $(dirname $0)`
 APP=`dirname "$0"`
 APP=`cd "$APP";pwd`
-VM="$APP/VM"
+VM="$APP/VM/Linux-x86_64"
 RESOURCES="$APP/Resources"
 
 image="$RESOURCES/image/drgeo"

@@ -115,7 +115,7 @@ makeBundle () {
     case "$1" in
 	gnulinux)
 	    chmod +x $bundleApp/DrGeo.sh
-	    chmod +x $bundleApp/VM/squeak
+	    chmod +x $bundleApp/VM/Linux-x86_64/squeak
 	    ;;
 	mac)
 	    chmod +x $bundleApp/Contents/MacOS/Squeak
