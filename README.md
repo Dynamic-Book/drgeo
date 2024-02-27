@@ -15,6 +15,8 @@ git clone https://github.com/Cuis-Smalltalk/Cuis6-2
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Erudite
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Numerics
+git clone --depth 1 https://github.com/Cuis-Smalltalk/Parsers
+git clone --depth 1 https://github.com/Cuis-Smalltalk/SVG
 
 cd Cuis6-2
 ```
