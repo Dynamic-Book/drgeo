@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 16 March 2024 at 6:46:41 pm'!
+'From Cuis6.3 [latest update: #6279] on 16 March 2024 at 7:52:11 pm'!
 'Description '!
-!provides: 'DrGeo' 1 675!
+!provides: 'DrGeo' 1 678!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -3705,10 +3705,10 @@ autoname: aMathItem
 	(DrGeoSystem preferences at: #autoName) ifFalse: [^ self].
 	aMathItem isPointItem ifTrue: [self autonamePoint: aMathItem]! !
 
-!DrGeoDomain methodsFor: 'autoname' stamp: 'hlsf 3/16/2024 18:46:12'!
+!DrGeoDomain methodsFor: 'autoname' stamp: 'drgeo 3/16/2024 19:52:00'!
 autonamePoint: pointItem
 	| name letter index |
-	letter := Character codePoint: (pointNameIndex \\ 26) + 65.
+	letter :=  Character codePoint: (pointNameIndex \\ 26) + 65.
 	index := pointNameIndex // 26.
 	pointNameIndex := pointNameIndex + 1.
 	name := index isZero 
@@ -33215,10 +33215,13 @@ setDefaultPreferences
 				value: data fifth ] ].
 	^ preferences! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 8/16/2022 12:30:47'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 3/16/2024 19:48:39'!
 splash
-| splash copy  background position |
-	splash := ImageReadWriter formFromFileEntry: (DrGeoSystem iconsPath // 'splash.bmp').
+| splash copy  background position path |
+	path := 	DrGeoSystem iconsPath.
+	"path := path parent / 'banner'."
+	path print.
+	splash := ImageReadWriter formFromFileEntry: path // 'splash.png'.
 	position := Display center - (splash extent // 2).
 	background := Form fromDisplay: (position extent: splash extent).
 	0.0 to: 1.0 by: 0.2 do: [:t |
@@ -33229,13 +33232,14 @@ splash
 	(Delay forSeconds: 2) wait.
 	background displayAt: position! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 12/22/2022 09:23:44'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 3/16/2024 19:16:50'!
 startUp
 	self setFontPreferences.
 	Transcript show: '[DrGeo] Font installed'; cr.
 	self checkForPaths.
 	Transcript show: '[DrGeo] Paths checked'; cr.
-	self setCodeCompletion! !
+	self setCodeCompletion.
+	Transcript show: '[DrGeo] Code completion set'; cr.! !
 
 !DrGPlatform methodsFor: 'path' stamp: 'hlsf 5/24/2023 16:14:37'!
 backgroundsPath

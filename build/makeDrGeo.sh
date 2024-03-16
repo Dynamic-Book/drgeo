@@ -91,7 +91,7 @@ makeBundle () {
     # ...user sketches and exports folder, graphics
     mkdir $bundleResources/MySketches
     mkdir $bundleResources/MyExports
-    rsync -a $resources/graphics/banner/splash.bmp $bundleResources/icons
+    rsync -a $resources/graphics/banner/splash.png $bundleResources/icons
     rsync -a $resources/graphics/iconsSVG/* $bundleResources/icons
     # ...vm
     for i in $cuisVM
@@ -118,7 +118,7 @@ makeBundle () {
     case "$1" in
 	gnulinux)
 	    chmod +x $bundleApp/DrGeo.sh
-	    chmod +x $bundleApp/VM/$CuisVM/squeak
+	    chmod +x $bundleApp/VM/$cuisVM/squeak
 	    ;;
 	mac)
 	    chmod +x $bundleApp/Contents/MacOS/Squeak
