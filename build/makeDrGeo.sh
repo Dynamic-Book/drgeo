@@ -10,22 +10,25 @@
 # DrGeo release number
 rel="24.03a-beta"
 
-# Smalltalk image version
-cuisVersion=`cat drgeo/cuisVersion`
-smalltalk=Cuis$cuisVersion
-smalltalkSources=Cuis$cuisVersion.sources
-
-# To build Dr. Geo we need:
-# A Cuis image, its source, the virtual machine,
-# the Smalltalk installation script and the DrGeo source
-
 # Path
-imagePath=./CuisImage
 drgeoRepo=./drgeo
 buildPath="$drgeoRepo/build"
 bundlesPath="$buildPath/bundles"
 src="$drgeoRepo/src"
 resources="$drgeoRepo/resources"
+imagePath=./CuisImage
+
+# Cuis release
+release=`cat drgeo/cuisRelease`
+# version number, when dealing with rolling release
+version=`ls $imagePath/Cuis$release-????.image | cut -d - -f 2 | cut -d . -f 1`
+smalltalk=Cuis$release-$version
+smalltalkSources=Cuis$release.sources
+
+# To build Dr. Geo we need:
+# A Cuis image, its source, the virtual machine,
+# the Smalltalk installation script and the DrGeo source
+
 fonts="ipaexg.ttf WenQuanYiZenHeiSharpRegular.ttf"
 
 vmExec=CuisVM.app/Contents/Linux-x86_64/squeak
