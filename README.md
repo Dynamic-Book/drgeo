@@ -1,5 +1,5 @@
 Instructions to install [Dr. Geo](https://www.gnu.org/s/dr-geo/) with
-Cuis-Smalltalk 6-2 release.
+Cuis-Smalltalk rolling release.
 
 # Set-up
 Set up your development environment:
@@ -11,14 +11,14 @@ cd Cuis
 ## Cuis-Smalltalk code & VM
 Fetch and install Cuis-Smalltalk image, VM and needed additional packages
 ```bash
-git clone https://github.com/Cuis-Smalltalk/Cuis6-2
+git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Erudite
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Numerics
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Parsers
 git clone --depth 1 https://github.com/Cuis-Smalltalk/SVG
 
-cd Cuis6-2
+cd Cuis-Smalltalk-Dev
 ```
 
 ## Dr. Geo code
@@ -26,7 +26,7 @@ cd Cuis6-2
 Fetch the Dr. Geo repository, with source and script
 
 ```bash
-cd Cuis/Cuis6-2
+cd Cuis/Cuis-Smalltalk-Dev
 git clone --depth 1 https://github.com/hilaire/drgeo
 ```
 
