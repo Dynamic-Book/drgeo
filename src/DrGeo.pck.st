@@ -1,6 +1,6 @@
-'From Cuis6.2 [latest update: #6158] on 25 February 2024 at 12:33:55 am'!
+'From Cuis6.3 [latest update: #6279] on 16 March 2024 at 6:46:41 pm'!
 'Description '!
-!provides: 'DrGeo' 1 674!
+!provides: 'DrGeo' 1 675!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -3705,10 +3705,10 @@ autoname: aMathItem
 	(DrGeoSystem preferences at: #autoName) ifFalse: [^ self].
 	aMathItem isPointItem ifTrue: [self autonamePoint: aMathItem]! !
 
-!DrGeoDomain methodsFor: 'autoname' stamp: 'hlsf 3/9/2023 17:36:01'!
+!DrGeoDomain methodsFor: 'autoname' stamp: 'hlsf 3/16/2024 18:46:12'!
 autonamePoint: pointItem
 	| name letter index |
-	letter := ((pointNameIndex \\ 26) + 65) asCharacter.
+	letter := Character codePoint: (pointNameIndex \\ 26) + 65.
 	index := pointNameIndex // 26.
 	pointNameIndex := pointNameIndex + 1.
 	name := index isZero 

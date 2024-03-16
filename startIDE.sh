@@ -3,13 +3,14 @@
 # Start DrGeo IDE
 #
 
-# Cuis Version release
-# When dealing with rolling versions numbers of Cuis
-# release=`ls Cuis6.0-????.image | cut -d - -f 2 | cut -d . -f 1`
-# Stable release, number is stable
-cuisVersion=`cat drgeo/cuisVersion`
 imageFolder=CuisImage
-cuis=Cuis$cuisVersion
+# Cuis release
+release=`cat drgeo/cuisRelease`
+# version number, when dealing with rolling release
+version=`ls $imageFolder/Cuis$release-????.image | cut -d - -f 2 | cut -d . -f 1`
+cuis=Cuis$release-$version
+echo $cuis
+
 ide=drgeoIDE
 VM=CuisVM.app/Contents/Linux-x86_64/squeak
 
