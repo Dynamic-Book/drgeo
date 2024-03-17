@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 17 March 2024 at 4:42:23 pm'!
+'From Cuis6.3 [latest update: #6279] on 17 March 2024 at 5:33:33 pm'!
 'Description '!
-!provides: 'DrGeo' 1 679!
+!provides: 'DrGeo' 1 680!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -5989,7 +5989,7 @@ macroMenu: aMenuMorph
 scriptMenu: aMenu
 self flag: #drgeoTodo! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 4/10/2022 17:18:04'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'drgeo 3/17/2024 17:25:46'!
 defaultColor
 	^ `(Color r: 0.986 g: 0.986 b: 0.986)`! !
 
@@ -7242,7 +7242,7 @@ transparentMorph
 		color: Color transparent; 
 		yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 2/22/2023 11:29:52'!
+!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'drgeo 3/17/2024 17:18:31'!
 initialize
 	| book |
 	super initialize.
@@ -7346,7 +7346,7 @@ browseSketches
 		label: 'Select a Smalltalk sketch' translated.
 	browser when: #editSmalltalkSketch send: #loadSketch: to: self.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/25/2023 15:31:32'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'drgeo 3/17/2024 17:23:45'!
 compiledSketch: aSketch
 	self releaseMiniView.
 	drgeoView 
@@ -27182,7 +27182,7 @@ presenter: aPresenter
 view
 	^ view! !
 
-!DrGUIControlsManager methodsFor: 'initialization' stamp: 'hlsf 8/4/2023 12:37:57'!
+!DrGUIControlsManager methodsFor: 'initialization' stamp: 'drgeo 3/17/2024 16:58:31'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| row col |
@@ -27207,15 +27207,11 @@ installTools
 	"Install wheel at the bottom"
 	
 	row := LayoutMorph newRow name: #wheelX; yourself.
-	row addMorphUseAll: (
-		PluggableScrollPane new scroller: self statusBar; 
-			borderWidth: 2;
-			borderColor: Color transparent ;
-			yourself).
-	row addMorph:self horizontalWheel layoutSpec: 
-		(LayoutSpec 	fixedExtent: DrGeoSystem wheelHeight @ DrGeoSystem wheelWidth).
-	row addMorph: self transparentMorph layoutSpec: 
-		(LayoutSpec 		fixedExtent: DrGeoSystem wheelWidth asPoint) .
+	row addMorphUseAll: self statusBarInScroller;
+		addMorph:self horizontalWheel layoutSpec: 
+			(LayoutSpec 	fixedExtent: DrGeoSystem wheelHeight @ DrGeoSystem wheelWidth);
+		addMorph: self transparentMorph layoutSpec: 
+			(LayoutSpec 		fixedExtent: DrGeoSystem wheelWidth asPoint) .
 	
 	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: DrGeoSystem wheelWidth)
 ! !
@@ -27607,6 +27603,14 @@ statusBar
 	
 	! !
 
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'drgeo 3/17/2024 17:28:29'!
+statusBarInScroller
+	^ PluggableScrollPane new scroller: self statusBar; 
+		borderWidth: 2;
+		borderColor: Color transparent ;
+		color: Color transparent;
+		yourself! !
+
 !DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 14:46:03'!
 stylerFor: aStyle
 "Open a style Panel to edit aStyle"
@@ -27954,7 +27958,7 @@ updateScriptMenu
 			setBalloonText: aScript description]
 ! !
 
-!DrGUIMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 8/4/2023 13:04:38'!
+!DrGUIMinimalControlsManager methodsFor: 'initialization' stamp: 'drgeo 3/17/2024 17:28:39'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| row col |
@@ -27976,7 +27980,7 @@ installTools
 	
 	"Install wheel at the bottom"	
 	row := LayoutMorph newRow name: #wheelX; color: view defaultColor; yourself.
-	row addMorphUseAll: self statusBar ;
+	row addMorphUseAll: self statusBarInScroller;
 		addMorph: (self horizontalWheel borderWidth: 2) 
 		layoutSpec: 		(LayoutSpec 	fixedExtent: DrGeoSystem wheelHeight @ (DrGeoSystem wheelWidth / 1.5));
 		addMorph: self transparentMorph 
@@ -27987,12 +27991,6 @@ installTools
 !DrGUIMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 16:36:58'!
 openTools
 	self tools popUpInWorld ! !
-
-!DrGUIMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 17:10:29'!
-setStatusBarMessage: aString
-	statusBar ifNotNil: [
-		statusBar contents: aString;
-			redrawNeeded]! !
 
 !DrGUIMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 16:25:16'!
 tools
