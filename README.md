@@ -5,20 +5,18 @@ Cuis-Smalltalk rolling release.
 Set up your development environment:
 ```bash
 mkdir Cuis
-cd Cuis
 ```
 
 ## Cuis-Smalltalk code & VM
 Fetch and install Cuis-Smalltalk image, VM and needed additional packages
 ```bash
+cd Cuis
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Erudite
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Numerics
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Parsers
 git clone --depth 1 https://github.com/Cuis-Smalltalk/SVG
-
-cd Cuis-Smalltalk-Dev
 ```
 
 ## Dr. Geo code
@@ -36,6 +34,7 @@ Run the Dr. Geo IDE script. It installs DrGeo code and related
 packages into its development environment.
 
 ```bash
+cd Cuis/Cuis-Smalltalk-Dev
 ./drgeo/startIDE.sh
 ```
 
