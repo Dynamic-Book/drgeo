@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 16 March 2024 at 7:52:11 pm'!
+'From Cuis6.3 [latest update: #6279] on 17 March 2024 at 4:42:23 pm'!
 'Description '!
-!provides: 'DrGeo' 1 678!
+!provides: 'DrGeo' 1 679!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7391,7 +7391,7 @@ debugWindowSketch
 			]
 		ifFail: [].! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 1/1/2024 12:14:35'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'drgeo 3/17/2024 16:41:14'!
 executeSketch
 	self stopSketch.
 	codeView scroller acceptContents.
@@ -7401,9 +7401,12 @@ executeSketch
 		t := DateAndTime now.
 		[Compiler evaluate: model] 
 			on: Exception 
-			do: [debugger := Debugger 
+			do: [:ex | | myContext |
+				myContext := ex signalerContext findContextSuchThat: [:aContext | 
+					aContext method defaultSelector == #DoIt].
+				debugger := Debugger 
 					openMinimalDebuggingProcess: sketchProcess 
-					context: sketchProcess suspendedContext .
+					context: myContext.
 				self plugDebugger ].
 		" When we get there, sketch has been entirely executed, switch back to play button "
 		self switchToPlayButton.
