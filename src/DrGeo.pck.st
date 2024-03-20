@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 17 March 2024 at 5:33:33 pm'!
+'From Cuis6.3 [latest update: #6279] on 20 March 2024 at 5:16:56 pm'!
 'Description '!
-!provides: 'DrGeo' 1 680!
+!provides: 'DrGeo' 1 681!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -3673,12 +3673,6 @@ updateAllMathItems
 	factory updateAllMathItems.
 	self triggerEvent: #updatedItems! !
 
-!DrGeoDomain methodsFor: 'updating'!
-updateAllMathItemsButLocus
-	factory updateAllMathItemsButLocus.
-	"We don't need to update the costumem we just want updated mathiteem'"
-	"self triggerEvent: #updatedItems"! !
-
 !DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 5/17/2020 16:57:35'!
 updateDirty: mathItems
 	mathItems do: [:item | item update].
@@ -7213,7 +7207,7 @@ Switch to pause sketch action
 		setBalloonText: 'Pause the Smalltalk sketch.' translated;
 		redrawNeeded ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/6/2022 12:44:47'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 3/20/2024 16:20:14'!
 switchToPlayButton
 " 
 Switch to play sketch action 
@@ -7222,7 +7216,7 @@ Switch to play sketch action
 		icon: (DrGIcons for: #play);
 		action: #executeSketch;
 		setBalloonText: 'Play the Smalltalk sketch.' translated;
-		redrawNeeded ! !
+		redrawNeeded.! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/6/2022 12:44:44'!
 switchToResumeButton
@@ -7346,7 +7340,7 @@ browseSketches
 		label: 'Select a Smalltalk sketch' translated.
 	browser when: #editSmalltalkSketch send: #loadSketch: to: self.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'drgeo 3/17/2024 17:23:45'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 3/20/2024 17:07:38'!
 compiledSketch: aSketch
 	self releaseMiniView.
 	drgeoView 
@@ -7391,7 +7385,7 @@ debugWindowSketch
 			]
 		ifFail: [].! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'drgeo 3/17/2024 16:41:14'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 3/20/2024 16:58:37'!
 executeSketch
 	self stopSketch.
 	codeView scroller acceptContents.
@@ -7399,15 +7393,19 @@ executeSketch
 	DrGeoSketch when: #newSmalltalkSketch send: #compiledSketch: to: self.
 	sketchProcess := [ | t |
 		t := DateAndTime now.
-		[Compiler evaluate: model] 
-			on: Exception 
-			do: [:ex | | myContext |
-				myContext := ex signalerContext findContextSuchThat: [:aContext | 
-					aContext method defaultSelector == #DoIt].
-				debugger := Debugger 
-					openMinimalDebuggingProcess: sketchProcess 
-					context: myContext.
-				self plugDebugger ].
+		(DrGeoSystem preferences at: #advancedDebugger) 
+			ifTrue: [Compiler evaluate: model]
+			ifFalse: [
+				[Compiler evaluate: model] 
+					on: Exception 
+					do: [:ex | | myContext |
+						myContext := ex signalerContext findContextSuchThat: [:aContext | 
+							aContext method defaultSelector == #DoIt].
+						debugger := Debugger 
+							openMinimalDebuggingProcess: sketchProcess 
+							context: myContext.
+						self plugDebugger ]
+			].
 		" When we get there, sketch has been entirely executed, switch back to play button "
 		self switchToPlayButton.
 		Transcript show: DateAndTime now - t ;cr] newProcess.
@@ -12231,14 +12229,19 @@ canTransform: wrptItem
 	wrptItem mathItem isGeometricItem
 		ifFalse: [self error: 'Only geometric object can be transformed.' translated].! !
 
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 5/31/2021 18:57:29'!
+!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 3/20/2024 17:13:28'!
 finalizeTransformation: string with: arguments 
 	| class item |
 	class := Smalltalk classNamed: 'DrG', arguments first basicType capitalized, string, 'Item'.
 	item := class newWith: arguments.
-	item isPointItem
-		ifTrue: [^ self finalizePoint: item].
-	^ self finalizeCurve: item! !
+	^ item isPointItem
+		ifTrue: [self finalizePoint: item]
+		ifFalse: [| finalizedCurve | 
+			finalizedCurve := self finalizeCurve: item.
+			item isLocusItem ifTrue: [
+				self view world doOneMinimalCycleNow .
+				self domain updateAllMathItems].
+			finalizedCurve ]! !
 
 !DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 4/16/2022 22:40:44'!
 reflect: wrpItem axis: wrpLine 
@@ -14879,7 +14882,7 @@ isSampled
 nodeType
 	^ #Translation! !
 
-!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:32:47'!
+!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'hlsf 3/20/2024 16:16:28'!
 update
 	self doParentsExist ifTrue: [| locusPoints direction|
 		direction := parents second direction.
@@ -30768,12 +30771,6 @@ updateAllMathItemsButLocusFrom: startIndex to: endIndex
 		do: [:aMathItem | aMathItem isLocusItem not
 				ifTrue: [aMathItem update]]! !
 
-!DrGMathItemFactory methodsFor: 'updating'!
-updateDirtyMathItems: aCollection
-	"update the collection"
-	aCollection
-		do: [:aMathItem | aMathItem update]! !
-
 !DrGSvgCanvas methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 17:47:51'!
 drawable
 	^presenter drawable ! !
@@ -33075,14 +33072,15 @@ locusPreferences
 	{#locusStyle. 'Style' translated. category. DrGTypeStyle with: #locusStyle in: preferences. #plain}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 3/9/2023 15:56:08'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 3/20/2024 15:35:19'!
 miscPreferences
 " name - description - category - type - value "
 | category |
 	category := #miscellaneous translated asSymbol.
 	^ {
 	{#userPath. 'Path for user created resources as sketches, Smalltalk sketches, exported image. An empty path locates these resources in the Dr. Geo application folder. Relative path accepted, home/user directory is then prepended' translated. category. nil. ''} .
-	{#autoName. 'Autoname new object' translated. category. Boolean. false}
+	{#autoName. 'Autoname new object' translated. category. Boolean. false} .
+	{#advancedDebugger. 'Full debugger when executing Smalltalk sketch.' . category. Boolean. true }
 	}! !
 
 !DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/25/2022 10:25:11'!
