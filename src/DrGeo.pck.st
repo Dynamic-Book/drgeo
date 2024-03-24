@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 20 March 2024 at 5:16:56 pm'!
+'From Cuis6.3 [latest update: #6279] on 24 March 2024 at 3:52:28 pm'!
 'Description '!
-!provides: 'DrGeo' 1 681!
+!provides: 'DrGeo' 1 682!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7120,7 +7120,7 @@ buildMorphicWindow
 	self toggleHelp.
 	self activeHand newKeyboardFocus: codeView scroller! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/14/2022 16:36:45'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 3/24/2024 15:37:09'!
 button: iconSymbol action: actionSelector help: helpString
 	^ (ButtonMorph model: self action: actionSelector)
 			icon: (DrGIcons for: iconSymbol );
@@ -7129,10 +7129,10 @@ button: iconSymbol action: actionSelector help: helpString
 			selectedColor: DrGUIControlsManager buttonSelectedColor;
 			borderColor: DrGUIControlsManager buttonColor muchDarker;
 			borderWidth: 2;
-			morphExtent: (DrGeoSystem toolbarIconSize + 4) asPoint;
+			morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 			yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/28/2022 11:13:31'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 3/24/2024 15:37:13'!
 button: iconSymbol action: actionSelector state: getStateSel help: helpString
 	^ (ButtonMorph model: self stateGetter: getStateSel action: actionSelector)
 			icon: (DrGIcons for: iconSymbol );
@@ -7141,7 +7141,7 @@ button: iconSymbol action: actionSelector state: getStateSel help: helpString
 			selectedColor: DrGUIControlsManager buttonSelectedColor;
 			borderColor: DrGUIControlsManager buttonColor muchDarker;
 			borderWidth: 2;
-			morphExtent: (DrGeoSystem toolbarIconSize + 4) asPoint;
+			morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 			yourself! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/14/2022 16:43:31'!
@@ -27133,17 +27133,17 @@ segmentMorph: thick color: color dash: dash
 		dashedBorder: dash;
 		yourself! !
 
-!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 10/19/2022 15:51:51'!
+!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 3/24/2024 15:37:17'!
 for: symbol
 " Return a form representing the icon at the toolbar icon size "
-	^ self scale: symbol to: DrGeoSystem toolbarIconSize! !
+	^ self scale: symbol to: Theme current toolbarIconSize! !
 
-!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 11/2/2022 19:57:47'!
+!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 3/24/2024 15:37:23'!
 iconUI: symbol
 "The icons as display in the UI"
 	| finalForm iconForm |
 	iconForm := DrGIcons for: symbol.
-	finalForm := (Form extent: (DrGeoSystem toolbarIconSize + 4) asPoint depth: 32) 
+	finalForm := (Form extent: (Theme current toolbarIconSize + 4) asPoint depth: 32) 
 		fillColor: DrGUIControlsManager buttonColor.
 	finalForm border: finalForm boundingBox width: 2 fillColor: DrGUIControlsManager buttonColor muchDarker.
 	finalForm 
@@ -27185,13 +27185,15 @@ presenter: aPresenter
 view
 	^ view! !
 
-!DrGUIControlsManager methodsFor: 'initialization' stamp: 'drgeo 3/17/2024 16:58:31'!
+!DrGUIControlsManager methodsFor: 'initialization' stamp: 'hlsf 3/24/2024 15:37:34'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
-	| row col |
+	| row col wheelHeight wheelWidth |
+	wheelHeight := Theme current wheelHeight .
+	wheelWidth := Theme current wheelWidth.
 	view := DrGeoView for: presenter.
 	view 
-		addMorph: self quickToolbar layoutSpec: (LayoutSpec fixedHeight: DrGeoSystem toolbarIconSize + 4).
+		addMorph: self quickToolbar layoutSpec: (LayoutSpec fixedHeight: Theme current toolbarIconSize + 4).
 	row := LayoutMorph newRow.
 	row 
 		addMorph: self treeView proportionalWidth: 0.1;
@@ -27200,23 +27202,23 @@ installTools
 	"Install the wheels at the right"
 	col := LayoutMorph newColumn name: #wheelsYZ.
 	col addMorph: self zoomWheel layoutSpec: (
-		LayoutSpec fixedExtent: DrGeoSystem wheelWidth @ DrGeoSystem wheelHeight).
+		LayoutSpec fixedExtent: wheelWidth @ wheelHeight).
 	col addMorphUseAll: self transparentMorph.
 	col addMorph: self verticalWheel layoutSpec: (
-		LayoutSpec fixedExtent: DrGeoSystem wheelWidth @ DrGeoSystem wheelHeight).			
+		LayoutSpec fixedExtent: wheelWidth @ wheelHeight).			
 	""	
-	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: DrGeoSystem wheelWidth proportionalHeight: 1).	
+	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: wheelWidth proportionalHeight: 1).	
 	view addMorph: row.
 	"Install wheel at the bottom"
 	
 	row := LayoutMorph newRow name: #wheelX; yourself.
 	row addMorphUseAll: self statusBarInScroller;
 		addMorph:self horizontalWheel layoutSpec: 
-			(LayoutSpec 	fixedExtent: DrGeoSystem wheelHeight @ DrGeoSystem wheelWidth);
+			(LayoutSpec 	fixedExtent:  wheelHeight @ wheelWidth);
 		addMorph: self transparentMorph layoutSpec: 
-			(LayoutSpec 		fixedExtent: DrGeoSystem wheelWidth asPoint) .
+			(LayoutSpec 		fixedExtent: wheelWidth asPoint) .
 	
-	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: DrGeoSystem wheelWidth)
+	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: wheelWidth)
 ! !
 
 !DrGUIControlsManager methodsFor: 'initialization' stamp: 'hlsf 4/10/2022 14:48:23'!
@@ -27522,7 +27524,7 @@ addChevron: symbolOrArray to: aToolbar
 		setBalloonText: array fourth;
 		yourself	! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/15/2023 21:07:49'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/24/2024 15:37:28'!
 button: symbolOrArray
 	"array first = menu label or button label
 	array second = button form = selection mode
@@ -27541,7 +27543,7 @@ button: symbolOrArray
 		selectedColor: self buttonSelectedColor ;
 		borderColor: self buttonColor muchDarker;
 		borderWidth: 2;
-		morphExtent: (DrGeoSystem toolbarIconSize + 4) asPoint;
+		morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 		yourself	! !
 
 !DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 5/25/2023 17:45:34'!
@@ -27625,7 +27627,7 @@ stylerFor: aStyle
 		self contextualEditingFor: editPanel ]
 		! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 14:49:15'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/24/2024 15:37:42'!
 tools
 	| toolsData dropDown |
 	tools ifNotNil: [^ tools].
@@ -27637,7 +27639,7 @@ tools
 	tools 
 		color: self buttonColor;
 		selectedColor: self buttonSelectedColor;
-		buttonSize: DrGeoSystem toolbarIconSize.
+		buttonSize: Theme current toolbarIconSize.
 	toolsData do: [:dataTool | 
 		dropDown := (self addChevron: dataTool first to: tools) addDropDown.
 		dataTool do: [:tool | self addChevron: tool to: dropDown subtoolbar]].
@@ -27961,11 +27963,13 @@ updateScriptMenu
 			setBalloonText: aScript description]
 ! !
 
-!DrGUIMinimalControlsManager methodsFor: 'initialization' stamp: 'drgeo 3/17/2024 17:28:39'!
+!DrGUIMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 3/24/2024 15:43:02'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
-	| row col |
+	| row col wheelHeight wheelWidth |
 	super initialize.		
+	wheelHeight := Theme current wheelHeight .
+	wheelWidth := Theme current smWheelWidth.
 	view := DrGeoMiniView for: presenter.
 	row := LayoutMorph newRow.
 	row addMorphUseAll: self view drawable.
@@ -27973,23 +27977,23 @@ installTools
 	col := LayoutMorph newColumn name: #wheelsYZ; color: view defaultColor; yourself.
 	col 
 		addMorph: (self zoomWheel borderWidth: 2) 
-		layoutSpec: (		LayoutSpec fixedExtent: DrGeoSystem wheelWidth / 1.5 @ DrGeoSystem wheelHeight);
+		layoutSpec: (		LayoutSpec fixedExtent: wheelWidth @ wheelHeight);
 		addMorphUseAll: self transparentMorph;
 		addMorph: (self verticalWheel borderWidth: 2) 
-		layoutSpec: (		LayoutSpec fixedExtent: DrGeoSystem wheelWidth / 1.5 @ DrGeoSystem wheelHeight).			
+		layoutSpec: (		LayoutSpec fixedExtent: wheelWidth @ wheelHeight).			
 	""	
-	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: DrGeoSystem wheelWidth /1.5 proportionalHeight: 1).	
+	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: wheelWidth proportionalHeight: 1).	
 	view addMorph: row.
 	
 	"Install wheel at the bottom"	
 	row := LayoutMorph newRow name: #wheelX; color: view defaultColor; yourself.
 	row addMorphUseAll: self statusBarInScroller;
 		addMorph: (self horizontalWheel borderWidth: 2) 
-		layoutSpec: 		(LayoutSpec 	fixedExtent: DrGeoSystem wheelHeight @ (DrGeoSystem wheelWidth / 1.5));
+		layoutSpec: 		(LayoutSpec 	fixedExtent:  wheelHeight @ wheelWidth );
 		addMorph: self transparentMorph 
-		layoutSpec: 	(LayoutSpec 		fixedExtent: (DrGeoSystem wheelWidth / 1.5) asPoint) .
+		layoutSpec: 	(LayoutSpec 		fixedExtent: wheelWidth asPoint) .
 	
-	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: (DrGeoSystem wheelWidth / 1.5))! !
+	view addMorph: row layoutSpec: (LayoutSpec fixedHeight: wheelWidth)! !
 
 !DrGUIMinimalControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 16:36:58'!
 openTools
@@ -32233,12 +32237,13 @@ myWidgets
 "overwrite to add specific widget to edit specific style"
 	^ OrderedCollection new! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:56:27'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2024 15:00:11'!
 nameWidget
  | inputWidget |
 	inputWidget := (TextModelMorph textProvider: morph textGetter: #name textSetter: #name:)
 			hideScrollBarsIndefinitely;
 			askBeforeDiscardingEdits: false;
+			borderWidth: 1;
 			acceptOnCR: true;
 			yourself	.
 	inputWidget scroller setProperty: #keyStroke: toValue: [:event | inputWidget scroller acceptContents]. 
@@ -33312,18 +33317,6 @@ toggleFullscreen
 	Preferences at: #fullscreen put: isFullscreen not.
 	Display fullScreenMode: isFullscreen not! !
 
-!DrGPlatform methodsFor: 'user interface' stamp: 'hlsf 10/19/2022 16:04:57'!
-toolbarIconSize
-	^ 50! !
-
-!DrGPlatform methodsFor: 'user interface' stamp: 'hlsf 9/23/2021 11:01:16'!
-wheelHeight
-	^ 120! !
-
-!DrGPlatform methodsFor: 'user interface' stamp: 'hlsf 5/25/2023 17:42:25'!
-wheelWidth
-	^ 25! !
-
 !DrGPlatform methodsFor: 'testing'!
 isAndroid
 	^ false! !
@@ -33523,18 +33516,6 @@ stopSpinner
 !DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 8/4/2022 22:55:40'!
 toggleFullscreen
 	platform toggleFullscreen ! !
-
-!DrGeoSystem class methodsFor: 'user interface'!
-toolbarIconSize
-	^ platform toolbarIconSize ! !
-
-!DrGeoSystem class methodsFor: 'user interface'!
-wheelHeight
-	^ platform wheelHeight ! !
-
-!DrGeoSystem class methodsFor: 'user interface'!
-wheelWidth
-	^ platform wheelWidth! !
 
 !DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 3/11/2022 23:07:10'!
 canvasFont
@@ -34147,6 +34128,22 @@ morphCenter: aPoint
 !MenuItemMorph methodsFor: '*DrGeo' stamp: 'hlsf 1/3/2022 09:01:34'!
 arguments
 	^ arguments! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:42:17'!
+smWheelWidth
+	^ (self wheelWidth / 1.5) rounded max: 1! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:38:21'!
+toolbarIconSize
+	^ (FontFamily defaultPointSize + 1) * 4! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:33:20'!
+wheelHeight
+	^ FontFamily defaultPointSize * 10! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:33:17'!
+wheelWidth
+	^ FontFamily defaultPointSize * 2! !
 
 !MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 10/27/2022 11:00:56'!
 createButton: aForm action: aBlock balloonText: balloonText
