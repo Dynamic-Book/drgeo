@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 24 March 2024 at 3:52:28 pm'!
+'From Cuis6.3 [latest update: #6279] on 24 March 2024 at 6:37:09 pm'!
 'Description '!
-!provides: 'DrGeo' 1 682!
+!provides: 'DrGeo' 1 683!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -27627,7 +27627,7 @@ stylerFor: aStyle
 		self contextualEditingFor: editPanel ]
 		! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/24/2024 15:37:42'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/24/2024 18:34:28'!
 tools
 	| toolsData dropDown |
 	tools ifNotNil: [^ tools].
@@ -27639,7 +27639,10 @@ tools
 	tools 
 		color: self buttonColor;
 		selectedColor: self buttonSelectedColor;
-		buttonSize: Theme current toolbarIconSize.
+		buttonSize: Theme current toolbarIconSize;
+		dropDownHeight: Theme current circularToolbarDropDownHeight ;
+		dropDownGap: Theme current circularToolbarDropDownGap ;
+		extent: Theme current circularToolbarExtent.
 	toolsData do: [:dataTool | 
 		dropDown := (self addChevron: dataTool first to: tools) addDropDown.
 		dataTool do: [:tool | self addChevron: tool to: dropDown subtoolbar]].
@@ -34128,6 +34131,18 @@ morphCenter: aPoint
 !MenuItemMorph methodsFor: '*DrGeo' stamp: 'hlsf 1/3/2022 09:01:34'!
 arguments
 	^ arguments! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 18:33:40'!
+circularToolbarDropDownGap
+	^ (5 * FontFamily defaultPointSize / 12) rounded! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 18:33:27'!
+circularToolbarDropDownHeight
+	^ (15 * FontFamily defaultPointSize / 12) rounded! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 18:28:37'!
+circularToolbarExtent
+	^ (300 * FontFamily defaultPointSize / 12) rounded! !
 
 !Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:42:17'!
 smWheelWidth
