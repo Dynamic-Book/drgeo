@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 24 March 2024 at 6:37:09 pm'!
+'From Cuis6.3 [latest update: #6279] on 26 March 2024 at 10:10:34 pm'!
 'Description '!
-!provides: 'DrGeo' 1 683!
+!provides: 'DrGeo' 1 684!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -2862,7 +2862,7 @@ DrGVectorStyle class
 
 !classDefinition: #DrGPointStyle category: #'DrGeo-Styles'!
 DrGStyle subclass: #DrGPointStyle
-	instanceVariableNames: 'shape pointSize'
+	instanceVariableNames: 'shape pointSize extent'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Styles'!
@@ -9834,7 +9834,7 @@ styleClass
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
-!DrGPointMorph methodsFor: 'drawing' stamp: 'hlsf 5/24/2023 18:00:33'!
+!DrGPointMorph methodsFor: 'drawing' stamp: 'hlsf 3/26/2024 22:06:38'!
 drawOn: aCanvas
 | shape center |
 	self isDrawNeeded ifFalse: [^ self].
@@ -9846,16 +9846,19 @@ drawOn: aCanvas
 	shape := style shape.
 	shape == #square ifTrue:	 	[
 		aCanvas 
-			fillRectangle: (Rectangle center: center extent: style pointExtent)
+			fillRectangle: (Rectangle center: center extent: style extent)
 			color: color.
 		^ self].
 	shape == #round ifTrue:		[
-		aCanvas fillColor: color  do: [ 		aCanvas circleCenter: center radius: style pointExtent x / 2.0].
+		aCanvas fillColor: color  do: [ 		aCanvas circleCenter: center radius: style extent x / 2.0].
 		^ self].
 	shape == #cross ifTrue:[ | e |
-		e := style pointExtent / 2.0.
-		aCanvas line: center - e to: center + e width: 1.5 color: color.
-		aCanvas line: center + (e * (-1@1)) to: center + (e * (1@ -1)) width: 1.5 color: color]! !
+		e := style extent / 2.0.
+		aCanvas strokeWidth: (Theme current scaled: 1.5) color: color do: [
+			aCanvas 
+				moveTo: center -e ; lineTo: center + e;
+				moveTo: center + (e * (-1@1)); lineTo:  center + (e * (1@ -1))			]
+			]! !
 
 !DrGPointMorph methodsFor: 'label' stamp: 'hlsf 5/29/2021 17:17:00'!
 constrainedLabelPosition: unconstrainedPosition
@@ -11569,12 +11572,12 @@ arrowFor: index
 arrowIndexOf: aSymbol
 	^ self arrowSymbols indexOf: aSymbol! !
 
-!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 14:37:59'!
+!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:56:40'!
 arrowMorphCollection
 	^ self arrowSymbols collect: [:symbol |
 		ImageMorph new image: (
 			DrGIcons 
-				segment: (DrGTypeThickness widthFor: #small) 
+				segment: (Theme current widthFor: #small) 
 				color: Color black
 				dash: (DrGTypeStyle styleDataFor: #plain)
 				arrow: symbol
@@ -11647,12 +11650,12 @@ markFor: index
 markIndexOf: aMark
 	^ self markSymbols indexOf: aMark! !
 
-!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 14:23:45'!
+!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:56:49'!
 markMorphCollection
 	^ self markSymbols collect: [:symbol |
 		ImageMorph new 	image: (
 			DrGIcons 	
-				segment: (DrGTypeThickness widthFor: #small) 
+				segment: (Theme current widthFor: #small) 
 				color: Color black mark: symbol 
 		)]! !
 
@@ -11685,11 +11688,11 @@ pointShapeIndexOf: pointShape
 pointShapeSymbols
 	^ `#(#cross #round #square)`! !
 
-!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 11:03:01'!
+!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:50:46'!
 shapeMorphCollection
 	^ self pointShapeSymbols collect: [:symbol |
 		ImageMorph new 
-			image: (DrGIcons 	point: (DrGTypePointSize pointExtentFor: #medium) 
+			image: (DrGIcons 	point: (Theme current pointExtentFor: #medium) 
 			color: Color black 	shape: symbol) ].
 ! !
 
@@ -11705,12 +11708,6 @@ pointSizeIndex: anIndex
 !DrGTypePointSize methodsFor: 'accessing' stamp: 'hlsf 6/4/2022 22:35:07'!
 sizeMorphCollection
 	^ self class sizeMorphCollection: #square! !
-
-!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 11:01:19'!
-pointExtentFor: pointSize
-	pointSize == #small ifTrue: [^ 6@6].
-	pointSize == #large ifTrue: [^ 10@10].
-	^ 8@8.! !
 
 !DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 6/4/2022 14:55:59'!
 pointSizeFor: index
@@ -11759,12 +11756,12 @@ styleFor: index
 styleIndexOf: aLineStyle
 	^ self styleSymbols indexOf: aLineStyle! !
 
-!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:41:02'!
+!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:56:58'!
 styleMorphCollection
 	^ self styleSymbols collect: [:symbol |
 		ImageMorph new image: (
 			DrGIcons 
-				segment: (DrGTypeThickness widthFor: #small) 
+				segment: (Theme current widthFor: #small) 
 				color: Color black dash: (DrGTypeStyle styleDataFor: symbol)
 		)]! !
 
@@ -11793,23 +11790,15 @@ thicknessFor: index
 thicknessIndexOf: thickness
 	^ self thicknessSymbols indexOf: thickness! !
 
-!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:05:55'!
+!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:57:12'!
 thicknessMorphCollection
 	^ self thicknessSymbols collect: [:symbol | 		
 		ImageMorph new 
-			image: (DrGIcons 		segment: (self widthFor: symbol)			color: Color black			dash: nil)]! !
+			image: (DrGIcons 		segment: (Theme current widthFor: symbol)			color: Color black			dash: nil)]! !
 
 !DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:01:35'!
 thicknessSymbols
 	^ `#(#small #medium #large)`! !
-
-!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:02:59'!
-widthFor: aThickness
-	"give the width"
-	aThickness = #small ifTrue: [^1].
-	aThickness = #medium ifTrue: [^2].
-	aThickness = #large ifTrue: [^3].
-	^ 1! !
 
 !DrGeoTree methodsFor: 'accessing' stamp: 'hlsf 2/10/2022 11:51:56'!
 mathItem: aMathItem
@@ -27084,11 +27073,11 @@ iconWith: morphOrForm extent: extent inset: inset background: aColor
 iconWithBackground: morphOrForm
 	^ self iconWith: morphOrForm background: Color white! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 6/5/2022 11:01:27'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 3/26/2024 21:50:39'!
 point: pointSize color: color shape: shape
 	^ self 
 		iconWith: (self pointMorph: pointSize color: color shape: shape)
-		extent: (DrGTypePointSize pointExtentFor: pointSize)
+		extent: (Theme current pointExtentFor: pointSize)
 		inset: self menuInset 
 		background: Color white.! !
 
@@ -32359,10 +32348,10 @@ borderColor
 	"Answer the value of border color"
 	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [self baseColor]! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:20:51'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:58:04'!
 borderWidth
 	"give the border width"
-	^ DrGTypeThickness widthFor: thickness! !
+	^ Theme current widthFor: thickness! !
 
 !DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:24:38'!
 color
@@ -32737,6 +32726,10 @@ curvilinearAbscissa: aText
 	self changed.
 	^ true! !
 
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:49:17'!
+extent
+	^ extent! !
+
 !DrGPointStyle methodsFor: 'accessing'!
 ordinate
 	^ self mathItem point y asString! !
@@ -32751,20 +32744,17 @@ ordinate: aText
 	self changed.
 	^ true! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 11:01:45'!
-pointExtent
-	^ DrGTypePointSize pointExtentFor: pointSize.! !
-
 !DrGPointStyle methodsFor: 'accessing'!
 pointSize
 	"Answer the value of thickness"
 
 	^ pointSize! !
 
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:34:43'!
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:48:53'!
 pointSize: anObject
 	"Set the value of thickness"
 	pointSize := anObject.
+	extent := Theme current pointExtentFor: pointSize.
 	morph redrawNeeded
 ! !
 
@@ -34132,17 +34122,37 @@ morphCenter: aPoint
 arguments
 	^ arguments! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 18:33:40'!
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:35:54'!
 circularToolbarDropDownGap
-	^ (5 * FontFamily defaultPointSize / 12) rounded! !
+	^ self scale: 5! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 18:33:27'!
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:36:11'!
 circularToolbarDropDownHeight
-	^ (15 * FontFamily defaultPointSize / 12) rounded! !
+	^ self scale: 15! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 18:28:37'!
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:37:58'!
 circularToolbarExtent
-	^ (300 * FontFamily defaultPointSize / 12) rounded! !
+	^ self scale: 300! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:55:20'!
+pointExtentFor: pointSize
+" Extent of point view "
+	^ (pointSize == #small 
+		ifTrue: [self scale: 6]
+		ifFalse: [
+			pointSize == #large
+				ifTrue:[self scale: 10]					
+				ifFalse:[self scale: 8]	]) asPoint! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:37:43'!
+scale: anInteger
+" Scale the length represented by anInteger to the display density "
+	^ (anInteger * FontFamily defaultPointSize / 12) rounded! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 22:06:34'!
+scaled: aFloat
+" Scale the length represented by anInteger to the display density "
+	^ aFloat * FontFamily defaultPointSize / 12! !
 
 !Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:42:17'!
 smWheelWidth
@@ -34152,13 +34162,23 @@ smWheelWidth
 toolbarIconSize
 	^ (FontFamily defaultPointSize + 1) * 4! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:33:20'!
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:41:25'!
 wheelHeight
-	^ FontFamily defaultPointSize * 10! !
+	^ self scale: 120! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:33:17'!
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:40:56'!
 wheelWidth
-	^ FontFamily defaultPointSize * 2! !
+	^ self scale: 24! !
+
+!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:56:20'!
+widthFor: thickness
+" width of line  view "
+	^ thickness == #small 
+		ifTrue: [self scale: 1]
+		ifFalse: [
+			thickness == #medium
+				ifTrue:[self scale: 2]					
+				ifFalse:[self scale: 3]	]! !
 
 !MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 10/27/2022 11:00:56'!
 createButton: aForm action: aBlock balloonText: balloonText
