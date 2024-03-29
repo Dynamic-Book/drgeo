@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 26 March 2024 at 10:10:34 pm'!
+'From Cuis6.3 [latest update: #6279] on 29 March 2024 at 11:12:07 am'!
 'Description '!
-!provides: 'DrGeo' 1 684!
+!provides: 'DrGeo' 1 685!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -11572,14 +11572,14 @@ arrowFor: index
 arrowIndexOf: aSymbol
 	^ self arrowSymbols indexOf: aSymbol! !
 
-!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:56:40'!
+!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 11:07:03'!
 arrowMorphCollection
 	^ self arrowSymbols collect: [:symbol |
 		ImageMorph new image: (
 			DrGIcons 
-				segment: (Theme current widthFor: #small) 
+				segment: (Theme current lineWidthFor: #small) 
 				color: Color black
-				dash: (DrGTypeStyle styleDataFor: #plain)
+				dash: (Theme current  lineStyleDataFor: #plain)
 				arrow: symbol
 		)]! !
 
@@ -11650,12 +11650,12 @@ markFor: index
 markIndexOf: aMark
 	^ self markSymbols indexOf: aMark! !
 
-!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:56:49'!
+!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 10:03:11'!
 markMorphCollection
 	^ self markSymbols collect: [:symbol |
 		ImageMorph new 	image: (
 			DrGIcons 	
-				segment: (Theme current widthFor: #small) 
+				segment: (Theme current lineWidthFor: #small) 
 				color: Color black mark: symbol 
 		)]! !
 
@@ -11740,13 +11740,6 @@ styleIndex: anIndex
 styleMorphCollection
 	^ self class styleMorphCollection ! !
 
-!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 6/24/2023 22:51:03'!
-styleDataFor: aStyle
-	"possible lineStyle"
-	aStyle = #dot ifTrue: [^ #(2 6)].
-	aStyle = #dash ifTrue: [^ #(8 5)].
-	^ nil! !
-
 !DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:41:21'!
 styleFor: index
 	^ self styleSymbols at: index
@@ -11756,13 +11749,13 @@ styleFor: index
 styleIndexOf: aLineStyle
 	^ self styleSymbols indexOf: aLineStyle! !
 
-!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:56:58'!
+!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 11:07:14'!
 styleMorphCollection
 	^ self styleSymbols collect: [:symbol |
 		ImageMorph new image: (
 			DrGIcons 
-				segment: (Theme current widthFor: #small) 
-				color: Color black dash: (DrGTypeStyle styleDataFor: symbol)
+				segment: (Theme current lineWidthFor: #small) 
+				color: Color black dash: (Theme current lineStyleDataFor: symbol)
 		)]! !
 
 !DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:38:39'!
@@ -11790,11 +11783,11 @@ thicknessFor: index
 thicknessIndexOf: thickness
 	^ self thicknessSymbols indexOf: thickness! !
 
-!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:57:12'!
+!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 10:03:11'!
 thicknessMorphCollection
 	^ self thicknessSymbols collect: [:symbol | 		
 		ImageMorph new 
-			image: (DrGIcons 		segment: (Theme current widthFor: symbol)			color: Color black			dash: nil)]! !
+			image: (DrGIcons 		segment: (Theme current lineWidthFor: symbol)			color: Color black			dash: nil)]! !
 
 !DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:01:35'!
 thicknessSymbols
@@ -32348,10 +32341,10 @@ borderColor
 	"Answer the value of border color"
 	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [self baseColor]! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:58:04'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 10:03:11'!
 borderWidth
 	"give the border width"
-	^ Theme current widthFor: thickness! !
+	^ Theme current lineWidthFor: thickness! !
 
 !DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:24:38'!
 color
@@ -32373,11 +32366,11 @@ lineStyle
 
 	^ lineStyle! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:41:02'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 11:07:23'!
 lineStyle: aSymbol
 	"Set the value of lineStyle"
 	lineStyle := aSymbol.
-	morph dashedBorder: (DrGTypeStyle styleDataFor: aSymbol).
+	morph dashedBorder: (Theme current lineStyleDataFor: aSymbol).
 	morph redrawNeeded! !
 
 !DrGCurveStyle methodsFor: 'accessing'!
@@ -34122,19 +34115,36 @@ morphCenter: aPoint
 arguments
 	^ arguments! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:35:54'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:35:54'!
 circularToolbarDropDownGap
 	^ self scale: 5! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:36:11'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:36:11'!
 circularToolbarDropDownHeight
 	^ self scale: 15! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:37:58'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:37:58'!
 circularToolbarExtent
 	^ self scale: 300! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:55:20'!
+!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/29/2024 11:09:10'!
+lineStyleDataFor: aStyle
+	"possible lineStyle"
+	aStyle = #dot ifTrue: [^ self scale: #(1 6)].
+	aStyle = #dash ifTrue: [^ self scale: #(8 8)].
+	^ nil! !
+
+!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/29/2024 10:03:10'!
+lineWidthFor: thickness
+" width of line  view "
+	^ thickness == #small 
+		ifTrue: [self scale: 1]
+		ifFalse: [
+			thickness == #medium
+				ifTrue:[self scale: 2]					
+				ifFalse:[self scale: 3]	]! !
+
+!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/26/2024 21:55:20'!
 pointExtentFor: pointSize
 " Extent of point view "
 	^ (pointSize == #small 
@@ -34144,41 +34154,31 @@ pointExtentFor: pointSize
 				ifTrue:[self scale: 10]					
 				ifFalse:[self scale: 8]	]) asPoint! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:37:43'!
-scale: anInteger
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/29/2024 11:08:49'!
+scale: anIntegerOrCollection
 " Scale the length represented by anInteger to the display density "
-	^ (anInteger * FontFamily defaultPointSize / 12) rounded! !
+	^ (anIntegerOrCollection * FontFamily defaultPointSize / 12) rounded! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 22:06:34'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 22:06:34'!
 scaled: aFloat
 " Scale the length represented by anInteger to the display density "
 	^ aFloat * FontFamily defaultPointSize / 12! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:42:17'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/24/2024 15:42:17'!
 smWheelWidth
 	^ (self wheelWidth / 1.5) rounded max: 1! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/24/2024 15:38:21'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/24/2024 15:38:21'!
 toolbarIconSize
 	^ (FontFamily defaultPointSize + 1) * 4! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:41:25'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:41:25'!
 wheelHeight
 	^ self scale: 120! !
 
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:40:56'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:40:56'!
 wheelWidth
 	^ self scale: 24! !
-
-!Theme methodsFor: '*DrGeo' stamp: 'hlsf 3/26/2024 21:56:20'!
-widthFor: thickness
-" width of line  view "
-	^ thickness == #small 
-		ifTrue: [self scale: 1]
-		ifFalse: [
-			thickness == #medium
-				ifTrue:[self scale: 2]					
-				ifFalse:[self scale: 3]	]! !
 
 !MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 10/27/2022 11:00:56'!
 createButton: aForm action: aBlock balloonText: balloonText
