@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 30 March 2024 at 11:04:26 am'!
+'From Cuis6.3 [latest update: #6279] on 30 March 2024 at 11:07:19 am'!
 'Description '!
-!provides: 'DrGeo' 1 687!
+!provides: 'DrGeo' 1 688!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -28,7 +28,6 @@ SystemOrganization addCategory: #'DrGeo-Styles'!
 SystemOrganization addCategory: #'DrGeo-System'!
 SystemOrganization addCategory: #'DrGeo-Test'!
 SystemOrganization addCategory: #DrGeo!
-SystemOrganization addCategory: #'DrGeo-Script-Items'!
 
 
 !classDefinition: #DrGeoDomain category: #'DrGeo-Model'!
@@ -2170,36 +2169,6 @@ Object subclass: #DrGeoUserScript
 !classDefinition: 'DrGeoUserScript class' category: #'DrGeo-Model-Script'!
 DrGeoUserScript class
 	instanceVariableNames: 'argumentsType'!
-
-!classDefinition: #DrGeoScript126328658 category: #'DrGeo-Script-Items'!
-DrGeoUserScript subclass: #DrGeoScript126328658
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Script-Items'!
-!classDefinition: 'DrGeoScript126328658 class' category: #'DrGeo-Script-Items'!
-DrGeoScript126328658 class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGeoScript75108106 category: #'DrGeo-Script-Items'!
-DrGeoUserScript subclass: #DrGeoScript75108106
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Script-Items'!
-!classDefinition: 'DrGeoScript75108106 class' category: #'DrGeo-Script-Items'!
-DrGeoScript75108106 class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGeoScript88541399 category: #'DrGeo-Script-Items'!
-DrGeoUserScript subclass: #DrGeoScript88541399
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Script-Items'!
-!classDefinition: 'DrGeoScript88541399 class' category: #'DrGeo-Script-Items'!
-DrGeoScript88541399 class
-	instanceVariableNames: ''!
 
 !classDefinition: #DrGIcons category: #'DrGeo-View'!
 Object subclass: #DrGIcons
@@ -17192,66 +17161,6 @@ description
 scriptName
 "I appear in the scripts menu"
 	^ 'A script' translated! !
-
-!DrGeoScript126328658 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:28'!
-compute
-"Edit me"
-	^[:x | x cos ]! !
-
-!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 14:50'!
-description
-	^'The function to be plotted. Return a bloc of code'! !
-
-!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 14:43'!
-scriptName
-	^'Function'! !
-
-!DrGeoScript126328658 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 14:43'!
-newArgumentsType
-	^{}! !
-
-!DrGeoScript75108106 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:18'!
-compute
-"Edit me"
-	| p x |
-	x _ self arg1 point x.
-	p _ ((self arg2 compute value: x +0.0001) - (self arg2 compute value: x)) / 0.0001.
-	^ self arg1 point + (1 @ p)! !
-
-!DrGeoScript75108106 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 15:15'!
-newArgumentsType
-	^{DrGPointItem.DrGValueItem}! !
-
-!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:15'!
-description
-	^'Compute the coordinates of a point on the slope.
-Arguments:
-- Script returning a function as a bloc of code
-- A point whose x-coordinates is used as the base computation'! !
-
-!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:15'!
-scriptName
-	^'Point on slope'! !
-
-!DrGeoScript88541399 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:04'!
-compute
-"Edit me"
-	^ (self arg1 point x) @ (self arg2 compute value: self arg1 point x)! !
-
-!DrGeoScript88541399 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 15:02'!
-newArgumentsType
-	^{DrGPointItem.DrGValueItem}! !
-
-!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:02'!
-description
-	^'Calculate the image of a point x-coordinates.
-Arguments:
-- Point
-- Script returning a bloc of code, a function'! !
-
-!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:02'!
-scriptName
-	^'Image'! !
 
 !DrGIcons class methodsFor: 'accessing'!
 angleGeometric
