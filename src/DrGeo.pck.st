@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 30 March 2024 at 11:07:19 am'!
+'From Cuis6.3 [latest update: #6279] on 30 March 2024 at 11:54:21 am'!
 'Description '!
-!provides: 'DrGeo' 1 688!
+!provides: 'DrGeo' 1 689!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -8823,13 +8823,13 @@ canComputeArcData
 		ifTrue: [length := length negated].
 	^ true! !
 
-!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 6/5/2021 10:01:36'!
+!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 3/30/2024 11:53:00'!
 drawArcOn: canvas
 	| radius |
 	radius := self drawable pixelToWorld: 15.
 	vector1 := self drawable worldToMorph: (center  + (radius * vector1 / vector1 r)).
 	vector2 := self drawable worldToMorph: (center + (radius * vector2 / vector2 r)).
-	canvas strokeWidth: 1 color: style color do: [
+	canvas strokeWidth: 1 color: color do: [
 		canvas moveTo: vector1.
 		canvas 
 			arcTo: vector2 
@@ -8855,14 +8855,14 @@ drawOn: canvas
 		font: font
 		color: color.! !
 
-!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 6/5/2021 10:01:59'!
+!DrGAngleGeometricMorph methodsFor: 'drawing' stamp: 'hlsf 3/30/2024 11:53:04'!
 drawRecOn: canvas
 	| size p |
 	size := self drawable pixelToWorld: 10.
 	vector1 := self drawable vectorToMorph: (size * vector1 / vector1 r).
 	vector2 := self drawable vectorToMorph: (size * vector2 / vector2 r).
 	screenCenter := self drawable worldToMorph: center.
-	canvas strokeWidth: 1 color: style color do: [
+	canvas strokeWidth: 1 color: color do: [
 		p := screenCenter + vector1.
 		canvas moveTo: p.
 		p := p + vector2.
