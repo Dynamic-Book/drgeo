@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 29 March 2024 at 11:12:07 am'!
+'From Cuis6.3 [latest update: #6279] on 30 March 2024 at 11:04:26 am'!
 'Description '!
-!provides: 'DrGeo' 1 685!
+!provides: 'DrGeo' 1 687!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -28,6 +28,7 @@ SystemOrganization addCategory: #'DrGeo-Styles'!
 SystemOrganization addCategory: #'DrGeo-System'!
 SystemOrganization addCategory: #'DrGeo-Test'!
 SystemOrganization addCategory: #DrGeo!
+SystemOrganization addCategory: #'DrGeo-Script-Items'!
 
 
 !classDefinition: #DrGeoDomain category: #'DrGeo-Model'!
@@ -2169,6 +2170,36 @@ Object subclass: #DrGeoUserScript
 !classDefinition: 'DrGeoUserScript class' category: #'DrGeo-Model-Script'!
 DrGeoUserScript class
 	instanceVariableNames: 'argumentsType'!
+
+!classDefinition: #DrGeoScript126328658 category: #'DrGeo-Script-Items'!
+DrGeoUserScript subclass: #DrGeoScript126328658
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Script-Items'!
+!classDefinition: 'DrGeoScript126328658 class' category: #'DrGeo-Script-Items'!
+DrGeoScript126328658 class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGeoScript75108106 category: #'DrGeo-Script-Items'!
+DrGeoUserScript subclass: #DrGeoScript75108106
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Script-Items'!
+!classDefinition: 'DrGeoScript75108106 class' category: #'DrGeo-Script-Items'!
+DrGeoScript75108106 class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGeoScript88541399 category: #'DrGeo-Script-Items'!
+DrGeoUserScript subclass: #DrGeoScript88541399
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Script-Items'!
+!classDefinition: 'DrGeoScript88541399 class' category: #'DrGeo-Script-Items'!
+DrGeoScript88541399 class
+	instanceVariableNames: ''!
 
 !classDefinition: #DrGIcons category: #'DrGeo-View'!
 Object subclass: #DrGIcons
@@ -7120,26 +7151,26 @@ buildMorphicWindow
 	self toggleHelp.
 	self activeHand newKeyboardFocus: codeView scroller! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 3/24/2024 15:37:09'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 3/30/2024 08:48:53'!
 button: iconSymbol action: actionSelector help: helpString
 	^ (ButtonMorph model: self action: actionSelector)
 			icon: (DrGIcons for: iconSymbol );
 			setBalloonText: helpString ;
-			color: DrGUIControlsManager buttonColor;
-			selectedColor: DrGUIControlsManager buttonSelectedColor;
-			borderColor: DrGUIControlsManager buttonColor muchDarker;
+			color: Theme current drgeoButtonColor;
+			selectedColor: Theme current drgeoButtonSelectedColor;
+			borderColor: Theme current drgeoButtonColor muchDarker;
 			borderWidth: 2;
 			morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 			yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 3/24/2024 15:37:13'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 3/30/2024 08:49:06'!
 button: iconSymbol action: actionSelector state: getStateSel help: helpString
 	^ (ButtonMorph model: self stateGetter: getStateSel action: actionSelector)
 			icon: (DrGIcons for: iconSymbol );
 			setBalloonText: helpString ;
-			color: DrGUIControlsManager buttonColor;
-			selectedColor: DrGUIControlsManager buttonSelectedColor;
-			borderColor: DrGUIControlsManager buttonColor muchDarker;
+			color: Theme current drgeoButtonColor;
+			selectedColor: Theme current drgeoButtonSelectedColor;
+			borderColor: Theme current drgeoButtonColor muchDarker;
 			borderWidth: 2;
 			morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 			yourself! !
@@ -7542,10 +7573,10 @@ searchLabelIn: aMorph
 				
 		! !
 
-!DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 5/3/2020 23:43:15'!
+!DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 3/30/2024 09:21:21'!
 initialize
 	super initialize.
-	self color: (self color alpha: 0.7).
+	self color: (self color alpha: 0.8).
 	self borderColor: (self borderColor alpha: 0.7).
 ! !
 
@@ -8134,11 +8165,10 @@ dismissMorph
 	super dismissMorph.
 	presenter view dismissMorph ! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 8/4/2023 18:33:52'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 3/30/2024 09:30:31'!
 initialize
 	super initialize.
 	self color: Theme current background.
-	self color: Color white.
 	self borderWidth: 0.
 	tipOn := true.
 	self defaultScalePosition.
@@ -8539,12 +8569,12 @@ startBlinking
 	blink := true.
 	self startStepping ! !
 
-!DrGMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 6/3/2022 11:37:36'!
+!DrGMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 3/30/2024 09:57:50'!
 step
 	blink ifFalse: [^self].
 	super step.
 	color = DrGTypeColor blinkingColor 
-		ifTrue: [color := style color]
+		ifTrue: [color := Theme current adjustColor: style color]
 		ifFalse: [color := DrGTypeColor blinkingColor].
 	self redrawNeeded! !
 
@@ -8702,9 +8732,9 @@ hide
 	super hide.
 	labelMorph ifNotNil: [labelMorph hide].! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'drgeo 9/10/2022 14:44:04'!
+!DrGMorph methodsFor: 'updating' stamp: 'hlsf 3/30/2024 09:58:36'!
 restoreNormalColor
-	color := style color! !
+	color := Theme current adjustColor: style color! !
 
 !DrGMorph methodsFor: 'updating' stamp: 'hlsf 4/18/2021 08:50:14'!
 show
@@ -8964,13 +8994,13 @@ borderWidth: pixels
 dashedBorder: dashSpec
 	dashedBorder := dashSpec.! !
 
-!DrGCurveMorph methodsFor: 'initialize-release' stamp: 'hlsf 8/5/2023 14:46:17'!
+!DrGCurveMorph methodsFor: 'initialize-release' stamp: 'hlsf 3/30/2024 10:56:19'!
 initialize
 	anchorAbscissa := 0.5.
 	super initialize.
-	borderColor := style borderColor.
+	borderColor := Theme current adjustColor: style borderColor.
 	borderWidth := style borderWidth.
-	color := style color! !
+	color := Theme current adjustColor: style color! !
 
 !DrGCurveMorph methodsFor: 'label' stamp: 'hlsf 5/29/2021 17:18:35'!
 constrainedLabelPosition: aPosition
@@ -8985,12 +9015,12 @@ constrainedLabelPosition: aPosition
 labelPosition
 	^(self drawable worldToMorph: (mathItem pointAt: anchorAbscissa)) + labelPositionDelta! !
 
-!DrGCurveMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 6/3/2022 11:37:41'!
+!DrGCurveMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 3/30/2024 10:03:39'!
 step
 	blink ifFalse: [^self].
 	super step.
 	borderColor = DrGTypeColor blinkingColor 
-		ifTrue: [borderColor := style borderColor]
+		ifTrue: [borderColor := Theme current adjustColor: style borderColor]
 		ifFalse: [borderColor := DrGTypeColor blinkingColor]! !
 
 !DrGCurveMorph methodsFor: 'testing type' stamp: 'hlsf 4/4/2021 19:06:59'!
@@ -9012,10 +9042,10 @@ forceHiddenColor
 	color := (style isFilled ifTrue: [DrGTypeColor hiddenColor] ifFalse: [Color transparent]).
 	borderColor := DrGTypeColor hiddenColor.! !
 
-!DrGCurveMorph methodsFor: 'updating' stamp: 'drgeo 9/10/2022 14:48:46'!
+!DrGCurveMorph methodsFor: 'updating' stamp: 'hlsf 3/30/2024 09:59:29'!
 restoreNormalColor
-	color :=  (style isFilled ifTrue: [style color] ifFalse: [Color transparent]).
-	borderColor := style borderColor! !
+	color :=  (style isFilled ifTrue: [Theme current adjustColor: style color] ifFalse: [Color transparent]).
+	borderColor := Theme current adjustColor: style borderColor! !
 
 !DrGArcMorph methodsFor: 'testing type' stamp: 'hlsf 4/4/2021 19:23:09'!
 isArc
@@ -17162,6 +17192,66 @@ description
 scriptName
 "I appear in the scripts menu"
 	^ 'A script' translated! !
+
+!DrGeoScript126328658 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:28'!
+compute
+"Edit me"
+	^[:x | x cos ]! !
+
+!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 14:50'!
+description
+	^'The function to be plotted. Return a bloc of code'! !
+
+!DrGeoScript126328658 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 14:43'!
+scriptName
+	^'Function'! !
+
+!DrGeoScript126328658 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 14:43'!
+newArgumentsType
+	^{}! !
+
+!DrGeoScript75108106 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:18'!
+compute
+"Edit me"
+	| p x |
+	x _ self arg1 point x.
+	p _ ((self arg2 compute value: x +0.0001) - (self arg2 compute value: x)) / 0.0001.
+	^ self arg1 point + (1 @ p)! !
+
+!DrGeoScript75108106 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 15:15'!
+newArgumentsType
+	^{DrGPointItem.DrGValueItem}! !
+
+!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:15'!
+description
+	^'Compute the coordinates of a point on the slope.
+Arguments:
+- Script returning a function as a bloc of code
+- A point whose x-coordinates is used as the base computation'! !
+
+!DrGeoScript75108106 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:15'!
+scriptName
+	^'Point on slope'! !
+
+!DrGeoScript88541399 methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:04'!
+compute
+"Edit me"
+	^ (self arg1 point x) @ (self arg2 compute value: self arg1 point x)! !
+
+!DrGeoScript88541399 class methodsFor: 'private' stamp: 'HilaireFernandes 12/9/2014 15:02'!
+newArgumentsType
+	^{DrGPointItem.DrGValueItem}! !
+
+!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:02'!
+description
+	^'Calculate the image of a point x-coordinates.
+Arguments:
+- Point
+- Script returning a bloc of code, a function'! !
+
+!DrGeoScript88541399 class methodsFor: 'public' stamp: 'HilaireFernandes 12/9/2014 15:02'!
+scriptName
+	^'Image'! !
 
 !DrGIcons class methodsFor: 'accessing'!
 angleGeometric
@@ -27120,14 +27210,14 @@ for: symbol
 " Return a form representing the icon at the toolbar icon size "
 	^ self scale: symbol to: Theme current toolbarIconSize! !
 
-!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 3/24/2024 15:37:23'!
+!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 3/30/2024 08:49:21'!
 iconUI: symbol
 "The icons as display in the UI"
 	| finalForm iconForm |
 	iconForm := DrGIcons for: symbol.
 	finalForm := (Form extent: (Theme current toolbarIconSize + 4) asPoint depth: 32) 
-		fillColor: DrGUIControlsManager buttonColor.
-	finalForm border: finalForm boundingBox width: 2 fillColor: DrGUIControlsManager buttonColor muchDarker.
+		fillColor: Theme current drgeoButtonColor.
+	finalForm border: finalForm boundingBox width: 2 fillColor: Theme current drgeoButtonColor muchDarker.
 	finalForm 
 		copy: iconForm  boundingBox 
 		from: iconForm 
@@ -27167,7 +27257,7 @@ presenter: aPresenter
 view
 	^ view! !
 
-!DrGUIControlsManager methodsFor: 'initialization' stamp: 'hlsf 3/24/2024 15:37:34'!
+!DrGUIControlsManager methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 09:16:28'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| row col wheelHeight wheelWidth |
@@ -27189,7 +27279,7 @@ installTools
 	col addMorph: self verticalWheel layoutSpec: (
 		LayoutSpec fixedExtent: wheelWidth @ wheelHeight).			
 	""	
-	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: wheelWidth proportionalHeight: 1).	
+	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: (wheelWidth + 1) proportionalHeight: 1).	
 	view addMorph: row.
 	"Install wheel at the bottom"
 	
@@ -27506,7 +27596,7 @@ addChevron: symbolOrArray to: aToolbar
 		setBalloonText: array fourth;
 		yourself	! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/24/2024 15:37:28'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 08:49:34'!
 button: symbolOrArray
 	"array first = menu label or button label
 	array second = button form = selection mode
@@ -27521,14 +27611,14 @@ button: symbolOrArray
 		stateArgument: (stateGetter isUnary ifTrue: [nil] ifFalse: [array second]);
 		icon: (DrGIcons for: array second);
 		setBalloonText: array fourth;
-		color: self buttonColor ;
-		selectedColor: self buttonSelectedColor ;
-		borderColor: self buttonColor muchDarker;
+		color: Theme current drgeoButtonColor ;
+		selectedColor: Theme current drgeoButtonSelectedColor ;
+		borderColor: Theme current drgeoButtonColor muchDarker;
 		borderWidth: 2;
 		morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 		yourself	! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 5/25/2023 17:45:34'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 08:49:59'!
 horizontalWheel 
 	| array |
 	array := self wheelXButtonData.
@@ -27537,8 +27627,8 @@ horizontalWheel
 		factor: 0.05; 
 		setBalloonText: array first;
 		borderWidth: 3;
-		color: self buttonColor;
-		borderColor: self buttonColor muchDarker;
+		color: Theme current drgeoButtonColor;
+		borderColor: Theme current drgeoButtonColor muchDarker;
 		yourself! !
 
 !DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 14:49:15'!
@@ -27609,7 +27699,7 @@ stylerFor: aStyle
 		self contextualEditingFor: editPanel ]
 		! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/24/2024 18:34:28'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 08:50:07'!
 tools
 	| toolsData dropDown |
 	tools ifNotNil: [^ tools].
@@ -27619,8 +27709,8 @@ tools
 		add: self animateTools; 		yourself.
 	tools := CircularToolbarMorph new.
 	tools 
-		color: self buttonColor;
-		selectedColor: self buttonSelectedColor;
+		color: Theme current drgeoButtonColor;
+		selectedColor: Theme current drgeoButtonSelectedColor;
 		buttonSize: Theme current toolbarIconSize;
 		dropDownHeight: Theme current circularToolbarDropDownHeight ;
 		dropDownGap: Theme current circularToolbarDropDownGap ;
@@ -27648,7 +27738,7 @@ treeView
 		menuGetter: nil
 		keystrokeAction: nil]! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 5/25/2023 17:45:17'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 09:03:22'!
 verticalWheel 
 	| array |
 	array := self wheelYButtonData.
@@ -27657,12 +27747,12 @@ verticalWheel
 		factor: 0.05; 
 		setBalloonText: array first; 
 		borderWidth: 3;
-		color: self buttonColor;
-		borderColor: self buttonColor muchDarker ;
+		color: Theme current drgeoButtonColor;
+		borderColor: Color  black ;
 		yourself		
 		! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 5/25/2023 17:45:03'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 09:03:01'!
 zoomWheel 
 	| array |
 	array := self wheelZButtonData.
@@ -27671,17 +27761,9 @@ zoomWheel
 		factor: 1; 
 		setBalloonText: array first; 
 		borderWidth: 3;
-		color: self buttonSelectedColor;
-		borderColor: self buttonSelectedColor muchDarker;
+		color: Theme current drgeoButtonSelectedColor;
+		borderColor: Color black;
 		yourself! !
-
-!DrGUIControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 4/14/2022 16:00:10'!
-buttonColor
-	^ self class buttonColor! !
-
-!DrGUIControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 4/14/2022 16:00:24'!
-buttonSelectedColor
-	^ self class buttonSelectedColor ! !
 
 !DrGUIControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 4/7/2022 18:07:56'!
 contextualEditingFor: panel
@@ -27739,16 +27821,6 @@ for: aPresenter
 	^ self basicNew
 		presenter: aPresenter;
 		initialize! !
-
-!DrGUIControlsManager class methodsFor: 'constants' stamp: 'hlsf 4/14/2022 15:57:50'!
-buttonColor
-"Blue Ukraine"
-	^ Color fromHexString: '#0057b7'! !
-
-!DrGUIControlsManager class methodsFor: 'constants' stamp: 'hlsf 4/14/2022 15:58:07'!
-buttonSelectedColor
-"Yellow Ukraine"
-	^ Color fromHexString: '#ffd700'! !
 
 !DrGUIMinimalControlsManager methodsFor: 'menus' stamp: 'hlsf 4/10/2022 14:55:40'!
 addMenuItem: toolSymbol to: menu
@@ -32085,12 +32157,12 @@ color
 
 	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [color]! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 5/23/2021 12:46:18'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 3/30/2024 09:55:58'!
 color: anObject
 	"Set the value of color"
 	color := anObject.
 	morph 
-		color: self color;
+		color: (Theme current adjustColor: self color);
 		redrawNeeded! !
 
 !DrGStyle methodsFor: 'accessing'!
@@ -32351,12 +32423,12 @@ color
 "Answer the fill color"
 	^self isFilled ifTrue: [color] ifFalse: [Color transparent]! !
 
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 5/23/2021 12:53:09'!
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/30/2024 09:56:26'!
 color: aColor
 "Set the value of fill color and border color"
 	color := self isTranslucent ifTrue: [aColor alpha: 0.3] ifFalse: [aColor alpha: 1].
 	morph 
-		borderColor: self borderColor;
+		borderColor: (Theme current adjustColor: self borderColor);
 		color: self color;
 		redrawNeeded! !
 
@@ -34115,6 +34187,19 @@ morphCenter: aPoint
 arguments
 	^ arguments! !
 
+!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/30/2024 11:00:26'!
+adjustColor: aColor
+"Depending on the current Theme, 
+we want to adjust the black or white color used to display an item view"
+	^ self isDarkTheme 
+		ifTrue: [
+			(aColor alpha: 1) = `Color black` 
+				ifTrue: [Color white alpha: aColor alpha] ifFalse: [aColor] 	]
+		ifFalse: [
+			(aColor alpha: 1) = `Color white` 
+				ifTrue: [Color black alpha: aColor alpha] ifFalse: [aColor] ]
+		! !
+
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:35:54'!
 circularToolbarDropDownGap
 	^ self scale: 5! !
@@ -34126,6 +34211,18 @@ circularToolbarDropDownHeight
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:37:58'!
 circularToolbarExtent
 	^ self scale: 300! !
+
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:45:56'!
+drgeoButtonColor
+	self subclassResponsibility ! !
+
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:46:21'!
+drgeoButtonSelectedColor
+	self subclassResponsibility ! !
+
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 09:50:03'!
+isDarkTheme
+	^ self background = `Color black`! !
 
 !Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/29/2024 11:09:10'!
 lineStyleDataFor: aStyle
@@ -34179,6 +34276,24 @@ wheelHeight
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:40:56'!
 wheelWidth
 	^ self scale: 24! !
+
+!BrightColorTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:45:21'!
+drgeoButtonColor
+"Blue Ukraine"
+	^ `Color fromHexString: '#0057b7'`! !
+
+!BrightColorTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:45:33'!
+drgeoButtonSelectedColor
+"Yellow Ukraine"
+	^ Color fromHexString: '#ffd700'! !
+
+!DarkTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 09:13:44'!
+drgeoButtonColor
+	^ `Color black lighter lighter lighter`! !
+
+!DarkTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 09:01:45'!
+drgeoButtonSelectedColor
+	^ `Color gray`! !
 
 !MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 10/27/2022 11:00:56'!
 createButton: aForm action: aBlock balloonText: balloonText
