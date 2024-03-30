@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6279] on 30 March 2024 at 11:54:21 am'!
+'From Cuis6.3 [latest update: #6304] on 30 March 2024 at 5:17:44 pm'!
 'Description '!
-!provides: 'DrGeo' 1 689!
+!provides: 'DrGeo' 1 690!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -5983,18 +5983,18 @@ macroMenu: aMenuMorph
 scriptMenu: aMenu
 self flag: #drgeoTodo! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'drgeo 3/17/2024 17:25:46'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 3/30/2024 16:45:35'!
 defaultColor
-	^ `(Color r: 0.986 g: 0.986 b: 0.986)`! !
+	^ Theme current paneBackgroundFrom: Theme current defaultWindowColor ! !
 
 !DrGeoMiniView methodsFor: 'initialize-release'!
 deleteWithoutConfirmation
 	self delete! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 8/4/2023 17:43:30'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 3/30/2024 16:37:20'!
 initialize
 	super initialize.
-	self color: Color white.
+	self color: self defaultColor .
 	drawable := DrGDrawable newOn: presenter .
 	self morphExtent: 750@500! !
 
@@ -6148,6 +6148,10 @@ release
 	drawable release.
 	drawable := nil.
 	presenter := nil! !
+
+!DrGeoView methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:10:30'!
+windowColor
+	^Theme current browser! !
 
 !DrGeoView methodsFor: 'stepping' stamp: 'hlsf 6/5/2021 11:00:04'!
 step
@@ -6541,7 +6545,7 @@ previewFor: aSketchEntry
 		ifFalse: [form := self computePreviewFor: aSketchEntry ].
 	^ form magnifyBy: DrGeoSystem previewSize x / form width! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 5/4/2023 15:40:22'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 3/30/2024 17:15:25'!
 previewMorphFor: sketchEntry
 	| preview  |
 	preview := (FilePreviewMorph 		
@@ -6623,10 +6627,18 @@ updateButtonsAndPreviews
 	self changed: #isMySketches.
 	self buildPane! !
 
+!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:52:03'!
+defaultColor
+	^ self windowColor ! !
+
 !DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 10/29/2021 12:12:00'!
 initialize
 	super initialize.
 	previews := #()! !
+
+!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 17:01:50'!
+windowColor
+	^ Theme current transcript ! !
 
 !DrGFileOpenMorph methodsFor: 'geometry' stamp: 'hlsf 11/7/2023 14:21:35'!
 minimumExtent
@@ -7029,6 +7041,10 @@ newSketchesColumn
 		yourself
 		! !
 
+!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:49:02'!
+defaultColor
+	^ self windowColor ! !
+
 !DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 4/12/2022 18:56:10'!
 emptyView
 	^ BoxedMorph new
@@ -7045,6 +7061,10 @@ initialize
 	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode)
 		disableEditing;
 		yourself.! !
+
+!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:48:52'!
+windowColor
+	^ Theme current transcript ! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'geometry' stamp: 'hlsf 11/18/2023 16:33:38'!
 minimumExtent
@@ -7236,6 +7256,10 @@ transparentMorph
 		color: Color transparent; 
 		yourself! !
 
+!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:46:58'!
+defaultColor
+	^ self windowColor ! !
+
 !DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'drgeo 3/17/2024 17:18:31'!
 initialize
 	| book |
@@ -7254,6 +7278,10 @@ initialize
 		color: self color;
 		borderWidth: 1;
 		layoutSpec: LayoutSpec useAll! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:50:10'!
+windowColor
+	^ Theme current workspace ! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 10/30/2022 20:39:21'!
 isDocVisible
@@ -8134,10 +8162,10 @@ dismissMorph
 	super dismissMorph.
 	presenter view dismissMorph ! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 3/30/2024 09:30:31'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 3/30/2024 15:46:40'!
 initialize
 	super initialize.
-	self color: Theme current background.
+	self color: Theme current canvasBackground.
 	self borderWidth: 0.
 	tipOn := true.
 	self defaultScalePosition.
@@ -34109,6 +34137,10 @@ we want to adjust the black or white color used to display an item view"
 				ifTrue: [Color black alpha: aColor alpha] ifFalse: [aColor] ]
 		! !
 
+!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/30/2024 15:44:51'!
+canvasBackground
+	self subclassResponsibility ! !
+
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:35:54'!
 circularToolbarDropDownGap
 	^ self scale: 5! !
@@ -34129,9 +34161,9 @@ drgeoButtonColor
 drgeoButtonSelectedColor
 	self subclassResponsibility ! !
 
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 09:50:03'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 15:45:44'!
 isDarkTheme
-	^ self background = `Color black`! !
+	^ self canvasBackground = `Color black`! !
 
 !Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/29/2024 11:09:10'!
 lineStyleDataFor: aStyle
@@ -34186,6 +34218,10 @@ wheelHeight
 wheelWidth
 	^ self scale: 24! !
 
+!BrightColorTheme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/30/2024 15:45:09'!
+canvasBackground
+	^ `Color white`! !
+
 !BrightColorTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:45:21'!
 drgeoButtonColor
 "Blue Ukraine"
@@ -34196,13 +34232,18 @@ drgeoButtonSelectedColor
 "Yellow Ukraine"
 	^ Color fromHexString: '#ffd700'! !
 
-!DarkTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 09:13:44'!
-drgeoButtonColor
-	^ `Color black lighter lighter lighter`! !
+!DarkTheme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/30/2024 15:45:27'!
+canvasBackground
+	^ `Color black`! !
 
-!DarkTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 09:01:45'!
+!DarkTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 16:22:36'!
+drgeoButtonColor
+	^ `Color black lighter lighter lighter`
+! !
+
+!DarkTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 16:22:30'!
 drgeoButtonSelectedColor
-	^ `Color gray`! !
+	^ `Color lightGray lighter`! !
 
 !MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 10/27/2022 11:00:56'!
 createButton: aForm action: aBlock balloonText: balloonText
