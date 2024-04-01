@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6304] on 30 March 2024 at 5:17:44 pm'!
+'From Cuis6.3 [latest update: #6304] on 1 April 2024 at 5:22:19 pm'!
 'Description '!
-!provides: 'DrGeo' 1 690!
+!provides: 'DrGeo' 1 691!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7542,11 +7542,11 @@ releaseMiniView
 		drgeoView firstSubmorph ifNotNil: [:miniView| 	
 			miniView  presenter ifNotNil: [:p | p release] ]]! !
 
-!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 2/14/2022 11:39:14'!
+!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 4/1/2024 17:01:29'!
 buildMorphicWindow
 	| labelWidth widgets |
 	titleMorph showButtonsNamed: #(#close).
-	self layoutMorph separation: 4 ;
+	self layoutMorph separation: (Theme current scale: 4) ;
 		axisEdgeWeight: #columnTop.
 	widgets := model styleWidget.
 	labelWidth := widgets max: [:rowOfMorph | (self searchLabelIn: 		rowOfMorph) morphWidth].
@@ -7569,6 +7569,14 @@ searchLabelIn: aMorph
 				
 				
 		! !
+
+!DrGStylePanel methodsFor: 'as yet unclassified' stamp: 'hlsf 4/1/2024 16:57:51'!
+defaultColor
+	^ self windowColor ! !
+
+!DrGStylePanel methodsFor: 'as yet unclassified' stamp: 'hlsf 4/1/2024 16:57:46'!
+windowColor
+	^ Theme current transcript ! !
 
 !DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 3/30/2024 09:21:21'!
 initialize
@@ -27162,9 +27170,9 @@ iconUI: symbol
 		rule: Form blend .
 	^ finalForm ! !
 
-!DrGIcons class methodsFor: 'helpers'!
+!DrGIcons class methodsFor: 'helpers' stamp: 'hlsf 4/1/2024 17:20:34'!
 menuExtent
-	^ 60@12! !
+	^ Theme current scale: 60@12! !
 
 !DrGIcons class methodsFor: 'helpers'!
 menuInset
@@ -32930,12 +32938,14 @@ fontSizeWidget
 fontSizesCollection
 	^#(9 10 12 14 16)! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:37:40'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 4/1/2024 17:18:23'!
 fontSizesMorphCollection
 	^ self fontSizesCollection collect: [:pt | 
 			LabelMorph 
 				contents: pt asString 
-				font: (FontFamily familyName: FontFamily defaultFamilyName pointSize: pt)]! !
+				font: (FontFamily 
+					familyName: FontFamily defaultFamilyName 
+					pointSize: (Theme current scale: pt))]! !
 
 !DrGTextStyle methodsFor: 'widget'!
 myWidgets
@@ -33520,9 +33530,9 @@ canvasFont
 canvasFontSize
 	^ platform canvasFontSize! !
 
-!DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 12/10/2022 17:27:50'!
+!DrGeoSystem class methodsFor: 'font' stamp: 'hlsf 4/1/2024 17:13:30'!
 fontOfSize: anInteger
-	^ FontFamily defaultFamilyPointSize: anInteger! !
+	^ FontFamily defaultFamilyPointSize: (Theme current scale: anInteger)! !
 
 !DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 5/24/2023 16:13:51'!
 backgroundsPath
