@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6304] on 2 April 2024 at 6:55:42 pm'!
+'From Cuis6.3 [latest update: #6304] on 2 April 2024 at 7:00:49 pm'!
 'Description '!
-!provides: 'DrGeo' 1 692!
+!provides: 'DrGeo' 1 693!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7518,9 +7518,9 @@ expand
 	super expand.
 	self fullScreen! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'geometry' stamp: 'hlsf 11/18/2023 16:35:19'!
+!DrGSmalltalkSketchEditor methodsFor: 'geometry' stamp: 'hlsf 4/2/2024 18:58:11'!
 minimumExtent
-	^ 800@600! !
+	^ Theme current scale: 800@600! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'testing' stamp: 'hlsf 5/18/2023 17:07:27'!
 shouldAutoHighlight
