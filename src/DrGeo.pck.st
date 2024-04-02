@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6304] on 1 April 2024 at 5:22:19 pm'!
+'From Cuis6.3 [latest update: #6304] on 2 April 2024 at 6:55:42 pm'!
 'Description '!
-!provides: 'DrGeo' 1 691!
+!provides: 'DrGeo' 1 692!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -6536,14 +6536,14 @@ newPane
 		scrollDeltaHeight: 80; 
 		yourself! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 5/1/2023 17:14:43'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 4/2/2024 18:53:40'!
 previewFor: aSketchEntry
 	| imageFilename form |
 	imageFilename := ((aSketchEntry pathName allButLast: 4), 'png') asFileEntry.
 	imageFilename exists 
 		ifTrue: [	form := Form fromFileEntry: imageFilename]
 		ifFalse: [form := self computePreviewFor: aSketchEntry ].
-	^ form magnifyBy: DrGeoSystem previewSize x / form width! !
+	^ form magnifyBy: (Theme current scale: Theme current previewSize x) / form width! !
 
 !DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 3/30/2024 17:15:25'!
 previewMorphFor: sketchEntry
@@ -6640,9 +6640,9 @@ initialize
 windowColor
 	^ Theme current transcript ! !
 
-!DrGFileOpenMorph methodsFor: 'geometry' stamp: 'hlsf 11/7/2023 14:21:35'!
+!DrGFileOpenMorph methodsFor: 'geometry' stamp: 'hlsf 4/2/2024 18:44:39'!
 minimumExtent
-	^ 1000@500! !
+	^ Theme current scale: 1000@500! !
 
 !DrGFileOpenMorph class methodsFor: 'instance creation' stamp: 'hlsf 10/14/2021 21:04:26'!
 open
@@ -7651,11 +7651,11 @@ preview
 "Return a form preview"
 	^ self previewOn: ByteArray new writeStream! !
 
-!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 8/3/2023 21:28:55'!
+!DrGDrawable methodsFor: 'accessing' stamp: 'hlsf 4/2/2024 18:54:08'!
 previewOn: aStream
 "compute an PNG preiview, put it in the stream and return its form"
 	|form |
-	form := (self imageForm: 32) magnifyBy: DrGeoSystem previewSize x / self morphExtent x.
+	form := (self imageForm: 32) magnifyBy: Theme current previewSize x / self morphExtent x.
 	PNGReadWriter putForm: form onStream: aStream.
 	^ form! !
 
@@ -33496,15 +33496,6 @@ reset
 preferences
 	^ platform preferences ! !
 
-!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 3/27/2022 14:20:50'!
-previewSize
-	^ 300@200! !
-
-!DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 4/24/2020 11:43:31'!
-replicateDisplayWidth
-"the sensible extent area width under mouse"
-	^ 80! !
-
 !DrGeoSystem class methodsFor: 'user interface' stamp: 'hlsf 8/4/2021 10:49:08'!
 showVirtualKeyboard: boolean
 	platform ifNotNil: [
@@ -34201,6 +34192,10 @@ pointExtentFor: pointSize
 			pointSize == #large
 				ifTrue:[self scale: 10]					
 				ifFalse:[self scale: 8]	]) asPoint! !
+
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 4/2/2024 18:47:14'!
+previewSize
+	^ 300@200! !
 
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/29/2024 11:08:49'!
 scale: anIntegerOrCollection
