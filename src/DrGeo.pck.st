@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6304] on 2 April 2024 at 7:03:14 pm'!
+'From Cuis6.3 [latest update: #6308] on 3 April 2024 at 12:12:08 pm'!
 'Description '!
-!provides: 'DrGeo' 1 694!
+!provides: 'DrGeo' 1 695!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -33380,14 +33380,13 @@ setFontPreferences
 		PreferenceSet setDefaultFont: languageFont family	].
 	Preferences at: #defaultFontSize put: 12! !
 
-!DrGDevelopment methodsFor: 'initialization' stamp: 'hlsf 11/18/2023 16:18:27'!
+!DrGDevelopment methodsFor: 'initialization' stamp: 'hlsf 4/3/2024 12:11:50'!
 initialize
 	self initFontManager.
 	canWeDisplaySpinner := false.
 	self flag: #drgeoTodo.
 	Preferences 
 		at: #fullScreenLeavesDeskMargins put: true;
-		at: #defaultFontSize put: 12;
 		at: #worldMenu put: TheWorldMenu.! !
 
 !DrGDevelopment methodsFor: 'testing'!
@@ -33426,14 +33425,13 @@ checkForPaths
 	super checkForPaths.
 	self myExportsPath assureExistence ! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 11/18/2023 16:18:38'!
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 4/3/2024 12:12:01'!
 initialize
 	self initFontManager.
 	canWeDisplaySpinner := true.
 	Preferences 
 		at: #worldMenu put: DrGeo;
-		at: #fullScreenLeavesDeskMargins put: false;
-		at: #defaultFontSize put: 12.
+		at: #fullScreenLeavesDeskMargins put: false.
 	UISupervisor ui taskbar scale: 1/2.! !
 
 !DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 2/11/2024 23:34:00'!
