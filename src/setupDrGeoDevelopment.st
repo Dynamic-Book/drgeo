@@ -14,6 +14,7 @@ Preferences at: #autoNumberUserChanges put: false.
 "Install DrGeo code"
 Feature require: #'DrGeo'.
 Feature require: #'DrGeoFrench'.
+(Smalltalk at: #DrGeoSystem) perform: #beDevelopment.
 "Morphic operation, to handle with care"
 world := UISupervisor ui.
 [
