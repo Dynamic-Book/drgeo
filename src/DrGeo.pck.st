@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6308] on 3 April 2024 at 12:12:08 pm'!
+'From Cuis6.3 [latest update: #6309] on 3 April 2024 at 5:13:47 pm'!
 'Description '!
-!provides: 'DrGeo' 1 695!
+!provides: 'DrGeo' 1 696!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -28809,6 +28809,23 @@ getMenuIn: aWorld at: aHand
 		addTitle: 'System menu' translated.
 	^ menu! !
 
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/3/2024 17:11:51'!
+preferencesMenu: builder
+	<drgeoWorldMenu>
+	(builder newEntry: 'Settings' translated in: 'Preferences' translated)
+		icon: #graphicsIcon;
+		action: [PreferenceBrowser open: DrGeoSystem preferences label: 'Dr. Geo Preferences' translated.];
+		order: 1.
+	(builder newEntry: 'Size of GUI elements' translated in: 'Preferences' translated)
+		target: Theme; selector: #changeFontSizes;
+		icon: #preferencesDesktopFontIcon;
+		order: 2.
+	(builder newEntry: 'Theme' translated in: 'Preferences' translated)
+		target: Theme; selector: #changeTheme;
+		icon: #appearanceIcon;
+		order: 3.
+		! !
+
 !DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/3/2023 21:44:17'!
 quit
 	self unsavedData isEmpty ifFalse: [ 
@@ -28855,7 +28872,7 @@ toolsMenu: builder
 		icon:	 #saveIcon;
 		help: 'Save this Dr. Geo session.' translated! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/8/2023 19:13:55'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/3/2024 17:10:15'!
 worldMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: 'New sketch' translated)
@@ -28866,14 +28883,13 @@ worldMenu: builder
 		icon: #openIcon;
 		action: [DrGFileOpenMorph open];
 		order: 1.
+	(builder newEntry: 'Preferences' translated)
+		icon: #preferencesIcon;
+		order: 2.
 	(builder newEntry: 'Toggle full screen mode' translated)
 		icon: #viewFullscreenIcon;
 		action: [DrGeoSystem toggleFullscreen];
 		help: 'Turn full screen mode on when it is off, off when it is on.'	translated;
-		order: 2.
-	(builder newEntry: 'Settings' translated)
-		icon: #preferencesIcon;
-		action: [PreferenceBrowser open: DrGeoSystem preferences label: 'Dr. Geo Preferences' translated.];
 		order: 3.
 	(builder newEntry: 'Tools' translated)
 		icon:	 #systemIcon.
@@ -34136,9 +34152,9 @@ we want to adjust the black or white color used to display an item view"
 				ifTrue: [Color black alpha: aColor alpha] ifFalse: [aColor] ]
 		! !
 
-!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/30/2024 15:44:51'!
+!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 4/3/2024 17:07:44'!
 canvasBackground
-	self subclassResponsibility ! !
+	^ `Color white`! !
 
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:35:54'!
 circularToolbarDropDownGap
@@ -34152,13 +34168,15 @@ circularToolbarDropDownHeight
 circularToolbarExtent
 	^ self scale: 300! !
 
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:45:56'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 4/3/2024 17:07:52'!
 drgeoButtonColor
-	self subclassResponsibility ! !
+"Blue Ukraine"
+	^ `Color fromHexString: '#0057b7'`! !
 
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:46:21'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 4/3/2024 17:07:56'!
 drgeoButtonSelectedColor
-	self subclassResponsibility ! !
+"Yellow Ukraine"
+	^ Color fromHexString: '#ffd700'! !
 
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 15:45:44'!
 isDarkTheme
@@ -34220,20 +34238,6 @@ wheelHeight
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 21:40:56'!
 wheelWidth
 	^ self scale: 24! !
-
-!BrightColorTheme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/30/2024 15:45:09'!
-canvasBackground
-	^ `Color white`! !
-
-!BrightColorTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:45:21'!
-drgeoButtonColor
-"Blue Ukraine"
-	^ `Color fromHexString: '#0057b7'`! !
-
-!BrightColorTheme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/30/2024 08:45:33'!
-drgeoButtonSelectedColor
-"Yellow Ukraine"
-	^ Color fromHexString: '#ffd700'! !
 
 !DarkTheme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/30/2024 15:45:27'!
 canvasBackground

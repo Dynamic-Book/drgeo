@@ -1,6 +1,6 @@
-'From Cuis6.2 [latest update: #6156] on 11 February 2024 at 3:05:12 pm'!
+'From Cuis6.3 [latest update: #6309] on 3 April 2024 at 5:13:43 pm'!
 'Description '!
-!provides: 'Commander' 1 5!
+!provides: 'Commander' 1 6!
 SystemOrganization addCategory: #Commander!
 
 
@@ -170,11 +170,10 @@ example1_4: menuBuilder
 		label: 'Menu entry 5'
 ! !
 
-!CommandRecord methodsFor: 'initialization' stamp: 'hlsf 7/15/2022 16:22:12'!
+!CommandRecord methodsFor: 'initialization' stamp: 'hlsf 4/3/2024 16:51:11'!
 initialize
 	super initialize.
-	menutItem _ MenuItemMorph new.
-	order _ 1! !
+	order := 1! !
 
 !CommandRecord methodsFor: 'accessing' stamp: 'hlsf 8/4/2022 20:53:11'!
 action: aBlock
