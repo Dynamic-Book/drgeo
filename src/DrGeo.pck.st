@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6309] on 3 April 2024 at 5:13:47 pm'!
+'From Cuis6.3 [latest update: #6311] on 4 April 2024 at 12:52:45 pm'!
 'Description '!
-!provides: 'DrGeo' 1 696!
+!provides: 'DrGeo' 1 697!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -6969,7 +6969,7 @@ buildMorphicWindow
 	super buildMorphicWindow.
 	titleMorph showButtonsNamed: #(close expand).! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 7/9/2022 12:04:06'!
+!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/4/2024 12:51:31'!
 newButtonArea
 	| rowLeft rowRight |	
 	buttonArea := LayoutMorph newRow 
@@ -6983,11 +6983,13 @@ newButtonArea
 			stateGetter: #isExamples 
 			action: #switchToExamples 
 			label: 'Examples' translated);
-		addMorph: (PluggableButtonMorph 
+		addMorph: ((PluggableButtonMorph 
 			model: self
 			stateGetter: #isMySketches
 			action: #switchToMySketches
-			label: 'My Sketches' translated).
+			label: 'My Sketches' translated) 
+				setBalloonText: 'Browse my collection of Smalltalk sketches.';
+				yourself).
 	rowRight := LayoutMorph newRow.
 	rowRight 
 		axisEdgeWeight: #rowRight;		
