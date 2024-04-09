@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6311] on 4 April 2024 at 12:55:17 pm'!
+'From Cuis6.3 [latest update: #6311] on 9 April 2024 at 10:27:45 am'!
 'Description '!
-!provides: 'DrGeo' 1 698!
+!provides: 'DrGeo' 1 699!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -13,6 +13,7 @@
 SystemOrganization addCategory: #'DrGeo-Model'!
 SystemOrganization addCategory: #'DrGeo-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeo-Model-Item'!
+SystemOrganization addCategory: 'DrGeo-Model-Style'!
 SystemOrganization addCategory: #'DrGeo-Model-Macro'!
 SystemOrganization addCategory: #'DrGeo-Model-Script'!
 SystemOrganization addCategory: #'DrGeo-View'!
@@ -24,7 +25,6 @@ SystemOrganization addCategory: #'DrGeo-Presenter-Tool'!
 SystemOrganization addCategory: #'DrGeo-Presenter-Command'!
 SystemOrganization addCategory: #'DrGeo-Factories'!
 SystemOrganization addCategory: #'DrGeo-File'!
-SystemOrganization addCategory: #'DrGeo-Styles'!
 SystemOrganization addCategory: #'DrGeo-System'!
 SystemOrganization addCategory: #'DrGeo-Test'!
 SystemOrganization addCategory: #DrGeo!
@@ -870,73 +870,73 @@ TestResource subclass: #DrGeoScriptTestResource
 DrGeoScriptTestResource class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeArrow category: #'DrGeo-Styles'!
+!classDefinition: #DrGTypeArrow category: 'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeArrow
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGTypeArrow class' category: #'DrGeo-Styles'!
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeArrow class' category: 'DrGeo-Model-Style'!
 DrGTypeArrow class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeColor category: #'DrGeo-Styles'!
+!classDefinition: #DrGTypeColor category: 'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeColor
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGTypeColor class' category: #'DrGeo-Styles'!
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeColor class' category: 'DrGeo-Model-Style'!
 DrGTypeColor class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeMark category: #'DrGeo-Styles'!
+!classDefinition: #DrGTypeMark category: 'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeMark
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGTypeMark class' category: #'DrGeo-Styles'!
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeMark class' category: 'DrGeo-Model-Style'!
 DrGTypeMark class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypePointShape category: #'DrGeo-Styles'!
+!classDefinition: #DrGTypePointShape category: 'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypePointShape
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGTypePointShape class' category: #'DrGeo-Styles'!
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypePointShape class' category: 'DrGeo-Model-Style'!
 DrGTypePointShape class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypePointSize category: #'DrGeo-Styles'!
+!classDefinition: #DrGTypePointSize category: 'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypePointSize
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGTypePointSize class' category: #'DrGeo-Styles'!
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypePointSize class' category: 'DrGeo-Model-Style'!
 DrGTypePointSize class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeStyle category: #'DrGeo-Styles'!
+!classDefinition: #DrGTypeStyle category: 'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGTypeStyle class' category: #'DrGeo-Styles'!
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeStyle class' category: 'DrGeo-Model-Style'!
 DrGTypeStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeThickness category: #'DrGeo-Styles'!
+!classDefinition: #DrGTypeThickness category: 'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeThickness
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGTypeThickness class' category: #'DrGeo-Styles'!
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeThickness class' category: 'DrGeo-Model-Style'!
 DrGTypeThickness class
 	instanceVariableNames: ''!
 
@@ -970,16 +970,6 @@ DrGWrappedItem subclass: #DrGWrappedCurve
 DrGWrappedCurve class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGWrappedFilledCurve category: #'DrGeo-Model-Smalltalk'!
-DrGWrappedCurve subclass: #DrGWrappedFilledCurve
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Smalltalk'!
-!classDefinition: 'DrGWrappedFilledCurve class' category: #'DrGeo-Model-Smalltalk'!
-DrGWrappedFilledCurve class
-	instanceVariableNames: ''!
-
 !classDefinition: #DrGWrappedFinitCurve category: #'DrGeo-Model-Smalltalk'!
 DrGWrappedCurve subclass: #DrGWrappedFinitCurve
 	instanceVariableNames: ''
@@ -988,6 +978,16 @@ DrGWrappedCurve subclass: #DrGWrappedFinitCurve
 	category: 'DrGeo-Model-Smalltalk'!
 !classDefinition: 'DrGWrappedFinitCurve class' category: #'DrGeo-Model-Smalltalk'!
 DrGWrappedFinitCurve class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGWrappedFilledCurve category: #'DrGeo-Model-Smalltalk'!
+DrGWrappedFinitCurve subclass: #DrGWrappedFilledCurve
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Smalltalk'!
+!classDefinition: 'DrGWrappedFilledCurve class' category: #'DrGeo-Model-Smalltalk'!
+DrGWrappedFilledCurve class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGWrappedSegment category: #'DrGeo-Model-Smalltalk'!
@@ -2100,6 +2100,166 @@ DrGValueItem subclass: #DrGValueValueItem
 DrGValueValueItem class
 	instanceVariableNames: ''!
 
+!classDefinition: #DrGStyle category: 'DrGeo-Model-Style'!
+Object subclass: #DrGStyle
+	instanceVariableNames: 'morph color hidden feedback'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGStyle class' category: 'DrGeo-Model-Style'!
+DrGStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGCurveStyle category: 'DrGeo-Model-Style'!
+DrGStyle subclass: #DrGCurveStyle
+	instanceVariableNames: 'thickness lineStyle'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGCurveStyle class' category: 'DrGeo-Model-Style'!
+DrGCurveStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGFinitCurveStyle category: 'DrGeo-Model-Style'!
+DrGCurveStyle subclass: #DrGFinitCurveStyle
+	instanceVariableNames: 'arrow'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGFinitCurveStyle class' category: 'DrGeo-Model-Style'!
+DrGFinitCurveStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGCompositeStyle category: 'DrGeo-Model-Style'!
+DrGFinitCurveStyle subclass: #DrGCompositeStyle
+	instanceVariableNames: 'shape'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGCompositeStyle class' category: 'DrGeo-Model-Style'!
+DrGCompositeStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGFilledStyle category: 'DrGeo-Model-Style'!
+DrGFinitCurveStyle subclass: #DrGFilledStyle
+	instanceVariableNames: 'fill translucent'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGFilledStyle class' category: 'DrGeo-Model-Style'!
+DrGFilledStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGArcStyle category: 'DrGeo-Model-Style'!
+DrGFilledStyle subclass: #DrGArcStyle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGArcStyle class' category: 'DrGeo-Model-Style'!
+DrGArcStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGCircleStyle category: 'DrGeo-Model-Style'!
+DrGFilledStyle subclass: #DrGCircleStyle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGCircleStyle class' category: 'DrGeo-Model-Style'!
+DrGCircleStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGPolygonStyle category: 'DrGeo-Model-Style'!
+DrGFilledStyle subclass: #DrGPolygonStyle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGPolygonStyle class' category: 'DrGeo-Model-Style'!
+DrGPolygonStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGSegmentStyle category: 'DrGeo-Model-Style'!
+DrGFinitCurveStyle subclass: #DrGSegmentStyle
+	instanceVariableNames: 'mark'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGSegmentStyle class' category: 'DrGeo-Model-Style'!
+DrGSegmentStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGLineStyle category: 'DrGeo-Model-Style'!
+DrGCurveStyle subclass: #DrGLineStyle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGLineStyle class' category: 'DrGeo-Model-Style'!
+DrGLineStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGLocusStyle category: 'DrGeo-Model-Style'!
+DrGCurveStyle subclass: #DrGLocusStyle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGLocusStyle class' category: 'DrGeo-Model-Style'!
+DrGLocusStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGRayStyle category: 'DrGeo-Model-Style'!
+DrGCurveStyle subclass: #DrGRayStyle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGRayStyle class' category: 'DrGeo-Model-Style'!
+DrGRayStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGVectorStyle category: 'DrGeo-Model-Style'!
+DrGCurveStyle subclass: #DrGVectorStyle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGVectorStyle class' category: 'DrGeo-Model-Style'!
+DrGVectorStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGPointStyle category: 'DrGeo-Model-Style'!
+DrGStyle subclass: #DrGPointStyle
+	instanceVariableNames: 'shape pointSize extent'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGPointStyle class' category: 'DrGeo-Model-Style'!
+DrGPointStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGTextStyle category: 'DrGeo-Model-Style'!
+DrGStyle subclass: #DrGTextStyle
+	instanceVariableNames: 'backgroundColor borderColor fontSize'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTextStyle class' category: 'DrGeo-Model-Style'!
+DrGTextStyle class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGValueStyle category: 'DrGeo-Model-Style'!
+DrGTextStyle subclass: #DrGValueStyle
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGValueStyle class' category: 'DrGeo-Model-Style'!
+DrGValueStyle class
+	instanceVariableNames: ''!
+
 !classDefinition: #DrGMacro category: #'DrGeo-Model-Macro'!
 Object subclass: #DrGMacro
 	instanceVariableNames: 'nodes title description saved'
@@ -2730,166 +2890,6 @@ Object subclass: #DrGeoXml
 DrGeoXml class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGStyle category: #'DrGeo-Styles'!
-Object subclass: #DrGStyle
-	instanceVariableNames: 'morph color hidden feedback'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGStyle class' category: #'DrGeo-Styles'!
-DrGStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGCurveStyle category: #'DrGeo-Styles'!
-DrGStyle subclass: #DrGCurveStyle
-	instanceVariableNames: 'thickness lineStyle'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGCurveStyle class' category: #'DrGeo-Styles'!
-DrGCurveStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGFinitCurveStyle category: #'DrGeo-Styles'!
-DrGCurveStyle subclass: #DrGFinitCurveStyle
-	instanceVariableNames: 'arrow'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGFinitCurveStyle class' category: #'DrGeo-Styles'!
-DrGFinitCurveStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGCompositeStyle category: #'DrGeo-Styles'!
-DrGFinitCurveStyle subclass: #DrGCompositeStyle
-	instanceVariableNames: 'shape'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGCompositeStyle class' category: #'DrGeo-Styles'!
-DrGCompositeStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGFilledStyle category: #'DrGeo-Styles'!
-DrGFinitCurveStyle subclass: #DrGFilledStyle
-	instanceVariableNames: 'fill translucent'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGFilledStyle class' category: #'DrGeo-Styles'!
-DrGFilledStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGArcStyle category: #'DrGeo-Styles'!
-DrGFilledStyle subclass: #DrGArcStyle
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGArcStyle class' category: #'DrGeo-Styles'!
-DrGArcStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGCircleStyle category: #'DrGeo-Styles'!
-DrGFilledStyle subclass: #DrGCircleStyle
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGCircleStyle class' category: #'DrGeo-Styles'!
-DrGCircleStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGPolygonStyle category: #'DrGeo-Styles'!
-DrGFilledStyle subclass: #DrGPolygonStyle
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGPolygonStyle class' category: #'DrGeo-Styles'!
-DrGPolygonStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGSegmentStyle category: #'DrGeo-Styles'!
-DrGFinitCurveStyle subclass: #DrGSegmentStyle
-	instanceVariableNames: 'mark'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGSegmentStyle class' category: #'DrGeo-Styles'!
-DrGSegmentStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGLineStyle category: #'DrGeo-Styles'!
-DrGCurveStyle subclass: #DrGLineStyle
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGLineStyle class' category: #'DrGeo-Styles'!
-DrGLineStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGLocusStyle category: #'DrGeo-Styles'!
-DrGCurveStyle subclass: #DrGLocusStyle
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGLocusStyle class' category: #'DrGeo-Styles'!
-DrGLocusStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGRayStyle category: #'DrGeo-Styles'!
-DrGCurveStyle subclass: #DrGRayStyle
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGRayStyle class' category: #'DrGeo-Styles'!
-DrGRayStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGVectorStyle category: #'DrGeo-Styles'!
-DrGCurveStyle subclass: #DrGVectorStyle
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGVectorStyle class' category: #'DrGeo-Styles'!
-DrGVectorStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGPointStyle category: #'DrGeo-Styles'!
-DrGStyle subclass: #DrGPointStyle
-	instanceVariableNames: 'shape pointSize extent'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGPointStyle class' category: #'DrGeo-Styles'!
-DrGPointStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGTextStyle category: #'DrGeo-Styles'!
-DrGStyle subclass: #DrGTextStyle
-	instanceVariableNames: 'backgroundColor borderColor fontSize'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGTextStyle class' category: #'DrGeo-Styles'!
-DrGTextStyle class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGValueStyle category: #'DrGeo-Styles'!
-DrGTextStyle subclass: #DrGValueStyle
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Styles'!
-!classDefinition: 'DrGValueStyle class' category: #'DrGeo-Styles'!
-DrGValueStyle class
-	instanceVariableNames: ''!
-
 !classDefinition: #DrGPlatform category: #'DrGeo-System'!
 Object subclass: #DrGPlatform
 	instanceVariableNames: 'toolbarIconSize canWeDisplaySpinner preferences fontManager'
@@ -3299,6 +3299,13 @@ Script
 !DrGValueValueItem commentStamp: '' prior: 0!
 Free value!
 
+!DrGStyle commentStamp: '<historical>' prior: 0!
+I am an abstract class to set a style to a morph item (DrGMorph hierarchy).!
+
+!DrGCurveStyle commentStamp: 'hlsf 5/18/2021 21:24:01' prior: 0!
+- color is a the optional fill color of the curve
+- borderColor is its line color!
+
 !DrGMacro commentStamp: '' prior: 0!
 A DrGMacro is a macro-construction definition
 
@@ -3487,13 +3494,6 @@ pharo drgeo.image drgeo --sketch=sketch.fgeo!
 !DrGeoXml commentStamp: 'hlsf 3/15/2023 16:34:05' prior: 0!
 A DrGeoXml is an helper to load or save as an XML representation a DrGeo instance, including export to SVG.
 !
-
-!DrGStyle commentStamp: '<historical>' prior: 0!
-I am an abstract class to set a style to a morph item (DrGMorph hierarchy).!
-
-!DrGCurveStyle commentStamp: 'hlsf 5/18/2021 21:24:01' prior: 0!
-- color is a the optional fill color of the curve
-- borderColor is its line color!
 
 !DrGPlatform commentStamp: '' prior: 0!
 I am an abstract class to modelise access to plateform preferences and information.
@@ -11958,6 +11958,18 @@ plain
 small
 	self style thickness: #small! !
 
+!DrGWrappedFinitCurve methodsFor: 'updating' stamp: 'hlsf 6/17/2021 17:54:02'!
+backArrow
+	self style arrow: #back! !
+
+!DrGWrappedFinitCurve methodsFor: 'updating' stamp: 'hlsf 6/17/2021 17:53:54'!
+bothArrows
+	self style arrow: #both! !
+
+!DrGWrappedFinitCurve methodsFor: 'updating' stamp: 'hlsf 6/17/2021 17:53:44'!
+forwardArrow
+	self style arrow: #forward! !
+
 !DrGWrappedFilledCurve methodsFor: 'updating'!
 filled
 	self style fill: true! !
@@ -11973,18 +11985,6 @@ translucent
 !DrGWrappedFilledCurve methodsFor: 'updating'!
 unfilled
 	self style fill: false! !
-
-!DrGWrappedFinitCurve methodsFor: 'updating' stamp: 'hlsf 6/17/2021 17:54:02'!
-backArrow
-	self style arrow: #back! !
-
-!DrGWrappedFinitCurve methodsFor: 'updating' stamp: 'hlsf 6/17/2021 17:53:54'!
-bothArrows
-	self style arrow: #both! !
-
-!DrGWrappedFinitCurve methodsFor: 'updating' stamp: 'hlsf 6/17/2021 17:53:44'!
-forwardArrow
-	self style arrow: #forward! !
 
 !DrGWrappedSegment methodsFor: 'updating'!
 circleMark
@@ -12077,6 +12077,22 @@ name: aString
 value: aNumber
 	(self mathItem respondsTo: #valueItem:) 
 		ifTrue: [self mathItem valueItem: aNumber]! !
+
+!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 4/9/2024 10:24:14'!
+arc: wrpPt1 to: wrpPt2 to: wrpPt3
+	^ self
+		finalizeFilledCurve: (DrGArc3ptsItem newWith: 
+			{(self wrappedPoint: wrpPt1) mathItem. 
+			(self wrappedPoint: wrpPt2) mathItem. 
+			(self wrappedPoint: wrpPt3) mathItem})! !
+
+!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 4/9/2024 10:24:20'!
+arcCenter: wrpPt1 from: wrpPt2 to: wrpPt3
+	^ self
+		finalizeFilledCurve: (DrGArcCenterAngleItem newWith: 
+			{(self wrappedPoint: wrpPt1) mathItem. 
+			(self wrappedPoint: wrpPt2) mathItem. 
+			(self wrappedPoint: wrpPt3) mathItem})! !
 
 !DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 4/16/2022 22:38:28'!
 circleCenter: wrpCenter radius: wrpValue
@@ -12391,22 +12407,6 @@ terminateDo
 	doProcess  ifNotNil: [
 		doProcess terminate.
 		doProcess := nil]! !
-
-!DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 4/16/2022 22:38:19'!
-arc: wrpPt1 to: wrpPt2 to: wrpPt3
-	^ self
-		finalizeFinitCurve: (DrGArc3ptsItem newWith: 
-			{(self wrappedPoint: wrpPt1) mathItem. 
-			(self wrappedPoint: wrpPt2) mathItem. 
-			(self wrappedPoint: wrpPt3) mathItem})! !
-
-!DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 4/16/2022 22:38:24'!
-arcCenter: wrpPt1 from: wrpPt2 to: wrpPt3
-	^ self
-		finalizeFinitCurve: (DrGArcCenterAngleItem newWith: 
-			{(self wrappedPoint: wrpPt1) mathItem. 
-			(self wrappedPoint: wrpPt2) mathItem. 
-			(self wrappedPoint: wrpPt3) mathItem})! !
 
 !DrGeoSketch methodsFor: 'curve finit' stamp: 'hlsf 9/28/2022 17:31:11'!
 finalizeFinitCurve: item
@@ -16741,6 +16741,957 @@ doParentsExist
 !DrGValueValueItem methodsFor: 'testing'!
 isPropertyEditable
 	^ true! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/9/2024 10:22:38'!
+arrow: boolean
+" Does nothing by default "! !
+
+!DrGStyle methodsFor: 'accessing'!
+baseColor
+	"Answer color whatever it is hidden or not"
+
+	^ color alpha: 1! !
+
+!DrGStyle methodsFor: 'accessing'!
+borderColor
+	self shouldNotImplement ! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 6/3/2022 11:39:17'!
+color
+	"Answer the value of color"
+
+	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [color]! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 3/30/2024 09:55:58'!
+color: anObject
+	"Set the value of color"
+	color := anObject.
+	morph 
+		color: (Theme current adjustColor: self color);
+		redrawNeeded! !
+
+!DrGStyle methodsFor: 'accessing'!
+feedback
+	^ feedback! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 2/12/2022 11:37:46'!
+feedback: aBoolean
+" Do I provide feedback when mouse over me?"
+	feedback := aBoolean.
+	self changed: #feedback:! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/9/2024 10:20:49'!
+fill: boolean
+" Does nothing by default "! !
+
+!DrGStyle methodsFor: 'accessing'!
+hidden
+	^ self isHidden! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 2/16/2022 23:14:39'!
+hidden: anObject 
+	"Set the value to isHidden"
+	hidden := anObject.
+	hidden 	ifFalse: [morph color: self color].
+	morph redrawNeeded.
+	self changed: #hidden:! !
+
+!DrGStyle methodsFor: 'accessing'!
+isHidden
+	"Answer the value of isHidden"
+
+	^ hidden ifNil: [hidden := false]! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
+mathItem
+	^ morph mathItem! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:50:19'!
+morph
+	^ morph! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:51:37'!
+morph: aMorph
+	morph := aMorph ! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/9/2024 10:20:32'!
+translucent: boolean
+" Does nothing by default "! !
+
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
+view
+	^ morph view! !
+
+!DrGStyle methodsFor: 'initialize-release' stamp: 'hlsf 5/23/2021 13:16:46'!
+initialize
+	feedback := true.
+	hidden := false.
+	color := Color black! !
+
+!DrGStyle methodsFor: 'testing'!
+isFeedback
+	^ feedback ! !
+
+!DrGStyle methodsFor: 'testing'!
+isFilled
+	^ false! !
+
+!DrGStyle methodsFor: 'testing'!
+isNotHidden
+	"Answer the value of isHidden"
+
+	^ hidden not! !
+
+!DrGStyle methodsFor: 'testing'!
+isTranslucent 
+	^ false! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 6/3/2022 11:38:08'!
+colorIndex
+	^ DrGTypeColor colorIndexOf: self baseColor! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 6/3/2022 11:37:52'!
+colorIndex: index
+	self color: (DrGTypeColor colorFor: index).
+	self changed: #colorIndex:! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 6/3/2022 11:38:19'!
+colorMorphCollection
+	^ DrGTypeColor colorMorphCollection! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:24'!
+colorWidget
+	^ self 	widget: (
+		(DropDownButtonMorph 
+			model: self 
+			listGetter: #colorMorphCollection 
+			indexGetter: #colorIndex
+			indexSetter: #colorIndex:)
+			autoDeselect: false;
+			yourself)
+		named:  'Colour' translated
+		help: 	'Set the colour.' translated! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:42:43'!
+feedbackWidget
+	^ (PluggableCheckboxMorph 
+		model: self 
+		getSelected: #feedback 
+		setSelected:  #feedback:
+		label: 'Feedback' translated)
+		setBalloonText:  'Toggle to provide feedback and interaction when the mouse cursor is over the object.' translated;
+		yourself! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:43:09'!
+hiddenWidget
+	^ (PluggableCheckboxMorph 
+		model: self 
+		getSelected: #hidden 
+		setSelected: #hidden:
+		label: 'Hide' translated)		
+		setBalloonText:  'Toggle to hide the object.' translated;
+		yourself! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:43:28'!
+lockedWidget
+	^ (PluggableCheckboxMorph 
+		model: morph
+		getSelected: #locked
+		setSelected: #locked: 
+		label:  'Lock' translated)
+		setBalloonText: 'Toggle to lock the object to its position.' translated;
+		yourself! !
+
+!DrGStyle methodsFor: 'widget'!
+myWidgets
+"overwrite to add specific widget to edit specific style"
+	^ OrderedCollection new! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2024 15:00:11'!
+nameWidget
+ | inputWidget |
+	inputWidget := (TextModelMorph textProvider: morph textGetter: #name textSetter: #name:)
+			hideScrollBarsIndefinitely;
+			askBeforeDiscardingEdits: false;
+			borderWidth: 1;
+			acceptOnCR: true;
+			yourself	.
+	inputWidget scroller setProperty: #keyStroke: toValue: [:event | inputWidget scroller acceptContents]. 
+	^ self 
+		widget: inputWidget 
+		named:  'Name' translated
+		help: 'Rename this object.' translated	! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 23:59:23'!
+styleWidget
+| controls |
+	controls := 	OrderedCollection new
+		add: self nameWidget;
+		add: self colorWidget;
+		yourself.
+	controls addAll: self myWidgets.
+	controls add: self feedbackWidget.
+	controls add: self hiddenWidget.
+	morph isLockable ifTrue: [controls add: self lockedWidget].
+	^controls! !
+
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/14/2022 09:01:21'!
+widget: aWidget named: aLabel help: aString
+| label |
+	^ LayoutMorph newRow
+		separation: 5;
+		color: Color transparent;
+		axisEdgeWeight: #rowLeft;
+		addMorph: (label := LabelMorph contents: aLabel);
+		addMorph: aWidget layoutSpec: (LayoutSpec fixedHeight: label morphHeight) ;
+		setBalloonText: aString;
+		yourself.
+		! !
+
+!DrGStyle methodsFor: 'xml writing' stamp: 'hlsf 3/28/2022 14:47:22'!
+writeAttributesTo: aNode
+	aNode 
+		attributeAt: #color put: self baseColor colorName asString capitalized;
+		attributeAt: #masked put: hidden asString capitalized;
+		attributeAt: #feedback put: feedback asString capitalized! !
+
+!DrGStyle class methodsFor: 'instance creation' stamp: 'hlsf 4/24/2021 19:49:58'!
+newWith: aMorph
+	^self basicNew morph: aMorph; initialize! !
+
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:39:00'!
+lineStyleIndex
+	"Answer the index of lineStyle"
+	^ DrGTypeStyle styleIndexOf: lineStyle! !
+
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:38:39'!
+lineStyleIndex: integer
+	"Set the value of lineStyle"
+	self lineStyle: (DrGTypeStyle styleSymbols at: integer).
+	self changed: #lineStyleIndex:
+! !
+
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:38:11'!
+lineWidget
+	^ self widget:  (
+		(DropDownButtonMorph 
+			model: self 
+			listGetter: #styleMorphCollection
+			indexGetter: #lineStyleIndex
+			indexSetter: #lineStyleIndex:)
+			autoDeselect: false;
+			yourself)
+		named: 'Style' translated 
+		help: 'Set the style of the line.' translated! !
+
+!DrGCurveStyle methodsFor: 'widget'!
+myWidgets 
+	^ super myWidgets addAll: {self lineWidget . self thicknessWidget}; yourself! !
+
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:38:11'!
+styleMorphCollection
+	^ DrGTypeStyle styleMorphCollection! !
+
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:20:51'!
+thicknessIndex
+	"Answer the index of thickness"
+
+	^DrGTypeThickness thicknessIndexOf: thickness! !
+
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:20:51'!
+thicknessIndex: integer
+	"Set the value of thickness"
+	self thickness: (DrGTypeThickness thicknessFor: integer).
+	self changed: #thicknessIndex:! !
+
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:20:51'!
+thicknessMorphCollection
+	^ DrGTypeThickness thicknessMorphCollection! !
+
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:49'!
+thicknessWidget
+	^ self widget: (
+		(DropDownButtonMorph 
+			model: self 
+			listGetter: #thicknessMorphCollection 
+			indexGetter: #thicknessIndex 
+			indexSetter: #thicknessIndex:)
+			autoDeselect: false;
+			yourself)			
+		named: 'Thickness' translated
+		help: 'Set the thickness of the line.' translated! !
+
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 6/3/2022 11:39:21'!
+borderColor
+	"Answer the value of border color"
+	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [self baseColor]! !
+
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 10:03:11'!
+borderWidth
+	"give the border width"
+	^ Theme current lineWidthFor: thickness! !
+
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:24:38'!
+color
+"Answer the fill color"
+	^self isFilled ifTrue: [color] ifFalse: [Color transparent]! !
+
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/30/2024 09:56:26'!
+color: aColor
+"Set the value of fill color and border color"
+	color := self isTranslucent ifTrue: [aColor alpha: 0.3] ifFalse: [aColor alpha: 1].
+	morph 
+		borderColor: (Theme current adjustColor: self borderColor);
+		color: self color;
+		redrawNeeded! !
+
+!DrGCurveStyle methodsFor: 'accessing'!
+lineStyle
+	"Answer the value of lineStyle"
+
+	^ lineStyle! !
+
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 11:07:23'!
+lineStyle: aSymbol
+	"Set the value of lineStyle"
+	lineStyle := aSymbol.
+	morph dashedBorder: (Theme current lineStyleDataFor: aSymbol).
+	morph redrawNeeded! !
+
+!DrGCurveStyle methodsFor: 'accessing'!
+thickness
+	"Answer the value of thickness"
+
+	^ thickness! !
+
+!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 12/2/2021 10:46:49'!
+thickness: anObject
+	"Set the value of thickness"
+	thickness := anObject.
+	morph borderWidth: self borderWidth.
+	morph redrawNeeded! !
+
+!DrGCurveStyle methodsFor: 'xml writing'!
+writeAttributesTo: aNode
+	super writeAttributesTo: aNode.
+	aNode attributeAt: #style put: self lineStyle.
+	aNode attributeAt: #thickness put: self thickness.! !
+
+!DrGFinitCurveStyle methodsFor: 'accessing'!
+arrow
+	"Answer the value of arrows"
+
+	^ arrow! !
+
+!DrGFinitCurveStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 17:50:00'!
+arrow: anObject
+	"Set the value of arrows"
+	arrow := anObject.
+	morph arrow: anObject;
+		redrawNeeded ! !
+
+!DrGFinitCurveStyle methodsFor: 'xml writing' stamp: 'hlsf 4/11/2021 12:22:39'!
+writeAttributesTo: aNode
+	super writeAttributesTo: aNode.
+	morph isCircle ifFalse: [aNode attributeAt: #arrow put: self arrow.]! !
+
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:39:22'!
+arrowIndex
+	"Answer the index of arrows"
+
+	^ DrGTypeArrow arrowIndexOf: arrow! !
+
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:38:56'!
+arrowIndex: index
+	"Set the value of arrows"
+	self arrow: (DrGTypeArrow arrowFor: index).
+	self changed: #arrowIndex:! !
+
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:38:24'!
+arrowMorphCollection
+	^ DrGTypeArrow arrowMorphCollection! !
+
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:55'!
+arrowWidget
+	^ self widget: (
+		(DropDownButtonMorph 
+			model: self
+			listGetter: #arrowMorphCollection  
+			indexGetter: #arrowIndex 
+			indexSetter: #arrowIndex:)
+			autoDeselect: false;
+			yourself)
+		named: 'Arrow' translated 
+		help: 'Set arrow(s) to the line.' translated! !
+
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 4/11/2021 12:25:24'!
+myWidgets
+	^ (morph isSegment or: [morph isArc]) 
+		ifTrue: [super myWidgets addAll: {self arrowWidget}; yourself]
+		ifFalse: [super myWidgets]! !
+
+!DrGCompositeStyle methodsFor: 'accessing'!
+shape
+	^shape! !
+
+!DrGCompositeStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
+shape: anObject
+	shape := anObject.
+	morph shape: anObject! !
+
+!DrGFilledStyle methodsFor: 'xml writing'!
+writeAttributesTo: aNode
+	super writeAttributesTo: aNode.
+	aNode attributeAt: #filled put: self isFilled asString capitalized.
+	aNode attributeAt: #translucent put: self isTranslucent asString capitalized! !
+
+!DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 15:59:50'!
+fillWidget
+	^ (PluggableCheckboxMorph 
+		model: self
+		getSelected: #fill
+		setSelected:  #fill:
+		label: 'Fill' translated)
+		setBalloonText:  'Toggle to fill the object.' translated;
+		yourself! !
+
+!DrGFilledStyle methodsFor: 'widget'!
+myWidgets 
+	^ super myWidgets addAll: {self fillWidget. self translucentWidget}; yourself! !
+
+!DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 15:58:11'!
+translucentWidget
+	^ (PluggableCheckboxMorph 
+		model: self
+		getSelected: #translucent 
+		setSelected: #translucent:
+		label: 'Translucent' translated)
+		setBalloonText: 'Toggle the translucency of the object.' translated;
+		yourself! !
+
+!DrGFilledStyle methodsFor: 'accessing'!
+fill
+	^ self isFilled! !
+
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2023 17:55:33'!
+fill: boolean
+	fill := boolean.
+	self color: color.
+	self changed: #fill:.
+	morph redrawNeeded.! !
+
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 18:10:25'!
+isFilled
+	^ fill ifNil: [fill := true]! !
+
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 18:10:10'!
+isTranslucent
+	^ translucent ifNil: [translucent := true]! !
+
+!DrGFilledStyle methodsFor: 'accessing'!
+toggleFilled
+	self fill: fill not.
+	self changed! !
+
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:33:44'!
+toggleTranslucent
+	self translucent: translucent not! !
+
+!DrGFilledStyle methodsFor: 'accessing'!
+translucent
+	^ self isTranslucent ! !
+
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 22:35:25'!
+translucent: boolean
+	translucent := boolean.
+	self color: color.
+	self changed: #translucent:.
+	morph redrawNeeded! !
+
+!DrGArcStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:23:33'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #arcColor).
+	self lineStyle: (DrGeoSystem preferences at: #arcStyle).
+	self thickness: (DrGeoSystem preferences at: #arcThickness).
+	self arrow: (DrGeoSystem preferences at: #arcArrow).
+	self fill: (DrGeoSystem preferences at: #arcFilled).
+	self translucent: (DrGeoSystem preferences at: #arcTranslucent).! !
+
+!DrGCircleStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:01:16'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #circleColor).
+	self lineStyle: (DrGeoSystem preferences at: #circleStyle).
+	self thickness: (DrGeoSystem preferences at: #circleThickness).
+	self fill: (DrGeoSystem preferences at: #circleFilled).
+	self translucent:(DrGeoSystem preferences at: #circleTranslucent).! !
+
+!DrGPolygonStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:34:28'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #polygonColor).
+	self lineStyle: (DrGeoSystem preferences at: #polygonStyle).
+	self thickness: (DrGeoSystem preferences at: #polygonThickness).
+	self fill: (DrGeoSystem preferences at: #polygonFilled).
+	self translucent: (DrGeoSystem preferences at: #polygonTranslucent).
+	self arrow: #none! !
+
+!DrGSegmentStyle methodsFor: 'xml writing'!
+writeAttributesTo: aNode
+	super writeAttributesTo: aNode.
+	aNode attributeAt: #mark put: self mark! !
+
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:14:37'!
+markIndex
+	mark ifNil: [mark := #none].
+	^DrGTypeMark markIndexOf: mark! !
+
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:14:02'!
+markIndex: index
+	self mark: (DrGTypeMark markFor: index).
+	self changed: #markIndex:.! !
+
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:15:16'!
+markMorphCollection
+	^ DrGTypeMark markMorphCollection! !
+
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:22'!
+markWidget
+	^ self widget: (
+		(DropDownButtonMorph 
+			model: self
+			listGetter: #markMorphCollection
+			indexGetter: #markIndex
+			indexSetter: #markIndex:)
+			autoDeselect: false;
+			yourself)
+		named: 'Mark' translated 
+		help: 'Set a mark to the segment.' translated! !
+
+!DrGSegmentStyle methodsFor: 'widget'!
+myWidgets 
+	^ super myWidgets addAll: {self markWidget}; yourself! !
+
+!DrGSegmentStyle methodsFor: 'accessing'!
+mark
+	^ mark ifNil: [mark := #none]! !
+
+!DrGSegmentStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:27:22'!
+mark: aSymbol
+	mark := aSymbol.
+	morph redrawNeeded! !
+
+!DrGSegmentStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/3/2022 22:44:29'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #segmentColor).
+	self lineStyle: (DrGeoSystem preferences at: #segmentStyle).
+	self thickness: (DrGeoSystem preferences at: #segmentThickness).
+	self mark: (DrGeoSystem preferences at: #segmentMark).
+	self arrow: (DrGeoSystem preferences at: #segmentArrow)! !
+
+!DrGLineStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 08:58:03'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #lineColor).
+	self lineStyle: (DrGeoSystem preferences at: #lineStyle).
+	self thickness: (DrGeoSystem preferences at: #lineThickness)! !
+
+!DrGLocusStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:50:19'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #locusColor).
+	self lineStyle: (DrGeoSystem preferences at: #locusStyle).
+	self thickness: (DrGeoSystem preferences at: #locusThickness)! !
+
+!DrGRayStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:00:27'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #rayColor).
+	self lineStyle: (DrGeoSystem preferences at: #rayStyle).
+	self thickness: (DrGeoSystem preferences at: #rayThickness)! !
+
+!DrGVectorStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:38:17'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #vectorColor).
+	self lineStyle:(DrGeoSystem preferences at: #vectorStyle).
+	self thickness: (DrGeoSystem preferences at: #vectorThickness)! !
+
+!DrGPointStyle methodsFor: 'widget'!
+myWidgets 
+	^ super myWidgets addAll: {self shapeWidget. self sizeWidget}; yourself! !
+
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 11:00:28'!
+shapeMorphCollection
+	^ DrGTypePointShape shapeMorphCollection ! !
+
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:43'!
+shapeWidget
+	^  self widget: (
+		(DropDownButtonMorph 
+			model: self 
+			listGetter: #shapeMorphCollection 
+			indexGetter: #shapeIndex 
+			indexSetter: #shapeIndex:)
+			autoDeselect: false;
+			yourself)
+		named:  'Shape' translated
+		help: 'Set the shape of the point.' translated! !
+
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 6/4/2022 14:50:31'!
+sizeMorphCollection
+	^ DrGTypePointSize sizeMorphCollection: shape! !
+
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:49'!
+sizeWidget
+	^ self widget: (
+		(DropDownButtonMorph 
+			model: self 
+			listGetter: #sizeMorphCollection 
+			indexGetter: #pointSizeIndex
+			indexSetter: #pointSizeIndex:)
+			autoDeselect: false;
+			yourself)
+		named: 'Size' translated 
+		help:  'Set the size of the point.' translated! !
+
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 2/14/2022 09:32:31'!
+updateStylePanel
+	self view presenter controlsManager updateStylerFor: self! !
+
+!DrGPointStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/3/2022 22:53:48'!
+initialize
+	super initialize.
+	self color: (DrGeoSystem preferences at: #pointColor).
+	self pointSize: (DrGeoSystem preferences at: #pointSize).
+	self shape: (DrGeoSystem preferences at: #pointShape)! !
+
+!DrGPointStyle methodsFor: 'accessing'!
+abscissa
+	^ self mathItem point x asString! !
+
+!DrGPointStyle methodsFor: 'accessing'!
+abscissa: aText
+	|number|
+	[number := aText asString asNumber]
+		on: Error
+		do: [^ false].
+	self mathItem x: number.
+	self changed.
+	^ true! !
+
+!DrGPointStyle methodsFor: 'accessing'!
+curvilinearAbscissa
+	^ self mathItem abscissa asString! !
+
+!DrGPointStyle methodsFor: 'accessing'!
+curvilinearAbscissa: aText
+	|number|
+	[number := aText asString asNumber]
+		on: Error
+		do: [^ false].
+	self mathItem abscissa: number.
+	self changed.
+	^ true! !
+
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:49:17'!
+extent
+	^ extent! !
+
+!DrGPointStyle methodsFor: 'accessing'!
+ordinate
+	^ self mathItem point y asString! !
+
+!DrGPointStyle methodsFor: 'accessing'!
+ordinate: aText
+	|number|
+	[number := aText asString asNumber]
+		on: Error
+		do: [^ false].
+	self mathItem y: number.
+	self changed.
+	^ true! !
+
+!DrGPointStyle methodsFor: 'accessing'!
+pointSize
+	"Answer the value of thickness"
+
+	^ pointSize! !
+
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:48:53'!
+pointSize: anObject
+	"Set the value of thickness"
+	pointSize := anObject.
+	extent := Theme current pointExtentFor: pointSize.
+	morph redrawNeeded
+! !
+
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/4/2022 14:51:28'!
+pointSizeIndex
+	"Answer the index of thickness"
+	^DrGTypePointSize pointSizeIndexOf: pointSize! !
+
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/4/2022 14:55:37'!
+pointSizeIndex: index
+	"Set the value of thickness"
+	self pointSize: (DrGTypePointSize pointSizeFor: index).
+	self changed: #pointSizeIndex:! !
+
+!DrGPointStyle methodsFor: 'accessing'!
+shape
+	"Answer the value of shape"
+
+	^ shape! !
+
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 09:20:45'!
+shape: anObject
+	"Set the value of shape"
+	shape := anObject.
+	morph redrawNeeded! !
+
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 10:54:33'!
+shapeIndex
+	"Answer the index of the shape"
+	^ DrGTypePointShape pointShapeIndexOf: shape! !
+
+!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 10:51:32'!
+shapeIndex: index
+	"Set the value of shape"
+	self shape: (DrGTypePointShape pointShapeFor: index).
+	self changed: #shapeIndex:.
+	self updateStylePanel ! !
+
+!DrGPointStyle methodsFor: 'xml writing'!
+writeAttributesTo: aNode
+	|attr|
+	super writeAttributesTo: aNode.
+	self pointSize = #small ifTrue: [attr := 'Dashed'].
+	self pointSize = #medium ifTrue: [attr := 'Normal'].
+	self pointSize = #large ifTrue: [attr := 'Thick'].
+	aNode attributeAt: #thickness put: attr.
+	attr := self shape asString capitalized.
+	self shape = #square ifTrue: [attr := 'Rectangular'].
+	self shape = #round ifTrue: [attr := 'Round'].
+	aNode attributeAt: #style put: attr! !
+
+!DrGTextStyle methodsFor: 'accessing'!
+backgroundColor
+	^ backgroundColor ! !
+
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 5/15/2021 21:38:26'!
+backgroundColor: aColor
+	backgroundColor := aColor.
+	self changed! !
+
+!DrGTextStyle methodsFor: 'accessing'!
+backgroundColorIndex
+	^ self class backgroundColors indexOf: self baseBackgroundColor
+	! !
+
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:29:08'!
+backgroundColorIndex: index
+	| aColor |
+	aColor := Color perform: (self class backgroundColorSymbols at: index).
+	self setTranslucent: aColor.
+	self changed: #backgroundColorIndex:
+! !
+
+!DrGTextStyle methodsFor: 'accessing'!
+baseBackgroundColor 
+"This color whithout transparency"
+	^ backgroundColor isTransparent 
+		ifFalse: [backgroundColor alpha: 1.0] 
+		ifTrue: [backgroundColor]! !
+
+!DrGTextStyle methodsFor: 'accessing'!
+borderColor
+	^ borderColor ! !
+
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:26:36'!
+borderColor: aColor
+	borderColor := aColor.
+	morph redrawNeeded! !
+
+!DrGTextStyle methodsFor: 'accessing'!
+borderColorIndex
+	^ self class backgroundColors indexOf: borderColor! !
+
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:29:24'!
+borderColorIndex: index
+	| aColor |
+	aColor := Color perform: (self class backgroundColorSymbols at: index).
+	self borderColor: aColor.
+	self changed: #borderColorIndex:
+! !
+
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 5/24/2023 18:43:58'!
+fontSize: integer
+	fontSize := integer.
+	morph fontSize: integer.
+	self changed! !
+
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/12/2022 23:36:04'!
+fontSizeIndex
+	^ self fontSizesCollection indexOf: fontSize
+	! !
+
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:29:41'!
+fontSizeIndex: index
+	self fontSize: (self fontSizesCollection at: index).
+	self changed: #fontSizeIndex:
+! !
+
+!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 3/24/2022 16:54:27'!
+setTranslucent: aColor
+	aColor isTransparent 
+		ifFalse: [self backgroundColor: (aColor alpha: 0.6)] 
+		ifTrue: [self backgroundColor: aColor]
+! !
+
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 4/26/2020 15:41:25'!
+backgroundMorphCollection
+	^ self class backgroundColors collect: [:aColor |
+		ImageMorph new image: (DrGIcons colorForm: aColor)]! !
+
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:58'!
+backgroundWidget
+	^  self widget: (
+		(DropDownButtonMorph 
+			model: self 
+			listGetter: #backgroundMorphCollection 
+			indexGetter: #backgroundColorIndex  
+			indexSetter: #backgroundColorIndex:)
+			autoDeselect: false;
+			yourself)
+		named: 'Background' translated 
+		help: 'Set the background colour.' translated! !
+
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:15:31'!
+borderWidget
+	^  self widget: (
+		(DropDownButtonMorph 
+			model: self 
+			listGetter: #backgroundMorphCollection 
+			indexGetter: #borderColorIndex  
+			indexSetter: #borderColorIndex:)
+			autoDeselect: false;
+			yourself)
+		named: 'Border' translated 
+		help: 'Set the border colour.' translated! !
+
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:37:47'!
+fontSizeWidget
+	^ self widget: (
+		(DropDownButtonMorph 
+			model: self 
+			listGetter:  #fontSizesMorphCollection
+			indexGetter:  #fontSizeIndex 
+			indexSetter: #fontSizeIndex:)
+			autoDeselect: false;
+			yourself)
+		named: 'Font size' translated
+		help: 'Set the font size.' translated! !
+
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:37:26'!
+fontSizesCollection
+	^#(9 10 12 14 16)! !
+
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 4/1/2024 17:18:23'!
+fontSizesMorphCollection
+	^ self fontSizesCollection collect: [:pt | 
+			LabelMorph 
+				contents: pt asString 
+				font: (FontFamily 
+					familyName: FontFamily defaultFamilyName 
+					pointSize: (Theme current scale: pt))]! !
+
+!DrGTextStyle methodsFor: 'widget'!
+myWidgets
+	^ super myWidgets 
+		addAll: {self backgroundWidget . self borderWidget . self fontSizeWidget}; 
+		yourself! !
+
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 17:04:13'!
+styleWidget
+| controls |
+" There is no name for text object"
+	controls := 	OrderedCollection new
+		add: self colorWidget;
+		yourself.
+	controls addAll: self myWidgets.
+	controls add: self feedbackWidget.
+	controls add: self hiddenWidget.
+	morph isLockable ifTrue: [controls add: self lockedWidget].
+	^controls! !
+
+!DrGTextStyle methodsFor: 'initialize-release' stamp: 'hlsf 5/24/2023 19:32:40'!
+initialize 
+	super initialize.
+	self color: (DrGeoSystem preferences at: #textColor).
+	self setTranslucent: (DrGeoSystem preferences at: #textBackgroundColor).
+	self borderColor: (DrGeoSystem preferences at: #textBorderColor).
+	fontSize := 12 .! !
+
+!DrGTextStyle methodsFor: 'xml writing' stamp: 'drgeo 9/10/2022 12:06:57'!
+writeAttributesTo: aNode
+	super writeAttributesTo: aNode.
+	aNode attributeAt: #background put: self baseBackgroundColor colorName asString capitalized.
+	aNode attributeAt: #border put: self borderColor colorName asString capitalized.
+	aNode attributeAt: #fontSize put: fontSize asString! !
+
+!DrGTextStyle class methodsFor: 'as yet unclassified' stamp: 'hlsf 6/3/2022 11:38:45'!
+backgroundColorSymbols
+	^ OrderedCollection new
+		add: #transparent;
+		addAll: DrGTypeColor colorSymbols;
+		yourself ! !
+
+!DrGTextStyle class methodsFor: 'as yet unclassified'!
+backgroundColors
+	^ self backgroundColorSymbols collect: [:symbol | Color perform: symbol]! !
+
+!DrGValueStyle methodsFor: 'accessing' stamp: 'hlsf 5/29/2021 17:31:15'!
+rename
+|answer|
+	"Not the responsability of this object"
+	self flag: #drgeoTodo.
+	DrGeoSystem showVirtualKeyboard: true.
+	self mathItem name 
+		ifNotNil:	[
+			answer := self view 
+				textEntry:  'Rename this value' translated 
+				title: 'Rename this value' translated 
+				entryText: self mathItem name.]
+		ifNil: [
+			answer := self view 
+				textEntry:  'Name this value' translated 
+				title: 'Name this value' translated].
+	answer ifNil: [^self].
+	answer isEmpty ifTrue: [answer := nil].
+	self mathItem name: answer.
+	morph redrawNeeded.
+	self changed! !
+
+!DrGValueStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 10:06:19'!
+initialize 
+	super initialize.
+	self color: (DrGeoSystem preferences at: #valueColor)
+! !
+
+!DrGValueStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 16:59:01'!
+styleWidget
+| controls |
+	controls := 	OrderedCollection new
+		add: self nameWidget;
+		add: self colorWidget;
+		yourself.
+	controls addAll: self myWidgets.
+	controls add: self feedbackWidget.
+	controls add: self hiddenWidget.
+	morph isLockable ifTrue: [controls add: self lockedWidget].
+	^controls! !
 
 !DrGMacro methodsFor: 'xml writting'!
 writeAsXmlTo: aNode
@@ -32103,953 +33054,6 @@ writeFigureAsXmlTo: aNode
 	self factory pool do: [:anItem |
 		(self drawable viewOf: anItem) writeAsXmlTo: drgeoNode].
 	aNode addElement: drgeoNode! !
-
-!DrGStyle methodsFor: 'accessing'!
-baseColor
-	"Answer color whatever it is hidden or not"
-
-	^ color alpha: 1! !
-
-!DrGStyle methodsFor: 'accessing'!
-borderColor
-	self shouldNotImplement ! !
-
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 6/3/2022 11:39:17'!
-color
-	"Answer the value of color"
-
-	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [color]! !
-
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 3/30/2024 09:55:58'!
-color: anObject
-	"Set the value of color"
-	color := anObject.
-	morph 
-		color: (Theme current adjustColor: self color);
-		redrawNeeded! !
-
-!DrGStyle methodsFor: 'accessing'!
-feedback
-	^ feedback! !
-
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 2/12/2022 11:37:46'!
-feedback: aBoolean
-" Do I provide feedback when mouse over me?"
-	feedback := aBoolean.
-	self changed: #feedback:! !
-
-!DrGStyle methodsFor: 'accessing'!
-hidden
-	^ self isHidden! !
-
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 2/16/2022 23:14:39'!
-hidden: anObject 
-	"Set the value to isHidden"
-	hidden := anObject.
-	hidden 	ifFalse: [morph color: self color].
-	morph redrawNeeded.
-	self changed: #hidden:! !
-
-!DrGStyle methodsFor: 'accessing'!
-isHidden
-	"Answer the value of isHidden"
-
-	^ hidden ifNil: [hidden := false]! !
-
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
-mathItem
-	^ morph mathItem! !
-
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:50:19'!
-morph
-	^ morph! !
-
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:51:37'!
-morph: aMorph
-	morph := aMorph ! !
-
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
-view
-	^ morph view! !
-
-!DrGStyle methodsFor: 'initialize-release' stamp: 'hlsf 5/23/2021 13:16:46'!
-initialize
-	feedback := true.
-	hidden := false.
-	color := Color black! !
-
-!DrGStyle methodsFor: 'testing'!
-isFeedback
-	^ feedback ! !
-
-!DrGStyle methodsFor: 'testing'!
-isFilled
-	^ false! !
-
-!DrGStyle methodsFor: 'testing'!
-isNotHidden
-	"Answer the value of isHidden"
-
-	^ hidden not! !
-
-!DrGStyle methodsFor: 'testing'!
-isTranslucent 
-	^ false! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 6/3/2022 11:38:08'!
-colorIndex
-	^ DrGTypeColor colorIndexOf: self baseColor! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 6/3/2022 11:37:52'!
-colorIndex: index
-	self color: (DrGTypeColor colorFor: index).
-	self changed: #colorIndex:! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 6/3/2022 11:38:19'!
-colorMorphCollection
-	^ DrGTypeColor colorMorphCollection! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:24'!
-colorWidget
-	^ self 	widget: (
-		(DropDownButtonMorph 
-			model: self 
-			listGetter: #colorMorphCollection 
-			indexGetter: #colorIndex
-			indexSetter: #colorIndex:)
-			autoDeselect: false;
-			yourself)
-		named:  'Colour' translated
-		help: 	'Set the colour.' translated! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:42:43'!
-feedbackWidget
-	^ (PluggableCheckboxMorph 
-		model: self 
-		getSelected: #feedback 
-		setSelected:  #feedback:
-		label: 'Feedback' translated)
-		setBalloonText:  'Toggle to provide feedback and interaction when the mouse cursor is over the object.' translated;
-		yourself! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:43:09'!
-hiddenWidget
-	^ (PluggableCheckboxMorph 
-		model: self 
-		getSelected: #hidden 
-		setSelected: #hidden:
-		label: 'Hide' translated)		
-		setBalloonText:  'Toggle to hide the object.' translated;
-		yourself! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:43:28'!
-lockedWidget
-	^ (PluggableCheckboxMorph 
-		model: morph
-		getSelected: #locked
-		setSelected: #locked: 
-		label:  'Lock' translated)
-		setBalloonText: 'Toggle to lock the object to its position.' translated;
-		yourself! !
-
-!DrGStyle methodsFor: 'widget'!
-myWidgets
-"overwrite to add specific widget to edit specific style"
-	^ OrderedCollection new! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2024 15:00:11'!
-nameWidget
- | inputWidget |
-	inputWidget := (TextModelMorph textProvider: morph textGetter: #name textSetter: #name:)
-			hideScrollBarsIndefinitely;
-			askBeforeDiscardingEdits: false;
-			borderWidth: 1;
-			acceptOnCR: true;
-			yourself	.
-	inputWidget scroller setProperty: #keyStroke: toValue: [:event | inputWidget scroller acceptContents]. 
-	^ self 
-		widget: inputWidget 
-		named:  'Name' translated
-		help: 'Rename this object.' translated	! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 23:59:23'!
-styleWidget
-| controls |
-	controls := 	OrderedCollection new
-		add: self nameWidget;
-		add: self colorWidget;
-		yourself.
-	controls addAll: self myWidgets.
-	controls add: self feedbackWidget.
-	controls add: self hiddenWidget.
-	morph isLockable ifTrue: [controls add: self lockedWidget].
-	^controls! !
-
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/14/2022 09:01:21'!
-widget: aWidget named: aLabel help: aString
-| label |
-	^ LayoutMorph newRow
-		separation: 5;
-		color: Color transparent;
-		axisEdgeWeight: #rowLeft;
-		addMorph: (label := LabelMorph contents: aLabel);
-		addMorph: aWidget layoutSpec: (LayoutSpec fixedHeight: label morphHeight) ;
-		setBalloonText: aString;
-		yourself.
-		! !
-
-!DrGStyle methodsFor: 'xml writing' stamp: 'hlsf 3/28/2022 14:47:22'!
-writeAttributesTo: aNode
-	aNode 
-		attributeAt: #color put: self baseColor colorName asString capitalized;
-		attributeAt: #masked put: hidden asString capitalized;
-		attributeAt: #feedback put: feedback asString capitalized! !
-
-!DrGStyle class methodsFor: 'instance creation' stamp: 'hlsf 4/24/2021 19:49:58'!
-newWith: aMorph
-	^self basicNew morph: aMorph; initialize! !
-
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:39:00'!
-lineStyleIndex
-	"Answer the index of lineStyle"
-	^ DrGTypeStyle styleIndexOf: lineStyle! !
-
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:38:39'!
-lineStyleIndex: integer
-	"Set the value of lineStyle"
-	self lineStyle: (DrGTypeStyle styleSymbols at: integer).
-	self changed: #lineStyleIndex:
-! !
-
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:38:11'!
-lineWidget
-	^ self widget:  (
-		(DropDownButtonMorph 
-			model: self 
-			listGetter: #styleMorphCollection
-			indexGetter: #lineStyleIndex
-			indexSetter: #lineStyleIndex:)
-			autoDeselect: false;
-			yourself)
-		named: 'Style' translated 
-		help: 'Set the style of the line.' translated! !
-
-!DrGCurveStyle methodsFor: 'widget'!
-myWidgets 
-	^ super myWidgets addAll: {self lineWidget . self thicknessWidget}; yourself! !
-
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:38:11'!
-styleMorphCollection
-	^ DrGTypeStyle styleMorphCollection! !
-
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:20:51'!
-thicknessIndex
-	"Answer the index of thickness"
-
-	^DrGTypeThickness thicknessIndexOf: thickness! !
-
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:20:51'!
-thicknessIndex: integer
-	"Set the value of thickness"
-	self thickness: (DrGTypeThickness thicknessFor: integer).
-	self changed: #thicknessIndex:! !
-
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:20:51'!
-thicknessMorphCollection
-	^ DrGTypeThickness thicknessMorphCollection! !
-
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:49'!
-thicknessWidget
-	^ self widget: (
-		(DropDownButtonMorph 
-			model: self 
-			listGetter: #thicknessMorphCollection 
-			indexGetter: #thicknessIndex 
-			indexSetter: #thicknessIndex:)
-			autoDeselect: false;
-			yourself)			
-		named: 'Thickness' translated
-		help: 'Set the thickness of the line.' translated! !
-
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 6/3/2022 11:39:21'!
-borderColor
-	"Answer the value of border color"
-	^hidden ifTrue: [DrGTypeColor hiddenColor] ifFalse: [self baseColor]! !
-
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 10:03:11'!
-borderWidth
-	"give the border width"
-	^ Theme current lineWidthFor: thickness! !
-
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:24:38'!
-color
-"Answer the fill color"
-	^self isFilled ifTrue: [color] ifFalse: [Color transparent]! !
-
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/30/2024 09:56:26'!
-color: aColor
-"Set the value of fill color and border color"
-	color := self isTranslucent ifTrue: [aColor alpha: 0.3] ifFalse: [aColor alpha: 1].
-	morph 
-		borderColor: (Theme current adjustColor: self borderColor);
-		color: self color;
-		redrawNeeded! !
-
-!DrGCurveStyle methodsFor: 'accessing'!
-lineStyle
-	"Answer the value of lineStyle"
-
-	^ lineStyle! !
-
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 11:07:23'!
-lineStyle: aSymbol
-	"Set the value of lineStyle"
-	lineStyle := aSymbol.
-	morph dashedBorder: (Theme current lineStyleDataFor: aSymbol).
-	morph redrawNeeded! !
-
-!DrGCurveStyle methodsFor: 'accessing'!
-thickness
-	"Answer the value of thickness"
-
-	^ thickness! !
-
-!DrGCurveStyle methodsFor: 'accessing' stamp: 'hlsf 12/2/2021 10:46:49'!
-thickness: anObject
-	"Set the value of thickness"
-	thickness := anObject.
-	morph borderWidth: self borderWidth.
-	morph redrawNeeded! !
-
-!DrGCurveStyle methodsFor: 'xml writing'!
-writeAttributesTo: aNode
-	super writeAttributesTo: aNode.
-	aNode attributeAt: #style put: self lineStyle.
-	aNode attributeAt: #thickness put: self thickness.! !
-
-!DrGFinitCurveStyle methodsFor: 'accessing'!
-arrow
-	"Answer the value of arrows"
-
-	^ arrow! !
-
-!DrGFinitCurveStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 17:50:00'!
-arrow: anObject
-	"Set the value of arrows"
-	arrow := anObject.
-	morph arrow: anObject;
-		redrawNeeded ! !
-
-!DrGFinitCurveStyle methodsFor: 'xml writing' stamp: 'hlsf 4/11/2021 12:22:39'!
-writeAttributesTo: aNode
-	super writeAttributesTo: aNode.
-	morph isCircle ifFalse: [aNode attributeAt: #arrow put: self arrow.]! !
-
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:39:22'!
-arrowIndex
-	"Answer the index of arrows"
-
-	^ DrGTypeArrow arrowIndexOf: arrow! !
-
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:38:56'!
-arrowIndex: index
-	"Set the value of arrows"
-	self arrow: (DrGTypeArrow arrowFor: index).
-	self changed: #arrowIndex:! !
-
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:38:24'!
-arrowMorphCollection
-	^ DrGTypeArrow arrowMorphCollection! !
-
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:55'!
-arrowWidget
-	^ self widget: (
-		(DropDownButtonMorph 
-			model: self
-			listGetter: #arrowMorphCollection  
-			indexGetter: #arrowIndex 
-			indexSetter: #arrowIndex:)
-			autoDeselect: false;
-			yourself)
-		named: 'Arrow' translated 
-		help: 'Set arrow(s) to the line.' translated! !
-
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 4/11/2021 12:25:24'!
-myWidgets
-	^ (morph isSegment or: [morph isArc]) 
-		ifTrue: [super myWidgets addAll: {self arrowWidget}; yourself]
-		ifFalse: [super myWidgets]! !
-
-!DrGCompositeStyle methodsFor: 'accessing'!
-shape
-	^shape! !
-
-!DrGCompositeStyle methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:49:44'!
-shape: anObject
-	shape := anObject.
-	morph shape: anObject! !
-
-!DrGFilledStyle methodsFor: 'xml writing'!
-writeAttributesTo: aNode
-	super writeAttributesTo: aNode.
-	aNode attributeAt: #filled put: self isFilled asString capitalized.
-	aNode attributeAt: #translucent put: self isTranslucent asString capitalized! !
-
-!DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 15:59:50'!
-fillWidget
-	^ (PluggableCheckboxMorph 
-		model: self
-		getSelected: #fill
-		setSelected:  #fill:
-		label: 'Fill' translated)
-		setBalloonText:  'Toggle to fill the object.' translated;
-		yourself! !
-
-!DrGFilledStyle methodsFor: 'widget'!
-myWidgets 
-	^ super myWidgets addAll: {self fillWidget. self translucentWidget}; yourself! !
-
-!DrGFilledStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 15:58:11'!
-translucentWidget
-	^ (PluggableCheckboxMorph 
-		model: self
-		getSelected: #translucent 
-		setSelected: #translucent:
-		label: 'Translucent' translated)
-		setBalloonText: 'Toggle the translucency of the object.' translated;
-		yourself! !
-
-!DrGFilledStyle methodsFor: 'accessing'!
-fill
-	^ self isFilled! !
-
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2023 17:55:33'!
-fill: boolean
-	fill := boolean.
-	self color: color.
-	self changed: #fill:.
-	morph redrawNeeded.! !
-
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 18:10:25'!
-isFilled
-	^ fill ifNil: [fill := true]! !
-
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 18:10:10'!
-isTranslucent
-	^ translucent ifNil: [translucent := true]! !
-
-!DrGFilledStyle methodsFor: 'accessing'!
-toggleFilled
-	self fill: fill not.
-	self changed! !
-
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:33:44'!
-toggleTranslucent
-	self translucent: translucent not! !
-
-!DrGFilledStyle methodsFor: 'accessing'!
-translucent
-	^ self isTranslucent ! !
-
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 22:35:25'!
-translucent: boolean
-	translucent := boolean.
-	self color: color.
-	self changed: #translucent:.
-	morph redrawNeeded! !
-
-!DrGArcStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:26:41'!
-fill: boolean
-	(fill := boolean) 
-		ifTrue: ["morph morph makeClosed"]
-		ifFalse: ["morph morph makeOpen"].
-	self changed: #fill:.
-	morph redrawNeeded! !
-
-!DrGArcStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:23:33'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #arcColor).
-	self lineStyle: (DrGeoSystem preferences at: #arcStyle).
-	self thickness: (DrGeoSystem preferences at: #arcThickness).
-	self arrow: (DrGeoSystem preferences at: #arcArrow).
-	self fill: (DrGeoSystem preferences at: #arcFilled).
-	self translucent: (DrGeoSystem preferences at: #arcTranslucent).! !
-
-!DrGCircleStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:01:16'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #circleColor).
-	self lineStyle: (DrGeoSystem preferences at: #circleStyle).
-	self thickness: (DrGeoSystem preferences at: #circleThickness).
-	self fill: (DrGeoSystem preferences at: #circleFilled).
-	self translucent:(DrGeoSystem preferences at: #circleTranslucent).! !
-
-!DrGPolygonStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:34:28'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #polygonColor).
-	self lineStyle: (DrGeoSystem preferences at: #polygonStyle).
-	self thickness: (DrGeoSystem preferences at: #polygonThickness).
-	self fill: (DrGeoSystem preferences at: #polygonFilled).
-	self translucent: (DrGeoSystem preferences at: #polygonTranslucent).
-	self arrow: #none! !
-
-!DrGSegmentStyle methodsFor: 'xml writing'!
-writeAttributesTo: aNode
-	super writeAttributesTo: aNode.
-	aNode attributeAt: #mark put: self mark! !
-
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:14:37'!
-markIndex
-	mark ifNil: [mark := #none].
-	^DrGTypeMark markIndexOf: mark! !
-
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:14:02'!
-markIndex: index
-	self mark: (DrGTypeMark markFor: index).
-	self changed: #markIndex:.! !
-
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 14:15:16'!
-markMorphCollection
-	^ DrGTypeMark markMorphCollection! !
-
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:22'!
-markWidget
-	^ self widget: (
-		(DropDownButtonMorph 
-			model: self
-			listGetter: #markMorphCollection
-			indexGetter: #markIndex
-			indexSetter: #markIndex:)
-			autoDeselect: false;
-			yourself)
-		named: 'Mark' translated 
-		help: 'Set a mark to the segment.' translated! !
-
-!DrGSegmentStyle methodsFor: 'widget'!
-myWidgets 
-	^ super myWidgets addAll: {self markWidget}; yourself! !
-
-!DrGSegmentStyle methodsFor: 'accessing'!
-mark
-	^ mark ifNil: [mark := #none]! !
-
-!DrGSegmentStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:27:22'!
-mark: aSymbol
-	mark := aSymbol.
-	morph redrawNeeded! !
-
-!DrGSegmentStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/3/2022 22:44:29'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #segmentColor).
-	self lineStyle: (DrGeoSystem preferences at: #segmentStyle).
-	self thickness: (DrGeoSystem preferences at: #segmentThickness).
-	self mark: (DrGeoSystem preferences at: #segmentMark).
-	self arrow: (DrGeoSystem preferences at: #segmentArrow)! !
-
-!DrGLineStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 08:58:03'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #lineColor).
-	self lineStyle: (DrGeoSystem preferences at: #lineStyle).
-	self thickness: (DrGeoSystem preferences at: #lineThickness)! !
-
-!DrGLocusStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:50:19'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #locusColor).
-	self lineStyle: (DrGeoSystem preferences at: #locusStyle).
-	self thickness: (DrGeoSystem preferences at: #locusThickness)! !
-
-!DrGRayStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:00:27'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #rayColor).
-	self lineStyle: (DrGeoSystem preferences at: #rayStyle).
-	self thickness: (DrGeoSystem preferences at: #rayThickness)! !
-
-!DrGVectorStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:38:17'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #vectorColor).
-	self lineStyle:(DrGeoSystem preferences at: #vectorStyle).
-	self thickness: (DrGeoSystem preferences at: #vectorThickness)! !
-
-!DrGPointStyle methodsFor: 'widget'!
-myWidgets 
-	^ super myWidgets addAll: {self shapeWidget. self sizeWidget}; yourself! !
-
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 11:00:28'!
-shapeMorphCollection
-	^ DrGTypePointShape shapeMorphCollection ! !
-
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:43'!
-shapeWidget
-	^  self widget: (
-		(DropDownButtonMorph 
-			model: self 
-			listGetter: #shapeMorphCollection 
-			indexGetter: #shapeIndex 
-			indexSetter: #shapeIndex:)
-			autoDeselect: false;
-			yourself)
-		named:  'Shape' translated
-		help: 'Set the shape of the point.' translated! !
-
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 6/4/2022 14:50:31'!
-sizeMorphCollection
-	^ DrGTypePointSize sizeMorphCollection: shape! !
-
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:49'!
-sizeWidget
-	^ self widget: (
-		(DropDownButtonMorph 
-			model: self 
-			listGetter: #sizeMorphCollection 
-			indexGetter: #pointSizeIndex
-			indexSetter: #pointSizeIndex:)
-			autoDeselect: false;
-			yourself)
-		named: 'Size' translated 
-		help:  'Set the size of the point.' translated! !
-
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 2/14/2022 09:32:31'!
-updateStylePanel
-	self view presenter controlsManager updateStylerFor: self! !
-
-!DrGPointStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/3/2022 22:53:48'!
-initialize
-	super initialize.
-	self color: (DrGeoSystem preferences at: #pointColor).
-	self pointSize: (DrGeoSystem preferences at: #pointSize).
-	self shape: (DrGeoSystem preferences at: #pointShape)! !
-
-!DrGPointStyle methodsFor: 'accessing'!
-abscissa
-	^ self mathItem point x asString! !
-
-!DrGPointStyle methodsFor: 'accessing'!
-abscissa: aText
-	|number|
-	[number := aText asString asNumber]
-		on: Error
-		do: [^ false].
-	self mathItem x: number.
-	self changed.
-	^ true! !
-
-!DrGPointStyle methodsFor: 'accessing'!
-curvilinearAbscissa
-	^ self mathItem abscissa asString! !
-
-!DrGPointStyle methodsFor: 'accessing'!
-curvilinearAbscissa: aText
-	|number|
-	[number := aText asString asNumber]
-		on: Error
-		do: [^ false].
-	self mathItem abscissa: number.
-	self changed.
-	^ true! !
-
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:49:17'!
-extent
-	^ extent! !
-
-!DrGPointStyle methodsFor: 'accessing'!
-ordinate
-	^ self mathItem point y asString! !
-
-!DrGPointStyle methodsFor: 'accessing'!
-ordinate: aText
-	|number|
-	[number := aText asString asNumber]
-		on: Error
-		do: [^ false].
-	self mathItem y: number.
-	self changed.
-	^ true! !
-
-!DrGPointStyle methodsFor: 'accessing'!
-pointSize
-	"Answer the value of thickness"
-
-	^ pointSize! !
-
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:48:53'!
-pointSize: anObject
-	"Set the value of thickness"
-	pointSize := anObject.
-	extent := Theme current pointExtentFor: pointSize.
-	morph redrawNeeded
-! !
-
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/4/2022 14:51:28'!
-pointSizeIndex
-	"Answer the index of thickness"
-	^DrGTypePointSize pointSizeIndexOf: pointSize! !
-
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/4/2022 14:55:37'!
-pointSizeIndex: index
-	"Set the value of thickness"
-	self pointSize: (DrGTypePointSize pointSizeFor: index).
-	self changed: #pointSizeIndex:! !
-
-!DrGPointStyle methodsFor: 'accessing'!
-shape
-	"Answer the value of shape"
-
-	^ shape! !
-
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 2/14/2022 09:20:45'!
-shape: anObject
-	"Set the value of shape"
-	shape := anObject.
-	morph redrawNeeded! !
-
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 10:54:33'!
-shapeIndex
-	"Answer the index of the shape"
-	^ DrGTypePointShape pointShapeIndexOf: shape! !
-
-!DrGPointStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 10:51:32'!
-shapeIndex: index
-	"Set the value of shape"
-	self shape: (DrGTypePointShape pointShapeFor: index).
-	self changed: #shapeIndex:.
-	self updateStylePanel ! !
-
-!DrGPointStyle methodsFor: 'xml writing'!
-writeAttributesTo: aNode
-	|attr|
-	super writeAttributesTo: aNode.
-	self pointSize = #small ifTrue: [attr := 'Dashed'].
-	self pointSize = #medium ifTrue: [attr := 'Normal'].
-	self pointSize = #large ifTrue: [attr := 'Thick'].
-	aNode attributeAt: #thickness put: attr.
-	attr := self shape asString capitalized.
-	self shape = #square ifTrue: [attr := 'Rectangular'].
-	self shape = #round ifTrue: [attr := 'Round'].
-	aNode attributeAt: #style put: attr! !
-
-!DrGTextStyle methodsFor: 'accessing'!
-backgroundColor
-	^ backgroundColor ! !
-
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 5/15/2021 21:38:26'!
-backgroundColor: aColor
-	backgroundColor := aColor.
-	self changed! !
-
-!DrGTextStyle methodsFor: 'accessing'!
-backgroundColorIndex
-	^ self class backgroundColors indexOf: self baseBackgroundColor
-	! !
-
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:29:08'!
-backgroundColorIndex: index
-	| aColor |
-	aColor := Color perform: (self class backgroundColorSymbols at: index).
-	self setTranslucent: aColor.
-	self changed: #backgroundColorIndex:
-! !
-
-!DrGTextStyle methodsFor: 'accessing'!
-baseBackgroundColor 
-"This color whithout transparency"
-	^ backgroundColor isTransparent 
-		ifFalse: [backgroundColor alpha: 1.0] 
-		ifTrue: [backgroundColor]! !
-
-!DrGTextStyle methodsFor: 'accessing'!
-borderColor
-	^ borderColor ! !
-
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2021 21:26:36'!
-borderColor: aColor
-	borderColor := aColor.
-	morph redrawNeeded! !
-
-!DrGTextStyle methodsFor: 'accessing'!
-borderColorIndex
-	^ self class backgroundColors indexOf: borderColor! !
-
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:29:24'!
-borderColorIndex: index
-	| aColor |
-	aColor := Color perform: (self class backgroundColorSymbols at: index).
-	self borderColor: aColor.
-	self changed: #borderColorIndex:
-! !
-
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 5/24/2023 18:43:58'!
-fontSize: integer
-	fontSize := integer.
-	morph fontSize: integer.
-	self changed! !
-
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/12/2022 23:36:04'!
-fontSizeIndex
-	^ self fontSizesCollection indexOf: fontSize
-	! !
-
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 10:29:41'!
-fontSizeIndex: index
-	self fontSize: (self fontSizesCollection at: index).
-	self changed: #fontSizeIndex:
-! !
-
-!DrGTextStyle methodsFor: 'accessing' stamp: 'hlsf 3/24/2022 16:54:27'!
-setTranslucent: aColor
-	aColor isTransparent 
-		ifFalse: [self backgroundColor: (aColor alpha: 0.6)] 
-		ifTrue: [self backgroundColor: aColor]
-! !
-
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 4/26/2020 15:41:25'!
-backgroundMorphCollection
-	^ self class backgroundColors collect: [:aColor |
-		ImageMorph new image: (DrGIcons colorForm: aColor)]! !
-
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:58'!
-backgroundWidget
-	^  self widget: (
-		(DropDownButtonMorph 
-			model: self 
-			listGetter: #backgroundMorphCollection 
-			indexGetter: #backgroundColorIndex  
-			indexSetter: #backgroundColorIndex:)
-			autoDeselect: false;
-			yourself)
-		named: 'Background' translated 
-		help: 'Set the background colour.' translated! !
-
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:15:31'!
-borderWidget
-	^  self widget: (
-		(DropDownButtonMorph 
-			model: self 
-			listGetter: #backgroundMorphCollection 
-			indexGetter: #borderColorIndex  
-			indexSetter: #borderColorIndex:)
-			autoDeselect: false;
-			yourself)
-		named: 'Border' translated 
-		help: 'Set the border colour.' translated! !
-
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:37:47'!
-fontSizeWidget
-	^ self widget: (
-		(DropDownButtonMorph 
-			model: self 
-			listGetter:  #fontSizesMorphCollection
-			indexGetter:  #fontSizeIndex 
-			indexSetter: #fontSizeIndex:)
-			autoDeselect: false;
-			yourself)
-		named: 'Font size' translated
-		help: 'Set the font size.' translated! !
-
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:37:26'!
-fontSizesCollection
-	^#(9 10 12 14 16)! !
-
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 4/1/2024 17:18:23'!
-fontSizesMorphCollection
-	^ self fontSizesCollection collect: [:pt | 
-			LabelMorph 
-				contents: pt asString 
-				font: (FontFamily 
-					familyName: FontFamily defaultFamilyName 
-					pointSize: (Theme current scale: pt))]! !
-
-!DrGTextStyle methodsFor: 'widget'!
-myWidgets
-	^ super myWidgets 
-		addAll: {self backgroundWidget . self borderWidget . self fontSizeWidget}; 
-		yourself! !
-
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 17:04:13'!
-styleWidget
-| controls |
-" There is no name for text object"
-	controls := 	OrderedCollection new
-		add: self colorWidget;
-		yourself.
-	controls addAll: self myWidgets.
-	controls add: self feedbackWidget.
-	controls add: self hiddenWidget.
-	morph isLockable ifTrue: [controls add: self lockedWidget].
-	^controls! !
-
-!DrGTextStyle methodsFor: 'initialize-release' stamp: 'hlsf 5/24/2023 19:32:40'!
-initialize 
-	super initialize.
-	self color: (DrGeoSystem preferences at: #textColor).
-	self setTranslucent: (DrGeoSystem preferences at: #textBackgroundColor).
-	self borderColor: (DrGeoSystem preferences at: #textBorderColor).
-	fontSize := 12 .! !
-
-!DrGTextStyle methodsFor: 'xml writing' stamp: 'drgeo 9/10/2022 12:06:57'!
-writeAttributesTo: aNode
-	super writeAttributesTo: aNode.
-	aNode attributeAt: #background put: self baseBackgroundColor colorName asString capitalized.
-	aNode attributeAt: #border put: self borderColor colorName asString capitalized.
-	aNode attributeAt: #fontSize put: fontSize asString! !
-
-!DrGTextStyle class methodsFor: 'as yet unclassified' stamp: 'hlsf 6/3/2022 11:38:45'!
-backgroundColorSymbols
-	^ OrderedCollection new
-		add: #transparent;
-		addAll: DrGTypeColor colorSymbols;
-		yourself ! !
-
-!DrGTextStyle class methodsFor: 'as yet unclassified'!
-backgroundColors
-	^ self backgroundColorSymbols collect: [:symbol | Color perform: symbol]! !
-
-!DrGValueStyle methodsFor: 'accessing' stamp: 'hlsf 5/29/2021 17:31:15'!
-rename
-|answer|
-	"Not the responsability of this object"
-	self flag: #drgeoTodo.
-	DrGeoSystem showVirtualKeyboard: true.
-	self mathItem name 
-		ifNotNil:	[
-			answer := self view 
-				textEntry:  'Rename this value' translated 
-				title: 'Rename this value' translated 
-				entryText: self mathItem name.]
-		ifNil: [
-			answer := self view 
-				textEntry:  'Name this value' translated 
-				title: 'Name this value' translated].
-	answer ifNil: [^self].
-	answer isEmpty ifTrue: [answer := nil].
-	self mathItem name: answer.
-	morph redrawNeeded.
-	self changed! !
-
-!DrGValueStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 10:06:19'!
-initialize 
-	super initialize.
-	self color: (DrGeoSystem preferences at: #valueColor)
-! !
-
-!DrGValueStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 16:59:01'!
-styleWidget
-| controls |
-	controls := 	OrderedCollection new
-		add: self nameWidget;
-		add: self colorWidget;
-		yourself.
-	controls addAll: self myWidgets.
-	controls add: self feedbackWidget.
-	controls add: self hiddenWidget.
-	morph isLockable ifTrue: [controls add: self lockedWidget].
-	^controls! !
 
 !DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/25/2022 10:22:26'!
 arcPreferences
