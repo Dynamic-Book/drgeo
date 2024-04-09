@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6311] on 9 April 2024 at 11:40:35 am'!
+'From Cuis6.3 [latest update: #6311] on 9 April 2024 at 3:54:02 pm'!
 'Description '!
-!provides: 'DrGeo' 1 700!
+!provides: 'DrGeo' 1 702!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -2330,6 +2330,16 @@ Object subclass: #DrGeoUserScript
 DrGeoUserScript class
 	instanceVariableNames: 'argumentsType'!
 
+!classDefinition: #DrGeoScript161808832 category: #'DrGeo-Model-Script'!
+DrGeoUserScript subclass: #DrGeoScript161808832
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Script'!
+!classDefinition: 'DrGeoScript161808832 class' category: #'DrGeo-Model-Script'!
+DrGeoScript161808832 class
+	instanceVariableNames: ''!
+
 !classDefinition: #DrGeoScript174591904 category: #'DrGeo-Model-Script'!
 DrGeoUserScript subclass: #DrGeoScript174591904
 	instanceVariableNames: ''
@@ -3335,7 +3345,7 @@ A DrGMacroNode is a node in a macro-construction. It represents an abstracted ma
 Instance Variables
 !
 
-!DrGeoUserScript commentStamp: '' prior: 0!
+!DrGeoUserScript commentStamp: '<historical>' prior: 0!
 I am an abstract user script. 
 My subclass 'DrGeoScriptXXXXXXX' are created from the Dr. Geo script wizard, menu: Script>Create a Script.
 
@@ -3348,7 +3358,7 @@ Next, from the source code browser (class browser), the user write the scription
 
 A set of helpers are present to use in the #compute method:
 - #arg1 to #arg4: to access first to fourth mathItem arguments as selected by the user
-- #costume1 to #costume4: to access the first to fourth mathitem's costume
+- #costume1 to #costume4: to access the first to fourth mathitem's view (morph)
 
 
 Instance Variables
@@ -18094,9 +18104,9 @@ arg3
 arg4
 	^ arguments fourth mathItem! !
 
-!DrGeoUserScript methodsFor: 'helpers' stamp: 'hlsf 8/4/2023 18:14:55'!
+!DrGeoUserScript methodsFor: 'helpers' stamp: 'hlsf 4/9/2024 15:52:16'!
 costume
-"Search for the morph of my instance, then cache its"
+"Search for the morph of my instance, then cache it"
 	^ costume ifNil: [ 
 		DrGDrawable allInstances 
 			detect: [ :aDrawable | 
@@ -18160,6 +18170,23 @@ description
 scriptName
 "I appear in the scripts menu"
 	^ 'A script' translated! !
+
+!DrGeoScript161808832 methodsFor: 'public' stamp: 'hlsf 4/9/2024 15:38:40'!
+compute
+"Edit me"
+	^1+3.5 / 0.5! !
+
+!DrGeoScript161808832 class methodsFor: 'public' stamp: 'hlsf 4/9/2024 15:31:57'!
+description
+	^'te'! !
+
+!DrGeoScript161808832 class methodsFor: 'public' stamp: 'hlsf 4/9/2024 15:38:58'!
+scriptName
+	^'test pour faire une addition'! !
+
+!DrGeoScript161808832 class methodsFor: 'private' stamp: 'hlsf 4/9/2024 15:31:57'!
+newArgumentsType
+	^{}! !
 
 !DrGeoScript174591904 methodsFor: 'public' stamp: 'hlsf 4/9/2024 10:39:14'!
 compute
@@ -29471,15 +29498,13 @@ editScript
 	menu popUpInWorld.
 	self changed! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/9/2024 11:37:56'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/9/2024 15:54:00'!
 editScript: aScriptClass
 	|  browser |
 	browser := Browser new setClass: aScriptClass selector: #compute.
 	browser when: #annotationChanged send: #updateAllMathItems to: self domain.
-	^ (MethodSetWindow open: browser label:  'Edit or create scripts' translated)
-		openInWorld;
-		morphExtent: (Theme current scale: 600@500);
-		yourself
+	^ BrowserWindow openNoSysCat: browser label:  'Edit or create scripts' translated
+		
 	! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 8/4/2023 11:42:31'!
