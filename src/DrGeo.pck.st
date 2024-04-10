@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6311] on 9 April 2024 at 3:54:02 pm'!
+'From Cuis6.3 [latest update: #6319] on 10 April 2024 at 4:47:44 pm'!
 'Description '!
-!provides: 'DrGeo' 1 702!
+!provides: 'DrGeo' 1 703!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -6128,15 +6128,15 @@ buildMorphicWindow
 		addAdjusterAndMorph: self buildLowerPanes proportionalHeight: 0.7;
 		addAdjusterAndMorph: bottomMorph proportionalHeight: 0.3.! !
 
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 10/13/2022 12:08:52'!
+!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 4/10/2024 16:46:52'!
 customButtonSpecs
 	"Answer an array of elements of the form wording, selector, help-message, that characterize the custom button row of a debugger."
 
 	^{
-		{'Restart' translated . #		restart	 . 		'Restart the step by step execution from its start.' translated } .
-		{'Step'	 translated . 	#	doStep .			 'Execute the current message and go to the next message.' translated } .
+		{'Restart' translated . #restart	 . 		'Restart the step by step execution from its start.' translated } .
+		{'Step'	 translated . 	#doStep .			 'Execute the current message and go to the next message.' translated } .
 		{'Step into'		 translated . #stepIntoBlock		 . 'Step into a block.' translated } .
-		{'Run to Cursor' translated . #		runToCursor	 . 	'Execute the code up to the cursor position.' translated }
+		{'Run to Cursor' translated . #runToCursor	 . 	'Execute the code up to the cursor position.' translated }
 	}! !
 
 !DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 10/13/2022 15:20:08'!
@@ -29797,10 +29797,10 @@ and programmed interactive sketches.
 LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright}.
 	^ text! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 1/28/2024 16:14:24'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/10/2024 16:47:38'!
 drgeoVersion
 	^ 'Installed version: ' translated, 
-		'24.03a beta (code revision ', 
+		'24.05a beta (code revision ', 
 		(String streamContents: [:str | 	(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]),
 		')'! !
 

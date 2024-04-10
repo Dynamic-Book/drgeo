@@ -8,7 +8,7 @@
 # Adjust below the rel variable to the wished Dr. Geo release number
 
 # DrGeo release number
-rel="24.03a-beta"
+rel="24.05a-beta"
 
 # Path
 drgeoRepo=./drgeo
