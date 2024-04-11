@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 10 April 2024 at 4:47:44 pm'!
+'From Cuis6.3 [latest update: #6319] on 11 April 2024 at 10:50:56 am'!
 'Description '!
-!provides: 'DrGeo' 1 703!
+!provides: 'DrGeo' 1 704!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -9761,7 +9761,7 @@ drawOn: aCanvas
 		]
 ! !
 
-!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 8/15/2021 16:20:40'!
+!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 4/11/2024 10:41:53'!
 free: freeItem constrained: constrainedItem 
 	| link0 link1 x0 validSamples factory  |
 	x0 := freeItem abscissa.
@@ -9774,7 +9774,7 @@ free: freeItem constrained: constrainedItem
 	"maxAbscissaDelta := self drawable scale > 100 ifTrue: [1e-4] ifFalse: [1e-3]."
 	samples := LinkedList new.
 	link0 := samples add: (self sample: minAbscissaDelta ).
-	link1 := samples add: (self sample: 1 - minAbscissaDelta) afterLink: link0.
+	link1 := samples add: (self sample: 1 - minAbscissaDelta).
 	self samplingFrom: link0 to: link1.
 	validSamples := self selectValidSamples.
 	free abscissa: x0.
@@ -9797,7 +9797,7 @@ sample: abscissa
 		offScreen: (worldBound containsPoint: constrained point) not].
 	^ sample! !
 
-!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 9/25/2021 18:09:54'!
+!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 4/11/2024 10:43:14'!
 samplingFrom: sample1 to: sample2
 	| newSample screenSamplesDistance samplesDelta|
 	samplesDelta := sample2 x - sample1 x.
@@ -9809,16 +9809,16 @@ samplingFrom: sample1 to: sample2
 		ifTrue: [
 			(screenSamplesDistance < 2 and: [samplesDelta < maxAbscissaDelta] ) ifTrue: [^ self].
 			newSample := self sample: sample1 x + sample2 x / 2.0.
-			samples add: newSample afterLink: sample1.
+			samples add: newSample after: sample1.
 			self samplingFrom: sample1 to: newSample.
 			self samplingFrom: newSample to: sample2			]! !
 
-!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 5/30/2021 15:46:46'!
+!DrGLocusMorph methodsFor: 'sampling' stamp: 'hlsf 4/11/2024 10:37:04'!
 selectValidSamples
 	| validSamples prevLink|
 	validSamples := OrderedCollection new.
 	prevLink := DrGLocusSample new isValid: false; yourself.
-	samples 	linksDo: [:sample | 
+	samples 	do: [:sample | 
 		sample isValidAndOnScreen 		
 			ifTrue: [validSamples add: sample]
 			ifFalse: [
@@ -34071,8 +34071,8 @@ subclass: t instanceVariableNames: f classVariableNames: d package: cat
 shiftRight
 	^ self allButFirst, (Array with: self first)! !
 
-!LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 5/30/2021 12:04:40'!
-add: aLink afterLink: otherLink
+!LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 4/11/2024 10:35:30'!
+add: aLink after: otherLink
 	"Add otherLink  after link in the list. Answer aLink."
 	| savedLink |
 	lastLink == otherLink ifTrue: [^ self addLast: aLink].
@@ -34080,14 +34080,6 @@ add: aLink afterLink: otherLink
 	otherLink nextLink: aLink.
 	aLink nextLink:  savedLink.
 	^aLink.! !
-
-!LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 5/30/2021 11:57:04'!
-linksDo: aBlock
-	| aLink |
-	aLink := firstLink.
-	[aLink == nil ] whileFalse: 		[
-		aBlock value: aLink.
-		aLink := aLink nextLink]! !
 
 !RealEstateAgent class methodsFor: '*DrGeo' stamp: 'hlsf 4/24/2020 12:36:51'!
 leftMaximumUsableArea
