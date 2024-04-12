@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 1:00:11 pm'!
+'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 3:20:22 pm'!
 'Description '!
-!provides: 'DrGeo' 1 709!
+!provides: 'DrGeo' 1 710!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -3523,10 +3523,11 @@ initialize
 	cmdManager := DrGCommandManager new domain: self.
 	pointNameIndex := 0! !
 
-!DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 4/24/2020 12:56:07'!
+!DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 15:18:43'!
 release
-	factory release.
-	cmdManager release.! !
+	factory := cmdManager := nil
+	"factory release.
+	cmdManager release."! !
 
 !DrGeoDomain methodsFor: 'building'!
 createCompositeItem: aMathItemSelection
@@ -7135,10 +7136,11 @@ shouldAutoHighlight
 shoutMustKeepContentsSize
 	^ true! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 5/25/2023 15:33:56'!
+!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 4/12/2024 15:15:22'!
 delete
-	super delete.
-	self releaseMiniView ! !
+	TimeProfileBrowser onBlock: [
+		super delete.
+		self releaseMiniView ]! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 8/4/2023 12:58:33'!
 releaseMiniView
@@ -8225,13 +8227,14 @@ registerEvents
 		send: #redrawNeeded
 		to: self.! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 8/4/2023 12:33:51'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 15:19:23'!
 release
 	self domain removeActionsWithReceiver: self.
-	itemViews do: [:each | each release]! !
+	self removeAllMorphs ! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/12/2024 12:49:06'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 8/4/2023 11:08:35'!
 deleteItemView: aMorph
+	aMorph release.
 	undoneViews add: aMorph.
 	itemViews := itemViews copyWithout: aMorph.
 	! !
@@ -8269,7 +8272,7 @@ lastItemView
 		ifFound: [ :aMorph | aMorph ]
 		ifNone: [ nil]! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 8/4/2023 12:16:24'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/12/2024 15:12:01'!
 recoverViewOf: aMathItem 
 	"a redo math item event : a math item has been recalled, find its morph "
 	| itemMorph |
@@ -8277,8 +8280,14 @@ recoverViewOf: aMathItem
 		detect: [:morph | morph mathItem == aMathItem]
 		ifFound: [:morph | morph ]
 		ifNone: [^ self itemView: aMathItem].
-	itemMorph mathItem: aMathItem.
-	itemMorph reInitialize.
+	itemMorph mathItem: aMathItem in: self.
+	itemMorph isBitmap 
+		ifTrue: [self addMorphBack: itemMorph ]
+		ifFalse: [self addMorph: itemMorph].
+	itemMorph 
+		labelMorph: itemMorph mathItem name	;
+		forcedVisibility: false;
+		restoreNormalColor.
 	undoneViews := undoneViews copyWithout: itemMorph.
 	itemViews add: itemMorph! !
 
@@ -8480,12 +8489,6 @@ printOn: aStream
 handlesMouseDown: evt
 	^ false! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/5/2021 12:03:16'!
-addMyMorph
-	self isBitmap 
-		ifTrue: [self drawable addMorphBack: self]
-		ifFalse: [self drawable addMorph: self]! !
-
 !DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:36:57'!
 addMyMorphTo: aDrawable
 	self isBitmap 
@@ -8497,16 +8500,6 @@ initialize
 	super initialize.
 	self style: (self styleClass newWith: self).
 	self labelMorph: mathItem name.! !
-
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/29/2021 17:22:01'!
-reInitialize
-	"we recover from an undo operation, so let's reInitialize some of my
-	aspect "
-	self registerEvents.
-	self addMyMorph.
-	self redrawNeeded.
-	self labelMorph: mathItem name.
-	self forcedVisibility: false! !
 
 !DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:32:41'!
 registerEvents
@@ -8819,10 +8812,9 @@ writeAttributesTo: aNode
 	style writeAttributesTo: aNode.
 ! !
 
-!DrGMorph class methodsFor: 'instance creation' stamp: 'hlsf 4/12/2024 12:41:32'!
+!DrGMorph class methodsFor: 'instance creation' stamp: 'hlsf 4/12/2024 15:01:43'!
 for: aMathItem in: aDrawable
 	^ (aMathItem morphClass basicNew)
-		registerEventsIn: aDrawable ;
 		mathItem: aMathItem in: aDrawable;
 		initialize;
 		addMyMorphTo: aDrawable;
