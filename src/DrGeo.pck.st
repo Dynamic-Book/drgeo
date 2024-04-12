@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 11:45:19 am'!
+'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 1:00:11 pm'!
 'Description '!
-!provides: 'DrGeo' 1 707!
+!provides: 'DrGeo' 1 709!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -602,7 +602,7 @@ UnderMouseMorph class
 
 !classDefinition: #DrGMorph category: #'DrGeo-View-Item'!
 Morph subclass: #DrGMorph
-	instanceVariableNames: 'drawable mathItem color style labelMorph blink'
+	instanceVariableNames: 'mathItem color style labelMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-View-Item'!
@@ -7597,21 +7597,21 @@ initialize
 	self borderColor: (self borderColor alpha: 0.7).
 ! !
 
-!DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 9/23/2021 12:04:49'!
+!DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 4/12/2024 12:22:33'!
 mouseButton1Down: aMouseButtonEvent localPosition: localEventPosition
 	"click outside => step blinking the selected item "
 	(stayUp or: [(self coversLocalPoint:localEventPosition) or: [selectedItem isNil]]) 
 		ifFalse: [
-			selectedItem arguments first first stopBlinking.
+			selectedItem arguments first first stopStepping. " blinking"
 			tool reset].
 	super mouseButton1Down: aMouseButtonEvent localPosition: localEventPosition ! !
 
-!DrGDrawableMenu methodsFor: 'control' stamp: 'hlsf 8/3/2021 13:00:14'!
+!DrGDrawableMenu methodsFor: 'control' stamp: 'hlsf 4/12/2024 12:23:15'!
 selectItem: aMenuItem 
 	selectedItem ifNotNil:[
-		selectedItem arguments first first stopBlinking].
+		selectedItem arguments first first stopStepping " blinking"].
 	aMenuItem ifNotNil:[
-		aMenuItem arguments first first startBlinking].
+		aMenuItem arguments first first startStepping " blinking"].
 	^ super selectItem: aMenuItem ! !
 
 !DrGDrawableMenu methodsFor: 'accessing' stamp: 'hlsf 5/6/2020 14:17:28'!
@@ -8230,9 +8230,8 @@ release
 	self domain removeActionsWithReceiver: self.
 	itemViews do: [:each | each release]! !
 
-!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 8/4/2023 11:08:35'!
+!DrGDrawable methodsFor: 'item-view' stamp: 'hlsf 4/12/2024 12:49:06'!
 deleteItemView: aMorph
-	aMorph release.
 	undoneViews add: aMorph.
 	itemViews := itemViews copyWithout: aMorph.
 	! !
@@ -8388,17 +8387,13 @@ includeInNewMorphMenu
 color: aColor
 	color := aColor! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 11:00:13'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 12:32:25'!
 domain
-	^ drawable domain! !
+	^ self drawable domain! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 11:00:06'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 12:32:31'!
 drawable
-	^ drawable ! !
-
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 11:00:30'!
-drawable: aDrawable
-	drawable  :=	 aDrawable ! !
+	^ owner ! !
 
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 5/24/2023 19:16:26'!
 fontSize: aSmallInteger 
@@ -8428,6 +8423,12 @@ mathItem: aMathItem
 	mathItem := aMathItem.
 	self registerEvents.! !
 
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 12:40:58'!
+mathItem: aMathItem in: aDrawable
+	self removeEvents.
+	mathItem := aMathItem.
+	self registerEventsIn: aDrawable .! !
+
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 8/5/2021 16:05:18'!
 morphCenter
 "Our center in our drawable"
@@ -8444,9 +8445,9 @@ name: aString
 	self labelMorph: mathItem name
 ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 17:58:05'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 12:32:36'!
 presenter
-	^ drawable presenter ! !
+	^ self drawable presenter ! !
 
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 3/30/2021 13:56:00'!
 style
@@ -8460,9 +8461,9 @@ style: aStyle
 styleClass
 	^DrGStyle! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 8/4/2023 12:47:01'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 12:32:51'!
 view
-	^ drawable view! !
+	^ self drawable view! !
 
 !DrGMorph methodsFor: 'printing' stamp: 'hlsf 4/3/2021 15:17:35'!
 asString
@@ -8485,10 +8486,15 @@ addMyMorph
 		ifTrue: [self drawable addMorphBack: self]
 		ifFalse: [self drawable addMorph: self]! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 11:25:04'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:36:57'!
+addMyMorphTo: aDrawable
+	self isBitmap 
+		ifTrue: [aDrawable addMorphBack: self]
+		ifFalse: [aDrawable addMorph: self]! !
+
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:18:45'!
 initialize
 	super initialize.
-	blink := false.
 	self style: (self styleClass newWith: self).
 	self labelMorph: mathItem name.! !
 
@@ -8502,14 +8508,14 @@ reInitialize
 	self labelMorph: mathItem name.
 	self forcedVisibility: false! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 8/4/2023 11:08:03'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:32:41'!
 registerEvents
 	mathItem
 		ifNotNil: [
 			mathItem
 				when: #deletedMathItem
 				send: #deleteItemView:
-				to: drawable 
+				to: self drawable 
 				with: self.
 			mathItem 
 				when: #updateMyView
@@ -8517,12 +8523,26 @@ registerEvents
 				to: self domain].
 	self flag: #drgeoEvent! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/27/2023 12:30:11'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:38:50'!
+registerEventsIn: aDrawable
+	mathItem
+		ifNotNil: [
+			mathItem
+				when: #deletedMathItem
+				send: #deleteItemView:
+				to: aDrawable
+				with: self.
+			mathItem 
+				when: #updateMyView
+				send: #updateAllMathItems
+				to: aDrawable domain].
+	self flag: #drgeoEvent! !
+
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:52:14'!
 release
 	" Flying morph use it. Read DrGMathItemBuilder>>reset "
-	self drawable removeMorph: self.
 	self removeLabelMorph.
-	
+	self drawable ifNotNil: [:aDrawable | aDrawable removeMorph: self].
 	self flag: #drgeoEvent.
 	self removeEvents.! !
 
@@ -8532,10 +8552,10 @@ removeEvents
 		[mathItem removeActionsWithReceiver: self].
 	self breakDependents ! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/3/2021 15:33:38'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:51:46'!
 removeLabelMorph
 	labelMorph ifNotNil:
-		[self drawable removeMorph: labelMorph.
+		[self drawable ifNotNil: [:aDrawable | aDrawable removeMorph: labelMorph].
 		labelMorph := nil]! !
 
 !DrGMorph methodsFor: 'label' stamp: 'hlsf 4/12/2024 11:10:26'!
@@ -8584,14 +8604,9 @@ updateLabelStatus
 		labelMorph show.
 		labelMorph 	morphPosition: self labelPosition].! !
 
-!DrGMorph methodsFor: 'stepping and presenter'!
-startBlinking
-	blink := true.
-	self startStepping ! !
-
-!DrGMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 3/30/2024 09:57:50'!
+!DrGMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 4/12/2024 12:06:19'!
 step
-	blink ifFalse: [^self].
+	self isBlinking ifFalse: [^self].
 	super step.
 	color = DrGTypeColor blinkingColor 
 		ifTrue: [color := Theme current adjustColor: style color]
@@ -8601,11 +8616,6 @@ step
 !DrGMorph methodsFor: 'stepping and presenter'!
 stepTime
 	^500! !
-
-!DrGMorph methodsFor: 'stepping and presenter'!
-stopBlinking
-	blink := false.
-	self stopStepping.! !
 
 !DrGMorph methodsFor: 'stepping and presenter' stamp: 'drgeo 9/10/2022 14:49:17'!
 stopStepping
@@ -8631,6 +8641,12 @@ Other straight line morph use VectorGraphics detection, see contrainsPoint:"
 	closestPoint := mathItem closestPointTo: worldPoint.
 	^ (closestPoint squaredDistanceTo: worldPoint ) <= (self drawable pixelToWorld: 5) squared
 	! !
+
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 4/12/2024 12:12:24'!
+isBlinking
+	^ self world 
+		ifNotNil: [:w | w isStepping: self			] 
+		ifNil: [false]! !
 
 !DrGMorph methodsFor: 'testing' stamp: 'hlsf 8/5/2021 15:08:51'!
 isDrawNeeded
@@ -8803,13 +8819,13 @@ writeAttributesTo: aNode
 	style writeAttributesTo: aNode.
 ! !
 
-!DrGMorph class methodsFor: 'instance creation' stamp: 'hlsf 8/4/2023 11:03:41'!
+!DrGMorph class methodsFor: 'instance creation' stamp: 'hlsf 4/12/2024 12:41:32'!
 for: aMathItem in: aDrawable
 	^ (aMathItem morphClass basicNew)
-		drawable: aDrawable ;
-		mathItem: aMathItem;
+		registerEventsIn: aDrawable ;
+		mathItem: aMathItem in: aDrawable;
 		initialize;
-		addMyMorph;
+		addMyMorphTo: aDrawable;
 		redrawNeeded;
 		yourself! !
 
@@ -9035,9 +9051,9 @@ constrainedLabelPosition: aPosition
 labelPosition
 	^(self drawable worldToMorph: (mathItem pointAt: anchorAbscissa)) + self labelPositionDelta! !
 
-!DrGCurveMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 3/30/2024 10:03:39'!
+!DrGCurveMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 4/12/2024 12:06:11'!
 step
-	blink ifFalse: [^self].
+	self isBlinking ifFalse: [^self].
 	super step.
 	borderColor = DrGTypeColor blinkingColor 
 		ifTrue: [borderColor := Theme current adjustColor: style borderColor]
@@ -9457,12 +9473,10 @@ arrowPrototype
 	aa arrow: #forward.
 	^ aa! !
 
-!DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 8/4/2023 11:02:11'!
+!DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 4/12/2024 12:53:57'!
 from: start to: end color: lineColor width: width in: aDrawable
-	| instance |
-	instance := self new vertices: {start. end} color: nil borderWidth: width borderColor: lineColor.
-	instance	 drawable: aDrawable .
-	^ instance ! !
+	^ self new vertices: {start. end} color: nil borderWidth: width borderColor: lineColor.
+	! !
 
 !DrGPolylineMorph class methodsFor: 'instance creation' stamp: 'hlsf 5/23/2021 13:19:38'!
 vertices: verts color: c borderColor: bc
@@ -29978,14 +29992,14 @@ mathItem
 morph
 	^morph ! !
 
-!DrGTool methodsFor: 'accessing' stamp: 'hlsf 2/10/2022 11:53:09'!
+!DrGTool methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 12:23:50'!
 morph: aMorph
 	morph ifNotNil: [
-		morph stopBlinking.
+		morph stopStepping. "Blinking"
 		presenter controlsManager tree ifNotNil: [:aTree | aTree mathItem: nil]].
 	morph := aMorph.
 	morph ifNotNil: [
-		morph startBlinking.
+		morph startStepping. " blinking"
 		presenter controlsManager tree ifNotNil: [:aTree | aTree mathItem: morph mathItem]
 	]
 	! !
@@ -30151,13 +30165,13 @@ reset
 	self builder reset.
 	selectedMorphs := OrderedCollection new! !
 
-!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 4/11/2021 12:28:26'!
+!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 4/12/2024 12:24:04'!
 startBlinking
-	selectedMorphs do: [ :aMorph | aMorph startBlinking ]! !
+	selectedMorphs do: [ :aMorph | aMorph startStepping " blinking"]! !
 
-!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 4/11/2021 12:28:32'!
+!DrGBuildTool methodsFor: 'updating' stamp: 'hlsf 4/12/2024 12:21:34'!
 stopBlinking
-	selectedMorphs do: [ :aMorph | aMorph stopBlinking ]! !
+	selectedMorphs do: [ :aMorph | aMorph stopStepping ]! !
 
 !DrGBuildTool methodsFor: 'accessing'!
 builder
@@ -30861,11 +30875,11 @@ handleChoice: aMorphCollection
 			[self context reset.
 			^false]! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/3/2023 20:55:54'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 4/12/2024 12:22:01'!
 handleChoice: aMorphCollection 
 "In this state, handle a choice to merge two points"
 	aMorphCollection ifNotEmpty: [
-		aMorphCollection do: [:aCostume | aCostume stopBlinking].
+		aMorphCollection do: [:aMorph | aMorph stopStepping " blinking"].
 		self context mathItem point: (self drawable morphToWorld: self context start).
 		self context domain 
 			merge: self context mathItem with: aMorphCollection first mathItem.
@@ -34122,6 +34136,11 @@ morphCenter
 morphCenter: aPoint
 "Positionning centered in its owner, according to its extent"
 	self morphPosition: aPoint - (extent // 2) + (`1@1`)! !
+
+!WorldMorph methodsFor: '*DrGeo-testing' stamp: 'hlsf 4/12/2024 12:15:36'!
+isStepping: aMorph
+" Does this morph stepping? "
+	^ stepList 		anySatisfy: [:aStepMessage | aStepMessage receiver == aMorph] ! !
 
 !MenuItemMorph methodsFor: '*DrGeo' stamp: 'hlsf 1/3/2022 09:01:34'!
 arguments
