@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 3:20:22 pm'!
+'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 5:55:12 pm'!
 'Description '!
-!provides: 'DrGeo' 1 710!
+!provides: 'DrGeo' 1 711!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7136,11 +7136,10 @@ shouldAutoHighlight
 shoutMustKeepContentsSize
 	^ true! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 4/12/2024 15:15:22'!
+!DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 4/12/2024 17:54:59'!
 delete
-	TimeProfileBrowser onBlock: [
-		super delete.
-		self releaseMiniView ]! !
+	super delete.
+	self releaseMiniView! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'submorphs-add/remove' stamp: 'hlsf 8/4/2023 12:58:33'!
 releaseMiniView
