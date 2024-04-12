@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 11 April 2024 at 10:50:56 am'!
+'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 10:44:01 am'!
 'Description '!
-!provides: 'DrGeo' 1 704!
+!provides: 'DrGeo' 1 705!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -484,7 +484,7 @@ DrGDebuggerWindow class
 SystemWindow subclass: #DrGeoView
 	instanceVariableNames: 'presenter drawable'
 	classVariableNames: ''
-	poolDictionaries: 'nil'
+	poolDictionaries: ''
 	category: 'DrGeo-View'!
 !classDefinition: 'DrGeoView class' category: #'DrGeo-View'!
 DrGeoView class
@@ -2354,7 +2354,7 @@ DrGeoScript174591904 class
 Object subclass: #DrGIcons
 	instanceVariableNames: ''
 	classVariableNames: ''
-	poolDictionaries: 'nil'
+	poolDictionaries: ''
 	category: 'DrGeo-View'!
 !classDefinition: 'DrGIcons class' category: #'DrGeo-View'!
 DrGIcons class
@@ -2364,7 +2364,7 @@ DrGIcons class
 Object subclass: #DrGUIControlsManager
 	instanceVariableNames: 'presenter tools statusBar tree treeView editPanel quickToolbar view'
 	classVariableNames: ''
-	poolDictionaries: 'nil'
+	poolDictionaries: ''
 	category: 'DrGeo-View'!
 !classDefinition: 'DrGUIControlsManager class' category: #'DrGeo-View'!
 DrGUIControlsManager class
