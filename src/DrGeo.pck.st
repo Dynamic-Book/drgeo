@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 10:44:01 am'!
+'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 11:29:31 am'!
 'Description '!
-!provides: 'DrGeo' 1 705!
+!provides: 'DrGeo' 1 706!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -462,7 +462,7 @@ DrGeoMiniView class
 
 !classDefinition: #DrGLabel category: #'DrGeo-View'!
 LabelMorph subclass: #DrGLabel
-	instanceVariableNames: 'blink itemMorph'
+	instanceVariableNames: 'blink itemMorph delta'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-View'!
@@ -602,7 +602,7 @@ UnderMouseMorph class
 
 !classDefinition: #DrGMorph category: #'DrGeo-View-Item'!
 Morph subclass: #DrGMorph
-	instanceVariableNames: 'drawable mathItem color style labelMorph labelPositionDelta blink'
+	instanceVariableNames: 'drawable mathItem color style labelMorph blink'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-View-Item'!
@@ -2330,26 +2330,6 @@ Object subclass: #DrGeoUserScript
 DrGeoUserScript class
 	instanceVariableNames: 'argumentsType'!
 
-!classDefinition: #DrGeoScript161808832 category: #'DrGeo-Model-Script'!
-DrGeoUserScript subclass: #DrGeoScript161808832
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Script'!
-!classDefinition: 'DrGeoScript161808832 class' category: #'DrGeo-Model-Script'!
-DrGeoScript161808832 class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGeoScript174591904 category: #'DrGeo-Model-Script'!
-DrGeoUserScript subclass: #DrGeoScript174591904
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Script'!
-!classDefinition: 'DrGeoScript174591904 class' category: #'DrGeo-Model-Script'!
-DrGeoScript174591904 class
-	instanceVariableNames: ''!
-
 !classDefinition: #DrGIcons category: #'DrGeo-View'!
 Object subclass: #DrGIcons
 	instanceVariableNames: ''
@@ -3055,9 +3035,10 @@ I am a linked sample of a locus with:
 I am a DrGeo view without toolbar, I only come with the wheels and the top menu. I am used to display computed sketches (i.e. sketches constrcuted from Smalltalk code with the DrGeo API)!
 
 !DrGLabel commentStamp: '<historical>' prior: 0!
-I am label sticked arround a math object.
+I am a label sticked arround a math object.
 I can be dragged arround the objet and renammed from the Style tool.
-- itemMorph is the view of a math Item I am attached too!
+- itemMorph is the view of a math Item I am attached too
+- delta : my x@y delta to the reference point of the itemMorph I am attached to!
 
 !DrGDebuggerWindow commentStamp: '<historical>' prior: 0!
 A simplified Debugger window, with translated labels and helps.!
@@ -6059,12 +6040,21 @@ mouseMove: evt localPosition: deltaVector
 		self morphPosition: itemMorph labelPosition].
 ! !
 
-!DrGLabel methodsFor: 'initialization' stamp: 'hlsf 4/11/2021 11:56:54'!
+!DrGLabel methodsFor: 'initialization' stamp: 'hlsf 4/12/2024 11:04:56'!
 initialize
 	super initialize.
 	blink := false.
+	delta := 7@7.
 	self font: DrGeoSystem canvasFont
 ! !
+
+!DrGLabel methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 11:09:41'!
+delta
+	^ delta! !
+
+!DrGLabel methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 11:09:52'!
+delta: aPoint
+	delta := aPoint! !
 
 !DrGLabel methodsFor: 'accessing' stamp: 'hlsf 4/11/2021 11:56:58'!
 morph: aDrGMorph
@@ -8414,6 +8404,10 @@ drawable: aDrawable
 fontSize: aSmallInteger 
 ! !
 
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 11:24:33'!
+labelPositionDelta
+	^ labelMorph delta! !
+
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 3/30/2021 13:58:02'!
 locked
 	^ mathItem isLocked! !
@@ -8491,11 +8485,10 @@ addMyMorph
 		ifTrue: [self drawable addMorphBack: self]
 		ifFalse: [self drawable addMorph: self]! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 3/9/2023 16:36:08'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 11:25:04'!
 initialize
 	super initialize.
 	blink := false.
-	labelPositionDelta := 7@7.
 	self style: (self styleClass newWith: self).
 	self labelMorph: mathItem name.! !
 
@@ -8545,13 +8538,13 @@ removeLabelMorph
 		[self drawable removeMorph: labelMorph.
 		labelMorph := nil]! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 3/14/2023 21:01:38'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 4/12/2024 11:10:26'!
 computeLabelPositionDelta: aVector
 	| distance  |
 	labelMorph ifNil: [ ^ `0 @ 0` ].
 	"Authorized distance to the item"
 	distance := aVector r min: 40.
-	labelPositionDelta := aVector normalized * distance - labelMorph morphCenter! !
+	labelMorph delta: aVector normalized * distance - labelMorph morphCenter! !
 
 !DrGMorph methodsFor: 'label' stamp: 'hlsf 4/3/2021 15:16:31'!
 constrainedLabelPosition: aVector
@@ -8579,10 +8572,10 @@ labelPosition
 "get an up to date label position in the drawable world coordinates"
 	self subclassResponsibility! !
 
-!DrGMorph methodsFor: 'label' stamp: 'hlsf 4/3/2021 15:15:02'!
+!DrGMorph methodsFor: 'label' stamp: 'hlsf 4/12/2024 11:17:21'!
 labelPositionDelta: aPoint
 "The position of the label from its math object"
-	labelPositionDelta := aPoint! !
+	labelMorph ifNotNil: [labelMorph delta: aPoint]! !
 
 !DrGMorph methodsFor: 'label' stamp: 'hlsf 5/20/2023 10:36:17'!
 updateLabelStatus
@@ -8802,9 +8795,9 @@ writeAsXmlTo: aNode
 "We wrote from the morph because it knows the model, the view and the style"
 	self writeAttributesTo: (mathItem writeAsXmlTo: aNode)! !
 
-!DrGMorph methodsFor: 'xml writting' stamp: 'hlsf 3/28/2022 14:10:27'!
+!DrGMorph methodsFor: 'xml writting' stamp: 'hlsf 4/12/2024 11:21:10'!
 writeAttributesTo: aNode 
-	aNode	attributeAt: #delta put: labelPositionDelta asString.
+	labelMorph ifNotNil: [aNode	attributeAt: #delta put: self labelPositionDelta asString].
 	self isLockable ifTrue: [
 		aNode attributeAt: #locked put: mathItem isLocked asString capitalized].
 	style writeAttributesTo: aNode.
@@ -8990,9 +8983,9 @@ constrainedLabelPosition: aVector
 	self computeLabelPositionDelta: aVector
 	! !
 
-!DrGBitmapMorph methodsFor: 'label' stamp: 'hlsf 4/6/2021 19:07:19'!
+!DrGBitmapMorph methodsFor: 'label' stamp: 'hlsf 4/12/2024 11:08:59'!
 labelPosition
-	^(self drawable worldToMorph: mathItem topCenter) + labelPositionDelta ! !
+	^(self drawable worldToMorph: mathItem topCenter) + self labelPositionDelta ! !
 
 !DrGBitmapMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/6/2021 19:10:01'!
 initialize 
@@ -9038,9 +9031,9 @@ constrainedLabelPosition: aPosition
 	self computeLabelPositionDelta: aPosition - center.
 ! !
 
-!DrGCurveMorph methodsFor: 'label' stamp: 'hlsf 4/4/2021 19:08:17'!
+!DrGCurveMorph methodsFor: 'label' stamp: 'hlsf 4/12/2024 11:09:05'!
 labelPosition
-	^(self drawable worldToMorph: (mathItem pointAt: anchorAbscissa)) + labelPositionDelta! !
+	^(self drawable worldToMorph: (mathItem pointAt: anchorAbscissa)) + self labelPositionDelta! !
 
 !DrGCurveMorph methodsFor: 'stepping and presenter' stamp: 'hlsf 3/30/2024 10:03:39'!
 step
@@ -9924,9 +9917,9 @@ constrainedLabelPosition: unconstrainedPosition
 	self computeLabelPositionDelta: unconstrainedPosition - center
 	! !
 
-!DrGPointMorph methodsFor: 'label' stamp: 'hlsf 4/5/2021 11:42:02'!
+!DrGPointMorph methodsFor: 'label' stamp: 'hlsf 4/12/2024 11:09:17'!
 labelPosition
-	^(self drawable worldToMorph: mathItem point) + labelPositionDelta! !
+	^(self drawable worldToMorph: mathItem point) + self labelPositionDelta! !
 
 !DrGPointMorph methodsFor: 'testing type' stamp: 'hlsf 4/5/2021 11:37:24'!
 isPoint
@@ -18170,40 +18163,6 @@ description
 scriptName
 "I appear in the scripts menu"
 	^ 'A script' translated! !
-
-!DrGeoScript161808832 methodsFor: 'public' stamp: 'hlsf 4/9/2024 15:38:40'!
-compute
-"Edit me"
-	^1+3.5 / 0.5! !
-
-!DrGeoScript161808832 class methodsFor: 'public' stamp: 'hlsf 4/9/2024 15:31:57'!
-description
-	^'te'! !
-
-!DrGeoScript161808832 class methodsFor: 'public' stamp: 'hlsf 4/9/2024 15:38:58'!
-scriptName
-	^'test pour faire une addition'! !
-
-!DrGeoScript161808832 class methodsFor: 'private' stamp: 'hlsf 4/9/2024 15:31:57'!
-newArgumentsType
-	^{}! !
-
-!DrGeoScript174591904 methodsFor: 'public' stamp: 'hlsf 4/9/2024 10:39:14'!
-compute
-"Edit me"
-	^1+1! !
-
-!DrGeoScript174591904 class methodsFor: 'public' stamp: 'hlsf 4/9/2024 10:39:14'!
-description
-	^'dfdf'! !
-
-!DrGeoScript174591904 class methodsFor: 'public' stamp: 'hlsf 4/9/2024 10:39:14'!
-scriptName
-	^'Test'! !
-
-!DrGeoScript174591904 class methodsFor: 'private' stamp: 'hlsf 4/9/2024 10:39:14'!
-newArgumentsType
-	^{DrGAngleItem.DrGArcItem}! !
 
 !DrGIcons class methodsFor: 'accessing'!
 angleGeometric
