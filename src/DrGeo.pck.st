@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 11:29:31 am'!
+'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 11:45:19 am'!
 'Description '!
-!provides: 'DrGeo' 1 706!
+!provides: 'DrGeo' 1 707!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -34006,25 +34006,6 @@ printParenthesisOn: aStream
 !Color methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 11:00:59'!
 hexHtml
 	^ '#', self hexStringRGB ! !
-
-!Class methodsFor: '*DrGeo-subclass creation' stamp: 'hlsf 4/18/2020 21:29:40'!
-subclass: t instanceVariableNames: f classVariableNames: d package: cat
-"This is a hack to import DrGeo Pharo code"
-	
-	| answer |
-	answer := ClassBuilder new
-		superclass: self
-		subclass: t
-		instanceVariableNames: f
-		classVariableNames: d
-		poolDictionaries: nil
-		category: cat.
-		
-	Smalltalk
-		logChange: answer definition 
-		preamble: answer definitionPreamble.
-	^answer
-! !
 
 !SequenceableCollection methodsFor: '*DrGeo' stamp: 'hlsf 2/24/2022 22:32:55'!
 shiftRight
