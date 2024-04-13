@@ -1,6 +1,6 @@
-'From Cuis6.2 [latest update: #6156] on 28 January 2024 at 5:23:05 pm'!
+'From Cuis6.3 [latest update: #6319] on 13 April 2024 at 11:23:35 am'!
 'Description '!
-!provides: 'DrGeoFrench' 1 10!
+!provides: 'DrGeoFrench' 1 11!
 SystemOrganization addCategory: #DrGeoFrench!
 
 
@@ -1715,13 +1715,17 @@ ordonnéeDe: wrpItem
 penteDe: wrpLine
 	^ self slopeOf: wrpLine! !
 
-!DrGeoFigure methodsFor: 'value'!
-valeurLibre: aNumber
-	^ self freeValue: aNumber ! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:09:26'!
+valeur: aNumberOrBlock
+	^ self value: aNumberOrBlock ! !
 
-!DrGeoFigure methodsFor: 'value'!
-valeurLibre: aNumber a: aPosition
-	^ self freeValue: aNumber at: aPosition! !
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:10:53'!
+valeur: aNumberOrBlock parent: wrpValue
+	^ self value: aNumberOrBlock parent: wrpValue! !
+
+!DrGeoFigure methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:10:17'!
+valeur: aNumberOrBlock parents: wrpValueArray à: aPosition
+	^ self value: aNumberOrBlock parents: wrpValueArray at: aPosition! !
 
 !DrGeoFigure methodsFor: 'transformations' stamp: 'hlsf 12/21/2022 14:26:15'!
 homothétieDe: wrpItem centre: wrpCenter facteur: wrpValue
@@ -2769,18 +2773,6 @@ pointillé
 tiret
 	self dashed ! !
 
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
-remplir
-	self filled! !
-
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
-transparent
-	self translucent! !
-
-!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
-vider
-	self unfilled! !
-
 !DrGWrappedFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:28'!
 flècheDebut
 	self backArrow! !
@@ -2792,6 +2784,18 @@ flècheFin
 !DrGWrappedFinitCurve methodsFor: '*DrGeoFrench' stamp: 'hlsf 12/21/2022 14:56:33'!
 flèches
 	self bothArrows ! !
+
+!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
+remplir
+	self filled! !
+
+!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
+transparent
+	self translucent! !
+
+!DrGWrappedFilledCurve methodsFor: '*DrGeoFrench'!
+vider
+	self unfilled! !
 
 !DrGWrappedSegment methodsFor: '*DrGeoFrench'!
 marquerAucun

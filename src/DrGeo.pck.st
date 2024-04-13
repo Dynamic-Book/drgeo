@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 12 April 2024 at 5:55:12 pm'!
+'From Cuis6.3 [latest update: #6319] on 13 April 2024 at 11:23:38 am'!
 'Description '!
-!provides: 'DrGeo' 1 711!
+!provides: 'DrGeo' 1 712!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -1650,18 +1650,8 @@ DrGMathItem subclass: #DrGPointItem
 DrGPointItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointCoordinateItem category: #'DrGeo-Model-Item'!
-DrGPointItem subclass: #DrGPointCoordinateItem
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointCoordinateItem class' category: #'DrGeo-Model-Item'!
-DrGPointCoordinateItem class
-	instanceVariableNames: ''!
-
 !classDefinition: #DrGPointBlockItem category: #'DrGeo-Model-Item'!
-DrGPointCoordinateItem subclass: #DrGPointBlockItem
+DrGPointItem subclass: #DrGPointBlockItem
 	instanceVariableNames: 'pointBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -1670,14 +1660,14 @@ DrGPointCoordinateItem subclass: #DrGPointBlockItem
 DrGPointBlockItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointScriptItem category: #'DrGeo-Model-Item'!
-DrGPointCoordinateItem subclass: #DrGPointScriptItem
+!classDefinition: #DrGPointCoordinateItem category: #'DrGeo-Model-Item'!
+DrGPointItem subclass: #DrGPointCoordinateItem
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGPointScriptItem class' category: #'DrGeo-Model-Item'!
-DrGPointScriptItem class
+!classDefinition: 'DrGPointCoordinateItem class' category: #'DrGeo-Model-Item'!
+DrGPointCoordinateItem class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGPointFreeItem category: #'DrGeo-Model-Item'!
@@ -1758,6 +1748,16 @@ DrGPointItem subclass: #DrGPointRotationItem
 	category: 'DrGeo-Model-Item'!
 !classDefinition: 'DrGPointRotationItem class' category: #'DrGeo-Model-Item'!
 DrGPointRotationItem class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGPointScriptItem category: #'DrGeo-Model-Item'!
+DrGPointItem subclass: #DrGPointScriptItem
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Item'!
+!classDefinition: 'DrGPointScriptItem class' category: #'DrGeo-Model-Item'!
+DrGPointScriptItem class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGPointSymmetryItem category: #'DrGeo-Model-Item'!
@@ -1968,6 +1968,16 @@ DrGComputedValueItem subclass: #DrGValueArclengthItem
 	category: 'DrGeo-Model-Item'!
 !classDefinition: 'DrGValueArclengthItem class' category: #'DrGeo-Model-Item'!
 DrGValueArclengthItem class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGValueBlockItem category: #'DrGeo-Model-Item'!
+DrGComputedValueItem subclass: #DrGValueBlockItem
+	instanceVariableNames: 'valueBlock'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Item'!
+!classDefinition: 'DrGValueBlockItem class' category: #'DrGeo-Model-Item'!
+DrGValueBlockItem class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGValueCircleperimeterItem category: #'DrGeo-Model-Item'!
@@ -3261,18 +3271,18 @@ Perpendicular bisector given two points, extremities of a segment!
 !DrGPointBlockItem commentStamp: '' prior: 0!
 Point item defined by a block closure!
 
+!DrGPointFreeItem commentStamp: '' prior: 0!
+I represent a free point in the plane!
+
+!DrGPointIntersectionItem commentStamp: '' prior: 0!
+k 				- (-1) or 1 when they are 2 intersection points!
+
 !DrGPointScriptItem commentStamp: '' prior: 0!
 A DrGPointByScriptItem is definied by the returned value of a script.
 The script valueItem should understand asPoint.
 
 Instance Variables
 !
-
-!DrGPointFreeItem commentStamp: '' prior: 0!
-I represent a free point in the plane!
-
-!DrGPointIntersectionItem commentStamp: '' prior: 0!
-k 				- (-1) or 1 when they are 2 intersection points!
 
 !DrGPolygonRegularItem commentStamp: '' prior: 0!
 A regular polygon defined by its center, a vertex and a value (number of summit).!
@@ -3286,11 +3296,17 @@ Define a geometric angle in the range  [0 ; 180[  given three points!
 !DrGAngleVectorsItem commentStamp: '' prior: 0!
 Define an oriented angle, in the range ]-180 ; 180]!
 
+!DrGComputedValueItem commentStamp: '<historical>' prior: 0!
+An abstract class for value calculated or extracted from the properties of mathematical objects.!
+
 !DrGEquationLineItem commentStamp: '' prior: 0!
 a line equation: 
 - provide a and b for the reduced equation: y = a . x + b
 - provide m otherwise for the equation x = m
 !
+
+!DrGValueBlockItem commentStamp: '<historical>' prior: 0!
+Value defined by a block closure!
 
 !DrGValueScriptItem commentStamp: '<historical>' prior: 0!
 Script
@@ -3344,7 +3360,7 @@ A set of helpers are present to use in the #compute method:
 
 Instance Variables
 - arguments : Array of DrGCostum, arguments this script uses in its computation
-- cosutme : the costume representing this script on the canvas, access only from its #costume message.
+- cosutme : the morph representing this script on the canvas, access only from its #costume message.
 		!
 
 !DrGIcons commentStamp: 'hlsf 4/26/2020 15:34:30' prior: 0!
@@ -10098,23 +10114,23 @@ initialize
 	super initialize.
 	hasContents := false.! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 4/13/2024 10:35:57'!
 testPointByCoordinates
 	|x y p|
-	x := sketch freeValue: 12.
-	y := sketch freeValue: -18.
+	x := sketch value: 12.
+	y := sketch value: -18.
 	p := sketch pointX: x Y: y.
 	self assert: p coordinates = (12 @ -18)   ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 4/13/2024 10:36:07'!
 testPointByCoordinatesUnicity
 	|x y p q|
-	x := sketch freeValue: 12.
-	y := sketch freeValue: -18.
+	x := sketch value: 12.
+	y := sketch value: -18.
 	p := sketch pointX: x Y: y.
 	q := sketch pointX: x Y: y.
 	self should: p mathItem == q mathItem.
-	q := sketch pointX: x Y:  (sketch freeValue: -18.1).
+	q := sketch pointX: x Y:  (sketch value: -18.1).
 	self shouldnt: p mathItem == q mathItem    ! !
 
 !DrGeoScriptTest methodsFor: 'testing-point'!
@@ -10346,26 +10362,26 @@ testPointReflexion
 	self assert: (b coordinates closeTo:  2.4@1.8).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 4/13/2024 10:36:14'!
 testPointRotation
 	| c v a b|
 	c := sketch point: 1@1.
-	v := sketch freeValue: Float pi / 3.  
+	v := sketch value: Float pi / 3.  
 	""
 	a := sketch point: 2@1.
 	b := sketch rotate: a center: c angle: v.
 	self assert: (b coordinates closeTo: 1.5@1.8660).
 	""
-	v := sketch freeValue:  (Float pi / 3) negated.  
+	v := sketch value:  (Float pi / 3) negated.  
 	b := sketch rotate: a center: c angle: v.
 	self assert: (b coordinates closeTo: 1.5@0.13397).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-point'!
+!DrGeoScriptTest methodsFor: 'testing-point' stamp: 'hlsf 4/13/2024 10:36:22'!
 testPointScale
 	| c k a b|
 	c := sketch point: 1@1.
-	k := sketch freeValue: 3.  
+	k := sketch value: 3.  
 	""
 	a := sketch point: 2@1.
 	b := sketch scale: a center: c factor: k.
@@ -10376,7 +10392,7 @@ testPointScale
 	self assert: b coordinates = (7@4).
 	""
 	a := sketch point: 2@1.
-	k := sketch freeValue: -3.  
+	k := sketch value: -3.  
 	b := sketch scale: a center: c factor: k.
 	self assert: b coordinates = (-2@1).
 	""
@@ -10546,13 +10562,13 @@ testSlope
 	recomputed := (3 - -5) / (2 - -5).
 	self should: (slope mathItem valueItem closeTo: recomputed).! !
 
-!DrGeoScriptTest methodsFor: 'testing-value'!
+!DrGeoScriptTest methodsFor: 'testing-value' stamp: 'hlsf 4/13/2024 10:36:52'!
 testValueFree
 	| v |
-	v := sketch freeValue: Float pi / 3.  
+	v := sketch value: Float pi / 3.  
 	self assert: (v mathItem valueItem closeTo: Float pi / 3).
 	""
-	v := sketch freeValue: 0.00001.  
+	v := sketch value: 0.00001.  
 	self assert: (v mathItem valueItem closeTo: 0.00001).
 ! !
 
@@ -10568,10 +10584,10 @@ testCircle
 	self should: (c mathItem center = (3@2)).
 	self should: (c mathItem contains: 8@2)	! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: 'hlsf 4/13/2024 10:35:29'!
 testCircleRadius
 	| c |
-	c := sketch circleCenter: (sketch point: 3@2) radius: (sketch freeValue: 5).
+	c := sketch circleCenter: (sketch point: 3@2) radius: (sketch value: 5).
 	self assert: c mathItem isCircleItem.
 	self assert: c mathItem isGeometricItem.
 	self assert: c mathItem isCurveItem.
@@ -10580,16 +10596,16 @@ testCircleRadius
 	self should: (c mathItem center = (3@2)).
 	self should: (c mathItem contains: 8@2)	! !
 
-!DrGeoScriptTest methodsFor: 'testing-circle'!
+!DrGeoScriptTest methodsFor: 'testing-circle' stamp: 'hlsf 4/13/2024 10:35:39'!
 testCircleRadiusUnicity
 	| a r c1 c2|
 	a := sketch point: 788@985.
-	r := sketch freeValue: 5.
+	r := sketch value: 5.
 	c1 := sketch circleCenter: a radius: r.   
 	c2 := sketch circleCenter: a radius: r.  
 	self assert: c1 mathItem == c2 mathItem.
 	""
-	r := sketch freeValue: 5.
+	r := sketch value: 5.
 	c2 := sketch circleCenter: a radius: r.  
 	self shouldnt: c1 mathItem == c2 mathItem.! !
 
@@ -10728,11 +10744,11 @@ testRayReflexion
 	self assert: (r2 mathItem direction closeTo: 2.2@0.4)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: 'hlsf 4/13/2024 10:36:27'!
 testRayRotation
 	| r1 r2 c k |
 	c := sketch point: 1 @ 1.
-	k := sketch freeValue: Float pi / 3.
+	k := sketch value: Float pi / 3.
 	""
 	r1 := sketch ray: 3@2 to: 2@4.
 	r2 := sketch rotate: r1 center: c angle: k.
@@ -10740,18 +10756,18 @@ testRayRotation
 	self assert: (r2 mathItem direction closeTo: -2.23205@0.133974)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-ray'!
+!DrGeoScriptTest methodsFor: 'testing-ray' stamp: 'hlsf 4/13/2024 10:36:34'!
 testRayScale
 	| r1 r2 c k |
 	c := sketch point: 1 @ 1.
-	k := sketch freeValue: 3.
+	k := sketch value: 3.
 	""
 	r1 := sketch ray: (sketch point: 3@2) to: (sketch point: 2@4).
 	r2 := sketch scale: r1 center: c factor: k.
 	self assert: (r2 mathItem origin closeTo: 7@4).
 	self assert: (r2 mathItem direction = (r1 mathItem direction * 3)).
 	""
-	k := sketch freeValue: -3.
+	k := sketch value: -3.
 	r2 := sketch scale: r1 center: c factor: k.
 	self assert: (r2 mathItem origin closeTo: -5@ -2).
 	self assert: (r2 mathItem direction = (r1 mathItem direction * -3))  
@@ -10862,11 +10878,11 @@ testLineReflexion
 	self assert: (l2 mathItem direction closeTo: 2.2@0.4)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 4/13/2024 10:35:45'!
 testLineRotation
 	| l1 l2 c k |
 	c := sketch point: 1 @ 1.
-	k := sketch freeValue: Float pi / 3.
+	k := sketch value: Float pi / 3.
 	""
 	l1 := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
 	l2 := sketch rotate: l1 center: c angle: k.
@@ -10874,18 +10890,18 @@ testLineRotation
 	self assert: (l2 mathItem direction closeTo: -2.23205@0.133974)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 4/13/2024 10:35:51'!
 testLineScale
 	| l1 l2 c k |
 	c := sketch point: 1 @ 1.
-	k := sketch freeValue: 3.
+	k := sketch value: 3.
 	""
 	l1 := sketch line: (sketch point: 3@2) to: (sketch point: 2@4).
 	l2 := sketch scale: l1 center: c factor: k.
 	self assert: (l2 mathItem origin closeTo: 7@4).
 	self assert: (l2 mathItem direction = (l1 mathItem direction * 3)).
 	""
-	k := sketch freeValue: -3.
+	k := sketch value: -3.
 	l2 := sketch scale: l1 center: c factor: k.
 	self assert: (l2 mathItem origin closeTo: -5@ -2).
 	self assert: (l2 mathItem direction = (l1 mathItem direction * -3))  
@@ -11333,11 +11349,11 @@ testSegmentReflexion
 	self assert: (v mathItem direction closeTo: 2.2@0.4)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: 'hlsf 4/13/2024 10:36:38'!
 testSegmentRotation
 	| u v c k |
 	c := sketch point: 1 @ 1.
-	k := sketch freeValue: Float pi / 3.
+	k := sketch value: Float pi / 3.
 	""
 	u := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
 	v := sketch rotate: u center: c angle: k.
@@ -11345,18 +11361,18 @@ testSegmentRotation
 	self assert: (v mathItem direction closeTo: -2.23205@0.133974)  
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-segment'!
+!DrGeoScriptTest methodsFor: 'testing-segment' stamp: 'hlsf 4/13/2024 10:36:45'!
 testSegmentScale
 	| u v c k |
 	c := sketch point: 1 @ 1.
-	k := sketch freeValue: 3.
+	k := sketch value: 3.
 	""
 	u := sketch segment: (sketch point: 3@2) to: (sketch point: 2@4).
 	v := sketch scale: u center: c factor: k.
 	self assert: (v mathItem origin closeTo: 7@4).
 	self assert: (v mathItem direction = (u mathItem direction * 3)). 
 	""
-	k := sketch freeValue: -3.
+	k := sketch value: -3.
 	v := sketch scale: u center: c factor: k.
 	self assert: (v mathItem origin closeTo: -5@ -2).
 	self assert: (v mathItem direction = (u mathItem direction * -3))  
@@ -12184,25 +12200,21 @@ middleOf: wrappedPoint1 and: wrappedPoint2
 	^ self finalizePoint: (DrGPointMiddle2ptsItem newWith: 
 		{(self wrappedPoint: wrappedPoint1) mathItem . (self wrappedPoint: wrappedPoint2) mathItem})! !
 
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/16/2022 22:40:07'!
+!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/13/2024 10:11:18'!
 point: aPointOrBlock
 	^ aPointOrBlock isPoint 
 		ifTrue:  [self finalizePoint: (DrGPointFreeItem newWith: {aPointOrBlock})]
-		ifFalse: [self finalizePoint: (DrGPointBlockItem newWith: (OrderedCollection with: aPointOrBlock)	)]! !
+		ifFalse: [self finalizePoint: (DrGPointBlockItem newWith: (Array with: aPointOrBlock)	)]! !
 
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/16/2022 22:40:12'!
+!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/13/2024 10:10:57'!
 point: block parent: wrpValue
-	|collection|
-	collection := OrderedCollection with: block.
-	collection add: wrpValue mathItem.
-	^ self finalizePoint: (DrGPointBlockItem newWith: collection)! !
+	^  self point: block parents: (Array with: wrpValue)! !
 
-!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/16/2022 22:40:16'!
+!DrGeoSketch methodsFor: 'point' stamp: 'hlsf 4/13/2024 10:21:43'!
 point: block parents: wrpValueArray
-	|collection|
-	collection := OrderedCollection with: block.
-	collection addAll: (wrpValueArray collect: [:wrp | wrp mathItem]).
-	^ self finalizePoint: (DrGPointBlockItem newWith: collection)! !
+	| array |
+	array := Array with: block withAll:  (wrpValueArray collect: [:wrp | wrp mathItem]).
+	^ self finalizePoint: (DrGPointBlockItem newWith: array)! !
 
 !DrGeoSketch methodsFor: 'point' stamp: 'hlsf 9/28/2022 17:34:43'!
 pointOnLine: wrpCurve at: abscissa 
@@ -12576,25 +12588,23 @@ finalizeValue: item
 "By default we don't hide the value"
 	^ self finalizeValue: item hide: false! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 9/28/2022 17:31:52'!
+!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 10:04:53'!
 finalizeValue: item hide: hide
-"By default we hide the value"
+" Optionally hide the value "
 	| wrappedItem |
 	wrappedItem := DrGWrappedValue wrap: (self morphOf: item).
 	 hide ifTrue: [ wrappedItem hide ].
 	^ wrappedItem! !
 
-!DrGeoSketch methodsFor: 'value'!
-freeValue: aNumber 
-	^ self freeValue: aNumber at: self aPosition! !
+!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:09:36'!
+freeValue: aNumberOrBlock
+" Obsolete use #value: message"
+	^ self value: aNumberOrBlock ! !
 
-!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 8/4/2023 20:05:38'!
-freeValue: aNumber at: aPosition
-	| answer |
-	presenter notInteractive: true.
-	answer := self finalizeValue: ((DrGValueValueItem newWith: {aPosition}) valueItem: aNumber).
-	presenter notInteractive: false.
-	^ answer! !
+!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 11:19:35'!
+freeValue: aNumberOrBlock at: aPosition
+" obsolete "
+	^ self value: aNumberOrBlock parents: {} at: aPosition! !
 
 !DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/16/2022 22:39:12'!
 geometricAngle: wrpPt1 to: wrpPt2 to: wrpPt3 
@@ -12639,11 +12649,37 @@ slopeOf: wrpLine
 	^ self
 		finalizeValue: (DrGValueSlopeItem newWith: {wrpLine mathItem. self aPosition})! !
 
-!DrGeoSketch methodsFor: 'value'!
+!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 10:31:34'!
+value: aNumberOrBlock
+	^ self value: aNumberOrBlock parents: {} at: self aPosition ! !
+
+!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 10:30:38'!
+value: aNumberOrBlock parent: wrpValue
+	^ self value: aNumberOrBlock parents: (Array with: wrpValue ) at: self aPosition ! !
+
+!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 10:59:54'!
+value: aNumberOrBlock parents: wrpValueArray at: aPosition
+	| answer |
+	presenter notInteractive: true.
+	aNumberOrBlock isBlock 
+	ifTrue: [ " Value defined by a block of code "
+		| collection |
+		collection := OrderedCollection new.
+		collection 
+			addAll: (wrpValueArray collect: [:wrp | wrp mathItem]);
+			add: aNumberOrBlock ;
+			add: aPosition.
+		answer := self finalizeValue: (DrGValueBlockItem newWith: collection asArray) 		] 
+	ifFalse: [" Value defined by a number, there is no parents "
+		answer := self finalizeValue: ((DrGValueValueItem newWith: {aPosition}) valueItem: aNumberOrBlock)	 ].	
+	presenter notInteractive: false.
+	^ answer! !
+
+!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 10:34:56'!
 wrappedValue: aNumberOrWrappedValueItem
 "ensure a wrapped value"
 	^ aNumberOrWrappedValueItem  isNumber 
-		ifTrue: [(self freeValue: aNumberOrWrappedValueItem ) hide] 
+		ifTrue: [(self value: aNumberOrWrappedValueItem ) hide] 
 		ifFalse:   [aNumberOrWrappedValueItem]! !
 
 !DrGeoSketch methodsFor: 'equation' stamp: 'hlsf 4/16/2022 22:39:04'!
@@ -15079,60 +15115,6 @@ isGeometricItem
 isPointItem
 	^ true! !
 
-!DrGPointCoordinateItem methodsFor: 'updating' stamp: 'hlsf 8/4/2023 17:22:24'!
-editPropertyIn: presenter
-	| holder |
-	holder := ValueHolder with: point.
-	holder action: [:newPoint | presenter domain propertyCommandFor: self with: newPoint].
-	^ PointEntryPanel open: holder label: 'Edit the coordinates' translated.! !
-
-!DrGPointCoordinateItem methodsFor: 'updating'!
-update
-	self doParentsExist ifTrue:
-		[self point: parents first valueItem @ parents second valueItem]. 
-! !
-
-!DrGPointCoordinateItem methodsFor: 'xml writing'!
-nodeType
-	^#Coordinate! !
-
-!DrGPointCoordinateItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:33:53'!
-isConstrainedPointItem
-	^ true! !
-
-!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 11/2/2022 23:11:07'!
-update
-| result |
-	self doParentsExist ifTrue:
-		[parents  
-			ifEmpty: [result := [ pointBlock value ] on: Error do: [exist := false]]
-			ifNotEmpty: [
-				parents size = 1
-				ifTrue: [result := [ pointBlock value: parents first ] on: Error do: [exist := false]]
-				ifFalse: [result := [pointBlock value: parents] on: Error do: [exist := false]]
-			].
-	exist ifTrue: [ self point: result ].
-	]! !
-
-!DrGPointBlockItem methodsFor: 'comparing'!
-= aMathItem
-	^ super = aMathItem and: [ pointBlock = aMathItem pointBlock ]! !
-
-!DrGPointBlockItem methodsFor: 'comparing'!
-rehash
-	^ hash := super rehash bitXor: pointBlock hash! !
-
-!DrGPointBlockItem methodsFor: 'xml writing'!
-nodeType
-	^#Block! !
-
-!DrGPointBlockItem methodsFor: 'xml writing'!
-writeAsXmlTo: aNode
-	|node|
-	node := super writeAsXmlTo: aNode.
-	node addElement: ((XMLElement named: #code) addContent: (XMLStringNode string: pointBlock asString)).
-	^node! !
-
 !DrGPointBlockItem methodsFor: 'accessing' stamp: 'hlsf 11/2/2022 23:04:49'!
 parents: aCollection
 	aCollection isEmptyOrNil ifTrue: [
@@ -15153,20 +15135,68 @@ pointBlock
 pointBlock: aBlock
 	pointBlock := aBlock ! !
 
-!DrGPointBlockItem methodsFor: 'testing'!
+!DrGPointBlockItem methodsFor: 'comparing'!
+= aMathItem
+	^ super = aMathItem and: [ pointBlock = aMathItem pointBlock ]! !
+
+!DrGPointBlockItem methodsFor: 'comparing'!
+rehash
+	^ hash := super rehash bitXor: pointBlock hash! !
+
+!DrGPointBlockItem methodsFor: 'testing' stamp: 'hlsf 4/13/2024 09:59:08'!
 doParentsExist 
-	^ super doParentsExist and: [pointBlock isNil not]
+	^ exist := super doParentsExist and: [pointBlock isNil not]
 ! !
 
-!DrGPointScriptItem methodsFor: 'updating'!
+!DrGPointBlockItem methodsFor: 'testing-model' stamp: 'hlsf 4/13/2024 09:36:30'!
+isConstrainedPointItem
+	^ true! !
+
+!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 11/2/2022 23:11:07'!
+update
+| result |
+	self doParentsExist ifTrue:
+		[parents  
+			ifEmpty: [result := [ pointBlock value ] on: Error do: [exist := false]]
+			ifNotEmpty: [
+				parents size = 1
+				ifTrue: [result := [ pointBlock value: parents first ] on: Error do: [exist := false]]
+				ifFalse: [result := [pointBlock value: parents] on: Error do: [exist := false]]
+			].
+	exist ifTrue: [ self point: result ].
+	]! !
+
+!DrGPointBlockItem methodsFor: 'xml writing'!
+nodeType
+	^#Block! !
+
+!DrGPointBlockItem methodsFor: 'xml writing' stamp: 'hlsf 4/13/2024 09:54:41'!
+writeAsXmlTo: aNode
+	|node|
+	node := super writeAsXmlTo: aNode.
+	node addElement: ((XMLElement named: #code) addContent: (XMLStringNode string: pointBlock decompile asString)).
+	^node! !
+
+!DrGPointCoordinateItem methodsFor: 'updating' stamp: 'hlsf 8/4/2023 17:22:24'!
+editPropertyIn: presenter
+	| holder |
+	holder := ValueHolder with: point.
+	holder action: [:newPoint | presenter domain propertyCommandFor: self with: newPoint].
+	^ PointEntryPanel open: holder label: 'Edit the coordinates' translated.! !
+
+!DrGPointCoordinateItem methodsFor: 'updating'!
 update
 	self doParentsExist ifTrue:
-		[self point: parents first valueItem asPoint]. 
+		[self point: parents first valueItem @ parents second valueItem]. 
 ! !
 
-!DrGPointScriptItem methodsFor: 'xml writing'!
+!DrGPointCoordinateItem methodsFor: 'xml writing'!
 nodeType
-	^#Script! !
+	^#Coordinate! !
+
+!DrGPointCoordinateItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:33:53'!
+isConstrainedPointItem
+	^ true! !
 
 !DrGPointFreeItem methodsFor: 'accessing'!
 isLocked
@@ -15564,6 +15594,20 @@ nodeType
 !DrGPointRotationItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:38:13'!
 isConstrainedPointItem
 	^true! !
+
+!DrGPointScriptItem methodsFor: 'updating'!
+update
+	self doParentsExist ifTrue:
+		[self point: parents first valueItem asPoint]. 
+! !
+
+!DrGPointScriptItem methodsFor: 'xml writing'!
+nodeType
+	^#Script! !
+
+!DrGPointScriptItem methodsFor: 'testing-model' stamp: 'hlsf 4/13/2024 09:37:30'!
+isConstrainedPointItem
+	^ true! !
 
 !DrGPointSymmetryItem methodsFor: 'updating'!
 update
@@ -16006,67 +16050,6 @@ adaptiveDescriptiveName
 isTextItem
 	^ true! !
 
-!DrGValueItem methodsFor: 'printing'!
-printNameOn: aStream
-	aStream nextPutAll: 'Value ' translated.
-! !
-
-!DrGValueItem methodsFor: 'printing'!
-printOn: aStream
-	self printTypeOn: aStream.
-	self printValueOn: aStream ! !
-
-!DrGValueItem methodsFor: 'printing'!
-printTypeOn: aStream
-|safeName|
-	self printNameOn: aStream.
-	(safeName := self safeName) ifNotEmpty: [	
-		aStream nextPutAll: self safeName;
-			nextPutAll: ' = '].
-! !
-
-!DrGValueItem methodsFor: 'printing'!
-printValueOn: aStream 
-	self printDecimal: value on: aStream ! !
-
-!DrGValueItem methodsFor: 'updating'!
-move: aPoint
-	self isLocked ifFalse: [self position: position + aPoint].
-! !
-
-!DrGValueItem methodsFor: 'updating'!
-moveParent: aPoint
-"Don't move my parent"
-	^false! !
-
-!DrGValueItem methodsFor: 'initialize-release'!
-initialize
-	super initialize.
-	value := 0! !
-
-!DrGValueItem methodsFor: 'initialize-release'!
-initialize: theParents
-	super initialize: theParents.
-	self position: theParents last! !
-
-!DrGValueItem methodsFor: 'private'!
-adaptiveDescriptiveName
-	^ 'This value %1' translated! !
-
-!DrGValueItem methodsFor: 'xml writing'!
-writeAsXmlPositionTo: aNode 
-	"return the newly created element"
-	aNode
-		addElement: ((XMLElement named: #x)
-				addContent: (XMLStringNode string: position x asString));
-		addElement: ((XMLElement named: #y)
-				addContent: (XMLStringNode string: position y asString)).
-	^ aNode! !
-
-!DrGValueItem methodsFor: 'computing'!
-closestPointTo: aPoint
-	^ position! !
-
 !DrGValueItem methodsFor: 'accessing'!
 basicType
 	 ^#value! !
@@ -16106,6 +16089,43 @@ position: aPoint
 valueItem
 	^value! !
 
+!DrGValueItem methodsFor: 'computing'!
+closestPointTo: aPoint
+	^ position! !
+
+!DrGValueItem methodsFor: 'initialize-release'!
+initialize
+	super initialize.
+	value := 0! !
+
+!DrGValueItem methodsFor: 'initialize-release'!
+initialize: theParents
+	super initialize: theParents.
+	self position: theParents last! !
+
+!DrGValueItem methodsFor: 'printing'!
+printNameOn: aStream
+	aStream nextPutAll: 'Value ' translated.
+! !
+
+!DrGValueItem methodsFor: 'printing'!
+printOn: aStream
+	self printTypeOn: aStream.
+	self printValueOn: aStream ! !
+
+!DrGValueItem methodsFor: 'printing'!
+printTypeOn: aStream
+|safeName|
+	self printNameOn: aStream.
+	(safeName := self safeName) ifNotEmpty: [	
+		aStream nextPutAll: self safeName;
+			nextPutAll: ' = '].
+! !
+
+!DrGValueItem methodsFor: 'printing'!
+printValueOn: aStream 
+	self printDecimal: value on: aStream ! !
+
 !DrGValueItem methodsFor: 'testing'!
 isLockable 
 	^ true! !
@@ -16113,6 +16133,30 @@ isLockable
 !DrGValueItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:42:49'!
 isValueItem
 	^true! !
+
+!DrGValueItem methodsFor: 'updating'!
+move: aPoint
+	self isLocked ifFalse: [self position: position + aPoint].
+! !
+
+!DrGValueItem methodsFor: 'updating'!
+moveParent: aPoint
+"Don't move my parent"
+	^false! !
+
+!DrGValueItem methodsFor: 'xml writing'!
+writeAsXmlPositionTo: aNode 
+	"return the newly created element"
+	aNode
+		addElement: ((XMLElement named: #x)
+				addContent: (XMLStringNode string: position x asString));
+		addElement: ((XMLElement named: #y)
+				addContent: (XMLStringNode string: position y asString)).
+	^ aNode! !
+
+!DrGValueItem methodsFor: 'private'!
+adaptiveDescriptiveName
+	^ 'This value %1' translated! !
 
 !DrGAngleItem methodsFor: 'printing' stamp: 'hlsf 8/3/2021 13:08:24'!
 printOn: aStream
@@ -16417,6 +16461,63 @@ nodeType
 !DrGValueArclengthItem methodsFor: 'private'!
 adaptiveDescriptiveName
 	^ 'This arc length %1' translated! !
+
+!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 4/13/2024 10:56:39'!
+parents: aCollection
+" First the parents if any, then the bloc of code and last is the position on screen "
+	aCollection isEmptyOrNil ifTrue: [ " Should not happen "
+		parents := aCollection.
+		self valueBlock: [].
+		^ self].
+	parents := aCollection allButLast: 2.
+	self valueBlock: (aCollection atWrap: -1).
+! !
+
+!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 4/13/2024 09:57:38'!
+valueBlock
+	^ valueBlock! !
+
+!DrGValueBlockItem methodsFor: 'accessing' stamp: 'hlsf 4/13/2024 09:57:33'!
+valueBlock: aBlock
+	valueBlock := aBlock ! !
+
+!DrGValueBlockItem methodsFor: 'comparing' stamp: 'hlsf 4/13/2024 09:52:52'!
+= aMathItem
+	^ super = aMathItem and: [ valueBlock = aMathItem valueBlock ]! !
+
+!DrGValueBlockItem methodsFor: 'comparing' stamp: 'hlsf 4/13/2024 09:53:13'!
+rehash
+	^ hash := super rehash bitXor: valueBlock hash! !
+
+!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 4/13/2024 09:52:22'!
+update
+| result |
+	self doParentsExist ifTrue:
+		[parents  
+			ifEmpty: [result := [ valueBlock value ] on: Error do: [exist := false]]
+			ifNotEmpty: [
+				parents size = 1
+				ifTrue: [result := [ valueBlock value: parents first ] on: Error do: [exist := false]]
+				ifFalse: [result := [valueBlock value: parents] on: Error do: [exist := false]]
+			].
+	exist ifTrue: [ value := result ]
+	]! !
+
+!DrGValueBlockItem methodsFor: 'xml writing' stamp: 'hlsf 4/13/2024 09:53:35'!
+nodeType
+	^#Block! !
+
+!DrGValueBlockItem methodsFor: 'xml writing' stamp: 'hlsf 4/13/2024 09:54:47'!
+writeAsXmlTo: aNode
+	|node|
+	node := super writeAsXmlTo: aNode.
+	node addElement: ((XMLElement named: #code) addContent: (XMLStringNode string: valueBlock decompile asString)).
+	^node! !
+
+!DrGValueBlockItem methodsFor: 'testing' stamp: 'hlsf 4/13/2024 09:59:21'!
+doParentsExist 
+	^ exist := super doParentsExist and: [valueBlock isNil not]
+! !
 
 !DrGValueCircleperimeterItem methodsFor: 'xml writing'!
 nodeType
@@ -18137,9 +18238,9 @@ presenter
 "Access to the presenter handling my instance"
 	^ self costume ifNotNil: [ costume presenter ]! !
 
-!DrGeoUserScript methodsFor: 'private'!
-arguments: aCollectionOfCostume
-	arguments := aCollectionOfCostume ! !
+!DrGeoUserScript methodsFor: 'private' stamp: 'hlsf 4/13/2024 09:44:05'!
+arguments: aCollectionOfMorph
+	arguments := aCollectionOfMorph ! !
 
 !DrGeoUserScript methodsFor: 'public'!
 compute
