@@ -19,7 +19,7 @@ msgstr ""
 msgid ""
 "Angle bisector defined by three points or an angle defined by three points."
 msgstr ""
-"Hoekdeellijn bepaald door drie punten of een hoek bepaald door drie punten."
+"Deellijn bepaald door drie punten of een hoek bepaald door drie punten."
 
 #: DrGeo-Core-Builders,DrGAngleBisectorBuilder_class>>title
 msgid "Angle bisector"
@@ -30,8 +30,8 @@ msgid ""
 "Geometric angle defined by three points, the second point is the vertex. Its "
 "measure belongs to [0 ; 180]."
 msgstr ""
-"Geometrische hoek gedefinieerd door drie punten, het tweede punt is de hoed. "
-"De maat is tussen [0 ; 180]."
+"Geometrische hoek gedefinieerd door drie punten, het tweede punt is het hoekpunt. "
+"De waarden zijn tussen [0 ; 180]."
 
 #: DrGeo-Core-Builders,DrGAngleGeometricBuilder_class>>title
 msgid "Geometric angle"
@@ -43,8 +43,8 @@ msgid ""
 "three points, the second point is the vertex. Its measure belongs to [0 ; "
 "360[ or ]-180 ; 180]. "
 msgstr ""
-"Geörienteerde hoek gedefinieer door drie punten of tweee vectoren. Als "
-"gedefinieerd door drie punten, het tweede punt is de hoek. Het meet tussen "
+"Geörienteerde hoek gedefinieerd door drie punten of twee vectoren. Indien "
+"gedefinieerd door drie punten, dan is het tweede punt de hoek. Waarden tussen "
 "[0 ; 360[ of ]-180 ; 180]. "
 
 #: DrGeo-Core-Builders,DrGAngleOrientedBuilder_class>>title
@@ -61,7 +61,7 @@ msgstr "Cirkelboog"
 
 #: DrGeo-Core-Builders,DrGArcCenterBuilder_class>>description
 msgid "Arc defined by its center and two points."
-msgstr "Cirkelboog bepaald door het centrum en de twee punten."
+msgstr "Cirkelboog bepaald door zijn centrum en twee punten."
 
 #: DrGeo-Core-Builders,DrGArcCenterBuilder_class>>title
 msgid "Arc (center)"
@@ -83,7 +83,7 @@ msgid ""
 "Circle defined by its center and a point or by its center and radius, a "
 "value."
 msgstr ""
-"Cirkel gedefinieerd door z'n midden en een punt of door z'n midden en een "
+"Cirkel gedefinieerd door zijn midden en een punt, of door zijn midden en een "
 "straal, een waarde."
 
 #: DrGeo-Core-Builders,DrGCircleBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
@@ -104,7 +104,7 @@ msgid ""
 "curves intersection."
 msgstr ""
 "Klik hier om een punt te maken: vrij punt op de achtergrond, in een boog of "
-"op kruispunt van twee bogen."
+"op het snijpunt van twee bogen."
 
 #: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>description
 msgid ""
@@ -112,7 +112,7 @@ msgid ""
 "curves intersection."
 msgstr ""
 "Tap om een punt te maken: vrij punt op de achtergrond, in een boog of op "
-"kruispunt van twee bogen."
+"het snijpunt van twee bogen."
 
 #: DrGeo-Core-Builders,DrGFlyPointBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Point"
@@ -123,12 +123,12 @@ msgid ""
 "Homothety: select a center, a value and a geometric object. The first "
 "selected point is the homothety center."
 msgstr ""
-"Homogene translatie; selecteer een midden, een waarde en een geometrisch "
-"object. Het eerste punt is het centrum van de homogene translatie."
+"Homothetie: selecteer een midden, een waarde en een geometrisch "
+"object. Het eerste punt is het centrum van de homothetie."
 
 #: DrGeo-Core-Builders,DrGHomothetyBuilder_class>>title
 msgid "Homothety (scale)"
-msgstr "Homogene translatie (schaal)"
+msgstr "Homothetie (schaal)"
 
 #: DrGeo-Core-Builders,DrGLineBuilder_class>>description
 msgid "Line defined by two points"
@@ -141,11 +141,11 @@ msgstr "Lijn"
 #: DrGeo-Core-Builders,DrGLocusBuilder_class>>description
 msgid "Locus defined by a free point on a curve and a relative point."
 msgstr ""
-"Plaats gedefinieerd door een vrij punt op een boog en een relatief punt."
+"Meetkundige plaats gedefinieerd door een vrij punt op een boog en een relatief punt."
 
 #: DrGeo-Core-Builders,DrGLocusBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Locus"
-msgstr "Plaats"
+msgstr "Meetkundige plaats"
 
 #: DrGeo-Core-Builders,DrGMacroBuilder_class>>description
 msgid "Construct a macro-construction with input and output items."
@@ -157,7 +157,7 @@ msgstr "Bouw macro"
 
 #: DrGeo-Core-Builders,DrGMacroBuilder>>apply
 msgid "Input and output items don't match"
-msgstr "Invoer en uitvoer zaken passen niet"
+msgstr "Invoer en uitvoer passen niet"
 
 #: DrGeo-Core-Builders,DrGMacroBuilder>>apply
 msgid "Please, enter a proper title and description"
@@ -174,7 +174,7 @@ msgstr ""
 
 #: DrGeo-Core-Builders,DrGMacroPlayer_class>>title
 msgid "Execute/edit macro"
-msgstr "Uitvoeren/bewerken marco"
+msgstr "Uitvoeren/bewerken macro"
 
 #: DrGeo-Core-Builders,DrGMiddleBuilder_class>>description
 msgid "The midpoint of a segment or between two points."
@@ -195,11 +195,11 @@ msgstr "Parallel"
 
 #: DrGeo-Core-Builders,DrGPerpendicularBisectorBuilder_class>>description
 msgid "Perpendicular bisector defined by a segment or two points."
-msgstr "Loodrechte deellijn bepaald door een lijnstuk of twee punten."
+msgstr "Middelloodlijn bepaald door een lijnstuk of twee punten."
 
 #: DrGeo-Core-Builders,DrGPerpendicularBisectorBuilder_class>>title
 msgid "Perpendicular bisector"
-msgstr "Loodrechte deellijn"
+msgstr "Middelloodlijn"
 
 #: DrGeo-Core-Builders,DrGPerpendicularBuilder_class>>description
 msgid ""
@@ -363,7 +363,7 @@ msgstr "Wisser"
 
 #: DrGeo-Core-Tools,DrGFlyPointBuildToolState>>handleMouseAt:
 msgid "This intersection"
-msgstr "Deze doorsnijding"
+msgstr "Dit snijpunt"
 
 #: DrGeo-Core-Tools,DrGMutatorToolStateDragged>>handleMouseAt:
 msgid "Change as a free point on the plane."
@@ -438,15 +438,15 @@ msgstr "Deze geometrische hoek %1"
 
 #: DrGeo-Item-Models,DrGAngleBisector3ptsItem>>adaptiveDescriptiveName,DrGLineAngleBisectorItem>>adaptiveDescriptiveName
 msgid "This angle bisector %1"
-msgstr "Deze hoekdeellijn %1"
+msgstr "Deze deellijn %1"
 
 #: DrGeo-Item-Models,DrGAngleItem>>adaptiveDescriptiveName
 msgid "This oriented angle %1"
-msgstr "Deze richtingshoek %1"
+msgstr "Deze georienteerde hoek %1"
 
 #: DrGeo-Item-Models,DrGArcItem>>adaptiveDescriptiveName
 msgid "This Arc Circle %1"
-msgstr "Deze Boogcirkel %1"
+msgstr "Deze boogcirkel %1"
 
 #: DrGeo-Item-Models,DrGBitmapItem>>adaptiveDescriptiveName
 msgid "This picture"
@@ -478,7 +478,7 @@ msgstr "Deze parallelle lijn %1"
 
 #: DrGeo-Item-Models,DrGLinePerpendicularBisector2ptsItem>>adaptiveDescriptiveName,DrGPerpendicularBisectorItem>>adaptiveDescriptiveName
 msgid "This perpendicular bisector %1"
-msgstr "Deze loodrechte deellijn %1"
+msgstr "Deze middelloodlijn %1"
 
 #: DrGeo-Item-Models,DrGLinePerpendicularItem>>adaptiveDescriptiveName
 msgid "This perpendicular line %1"
@@ -486,7 +486,7 @@ msgstr "Deze loodrechte lijn %1"
 
 #: DrGeo-Item-Models,DrGLocus2ptsItem>>adaptiveDescriptiveName
 msgid "This locus %1"
-msgstr "Deze plaats %1"
+msgstr "Deze meetkundige plaats %1"
 
 #: DrGeo-Item-Models,DrGMathItem>>adaptiveDescriptiveName
 msgid "This math item %1"
@@ -662,11 +662,11 @@ msgstr "Stel pijl(en) van de lijn in."
 
 #: DrGeo-Item-Styles,DrGPointStyle>>shapeWidget
 msgid "Set the shape of the point."
-msgstr "Stel de vorm van de punt in."
+msgstr "Stel de vorm van het punt in."
 
 #: DrGeo-Item-Styles,DrGPointStyle>>sizeWidget
 msgid "Set the size of the point."
-msgstr "Stel de grootte van de punt in."
+msgstr "Stel de grootte van het punt in."
 
 #: DrGeo-Item-Styles,DrGSegmentStyle>>markWidget
 msgid "Set a mark to the segment."
@@ -748,14 +748,14 @@ msgid ""
 "\n"
 "LICENSE: GPL"
 msgstr ""
-"Dr. Geo is over interactieve meetkunde en programmeren.\n"
+"Dr. Geo voor interactieve meetkunde en programmeren.\n"
 "(1)\n"
 "\n"
-"Het maakt mogelijk om meetkundige figuren te maken en actieve manipulatie \n"
-"Het is bruikbaar in onderwijssituaties, wiskunde natuurkunde en\n"
-"programmeren, met leerlingen van basisschool tot universiteitsniveau.\n"
+"Het maakt interactieve manipulatie van meetkundige figuren mogelijk \n"
+"Het is bruikbaar in het onderwijs, in de wiskunde, de natuurkunde en\n"
+"het programmeren, met leerlingen van basisschool tot universiteitsniveau.\n"
 "\n"
-"Het is eenvoudig en effectief met unieke mogelijkheden  als Smalltalk "
+"Het is eenvoudig en effectief met unieke mogelijkheden zoals Smalltalk "
 "scripts \n"
 "en geprogrammeerde interactieve schetsen. \n"
 "\n"
@@ -793,15 +793,15 @@ msgid ""
 "browser on the DrGeoSketch class you can study to design your own Smalltalk "
 "sketch."
 msgstr ""
-"Een broncode programma om Dr. Geo code te bekijken, aanpassen en bewaren. Ik "
-"open het programma in de DrGeoSketch les je kan het ontwerp van je eigen "
+"Een source code browser om Dr. Geo code te bekijken, aan te passen en te bewaren. Ik "
+"open de browser voor de DrGeoSketch class je kan het ontwerp van je eigen "
 "Smalltalk voorbeelden bekijken."
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid ""
 "A tool to browse and to test both system and personal Smalltalk Sketches."
 msgstr ""
-"Een gereedschap om zowel systeem als persoonlijke Smalltalk Sketches te "
+"Een tool om zowel systeem als persoonlijke Smalltalk Sketches te "
 "bekijken en te testen."
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
@@ -815,7 +815,7 @@ msgstr ""
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "An editor to write and to test new Smalltalk sketch."
 msgstr ""
-"Een editor om een nieuw Smalltalk programma te schrijven en te testen."
+"Een editor om een nieuw Smalltalk sketch te schrijven en te testen."
 
 #: DrGeo-Main,DrGeo_class>>toolsMenu:
 msgid "Browse"
@@ -1027,7 +1027,7 @@ msgstr "programmeren"
 
 #: DrGeo-System,DrGPlatform>>rayPreferences
 msgid "ray"
-msgstr "lichtstraal"
+msgstr "straal"
 
 #: DrGeo-System,DrGPlatform>>segmentPreferences,DrGSegmentStyle>>markWidget
 msgid "Mark"
