@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 13 April 2024 at 11:23:38 am'!
+'From Cuis6.3 [latest update: #6319] on 20 April 2024 at 11:04:26 am'!
 'Description '!
-!provides: 'DrGeo' 1 712!
+!provides: 'DrGeo' 1 713!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -12717,11 +12717,12 @@ delete
 	self view deleteWithoutConfirmation.
 	self release! !
 
-!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 11/14/2023 00:19:49'!
+!DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 4/20/2024 11:04:09'!
 initialize
 	presenter := DrGeo service
 		stSketch: self;
 		yourself .
+	" From now, my view (empty) is in a presentable state. Inform about it "
 	DrGeoSketch triggerEvent: #newSmalltalkSketch with: self! !
 
 !DrGeoSketch methodsFor: 'initialize-release' stamp: 'hlsf 8/4/2023 20:05:38'!
