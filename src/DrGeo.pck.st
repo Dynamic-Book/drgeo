@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6319] on 20 April 2024 at 11:04:26 am'!
+'From Cuis6.3 [latest update: #6323] on 23 April 2024 at 10:51:38 pm'!
 'Description '!
-!provides: 'DrGeo' 1 713!
+!provides: 'DrGeo' 1 714!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7423,23 +7423,6 @@ debugSketch
 							arguments: (context ifNil: [ #() ] ifNotNil: [ { context } ])]
 					to: method.
 				self plugDebugger ]			]
-		ifFail: [].! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 12/31/2023 11:51:35'!
-debugWindowSketch
-	self stopSketch.
-	codeView scroller acceptContents.
-	codeView editor 
-		afterCompiling: model 
-		do:  [ :compiler :method :receiver :context | method ifNotNil: [ | window |
-			window := Debugger 
-				openMinimalDebugging: [
-					method
-						valueWithReceiver: receiver 
-						arguments: (context ifNil: [ #() ] ifNotNil: [ { context } ])]
-				to: method.
-			window 	contextVariableInspector selectionIndex: 3.]
-			]
 		ifFail: [].! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 3/20/2024 16:58:37'!
@@ -33978,14 +33961,12 @@ openMinimalMorphic
 	self toggleContextStackIndex: oldContextStackIndex.
 	^ window! !
 
-!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 10/19/2022 21:20:06'!
+!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 4/23/2024 22:47:43'!
 openMinimalDebugging: aBlock to: aCompiledMethod 
 	"Create a new process to debug aBlock, and step into it."
 
-	| processToDebug debugger window |
-	debugger := self new.
-	processToDebug := aBlock newProcess name: 'debugIt'.
-	debugger process: processToDebug context: processToDebug suspendedContext.
+	| debugger window |
+	debugger := self newDebugging: aBlock.
 	window := debugger openMinimalMorphic.
 	[debugger interruptedContext method == aCompiledMethod]
 		whileFalse: [debugger send].
