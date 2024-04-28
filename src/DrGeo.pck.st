@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6323] on 23 April 2024 at 10:51:38 pm'!
+'From Cuis6.3 [latest update: #6335] on 28 April 2024 at 5:28:16 pm'!
 'Description '!
-!provides: 'DrGeo' 1 714!
+!provides: 'DrGeo' 1 719!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -13,7 +13,7 @@
 SystemOrganization addCategory: #'DrGeo-Model'!
 SystemOrganization addCategory: #'DrGeo-Model-Smalltalk'!
 SystemOrganization addCategory: #'DrGeo-Model-Item'!
-SystemOrganization addCategory: 'DrGeo-Model-Style'!
+SystemOrganization addCategory: #'DrGeo-Model-Style'!
 SystemOrganization addCategory: #'DrGeo-Model-Macro'!
 SystemOrganization addCategory: #'DrGeo-Model-Script'!
 SystemOrganization addCategory: #'DrGeo-View'!
@@ -870,73 +870,73 @@ TestResource subclass: #DrGeoScriptTestResource
 DrGeoScriptTestResource class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeArrow category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeArrow category: #'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeArrow
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeArrow class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeArrow class' category: #'DrGeo-Model-Style'!
 DrGTypeArrow class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeColor category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeColor category: #'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeColor
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeColor class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeColor class' category: #'DrGeo-Model-Style'!
 DrGTypeColor class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeMark category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeMark category: #'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeMark
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeMark class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeMark class' category: #'DrGeo-Model-Style'!
 DrGTypeMark class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypePointShape category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGTypePointShape category: #'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypePointShape
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypePointShape class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypePointShape class' category: #'DrGeo-Model-Style'!
 DrGTypePointShape class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypePointSize category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGTypePointSize category: #'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypePointSize
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypePointSize class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypePointSize class' category: #'DrGeo-Model-Style'!
 DrGTypePointSize class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeStyle category: #'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeStyle class' category: #'DrGeo-Model-Style'!
 DrGTypeStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTypeThickness category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGTypeThickness category: #'DrGeo-Model-Style'!
 PreferenceType subclass: #DrGTypeThickness
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTypeThickness class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTypeThickness class' category: #'DrGeo-Model-Style'!
 DrGTypeThickness class
 	instanceVariableNames: ''!
 
@@ -2110,163 +2110,163 @@ DrGValueItem subclass: #DrGValueValueItem
 DrGValueValueItem class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGStyle category: #'DrGeo-Model-Style'!
 Object subclass: #DrGStyle
 	instanceVariableNames: 'morph color hidden feedback'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGStyle class' category: #'DrGeo-Model-Style'!
 DrGStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCurveStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGCurveStyle category: #'DrGeo-Model-Style'!
 DrGStyle subclass: #DrGCurveStyle
 	instanceVariableNames: 'thickness lineStyle'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGCurveStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGCurveStyle class' category: #'DrGeo-Model-Style'!
 DrGCurveStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFinitCurveStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGFinitCurveStyle category: #'DrGeo-Model-Style'!
 DrGCurveStyle subclass: #DrGFinitCurveStyle
 	instanceVariableNames: 'arrow'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGFinitCurveStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGFinitCurveStyle class' category: #'DrGeo-Model-Style'!
 DrGFinitCurveStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCompositeStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGCompositeStyle category: #'DrGeo-Model-Style'!
 DrGFinitCurveStyle subclass: #DrGCompositeStyle
 	instanceVariableNames: 'shape'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGCompositeStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGCompositeStyle class' category: #'DrGeo-Model-Style'!
 DrGCompositeStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGFilledStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGFilledStyle category: #'DrGeo-Model-Style'!
 DrGFinitCurveStyle subclass: #DrGFilledStyle
 	instanceVariableNames: 'fill translucent'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGFilledStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGFilledStyle class' category: #'DrGeo-Model-Style'!
 DrGFilledStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGArcStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGArcStyle category: #'DrGeo-Model-Style'!
 DrGFilledStyle subclass: #DrGArcStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGArcStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGArcStyle class' category: #'DrGeo-Model-Style'!
 DrGArcStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGCircleStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGCircleStyle category: #'DrGeo-Model-Style'!
 DrGFilledStyle subclass: #DrGCircleStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGCircleStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGCircleStyle class' category: #'DrGeo-Model-Style'!
 DrGCircleStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPolygonStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGPolygonStyle category: #'DrGeo-Model-Style'!
 DrGFilledStyle subclass: #DrGPolygonStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGPolygonStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGPolygonStyle class' category: #'DrGeo-Model-Style'!
 DrGPolygonStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGSegmentStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGSegmentStyle category: #'DrGeo-Model-Style'!
 DrGFinitCurveStyle subclass: #DrGSegmentStyle
 	instanceVariableNames: 'mark'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGSegmentStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGSegmentStyle class' category: #'DrGeo-Model-Style'!
 DrGSegmentStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLineStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGLineStyle category: #'DrGeo-Model-Style'!
 DrGCurveStyle subclass: #DrGLineStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGLineStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGLineStyle class' category: #'DrGeo-Model-Style'!
 DrGLineStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGLocusStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGLocusStyle category: #'DrGeo-Model-Style'!
 DrGCurveStyle subclass: #DrGLocusStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGLocusStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGLocusStyle class' category: #'DrGeo-Model-Style'!
 DrGLocusStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGRayStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGRayStyle category: #'DrGeo-Model-Style'!
 DrGCurveStyle subclass: #DrGRayStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGRayStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGRayStyle class' category: #'DrGeo-Model-Style'!
 DrGRayStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGVectorStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGVectorStyle category: #'DrGeo-Model-Style'!
 DrGCurveStyle subclass: #DrGVectorStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGVectorStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGVectorStyle class' category: #'DrGeo-Model-Style'!
 DrGVectorStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGPointStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGPointStyle category: #'DrGeo-Model-Style'!
 DrGStyle subclass: #DrGPointStyle
 	instanceVariableNames: 'shape pointSize extent'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGPointStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGPointStyle class' category: #'DrGeo-Model-Style'!
 DrGPointStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGTextStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGTextStyle category: #'DrGeo-Model-Style'!
 DrGStyle subclass: #DrGTextStyle
 	instanceVariableNames: 'backgroundColor borderColor fontSize'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGTextStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGTextStyle class' category: #'DrGeo-Model-Style'!
 DrGTextStyle class
 	instanceVariableNames: ''!
 
-!classDefinition: #DrGValueStyle category: 'DrGeo-Model-Style'!
+!classDefinition: #DrGValueStyle category: #'DrGeo-Model-Style'!
 DrGTextStyle subclass: #DrGValueStyle
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'DrGeo-Model-Style'!
-!classDefinition: 'DrGValueStyle class' category: 'DrGeo-Model-Style'!
+!classDefinition: 'DrGValueStyle class' category: #'DrGeo-Model-Style'!
 DrGValueStyle class
 	instanceVariableNames: ''!
 
@@ -3100,6 +3100,7 @@ An editor to edit Smalltalk sketch.
 - docView : view of the Erudite DrGeo tutorial
 - sketchProcess: the Smalltalk sketch is executed in its own thread
 - playButton: the button to play and pause the Smalltalk sketch execution
+- debugger: a debugger window whose content is plug in the editor when appropriate
 !
 
 !DrGStylePanel commentStamp: '<historical>' prior: 0!
@@ -6115,7 +6116,7 @@ buildLowerPanes
 		addMorph: self buildMorphicCodePane proportionalHeight: 1.0;
 		yourself! !
 
-!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 10/13/2022 19:58:26'!
+!DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 4/28/2024 15:42:11'!
 buildMorphicWindow
 	"Open a full morphic debugger with the given label"
 
@@ -6132,7 +6133,8 @@ buildMorphicWindow
 		addAdjusterAndMorph: self contextVariableInspectorText proportionalWidth: 0.70.
 
 	self layoutMorph
-		addAdjusterAndMorph: self buildLowerPanes proportionalHeight: 0.7;
+		addMorph: self stackList proportionalHeight: 0.1;
+		addAdjusterAndMorph: self buildLowerPanes proportionalHeight: 0.6;
 		addAdjusterAndMorph: bottomMorph proportionalHeight: 0.3.! !
 
 !DrGDebuggerWindow methodsFor: 'GUI building' stamp: 'hlsf 4/10/2024 16:46:52'!
@@ -6154,12 +6156,14 @@ initialExtent
 layerNumber
 	^ 50! !
 
-!DrGDebuggerWindow class methodsFor: 'instance creation' stamp: 'hlsf 10/19/2022 21:20:35'!
+!DrGDebuggerWindow class methodsFor: 'instance creation' stamp: 'hlsf 4/28/2024 15:41:23'!
 open: model
-	^ self new 
+	| debuggerWindow |
+	debuggerWindow := self new
 		model: model;
-		buildMorphicWindow;
-		yourself
+		buildMorphicWindow.
+	debuggerWindow widgetsColor: debuggerWindow windowColor.
+	^ debuggerWindow 	
 ! !
 
 !DrGeoView methodsFor: 'initialization' stamp: 'hlsf 8/4/2023 12:40:38'!
@@ -7237,13 +7241,21 @@ newToolbar
 		addMorph: (self button: #doc action: #toggleHelp state: #isDocVisible help: 'Dr. Geo tutorial' translated)
 		yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 12/31/2023 12:25:34'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/28/2024 16:57:57'!
 plugDebugger
 " Install the debugger window at the place of the code viewer "
+	| doItIndex |
 	debugger layoutMorph borderWidth: 1.
 	codeAndViewPanel replaceSubmorph: codeView by: debugger layoutMorph.			
 	debugger model when: #closeViews send: #stopDebbuger to: self.
+	doItIndex := debugger stackList  getList findFirst: [:each | each includesSubString: 'DoIt'].
+	doItIndex > 0 ifTrue: [debugger model toggleContextStackIndex: doItIndex].
 	debugger 	contextVariableInspector selectionIndex: 3! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/28/2024 15:56:59'!
+plugDebugger: aDebugger
+	debugger := aDebugger.
+	self plugDebugger ! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/6/2022 12:44:50'!
 switchToPauseButton
@@ -7425,8 +7437,9 @@ debugSketch
 				self plugDebugger ]			]
 		ifFail: [].! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 3/20/2024 16:58:37'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 4/28/2024 17:20:42'!
 executeSketch
+	| myContext |
 	self stopSketch.
 	codeView scroller acceptContents.
 	self switchToPauseButton.
@@ -7437,20 +7450,19 @@ executeSketch
 			ifTrue: [Compiler evaluate: model]
 			ifFalse: [
 				[Compiler evaluate: model] 
-					on: Exception 
-					do: [:ex | | myContext |
+					on: Error 
+					do: [:ex | 
 						myContext := ex signalerContext findContextSuchThat: [:aContext | 
 							aContext method defaultSelector == #DoIt].
-						debugger := Debugger 
-							openMinimalDebuggingProcess: sketchProcess 
-							context: myContext.
-						self plugDebugger ]
-			].
+						Debugger 		
+							openMinimalIn: self
+							debuggingProcess: sketchProcess 			
+							context: myContext				]	].
 		" When we get there, sketch has been entirely executed, switch back to play button "
 		self switchToPlayButton.
 		Transcript show: DateAndTime now - t ;cr] newProcess.
 	sketchProcess 
-		priority: Processor userSchedulingPriority ;
+		priority: Processor userSchedulingPriority - 1;
 		name: '[DrGeo] Smalltalk Sketch execution';
 		resume.! !
 
@@ -7497,9 +7509,8 @@ stopDebbuger
 		
 		! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/18/2023 17:35:51'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 4/28/2024 14:33:26'!
 stopSketch
-	"DrGeoSketch removeActionsWithReceiver: self."	
 	DrGeoSketch releaseActionMap .
 	sketchProcess 	ifNotNil: [
 		sketchProcess terminate.
@@ -33961,6 +33972,39 @@ openMinimalMorphic
 	self toggleContextStackIndex: oldContextStackIndex.
 	^ window! !
 
+!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 4/28/2024 16:58:39'!
+openMinimalMorphicIn: aDialog
+	"Open a panel debugger on process"
+
+	| safeBlockAlreadyRan doItIndex |
+	Sensor flushKeyboard.
+	savedCursor := Cursor currentCursor.
+	Cursor defaultCursor activateCursor.
+	"In case an error in Morphic code got us here, ensure mouse focus has been released"
+	self runningWorld ifNotNil: [ :rWorld |
+		rWorld activeHand ifNotNil: [ :aHand |
+			aHand releaseMouseFocus ]].
+
+	safeBlockAlreadyRan := false.
+	UISupervisor whenUIinSafeState: [
+		safeBlockAlreadyRan ifFalse: [
+			safeBlockAlreadyRan := true.
+			"Suspend it as early as possible"
+			interruptedProcess suspend ].
+			self expandStack. "Sets contextStackIndex to zero."
+			doItIndex := contextStackList findFirst: [:each | each includesSubString: 'DoIt'].
+			doItIndex > 0 ifTrue: [self toggleContextStackIndex: doItIndex].
+			aDialog plugDebugger: (DrGDebuggerWindow open: self).
+			self toggleContextStackIndex: doItIndex.
+			 ].
+	"Ensure the Debugger is opened in a new UI process.
+	This avoid unresponsive UI if the interruptedProcess is the UI current UI process, but also if the UI is busy, blocked or suspended."
+	UISupervisor newUIProcess.
+	"Suspend it as early as possible"
+	safeBlockAlreadyRan ifFalse: [
+		safeBlockAlreadyRan := true.
+		interruptedProcess suspend ]! !
+
 !Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 4/23/2024 22:47:43'!
 openMinimalDebugging: aBlock to: aCompiledMethod 
 	"Create a new process to debug aBlock, and step into it."
@@ -33981,6 +34025,17 @@ openMinimalDebuggingProcess: process context: context
 	debugger := self new.
 	debugger process: process context: context.
 	^ debugger openMinimalMorphic.
+	! !
+
+!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 4/28/2024 15:54:22'!
+openMinimalIn: aDialog debuggingProcess: process context: context
+"Open a Minimal Debugger on an existing process."
+	| debugger |
+	<primitive: 19> "Simulation guard"
+
+	debugger := self new.
+	debugger process: process context: context.
+	^ debugger openMinimalMorphicIn: aDialog.
 	! !
 
 !Number methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2020 23:32:17'!
