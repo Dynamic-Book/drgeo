@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6335] on 28 April 2024 at 5:28:16 pm'!
+'From Cuis6.3 [latest update: #6340] on 1 May 2024 at 11:40:16 am'!
 'Description '!
-!provides: 'DrGeo' 1 719!
+!provides: 'DrGeo' 1 720!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7241,16 +7241,12 @@ newToolbar
 		addMorph: (self button: #doc action: #toggleHelp state: #isDocVisible help: 'Dr. Geo tutorial' translated)
 		yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/28/2024 16:57:57'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 5/1/2024 11:08:16'!
 plugDebugger
 " Install the debugger window at the place of the code viewer "
-	| doItIndex |
 	debugger layoutMorph borderWidth: 1.
 	codeAndViewPanel replaceSubmorph: codeView by: debugger layoutMorph.			
-	debugger model when: #closeViews send: #stopDebbuger to: self.
-	doItIndex := debugger stackList  getList findFirst: [:each | each includesSubString: 'DoIt'].
-	doItIndex > 0 ifTrue: [debugger model toggleContextStackIndex: doItIndex].
-	debugger 	contextVariableInspector selectionIndex: 3! !
+	debugger model when: #closeViews send: #stopDebbuger to: self.! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/28/2024 15:56:59'!
 plugDebugger: aDebugger
@@ -7437,9 +7433,8 @@ debugSketch
 				self plugDebugger ]			]
 		ifFail: [].! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 4/28/2024 17:20:42'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/1/2024 11:36:43'!
 executeSketch
-	| myContext |
 	self stopSketch.
 	codeView scroller acceptContents.
 	self switchToPauseButton.
@@ -7452,12 +7447,11 @@ executeSketch
 				[Compiler evaluate: model] 
 					on: Error 
 					do: [:ex | 
-						myContext := ex signalerContext findContextSuchThat: [:aContext | 
-							aContext method defaultSelector == #DoIt].
+						self setLabel: ex description.
 						Debugger 		
 							openMinimalIn: self
 							debuggingProcess: sketchProcess 			
-							context: myContext				]	].
+							context: ex signalerContext ]	].
 		" When we get there, sketch has been entirely executed, switch back to play button "
 		self switchToPlayButton.
 		Transcript show: DateAndTime now - t ;cr] newProcess.
@@ -7500,12 +7494,13 @@ resumeSketch
 	sketchProcess resume.
 	self switchToPauseButton! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 10/19/2022 21:35:07'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/1/2024 11:37:06'!
 stopDebbuger
 	debugger ifNotNil: [
 		codeAndViewPanel replaceSubmorph: debugger layoutMorph by: codeView.
 		debugger closeView.
-		debugger := nil]
+		debugger := nil.
+		self restoreLabel ]
 		
 		! !
 
@@ -7564,6 +7559,12 @@ releaseMiniView
 	drgeoView submorphCount = 1 ifTrue: [
 		drgeoView firstSubmorph ifNotNil: [:miniView| 	
 			miniView  presenter ifNotNil: [:p | p release] ]]! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'label' stamp: 'hlsf 5/1/2024 11:36:19'!
+restoreLabel
+	| defaultLabel |
+	defaultLabel := self sketchName ifEmpty: ['Edit Smalltalk Sketch' translated].
+	self label == defaultLabel 		ifFalse: [self setLabel: defaultLabel]! !
 
 !DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 4/1/2024 17:01:29'!
 buildMorphicWindow
@@ -33972,7 +33973,7 @@ openMinimalMorphic
 	self toggleContextStackIndex: oldContextStackIndex.
 	^ window! !
 
-!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 4/28/2024 16:58:39'!
+!Debugger methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2024 11:09:22'!
 openMinimalMorphicIn: aDialog
 	"Open a panel debugger on process"
 
@@ -33989,14 +33990,12 @@ openMinimalMorphicIn: aDialog
 	UISupervisor whenUIinSafeState: [
 		safeBlockAlreadyRan ifFalse: [
 			safeBlockAlreadyRan := true.
-			"Suspend it as early as possible"
+			"Suspend it as early as possible"	
 			interruptedProcess suspend ].
 			self expandStack. "Sets contextStackIndex to zero."
-			doItIndex := contextStackList findFirst: [:each | each includesSubString: 'DoIt'].
-			doItIndex > 0 ifTrue: [self toggleContextStackIndex: doItIndex].
 			aDialog plugDebugger: (DrGDebuggerWindow open: self).
-			self toggleContextStackIndex: doItIndex.
-			 ].
+			doItIndex := contextStackList findFirst: [:each | each includesSubString: 'DoIt'].
+			doItIndex > 0 ifTrue: [self toggleContextStackIndex: doItIndex] 			 ].
 	"Ensure the Debugger is opened in a new UI process.
 	This avoid unresponsive UI if the interruptedProcess is the UI current UI process, but also if the UI is busy, blocked or suspended."
 	UISupervisor newUIProcess.
