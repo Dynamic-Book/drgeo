@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6340] on 1 May 2024 at 11:40:16 am'!
+'From Cuis6.3 [latest update: #6340] on 5 May 2024 at 3:02:40 pm'!
 'Description '!
-!provides: 'DrGeo' 1 720!
+!provides: 'DrGeo' 1 721!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -14859,10 +14859,11 @@ adaptiveDescriptiveName
 squareNorm: aPoint 
 	^ aPoint x * aPoint x + (aPoint y * aPoint y)! !
 
-!DrGLocus2ptsItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:30:46'!
+!DrGLocus2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/5/2024 15:01:27'!
 update
 "Special: update does not occure there but in the view.
-Indeed, a Locus is sampled from its view, because it depends on the visible portion of the drawable"! !
+Indeed, a Locus is sampled from its view, because it depends on the visible portion of the drawable"
+	self doParentsExist ! !
 
 !DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 6/13/2021 11:26:20'!
 abscissaOf: aPoint 
