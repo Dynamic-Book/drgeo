@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Cuis\n"
-"POT-Creation-Date: 2024-05-09 08:28-0000\n"
-"PO-Revision-Date: 2024-05-09 08:28-0000\n"
+"POT-Creation-Date: 2024-05-09 09:25-0000\n"
+"PO-Revision-Date: 2024-05-09 09:25-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -902,6 +902,10 @@ msgstr ""
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
 msgstr ""
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences

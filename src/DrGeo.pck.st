@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6340] on 5 May 2024 at 3:02:40 pm'!
+'From Cuis6.3 [latest update: #6340] on 9 May 2024 at 9:24:19 am'!
 'Description '!
-!provides: 'DrGeo' 1 721!
+!provides: 'DrGeo' 1 722!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7433,7 +7433,7 @@ debugSketch
 				self plugDebugger ]			]
 		ifFail: [].! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/1/2024 11:36:43'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/9/2024 09:02:54'!
 executeSketch
 	self stopSketch.
 	codeView scroller acceptContents.
@@ -7445,7 +7445,7 @@ executeSketch
 			ifTrue: [Compiler evaluate: model]
 			ifFalse: [
 				[Compiler evaluate: model] 
-					on: Error 
+					on: Error, Halt
 					do: [:ex | 
 						self setLabel: ex description.
 						Debugger 		
@@ -33216,15 +33216,14 @@ locusPreferences
 	{#locusStyle. 'Style' translated. category. DrGTypeStyle with: #locusStyle in: preferences. #plain}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 3/20/2024 15:35:19'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 5/9/2024 08:58:32'!
 miscPreferences
 " name - description - category - type - value "
 | category |
 	category := #miscellaneous translated asSymbol.
 	^ {
 	{#userPath. 'Path for user created resources as sketches, Smalltalk sketches, exported image. An empty path locates these resources in the Dr. Geo application folder. Relative path accepted, home/user directory is then prepended' translated. category. nil. ''} .
-	{#autoName. 'Autoname new object' translated. category. Boolean. false} .
-	{#advancedDebugger. 'Full debugger when executing Smalltalk sketch.' . category. Boolean. true }
+	{#autoName. 'Autoname new object' translated. category. Boolean. false}
 	}! !
 
 !DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/25/2022 10:25:11'!
@@ -33251,13 +33250,14 @@ polygonPreferences
 	{#polygonTranslucent. 'Translucent' translated. category. Boolean. false}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/25/2022 10:25:46'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 5/9/2024 09:21:34'!
 programmingPreferences
 " name - description - category - type - value "
 | category |
 	category := #programming translated asSymbol.
 	^ {
-	{#programmingCodeCompletion. 'Code completion on' translated. category. nil . DrGeoSketch}
+	{#programmingCodeCompletion. 'Code completion on' translated. category. nil . DrGeoSketch}.
+	{#advancedDebugger. 'Full debugger when executing Smalltalk sketch.' translated . category. Boolean. true }
 	}! !
 
 !DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/25/2022 10:26:19'!
@@ -34015,17 +34015,6 @@ openMinimalDebugging: aBlock to: aCompiledMethod
 	[debugger interruptedContext method == aCompiledMethod]
 		whileFalse: [debugger send].
 	^ window ! !
-
-!Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 12/31/2023 11:59:44'!
-openMinimalDebuggingProcess: process context: context
-"Open a Minimal Debugger on an existing process."
-	| debugger |
-	<primitive: 19> "Simulation guard"
-
-	debugger := self new.
-	debugger process: process context: context.
-	^ debugger openMinimalMorphic.
-	! !
 
 !Debugger class methodsFor: '*DrGeo' stamp: 'hlsf 4/28/2024 15:54:22'!
 openMinimalIn: aDialog debuggingProcess: process context: context
