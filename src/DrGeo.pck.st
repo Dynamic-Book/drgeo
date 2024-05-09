@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6340] on 9 May 2024 at 9:24:19 am'!
+'From Cuis6.3 [latest update: #6350] on 9 May 2024 at 12:22:12 pm'!
 'Description '!
-!provides: 'DrGeo' 1 722!
+!provides: 'DrGeo' 1 725!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7248,8 +7248,9 @@ plugDebugger
 	codeAndViewPanel replaceSubmorph: codeView by: debugger layoutMorph.			
 	debugger model when: #closeViews send: #stopDebbuger to: self.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 4/28/2024 15:56:59'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 5/9/2024 11:20:31'!
 plugDebugger: aDebugger
+	self stopDebbuger.
 	debugger := aDebugger.
 	self plugDebugger ! !
 
@@ -7433,7 +7434,7 @@ debugSketch
 				self plugDebugger ]			]
 		ifFail: [].! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/9/2024 09:02:54'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/9/2024 12:21:15'!
 executeSketch
 	self stopSketch.
 	codeView scroller acceptContents.
@@ -7448,15 +7449,22 @@ executeSketch
 					on: Error, Halt
 					do: [:ex | 
 						self setLabel: ex description.
-						Debugger 		
-							openMinimalIn: self
-							debuggingProcess: sketchProcess 			
-							context: ex signalerContext ]	].
+						debugger ifNil: [" We can't help if debugger already active "
+							Debugger 		
+								openMinimalIn: self
+								debuggingProcess: sketchProcess 			
+								context: ex signalerContext.
+							ex resume ]
+							ifNotNil: [ 
+								self inform: 'Too many errors. Fix it!!
+Sketch stopped' translated.
+								self stopSketch ]							
+						 ] ].
 		" When we get there, sketch has been entirely executed, switch back to play button "
 		self switchToPlayButton.
 		Transcript show: DateAndTime now - t ;cr] newProcess.
 	sketchProcess 
-		priority: Processor userSchedulingPriority - 1;
+		priority: Processor userBackgroundPriority ;
 		name: '[DrGeo] Smalltalk Sketch execution';
 		resume.! !
 
@@ -7494,7 +7502,7 @@ resumeSketch
 	sketchProcess resume.
 	self switchToPauseButton! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/1/2024 11:37:06'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/9/2024 11:26:05'!
 stopDebbuger
 	debugger ifNotNil: [
 		codeAndViewPanel replaceSubmorph: debugger layoutMorph by: codeView.
@@ -11955,6 +11963,10 @@ morph: aCostume
 !DrGWrappedItem methodsFor: 'accessing' stamp: 'hlsf 6/13/2021 12:06:25'!
 style
 	^ morph style! !
+
+!DrGWrappedItem methodsFor: 'printing' stamp: 'hlsf 5/9/2024 10:21:37'!
+printOn: aStream
+	morph mathItem printOn: aStream! !
 
 !DrGWrappedItem class methodsFor: 'as yet unclassified' stamp: 'hlsf 4/16/2022 22:44:00'!
 wrap: aMorph
@@ -33250,14 +33262,14 @@ polygonPreferences
 	{#polygonTranslucent. 'Translucent' translated. category. Boolean. false}
 	}! !
 
-!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 5/9/2024 09:21:34'!
+!DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 5/9/2024 11:06:26'!
 programmingPreferences
 " name - description - category - type - value "
 | category |
 	category := #programming translated asSymbol.
 	^ {
 	{#programmingCodeCompletion. 'Code completion on' translated. category. nil . DrGeoSketch}.
-	{#advancedDebugger. 'Full debugger when executing Smalltalk sketch.' translated . category. Boolean. true }
+	{#advancedDebugger. 'Full debugger when executing Smalltalk sketch.' translated . category. Boolean. false }
 	}! !
 
 !DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/25/2022 10:26:19'!
