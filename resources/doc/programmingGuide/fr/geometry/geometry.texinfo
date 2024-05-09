@@ -1230,7 +1230,7 @@ Nous remarquons que les 5 dernières lignes du code sont quasiment
 identiques. Cela indique souvent que ce code peut-être modifié afin
 d'être moins répétitif. Une première chose que nous pouvons faire
 c'est de grouper toutes les parties de notre figure (les 4 côtés du
-carré et le cercle) dans une collection d'objet. Dans le langage Pharo
+carré et le cercle) dans une collection d'objet. Dans le langage Smalltalk
 il existe des objets de type @code{Collection} pour y mettre toutes
 sortes d'objets comme des constructions géométriques.
 
