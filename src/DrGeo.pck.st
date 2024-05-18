@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6350] on 9 May 2024 at 12:22:12 pm'!
+'From Cuis6.3 [latest update: #6350] on 18 May 2024 at 10:08:20 am'!
 'Description '!
-!provides: 'DrGeo' 1 725!
+!provides: 'DrGeo' 1 726!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -15161,7 +15161,7 @@ doParentsExist
 isConstrainedPointItem
 	^ true! !
 
-!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 11/2/2022 23:11:07'!
+!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 5/18/2024 10:04:30'!
 update
 | result |
 	self doParentsExist ifTrue:
@@ -15170,7 +15170,7 @@ update
 			ifNotEmpty: [
 				parents size = 1
 				ifTrue: [result := [ pointBlock value: parents first ] on: Error do: [exist := false]]
-				ifFalse: [result := [pointBlock value: parents] on: Error do: [exist := false]]
+				ifFalse: [result := [pointBlock valueWithArguments: parents] on: Error do: [exist := false]]
 			].
 	exist ifTrue: [ self point: result ].
 	]! !
@@ -16498,7 +16498,7 @@ valueBlock: aBlock
 rehash
 	^ hash := super rehash bitXor: valueBlock hash! !
 
-!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 4/13/2024 09:52:22'!
+!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 5/18/2024 10:04:35'!
 update
 | result |
 	self doParentsExist ifTrue:
@@ -16507,7 +16507,7 @@ update
 			ifNotEmpty: [
 				parents size = 1
 				ifTrue: [result := [ valueBlock value: parents first ] on: Error do: [exist := false]]
-				ifFalse: [result := [valueBlock value: parents] on: Error do: [exist := false]]
+				ifFalse: [		result := [valueBlock valueWithArguments: parents] on: Error do: [exist := false]]
 			].
 	exist ifTrue: [ value := result ]
 	]! !
