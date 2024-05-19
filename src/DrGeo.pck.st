@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6350] on 18 May 2024 at 10:08:20 am'!
+'From Cuis6.3 [latest update: #6350] on 19 May 2024 at 9:49:21 am'!
 'Description '!
-!provides: 'DrGeo' 1 726!
+!provides: 'DrGeo' 1 727!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -8774,9 +8774,10 @@ In the process we change its color to inform the user this is a hidden item temp
 			self restoreNormalColor].
 	^true! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 4/13/2021 14:42:56'!
+!DrGMorph methodsFor: 'updating' stamp: 'hlsf 5/18/2024 19:53:55'!
 hide
 	super hide.
+	'hide me' print.
 	labelMorph ifNotNil: [labelMorph hide].! !
 
 !DrGMorph methodsFor: 'updating' stamp: 'hlsf 3/30/2024 09:58:36'!
@@ -29847,17 +29848,21 @@ aboutDrgeo
 		(PopUpMenu labels: ' Ok ' icons: {DrGIcons drgeo}) 
 			startUpNonModalWithCaption:  self drgeoInformationString ]! !
 
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 5/19/2024 09:47:44'!
+cuisVersion
+	^ SystemVersion current versionString, ' #', SystemVersion current highestUpdate printString! !
+
 !DrGeo class methodsFor: 'user interface' stamp: 'hlsf 1/28/2024 16:14:31'!
 drgeoCopyright
 	^ 'Source code application: Copyright 1996-2024 Hilaire Fernandes
 Icons: Copyright 1999 Frédéric Toussaint
 Icons: Copyright 2021-2022 David Caula (imppao)'! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/3/2023 21:45:47'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 5/19/2024 09:48:57'!
 drgeoInformationString
 	|text |
 	text := 'Dr. Geo is about interactive geometry and programming.
-{1}
+{1} - {3}
 
 It allows one to create geometric figure plus the interactive manipulation 
 It is usable in teaching situation, in mathematics, physics and
@@ -29868,7 +29873,7 @@ and programmed interactive sketches.
 
 {2}
 
-LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright}.
+LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright. self cuisVersion }.
 	^ text! !
 
 !DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/10/2024 16:47:38'!
