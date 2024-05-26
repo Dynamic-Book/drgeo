@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6379] on 20 May 2024 at 4:42:47 pm'!
+'From Cuis7.1 [latest update: #6409] on 26 May 2024 at 11:27:50 am'!
 'Description '!
-!provides: 'DrGeo' 1 730!
+!provides: 'DrGeo' 1 731!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -28782,16 +28782,14 @@ tree
 " I am the model of a tree presenting the math item "
 	^ tree ifNil: [ tree := DrGeoTree on: presenter]! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 12:07:48'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 5/26/2024 11:25:06'!
 treeView
-	^ treeView ifNil: [treeView := HierarchicalListMorph 
-		model: self tree
+	^ treeView ifNil: [treeView := (HierarchicalListMorph 
+		withModel: self tree
 		listGetter: #pool
 		indexGetter: #selectedItem
-		indexSetter: #selectedItem:
-		mainView: self view
-		menuGetter: nil
-		keystrokeAction: nil]! !
+		indexSetter: #selectedItem:)
+			mainView: self view 		menuGetter: nil 		keystrokeAction: nil]! !
 
 !DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 09:03:22'!
 verticalWheel 
@@ -29943,7 +29941,7 @@ quit
 Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
 	Smalltalk quitPrimitive! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 2/11/2024 12:54:10'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 5/26/2024 11:23:04'!
 toolsMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: 'System Browser' translated in: 'Tools' translated)
@@ -29967,8 +29965,15 @@ toolsMenu: builder
 	(builder newEntry: 'Workspace' translated in: 'Tools' translated)
 		icon: #terminalIcon;
 		action: [Workspace open ];
-		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated.'	translated;
+		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use the Smalltalk Sketch Editor tool above.'	translated;
 		order: 30.
+
+	(builder newEntry: 'Transcript' translated in: 'Tools' translated)
+		icon: #printerIcon;
+		action: [Transcript open ];
+		help: 'A window used to print information from the code - text output. Any object receiving the message #print is output in the Transcript: ''hello'' print, (k * 5) print. Use the Transcript class for more elaborated output.' 	translated;
+		order: 35.
+
 		
 	(builder newEntry: 'Open a file' translated in: 'Tools' translated)
 		icon: #systemFileManagerIcon;

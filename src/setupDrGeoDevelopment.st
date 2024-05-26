@@ -18,6 +18,7 @@ Feature require: #'DrGeoFrench'.
 "Morphic operation, to handle with care"
 world := UISupervisor ui.
 [
+	Display fullScreenMode: true.
 	(Delay forSeconds: 1) wait.
 	UISupervisor whenUIinSafeState: [
 		(world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph])
@@ -27,7 +28,6 @@ world := UISupervisor ui.
 		"Adjust taskbar size"
 		morph := world taskbar.
 		morph scale: 1/2.
-		Display fullScreenMode: true.
 		"Compute the available free space for windows placement"
 		area := RealEstateAgent maximumUsableArea extendBy: 0 @ morph morphHeight negated.
 		extent := area extent // 2.
