@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6409] on 26 May 2024 at 11:27:50 am'!
+'From Cuis7.1 [latest update: #6410] on 1 June 2024 at 6:09:27 pm'!
 'Description '!
-!provides: 'DrGeo' 1 731!
+!provides: 'DrGeo' 1 732!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -7602,13 +7602,13 @@ searchLabelIn: aMorph
 				
 		! !
 
-!DrGStylePanel methodsFor: 'as yet unclassified' stamp: 'hlsf 4/1/2024 16:57:51'!
-defaultColor
-	^ self windowColor ! !
-
-!DrGStylePanel methodsFor: 'as yet unclassified' stamp: 'hlsf 4/1/2024 16:57:46'!
+!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 4/1/2024 16:57:46'!
 windowColor
 	^ Theme current transcript ! !
+
+!DrGStylePanel methodsFor: 'initialization' stamp: 'hlsf 4/1/2024 16:57:51'!
+defaultColor
+	^ self windowColor ! !
 
 !DrGDrawableMenu methodsFor: 'events' stamp: 'hlsf 3/30/2024 09:21:21'!
 initialize
@@ -17064,16 +17064,15 @@ myWidgets
 "overwrite to add specific widget to edit specific style"
 	^ OrderedCollection new! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2024 15:00:11'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 6/1/2024 18:09:14'!
 nameWidget
  | inputWidget |
 	inputWidget := (TextModelMorph textProvider: morph textGetter: #name textSetter: #name:)
 			hideScrollBarsIndefinitely;
 			askBeforeDiscardingEdits: false;
 			borderWidth: 1;
-			acceptOnCR: true;
+			acceptOnAny: true;
 			yourself	.
-	inputWidget scroller setProperty: #keyStroke: toValue: [:event | inputWidget scroller acceptContents]. 
 	^ self 
 		widget: inputWidget 
 		named:  'Name' translated
@@ -29902,10 +29901,10 @@ and programmed interactive sketches.
 LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright. self cuisVersion }.
 	^ text! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/10/2024 16:47:38'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 6/1/2024 17:07:56'!
 drgeoVersion
 	^ 'Installed version: ' translated, 
-		'24.05a beta (code revision ', 
+		'24.06a beta (code revision ', 
 		(String streamContents: [:str | 	(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]),
 		')'! !
 
