@@ -1,19 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Pharo\n"
+"Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 08:28-0000\n"
-"PO-Revision-Date: 2023-12-05 06:11+0000\n"
+"POT-Creation-Date: 2024-05-26 11:27+0000\n"
+"PO-Revision-Date: 2024-05-26 13:35+0000\n"
 "Last-Translator: makoto <makoto@kobe-u.ac.jp>\n"
 "Language-Team: \n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-12-06 08:33+0000\n"
-"X-Generator: Launchpad (build 886068b1e1d10de444fbd53b0c7d3f6d4fb3e658)\n"
-"X-Etoys-SystemVersion: etoys4.1 of 29 April 2010 update 2384\n"
-"X-Etoys-Domain: DrGeoII-Core\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"Language: ja\n"
+"X-Cuis-SystemVersion: Cuis7.1 update 6409\n"
+"X-Cuis-Domain: drgeo\n"
 
 #: DrGeo-File,DrGeoXml>>parseFigureFrom:
 msgid "no name"
@@ -283,9 +283,7 @@ msgstr "フィードバック"
 msgid ""
 "Toggle to provide feedback and interaction when the mouse cursor is over the "
 "object."
-msgstr ""
-"マウスカーソルが対象上にあるときにフィードバックを得たり相互作用を実行するた"
-"めの機能に切り替えます．"
+msgstr "マウスカーソルが対象上にあるときにフィードバックを得たり相互作用を実行するための機能に切り替えます．"
 
 #: DrGeo-Model-Style,DrGStyle>>hiddenWidget
 msgid "Hide"
@@ -334,7 +332,7 @@ msgstr "この値の名前を変更する"
 #: DrGeo-Presenter,DrGeo_class>>drgeoInformationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
-"{1}\n"
+"{1} - {3}\n"
 "\n"
 "It allows one to create geometric figure plus the interactive manipulation \n"
 "It is usable in teaching situation, in mathematics, physics and\n"
@@ -347,20 +345,6 @@ msgid ""
 "\n"
 "LICENSE: GPL"
 msgstr ""
-"Dr. Geoの目的はインタラクティブな幾何学とプログラミングです。\n"
-"(1)\n"
-"\n"
-"幾何学的な図形を作成することができ、さらにインタラクティブな操作が可能で"
-"す。 \n"
-"数学、物理、プログラミングなどの教育現場で\n"
-"小学生から大学生のレベルまで利用できます。\n"
-"\n"
-"Smalltalkスクリプトやプログラムされたインタラクティブなスケッチなど \n"
-"の特有な機能もあり、シンプルで効果的です。 \n"
-"\n"
-" (2)\n"
-" \n"
-" ライセンス:GPL"
 
 #: DrGeo-Presenter,DrGeo_class>>drgeoVersion
 msgid "Installed version: "
@@ -383,9 +367,8 @@ msgid "Dr. Geo Preferences"
 msgstr "Dr. Geoの設定"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
-#, fuzzy
 msgid "Preferences"
-msgstr "Dr. Geoの設定"
+msgstr "設定"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Settings"
@@ -393,11 +376,11 @@ msgstr "設定"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Size of GUI elements"
-msgstr ""
+msgstr "GUI要素の大きさ"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Theme"
-msgstr ""
+msgstr "テーマ"
 
 #: DrGeo-Presenter,DrGeo_class>>quit
 msgid ""
@@ -413,23 +396,27 @@ msgid ""
 "browser on the DrGeoSketch class you can study to design your own Smalltalk "
 "sketch."
 msgstr ""
-"Dr.Geoのコードを表示、編集、保存するためのソースコードブラウザです。"
-"DrGeoSketchクラス上でこのブラウザを開くことで，あなた自身のSmalltalkスケッチ"
-"を設計するための勉強ができます。"
+"Dr.Geoのコードを表示、編集、保存するためのソースコードブラウザです。DrGeoSketchクラス上でこのブラウザを開くことで，あなた自身のSmall"
+"talkスケッチを設計するための勉強ができます。"
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
 "A tool to browse and to test both system and personal Smalltalk Sketches."
-msgstr ""
-"システム用や個人用のSmalltalkスケッチを閲覧したりテストするためのツール"
+msgstr "システム用や個人用のSmalltalkスケッチを閲覧したりテストするためのツール"
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
 "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
-"can be entered, stored, edited, and evaluated."
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
 msgstr ""
-"Cuis-Smalltalkのコードの一部を入力、保存、編集、評価できるスクラッチパッド領"
-"域として使用されるウィンドウ。"
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
+msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "An editor to write and to test new Smalltalk sketch."
@@ -467,9 +454,13 @@ msgstr "Smalltalkスケッチエディター"
 msgid "System Browser"
 msgstr "システムブラウザー"
 
-#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
 msgid "Tools"
 msgstr "ツール"
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr "トランスクリプト"
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
@@ -572,8 +563,8 @@ msgid ""
 "three points, the second point is the vertex. Its measure belongs to [0 ; "
 "360[ or ]-180 ; 180]. "
 msgstr ""
-"3つの点または二つのベクトルで決まる有向角．3点で決める場合は2番目の点が頂点に"
-"なる．有向角は0度から360度または-180度から180度までの値をとる． "
+"3つの点または二つのベクトルで決まる有向角．3点で決める場合は2番目の点が頂点になる．有向角は0度から360度または-"
+"180度から180度までの値をとる． "
 
 #: DrGeo-Presenter-Builder,DrGAngleOrientedBuilder_class>>title
 msgid "Oriented angle"
@@ -598,9 +589,7 @@ msgstr "円弧（中心）"
 #: DrGeo-Presenter-Builder,DrGBitmapBuilder_class>>description
 msgid ""
 "Picture: drag and drop a picture in the canvas. It can be moved and scaled."
-msgstr ""
-"図形：キャンバスに図形をドラッグアンドドロップします．移動や大きさの変更がで"
-"きます．"
+msgstr "図形：キャンバスに図形をドラッグアンドドロップします．移動や大きさの変更ができます．"
 
 #: DrGeo-Presenter-Builder,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
 msgid "Picture"
@@ -628,17 +617,13 @@ msgstr "座標，式"
 msgid ""
 "Click to create a point: free point on the background, on a curve or on two "
 "curves intersection."
-msgstr ""
-"クリックすると点（描画領域上の自由点，線上の自由点，２つの線の交点）を作成し"
-"ます．"
+msgstr "クリックすると点（描画領域上の自由点，線上の自由点，２つの線の交点）を作成します．"
 
 #: DrGeo-Presenter-Builder,DrGFlyPointBuilder_class>>description
 msgid ""
 "Tap to create a point: free point on the background, on a curve or on two "
 "curves intersection."
-msgstr ""
-"タップして点を作成：描画領域や曲線上に自由点あるいは二つの曲線の交点を作成し"
-"ます．"
+msgstr "タップして点を作成：描画領域や曲線上に自由点あるいは二つの曲線の交点を作成します．"
 
 #: DrGeo-Presenter-Builder,DrGFlyPointBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Point"
@@ -648,9 +633,7 @@ msgstr "点"
 msgid ""
 "Homothety: select a center, a value and a geometric object. The first "
 "selected point is the homothety center."
-msgstr ""
-"相似拡大: 点、値、幾何オブジェクトを選択してください．最初に選択した点が、相"
-"似拡大の中心になります．"
+msgstr "相似拡大: 点、値、幾何オブジェクトを選択してください．最初に選択した点が、相似拡大の中心になります．"
 
 #: DrGeo-Presenter-Builder,DrGHomothetyBuilder_class>>title
 msgid "Homothety (scale)"
@@ -693,9 +676,8 @@ msgid ""
 "Execute a pre-built macro-construction on selected input items. To edit a "
 "macro description, edit its text and apply with the keys [alt/ctrl]+s."
 msgstr ""
-"選択された入力項目に対して予めビルトされた作図マクロを実行します．マクロ記述"
-"を編集するには，マクロが定義されているテキストを編集後，キーボートから[alt/"
-"ctrl]+s を押して適用してください．"
+"選択された入力項目に対して予めビルトされた作図マクロを実行します．マクロ記述を編集するには，マクロが定義されているテキストを編集後，キーボートから[alt"
+"/ctrl]+s を押して適用してください．"
 
 #: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
 msgid "Execute/edit macro"
@@ -710,7 +692,8 @@ msgid "Middle"
 msgstr "中点"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>description
-msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgid ""
+"Line passing through one point and parallel to a line, half-line, etc."
 msgstr "平行線：一点を通り，他の直線や半直線などに平行な直線"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>title
@@ -719,8 +702,7 @@ msgstr "平行線"
 
 #: DrGeo-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>description
 msgid "Perpendicular bisector defined by a segment or two points."
-msgstr ""
-"垂直二等分線：線分の垂直二等分線または2点（で定まる線分）の垂直二等分線"
+msgstr "垂直二等分線：線分の垂直二等分線または2点（で定まる線分）の垂直二等分線"
 
 #: DrGeo-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>title
 msgid "Perpendicular bisector"
@@ -753,7 +735,8 @@ msgid "Intersection"
 msgstr "交点"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>description
-msgid "Polygon by n points: last point must be the initial point to terminate."
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
 msgstr "多角形：n個の点で定まる多角形．最後に最初の点を選択すると終了します．"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
@@ -781,9 +764,7 @@ msgstr "半直線"
 msgid ""
 "Reflexion: select a line and a geometric object. Reflexion axe is the first "
 "selected line."
-msgstr ""
-"鏡映（反射）：線と幾何オブジェクトを選択してください．最初に選択した線が対称"
-"軸になります．"
+msgstr "鏡映（反射）：線と幾何オブジェクトを選択してください．最初に選択した線が対称軸になります．"
 
 #: DrGeo-Presenter-Builder,DrGReflectionBuilder_class>>title
 msgid "Reflection"
@@ -793,9 +774,7 @@ msgstr "鏡映"
 msgid ""
 "Rotation: select a point, a value and a geometric object. The first selected "
 "point is the rotation center."
-msgstr ""
-"回転：点，角度と幾何オブジェクトを選択して下さい．最初に選んだ点が回転の中心"
-"になります．"
+msgstr "回転：点，角度と幾何オブジェクトを選択して下さい．最初に選んだ点が回転の中心になります．"
 
 #: DrGeo-Presenter-Builder,DrGRotationBuilder_class>>title
 msgid "Rotation"
@@ -821,9 +800,7 @@ msgstr "線分：2点で定まる線分"
 msgid ""
 "Symmetry: select a point and a geometric object. The first selected point is "
 "the symmetry center."
-msgstr ""
-"点対称：点と幾何オブジェクトを選択して下さい．最初に選んだ点が対称の中心にな"
-"ります．"
+msgstr "点対称：点と幾何オブジェクトを選択して下さい．最初に選んだ点が対称の中心になります．"
 
 #: DrGeo-Presenter-Builder,DrGSymmetryBuilder_class>>title
 msgid "Symmetry"
@@ -917,12 +894,11 @@ msgstr "この点をドラッグすると特性が変わります．"
 msgid ""
 "Pressing down the [Shift] key you can drag and change the nature of free "
 "point or intersection point."
-msgstr ""
-"[shift]キーを押しながら自由点や交点をドラッグするとその点の特性を変更できま"
-"す．"
+msgstr "[shift]キーを押しながら自由点や交点をドラッグするとその点の特性を変更できます．"
 
 #: DrGeo-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
-msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
 msgstr "いろんなオブジェクトを選択できます．クリックして選択してください．"
 
 #: DrGeo-Presenter-Tool,DrGStyleTool_class>>description
@@ -971,9 +947,8 @@ msgid ""
 "image. An empty path locates these resources in the Dr. Geo application "
 "folder. Relative path accepted, home/user directory is then prepended"
 msgstr ""
-"ユーザーが作成したスケッチ，Smalltalkスケッチ，書き出した画像などのリソースへ"
-"のパス．パス未設定のときは，これらのリソースはDr. Geoアプリのフォルダに保存さ"
-"れる．相対パスも許され，その場合home/user directoryが先頭に補完される."
+"ユーザーが作成したスケッチ，Smalltalkスケッチ，書き出した画像などのリソースへのパス．パス未設定のときは，これらのリソースはDr. "
+"Geoアプリのフォルダに保存される．相対パスも許され，その場合home/user directoryが先頭に補完される."
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid "miscellaneous"
@@ -998,6 +973,10 @@ msgstr "多角形"
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
 msgstr "コード補完"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
+msgstr "Smalltalkスケッチを実行するときのフルデバッガー"
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "programming"
@@ -1119,9 +1098,7 @@ msgstr "メニュー"
 msgid ""
 "Toggle between the build of several geometric objects and the build of one "
 "geometric object then move it."
-msgstr ""
-"オブジェクトを続けて作成する機能とオブジェクトを１つ作成して動かす機能を切り"
-"替えます．"
+msgstr "オブジェクトを続けて作成する機能とオブジェクトを１つ作成して動かす機能を切り替えます．"
 
 #: DrGeo-View,DrGUIControlsManager>>newButtonData
 msgid "New"
@@ -1231,15 +1208,12 @@ msgstr "曲線上の自由点の動きをアニメーションする．"
 msgid ""
 "Build or execute macro-construction. A macro is a construction template you "
 "can apply to items in the sketch area."
-msgstr ""
-"作図マクロを作成あるいは実行します．マクロは作図のためのテンプレートで，図中"
-"の項目に対して適用します．"
+msgstr "作図マクロを作成あるいは実行します．マクロは作図のためのテンプレートで，図中の項目に対して適用します．"
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid ""
 "Create different curve types: line, half-line, segment, vector, circle..."
-msgstr ""
-"いろいろなタイプの曲線（直線，半直線，線分，ベクトル，円など）を作成する．"
+msgstr "いろいろなタイプの曲線（直線，半直線，線分，ベクトル，円など）を作成する．"
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid "Create points: free, on curve, intersection or middle point."
@@ -1249,9 +1223,7 @@ msgstr "点の作成：自由点，曲線上の点，交点，中点"
 msgid ""
 "Create several numeric objects: free value, distance, length, angle, "
 "coordinates, equation and text."
-msgstr ""
-"様々な数値オブジェクト（自由値，距離，長さ，角度，座標，等式及びテキスト）を"
-"作成"
+msgstr "様々な数値オブジェクト（自由値，距離，長さ，角度，座標，等式及びテキスト）を作成"
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid "Erase or edit style and properties of items."
@@ -1293,9 +1265,7 @@ msgstr "スクリプト：スケッチ中に組み込むために作成，使用
 msgid ""
 "Transform an object with a geometric transformation: symmetry, reflexion, "
 "rotation, translation or homothety (scale)."
-msgstr ""
-"オブジェクトを幾何的変換（点対称，鏡映，回転，平行移動，相似拡大）により変換"
-"します．"
+msgstr "オブジェクトを幾何的変換（点対称，鏡映，回転，平行移動，相似拡大）により変換します．"
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid "Transformations"
@@ -1406,9 +1376,8 @@ msgid ""
 "A description of the script. To help the user, describe carefully what the "
 "script does and the input arguments to select to use it."
 msgstr ""
-"このスクリプトの説明．ユーザのために，このスクリプトがどのようなものである"
-"か，またスクリプトを使用するために必要な引数の入力について注意深く記述してく"
-"ださい．"
+"このスクリプトの説明．ユーザのために，このスクリプトがどのようなものであるか，またスクリプトを使用するために必要な引数の入力について注意深く記述してくださ"
+"い．"
 
 #: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
 msgid "Arguments"
@@ -1427,9 +1396,8 @@ msgid "The name of the script."
 msgstr "スクリプトの名前"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
-#, fuzzy
 msgid "Browse my collection of Smalltalk sketches."
-msgstr "Smalltalkスケッチを閲覧する"
+msgstr "自分用のSmalltalkスケッチを閲覧"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete"
@@ -1450,6 +1418,14 @@ msgstr "コー​​ド"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
 msgid "Select a Smalltalk sketch"
 msgstr "Smalltalkスケッチを選択する"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+"多数のエラーを検出。 修正してください！\n"
+"スケッチは停止しました"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch,DrGeo>>saveSketchAs
 msgid "Name the sketch to keep."
@@ -1557,9 +1533,7 @@ msgstr ""
 
 #: DrGeo-View-Dialog,DrGWizardMacroPlay>>secondPage
 msgid "Select a macro-construction then the figure items"
-msgstr ""
-"作図マクロを選択し、次に入力パラメータとなる図中のオブジェクトを選択してくだ"
-"さい"
+msgstr "作図マクロを選択し、次に入力パラメータとなる図中のオブジェクトを選択してください"
 
 #: DrGeo-View-Dialog,DrGWizardScript>>firstPage
 msgid ""
@@ -1596,9 +1570,3 @@ msgstr "スクリプトとスケッチの項目を選択"
 #: DrGeo-View-Dialog,DrGWizardScript>>secondPage
 msgid "The arguments accepted by this script."
 msgstr "このスクリプトが受け取る引数。"
-
-#~ msgid "Name the bitmap to export:"
-#~ msgstr "ビットマップ出力名："
-
-#~ msgid "Execute step by step"
-#~ msgstr "ステップバイステップで実行"

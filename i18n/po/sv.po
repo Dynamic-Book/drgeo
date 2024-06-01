@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pharo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 08:28-0000\n"
+"POT-Creation-Date: 2024-05-26 11:27+0000\n"
 "PO-Revision-Date: 2022-11-17 14:42+0000\n"
 "Last-Translator: Kristoffer Grundström <Unknown>\n"
 "Language-Team: \n"
-"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-11-24 06:29+0000\n"
-"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"Language: sv\n"
 "X-Pharo-Domain: DrGeoII\n"
 "X-Pharo-SystemVersion: Pharo1.3 of 5 July 2011 update 13267\n"
 
@@ -332,7 +332,7 @@ msgstr "Döp om det här värdet"
 #: DrGeo-Presenter,DrGeo_class>>drgeoInformationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
-"{1}\n"
+"{1} - {3}\n"
 "\n"
 "It allows one to create geometric figure plus the interactive manipulation \n"
 "It is usable in teaching situation, in mathematics, physics and\n"
@@ -345,21 +345,6 @@ msgid ""
 "\n"
 "LICENSE: GPL"
 msgstr ""
-"Dr. Geo är om interaktiv geometri och programmering.\n"
-"{1}\n"
-"\n"
-"Det tillåter en att skapa geometrisk figur plus den interaktiva "
-"manipulationen \n"
-"Det är användbart i undervisningssituationer, i matematik, fysik och\n"
-"programmering med elever från grundskolan till universitetsnivåer.\n"
-"\n"
-"Det är enkelt och effektivt med en del unika funktioner så som Smalltalk-"
-"skript \n"
-"och programmerade interaktiva ritningar. \n"
-"\n"
-"{2}\n"
-"\n"
-"LICENS: GPL"
 
 #: DrGeo-Presenter,DrGeo_class>>drgeoVersion
 msgid "Installed version: "
@@ -382,9 +367,8 @@ msgid "Dr. Geo Preferences"
 msgstr "Egenskaper för Dr. Geo"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
-#, fuzzy
 msgid "Preferences"
-msgstr "Egenskaper för Dr. Geo"
+msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Settings"
@@ -426,7 +410,15 @@ msgstr ""
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
 "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
-"can be entered, stored, edited, and evaluated."
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
+msgstr ""
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
 msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
@@ -465,9 +457,13 @@ msgstr "Ritningsredigeraren Smalltalk"
 msgid "System Browser"
 msgstr "Systemutforskare"
 
-#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
 msgid "Tools"
 msgstr "Verktyg"
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
@@ -714,7 +710,8 @@ msgid "Middle"
 msgstr "Mitten"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>description
-msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgid ""
+"Line passing through one point and parallel to a line, half-line, etc."
 msgstr ""
 "Linje som går genom en punkt och parallellt med en linje, halvlinje, etc."
 
@@ -724,7 +721,8 @@ msgstr "Parallell"
 
 #: DrGeo-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>description
 msgid "Perpendicular bisector defined by a segment or two points."
-msgstr "Vinkelrät halveringslinje definierad av ett segment eller två punkter."
+msgstr ""
+"Vinkelrät halveringslinje definierad av ett segment eller två punkter."
 
 #: DrGeo-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>title
 msgid "Perpendicular bisector"
@@ -760,7 +758,8 @@ msgid "Intersection"
 msgstr "Korsning"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>description
-msgid "Polygon by n points: last point must be the initial point to terminate."
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
 msgstr ""
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
@@ -928,8 +927,10 @@ msgid ""
 msgstr ""
 
 #: DrGeo-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
-msgid "Several objects can be selected. Please, select one clicking the mouse."
-msgstr "Flera objekt kan väljas. Snälla, välj ett genom att klicka med musen."
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
+msgstr ""
+"Flera objekt kan väljas. Snälla, välj ett genom att klicka med musen."
 
 #: DrGeo-Presenter-Tool,DrGStyleTool_class>>description
 msgid "Edit an object style."
@@ -1000,6 +1001,10 @@ msgstr "polygon"
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
 msgstr ""
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
@@ -1430,9 +1435,8 @@ msgid "The name of the script."
 msgstr "Skriptets namn."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
-#, fuzzy
 msgid "Browse my collection of Smalltalk sketches."
-msgstr "Bläddra bland Smalltalk-ritningar"
+msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete"
@@ -1453,6 +1457,12 @@ msgstr "Kod"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
 msgid "Select a Smalltalk sketch"
 msgstr "Välj en Smalltalk-ritning"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch,DrGeo>>saveSketchAs
 msgid "Name the sketch to keep."
@@ -1583,9 +1593,3 @@ msgstr "Välj ett skript, sedan föremålen i ritningen"
 #: DrGeo-View-Dialog,DrGWizardScript>>secondPage
 msgid "The arguments accepted by this script."
 msgstr "Argumenten som accepteras av det här skriptet."
-
-#~ msgid "Name the bitmap to export:"
-#~ msgstr "Namn på bitmappen att exportera:"
-
-#~ msgid "Execute step by step"
-#~ msgstr "Exekvera steg för steg"

@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: drgeo\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2024-05-09 08:28-0000\n"
-"PO-Revision-Date: 2023-05-19 11:10+0000\n"
+"POT-Creation-Date: 2024-05-26 11:27+0000\n"
+"PO-Revision-Date: 2024-05-26 13:29+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
-"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-11-24 06:29+0000\n"
-"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:38+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"Language: uk\n"
 
 #: DrGeo-File,DrGeoXml>>parseFigureFrom:
 msgid "no name"
@@ -338,7 +338,7 @@ msgstr "Перейменувати це значення"
 #: DrGeo-Presenter,DrGeo_class>>drgeoInformationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
-"{1}\n"
+"{1} - {3}\n"
 "\n"
 "It allows one to create geometric figure plus the interactive manipulation \n"
 "It is usable in teaching situation, in mathematics, physics and\n"
@@ -351,22 +351,21 @@ msgid ""
 "\n"
 "LICENSE: GPL"
 msgstr ""
-"Dr. Geo засновано на інтерактивній геометрії і програмуванні.\n"
-"{1}\n"
+"Dr. Geo призначено для інтерактивних геометричних побудов та програмування.\n"
+"{1} - {3}\n"
 "\n"
-"За допомогою програми можна створювати геометричні фігури та керувати ними в "
-"інтерактивному режимі\n"
-"Програмою можна скористатися для навчання математики, фізики та "
-"програмування з учнами та студентами\n"
-"від початкової школи до університету.\n"
+"Програма уможливлює створення геометричних фігур та інтерактивну роботу з "
+"ними.\n"
+"Програмою можна скористатися з навчальною метою у математиці, фізиці та \n"
+"програмуванні зі учнями та студентами від початкового рівня до "
+"університетського.\n"
 "\n"
-"Програма є простою і ефективною, а також передбачає деякі унікальні "
-"можливості, зокрема використання скриптів Smalltalk та\n"
-"програмування інтерактивних ескізів. \n"
+"Програма є простою та ефективною і має деякі унікальні можливості, зокрема \n"
+"використання скриптів Smalltalk та програмовані інтерактивні ескізи.  \n"
 "\n"
 "{2}\n"
 "\n"
-"Умови ліцензування: GPL"
+"УМОВИ ЛІЦЕНЗУВАННЯ: GPL"
 
 #: DrGeo-Presenter,DrGeo_class>>drgeoVersion
 msgid "Installed version: "
@@ -389,9 +388,8 @@ msgid "Dr. Geo Preferences"
 msgstr "Налаштування Dr. Geo"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
-#, fuzzy
 msgid "Preferences"
-msgstr "Налаштування Dr. Geo"
+msgstr "Налаштування"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Settings"
@@ -399,11 +397,11 @@ msgstr "Параметри"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Size of GUI elements"
-msgstr ""
+msgstr "Розмір елементів інтерфейсу"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #: DrGeo-Presenter,DrGeo_class>>quit
 msgid ""
@@ -433,11 +431,24 @@ msgstr ""
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
 "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
-"can be entered, stored, edited, and evaluated."
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
 msgstr ""
-"Вікно є електронним блокнотом, у який можна вписувати фрагменти коду Cuis-"
-"Smalltalk, у якому можна зберігати, редагувати та обробляти ці фрагменти "
-"коду."
+"Вікно використовують як область ескізника, куди можна вводити, зберігати, "
+"редагувати та обробляти фрагменти коду Cuis-Smalltalk. Для редагування "
+"ескіза Smalltalk скористайтеся панеллю інструментів редактора ескізів "
+"Smalltalk, яку розташовано вище."
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
+msgstr ""
+"Вікно використовують для виведення даних з коду — текстового виведення. Будь-"
+"який об'є, що отримує повідомленя #print, виводить дані у Transcript: "
+"'hello' print, (k * 5) print. Скористайтеся класом Transcript, щоб "
+"скоригувати виведення."
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "An editor to write and to test new Smalltalk sketch."
@@ -475,9 +486,13 @@ msgstr "Редактор ескізів Smalltalk"
 msgid "System Browser"
 msgstr "Навігатор системою"
 
-#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
 msgid "Tools"
 msgstr "Інструменти"
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr "Transcript"
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
@@ -727,7 +742,8 @@ msgid "Middle"
 msgstr "Середина"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>description
-msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgid ""
+"Line passing through one point and parallel to a line, half-line, etc."
 msgstr ""
 "Пряма, що проходить через одну точку паралельно до іншої прямої, променя "
 "тощо."
@@ -774,7 +790,8 @@ msgid "Intersection"
 msgstr "Перетин"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>description
-msgid "Polygon by n points: last point must be the initial point to terminate."
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
 msgstr ""
 "Багатокутник за вершинами: для завершення побудови остання вершина має "
 "збігатися з першою."
@@ -884,7 +901,8 @@ msgstr "Вектор за двома точками."
 
 #: DrGeo-Presenter-Tool,DrGAnimateTool_class>>description
 msgid "Select a free point on a curve to animate it."
-msgstr "Виберіть на кривій довільну точку, щоб програма виконала її анімацію."
+msgstr ""
+"Виберіть на кривій довільну точку, щоб програма виконала її анімацію."
 
 #: DrGeo-Presenter-Tool,DrGAnimateTool_class>>title,DrGUIMinimalControlsManager>>mainMenu
 msgid "Animate"
@@ -947,7 +965,8 @@ msgstr ""
 "перетягувати і змінювати прив’язку довільної точки або точки перетину."
 
 #: DrGeo-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
-msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
 msgstr ""
 "Можна позначити декілька об’єктів. Будь ласка, позначте хоч один клацанням "
 "лівою кнопкою миші."
@@ -1026,6 +1045,10 @@ msgstr "багатокутник"
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
 msgstr "Доповнення коду на"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
+msgstr "Повна діагностика, коли виконуємо ескіз Smalltalk."
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "programming"
@@ -1270,7 +1293,8 @@ msgstr "Створити лінії різних типів: пряму, про�
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid "Create points: free, on curve, intersection or middle point."
-msgstr "Створити точки: довільні, на кривій, точки перетину або середні точки."
+msgstr ""
+"Створити точки: довільні, на кривій, точки перетину або середні точки."
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid ""
@@ -1455,9 +1479,8 @@ msgid "The name of the script."
 msgstr "Назва скрипту."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
-#, fuzzy
 msgid "Browse my collection of Smalltalk sketches."
-msgstr "Вибір ескізів Smalltalk"
+msgstr "Навігація збіркою ескізів Smalltalk."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete"
@@ -1478,6 +1501,14 @@ msgstr "Код"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
 msgid "Select a Smalltalk sketch"
 msgstr "Виберіть ескіз Smalltalk"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+"Забагато помилок. Виправте!\n"
+"Обробку ескіза зупинено"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch,DrGeo>>saveSketchAs
 msgid "Name the sketch to keep."
@@ -1621,9 +1652,3 @@ msgstr "Виберіть скрипт, а потім об’єкти на еск
 #: DrGeo-View-Dialog,DrGWizardScript>>secondPage
 msgid "The arguments accepted by this script."
 msgstr "Аргументи, які приймає цей скрипт."
-
-#~ msgid "Name the bitmap to export:"
-#~ msgstr "Назва растрового зображення:"
-
-#~ msgid "Execute step by step"
-#~ msgstr "Виконати покроково"

@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pharo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 08:28-0000\n"
+"POT-Creation-Date: 2024-05-26 11:27+0000\n"
 "PO-Revision-Date: 2016-03-03 14:19+0000\n"
 "Last-Translator: HwaJong Oh <hwajongoh@me.com>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-11-24 06:28+0000\n"
-"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"Language: \n"
 "X-Pharo-Domain: DrGeoII\n"
 "X-Pharo-SystemVersion: Pharo1.4 of 18 April 2012 update 14438\n"
 
@@ -332,7 +332,7 @@ msgstr "값 이름 바꾸기"
 #: DrGeo-Presenter,DrGeo_class>>drgeoInformationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
-"{1}\n"
+"{1} - {3}\n"
 "\n"
 "It allows one to create geometric figure plus the interactive manipulation \n"
 "It is usable in teaching situation, in mathematics, physics and\n"
@@ -403,7 +403,15 @@ msgstr ""
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
 "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
-"can be entered, stored, edited, and evaluated."
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
+msgstr ""
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
 msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
@@ -442,8 +450,12 @@ msgstr ""
 msgid "System Browser"
 msgstr ""
 
-#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
 msgid "Tools"
+msgstr ""
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
 msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
@@ -569,9 +581,7 @@ msgstr "호"
 #: DrGeo-Presenter-Builder,DrGBitmapBuilder_class>>description
 msgid ""
 "Picture: drag and drop a picture in the canvas. It can be moved and scaled."
-msgstr ""
-"그림: 그림을 캔버스에 끌어다 놓으세요. 그림은 이동되거나 크기조절될 수 있습니"
-"다."
+msgstr "그림: 그림을 캔버스에 끌어다 놓으세요. 그림은 이동되거나 크기조절될 수 있습니다."
 
 #: DrGeo-Presenter-Builder,DrGBitmapBuilder_class>>title,DrGBitmapItem>>printOn:
 msgid "Picture"
@@ -599,16 +609,13 @@ msgstr "좌표, 등식"
 msgid ""
 "Click to create a point: free point on the background, on a curve or on two "
 "curves intersection."
-msgstr ""
-"점을 생성하려면 클릭하세요: 배경이나 곡선, 혹은 곡선의 교점 위에 자유점을 만"
-"듭니다."
+msgstr "점을 생성하려면 클릭하세요: 배경이나 곡선, 혹은 곡선의 교점 위에 자유점을 만듭니다."
 
 #: DrGeo-Presenter-Builder,DrGFlyPointBuilder_class>>description
 msgid ""
 "Tap to create a point: free point on the background, on a curve or on two "
 "curves intersection."
-msgstr ""
-"탭하여 점을 만드세요: 그냥 자유점, 하나의 곡선 위의 자유점, 두 곡선의 교점"
+msgstr "탭하여 점을 만드세요: 그냥 자유점, 하나의 곡선 위의 자유점, 두 곡선의 교점"
 
 #: DrGeo-Presenter-Builder,DrGFlyPointBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Point"
@@ -618,9 +625,7 @@ msgstr "점"
 msgid ""
 "Homothety: select a center, a value and a geometric object. The first "
 "selected point is the homothety center."
-msgstr ""
-"닮음변환: 중심점, 값, 기하객체를 선택합니다. 첫번째 선택한 점이 닮음변환의 중"
-"심점입니다."
+msgstr "닮음변환: 중심점, 값, 기하객체를 선택합니다. 첫번째 선택한 점이 닮음변환의 중심점입니다."
 
 #: DrGeo-Presenter-Builder,DrGHomothetyBuilder_class>>title
 msgid "Homothety (scale)"
@@ -663,8 +668,8 @@ msgid ""
 "Execute a pre-built macro-construction on selected input items. To edit a "
 "macro description, edit its text and apply with the keys [alt/ctrl]+s."
 msgstr ""
-"선택된 항목들에 대한 미리 만들어진 매크로를 실행한다. 매크로 기술을 편집하기 "
-"위해서, 그것의 텍스트를 편집하고 [alt/ctrl]+s 단축키로 적용시키라."
+"선택된 항목들에 대한 미리 만들어진 매크로를 실행한다. 매크로 기술을 편집하기 위해서, 그것의 텍스트를 편집하고 [alt/ctrl]+s "
+"단축키로 적용시키라."
 
 #: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
 msgid "Execute/edit macro"
@@ -679,7 +684,8 @@ msgid "Middle"
 msgstr "중점"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>description
-msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgid ""
+"Line passing through one point and parallel to a line, half-line, etc."
 msgstr "직선, 반직선 등에 평행하고 어떤 점을 지나는 직선"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>title
@@ -721,9 +727,9 @@ msgid "Intersection"
 msgstr "교점"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>description
-msgid "Polygon by n points: last point must be the initial point to terminate."
-msgstr ""
-"n 개의 점에 의한 다각형:  끝내려면 마지막 점은 첫번째 점과 같아야합니다."
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
+msgstr "n 개의 점에 의한 다각형:  끝내려면 마지막 점은 첫번째 점과 같아야합니다."
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
 msgid "Polygon"
@@ -750,9 +756,7 @@ msgstr "빛"
 msgid ""
 "Reflexion: select a line and a geometric object. Reflexion axe is the first "
 "selected line."
-msgstr ""
-"반사: 직선과 기하학적 객체를 선택하세요. 처음 선택된 직선이 반사의 축이 됩니"
-"다."
+msgstr "반사: 직선과 기하학적 객체를 선택하세요. 처음 선택된 직선이 반사의 축이 됩니다."
 
 #: DrGeo-Presenter-Builder,DrGReflectionBuilder_class>>title
 msgid "Reflection"
@@ -788,8 +792,7 @@ msgstr "두 개의 점으로 정의된 선분"
 msgid ""
 "Symmetry: select a point and a geometric object. The first selected point is "
 "the symmetry center."
-msgstr ""
-"대칭: 점과 기하객체를 선택하세요. 처음 선택된 점은 대칭의 중심이 됩니다."
+msgstr "대칭: 점과 기하객체를 선택하세요. 처음 선택된 점은 대칭의 중심이 됩니다."
 
 #: DrGeo-Presenter-Builder,DrGSymmetryBuilder_class>>title
 msgid "Symmetry"
@@ -883,12 +886,11 @@ msgstr "점을 끌어 그것의 성질을 바꾸기"
 msgid ""
 "Pressing down the [Shift] key you can drag and change the nature of free "
 "point or intersection point."
-msgstr ""
-"[Shift]키를 누르고 있으면, 자유점이나 교점의 위치를 바꾸거나 성질을 바꿀 수 "
-"있습니다."
+msgstr "[Shift]키를 누르고 있으면, 자유점이나 교점의 위치를 바꾸거나 성질을 바꿀 수 있습니다."
 
 #: DrGeo-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
-msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
 msgstr "여러 객체들이 선택될 수 있습니다. 클릭하여 선택하세요."
 
 #: DrGeo-Presenter-Tool,DrGStyleTool_class>>description
@@ -960,6 +962,10 @@ msgstr ""
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
+msgstr ""
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
 msgstr ""
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
@@ -1192,9 +1198,7 @@ msgstr "곡선 위의 자유점을 애니메이트하라."
 msgid ""
 "Build or execute macro-construction. A macro is a construction template you "
 "can apply to items in the sketch area."
-msgstr ""
-"매크로를 생성하거나 실행합니다. 매크로는 스케치 영역에 있는 아이템들에 적용"
-"될 수 있는 건설 템플릿입니다."
+msgstr "매크로를 생성하거나 실행합니다. 매크로는 스케치 영역에 있는 아이템들에 적용될 수 있는 건설 템플릿입니다."
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid ""
@@ -1209,8 +1213,7 @@ msgstr "점들을 생성: 자유, 곡선 위, 교점 혹은 중간점"
 msgid ""
 "Create several numeric objects: free value, distance, length, angle, "
 "coordinates, equation and text."
-msgstr ""
-"여러 숫자 객체를 만들어라: 자유로운 값, 거리, 길이, 각도, 좌표, 등식, 글"
+msgstr "여러 숫자 객체를 만들어라: 자유로운 값, 거리, 길이, 각도, 좌표, 등식, 글"
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid "Erase or edit style and properties of items."
@@ -1246,16 +1249,13 @@ msgstr "스크립트"
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid "Script: use, edit or create script to plug in the sketch."
-msgstr ""
-"스크립트: 스크립트를 사용하거나 편집하거나 생성하여 스케치에 끼워넣는다."
+msgstr "스크립트: 스크립트를 사용하거나 편집하거나 생성하여 스케치에 끼워넣는다."
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid ""
 "Transform an object with a geometric transformation: symmetry, reflexion, "
 "rotation, translation or homothety (scale)."
-msgstr ""
-"기하학적 변환으로 객체를 변환합니다: 대칭, 반사, 회전, 평행이동, 닮음변환(크"
-"기)"
+msgstr "기하학적 변환으로 객체를 변환합니다: 대칭, 반사, 회전, 평행이동, 닮음변환(크기)"
 
 #: DrGeo-View,DrGUIMinimalControlsManager>>mainMenu
 msgid "Transformations"
@@ -1366,8 +1366,7 @@ msgid ""
 "A description of the script. To help the user, describe carefully what the "
 "script does and the input arguments to select to use it."
 msgstr ""
-"스크립트에 대한 설명입니다. 사용자를 돕기 위해서, 스크립트가 어떤 일을 하는"
-"지 그리고 입력 인자들은 어때야 하는지 잘 설명하세요."
+"스크립트에 대한 설명입니다. 사용자를 돕기 위해서, 스크립트가 어떤 일을 하는지 그리고 입력 인자들은 어때야 하는지 잘 설명하세요."
 
 #: DrGeo-View-Dialog,DrGScriptDesignerDialog>>newPane,DrGWizardScript>>secondPage
 msgid "Arguments"
@@ -1407,6 +1406,12 @@ msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
 msgid "Select a Smalltalk sketch"
+msgstr ""
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
 msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch,DrGeo>>saveSketchAs
@@ -1530,6 +1535,3 @@ msgstr "스크립트를 선택하고 스케치에 있는 항목을 선택하세�
 #: DrGeo-View-Dialog,DrGWizardScript>>secondPage
 msgid "The arguments accepted by this script."
 msgstr ""
-
-#~ msgid "Name the bitmap to export:"
-#~ msgstr "내보내려는 비트맵의 이름을 정해주세요:"
