@@ -1,3 +1,33 @@
+2024-06-01  hilaire  <hilaire@gnu.org>
+
+	* Release 24.06a beta
+	Details at https://github.com/hilaire/drgeo/milestone/1?closed=1
+	
+	* #8 Cursor hovers angle, not detected
+	* #9 Focus on editor view
+	* #7 Show the angle name
+	* #12 valeur:valeur:valeur:valur:
+	* #14 Approximative fraction
+	* #1 Capture debugger window
+	* #13 Overprinting in status bar
+	* #10 AsFraction approximation
+	* #2 Locus symmetric does not show up immediately
+	* #20 Preference for advanced or minimalist debugger
+	* #27 Auto initialize developer environement
+	* #28 Adjust size of GUI elements and theme
+	* #25 Please explain difference between Smalltalk Sketches and
+	DrGeo Sketches
+	* #29 Error when filled arc
+	* #30 Broken editSctript:
+	* #32 Superfluous space in symbols
+	* #33 Simplify DrGMorph
+	* #38 Wrapped Item print
+	* #40 Math item label does not hide
+	* #26 Dark Theme
+	* #35 Improve the debugger experience
+	* #21 Macro build dialog not updated
+	* #19 GUI widget adapt to font size
+
 2023-12-01  Hilaire Fernandes  <hilaire@gnu.org>
 
 	* Release 23.12a beta
