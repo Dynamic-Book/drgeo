@@ -61,7 +61,7 @@ msgstr "Deze lijn %1"
 
 #: DrGeo-Model-Item,DrGLineParallelItem>>adaptiveDescriptiveName
 msgid "This parallel line %1"
-msgstr "Deze parallelle lijn %1"
+msgstr "Deze evenwijdige lijn %1"
 
 #: DrGeo-Model-Item,DrGLinePerpendicularBisector2ptsItem>>adaptiveDescriptiveName,DrGPerpendicularBisectorItem>>adaptiveDescriptiveName
 msgid "This perpendicular bisector %1"
@@ -737,13 +737,12 @@ msgid "Middle"
 msgstr "Midden"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>description
-msgid ""
-"Line passing through one point and parallel to a line, half-line, etc."
-msgstr "Lijn door één punt en parallel aan een lijn, een halve lijn, etc."
+msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgstr "Lijn door één punt en evenwijdig aan een lijn, een halve lijn, etc."
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>title
 msgid "Parallel"
-msgstr "Parallel"
+msgstr "Evenwijdig"
 
 #: DrGeo-Presenter-Builder,DrGPerpendicularBisectorBuilder_class>>description
 msgid "Perpendicular bisector defined by a segment or two points."
