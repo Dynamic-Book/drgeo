@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6350] on 18 May 2024 at 10:08:20 am'!
+'From Cuis7.1 [latest update: #6409] on 26 May 2024 at 11:27:50 am'!
 'Description '!
-!provides: 'DrGeo' 1 726!
+!provides: 'DrGeo' 1 731!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -3540,11 +3540,11 @@ initialize
 	cmdManager := DrGCommandManager new domain: self.
 	pointNameIndex := 0! !
 
-!DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 15:18:43'!
+!DrGeoDomain methodsFor: 'initialize-release' stamp: 'hlsf 5/20/2024 16:09:17'!
 release
-	factory := cmdManager := nil
 	"factory release.
-	cmdManager release."! !
+	cmdManager release."
+	factory := cmdManager := nil.! !
 
 !DrGeoDomain methodsFor: 'building'!
 createCompositeItem: aMathItemSelection
@@ -6281,11 +6281,11 @@ fourthPage
 		contents: pane;
 		yourself! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 5/20/2024 15:31:43'!
 secondPage
 | list pane |
 	list := PluggableListMorph 
-		model: model
+		withModel: model
 		listGetter: #inputNames
 		indexGetter:  nil
 		indexSetter: nil.
@@ -6297,11 +6297,11 @@ secondPage
 		yourself
 	! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 5/20/2024 15:31:46'!
 thirdPage
 | list pane |
 	list := PluggableListMorph 
-		model: model
+		withModel: model
 		listGetter: #outputNames
 		indexGetter:  nil
 		indexSetter: nil.
@@ -6357,11 +6357,11 @@ firstPage
  automaticly executed.
  To start press the ''next'' button.' translated! !
 
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
+!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 5/20/2024 15:31:50'!
 secondPage
 | pane morph |
 	morph := PluggableListMorph 
-		model: self
+		withModel: self
 		listGetter: #macroList
 		indexGetter: #selectedMacro
 		indexSetter: #selectedMacro:.
@@ -6449,13 +6449,13 @@ firstPage
  inserted in the sketch, at the user selected position.
  To start press the ''next'' button.' translated! !
 
-!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 4/7/2022 15:42:08'!
+!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 5/20/2024 15:31:56'!
 secondPage
 	| list argumentList page textMorph |
 	list := PluggableListMorph 
-		model: self listGetter: #scriptsName indexGetter: #selectedScript 		indexSetter: #selectedScript:. 
+		withModel: self listGetter: #scriptsName indexGetter: #selectedScript 		indexSetter: #selectedScript:. 
 	argumentList := (PluggableListMorph 
-		model: self listGetter: #argumentsName indexGetter: nil indexSetter: nil)
+		withModel: self listGetter: #argumentsName indexGetter: nil indexSetter: nil)
 		setBalloonText: 'The arguments accepted by this script.' translated;
 		yourself.
 	textMorph := (TextModelMorph textProvider: model textGetter: #description textSetter: #description:)
@@ -6786,7 +6786,7 @@ initialize
 	scriptName := ''.
 	description := ''! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 4/9/2024 10:38:38'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 5/20/2024 15:31:59'!
 addArgument
 	| newArgument |
 	newArgument := LayoutMorph newRow
@@ -6801,7 +6801,7 @@ addArgument
 			setBalloonText:  'Remove this script argument.' translated;
 			yourself);		
 		addMorph: ((DropDownListMorph 
-			model: (ListModel with: self class labels)
+			withModel: (ListModel with: self class labels)
 			listGetter: #list
 			indexGetter:  #listIndex
 			indexSetter: #listIndex:)
@@ -7085,11 +7085,11 @@ emptyView
 		borderWidth: 1;
 		layoutSpec: LayoutSpec useAll! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 2/22/2023 11:22:05'!
+!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 5/20/2024 15:32:05'!
 initialize
 	super initialize.
 	sketchesListMorph := PluggableListMorph 
-		model: self 		listGetter: #sketches 		indexGetter: #sketch indexSetter: #sketch:.
+		withModel: self 		listGetter: #sketches 		indexGetter: #sketch indexSetter: #sketch:.
 	drgeoView := self emptyView.
 	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode)
 		disableEditing;
@@ -8444,15 +8444,15 @@ locked: boolean
 mathItem
 	^ mathItem ! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 3/30/2021 13:55:46'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 5/20/2024 15:54:07'!
 mathItem: aMathItem
-	self removeEvents.
+	"self removeEvents."
 	mathItem := aMathItem.
 	self registerEvents.! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/12/2024 12:40:58'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 5/20/2024 15:54:12'!
 mathItem: aMathItem in: aDrawable
-	self removeEvents.
+	"self removeEvents."
 	mathItem := aMathItem.
 	self registerEventsIn: aDrawable .! !
 
@@ -8519,25 +8519,18 @@ initialize
 	self style: (self styleClass newWith: self).
 	self labelMorph: mathItem name.! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:32:41'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/20/2024 15:04:54'!
 registerEvents
-	mathItem
-		ifNotNil: [
-			mathItem
-				when: #deletedMathItem
-				send: #deleteItemView:
-				to: self drawable 
-				with: self.
-			mathItem 
-				when: #updateMyView
-				send: #updateAllMathItems
-				to: self domain].
-	self flag: #drgeoEvent! !
+	self registerEventsIn: self domain! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:38:50'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/20/2024 15:40:30'!
 registerEventsIn: aDrawable
 	mathItem
 		ifNotNil: [
+			mathItem 
+				when: #existence
+				send: #visible:
+				to: self.
 			mathItem
 				when: #deletedMathItem
 				send: #deleteItemView:
@@ -8557,11 +8550,11 @@ release
 	self flag: #drgeoEvent.
 	self removeEvents.! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/25/2023 15:36:49'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/20/2024 16:04:41'!
 removeEvents
 	mathItem ifNotNil: 
-		[mathItem removeActionsWithReceiver: self].
-	self breakDependents ! !
+		[mathItem releaseActionMap].
+"	'Remove events' print"! !
 
 !DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:51:46'!
 removeLabelMorph
@@ -8759,7 +8752,7 @@ forceHiddenColor
 	color := DrGTypeColor hiddenColor.
 ! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'drgeo 9/10/2022 14:44:16'!
+!DrGMorph methodsFor: 'updating' stamp: 'hlsf 5/20/2024 15:13:57'!
 forcedVisibility: aBoolean
 "We force this hidden morph to be visible. 
 Necessary when one wants to edit the style of an hidden morph
@@ -8774,26 +8767,9 @@ In the process we change its color to inform the user this is a hidden item temp
 			self restoreNormalColor].
 	^true! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 4/13/2021 14:42:56'!
-hide
-	super hide.
-	labelMorph ifNotNil: [labelMorph hide].! !
-
 !DrGMorph methodsFor: 'updating' stamp: 'hlsf 3/30/2024 09:58:36'!
 restoreNormalColor
 	color := Theme current adjustColor: style color! !
-
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 4/18/2021 08:50:14'!
-show
-	super show.
-	labelMorph ifNotNil: 	[
-		labelMorph show.
-		labelMorph morphPosition: self labelPosition]	! !
-
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 4/3/2021 20:04:44'!
-toggleLocked
-	self isLockable ifTrue: [
-		mathItem locked: mathItem isLocked not]! !
 
 !DrGMorph methodsFor: 'updating' stamp: 'hlsf 4/13/2021 14:41:36'!
 unhide
@@ -8802,20 +8778,15 @@ unhide
 		self forcedVisibility: true.
 		style hidden: false]! !
 
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 8/3/2023 20:53:00'!
-update: object
-	self presenter saved: false.
-	"morph or canvas redraw?"
-	self flag: #drgeoTodo.
-	self redrawNeeded ! !
-
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 6/5/2021 11:53:08'!
-updateToInvisible
-	self hide! !
-
-!DrGMorph methodsFor: 'updating' stamp: 'hlsf 6/5/2021 11:53:16'!
-updateToVisible
-	style isNotHidden ifTrue: [	self show		]! !
+!DrGMorph methodsFor: 'updating' stamp: 'hlsf 5/20/2024 15:20:44'!
+visible: isVisible
+	super visible: isVisible.
+	isVisible 
+		ifTrue: [
+			labelMorph ifNotNil: 	[
+				labelMorph show.
+				labelMorph morphPosition: self labelPosition]	 			]			
+	 	ifFalse: [labelMorph ifNotNil: [labelMorph hide] ]! !
 
 !DrGMorph methodsFor: 'xml writting' stamp: 'hlsf 3/28/2022 14:09:31'!
 writeAsXmlTo: aNode 
@@ -12301,7 +12272,7 @@ canTransform: wrptItem
 	wrptItem mathItem isGeometricItem
 		ifFalse: [self error: 'Only geometric object can be transformed.' translated].! !
 
-!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 3/20/2024 17:13:28'!
+!DrGeoSketch methodsFor: 'transformations' stamp: 'hlsf 5/20/2024 14:33:28'!
 finalizeTransformation: string with: arguments 
 	| class item |
 	class := Smalltalk classNamed: 'DrG', arguments first basicType capitalized, string, 'Item'.
@@ -12311,7 +12282,7 @@ finalizeTransformation: string with: arguments
 		ifFalse: [| finalizedCurve | 
 			finalizedCurve := self finalizeCurve: item.
 			item isLocusItem ifTrue: [
-				self view world doOneMinimalCycleNow .
+				self runningWorld ifNotNil: [:w | w doOneMinimalCycleNow].
 				self domain updateAllMathItems].
 			finalizedCurve ]! !
 
@@ -12756,9 +12727,12 @@ descriptiveName
 exist
 	^exist! !
 
-!DrGMathItem methodsFor: 'accessing'!
+!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 5/20/2024 15:38:36'!
 exist: aBoolean
-	exist := aBoolean! !
+	exist ~= aBoolean 
+		ifTrue: [
+			exist := aBoolean.
+			self triggerEvent: #existence with: exist]! !
 
 !DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 2/11/2022 08:56:49'!
 icon
@@ -12998,16 +12972,11 @@ update
 contains: aPoint
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'testing'!
+!DrGMathItem methodsFor: 'testing' stamp: 'hlsf 5/20/2024 11:25:46'!
 doParentsExist
-	exist := true.
-	parents 
-		ifNotNil: 
-			[parents do: [:parent |
-			parent exist ifFalse: [^ exist := false]]]
-		ifNil: [exist := false].
-	^exist
-				! !
+	^ parents 
+		ifNotNil: [parents allSatisfy: [:parent | 			parent exist] ]
+		ifNil: [false]! !
 
 !DrGMathItem methodsFor: 'testing'!
 isCloneable
@@ -13325,39 +13294,41 @@ isCurveItem
 isGeometricItem
 	^ true! !
 
-!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 5/4/2021 20:46:58'!
+!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:48:13'!
 update
 	| direction1 direction2 a b c ab |
-	self doParentsExist ifTrue: 
-		[a := parents first point.
-		b := parents second point.
-		c := parents third point.
-		(a = b or: [c = b]) ifTrue: [^exist := false].
-		direction1 := (DrGDirectionItem new)
-					origin: (a + b) / 2;
-					direction: (a - b) normal.
-		direction2 := (DrGDirectionItem new)
-					origin: (b + c) / 2;
-					direction: (b - c) normal.
-		center := direction1 intersectionWithDirection: direction2.
-		center ifNil: [^self updateAsSegmentOrRay].
-		a := a - center.
-		b := b - center.
-		c := c - center.
-		radius := a r.
-		origin := a y asFloat arcTan: a x.
-		ab := (b y asFloat arcTan: b x) - origin.
-		length := (c y asFloat arcTan: c x) - origin.
-		length = 0 ifTrue: [^exist := false].
-		(length < 0 and: [ab < length or: [ab > 0]])  ifTrue: 
-			[^length := length + Float twoPi].
-		(length > 0 and: [ab > length or: [ab < 0]]) 	ifTrue: 
-			[length := length - Float twoPi]].! !
+	self doParentsExist 	ifFalse: [^ self exist: false].
+	a := parents first point.
+	b := parents second point.
+	c := parents third point.
+	(a = b or: [c = b]) ifTrue: [ ^ self exist: false].
+	direction1 := DrGDirectionItem new
+			origin: (a + b) / 2;
+			direction: (a - b) normal.
+	direction2 := DrGDirectionItem new
+			origin: (b + c) / 2;
+			direction: (b - c) normal.
+	center := direction1 intersectionWithDirection: direction2.
+	center ifNil: [^self updateAsSegmentOrRay].
+	a := a - center.
+	b := b - center.
+	c := c - center.
+	radius := a r.
+	origin := a y asFloat arcTan: a x.
+	ab := (b y asFloat arcTan: b x) - origin.
+	length := (c y asFloat arcTan: c x) - origin.
+	length = 0 ifTrue: [ ^ self exist: false].
+	length < 0 
+		ifTrue: [
+			(ab < length or: [ab > 0]) 		ifTrue: 	[length := length + Float twoPi ] ]
+		ifFalse: [
+			(ab > length or: [ab < 0]) 	ifTrue:  			[length := length - Float twoPi] ].
+	self exist: true! !
 
-!DrGArc3ptsItem methodsFor: 'updating'!
+!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:47:52'!
 updateAsSegmentOrRay
 "the three point are aligned, the arc is a segment"
-	exist := false.! !
+	self exist: false.! !
 
 !DrGArc3ptsItem methodsFor: 'as yet unclassified'!
 rehash
@@ -13372,20 +13343,19 @@ parentsEqual: aMathItem
 	^ parents = aMathItem parents
 		or: [parents reverse = aMathItem parents]! !
 
-!DrGArcCenterAngleItem methodsFor: 'updating' stamp: 'hlsf 5/4/2021 20:41:50'!
+!DrGArcCenterAngleItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:48:42'!
 update
 | u v |
-	self doParentsExist ifTrue: 
-		[center := parents first point.
-		u := parents second point - center.
-		v := parents third point - center.
-		(u = (0@0) or: [v = (0@0)]) 
-			ifTrue: [exist := false]
-			ifFalse: 
-				[radius := u r.
-				origin := u y asFloat arcTan: u x.
-				length := (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
-				length < 0 ifTrue: [ length := length + Float twoPi]]]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents first point.
+	u := parents second point - center.
+	v := parents third point - center.
+	(u = (0@0) or: [v = (0@0)]) 
+		ifFalse: [radius := u r.
+			origin := u y asFloat arcTan: u x.
+			length := (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
+			length < 0 ifTrue: [ length := length + Float twoPi] ].
+	self exist: true! !
 
 !DrGArcCenterAngleItem methodsFor: 'xml writing'!
 nodeType
@@ -13399,17 +13369,18 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGArcHomothetyItem methodsFor: 'updating'!
+!DrGArcHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:50:09'!
 update
 |arcItem centerHomothety|
-	self doParentsExist ifTrue:
-		[arcItem := parents first.
-		centerHomothety := parents second point.
-		center := centerHomothety +
-			(parents third valueItem * (arcItem center - centerHomothety)).
-		radius := arcItem radius * parents third valueItem abs.
-		origin := arcItem origin + (parents third valueItem sign -1 * Float halfPi).
-		length := arcItem length].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	arcItem := parents first.
+	centerHomothety := parents second point.
+	center := centerHomothety +
+		(parents third valueItem * (arcItem center - centerHomothety)).
+	radius := arcItem radius * parents third valueItem abs.
+	origin := arcItem origin + (parents third valueItem sign -1 * Float halfPi).
+	length := arcItem length.
+	self exist: true! !
 
 !DrGArcReflexionItem methodsFor: 'xml writing'!
 nodeType
@@ -13419,22 +13390,24 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGArcReflexionItem methodsFor: 'updating' stamp: 'hlsf 6/5/2021 20:17:50'!
+!DrGArcReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:51:30'!
 update
 |pointA|
-	self doParentsExist ifTrue:
-		[origin := parents first origin.
-		radius := parents first radius.
-		center := parents first center.
-		length := parents first length negated.
-		pointA := center + (radius * (origin cos @ origin sin)).
-		pointA := pointA reflexionBy: parents second origin 
-						direction: parents second direction.
-		center := center reflexionBy: parents second origin 
-						direction: parents second direction.
-		pointA := pointA - center.
-		origin := pointA y asFloat arcTan: pointA x].
-! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	origin := parents first origin.
+	radius := parents first radius.
+	center := parents first center.
+	length := parents first length negated.
+	pointA := center + (radius * (origin cos @ origin sin)).
+	pointA := pointA 
+		reflexionBy: parents second origin 
+		direction: parents second direction.
+	center := center 
+		reflexionBy: parents second origin 					
+		direction: parents second direction.
+	pointA := pointA - center.
+	origin := pointA y asFloat arcTan: pointA x.
+	self exist: true! !
 
 !DrGArcRotationItem methodsFor: 'xml writing'!
 nodeType
@@ -13444,33 +13417,33 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGArcRotationItem methodsFor: 'updating'!
+!DrGArcRotationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:51:50'!
 update
 |arcItem|
-	self doParentsExist ifTrue:
-		[arcItem := parents first.
-		center := arcItem center
-			rotateBy: parents third valueItem negated 
-			about: parents second point.
-		origin := arcItem origin + parents third valueItem.
-		length := arcItem length.
-		radius := arcItem radius].
+	self doParentsExist ifFalse: [^ self exist: false].
+	arcItem := parents first.
+	center := arcItem center
+		rotateBy: parents third valueItem negated 
+		about: parents second point.
+	origin := arcItem origin + parents third valueItem.
+	length := arcItem length.
+	radius := arcItem radius.
+	self exist: true
 ! !
 
 !DrGArcSymmetryItem methodsFor: 'updating'!
 moveParent: aPoint
 	^false! !
 
-!DrGArcSymmetryItem methodsFor: 'updating'!
+!DrGArcSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:52:28'!
 update
-	self doParentsExist 
-		ifTrue: 
-			[origin := parents first origin + Float pi.
-			origin > Float pi ifTrue: [origin := origin - Float twoPi].
-			radius := parents first radius.
-			center := 2 * parents second point - parents first center.
-			length := parents first length].
-! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	origin := parents first origin + Float pi.
+	origin > Float pi ifTrue: [origin := origin - Float twoPi].
+	radius := parents first radius.
+	center := 2 * parents second point - parents first center.
+	length := parents first length.
+	self exist: true! !
 
 !DrGArcSymmetryItem methodsFor: 'xml writing'!
 nodeType
@@ -13484,13 +13457,14 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGArcTranslationItem methodsFor: 'updating'!
+!DrGArcTranslationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:52:49'!
 update
-	self doParentsExist ifTrue:
-		[origin := parents first origin.
-		radius := parents first radius.
-		center := parents first center + parents second direction.
-		length := parents first length].
+	self doParentsExist ifFalse: [^ self exist: false].
+	origin := parents first origin.
+	radius := parents first radius.
+	center := parents first center + parents second direction.
+	length := parents first length.
+	self exist: true
 ! !
 
 !DrGBitmapItem methodsFor: 'printing'!
@@ -13780,11 +13754,12 @@ isGeometricItem
 nodeType
 	^#'2pts'! !
 
-!DrGCircle2ptsItem methodsFor: 'updating'!
+!DrGCircle2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:53:16'!
 update
-	self doParentsExist
-		ifTrue: [center := parents first point.
-					radius := center dist: parents second point].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents first point.
+	radius := center dist: parents second point.
+	self exist: true! !
 
 !DrGCircleHomothetyItem methodsFor: 'xml writing'!
 nodeType
@@ -13794,14 +13769,15 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGCircleHomothetyItem methodsFor: 'updating'!
+!DrGCircleHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:53:34'!
 update
 |centerHomothety|
-	self doParentsExist ifTrue:
-		[centerHomothety := parents second point.
-		radius := parents first radius * parents third valueItem abs.
-		center := centerHomothety +
-			(parents third valueItem * (parents first center - centerHomothety))].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	centerHomothety := parents second point.
+	radius := parents first radius * parents third valueItem abs.
+	center := centerHomothety +
+		(parents third valueItem * (parents first center - centerHomothety)).
+	self exist: true! !
 
 !DrGCircleRadiusItem methodsFor: 'computing'!
 clone
@@ -13822,11 +13798,12 @@ moveParent: aPoint
 	thePoint moveEvent: aPoint.
 	^ true! !
 
-!DrGCircleRadiusItem methodsFor: 'updating'!
+!DrGCircleRadiusItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:53:48'!
 update
-	self doParentsExist
-		ifTrue: [center := parents first point.
-			radius := parents second valueItem abs].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents first point.
+	radius := parents second valueItem abs.
+	self exist: true! !
 
 !DrGCircleRadiusItem methodsFor: 'xml writing'!
 nodeType
@@ -13844,11 +13821,12 @@ clone
 nodeType
 	^ #segment! !
 
-!DrGCircleSegmentItem methodsFor: 'updating'!
+!DrGCircleSegmentItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:54:05'!
 update
-	self doParentsExist
-		ifTrue: [center := parents first point.
-			radius := parents second direction r]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents first point.
+	radius := parents second direction r.
+	self exist: true! !
 
 !DrGCircleReflexionItem methodsFor: 'xml writing'!
 nodeType
@@ -13858,26 +13836,27 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGCircleReflexionItem methodsFor: 'updating'!
+!DrGCircleReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:54:21'!
 update
-	self doParentsExist ifTrue:
-		[self radius: parents first radius.
-		self center: (parents first center
-							reflexionBy: parents second origin 
-							direction: parents second direction)].
-! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	self radius: parents first radius.
+	self center: (parents first center
+		reflexionBy: parents second origin 
+		direction: parents second direction).
+	self exist: true! !
 
 !DrGCircleRotationItem methodsFor: 'updating'!
 moveParent: aPoint
 	^false! !
 
-!DrGCircleRotationItem methodsFor: 'updating'!
+!DrGCircleRotationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:54:34'!
 update
-	self doParentsExist ifTrue:
-		[radius := parents first radius.
-		center := parents first center
-			rotateBy: parents third valueItem negated 
-			about: parents second point].
+	self doParentsExist ifFalse: [^ self exist: false].
+	radius := parents first radius.
+	center := parents first center
+		rotateBy: parents third valueItem negated 
+		about: parents second point.
+	self exist: true
 ! !
 
 !DrGCircleRotationItem methodsFor: 'xml writing'!
@@ -13892,11 +13871,12 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGCircleSymmetryItem methodsFor: 'updating'!
+!DrGCircleSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:54:48'!
 update
-	self doParentsExist ifTrue:
-		[self radius: parents first radius.
-		self center: (2 * parents second point) - parents first center].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self radius: parents first radius.
+	self center: (2 * parents second point) - parents first center.
+	self exist: true
 ! !
 
 !DrGCircleTranslationItem methodsFor: 'xml writing'!
@@ -13907,11 +13887,12 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGCircleTranslationItem methodsFor: 'updating'!
+!DrGCircleTranslationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:55:00'!
 update
-	self doParentsExist ifTrue:
-		[self center: parents first center + parents second direction.
-		self radius: parents first radius].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self center: parents first center + parents second direction.
+	self radius: parents first radius.
+	self exist: true
 ! !
 
 !DrGCompositeItem methodsFor: 'private'!
@@ -13973,52 +13954,57 @@ printOn: aStream
 	self printCoordinates: vector on: aStream 
 ! !
 
-!DrGDirectionItem methodsFor: 'updating'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:42:52'!
 homothetyUpdate
-|center|
-	self doParentsExist ifTrue:
-		[center := parents second point.
-		origin := center +
-			(parents third valueItem * (parents first origin - center)).
-		vector := parents first direction * parents third valueItem].! !
+	|center|
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	origin := center +
+		(parents third valueItem * (parents first origin - center)).
+	vector := parents first direction * parents third valueItem.
+	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:43:28'!
 reflexionUpdate
-	self doParentsExist ifTrue:
-		[self origin: (parents first origin
-							reflexionBy: parents second origin 
-							direction: parents second direction).
-		self direction: (parents first direction 
-								vectorReflexionBy: parents second direction)].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	self origin: (parents first origin
+			reflexionBy: parents second origin 
+			direction: parents second direction).
+	self direction: (parents first direction 					
+			vectorReflexionBy: parents second direction).
+	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:43:44'!
 rotationUpdate
-	self doParentsExist ifTrue:
-		[origin := parents first origin
-			rotateBy: parents third valueItem negated
-			about: parents second point.
-		vector := parents first direction 
-			rotateVector: parents third valueItem].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	origin := parents first origin
+		rotateBy: parents third valueItem negated
+		about: parents second point.
+	vector := parents first direction 
+		rotateVector: parents third valueItem.
+	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:43:57'!
 symmetryUpdate
-	self doParentsExist ifTrue:
-		[self origin: (2 * parents second point) - parents first origin.
-		self direction: parents first direction negated].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	self origin: (2 * parents second point) - parents first origin.
+	self direction: parents first direction negated.
+	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:44:13'!
 translationUpdate
-	self doParentsExist ifTrue: 
-		[self origin: parents first origin + parents second direction.
-		self direction: parents first direction].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	self origin: parents first origin + parents second direction.
+	self direction: parents first direction.
+	self exist: true! !
 
-!DrGDirectionItem methodsFor: 'updating'!
+!DrGDirectionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:46:11'!
 update
-	self doParentsExist ifTrue:
-		["default behavior for segment, line and ray defined by 2 points"
-		self origin: (parents at: 1) point.
-		self direction: (parents at: 2) point - (self origin).
-		self direction =( 0@0) ifTrue: [exist := false]].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	"default behavior for segment, line and ray defined by 2 points"
+	self origin: (parents at: 1) point.
+	self direction: (parents at: 2) point - self origin.
+	self exist: (self direction = (0@0) ) not ! !
 
 !DrGDirectionItem methodsFor: 'testing'!
 isCloneable
@@ -14172,16 +14158,16 @@ parentsEqual: aMathItem
 	^ parents = aMathItem parents
 		or: [parents reverse = aMathItem parents]! !
 
-!DrGAngleBisector3ptsItem methodsFor: 'updating'!
+!DrGAngleBisector3ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:49:40'!
 update
-	self doParentsExist ifTrue: [
-		| v1 v2 |
-		self origin: parents second point.
-		((parents first point = origin) or: [parents third point = origin]) ifTrue: [^ exist := false].
-		[ v1 := (parents first point - origin) normalized ] on: ZeroDivide do: [ v1 := 0 @ 0 ].
-		[ v2 := (parents third point - origin) normalized ] on: ZeroDivide do: [ v2 := 0 @ 0 ].
-		self direction:  v1 + v2.
-		self direction = (0@0) ifTrue: [exist := false]]! !
+	| v1 v2 |
+	self doParentsExist ifFalse: [^ self exist: false].
+	self origin: parents second point.
+	( (parents first point = origin) or: [parents third point = origin] ) ifTrue: [^ self exist: false].
+	[ v1 := (parents first point - origin) normalized ] on: ZeroDivide do: [ v1 := 0 @ 0 ].
+	[ v2 := (parents third point - origin) normalized ] on: ZeroDivide do: [ v2 := 0 @ 0 ].
+	self direction:  v1 + v2.
+	self exist: ( self direction = (0@0) ) not! !
 
 !DrGAngleBisector3ptsItem methodsFor: 'private'!
 adaptiveDescriptiveName
@@ -14195,16 +14181,16 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This angle bisector %1' translated! !
 
-!DrGLineAngleBisectorItem methodsFor: 'updating'!
+!DrGLineAngleBisectorItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:49:03'!
 update
-	self doParentsExist ifTrue: [
-		| angle v1 v2 |
-		angle := parents first.
-		self origin: angle summit point.
-		[ v1 := (angle side1 point - origin) normalized ] on: ZeroDivide do: [ v1 := 0 @ 0 ].
-		[ v2 := (angle side2 point - origin) normalized ] on: ZeroDivide do: [ v2 := 0 @ 0 ].
-		self direction: v1+ v2.
-		self direction = (0@0) ifTrue: [exist := false]]! !
+	| angle v1 v2 |
+	self doParentsExist ifFalse: [^ self exist: false].
+	angle := parents first.
+	self origin: angle summit point.
+	[ v1 := (angle side1 point - origin) normalized ] on: ZeroDivide do: [ v1 := 0 @ 0 ].
+	[ v2 := (angle side2 point - origin) normalized ] on: ZeroDivide do: [ v2 := 0 @ 0 ].
+	self direction: v1+ v2.
+	self exist: (self direction = (0@0)) not! !
 
 !DrGLineAngleBisectorItem methodsFor: 'xml writing'!
 nodeType 
@@ -14237,22 +14223,24 @@ moveParent: aPoint
 	parents isEmptyOrNil ifFalse: [parents second moveEvent: aPoint].
 	^true! !
 
-!DrGLineParallelItem methodsFor: 'updating'!
+!DrGLineParallelItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:58:59'!
 update
-	self doParentsExist ifTrue:
-		[self direction: (parents at: 1) direction.
-		parents size = 2 ifTrue: [self origin: (parents at: 2) point]].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self direction: (parents at: 1) direction.
+	parents size = 2 ifTrue: [self origin: (parents at: 2) point].
+	self exist: true
 ! !
 
 !DrGLineParallelItem methodsFor: 'private'!
 adaptiveDescriptiveName
 	^ 'This parallel line %1' translated! !
 
-!DrGLinePerpendicularItem methodsFor: 'updating'!
+!DrGLinePerpendicularItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:59:11'!
 update
-	self doParentsExist ifTrue:
-		[self direction: (parents at: 1) normal.
-		parents size = 2 	ifTrue: [self origin: (parents at: 2) point]].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self direction: (parents at: 1) normal.
+	parents size = 2 	ifTrue: [self origin: (parents at: 2) point].
+	self exist: true
 ! !
 
 !DrGLinePerpendicularItem methodsFor: 'xml writing'!
@@ -14328,12 +14316,14 @@ equalOtherNodeType: aMathItem
 					or: [parents first extremity1 = aMathItem parents second point
 						and: [parents first extremity2 = aMathItem parents first point]]]]]! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'updating'!
+!DrGPerpendicularBisectorItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:00:01'!
 update
-	self doParentsExist ifTrue: [ |segment |
-		segment := parents first.
-		self direction: segment normal.
-		self origin: segment middle]! !
+	|segment |
+	self doParentsExist ifFalse: [^ self exist: false].
+	segment := parents first.
+	self direction: segment normal.
+	self origin: segment middle.
+	self exist: true! !
 
 !DrGPerpendicularBisectorItem methodsFor: 'xml writing'!
 nodeType
@@ -14368,15 +14358,15 @@ parentsEqual: aMathItem
 adaptiveDescriptiveName
 	^ 'This perpendicular bisector %1' translated! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'updating' stamp: 'hlsf 2/22/2023 12:17:31'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:05:03'!
 update
-	self doParentsExist ifTrue: [ 
-		(parents first point = parents second point) 
-			ifFalse: [
-				self direction: (parents first point - parents second point) normal.
-				self origin: parents first point + parents second point / 2]
-			ifTrue: [exist := false]
-		]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	(parents first point = parents second point) 
+		ifFalse: [
+			self direction: (parents first point - parents second point) normal.
+			self origin: parents first point + parents second point / 2.
+			self exist: true]
+		ifTrue: [self exist: false]		! !
 
 !DrGLinePerpendicularBisector2ptsItem methodsFor: 'xml writing'!
 nodeType
@@ -14763,10 +14753,11 @@ isSegmentItem
 isVectorItem
 	^ true! !
 
-!DrGVector2ptsItem methodsFor: 'updating'!
+!DrGVector2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:05:51'!
 update
-	self doParentsExist ifTrue:
-		[self direction: (parents at: 2) point - (parents at: 1) point].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self direction: (parents at: 2) point - (parents at: 1) point.
+	self exist: true
 ! !
 
 !DrGVector2ptsItem methodsFor: 'xml writing'!
@@ -14787,10 +14778,11 @@ initialize: theParents
 moveParent: aPoint
 	^false! !
 
-!DrGVectorHomothetyItem methodsFor: 'updating'!
+!DrGVectorHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:06:05'!
 update
-	self doParentsExist ifTrue:
-		[vector := parents first direction * parents third valueItem].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	vector := parents first direction * parents third valueItem.
+	self exist: true! !
 
 !DrGVectorHomothetyItem methodsFor: 'xml writing'!
 nodeType
@@ -14804,11 +14796,11 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGVectorReflexionItem methodsFor: 'updating'!
+!DrGVectorReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:06:22'!
 update
-	self doParentsExist ifTrue:
-		[self direction: (parents first direction 
-								vectorReflexionBy: parents second direction)].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self direction: (parents first direction 			vectorReflexionBy: parents second direction).
+	self exist: true
 ! !
 
 !DrGVectorReflexionItem methodsFor: 'initialize-release'!
@@ -14820,11 +14812,11 @@ initialize: theParents
 moveParent: aPoint
 	^false! !
 
-!DrGVectorRotationItem methodsFor: 'updating'!
+!DrGVectorRotationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:06:34'!
 update
-	self doParentsExist ifTrue:
-		[vector := parents first direction 
-			rotateVector: parents third valueItem].
+	self doParentsExist ifFalse: [^ self exist: false].
+	vector := parents first direction 			rotateVector: parents third valueItem.
+	self exist: true
 ! !
 
 !DrGVectorRotationItem methodsFor: 'initialize-release'!
@@ -14849,10 +14841,11 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGVectorSymmetryItem methodsFor: 'updating'!
+!DrGVectorSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:06:45'!
 update
-	self doParentsExist ifTrue:
-		[self direction: parents first direction negated].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self direction: parents first direction negated.
+	self exist: true
 ! !
 
 !DrGLocus2ptsItem methodsFor: 'printing'!
@@ -14871,11 +14864,11 @@ adaptiveDescriptiveName
 squareNorm: aPoint 
 	^ aPoint x * aPoint x + (aPoint y * aPoint y)! !
 
-!DrGLocus2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/5/2024 15:01:27'!
+!DrGLocus2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:07:01'!
 update
 "Special: update does not occure there but in the view.
 Indeed, a Locus is sampled from its view, because it depends on the visible portion of the drawable"
-	self doParentsExist ! !
+	self exist: self doParentsExist! !
 
 !DrGLocus2ptsItem methodsFor: 'accessing' stamp: 'hlsf 6/13/2021 11:26:20'!
 abscissaOf: aPoint 
@@ -14964,15 +14957,16 @@ isSampled
 nodeType
 	^ #Translation! !
 
-!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'hlsf 3/20/2024 16:16:28'!
+!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:07:27'!
 update
-	self doParentsExist ifTrue: [| locusPoints direction|
-		direction := parents second direction.
-		locusPoints := parents first points.
-		samplesQty := parents first samplesQty.
-		p := Array new: samplesQty.
-		1 to: samplesQty do: [:i |
-			p at: i put: (locusPoints at: i) + direction]]! !
+	| locusPoints direction|
+	self doParentsExist ifFalse: [^ self exist: false].
+	direction := parents second direction.
+	locusPoints := parents first points.
+	samplesQty := parents first samplesQty.
+	p := Array new: samplesQty.
+	1 to: samplesQty do: [:i | 		p at: i put: (locusPoints at: i) + direction].
+	self exist: true! !
 
 !DrGLocusTranslationItem methodsFor: 'accessing'!
 constrainedPoint
@@ -14994,65 +14988,71 @@ points: aCollection
 samplesQty: anInteger
 	self shouldNotImplement ! !
 
-!DrGLocusTranslationItem methodsFor: 'testing' stamp: 'hlsf 6/13/2021 11:37:15'!
+!DrGLocusTranslationItem methodsFor: 'testing' stamp: 'hlsf 5/20/2024 11:31:24'!
 doParentsExist
 "As a locus is sampled from its view, we need to check if the sampling occured in the view.
 If not we will wait for the next round of view update"
-	^ exist := super doParentsExist and: [parents first isSampled]! !
+	^ super doParentsExist and: [parents first isSampled]! !
 
-!DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:26:20'!
+!DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:07:53'!
 update
-	self doParentsExist ifTrue: [| locusPoints center factor|
-		center := parents second point.
-		factor := parents third valueItem.
-		locusPoints := parents first points.
-		samplesQty := parents first samplesQty.
-		p := Array new: samplesQty.
-		1 to: samplesQty do: [:i |
-			p at: i put: center + (factor * ((locusPoints at: i) - center))]]! !
+	| locusPoints center factor|
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	factor := parents third valueItem.
+	locusPoints := parents first points.
+	samplesQty := parents first samplesQty.
+	p := Array new: samplesQty.
+	1 to: samplesQty do: [:i | 			p at: i put: center + (factor * ((locusPoints at: i) - center))].
+	self exist: true! !
 
 !DrGLocusHomothetyItem methodsFor: 'xml writing'!
 nodeType
 	^#Scale! !
 
-!DrGLocusReflexionItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:26:20'!
+!DrGLocusReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:08:14'!
 update
-	self doParentsExist ifTrue: [| locusPoints axe|
-		axe := parents second.
-		locusPoints := parents first points.
-		samplesQty := parents first samplesQty.
-		p := Array new: samplesQty.
-		1 to: samplesQty do: [:i |
-			p at: i put: ((locusPoints at: i) reflexionBy: axe origin direction: axe direction)]]! !
+	| locusPoints axe|
+	self doParentsExist ifFalse: [^ self exist: false].
+	axe := parents second.
+	locusPoints := parents first points.
+	samplesQty := parents first samplesQty.
+	p := Array new: samplesQty.
+	1 to: samplesQty do: [:i |
+		p at: i put: ((locusPoints at: i) reflexionBy: axe origin direction: axe direction)].
+	self exist: true! !
 
 !DrGLocusReflexionItem methodsFor: 'xml writing'!
 nodeType
 	^#Reflexion! !
 
-!DrGLocusRotationItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:26:20'!
+!DrGLocusRotationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:08:32'!
 update
-	self doParentsExist ifTrue: [| locusPoints center angle|
-		center := parents second point.
-		angle := parents third valueItem.
-		locusPoints := parents first points.
-		samplesQty := parents first samplesQty.
-		p := Array new: samplesQty.
-		1 to: samplesQty do: [:i |
-			p at: i put: ((locusPoints at: i) rotateBy: angle about: center)]]! !
+	| locusPoints center angle|
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	angle := parents third valueItem.
+	locusPoints := parents first points.
+	samplesQty := parents first samplesQty.
+	p := Array new: samplesQty.
+	1 to: samplesQty do: [:i |
+		p at: i put: ((locusPoints at: i) rotateBy: angle about: center)].
+	self exist: true! !
 
 !DrGLocusRotationItem methodsFor: 'xml writing'!
 nodeType
 	^#Rotation! !
 
-!DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'hlsf 6/13/2021 11:26:20'!
+!DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:08:50'!
 update
-	self doParentsExist ifTrue: [| locusPoints center|
-		center := parents second point.
-		locusPoints := parents first points.
-		samplesQty := parents first samplesQty.
-		p := Array new: samplesQty.
-		1 to: samplesQty do: [:i |
-			p at: i put: 2 * center - (locusPoints at: i)]]! !
+	| locusPoints center|
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	locusPoints := parents first points.
+	samplesQty := parents first samplesQty.
+	p := Array new: samplesQty.
+	1 to: samplesQty do: [:i | 			p at: i put: 2 * center - (locusPoints at: i)].
+	self exist: true! !
 
 !DrGLocusSymmetryItem methodsFor: 'xml writing'!
 nodeType
@@ -15152,28 +15152,26 @@ pointBlock: aBlock
 rehash
 	^ hash := super rehash bitXor: pointBlock hash! !
 
-!DrGPointBlockItem methodsFor: 'testing' stamp: 'hlsf 4/13/2024 09:59:08'!
+!DrGPointBlockItem methodsFor: 'testing' stamp: 'hlsf 5/20/2024 11:31:31'!
 doParentsExist 
-	^ exist := super doParentsExist and: [pointBlock isNil not]
+	^ super doParentsExist and: [pointBlock isNil not]
 ! !
 
 !DrGPointBlockItem methodsFor: 'testing-model' stamp: 'hlsf 4/13/2024 09:36:30'!
 isConstrainedPointItem
 	^ true! !
 
-!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 5/18/2024 10:04:30'!
+!DrGPointBlockItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:37:53'!
 update
-| result |
-	self doParentsExist ifTrue:
-		[parents  
-			ifEmpty: [result := [ pointBlock value ] on: Error do: [exist := false]]
-			ifNotEmpty: [
-				parents size = 1
-				ifTrue: [result := [ pointBlock value: parents first ] on: Error do: [exist := false]]
-				ifFalse: [result := [pointBlock valueWithArguments: parents] on: Error do: [exist := false]]
-			].
-	exist ifTrue: [ self point: result ].
-	]! !
+| evaluator |
+	self doParentsExist ifFalse: [^ self exist: false].
+	evaluator := parents ifEmpty: [ [ pointBlock value ] ]
+		ifNotEmpty: [
+			parents size = 1
+			ifTrue: [ [ pointBlock value: parents first ] ]
+			ifFalse: [ [pointBlock valueWithArguments: parents] ]].
+	point := evaluator on: Error do: [nil].
+	self exist: point notNil ! !
 
 !DrGPointBlockItem methodsFor: 'xml writing'!
 nodeType
@@ -15193,10 +15191,11 @@ editPropertyIn: presenter
 	holder action: [:newPoint | presenter domain propertyCommandFor: self with: newPoint].
 	^ PointEntryPanel open: holder label: 'Edit the coordinates' translated.! !
 
-!DrGPointCoordinateItem methodsFor: 'updating'!
+!DrGPointCoordinateItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:12:19'!
 update
-	self doParentsExist ifTrue:
-		[self point: parents first valueItem @ parents second valueItem]. 
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: parents first valueItem @ parents second valueItem.
+	self exist: true
 ! !
 
 !DrGPointCoordinateItem methodsFor: 'xml writing'!
@@ -15304,13 +15303,13 @@ isFreePointItem
 isFreePointOnPlaneItem
 	^true! !
 
-!DrGPointHomothetyItem methodsFor: 'updating'!
+!DrGPointHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:12:37'!
 update
-|center|
-	self doParentsExist ifTrue:
-		[center := parents second point.
-		point := center + 
-			(parents third valueItem * (parents first point - center))].! !
+	|center|
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	point := center + 		(parents third valueItem * (parents first point - center)).
+	self exist: true! !
 
 !DrGPointHomothetyItem methodsFor: 'xml writing'!
 nodeType
@@ -15320,16 +15319,13 @@ nodeType
 isConstrainedPointItem
 	^true! !
 
-!DrGPointIntersectionItem methodsFor: 'updating'!
+!DrGPointIntersectionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:14:26'!
 update
 	|aPoint|
-	self doParentsExist ifTrue:
-		[aPoint := [(parents first intersectionWith: parents second flag: k)] on: Error do: [nil].
-		aPoint 
-			ifNil: [exist := false]
-			ifNotNil: 
-				[exist := true.
-				self point: aPoint]].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	aPoint := [(parents first intersectionWith: parents second flag: k)] on: Error do: [nil].
+	aPoint 	ifNotNil: [		self point: aPoint].
+	self exist: aPoint notNil! !
 
 !DrGPointIntersectionItem methodsFor: 'accessing'!
 k
@@ -15433,21 +15429,22 @@ parentsEqual: aMathItem
 rehash
 	^ hash := ((parents sorted: [:ptA :ptB | ptA point <= ptB point]) hash bitXor: self nodeType hash) bitXor: self basicType hash! !
 
-!DrGPointMiddle2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:45:16'!
+!DrGPointMiddle2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:15:06'!
 update
-	self doParentsExist ifTrue:
-		[self point: (parents first point + parents second point) / 2.0].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: (parents first point + parents second point) / 2.0.
+	self exist: true
 ! !
 
 !DrGPointMiddle2ptsItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:37:58'!
 isConstrainedPointItem
 	^true! !
 
-!DrGPointMiddlesegmentItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:45:25'!
+!DrGPointMiddlesegmentItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:15:22'!
 update
-	self doParentsExist ifTrue:
-		[self point: (parents first origin + (parents first direction / 2.0))].
-! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: (parents first origin + (parents first direction / 2.0)).
+	self exist: true! !
 
 !DrGPointMiddlesegmentItem methodsFor: 'xml writing'!
 nodeType
@@ -15482,11 +15479,11 @@ moveAt: aPoint
 		self abscissa: (parents first abscissaOf: self point)]
 ! !
 
-!DrGPointOncurveItem methodsFor: 'updating'!
+!DrGPointOncurveItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:15:56'!
 update
-	self doParentsExist ifTrue:
-		[self point: (parents first pointAt: abscissa).
-		(point x isInfinite or: [point y isInfinite ]) ifTrue: [exist := false]].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: (parents first pointAt: abscissa).
+	self exist: (point x isInfinite or: [point y isInfinite ]) not
 ! !
 
 !DrGPointOncurveItem methodsFor: 'testing'!
@@ -15576,24 +15573,26 @@ isPointItemOnCurve
 nodeType
 	^#Reflexion! !
 
-!DrGPointReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:46:03'!
+!DrGPointReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:16:22'!
 update
-	self doParentsExist	ifTrue:
-		[self point: (parents first point
-				reflexionBy: parents second origin 
-				direction: parents second direction)].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: (parents first point
+		reflexionBy: parents second origin 
+		direction: parents second direction).
+	self exist: true
 ! !
 
 !DrGPointReflexionItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:38:08'!
 isConstrainedPointItem
 	^true! !
 
-!DrGPointRotationItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:46:18'!
+!DrGPointRotationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:16:35'!
 update
-	self doParentsExist	ifTrue:
-		[self point: (parents first point
-				rotateBy: parents third valueItem negated 
-				about: parents second point)].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: (parents first point
+		rotateBy: parents third valueItem negated 
+		about: parents second point).
+	self exist: true
 ! !
 
 !DrGPointRotationItem methodsFor: 'xml writing'!
@@ -15604,10 +15603,11 @@ nodeType
 isConstrainedPointItem
 	^true! !
 
-!DrGPointScriptItem methodsFor: 'updating'!
+!DrGPointScriptItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:16:48'!
 update
-	self doParentsExist ifTrue:
-		[self point: parents first valueItem asPoint]. 
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: parents first valueItem asPoint.
+	self exist: true
 ! !
 
 !DrGPointScriptItem methodsFor: 'xml writing'!
@@ -15618,10 +15618,11 @@ nodeType
 isConstrainedPointItem
 	^ true! !
 
-!DrGPointSymmetryItem methodsFor: 'updating'!
+!DrGPointSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:16:59'!
 update
-	self doParentsExist ifTrue: 
-		[self point: (2 * parents second point) - parents first point].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: (2 * parents second point) - parents first point.
+	self exist: true
 ! !
 
 !DrGPointSymmetryItem methodsFor: 'xml writing'!
@@ -15636,10 +15637,11 @@ isConstrainedPointItem
 nodeType
 	^#Translation! !
 
-!DrGPointTranslationItem methodsFor: 'updating'!
+!DrGPointTranslationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:17:15'!
 update
-	self doParentsExist ifTrue:
-		[self point: parents first point + parents second direction].
+	self doParentsExist ifFalse: [^ self exist: false].
+	self point: parents first point + parents second direction.
+	self exist: true
 ! !
 
 !DrGPointTranslationItem methodsFor: 'testing-model' stamp: 'hlsf 5/4/2020 18:38:23'!
@@ -15790,15 +15792,16 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:49:47'!
+!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:17:31'!
 update
-|center factor|
-	self doParentsExist ifTrue: [
-		center := parents second point.
-		factor := parents third valueItem.
-		points := OrderedCollection new.
-		parents first points do: [:point | 			points add: (center + (factor * (point - center)))].
-		self computeLength].! !
+	|center factor|
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	factor := parents third valueItem.
+	points := OrderedCollection new.
+	parents first points do: [:point | 			points add: (center + (factor * (point - center)))].
+	self computeLength.
+	self exist: true! !
 
 !DrGPolygonNptsItem methodsFor: 'comparing'!
 parentsEqual: aPolygon
@@ -15814,12 +15817,13 @@ parentsEqual: aPolygon
 		shiftedCollection := shiftedCollection shiftRight].
 	^ false! !
 
-!DrGPolygonNptsItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:47:01'!
+!DrGPolygonNptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:17:43'!
 update
-	self doParentsExist ifTrue: [
-		points := OrderedCollection new.
-		parents do: [:pointItem | points add: pointItem point].
-		self computeLength].
+	self doParentsExist ifFalse: [^ self exist: false].
+	points := OrderedCollection new.
+	parents do: [:pointItem | points add: pointItem point].
+	self computeLength.
+	self exist: true
 ! !
 
 !DrGPolygonNptsItem methodsFor: 'xml writing'!
@@ -15834,16 +15838,16 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:47:33'!
+!DrGPolygonReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:18:01'!
 update
-|axe|
-	self doParentsExist 	ifTrue: 		[
-		axe := parents second.
-		points := OrderedCollection new.
-		parents first points do: [:point |
-			points add: (point reflexionBy: axe origin direction: axe direction)].
-		self computeLength].
-! !
+	|axe|
+	self doParentsExist ifFalse: [^ self exist: false].
+	axe := parents second.
+	points := OrderedCollection new.
+	parents first points do: [:point |
+		points add: (point reflexionBy: axe origin direction: axe direction)].
+	self computeLength.
+	self exist: true! !
 
 !DrGPolygonRegularItem methodsFor: 'updating'!
 moveParent: aPoint
@@ -15852,18 +15856,19 @@ moveParent: aPoint
 	parents second moveEvent: aPoint.
 	^ true! !
 
-!DrGPolygonRegularItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:48:02'!
+!DrGPolygonRegularItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:18:21'!
 update
 |center pointA angle sides|
-	self doParentsExist ifTrue: [
-		center := parents first point.
-		pointA := parents second point.
-		sides := parents third valueItem rounded abs.
-		sides < 3 ifTrue: [^ exist := false].
-		angle := Float twoPi / sides.
-		points := OrderedCollection new.
-		sides timesRepeat: [			pointA := points add: (pointA rotateBy: angle about: center)].
-		self computeLength]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents first point.
+	pointA := parents second point.
+	sides := parents third valueItem rounded abs.
+	sides < 3 ifTrue: [^ self exist: false].
+	angle := Float twoPi / sides.
+	points := OrderedCollection new.
+	sides timesRepeat: [			pointA := points add: (pointA rotateBy: angle about: center)].
+	self computeLength.
+	self exist: true! !
 
 !DrGPolygonRegularItem methodsFor: 'xml writing'!
 nodeType
@@ -15877,15 +15882,16 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonRotationItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:49:22'!
+!DrGPolygonRotationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:18:53'!
 update
 |center angle|
-	self doParentsExist ifTrue: [
-		center := parents second point.
-		angle := parents third valueItem negated.
-		points := OrderedCollection new.
-		parents first points do: [:point |			points add: (point rotateBy: angle about: center)].
-		self computeLength].
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	angle := parents third valueItem negated.
+	points := OrderedCollection new.
+	parents first points do: [:point |			points add: (point rotateBy: angle about: center)].
+	self computeLength.
+	self exist: true
 ! !
 
 !DrGPolygonSymmetryItem methodsFor: 'xml writing'!
@@ -15896,28 +15902,30 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:49:09'!
+!DrGPolygonSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:19:07'!
 update
-|center|
-	self doParentsExist 	ifTrue: [
-		center := parents second point.
-		points := OrderedCollection new.
-		parents first points do: [:point | points add: (2 * center - point)].
-		self computeLength].
+	|center|
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	points := OrderedCollection new.
+	parents first points do: [:point | points add: (2 * center - point)].
+	self computeLength.
+	self exist: true
 ! !
 
 !DrGPolygonTranslationItem methodsFor: 'updating'!
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonTranslationItem methodsFor: 'updating' stamp: 'hlsf 5/31/2021 18:48:57'!
+!DrGPolygonTranslationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:19:19'!
 update
 |translation|
-	self doParentsExist 	ifTrue: [
-		translation := parents second direction.
-		points := OrderedCollection new.
-		parents first points do: [:point | points add: point + translation].
-		self computeLength].
+	self doParentsExist ifFalse: [^ self exist: false].
+	translation := parents second direction.
+	points := OrderedCollection new.
+	parents first points do: [:point | points add: point + translation].
+	self computeLength.
+	self exist: true
 ! !
 
 !DrGPolygonTranslationItem methodsFor: 'xml writing'!
@@ -16200,18 +16208,19 @@ isAngleItem
 move: aPoint
 "Don't move when user drag around"! !
 
-!DrGAngle3ptsOrientedItem methodsFor: 'updating' stamp: 'hlsf 5/9/2021 16:54:56'!
+!DrGAngle3ptsOrientedItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:46:27'!
 update
 |u v center|
-	self doParentsExist ifTrue:
-		[center := parents second point.
-		u := parents first point - center.
-		v := parents third point - center.
-		(u = (0@0) or: [v = (0@0)]) 
-			ifTrue: [exist := false]
-			ifFalse:
-				[radianValue := value := (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
-				degreeValue := radianValue radiansToDegrees + 360 \\ 360]].! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	u := parents first point - center.
+	v := parents third point - center.
+	(u = (0@0) or: [v = (0@0)]) 
+		ifTrue: [self exist: false]
+		ifFalse: [
+			radianValue := value := (u crossProduct: v) asFloat arcTan: (u dotProduct: v).
+			degreeValue := radianValue radiansToDegrees + 360 \\ 360.
+			self exist: true]! !
 
 !DrGAngle3ptsOrientedItem methodsFor: 'xml writing'!
 nodeType
@@ -16248,19 +16257,20 @@ printOn: aStream
 	self printInteger: self degreeAngle on: aStream.
 	aStream nextPutAll: '°'.! !
 
-!DrGAngle3ptsItem methodsFor: 'updating' stamp: 'hlsf 5/9/2021 17:03:34'!
+!DrGAngle3ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:58:39'!
 update
 "Update for an angle in [0 ; 180]"
-|u v center|
-	self doParentsExist ifTrue:
-		[center := parents second point.
-		u := parents first point - center.
-		v := parents third point - center.
-		(u = (0@0) or: [v = (0@0)]) 
-			ifTrue: [exist := false]
-			ifFalse:
-				[radianValue := value := ((u crossProduct: v) asFloat arcTan: (u dotProduct: v)) abs.
-				degreeValue := radianValue radiansToDegrees]].! !
+	|u v center|
+	self doParentsExist ifFalse: [^ self exist: false].
+	center := parents second point.
+	u := parents first point - center.
+	v := parents third point - center.
+	(u = (0@0) or: [v = (0@0)]) 
+		ifTrue: [self exist: false]
+		ifFalse: [
+			radianValue := value := ((u crossProduct: v) asFloat arcTan: (u dotProduct: v)) abs.
+			degreeValue := radianValue radiansToDegrees.
+			self exist: true]! !
 
 !DrGAngle3ptsItem methodsFor: 'accessing' stamp: 'hlsf 4/12/2021 22:27:45'!
 morphClass
@@ -16295,17 +16305,18 @@ writeAsXmlTo: aNode
 	node := super writeAsXmlTo: aNode.
 	^ self writeAsXmlPositionTo: node.! !
 
-!DrGAngleVectorsItem methodsFor: 'updating' stamp: 'hlsf 6/5/2021 20:17:23'!
+!DrGAngleVectorsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:47:02'!
 update
-|u v|
-	self doParentsExist ifTrue:
-		[u := parents first direction.
-		v := parents second direction.
-		(u = (0@0) or: [v = (0@0)]) 
-			ifTrue: [exist := false]
-			ifFalse:
-				[radianValue := value := ((u crossProduct: v) asFloat arcTan: (u dotProduct: v)).
-				degreeValue := radianValue radiansToDegrees]].	! !
+	|u v|
+	self doParentsExist ifFalse: [^ self exist: false].
+	u := parents first direction.
+	v := parents second direction.
+	(u = (0@0) or: [v = (0@0)]) 
+		ifTrue: [self exist: false]
+		ifFalse: [
+			radianValue := value := ((u crossProduct: v) asFloat arcTan: (u dotProduct: v)).
+			degreeValue := radianValue radiansToDegrees.
+			self exist: true].! !
 
 !DrGComputedValueItem methodsFor: 'xml writing'!
 writeAsXmlTo: aNode 
@@ -16361,19 +16372,21 @@ isValueItem
 equation
 	^ value! !
 
-!DrGEquationCircleItem methodsFor: 'updating' stamp: 'hlsf 10/19/2022 16:34:38'!
+!DrGEquationCircleItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:23:49'!
 update
-	self doParentsExist ifTrue: [| circle |
-		circle := parents first.
-		value := String streamContents: [:stream |
-		 stream nextPutAll: '(x';
-			nextPut: (circle center x negated > 0 ifTrue: [$+] ifFalse: [$-]).
-		self printDecimal: circle center x abs on: stream.
-		stream nextPutAll: ')² + (y';
-			nextPut: (circle center y negated > 0 ifTrue: [$+] ifFalse: [$-]).
-		self printDecimal: circle center y abs on: stream.
-		stream nextPutAll: ')² = '.
-		self printDecimal: circle radius squared  on: stream]]! !
+	| circle |
+	self doParentsExist ifFalse: [^ self exist: false].
+	circle := parents first.
+	value := String streamContents: [:stream |
+	 stream nextPutAll: '(x';
+		nextPut: (circle center x negated > 0 ifTrue: [$+] ifFalse: [$-]).
+	self printDecimal: circle center x abs on: stream.
+	stream nextPutAll: ')² + (y';
+		nextPut: (circle center y negated > 0 ifTrue: [$+] ifFalse: [$-]).
+	self printDecimal: circle center y abs on: stream.
+	stream nextPutAll: ')² = '.
+	self printDecimal: circle radius squared  on: stream].
+	self exist: true.! !
 
 !DrGEquationCircleItem methodsFor: 'testing'!
 isVerifiedBy: aPoint
@@ -16383,14 +16396,16 @@ isVerifiedBy: aPoint
 nodeType
 	^#circle! !
 
-!DrGEquationLineItem methodsFor: 'updating' stamp: 'hlsf 12/21/2022 14:58:02'!
+!DrGEquationLineItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:24:08'!
 update
-	self doParentsExist ifTrue: [ |u origin|
-		u := parents first direction.
-		origin := parents first origin.
-		self a: u y.
-		self b: u x negated.
-		self c: origin y * u x - (origin x * u y)]! !
+	| u origin |
+	self doParentsExist ifFalse: [^ self exist: false].
+	u := parents first direction.
+	origin := parents first origin.
+	self a: u y.
+	self b: u x negated.
+	self c: origin y * u x - (origin x * u y).
+	self exist: true ! !
 
 !DrGEquationLineItem methodsFor: 'xml writing'!
 nodeType
@@ -16457,10 +16472,11 @@ slope
 isVerifiedBy: aPoint
 	^ parents first isCollinearWith: (parents first origin - aPoint)! !
 
-!DrGValueArclengthItem methodsFor: 'updating'!
+!DrGValueArclengthItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:50:03'!
 update
-	self doParentsExist ifTrue: 
-		[value := parents first length abs * parents first radius].
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first length abs * parents first radius.
+	self exist: true
 ! !
 
 !DrGValueArclengthItem methodsFor: 'xml writing'!
@@ -16498,19 +16514,17 @@ valueBlock: aBlock
 rehash
 	^ hash := super rehash bitXor: valueBlock hash! !
 
-!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 5/18/2024 10:04:35'!
+!DrGValueBlockItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:37:42'!
 update
-| result |
-	self doParentsExist ifTrue:
-		[parents  
-			ifEmpty: [result := [ valueBlock value ] on: Error do: [exist := false]]
-			ifNotEmpty: [
-				parents size = 1
-				ifTrue: [result := [ valueBlock value: parents first ] on: Error do: [exist := false]]
-				ifFalse: [		result := [valueBlock valueWithArguments: parents] on: Error do: [exist := false]]
-			].
-	exist ifTrue: [ value := result ]
-	]! !
+	| evaluator |
+	self doParentsExist ifFalse: [^ self exist: false].
+	evaluator := parents  		ifEmpty: [ [ valueBlock value ] ]
+		ifNotEmpty: [
+			parents size = 1
+				ifTrue: [ [ valueBlock value: parents first ] ] 
+				ifFalse: [ [valueBlock valueWithArguments: parents] ]].
+	value := evaluator on: Error do: [nil]. 
+	self exist: value notNil ! !
 
 !DrGValueBlockItem methodsFor: 'xml writing' stamp: 'hlsf 4/13/2024 09:53:35'!
 nodeType
@@ -16523,19 +16537,20 @@ writeAsXmlTo: aNode
 	node addElement: ((XMLElement named: #code) addContent: (XMLStringNode string: valueBlock decompile asString)).
 	^node! !
 
-!DrGValueBlockItem methodsFor: 'testing' stamp: 'hlsf 4/13/2024 09:59:21'!
+!DrGValueBlockItem methodsFor: 'testing' stamp: 'hlsf 5/20/2024 11:31:40'!
 doParentsExist 
-	^ exist := super doParentsExist and: [valueBlock isNil not]
+	^ super doParentsExist and: [valueBlock isNil not]
 ! !
 
 !DrGValueCircleperimeterItem methodsFor: 'xml writing'!
 nodeType
 	^#'circle_perimeter'! !
 
-!DrGValueCircleperimeterItem methodsFor: 'updating'!
+!DrGValueCircleperimeterItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:38:37'!
 update
-	self doParentsExist ifTrue:
-		[value := parents first radius * Float twoPi].
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first radius * Float twoPi.
+	self exist: true
 ! !
 
 !DrGValueCircleperimeterItem methodsFor: 'private'!
@@ -16557,21 +16572,23 @@ name
 adaptiveDescriptiveName
 	^ 'This distance between two points %1' translated! !
 
-!DrGValueDistance2ptsItem methodsFor: 'updating'!
+!DrGValueDistance2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:38:49'!
 update
-	self doParentsExist ifTrue:
-		[value := parents first point dist: parents second point].
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first point dist: parents second point.
+	self exist: true
 ! !
 
 !DrGValueDistance2ptsItem methodsFor: 'xml writing'!
 nodeType
 	^#'distance_2pts'! !
 
-!DrGValueDistanceptlineItem methodsFor: 'updating'!
+!DrGValueDistanceptlineItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:39:01'!
 update
-	self doParentsExist ifTrue:
-		[value := ((parents first point - parents second origin) 
-					dotProduct: parents second direction normal) abs].
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := ((parents first point - parents second origin) 
+		dotProduct: parents second direction normal) abs.
+	self exist: true
 ! !
 
 !DrGValueDistanceptlineItem methodsFor: 'private'!
@@ -16590,20 +16607,22 @@ adaptiveDescriptiveName
 nodeType
 	^#'polygon_perimeter'! !
 
-!DrGValuePolygonperimeterItem methodsFor: 'updating'!
+!DrGValuePolygonperimeterItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:39:20'!
 update
-	self doParentsExist ifTrue:
-		[value := parents first length].
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first length.
+	self exist: true
 ! !
 
 !DrGValuePtabscissaItem methodsFor: 'private'!
 adaptiveDescriptiveName
 	^ 'This point abscissa %1' translated! !
 
-!DrGValuePtabscissaItem methodsFor: 'updating'!
+!DrGValuePtabscissaItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:39:39'!
 update
-	self doParentsExist ifTrue: [
-		value := parents first point x]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first point x.
+	self exist: true! !
 
 !DrGValuePtabscissaItem methodsFor: 'xml writing'!
 nodeType 
@@ -16613,10 +16632,11 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This point ordinate %1' translated! !
 
-!DrGValuePtordinateItem methodsFor: 'updating'!
+!DrGValuePtordinateItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:40:07'!
 update
-	self doParentsExist ifTrue: [
-		value := parents first point y]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first point y.
+	self exist: true! !
 
 !DrGValuePtordinateItem methodsFor: 'xml writing'!
 nodeType 
@@ -16626,10 +16646,11 @@ nodeType
 nodeType
 	^#'segment_length'! !
 
-!DrGValueSegmentlengthItem methodsFor: 'updating'!
+!DrGValueSegmentlengthItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:40:34'!
 update
-	self doParentsExist ifTrue:
-		[value := parents first direction r].
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first direction r.
+	self exist: true
 ! !
 
 !DrGValueSegmentlengthItem methodsFor: 'private'!
@@ -16652,13 +16673,17 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This line slope %1' translated! !
 
-!DrGValueSlopeItem methodsFor: 'updating'!
+!DrGValueSlopeItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:41:27'!
 update
 	|v|
-	self doParentsExist ifTrue:
-		[v := parents first direction.
-		v x= 0 ifTrue: [exist := false]
-		ifFalse: [value := v y / v x.]].
+	self doParentsExist ifFalse: [^ self exist: false].
+	v := parents first direction.
+	v x = 0 	
+		ifTrue: [self exist: false]
+		ifFalse: [
+			value := v y / v x.
+			self exist: true]
+
 ! !
 
 !DrGValueVectorabscissaItem methodsFor: 'xml writing'!
@@ -16669,19 +16694,21 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This vector abscissa %1' translated! !
 
-!DrGValueVectorabscissaItem methodsFor: 'updating'!
+!DrGValueVectorabscissaItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:41:43'!
 update
-	self doParentsExist ifTrue: [
-		value := parents first direction x]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first direction x.
+	self exist: true! !
 
 !DrGValueVectorordinateItem methodsFor: 'xml writing'!
 nodeType 
 	^ #'vector_ordinate'! !
 
-!DrGValueVectorordinateItem methodsFor: 'updating'!
+!DrGValueVectorordinateItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:41:59'!
 update
-	self doParentsExist ifTrue: [
-		value := parents first direction y]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := parents first direction y.
+	self exist: true! !
 
 !DrGValueVectorordinateItem methodsFor: 'private'!
 adaptiveDescriptiveName
@@ -16692,9 +16719,11 @@ initialize: theParentsCostume
 	super initialize: theParentsCostume.
 	self script: (theParentsCostume at: theParentsCostume size - 1)! !
 
-!DrGValueScriptItem methodsFor: 'updating'!
+!DrGValueScriptItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:42:16'!
 update
-	self doParentsExist ifTrue: [ value := script compute]! !
+	self doParentsExist ifFalse: [^ self exist: false].
+	value := script compute.
+	self exist: true! !
 
 !DrGValueScriptItem methodsFor: 'printing'!
 printNameOn: aStream
@@ -16987,11 +17016,11 @@ colorIndex: index
 colorMorphCollection
 	^ DrGTypeColor colorMorphCollection! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:24'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:26:55'!
 colorWidget
 	^ self 	widget: (
 		(DropDownButtonMorph 
-			model: self 
+			withModel: self 
 			listGetter: #colorMorphCollection 
 			indexGetter: #colorIndex
 			indexSetter: #colorIndex:)
@@ -17099,11 +17128,11 @@ lineStyleIndex: integer
 	self changed: #lineStyleIndex:
 ! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 6/5/2022 12:38:11'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:28:39'!
 lineWidget
 	^ self widget:  (
 		(DropDownButtonMorph 
-			model: self 
+			withModel: self 
 			listGetter: #styleMorphCollection
 			indexGetter: #lineStyleIndex
 			indexSetter: #lineStyleIndex:)
@@ -17136,11 +17165,11 @@ thicknessIndex: integer
 thicknessMorphCollection
 	^ DrGTypeThickness thicknessMorphCollection! !
 
-!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:49'!
+!DrGCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:30:00'!
 thicknessWidget
 	^ self widget: (
 		(DropDownButtonMorph 
-			model: self 
+			withModel: self 
 			listGetter: #thicknessMorphCollection 
 			indexGetter: #thicknessIndex 
 			indexSetter: #thicknessIndex:)
@@ -17239,11 +17268,11 @@ arrowIndex: index
 arrowMorphCollection
 	^ DrGTypeArrow arrowMorphCollection! !
 
-!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:13:55'!
+!DrGFinitCurveStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:30:03'!
 arrowWidget
 	^ self widget: (
 		(DropDownButtonMorph 
-			model: self
+			withModel: self
 			listGetter: #arrowMorphCollection  
 			indexGetter: #arrowIndex 
 			indexSetter: #arrowIndex:)
@@ -17384,11 +17413,11 @@ markIndex: index
 markMorphCollection
 	^ DrGTypeMark markMorphCollection! !
 
-!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:22'!
+!DrGSegmentStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:30:06'!
 markWidget
 	^ self widget: (
 		(DropDownButtonMorph 
-			model: self
+			withModel: self
 			listGetter: #markMorphCollection
 			indexGetter: #markIndex
 			indexSetter: #markIndex:)
@@ -17455,11 +17484,11 @@ myWidgets
 shapeMorphCollection
 	^ DrGTypePointShape shapeMorphCollection ! !
 
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:43'!
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:27:06'!
 shapeWidget
 	^  self widget: (
 		(DropDownButtonMorph 
-			model: self 
+			withModel: self 
 			listGetter: #shapeMorphCollection 
 			indexGetter: #shapeIndex 
 			indexSetter: #shapeIndex:)
@@ -17472,11 +17501,11 @@ shapeWidget
 sizeMorphCollection
 	^ DrGTypePointSize sizeMorphCollection: shape! !
 
-!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:49'!
+!DrGPointStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:27:17'!
 sizeWidget
 	^ self widget: (
 		(DropDownButtonMorph 
-			model: self 
+			withModel: self 
 			listGetter: #sizeMorphCollection 
 			indexGetter: #pointSizeIndex
 			indexSetter: #pointSizeIndex:)
@@ -17683,11 +17712,11 @@ backgroundMorphCollection
 	^ self class backgroundColors collect: [:aColor |
 		ImageMorph new image: (DrGIcons colorForm: aColor)]! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:14:58'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:30:12'!
 backgroundWidget
 	^  self widget: (
 		(DropDownButtonMorph 
-			model: self 
+			withModel: self 
 			listGetter: #backgroundMorphCollection 
 			indexGetter: #backgroundColorIndex  
 			indexSetter: #backgroundColorIndex:)
@@ -17696,11 +17725,11 @@ backgroundWidget
 		named: 'Background' translated 
 		help: 'Set the background colour.' translated! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:15:31'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:30:15'!
 borderWidget
 	^  self widget: (
 		(DropDownButtonMorph 
-			model: self 
+			withModel: self 
 			listGetter: #backgroundMorphCollection 
 			indexGetter: #borderColorIndex  
 			indexSetter: #borderColorIndex:)
@@ -17709,11 +17738,11 @@ borderWidget
 		named: 'Border' translated 
 		help: 'Set the border colour.' translated! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 3/24/2022 11:37:47'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:30:24'!
 fontSizeWidget
 	^ self widget: (
 		(DropDownButtonMorph 
-			model: self 
+			withModel: self 
 			listGetter:  #fontSizesMorphCollection
 			indexGetter:  #fontSizeIndex 
 			indexSetter: #fontSizeIndex:)
@@ -28753,16 +28782,14 @@ tree
 " I am the model of a tree presenting the math item "
 	^ tree ifNil: [ tree := DrGeoTree on: presenter]! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/10/2022 12:07:48'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 5/26/2024 11:25:06'!
 treeView
-	^ treeView ifNil: [treeView := HierarchicalListMorph 
-		model: self tree
+	^ treeView ifNil: [treeView := (HierarchicalListMorph 
+		withModel: self tree
 		listGetter: #pool
 		indexGetter: #selectedItem
-		indexSetter: #selectedItem:
-		mainView: self view
-		menuGetter: nil
-		keystrokeAction: nil]! !
+		indexSetter: #selectedItem:)
+			mainView: self view 		menuGetter: nil 		keystrokeAction: nil]! !
 
 !DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 09:03:22'!
 verticalWheel 
@@ -29847,17 +29874,21 @@ aboutDrgeo
 		(PopUpMenu labels: ' Ok ' icons: {DrGIcons drgeo}) 
 			startUpNonModalWithCaption:  self drgeoInformationString ]! !
 
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 5/19/2024 09:47:44'!
+cuisVersion
+	^ SystemVersion current versionString, ' #', SystemVersion current highestUpdate printString! !
+
 !DrGeo class methodsFor: 'user interface' stamp: 'hlsf 1/28/2024 16:14:31'!
 drgeoCopyright
 	^ 'Source code application: Copyright 1996-2024 Hilaire Fernandes
 Icons: Copyright 1999 Frédéric Toussaint
 Icons: Copyright 2021-2022 David Caula (imppao)'! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/3/2023 21:45:47'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 5/19/2024 09:48:57'!
 drgeoInformationString
 	|text |
 	text := 'Dr. Geo is about interactive geometry and programming.
-{1}
+{1} - {3}
 
 It allows one to create geometric figure plus the interactive manipulation 
 It is usable in teaching situation, in mathematics, physics and
@@ -29868,7 +29899,7 @@ and programmed interactive sketches.
 
 {2}
 
-LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright}.
+LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright. self cuisVersion }.
 	^ text! !
 
 !DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/10/2024 16:47:38'!
@@ -29910,7 +29941,7 @@ quit
 Are you sure to quit Dr. Geo environment?' translated) ifFalse: [ ^ self]].
 	Smalltalk quitPrimitive! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 2/11/2024 12:54:10'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 5/26/2024 11:23:04'!
 toolsMenu: builder
 	<drgeoWorldMenu>
 	(builder newEntry: 'System Browser' translated in: 'Tools' translated)
@@ -29934,8 +29965,15 @@ toolsMenu: builder
 	(builder newEntry: 'Workspace' translated in: 'Tools' translated)
 		icon: #terminalIcon;
 		action: [Workspace open ];
-		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated.'	translated;
+		help: 'A window used as a scratchpad area where fragments of Cuis-Smalltalk code can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use the Smalltalk Sketch Editor tool above.'	translated;
 		order: 30.
+
+	(builder newEntry: 'Transcript' translated in: 'Tools' translated)
+		icon: #printerIcon;
+		action: [Transcript open ];
+		help: 'A window used to print information from the code - text output. Any object receiving the message #print is output in the Transcript: ''hello'' print, (k * 5) print. Use the Transcript class for more elaborated output.' 	translated;
+		order: 35.
+
 		
 	(builder newEntry: 'Open a file' translated in: 'Tools' translated)
 		icon: #systemFileManagerIcon;
@@ -32800,15 +32838,11 @@ parseArrowWith: aNode
 		otherwise: [arrow].
 	! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 5/20/2024 16:41:24'!
 parseColorAt: colorAttribute with: aNode 
 | attribute |
 	attribute := (aNode attributeAt: colorAttribute ifAbsent: ['Transparent']) asLowercase.
-	(attribute = 'darkgrey' or: [attribute = 'darkgray'])	ifTrue: [attribute := #darkGray].
-	(attribute = 'grey' or: [attribute = 'gray']) ifTrue: [attribute := #gray].
-	attribute = 'darkgreen' ifTrue: [attribute := #green].
-	attribute = 'darkblue' ifTrue: [attribute := #blue].
-	attribute = 'bordeaux' ifTrue: [attribute := #red].
+	(DrGTypeColor colorSymbols includes: attribute) ifFalse: [attribute := #black].
 	^ Color perform: attribute asSymbol! !
 
 !DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 9/25/2021 14:31:47'!
@@ -32846,7 +32880,7 @@ parseStyleOfCircle: item with: aNode
 	costume := self parseStyleOfCurve: item with: aNode.
 	self parseStyleOfFilledCircle: costume with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 8/4/2023 11:13:07'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 5/20/2024 16:33:14'!
 parseStyleOfCurve: item with: aNode 
 	| morph attribute |
 	morph := self drawable fastLastItemView .
@@ -32860,7 +32894,10 @@ parseStyleOfCurve: item with: aNode
 			attribute = 'Dashed' ifTrue: [morph style lineStyle: #dash.].
 			attribute = 'Thick' ifTrue: [morph style thickness: #medium]].
 	attribute := aNode attributeAt: #style ifAbsent: [^ morph].
-	morph style lineStyle: attribute.
+	(DrGTypeStyle styleSymbols includes: attribute asSymbol) 
+		ifTrue: [morph style lineStyle: attribute.]
+		ifFalse: [morph style lineStyle: #plain].
+	
 	^ morph! !
 
 !DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 8/4/2023 11:11:18'!
@@ -32890,7 +32927,7 @@ parseStyleOfHalfLine: item with: aNode
 parseStyleOfLine: item with: aNode 
 	self parseStyleOfCurve: item with: aNode! !
 
-!DrGeoXml methodsFor: 'parse style'!
+!DrGeoXml methodsFor: 'parse style' stamp: 'hlsf 5/20/2024 16:35:36'!
 parseStyleOfLocus: item with: aNode 
 	self parseStyleOfCurve: item with: aNode! !
 
@@ -34441,11 +34478,11 @@ someDrGeoAction: aDocCode
 
 	^ self shouldBeImplemented ! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:34'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 5/20/2024 15:28:52'!
 visitDrGTypeArrowPreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
-		model: aPref type 
+		withModel: aPref type 
 		listGetter: #arrowMorphCollection 
 		indexGetter: #arrowIndex 
 		indexSetter: #arrowIndex:)
@@ -34453,11 +34490,11 @@ visitDrGTypeArrowPreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:40'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 5/20/2024 15:29:03'!
 visitDrGTypeColorPreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
-		model: aPref type 
+		withModel: aPref type 
 		listGetter: #colorMorphCollection 
 		indexGetter: #colorIndex 
 		indexSetter: #colorIndex:)
@@ -34465,11 +34502,11 @@ visitDrGTypeColorPreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:46'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 5/20/2024 15:29:14'!
 visitDrGTypeMarkPreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
-		model: aPref type 
+		withModel: aPref type 
 		listGetter: #markMorphCollection 
 		indexGetter: #markIndex 
 		indexSetter: #markIndex:)
@@ -34477,11 +34514,11 @@ visitDrGTypeMarkPreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:51'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 5/20/2024 15:29:26'!
 visitDrGTypePointShapePreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
-		model: aPref type 
+		withModel: aPref type 
 		listGetter: #shapeMorphCollection 
 		indexGetter: #pointShapeIndex 
 		indexSetter: #pointShapeIndex:)
@@ -34489,11 +34526,11 @@ visitDrGTypePointShapePreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:53:58'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 5/20/2024 15:29:31'!
 visitDrGTypePointSizePreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
-		model: aPref type 
+		withModel: aPref type 
 		listGetter: #sizeMorphCollection 
 		indexGetter: #pointSizeIndex 
 		indexSetter: #pointSizeIndex:)
@@ -34501,11 +34538,11 @@ visitDrGTypePointSizePreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:54:04'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 5/20/2024 15:29:34'!
 visitDrGTypeStylePreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
-		model: aPref type 
+		withModel: aPref type 
 		listGetter: #styleMorphCollection 
 		indexGetter: #styleIndex 
 		indexSetter: #styleIndex:)
@@ -34513,11 +34550,11 @@ visitDrGTypeStylePreference: aPref
 		setBalloonText: aPref description.
 	views at: aPref nameDetailed put: listMorph! !
 
-!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 7/6/2022 10:54:09'!
+!PreferenceBrowserVisitor methodsFor: '*DrGeo-visitors type' stamp: 'hlsf 5/20/2024 15:29:51'!
 visitDrGTypeThicknessPreference: aPref
 	| listMorph |
 	listMorph  := (DropDownButtonMorph 
-		model: aPref type 
+		withModel: aPref type 
 		listGetter: #thicknessMorphCollection 
 		indexGetter: #thicknessIndex 
 		indexSetter: #thicknessIndex:)

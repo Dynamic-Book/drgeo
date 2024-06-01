@@ -1,19 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Pharo\n"
+"Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 08:28-0000\n"
-"PO-Revision-Date: 2023-05-19 12:43+0000\n"
+"POT-Creation-Date: 2024-05-26 11:27+0000\n"
+"PO-Revision-Date: 2024-05-28 22:38+0000\n"
 "Last-Translator: heppe <heppew@yahoo.com>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-11-24 06:28+0000\n"
-"X-Generator: Launchpad (build c6808f5758ddf584f68a8725ce7a8cf1dd356f81)\n"
-"X-Pharo-Domain: DrGeoII\n"
-"X-Pharo-SystemVersion: Pharo1.3 of 5 July 2011 update 13267\n"
+"X-Launchpad-Export-Date: 2024-05-29 04:54+0000\n"
+"X-Generator: Launchpad (build a60fb269857abd7169036a2da5afd37a6a1d41e8)\n"
+"Language: nl\n"
+"X-Cuis-SystemVersion: Cuis7.1 update 6409\n"
+"X-Cuis-Domain: drgeo\n"
 
 #: DrGeo-File,DrGeoXml>>parseFigureFrom:
 msgid "no name"
@@ -334,7 +334,7 @@ msgstr "Hernoem deze waarde"
 #: DrGeo-Presenter,DrGeo_class>>drgeoInformationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
-"{1}\n"
+"{1} - {3}\n"
 "\n"
 "It allows one to create geometric figure plus the interactive manipulation \n"
 "It is usable in teaching situation, in mathematics, physics and\n"
@@ -347,20 +347,21 @@ msgid ""
 "\n"
 "LICENSE: GPL"
 msgstr ""
-"Dr. Geo voor interactieve meetkunde en programmeren.\n"
-"(1)\n"
+"Dr. Geo gaat over interactieve meetkunde en programmering\n"
+"{1} - {3}\n"
 "\n"
-"Het maakt interactieve manipulatie van meetkundige figuren mogelijk \n"
-"Het is bruikbaar in het onderwijs, in de wiskunde, de natuurkunde en\n"
-"het programmeren, met leerlingen van basisschool tot universiteitsniveau.\n"
+"Het maakt mogelijk om meetkundige figuren te maken en interactieve "
+"manipulatie \n"
+"Het is toepasbaar bij onderwijs, bij wiskunde, natuurkunde en\n"
+"programmering, met leerlingen van basisschool tot universiteitsniveau.\n"
 "\n"
-"Het is eenvoudig en effectief met unieke mogelijkheden zoals Smalltalk "
+"Het is eenvoudig en effectief met unieke eigenschappen zoals Smalltalk "
 "scripts \n"
 "en geprogrammeerde interactieve schetsen. \n"
 "\n"
-"(2)\n"
+"{2}\n"
 "\n"
-"LICENTIE: GPL"
+"LICENSIE: GPL"
 
 #: DrGeo-Presenter,DrGeo_class>>drgeoVersion
 msgid "Installed version: "
@@ -383,9 +384,8 @@ msgid "Dr. Geo Preferences"
 msgstr "Dr. Geo Voorkeuren"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
-#, fuzzy
 msgid "Preferences"
-msgstr "Dr. Geo Voorkeuren"
+msgstr "Voorkeuren"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Settings"
@@ -393,11 +393,11 @@ msgstr "Instellingen"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Size of GUI elements"
-msgstr ""
+msgstr "Afmetingen van GUI elementen"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Theme"
-msgstr ""
+msgstr "Stijl"
 
 #: DrGeo-Presenter,DrGeo_class>>quit
 msgid ""
@@ -427,10 +427,23 @@ msgstr ""
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
 "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
-"can be entered, stored, edited, and evaluated."
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
 msgstr ""
-"Een venster gebruikt als een kladblok waar delen van Cuis-Smalltalk code "
-"ingevoerd, opgeslagen, bewerkt en geëvalueerd kan worden."
+"Een venster gebruikt als kladblokgebied waar delen van Cuis-Smalltalk code "
+"ingevoerd kan worden, opgeslagen, aangepast, en geëvalueerd. Om Smalltalk "
+"schets aan te passen, gebruik Smalltalk Schets Editor werktuig hierboven."
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
+msgstr ""
+"Een venster gebruikt om informatie van de code af te drukken - tekstuitvoer. "
+"Ieder voorwerp dat de boodschap #print ontvangt, stuurt in het Transcript: "
+"'hallo print, (k * 5) print. Gebruik het Transcript class voor meer "
+"uitgebreide uitvoer."
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "An editor to write and to test new Smalltalk sketch."
@@ -468,9 +481,13 @@ msgstr "Smalltalk Sketch Editor"
 msgid "System Browser"
 msgstr "Systeem Browser"
 
-#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
 msgid "Tools"
 msgstr "Hulpmiddelen"
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr "Transcript"
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
@@ -764,7 +781,8 @@ msgid "Intersection"
 msgstr "Snijpunt"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>description
-msgid "Polygon by n points: last point must be the initial point to terminate."
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
 msgstr ""
 "Polygoon van n punten: laatste punt moet weer het eerste punt zijn om af te "
 "sluiten."
@@ -939,7 +957,8 @@ msgstr ""
 "te wijzigen."
 
 #: DrGeo-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
-msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
 msgstr ""
 "Verscheidene objecten kunnen worden geselecteerd. Selecteer er één door met "
 "de muis te klikken."
@@ -992,8 +1011,8 @@ msgid ""
 msgstr ""
 "Pad voor door gebruiker aangemaakte bronnen zoals schetsen, Smalltalk "
 "schetsen, geëxporteerde afbeeldingen. Een leeg pad verwijst naar de folder "
-"waar de Dr. Geo applicatie staat. Relatief pad is toegestaan, dan wordt home/"
-"user directory ervoor gezet."
+"waar de Dr. Geo applicatie staat. Relatief pad is toegestaan, dan wordt "
+"home/user directory ervoor gezet."
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid "miscellaneous"
@@ -1018,6 +1037,10 @@ msgstr "veelhoek"
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
 msgstr "Code gereed op"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
+msgstr "Volledige debugger bij uitvoeren van Smalltalk schets"
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "programming"
@@ -1448,9 +1471,8 @@ msgid "The name of the script."
 msgstr "De naam van het script."
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
-#, fuzzy
 msgid "Browse my collection of Smalltalk sketches."
-msgstr "Doorzoek Smalltalk Sketches"
+msgstr "Doorzoek mijn verzameling van Smalltalk schetsen"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete"
@@ -1471,6 +1493,14 @@ msgstr "Code"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
 msgid "Select a Smalltalk sketch"
 msgstr "Selecteer een Smalltalk sketch"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+"Teveel fouten. Oplossen!\n"
+"Schets gestopt"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch,DrGeo>>saveSketchAs
 msgid "Name the sketch to keep."
@@ -1615,9 +1645,3 @@ msgstr "Selecteer een script daarna items in de schets"
 #: DrGeo-View-Dialog,DrGWizardScript>>secondPage
 msgid "The arguments accepted by this script."
 msgstr "De argumenten geaccepteerd door dit script."
-
-#~ msgid "Name the bitmap to export:"
-#~ msgstr "Benoem de export bitmap:"
-
-#~ msgid "Execute step by step"
-#~ msgstr "Stap voor stap uitvoeren"

@@ -1,20 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: eToys\n"
+"Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 08:28-0000\n"
+"POT-Creation-Date: 2024-05-26 11:27+0000\n"
 "PO-Revision-Date: 2023-12-31 13:12+0000\n"
 "Last-Translator: Markus Schlager <Unknown>\n"
 "Language-Team: \n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-01-01 04:38+0000\n"
-"X-Generator: Launchpad (build e1eeab5b20e19239bd7d5f36676f7a52988db88b)\n"
-"X-Etoys-SystemVersion: etoys4.1 of 29 April 2010 update 2383 (repo v1295 of "
-"25 August 2010)\n"
-"X-Etoys-Domain: DrGeoII-Core\n"
+"X-Launchpad-Export-Date: 2024-05-27 04:37+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"Language: de\n"
+"X-Cuis-SystemVersion: Cuis7.1 update 6409\n"
+"X-Cuis-Domain: drgeo\n"
 
 #: DrGeo-File,DrGeoXml>>parseFigureFrom:
 msgid "no name"
@@ -335,7 +334,7 @@ msgstr "Benenne diesen Wert um."
 #: DrGeo-Presenter,DrGeo_class>>drgeoInformationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
-"{1}\n"
+"{1} - {3}\n"
 "\n"
 "It allows one to create geometric figure plus the interactive manipulation \n"
 "It is usable in teaching situation, in mathematics, physics and\n"
@@ -348,21 +347,6 @@ msgid ""
 "\n"
 "LICENSE: GPL"
 msgstr ""
-"Bei Dr. Geo geht es um interaktive Geometrie und Programmieren.\n"
-"{1}\n"
-"\n"
-"Man kann damit geometrische Figuren erzeugen und diese interaktiv "
-"verändern. \n"
-"Es eignet sich für den Unterricht in Mathematik, Physik und\n"
-"Programmieren für Schüler von der Primarstufe bis zum Hochschulniveau.\n"
-"\n"
-"Es ist einfach und effektiv mit manch einzigartigen Funktionen in Form von "
-"Smalltalk-Skripten \n"
-"und programmierten interaktiven Zeichnungen. \n"
-"\n"
-"{2}\n"
-"\n"
-"LIZENZ: GPL"
 
 #: DrGeo-Presenter,DrGeo_class>>drgeoVersion
 msgid "Installed version: "
@@ -385,9 +369,8 @@ msgid "Dr. Geo Preferences"
 msgstr "Dr.-Geo-Einstellungen"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
-#, fuzzy
 msgid "Preferences"
-msgstr "Dr.-Geo-Einstellungen"
+msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Settings"
@@ -429,10 +412,16 @@ msgstr ""
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
 "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
-"can be entered, stored, edited, and evaluated."
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
 msgstr ""
-"Ein Fenster, das sich als Notizblock nutzen lässt, um Schnipsel von Cuis-"
-"Smalltalk-Code einzugeben, zu speichern, zu bearbeiten und auszuführen."
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
+msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "An editor to write and to test new Smalltalk sketch."
@@ -470,9 +459,13 @@ msgstr "Editor für Smalltalk-Zeichnungen"
 msgid "System Browser"
 msgstr "System-Browser"
 
-#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
 msgid "Tools"
 msgstr "Werkzeuge"
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr ""
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
@@ -725,7 +718,8 @@ msgid "Middle"
 msgstr "Mittelpunkt"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>description
-msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgid ""
+"Line passing through one point and parallel to a line, half-line, etc."
 msgstr ""
 "Gerade durch einen Punkt und parallel zu einer anderen Geraden, Halbgeraden, "
 "etc."
@@ -773,7 +767,8 @@ msgid "Intersection"
 msgstr "Schnittpunkt"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>description
-msgid "Polygon by n points: last point must be the initial point to terminate."
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
 msgstr ""
 "Vieleck, definiert durch n Punkte: Der letzte gewählte Punkt muss mit dem "
 "ersten Punkt übereinstimmen, um die Auswahl abzuschließen."
@@ -950,7 +945,8 @@ msgstr ""
 "freiem Punkt oder Schnittpunkt wechseln."
 
 #: DrGeo-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
-msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
 msgstr ""
 "Mehrere Objekte stehen zur Wahl. Klicke bitte mit der Maus und wähle dann "
 "eines aus."
@@ -1029,6 +1025,10 @@ msgstr "Polygon"
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
 msgstr "Code-Vervollständigung an"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
+msgstr ""
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "programming"
@@ -1467,9 +1467,8 @@ msgid "The name of the script."
 msgstr "Der Name des Skriptes"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
-#, fuzzy
 msgid "Browse my collection of Smalltalk sketches."
-msgstr "Smalltalk-Zeichnungen durchsuchen"
+msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete"
@@ -1490,6 +1489,12 @@ msgstr "Code"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
 msgid "Select a Smalltalk sketch"
 msgstr "Wähle eine Smalltalk-Zeichnung"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch,DrGeo>>saveSketchAs
 msgid "Name the sketch to keep."
@@ -1634,9 +1639,3 @@ msgstr "Wähle ein Skript und anschließend die Elemente in der Zeichnung"
 #: DrGeo-View-Dialog,DrGWizardScript>>secondPage
 msgid "The arguments accepted by this script."
 msgstr "Die Argumente, die von diesem Skript akzeptiert werden."
-
-#~ msgid "Name the bitmap to export:"
-#~ msgstr "Name der zu exportierenden Bitmap:"
-
-#~ msgid "Execute step by step"
-#~ msgstr "Schritt für Schritt ausführen"

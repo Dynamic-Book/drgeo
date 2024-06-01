@@ -1,19 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Pharo\n"
+"Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 08:28-0000\n"
-"PO-Revision-Date: 2024-01-02 03:10+0000\n"
+"POT-Creation-Date: 2024-05-26 11:27+0000\n"
+"PO-Revision-Date: 2024-05-27 00:04+0000\n"
 "Last-Translator: ttkk1024 <Unknown>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-01-02 07:29+0000\n"
-"X-Generator: Launchpad (build e1eeab5b20e19239bd7d5f36676f7a52988db88b)\n"
-"X-Pharo-Domain: DrGeoII\n"
-"X-Pharo-SystemVersion: Pharo1.4 of 18 April 2012 update 14438\n"
+"X-Launchpad-Export-Date: 2024-05-28 04:34+0000\n"
+"X-Generator: Launchpad (build 0e1f616671af724398db43b36ddfb3ed1f2682ec)\n"
+"Language: zh_CN\n"
+"X-Cuis-SystemVersion: Cuis7.1 update 6409\n"
+"X-Cuis-Domain: drgeo\n"
 
 #: DrGeo-File,DrGeoXml>>parseFigureFrom:
 msgid "no name"
@@ -332,7 +332,7 @@ msgstr "重命名该值"
 #: DrGeo-Presenter,DrGeo_class>>drgeoInformationString
 msgid ""
 "Dr. Geo is about interactive geometry and programming.\n"
-"{1}\n"
+"{1} - {3}\n"
 "\n"
 "It allows one to create geometric figure plus the interactive manipulation \n"
 "It is usable in teaching situation, in mathematics, physics and\n"
@@ -345,15 +345,15 @@ msgid ""
 "\n"
 "LICENSE: GPL"
 msgstr ""
-"Dr. Geo 是关于交互式几何和编程的。\n"
-"{1}\n"
+"Dr. Geo 是一门交互几何与编程学科。\n"
+"{1} - {3} \n"
+"它允许用户创建几何图形，并对其进行交互式处理。\n"
+"它可在教学环境中使用，适用于从小学到大学级别的数学、物理和\n"
+"编程专业的学生。\n"
 "\n"
-"它允许创建几何图形并进行交互操作，\n"
-"在教学情境中可用于小学到大学层次的数学、物理和编程。\n"
+"它具有独特功能，例如 Smalltalk 脚本和经过编程的交互式素描，因而既简单又有效。\n"
 "\n"
-"它简单而有效，具有一些独特的功能，如 Smalltalk 脚本和编程的交互式草图。\n"
-"\n"
-"{2}\n"
+"{2} \n"
 "\n"
 "许可证：GPL"
 
@@ -378,9 +378,8 @@ msgid "Dr. Geo Preferences"
 msgstr "Dr. Geo首选项"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>preferencesMenu:,DrGeo_class>>worldMenu:
-#, fuzzy
 msgid "Preferences"
-msgstr "Dr. Geo首选项"
+msgstr "首选项"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Settings"
@@ -388,11 +387,11 @@ msgstr "设置"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Size of GUI elements"
-msgstr ""
+msgstr "GUI元素的大小"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Theme"
-msgstr ""
+msgstr "主题"
 
 #: DrGeo-Presenter,DrGeo_class>>quit
 msgid ""
@@ -408,8 +407,7 @@ msgid ""
 "browser on the DrGeoSketch class you can study to design your own Smalltalk "
 "sketch."
 msgstr ""
-"一个源代码浏览器，用于查看、编辑和保存Dr. Geo代码。我在DrGeoSketch类上打开浏"
-"览器，你可以学习设计自己的Smalltalk草图。"
+"一个源代码浏览器，用于查看、编辑和保存Dr. Geo代码。我在DrGeoSketch类上打开浏览器，你可以学习设计自己的Smalltalk草图。"
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
@@ -419,9 +417,20 @@ msgstr "一个用于浏览和测试系统和个人Smalltalk草图的工具。"
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid ""
 "A window used as a scratchpad area where fragments of Cuis-Smalltalk code "
-"can be entered, stored, edited, and evaluated."
+"can be entered, stored, edited, and evaluated. To edit Smalltalk sketch, use "
+"the Smalltalk Sketch Editor tool above."
 msgstr ""
-"一个用作草稿区域的窗口，可以输入、存储、编辑和评估Cuis-Smalltalk代码片段。"
+"一个用作草稿纸区域的窗口，可以在其中输入、存储、编辑并评估 Cuis-Smalltalk 代码片段。若要编辑 Smalltalk 草图，请使用上方的小型 "
+"Smalltalk 草图编辑器工具。"
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid ""
+"A window used to print information from the code - text output. Any object "
+"receiving the message #print is output in the Transcript: 'hello' print, (k "
+"* 5) print. Use the Transcript class for more elaborated output."
+msgstr ""
+"用于打印来自代码的信息的窗口 - 文本输出。任何接收消息 #print 的对象都会在 Transcript： 'hello' print，（k * "
+"5）print 中输出。使用 Transcript 类进行更详细的输出。"
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "An editor to write and to test new Smalltalk sketch."
@@ -459,9 +468,13 @@ msgstr "Smalltalk素材编辑器"
 msgid "System Browser"
 msgstr "系统浏览器"
 
-#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>toolsMenu:,DrGeo_class>>worldMenu:
 msgid "Tools"
 msgstr "工具"
+
+#: DrGeo-Presenter,DrGeo_class>>toolsMenu:
+msgid "Transcript"
+msgstr "记录单"
 
 #: DrGeo-Presenter,DrGeo_class>>toolsMenu:
 msgid "Workspace"
@@ -563,9 +576,7 @@ msgid ""
 "Oriented angle defined by three points or two vectors. When defined from "
 "three points, the second point is the vertex. Its measure belongs to [0 ; "
 "360[ or ]-180 ; 180]. "
-msgstr ""
-"由三个点或两个向量定义的方向角。当由三个点定义时，第二个点是顶点。其度量值属"
-"于 [0 ; 360[ 或 ]-180 ; 180] "
+msgstr "由三个点或两个向量定义的方向角。当由三个点定义时，第二个点是顶点。其度量值属于 [0 ; 360[ 或 ]-180 ; 180] "
 
 #: DrGeo-Presenter-Builder,DrGAngleOrientedBuilder_class>>title
 msgid "Oriented angle"
@@ -634,8 +645,7 @@ msgstr "点"
 msgid ""
 "Homothety: select a center, a value and a geometric object. The first "
 "selected point is the homothety center."
-msgstr ""
-"同源变换：选择一个中心、一个值和一个几何对象。第一个选中的点是同源变换中心。"
+msgstr "同源变换：选择一个中心、一个值和一个几何对象。第一个选中的点是同源变换中心。"
 
 #: DrGeo-Presenter-Builder,DrGHomothetyBuilder_class>>title
 msgid "Homothety (scale)"
@@ -677,9 +687,7 @@ msgstr "请输入一个正确的标题和描述"
 msgid ""
 "Execute a pre-built macro-construction on selected input items. To edit a "
 "macro description, edit its text and apply with the keys [alt/ctrl]+s."
-msgstr ""
-"使用预先内置的宏结构在选定输入项目上执行。若要编辑宏描述，编辑其文字，然后按 "
-"[alt/ctrl]+s 键应用。"
+msgstr "使用预先内置的宏结构在选定输入项目上执行。若要编辑宏描述，编辑其文字，然后按 [alt/ctrl]+s 键应用。"
 
 #: DrGeo-Presenter-Builder,DrGMacroPlayer_class>>title
 msgid "Execute/edit macro"
@@ -694,7 +702,8 @@ msgid "Middle"
 msgstr "中点"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>description
-msgid "Line passing through one point and parallel to a line, half-line, etc."
+msgid ""
+"Line passing through one point and parallel to a line, half-line, etc."
 msgstr "过一点且与某直线、射线等平行的线、射线等"
 
 #: DrGeo-Presenter-Builder,DrGParallelBuilder_class>>title
@@ -736,7 +745,8 @@ msgid "Intersection"
 msgstr "交点"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>description
-msgid "Polygon by n points: last point must be the initial point to terminate."
+msgid ""
+"Polygon by n points: last point must be the initial point to terminate."
 msgstr "n点的多边形：最后一个点必须是起始点，以闭合多边形。"
 
 #: DrGeo-Presenter-Builder,DrGPolygonBuilder_class>>title,DrGScriptDesignerDialog_class>>labelsAndClasses
@@ -897,7 +907,8 @@ msgid ""
 msgstr "按下[Shift]键可以拖拽和更改任意点或交叉点的性质"
 
 #: DrGeo-Presenter-Tool,DrGSelectToolStateNeutral>>handleShiftKeyMouseAt:
-msgid "Several objects can be selected. Please, select one clicking the mouse."
+msgid ""
+"Several objects can be selected. Please, select one clicking the mouse."
 msgstr "可选择多个对象。请点击鼠标选择一个。"
 
 #: DrGeo-Presenter-Tool,DrGStyleTool_class>>description
@@ -946,8 +957,8 @@ msgid ""
 "image. An empty path locates these resources in the Dr. Geo application "
 "folder. Relative path accepted, home/user directory is then prepended"
 msgstr ""
-"用户创建资源的路径，例如素描、Smalltalk素描、导出的图像。空路径将这些资源定位"
-"在Dr. Geo应用程序文件夹中。接受相对路径，然后在home/user目录之前添加。"
+"用户创建资源的路径，例如素描、Smalltalk素描、导出的图像。空路径将这些资源定位在Dr. "
+"Geo应用程序文件夹中。接受相对路径，然后在home/user目录之前添加。"
 
 #: DrGeo-System,DrGPlatform>>miscPreferences
 msgid "miscellaneous"
@@ -972,6 +983,10 @@ msgstr "多边形"
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "Code completion on"
 msgstr "代码补全中"
+
+#: DrGeo-System,DrGPlatform>>programmingPreferences
+msgid "Full debugger when executing Smalltalk sketch."
+msgstr "在执行 Smalltalk 草图时完全调试"
 
 #: DrGeo-System,DrGPlatform>>programmingPreferences
 msgid "programming"
@@ -1389,9 +1404,8 @@ msgid "The name of the script."
 msgstr "脚本的名称。"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
-#, fuzzy
 msgid "Browse my collection of Smalltalk sketches."
-msgstr "浏览 Smalltalk 素材"
+msgstr "浏览我的 Smalltalk 草图集"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchBrowser>>newButtonArea
 msgid "Delete"
@@ -1412,6 +1426,14 @@ msgstr "代码"
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>browseSketches
 msgid "Select a Smalltalk sketch"
 msgstr "选择一个Smalltalk草图"
+
+#: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>executeSketch
+msgid ""
+"Too many errors. Fix it!\n"
+"Sketch stopped"
+msgstr ""
+"错误太多。修复它！\n"
+"草图停止了"
 
 #: DrGeo-View-Dialog,DrGSmalltalkSketchEditor>>keepSketch,DrGeo>>saveSketchAs
 msgid "Name the sketch to keep."
@@ -1553,9 +1575,3 @@ msgstr "选择一个脚本，然后在草图中选择项目。"
 #: DrGeo-View-Dialog,DrGWizardScript>>secondPage
 msgid "The arguments accepted by this script."
 msgstr "选择一个脚本，然后在草图中选择项目。"
-
-#~ msgid "Name the bitmap to export:"
-#~ msgstr "图像导出的文件名："
-
-#~ msgid "Execute step by step"
-#~ msgstr "逐步执行"
