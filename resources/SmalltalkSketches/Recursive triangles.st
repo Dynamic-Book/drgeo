@@ -9,7 +9,6 @@ build _ [ :triangle :depth| | vertrices middles nextTriangles|
 		(Delay forMilliseconds: 10) wait.
 		vertrices _ triangle mathItem points.
 		middles _ vertrices withIndexCollect: [:point : index | point + (vertrices atWrap: index + 1) / 2 ].
-		sketch domain deleteMathItem: triangle mathItem.
 		nextTriangles _ OrderedCollection new.
 		nextTriangles 
 			add: (sketch polygon: {vertrices  first.  middles first. middles third });
@@ -21,5 +20,5 @@ build _ [ :triangle :depth| | vertrices middles nextTriangles|
 
 build 
 	value: (sketch polygon: { 0 @3 sqrt. 1@0 . -1@0})
-	value: 6.
+	value: 3.
 sketch.

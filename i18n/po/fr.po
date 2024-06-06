@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Cuis\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-26 11:27+0000\n"
-"PO-Revision-Date: 2024-05-26 13:09+0000\n"
+"PO-Revision-Date: 2024-06-06 11:43+0200\n"
 "Last-Translator: hilaire <hilaire@gnu.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -391,7 +391,7 @@ msgstr "Préférences"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Settings"
-msgstr "Préférences"
+msgstr "Réglages"
 
 #: DrGeo-Presenter,DrGeo_class>>preferencesMenu:
 msgid "Size of GUI elements"

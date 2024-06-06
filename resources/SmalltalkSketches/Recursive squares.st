@@ -24,7 +24,6 @@ build _ [ :square :depth | | vertices points resultsA resultsB nextSquares|
 			add: resultsB second.
 		" raw 4 "
 		points addAll: (computePoints value: vertices fourth value: vertices third).
-		sketch domain deleteMathItem: square mathItem.
 		"compute the sub squares"	
 		nextSquares _ OrderedCollection new.
 		nextSquares 
@@ -43,5 +42,5 @@ build _ [ :square :depth | | vertices points resultsA resultsB nextSquares|
  ].
 build
 	value: (sketch polygon: {-1@1 . 1@ 1 . 1@ -1. -1@ -1})
-	value: 4.
+	value: 3.
 sketch

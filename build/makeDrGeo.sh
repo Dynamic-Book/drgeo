@@ -23,7 +23,7 @@ release=`cat drgeo/cuisRelease`
 # version number, when dealing with rolling release
 version=`ls $imagePath/Cuis$release-????.image | cut -d - -f 2 | cut -d . -f 1`
 smalltalk=Cuis$release-$version
-smalltalkSources=Cuis$release.sources
+smalltalkSources=Cuis7.0.sources
 
 # To build Dr. Geo we need:
 # A Cuis image, its source, the virtual machine,
@@ -80,41 +80,41 @@ makeBundle () {
 	;;
     esac
     bundleResources="$bundleApp/Resources"
-    # INSTALL BUNDLES...
+    echo "Cleaning previous bundles build..."
     rm -rf $bundlePath
-    # ...template
+    echo "Installing template..."
     rsync -a  --exclude '*~' $bundleTemplate $bundlesPath
-    # ...sketches files
+    echo "Installing sketches files..."
     rsync -a "$resources/Sketches" $bundleResources
-    # ...smalltalk sketches files
+    echo "Installing Smalltalk sketches files..."
     rsync -a "$resources/SmalltalkSketches" $bundleResources
-    # ...user sketches and exports folder, graphics
+    echo "Installing user sketches and exports folder, graphics..."
     mkdir $bundleResources/MySketches
     mkdir $bundleResources/MyExports
     rsync -a $resources/graphics/banner/splash.png $bundleResources/icons
     rsync -a $resources/graphics/iconsSVG/* $bundleResources/icons
-    # ...vm
+    echo "Installing OpenSmalltalk VM..."
     for i in $cuisVM
     do
 	rsync -a $cuisVMPath/$i $bundleApp/$destVM/
     done
-    # ...smalltalk image
+    echo "Installing Smalltalk image and changes..."
     rsync -a $imagePath/drgeo.{image,changes} $bundleResources/image
-    # ...smalltalk source
+    echo "Installing Smalltalk source..."
     rsync -a $imagePath/$smalltalkSources $bundleResources/image
-    # ...fonts
+    echo "Installing fonts..."
     mkdir $bundleResources/fonts/
     for each in $fonts
     do
 	rsync -a $resources/fonts/$each $bundleResources/fonts
     done
-    # ...locales
+    echo "Installing locales..."
     rsync -a "$drgeoRepo/i18n/locale" $bundleResources/image
-    # ...doc
+    echo "Installing documentation..."
     cp $resources/doc/ChangeLog $bundleApp
     mkdir $bundleResources/doc
     cp $resources/doc/README.*.txt $resources/doc/README.txt $bundleResources/doc
-    # set exec flag and any additional specific files installation
+    echo "Set exec flag and any additional specific files installation..."
     case "$1" in
 	gnulinux)
 	    chmod +x $bundleApp/DrGeo.sh
@@ -125,14 +125,15 @@ makeBundle () {
 	    ;;
     esac
 
-    # Create an archive out of the bundle
+    echo "Preparing to build archive..."
     cd $bundlePath
-    zip -r --symlinks -qdgds 5m DrGeo-$1-$rel.zip "`basename $bundleApp`" -x \*/.bzr/* \*~
+    echo "Archiving the bundle..."
+    zip -r --symlinks -qdgds 5m DrGeo-$1-$rel.zip "`basename $bundleApp`" -x \*~
     ls -sh DrGeo-$1-$rel.zip
     echo "--== DONE packaging DrGeo for $1 ==--"
     echo -n "Signing..."
     gpg --armor --sign --detach-sign DrGeo-$1-$rel.zip
-    echo "...done."
+    echo "...DONE."
     cd -
 }
 

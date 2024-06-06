@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6410] on 1 June 2024 at 6:09:27 pm'!
+'From Cuis7.1 [latest update: #6452] on 6 June 2024 at 12:57:37 pm'!
 'Description '!
-!provides: 'DrGeo' 1 732!
+!provides: 'DrGeo' 1 736!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -8507,21 +8507,21 @@ printOn: aStream
 handlesMouseDown: evt
 	^ false! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:36:57'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/6/2024 11:56:56'!
 addMyMorphTo: aDrawable
 	self isBitmap 
 		ifTrue: [aDrawable addMorphBack: self]
-		ifFalse: [aDrawable addMorph: self]! !
-
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:18:45'!
-initialize
-	super initialize.
-	self style: (self styleClass newWith: self).
+		ifFalse: [aDrawable addMorph: self].
 	self labelMorph: mathItem name.! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/20/2024 15:04:54'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/6/2024 11:56:49'!
+initialize
+	super initialize.
+	self style: (self styleClass newWith: self).! !
+
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/6/2024 12:11:32'!
 registerEvents
-	self registerEventsIn: self domain! !
+	self registerEventsIn: self drawable! !
 
 !DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/20/2024 15:40:30'!
 registerEventsIn: aDrawable
@@ -31688,18 +31688,18 @@ add: item
 add: anObject beforeIndex: index
 	^ pool add: anObject beforeIndex: index! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/6/2024 12:47:33'!
 at: integer
-	^ self pool at: integer ifAbsent: [nil]! !
+	^ pool at: integer ifAbsent: [nil]! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/6/2024 12:45:47'!
 findInPool: item 
 	"Try to find a twin of this mathItem, if so return the twin, otherwise nil"
-	^ self at: (self indexOf: item)! !
+	^ self at: (self indexOf: item in: pool)! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 6/6/2024 12:45:36'!
 indexOf: anItem
- ^ self indexOf: anItem in: pool! !
+	^ self indexOf: anItem in: pool! !
 
 !DrGFactory methodsFor: 'accessing'!
 indexOf: anItem in: aPool
@@ -33778,7 +33778,7 @@ isiPad
 cleanUp
 	"Smalltalk reduceCuis "! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 2/11/2024 23:48:31'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 6/5/2024 16:19:09'!
 install
 	| world |
 	"Report by any mean installation and run time"
@@ -33788,7 +33788,8 @@ install
 		logToStdout: true.
 	Smalltalk at: #LogStartupDebugAids put: true.
 	'Installing updates...' print.
-	ChangeSet installNewUpdates.
+	Feature require: #'DrGeoFrench'.
+	Feature require: #'DrGeoSpanish'.
 	Smalltalk condenseChanges.
 	"Focus does not follow mouse, it is annoying when editing Smalltalk sketch"
 	Preferences at: #focusFollowsMouse put: false.
