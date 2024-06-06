@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6452] on 6 June 2024 at 4:59:31 pm'!
+'From Cuis7.1 [latest update: #6452] on 6 June 2024 at 5:38:46 pm'!
 'Description '!
-!provides: 'DrGeo' 1 737!
+!provides: 'DrGeo' 1 739!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -6022,10 +6022,8 @@ installTools
 	self beColumn
 		addMorphUseAll: drawable! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 6/6/2024 16:41:38'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 6/6/2024 17:24:31'!
 release
-	presenter ifNotNil: [presenter removeActionsWithReceiver: self].
-	drawable release.
 	presenter := drawable := nil.! !
 
 !DrGeoMiniView methodsFor: 'geometry testing' stamp: 'hlsf 6/5/2021 12:16:21'!
@@ -7564,11 +7562,10 @@ delete
 	super delete.
 	self releaseMiniView ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'submorphs-add/remove' stamp: 'hlsf 8/4/2023 12:58:53'!
+!DrGSmalltalkSketchEditor methodsFor: 'submorphs-add/remove' stamp: 'hlsf 6/6/2024 17:34:07'!
 releaseMiniView
 	drgeoView submorphCount = 1 ifTrue: [
-		drgeoView firstSubmorph ifNotNil: [:miniView| 	
-			miniView  presenter ifNotNil: [:p | p release] ]]! !
+		drgeoView firstSubmorph ifNotNil: [:miniView| 	miniView release]]! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'label' stamp: 'hlsf 5/1/2024 11:36:19'!
 restoreLabel
