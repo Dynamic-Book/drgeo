@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6452] on 6 June 2024 at 12:57:37 pm'!
+'From Cuis7.1 [latest update: #6452] on 6 June 2024 at 4:59:31 pm'!
 'Description '!
-!provides: 'DrGeo' 1 736!
+!provides: 'DrGeo' 1 737!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -6022,8 +6022,10 @@ installTools
 	self beColumn
 		addMorphUseAll: drawable! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 8/4/2023 17:43:36'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 6/6/2024 16:41:38'!
 release
+	presenter ifNotNil: [presenter removeActionsWithReceiver: self].
+	drawable release.
 	presenter := drawable := nil.! !
 
 !DrGeoMiniView methodsFor: 'geometry testing' stamp: 'hlsf 6/5/2021 12:16:21'!
@@ -6954,7 +6956,7 @@ sketch
 		ifNil: [0] 
 		ifNotNil: [	sketches indexOf: selectedFile baseName]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 5/25/2023 15:34:46'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 6/6/2024 16:53:53'!
 sketch: anIndex
 	anIndex = 0 
 		ifTrue:  [	| oldView |
@@ -6969,7 +6971,7 @@ sketch: anIndex
 			self changed: #sourceCode.
 			DrGeoSketch when: #newSmalltalkSketch send: #compiledSketch: to: self.
 			selectedFile readStream fileIn	.
-			DrGeoSketch removeActionsWithReceiver: self	]! !
+			DrGeoSketch removeActionsForEvent: #newSmalltalkSketch	]! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 9/28/2022 16:32:35'!
 sketches
@@ -7512,9 +7514,9 @@ stopDebbuger
 		
 		! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 4/28/2024 14:33:26'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 6/6/2024 16:06:43'!
 stopSketch
-	DrGeoSketch releaseActionMap .
+	DrGeoSketch removeActionsForEvent: #newSmalltalkSketch.
 	sketchProcess 	ifNotNil: [
 		sketchProcess terminate.
 		sketchProcess := nil	].
@@ -8542,13 +8544,14 @@ registerEventsIn: aDrawable
 				to: aDrawable domain].
 	self flag: #drgeoEvent! !
 
-!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 4/12/2024 12:52:14'!
+!DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 6/6/2024 16:43:06'!
 release
 	" Flying morph use it. Read DrGMathItemBuilder>>reset "
 	self removeLabelMorph.
 	self drawable ifNotNil: [:aDrawable | aDrawable removeMorph: self].
 	self flag: #drgeoEvent.
-	self removeEvents.! !
+	self removeEvents.
+	mathItem := nil! !
 
 !DrGMorph methodsFor: 'initialize-release' stamp: 'hlsf 5/20/2024 16:04:41'!
 removeEvents
