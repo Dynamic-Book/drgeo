@@ -1,20 +1,20 @@
 | sketch  build computePoints|
-sketch _ DrGeoSketch new.
+sketch  DrGeoSketch new.
 sketch centerTo: 1@0; scale: 200.
 
-computePoints _ [: pointA  :pointB | { (pointA * 2 + pointB) / 3 . (pointB * 2 + pointA) / 3 } ].
+computePoints  [: pointA  :pointB | { (pointA * 2 + pointB) / 3 . (pointB * 2 + pointA) / 3 } ].
 
-build _ [  ].
-build _ [ :square :depth | | vertices points resultsA resultsB nextSquares|
+build  [  ].
+build  [ :square :depth | | vertices points resultsA resultsB nextSquares shake |
 	depth > 0 ifTrue: [ 
-		vertices _ square mathItem points.
+		vertices  square mathItem points.
 		"compute the sub points coordinates"
-		points _ OrderedCollection new.
+		points  OrderedCollection new.
 		" raw 1 "
 		points addAll: (computePoints value: vertices first value: vertices second).
 		" raw 2 "
-		resultsA _ computePoints value: vertices first value: vertices fourth.
-		resultsB _ computePoints value: vertices second value: vertices third.
+		resultsA  computePoints value: vertices first value: vertices fourth.
+		resultsB  computePoints value: vertices second value: vertices third.
 		points 	add: resultsA first;
 			addAll: (computePoints value: resultsA first value: resultsB first);
 			add: resultsB first.
@@ -24,8 +24,11 @@ build _ [ :square :depth | | vertices points resultsA resultsB nextSquares|
 			add: resultsB second.
 		" raw 4 "
 		points addAll: (computePoints value: vertices fourth value: vertices third).
+		"Shake these points a bit "
+		shake := [ ((10 * depth) atRandom - (5 * depth)) / 500 ].
+		points := points collect: [:aPoint | aPoint +  (shake value @ shake value)].
 		"compute the sub squares"	
-		nextSquares _ OrderedCollection new.
+		nextSquares  OrderedCollection new.
 		nextSquares 
 			add: (sketch polygon: {vertices first. points first. points fourth . points third});
 			add: (sketch polygon: {points first. points second. points fifth . points fourth});

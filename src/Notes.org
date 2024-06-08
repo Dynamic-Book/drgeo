@@ -1,3 +1,16 @@
+* Git operations
+** Tagging
+- To create a new tag: git tag -a Cuis7.0 -m "Package for Cuis 7.0"
+- To push a tag: git push git@github.com:hilaire/drgeo  Cuis7.0
+- To delete a tag locally and remotely
+  * git tag -d Cuis7.0
+  * git push git@github.com:hilaire/drgeo :refs/tags/Cuis7.0
+
+** Documentation
+https://www.geeksforgeeks.org/how-to-delete-a-remote-tag-in-git/
+http://marklodato.github.io/visual-git-guide/index-en.html
+
+
 * Handling of Cuis stock image
 Never save the stock Cuis image, alternatively save it with a different name. 
 `git status` should always be "clean".

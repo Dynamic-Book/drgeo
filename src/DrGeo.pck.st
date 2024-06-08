@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6452] on 6 June 2024 at 5:38:46 pm'!
+'From Cuis7.1 [latest update: #6452] on 8 June 2024 at 4:22:18 pm'!
 'Description '!
-!provides: 'DrGeo' 1 739!
+!provides: 'DrGeo' 1 740!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -6954,8 +6954,9 @@ sketch
 		ifNil: [0] 
 		ifNotNil: [	sketches indexOf: selectedFile baseName]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 6/6/2024 16:53:53'!
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 6/8/2024 16:20:56'!
 sketch: anIndex
+	ActiveModel flushEventSystem.
 	anIndex = 0 
 		ifTrue:  [	| oldView |
 			self releaseMiniView.
@@ -7512,8 +7513,9 @@ stopDebbuger
 		
 		! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 6/6/2024 16:06:43'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 6/8/2024 16:21:22'!
 stopSketch
+	ActiveModel flushEventSystem.
 	DrGeoSketch removeActionsForEvent: #newSmalltalkSketch.
 	sketchProcess 	ifNotNil: [
 		sketchProcess terminate.
@@ -11874,9 +11876,9 @@ selectedItem: anItemWrapper
 	self changed: #selectedItem.
 	presenter updateSelection ! !
 
-!DrGeoTree methodsFor: 'updating' stamp: 'hlsf 2/10/2022 09:23:20'!
+!DrGeoTree methodsFor: 'updating' stamp: 'hlsf 6/8/2024 13:01:17'!
 update: symbol
-"pass on the notified change"
+"pass on the notified change to my observing view (hierarchy list)"
 	self changed: symbol! !
 
 !DrGeoTree class methodsFor: 'instance creation' stamp: 'hlsf 8/4/2023 12:49:23'!
