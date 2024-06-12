@@ -22,8 +22,13 @@ imagePath=./CuisImage
 release=`cat drgeo/cuisRelease`
 # version number, when dealing with rolling release
 version=`ls $imagePath/Cuis$release-????.image | cut -d - -f 2 | cut -d . -f 1`
-smalltalk=Cuis$release-$version
-smalltalkSources=Cuis7.0.sources
+if [ -z "$version" ]
+then
+    smalltalk=Cuis$release
+else
+    smalltalk=Cuis$release-$version	
+fi
+smalltalkSources=Cuis$version.sources
 
 # To build Dr. Geo we need:
 # A Cuis image, its source, the virtual machine,

@@ -8,7 +8,12 @@ imagePath=CuisImage
 release=`cat drgeo/cuisRelease`
 # version number, when dealing with rolling release
 version=`ls $imagePath/Cuis$release-????.image | cut -d - -f 2 | cut -d . -f 1`
-cuis=Cuis$release-$version
+if [ -z "$version" ]
+then
+    cuis=Cuis$release
+else
+    cuis=Cuis$release-$version	
+fi
 
 ide=drgeoIDE
 VM=CuisVM.app/Contents/Linux-x86_64/squeak
