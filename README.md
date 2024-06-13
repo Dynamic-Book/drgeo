@@ -8,7 +8,7 @@ will use two different working directories though.
 
 ## Stable Dr. Geo 
 The stable **Dr. Geo 24.06** is built against
-**[Cuis](http://cuis.st)7.0**. To build Dr. Geo from source, follow
+**Cuis7.0**. To build Dr. Geo from source, follow
 the instructions in the two sections below.
 
 Set up your working directory for stable:
