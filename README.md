@@ -90,6 +90,6 @@ To open Dr. Geo window, execute:
 DrGeo new
 ```
 
-![Dr. Geo IDE](DrGeoIDE.png)
+![Dr. Geo IDE](resources/graphics/promote/DrGeoIDE.png)
 
 Have an interesting exploration!
