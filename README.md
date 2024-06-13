@@ -1,14 +1,14 @@
 Instructions to install [Dr. Geo](https://www.gnu.org/s/dr-geo/) with
-[Cuis-Smalltalk](http://cuis.st) stable or rolling releases (current).
+[Cuis-Smalltalk](http://cuis.st) stable or rolling (current) releases.
 
-You can install both stable and in current versions of Dr. Geo. You
+You can install both stable and current versions of Dr. Geo. You
 will use two different working directories though.
 
-# Set-up your Dr. Geo development environments
+# Set-up your development environment
 
-## Installing stable Dr. Geo 
+## Stable Dr. Geo 
 The stable **Dr. Geo 24.06** is built against
-**[Cuis](http://cuis.st]7.0**. To build Dr. Geo from source, follow
+**[Cuis](http://cuis.st)7.0**. To build Dr. Geo from source, follow
 the instructions in the two sections below.
 
 Set up your working directory for stable:
@@ -20,17 +20,16 @@ mkdir Cuis-Stable
 ### Cuis-Smalltalk code & VM
 Fetch and install the stable Cuis-Smalltalk image, VM and the needed
 additional packages. You will clone the repositories below with the
-appropriate tag to instruct you want the stable versions: replace mark
-**<CuisStable>** with the tag **Cuis7.0**.
+appropriate tag to instruct you want the stable versions.
 
 ```bash
 cd Cuis-Stable
 git clone --depth 1 https://github.com/Cuis-Smalltalk/Cuis7-0
-git clone --depth 1 --branch <CuisStable> https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI
-git clone --depth 1 --branch <CuisStable> https://github.com/Cuis-Smalltalk/Erudite
-git clone --depth 1 --branch <CuisStable> https://github.com/Cuis-Smalltalk/Numerics
-git clone --depth 1 --branch <CuisStable> https://github.com/Cuis-Smalltalk/Parsers
-git clone --depth 1 --branch <CuisStable> https://github.com/Cuis-Smalltalk/SVG
+git clone --depth 1 --branch Cuis7.0 https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-UI
+git clone --depth 1 --branch Cuis7.0 https://github.com/Cuis-Smalltalk/Erudite
+git clone --depth 1 --branch Cuis7.0 https://github.com/Cuis-Smalltalk/Numerics
+git clone --depth 1 --branch Cuis7.0 https://github.com/Cuis-Smalltalk/Parsers
+git clone --depth 1 --branch Cuis7.0 https://github.com/Cuis-Smalltalk/SVG
 ```
 
 ### Dr. Geo code
@@ -41,7 +40,7 @@ cd Cuis-Stable/Cuis7-0
 git clone --depth 1  --branch 24.06 https://github.com/hilaire/drgeo
 ```
 
-## Installing current Dr. Geo
+## Current Dr. Geo
 The Dr. Geo work-in-progress version is based on the [rolling release
 version of
 Cuis](https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev). Follow
