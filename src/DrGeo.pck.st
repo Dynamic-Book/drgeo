@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6526] on 21 July 2024 at 11:47:03 pm'!
+'From Cuis7.1 [latest update: #6526] on 21 July 2024 at 11:58:46 pm'!
 'Description '!
-!provides: 'DrGeo' 1 741!
+!provides: 'DrGeo' 1 742!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -10585,6 +10585,10 @@ slopeOf: wrpLine
 !DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 10:31:34'!
 value: aNumberOrBlock
 	^ self value: aNumberOrBlock parents: {} at: self aPosition ! !
+
+!DrGeoSketch methodsFor: 'value' stamp: 'hlsf 7/21/2024 23:58:29'!
+value: aNumberOrBlock at: aPosition
+	^ self value: aNumberOrBlock parents: {} at: aPosition! !
 
 !DrGeoSketch methodsFor: 'value' stamp: 'hlsf 4/13/2024 10:30:38'!
 value: aNumberOrBlock parent: wrpValue
