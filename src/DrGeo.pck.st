@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6526] on 21 July 2024 at 11:58:46 pm'!
+'From Cuis7.1 [latest update: #6539] on 28 July 2024 at 10:40:08 am'!
 'Description '!
-!provides: 'DrGeo' 1 742!
+!provides: 'DrGeo' 1 743!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -4379,11 +4379,11 @@ parseLine2pts: aNode
 	^self parseItem: aNode with: DrGLineBuilder.! !
 
 !DrGeoXml methodsFor: 'parse item'!
-parseLineAngleBisector3pts: aNode
+parseLineAngleBisector: aNode
 	^ self parseItem: aNode with: DrGAngleBisectorBuilder! !
 
 !DrGeoXml methodsFor: 'parse item'!
-parseLineAngleBisector: aNode
+parseLineAngleBisector3pts: aNode
 	^ self parseItem: aNode with: DrGAngleBisectorBuilder! !
 
 !DrGeoXml methodsFor: 'parse item'!
@@ -4400,11 +4400,11 @@ parseLinePerpendicular: aNode
 ! !
 
 !DrGeoXml methodsFor: 'parse item'!
-parseLinePerpendicularBisector2pts: aNode
+parseLinePerpendicularBisector: aNode
 	^ self parseItem: aNode with: DrGPerpendicularBisectorBuilder! !
 
 !DrGeoXml methodsFor: 'parse item'!
-parseLinePerpendicularBisector: aNode
+parseLinePerpendicularBisector2pts: aNode
 	^ self parseItem: aNode with: DrGPerpendicularBisectorBuilder! !
 
 !DrGeoXml methodsFor: 'parse item'!
@@ -30790,13 +30790,9 @@ searchLabelIn: aMorph
 				
 		! !
 
-!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 4/1/2024 16:57:46'!
-windowColor
-	^ Theme current transcript ! !
-
-!DrGStylePanel methodsFor: 'initialization' stamp: 'hlsf 4/1/2024 16:57:51'!
+!DrGStylePanel methodsFor: 'initialization' stamp: 'hlsf 7/28/2024 10:24:21'!
 defaultColor
-	^ self windowColor ! !
+	^ Theme current transcript ! !
 
 !DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 7/21/2024 23:06:29'!
 buildMorphicWindow
@@ -30976,18 +30972,14 @@ updateButtonsAndPreviews
 	self changed: #isMySketches.
 	self buildPane! !
 
-!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:52:03'!
+!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 7/28/2024 10:24:43'!
 defaultColor
-	^ self windowColor ! !
+	^ Theme current transcript ! !
 
 !DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 10/29/2021 12:12:00'!
 initialize
 	super initialize.
 	previews := #()! !
-
-!DrGFileOpenMorph methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 17:01:50'!
-windowColor
-	^ Theme current transcript ! !
 
 !DrGFileOpenMorph methodsFor: 'geometry' stamp: 'hlsf 4/2/2024 18:44:39'!
 minimumExtent
@@ -31033,9 +31025,9 @@ buildMorphicWindow
 	super buildMorphicWindow .
 	self adoptWidgetsColor: self widgetsColor! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 7/21/2024 23:21:54'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 7/28/2024 10:25:05'!
 defaultColor
-	^ self windowColor ! !
+	^ Theme current workspace ! !
 
 !DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 4/4/2022 12:54:13'!
 newAddArgumentButton
@@ -31201,10 +31193,6 @@ isValid
 removeArgument: aRowArgument
 	argumentsMorph removeMorph: aRowArgument .
 	self morphExtent: self minimumExtent ! !
-
-!DrGScriptDesignerDialog methodsFor: 'nil' stamp: 'hlsf 7/21/2024 23:08:25'!
-windowColor
-	^ Theme current workspace ! !
 
 !DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 4/2/2022 12:50:48'!
 classesAndLabels
@@ -31409,9 +31397,9 @@ newSketchesColumn
 		yourself
 		! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:49:02'!
+!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 7/28/2024 10:25:31'!
 defaultColor
-	^ self windowColor ! !
+	^ Theme current transcript ! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 4/12/2022 18:56:10'!
 emptyView
@@ -31429,10 +31417,6 @@ initialize
 	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode)
 		disableEditing;
 		yourself.! !
-
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:48:52'!
-windowColor
-	^ Theme current transcript ! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'geometry' stamp: 'hlsf 4/2/2024 19:01:40'!
 minimumExtent
@@ -31630,9 +31614,9 @@ transparentMorph
 		color: Color transparent; 
 		yourself! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:46:58'!
+!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 7/28/2024 10:25:47'!
 defaultColor
-	^ self windowColor ! !
+	^ Theme current workspace ! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'drgeo 3/17/2024 17:18:31'!
 initialize
@@ -31652,10 +31636,6 @@ initialize
 		color: self color;
 		borderWidth: 1;
 		layoutSpec: LayoutSpec useAll! !
-
-!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 3/30/2024 16:50:10'!
-windowColor
-	^ Theme current workspace ! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 10/30/2022 20:39:21'!
 isDocVisible
@@ -32007,13 +31987,9 @@ addPages
 		addPage: self thirdPage ;
 		addPage: self fourthPage ! !
 
-!DrGWizardMacroBuild methodsFor: 'nil' stamp: 'hlsf 7/21/2024 23:17:43'!
-windowColor
-	^ Theme current workspace ! !
-
-!DrGWizardMacroBuild methodsFor: 'as yet unclassified' stamp: 'hlsf 7/21/2024 23:22:10'!
+!DrGWizardMacroBuild methodsFor: 'initialization' stamp: 'hlsf 7/28/2024 10:26:04'!
 defaultColor
-	^ self windowColor ! !
+	^ Theme current workspace ! !
 
 !DrGWizardMacroPlay methodsFor: 'initialize-release' stamp: 'hlsf 12/27/2021 11:03:07'!
 addPages
@@ -32083,13 +32059,9 @@ isReadyToApply
 isSelectPage
 	^ currentPageIndex = 2! !
 
-!DrGWizardMacroPlay methodsFor: 'nil' stamp: 'hlsf 7/21/2024 23:18:16'!
-windowColor
-	^ Theme current workspace ! !
-
-!DrGWizardMacroPlay methodsFor: 'as yet unclassified' stamp: 'hlsf 7/21/2024 23:22:21'!
+!DrGWizardMacroPlay methodsFor: 'initialization' stamp: 'hlsf 7/28/2024 10:26:24'!
 defaultColor
-	^ self windowColor ! !
+	^ Theme current workspace ! !
 
 !DrGWizardScript methodsFor: 'accessing' stamp: 'hlsf 4/7/2022 15:17:16'!
 argumentsName
@@ -32169,13 +32141,9 @@ goPage: integer
 	super goPage: integer.
 	self changed: #scriptsName! !
 
-!DrGWizardScript methodsFor: 'nil' stamp: 'hlsf 7/21/2024 23:07:18'!
-windowColor
-	^ Theme current workspace ! !
-
-!DrGWizardScript methodsFor: 'GUI building' stamp: 'hlsf 7/21/2024 23:22:26'!
+!DrGWizardScript methodsFor: 'GUI building' stamp: 'hlsf 7/28/2024 10:26:47'!
 defaultColor
-	^ self windowColor ! !
+	^ Theme current workspace ! !
 
 !DrGWizardScript class methodsFor: 'as yet unclassified' stamp: 'hlsf 4/7/2022 15:39:42'!
 sortedScripts
