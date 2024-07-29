@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6539] on 28 July 2024 at 10:40:08 am'!
+'From Cuis7.1 [latest update: #6539] on 29 July 2024 at 11:00:25 am'!
 'Description '!
-!provides: 'DrGeo' 1 743!
+!provides: 'DrGeo' 1 744!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -31107,11 +31107,11 @@ initialize
 	scriptName := ''.
 	description := ''! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 5/20/2024 15:31:59'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 7/29/2024 10:38:17'!
 addArgument
 	| newArgument |
 	newArgument := LayoutMorph newRow
-		adoptWidgetsColor: widgetsColor;
+		adoptWidgetsColor: self widgetsColor;
 		borderWidth: 1;
 		yourself.
 	newArgument addMorph: ((PluggableButtonMorph model: self action: #removeArgument:)
@@ -31126,7 +31126,7 @@ addArgument
 			listGetter: #list
 			indexGetter:  #listIndex
 			indexSetter: #listIndex:)
-			adoptWidgetsColor: widgetsColor).
+			adoptWidgetsColor: self widgetsColor).
 	argumentsMorph addMorph: newArgument.
 	self morphExtent: self minimumExtent ! !
 
