@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6539] on 29 July 2024 at 11:00:25 am'!
+'From Cuis7.1 [latest update: #6544] on 30 July 2024 at 9:36:07 am'!
 'Description '!
-!provides: 'DrGeo' 1 744!
+!provides: 'DrGeo' 1 745!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -34250,10 +34250,10 @@ pointExtentFor: pointSize
 previewSize
 	^ 300@200! !
 
-!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/29/2024 11:08:49'!
+!Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 7/30/2024 09:32:34'!
 scale: anIntegerOrCollection
 " Scale the length represented by anInteger to the display density "
-	^ (anIntegerOrCollection * FontFamily defaultPointSize / 12) rounded! !
+	^ (self scaled: anIntegerOrCollection) rounded! !
 
 !Theme methodsFor: '*DrGeo-UI' stamp: 'hlsf 3/26/2024 22:06:34'!
 scaled: aFloat
