@@ -1,0 +1,87 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<drgenius>
+<drgeo axes="False" grid="False" gridded="False" name="Conway circle" origin_x="8.665666010146497" origin_y="-0.6789587079740205" scale="16.0">
+<point color="Black" delta="10.257778172216092@ -7.9351661410483985" feedback="True" id="13981147" locked="False" masked="False" name="A" style="Rectangular" thickness="Normal" type="Free">
+<x>4.453857906799085</x>
+<y>4.185939988855555</y></point>
+<point color="Black" delta="13.343245925521956@4.108016166839775" feedback="True" id="3735356" locked="False" masked="False" name="B" style="Rectangular" thickness="Normal" type="Free">
+<x>10.007849503437743</x>
+<y>-2.77351379265705</y></point>
+<segment anchor="0.5" arrow="none" color="Green" feedback="True" id="222804926" mark="mark1" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="13981147"/> 
+<parent ref="3735356"/> </segment>
+<point color="Black" delta="-17.668692416019212@ -14.758695552813094" feedback="True" id="48430556" locked="False" masked="False" name="C" style="Rectangular" thickness="Normal" type="Free">
+<x>-0.6932009167303259</x>
+<y>-3.4611188346738597</y></point>
+<segment anchor="0.5" arrow="none" color="Red" feedback="True" id="475947" mark="mark3" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="3735356"/> 
+<parent ref="48430556"/> </segment>
+<segment anchor="0.5" arrow="none" color="Blue" feedback="True" id="135004958" mark="mark2" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="48430556"/> 
+<parent ref="13981147"/> </segment>
+<line anchor="0.5" color="Black" feedback="True" id="154333956" masked="True" name="" style="dot" thickness="small" type="2pts">
+<parent ref="48430556"/> 
+<parent ref="3735356"/> </line>
+<line anchor="0.5" color="Black" feedback="True" id="74582929" masked="True" name="" style="dot" thickness="small" type="2pts">
+<parent ref="3735356"/> 
+<parent ref="13981147"/> </line>
+<line anchor="0.5" color="Black" feedback="True" id="240862349" masked="True" name="" style="dot" thickness="small" type="2pts">
+<parent ref="13981147"/> 
+<parent ref="48430556"/> </line>
+<circle anchor="0.5" color="Black" feedback="True" filled="False" id="232907074" masked="True" name="" style="plain" thickness="small" translucent="False" type="segment">
+<parent ref="3735356"/> 
+<parent ref="135004958"/> </circle>
+<point color="Red" extra="1" feedback="True" id="25235772" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="154333956"/> 
+<parent ref="232907074"/> </point>
+<segment anchor="0.5" arrow="none" color="Blue" feedback="True" id="57535819" mark="mark2" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="3735356"/> 
+<parent ref="25235772"/> </segment>
+<point color="Red" extra="0" feedback="True" id="-126297968" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="74582929"/> 
+<parent ref="232907074"/> </point>
+<segment anchor="0.5" arrow="none" color="Blue" feedback="True" id="35738591" mark="mark2" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="3735356"/> 
+<parent ref="-126297968"/> </segment>
+<circle anchor="0.5" color="Black" feedback="True" filled="False" id="160905474" masked="True" name="" style="plain" thickness="small" translucent="False" type="segment">
+<parent ref="48430556"/> 
+<parent ref="222804926"/> </circle>
+<point color="Red" extra="0" feedback="True" id="-213433920" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="154333956"/> 
+<parent ref="160905474"/> </point>
+<segment anchor="0.5" arrow="none" color="Green" feedback="True" id="209449615" mark="mark1" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="48430556"/> 
+<parent ref="-213433920"/> </segment>
+<point color="Red" extra="1" feedback="True" id="67546023" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="240862349"/> 
+<parent ref="160905474"/> </point>
+<segment anchor="0.5" arrow="none" color="Green" feedback="True" id="6807566" mark="mark1" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="48430556"/> 
+<parent ref="67546023"/> </segment>
+<circle anchor="0.5" color="Black" feedback="True" filled="False" id="172958498" masked="True" name="" style="plain" thickness="small" translucent="False" type="segment">
+<parent ref="13981147"/> 
+<parent ref="475947"/> </circle>
+<point color="Red" extra="0" feedback="True" id="-196929809" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="240862349"/> 
+<parent ref="172958498"/> </point>
+<segment anchor="0.5" arrow="none" color="Red" feedback="True" id="30710965" mark="mark3" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="13981147"/> 
+<parent ref="-196929809"/> </segment>
+<point color="Red" extra="1" feedback="True" id="198607776" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="74582929"/> 
+<parent ref="172958498"/> </point>
+<segment anchor="0.5" arrow="none" color="Red" feedback="True" id="100123042" mark="mark3" masked="False" name="" style="plain" thickness="medium" type="2pts">
+<parent ref="13981147"/> 
+<parent ref="198607776"/> </segment>
+<line anchor="0.5" color="Black" feedback="True" id="111205226" masked="True" name="" style="plain" thickness="small" type="perpendicularBisector2pts">
+<parent ref="198607776"/> 
+<parent ref="-196929809"/> </line>
+<line anchor="0.5" color="Black" feedback="True" id="7721562" masked="True" name="" style="plain" thickness="small" type="perpendicularBisector2pts">
+<parent ref="-196929809"/> 
+<parent ref="25235772"/> </line>
+<point color="Red" extra="0" feedback="True" id="109606015" masked="False" name="" style="Cross" thickness="Dashed" type="Intersection">
+<parent ref="111205226"/> 
+<parent ref="7721562"/> </point>
+<circle anchor="0.11393245722883467" color="Magenta" delta="-12.941682638422662@ -27.794909053479955" feedback="True" filled="False" id="71056715" masked="False" name="Conway circle" style="plain" thickness="small" translucent="False" type="2pts">
+<parent ref="109606015"/> 
+<parent ref="198607776"/> </circle></drgeo></drgenius>

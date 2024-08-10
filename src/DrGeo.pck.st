@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6544] on 30 July 2024 at 9:36:07 am'!
+'From Cuis7.1 [latest update: #6578] on 10 August 2024 at 3:58:48 pm'!
 'Description '!
-!provides: 'DrGeo' 1 745!
+!provides: 'DrGeo' 1 746!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -25347,14 +25347,13 @@ tree
 " I am the model of a tree presenting the math item "
 	^ tree ifNil: [ tree := DrGeoTree on: presenter]! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 5/26/2024 11:25:06'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/10/2024 15:49:19'!
 treeView
-	^ treeView ifNil: [treeView := (HierarchicalListMorph 
+	^ treeView ifNil: [treeView := HierarchicalListMorph 
 		withModel: self tree
 		listGetter: #pool
 		indexGetter: #selectedItem
-		indexSetter: #selectedItem:)
-			mainView: self view 		menuGetter: nil 		keystrokeAction: nil]! !
+		indexSetter: #selectedItem:]! !
 
 !DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 09:03:22'!
 verticalWheel 
@@ -31618,7 +31617,7 @@ transparentMorph
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'drgeo 3/17/2024 17:18:31'!
+!DrGSmalltalkSketchEditor methodsFor: 'initialization' stamp: 'hlsf 8/10/2024 15:53:38'!
 initialize
 	| book |
 	super initialize.
@@ -31632,7 +31631,7 @@ initialize
 	codeView := (TextModelMorph textProvider: self textGetter: #sourceCode textSetter: #sourceCode:)
 		askBeforeDiscardingEdits: false;
 		yourself.
-	drgeoView :=  LayoutMorph new
+	drgeoView :=  LayoutMorph newRow
 		color: self color;
 		borderWidth: 1;
 		layoutSpec: LayoutSpec useAll! !
