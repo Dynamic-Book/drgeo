@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6578] on 10 August 2024 at 3:58:48 pm'!
+'From Cuis7.1 [latest update: #6676] on 5 September 2024 at 4:33:35 pm'!
 'Description '!
-!provides: 'DrGeo' 1 746!
+!provides: 'DrGeo' 1 747!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -28268,14 +28268,14 @@ stopStepping
 canBeDrawn
 	^ self visible! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 3/9/2023 12:37:27'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 9/5/2024 16:29:40'!
 containsPoint: localPoint
-	^self canBeDrawn and: [self isCloserThan: 5 toPixel: (self drawable morphPositionInWorld + localPoint)]! !
+	^self canBeDrawn and: [self isCloserThan: 5 toPixel: (self drawable positionInWorld + localPoint)]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 3/9/2023 14:37:10'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 9/5/2024 16:33:24'!
 containsPointInWorld: localPoint
 "General expensive version done in DrGeo coordinates. Only used with some morphs.
-Other straight line morph use VectorGraphics detection, see contrainsPoint:"
+Other straight line morph use VectorGraphics detection, see containsPoint:"
 	| worldPoint closestPoint |
 	self canBeDrawn ifFalse: [^ false].
 	worldPoint := self drawable morphToWorld: localPoint	.
@@ -28764,12 +28764,12 @@ drawCircleOn: aCanvas
 				strokeDashArray: dashedBorder strokeDashArrayOffset: 0.0 do: [
 					aCanvas circleCenter: center  radius: r] ]! !
 
-!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 5/31/2023 18:28:44'!
+!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 9/5/2024 16:29:45'!
 drawLineOn: aCanvas
 	| origin u points area |
 	area := self drawable.
 	origin := mathItem closestPointTo: 
-		(area morphToWorld: self activeHand morphPosition - area morphPositionInWorld).
+		(area morphToWorld: self activeHand morphPosition - area positionInWorld).
 	u := (mathItem pointAt: (mathItem abscissaOf: origin) + 0.01) - origin.
 	points := DrGLineMorph 
 		extend: (area worldToMorph: origin)
@@ -29028,12 +29028,12 @@ vertices: verts color: aColor borderWidth: width borderColor: anotherColor
 	borderWidth := width.
 	self vertices: verts color: aColor borderColor: anotherColor ! !
 
-!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 5/24/2023 17:52:39'!
+!DrGPolylineMorph methodsFor: 'testing' stamp: 'hlsf 9/5/2024 16:32:02'!
 isNotForAway
 " are all vertices in expanded screen area ?"
 	| expandedBound |
 	^ super isNotForAway or: [
-		expandedBound := self drawable morphLocalBounds expandBy: 10000.
+		expandedBound := self drawable localBounds expandBy: 10000.
 		vertices allSatisfy: [:v | 		expandedBound containsPoint: v		] ]! !
 
 !DrGPolylineMorph class methodsFor: 'examples' stamp: 'hlsf 5/23/2021 13:07:37'!
@@ -29516,12 +29516,12 @@ styleClass
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
-!DrGPointMorph methodsFor: 'drawing' stamp: 'hlsf 3/26/2024 22:06:38'!
+!DrGPointMorph methodsFor: 'drawing' stamp: 'hlsf 9/5/2024 16:32:08'!
 drawOn: aCanvas
 | shape center |
 	self isDrawNeeded ifFalse: [^ self].
 	center := self morphCenter.
-	(self isNotForAway or: [self drawable morphLocalBounds containsPoint: center]) ifFalse: [
+	(self isNotForAway or: [self drawable localBounds containsPoint: center]) ifFalse: [
 		labelMorph ifNotNil: [labelMorph hide].
 		^ false].
 	self updateLabelStatus.
@@ -29652,13 +29652,13 @@ isText
 wantsContour
 	^ false! !
 
-!DrGTextMorph methodsFor: 'testing' stamp: 'hlsf 3/9/2023 12:38:52'!
+!DrGTextMorph methodsFor: 'testing' stamp: 'hlsf 9/5/2024 16:29:51'!
 containsPoint: localPoint
 "We really want rectangle detection, more user friendly, otherwise it is pixel detecting on each character"
 	^ self canBeDrawn 
 		and: [self displayBounds 
 			ifNil: [false] 
-			ifNotNil: [:d | d containsPoint: self drawable morphPositionInWorld + localPoint ]]
+			ifNotNil: [:d | d containsPoint: self drawable positionInWorld + localPoint ]]
 		! !
 
 !DrGValueMorph methodsFor: 'accessing' stamp: 'hlsf 7/9/2022 11:41:51'!
@@ -29960,7 +29960,7 @@ updateDottedLinesToParents
 				with: point 
 				with: (self worldToMorph: (parent closestPointTo: pointWorld)))]! !
 
-!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 3/17/2022 15:25:39'!
+!DrGDrawable methodsFor: 'drawing axes & grid' stamp: 'hlsf 9/5/2024 16:32:22'!
 drawAxesOn: aCanvas
 	| origin worldBound font p start |
 	origin := self worldToMorph: 0@0.
@@ -30002,7 +30002,7 @@ drawAxesOn: aCanvas
 			line: p to: p + `-4 @ 4` width: 1 color: Color lightGray].
 
 	"The origin"
-	(self morphLocalBounds containsPoint: origin) ifTrue: [
+	(self localBounds containsPoint: origin) ifTrue: [
 		aCanvas drawString: '0'  at: (origin + `2@2`) font: font color: Color lightGray].
 ! !
 
@@ -30118,13 +30118,13 @@ mouseButton1Down: evt localPosition: localPosition
 		ifFalse: 	[self tool handlePress: localPosition].
 	self showUnderMouseMorph! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 6/21/2021 21:38:15'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 9/5/2024 16:32:29'!
 mouseButton1Up: evt localPosition: localPosition
 	evt shiftPressed 
 		ifTrue: [self tool handleReleaseShiftKey: localPosition]
 		ifFalse: [self tool handleRelease: localPosition ].
 	"underMouse hide." self flag: #drgeoTodo.
-	(self morphLocalBounds containsPoint: localPosition) 
+	(self localBounds containsPoint: localPosition) 
 		ifFalse: [Cursor normalCursorWithMask activateCursor.]
 ! !
 
