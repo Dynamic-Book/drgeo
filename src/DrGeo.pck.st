@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6676] on 5 September 2024 at 4:33:35 pm'!
+'From Cuis7.1 [latest update: #6676] on 8 September 2024 at 7:55:56 pm'!
 'Description '!
-!provides: 'DrGeo' 1 747!
+!provides: 'DrGeo' 1 748!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -31888,6 +31888,14 @@ restoreLabel
 	| defaultLabel |
 	defaultLabel := self sketchName ifEmpty: ['Edit Smalltalk Sketch' translated].
 	self label == defaultLabel 		ifFalse: [self setLabel: defaultLabel]! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'as yet unclassified' stamp: 'hlsf 9/8/2024 19:54:15'!
+allowsStylingFor: aSymbol isTextDirty: aFalse 
+	^ true! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 9/8/2024 19:55:01'!
+aboutToStyleWith: aSHTextStylerST80 
+	! !
 
 !DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
 firstPage
