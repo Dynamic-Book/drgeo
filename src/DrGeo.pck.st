@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6676] on 8 September 2024 at 7:55:56 pm'!
+'From Cuis7.1 [latest update: #6727] on 18 September 2024 at 9:12:06 pm'!
 'Description '!
-!provides: 'DrGeo' 1 748!
+!provides: 'DrGeo' 1 750!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -2701,7 +2701,7 @@ DrGScriptMorph class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGDrawable category: #'DrGeo-View'!
-BoxedMorph subclass: #DrGDrawable
+ColoredBoxMorph subclass: #DrGDrawable
 	instanceVariableNames: 'balloonTarget tipOn selection ox oy scale underMouse prevMousePos valueItem dottedLines gridScale itemViews undoneViews lastView presenter'
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -24725,12 +24725,12 @@ undo
 vector
 	^self formFromGraphic: #(137 80 78 71 13 10 26 10 0 0 0 13 73 72 68 82 0 0 0 48 0 0 0 48 16 6 0 0 0 7 146 37 196 0 0 0 6 98 75 71 68 255 255 255 255 255 255 9 88 247 220 0 0 0 9 112 72 89 115 0 0 0 72 0 0 0 72 0 70 201 107 62 0 0 1 73 73 68 65 84 120 218 237 213 49 142 130 64 20 128 225 113 59 11 14 65 193 77 188 0 23 152 120 3 206 194 13 204 196 130 154 130 202 214 83 88 16 19 75 58 10 27 34 86 47 36 99 8 236 46 227 51 248 127 141 25 108 204 255 230 161 49 0 0 0 0 0 0 111 179 209 254 1 159 226 126 207 178 44 235 123 255 249 249 92 150 101 105 204 110 87 215 117 189 89 188 215 215 13 96 44 244 237 86 85 85 53 156 175 215 174 235 58 99 142 199 166 105 26 99 30 143 52 77 83 99 156 115 206 185 229 6 177 250 1 204 13 46 36 188 144 1 28 14 109 219 182 203 111 192 143 118 160 208 182 219 60 207 243 33 220 220 240 62 107 173 181 246 117 144 255 181 250 13 240 93 46 73 146 36 67 200 177 240 161 95 61 98 245 27 48 102 234 198 11 9 31 106 3 190 102 0 99 255 5 114 211 199 206 18 62 212 6 172 158 132 151 87 207 233 20 199 113 220 247 251 125 20 69 209 48 16 57 203 167 127 227 67 109 192 106 205 13 239 135 157 250 30 19 254 26 254 183 103 120 8 175 100 169 240 62 6 49 33 84 120 31 225 61 239 10 15 15 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 16 94 9 225 149 244 125 81 20 5 225 213 17 254 195 16 254 67 16 30 0 0 0 175 158 187 58 229 157 66 156 78 5 0 0 0 0 73 69 78 68 174 66 96 130)! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 2/11/2022 21:52:16'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 9/18/2024 20:57:53'!
 colorForm: aColor
  | graphic |
 	graphic :=  aColor isTransparent
 		ifFalse: [
-			BoxedMorph new
+			BorderedBoxMorph new
 			morphExtent: self menuExtent;
 			color: aColor;
 			borderWidth: 1;
@@ -24756,12 +24756,12 @@ iconWith: morphOrForm background: aColor
 	^ self iconWith: morphOrForm extent: self menuExtent inset: self menuInset background: aColor
 ! !
 
-!DrGIcons class methodsFor: 'form' stamp: 'hlsf 7/6/2022 09:06:53'!
+!DrGIcons class methodsFor: 'form' stamp: 'hlsf 9/18/2024 20:58:03'!
 iconWith: morphOrForm extent: extent inset: inset background: aColor
 	| form imageForm  |
 	(morphOrForm is: #Morph)
 		ifTrue: [	imageForm := morphOrForm 
-			imageForm: morphOrForm morphExtentInOwner + (0@1)
+			imageForm: morphOrForm extentInOwner + (0@1)
 			depth: 32.] 
 		ifFalse: [imageForm := morphOrForm].
 	form := (Form extent: extent + (inset * 2) depth: 32) fillColor: aColor.
@@ -25394,10 +25394,9 @@ contextualEditingFor: panel
 			+ (20@ (panel morphHeight // -2) )].
 	(panel respondsTo: #fitInWorld) ifTrue: [panel fitInWorld]! !
 
-!DrGUIControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 1/3/2022 08:50:34'!
+!DrGUIControlsManager methodsFor: 'widget helpers' stamp: 'hlsf 9/18/2024 20:54:48'!
 transparentMorph
-	^ BoxedMorph new 
-		borderWidth: 0;
+	^ ColoredBoxMorph new 
 		color: Color transparent; 
 		yourself! !
 
@@ -30270,16 +30269,14 @@ dismissMorph
 	super dismissMorph.
 	presenter view dismissMorph ! !
 
-!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 3/30/2024 15:46:40'!
+!DrGDrawable methodsFor: 'initialize-release' stamp: 'hlsf 9/18/2024 20:39:52'!
 initialize
 	super initialize.
 	self color: Theme current canvasBackground.
-	self borderWidth: 0.
 	tipOn := true.
 	self defaultScalePosition.
-	balloonTarget := BoxedMorph new 
+	balloonTarget := ColoredBoxMorph new 
 		color: Color transparent;
-		borderWidth: 0; 
 		morphExtent: 6 @ 6;
 		yourself.
 	itemViews := OrderedCollection new.
@@ -31400,9 +31397,9 @@ newSketchesColumn
 defaultColor
 	^ Theme current transcript ! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 4/12/2022 18:56:10'!
+!DrGSmalltalkSketchBrowser methodsFor: 'initialization' stamp: 'hlsf 9/18/2024 21:00:24'!
 emptyView
-	^ BoxedMorph new
+	^ BorderedBoxMorph new
 		color: self color;
 		borderWidth: 1;
 		layoutSpec: LayoutSpec useAll! !
@@ -31435,10 +31432,12 @@ updateButtonsAndPreviews
 canDelete
 	^ self isMySketches and: [selectedFile notNil ]! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 7/9/2022 11:55:01'!
+!DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 9/18/2024 21:10:18'!
 canEdit
 " Is there any editor listening to edit a selected Smalltalk Sketch? "
-	^ self actionMap includesKey: #editSmalltalkSketch! !
+	^ self actionMap 
+		ifNotNil: [:map | map  includesKey: #editSmalltalkSketch]
+		ifNil: [false]! !
 
 !DrGSmalltalkSketchBrowser methodsFor: 'states' stamp: 'hlsf 4/11/2022 21:57:32'!
 isExamples
@@ -31483,6 +31482,14 @@ delete
 releaseMiniView
 	(drgeoView respondsTo: #presenter) 
 		ifTrue: [drgeoView presenter ifNotNil: [:pres | pres release] ]! !
+
+!DrGSmalltalkSketchBrowser methodsFor: 'as yet unclassified' stamp: 'hlsf 9/18/2024 21:02:40'!
+aboutToStyleWith: aSHTextStylerST80 
+! !
+
+!DrGSmalltalkSketchBrowser methodsFor: 'as yet unclassified' stamp: 'hlsf 9/18/2024 21:02:02'!
+allowsStylingFor: aSymbol isTextDirty: aFalse 
+	^ true! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 7/21/2024 23:00:38'!
 buildMorphicWindow
@@ -31606,10 +31613,9 @@ Switch to resume sketch action
 		setBalloonText: 'Resume the Smalltalk sketch.' translated;
 		redrawNeeded ! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 10/26/2022 11:11:40'!
+!DrGSmalltalkSketchEditor methodsFor: 'GUI building' stamp: 'hlsf 9/18/2024 21:03:16'!
 transparentMorph
-	^ BoxedMorph new 
-		borderWidth: 0;
+	^ ColoredBoxMorph new 
 		color: Color transparent; 
 		yourself! !
 
@@ -34473,23 +34479,23 @@ printParenthesisOn: aStream
 hexHtml
 	^ '#', self hexStringRGB ! !
 
-!BoxedMorph methodsFor: '*DrGeo' stamp: 'hlsf 1/3/2022 09:57:24'!
+!BoxMorph methodsFor: '*DrGeo' stamp: 'hlsf 9/18/2024 20:57:09'!
 morphCenter
 	^ extent // 2! !
 
-!BoxedMorph methodsFor: '*DrGeo' stamp: 'hlsf 1/3/2022 08:55:19'!
+!BoxMorph methodsFor: '*DrGeo' stamp: 'hlsf 9/18/2024 20:57:21'!
 morphCenter: aPoint
 "Positionning centered in its owner, according to its extent"
 	self morphPosition: aPoint - (extent // 2) + (`1@1`)! !
+
+!MenuItemMorph methodsFor: '*DrGeo' stamp: 'hlsf 1/3/2022 09:01:34'!
+arguments
+	^ arguments! !
 
 !WorldMorph methodsFor: '*DrGeo-testing' stamp: 'hlsf 4/12/2024 12:15:36'!
 isStepping: aMorph
 " Does this morph stepping? "
 	^ stepList 		anySatisfy: [:aStepMessage | aStepMessage receiver == aMorph] ! !
-
-!MenuItemMorph methodsFor: '*DrGeo' stamp: 'hlsf 1/3/2022 09:01:34'!
-arguments
-	^ arguments! !
 
 !RealEstateAgent class methodsFor: '*DrGeo' stamp: 'hlsf 4/24/2020 12:36:51'!
 leftMaximumUsableArea
