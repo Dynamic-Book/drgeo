@@ -37,7 +37,7 @@ Fetch the latest stable code of Dr. Geo from its repository.
 
 ```bash
 cd Cuis-Stable/Cuis7-0
-git clone --depth 1  --branch 24.06 https://github.com/hilaire/drgeo
+git clone --depth 1  --branch 24.06 https://github.com/Dynamic-book/drgeo
 ```
 
 ## Current Dr. Geo
@@ -71,7 +71,7 @@ Fetch the Dr. Geo repository, with source and script.
 
 ```bash
 cd Cuis-Current/Cuis-Smalltalk-Dev
-git clone --depth 1 https://github.com/hilaire/drgeo
+git clone --depth 1 https://github.com/Dynamic-book/drgeo
 ```
 
 # Dr. Geo Integrated Development Environment
