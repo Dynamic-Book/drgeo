@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #6973] on 12 January 2025 at 1:20:57 pm'!
+'From Cuis7.3 [latest update: #6973] on 12 January 2025 at 1:35:51 pm'!
 'Description '!
-!provides: 'DrGeo' 1 751!
+!provides: 'DrGeo' 1 752!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -14343,11 +14343,6 @@ backgroundImage
 		(DrGeoSystem backgroundsPath files 
 			atRandom: (Random  seed: Time now 	nanoSecond))  binaryContents ! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 4/8/2022 11:38:24'!
-checkForPaths
-	self mySketchesPath assureExistence.
-	self mySmalltalkSketchesPath assureExistence ! !
-
 !DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:25:01'!
 reset
 	toolbarIconSize := nil.
@@ -14396,12 +14391,10 @@ splash
 	(Delay forSeconds: 2) wait.
 	background displayAt: position! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 3/16/2024 19:16:50'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 1/12/2025 13:33:16'!
 startUp
 	self setFontPreferences.
 	Transcript show: '[DrGeo] Font installed'; cr.
-	self checkForPaths.
-	Transcript show: '[DrGeo] Paths checked'; cr.
 	self setCodeCompletion.
 	Transcript show: '[DrGeo] Code completion set'; cr.! !
 
@@ -14447,7 +14440,7 @@ rootPath
 smalltalkSketchesPath
 	^self resourcesPath / 'SmalltalkSketches'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 2/23/2023 15:21:41'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 1/12/2025 13:30:47'!
 userPath
 "Where are located user created resources as sketch, Smalltalk sketch and exported sketch to image"
 	^ (self preferences at: #userPath) 
@@ -14458,7 +14451,7 @@ userPath
 				ifTrue: [userDirectoryEntry "Absolute path"]
 				ifFalse: ["Relative path, append the home/user directory if any"
 					Smalltalk at: #home 
-						ifPresent: [:home |			home / userPath]
+						ifPresent: [:home | home / userPath]
 						ifAbsent: [userDirectoryEntry ] ] ]
 		ifEmpty: [self resourcesPath]
 		! !
@@ -14575,11 +14568,6 @@ setFontPreferences
 	Preferences at: #defaultFontSize put: 11.
 ! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 8/17/2022 15:25:28'!
-checkForPaths
-	super checkForPaths.
-	self myExportsPath assureExistence ! !
-
 !DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 4/3/2024 12:12:01'!
 initialize
 	self initFontManager.
@@ -14690,19 +14678,19 @@ examplesPath
 iconsPath
 	^ platform iconsPath! !
 
-!DrGeoSystem class methodsFor: 'path'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 1/12/2025 13:32:14'!
 myExportsPath
-	^ platform myExportsPath! !
+	^ platform myExportsPath assureExistence! !
 
-!DrGeoSystem class methodsFor: 'path'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 1/12/2025 13:32:40'!
 mySketchesPath
 "Access to the my Sketch files. There are descirption in XML of geometry sketches."
-	^ platform mySketchesPath! !
+	^ platform mySketchesPath assureExistence! !
 
-!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 4/11/2022 21:44:20'!
+!DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 1/12/2025 13:33:00'!
 mySmalltalkSketchesPath
 "Access to my Script files. There are Smalltalk scripts computing geometry sketches."
-	^ platform mySmalltalkSketchesPath ! !
+	^ platform mySmalltalkSketchesPath assureExistence ! !
 
 !DrGeoSystem class methodsFor: 'path' stamp: 'hlsf 4/11/2022 21:44:47'!
 smalltalkSketchesPath
