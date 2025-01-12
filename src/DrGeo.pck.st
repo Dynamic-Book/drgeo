@@ -1,6 +1,6 @@
-'From Cuis7.1 [latest update: #6727] on 18 September 2024 at 9:12:06 pm'!
+'From Cuis7.3 [latest update: #6973] on 12 January 2025 at 1:20:57 pm'!
 'Description '!
-!provides: 'DrGeo' 1 750!
+!provides: 'DrGeo' 1 751!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -30886,7 +30886,7 @@ previewFor: aSketchEntry
 		ifFalse: [form := self computePreviewFor: aSketchEntry ].
 	^ form magnifyBy: (Theme current scale: Theme current previewSize x) / form width! !
 
-!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 3/30/2024 17:15:25'!
+!DrGFileOpenMorph methodsFor: 'GUI building' stamp: 'hlsf 1/12/2025 12:57:47'!
 previewMorphFor: sketchEntry
 	| preview  |
 	preview := (FilePreviewMorph 		
@@ -30896,7 +30896,6 @@ previewMorphFor: sketchEntry
 		when: #selected send: #update: to: self;
 		when: #doubleClick send: #open: to: self.
 	previews add: preview.
-	preview layoutSpec offAxisEdgeWeight: #center.
 	^ preview
 ! !
 
@@ -31734,7 +31733,7 @@ compiledSketch: aSketch
 		removeAllMorphs;
 		addMorph: aSketch view.! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 12/31/2023 12:25:54'!
+!DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 1/12/2025 13:08:18'!
 debugSketch
 " Execute the sketch step by step in a debugger "
 	model ifEmpty: [^ self].
@@ -31752,8 +31751,8 @@ debugSketch
 							valueWithReceiver: receiver 
 							arguments: (context ifNil: [ #() ] ifNotNil: [ { context } ])]
 					to: method.
-				self plugDebugger ]			]
-		ifFail: [].! !
+				self plugDebugger ]]
+		ifFail: []! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'actions' stamp: 'hlsf 5/9/2024 12:21:15'!
 executeSketch
@@ -31895,13 +31894,21 @@ restoreLabel
 	defaultLabel := self sketchName ifEmpty: ['Edit Smalltalk Sketch' translated].
 	self label == defaultLabel 		ifFalse: [self setLabel: defaultLabel]! !
 
-!DrGSmalltalkSketchEditor methodsFor: 'as yet unclassified' stamp: 'hlsf 9/8/2024 19:54:15'!
-allowsStylingFor: aSymbol isTextDirty: aFalse 
-	^ true! !
-
 !DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 9/8/2024 19:55:01'!
 aboutToStyleWith: aSHTextStylerST80 
 	! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'shout' stamp: 'hlsf 9/8/2024 19:54:15'!
+allowsStylingFor: aSymbol isTextDirty: aFalse 
+	^ true! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'evaluation' stamp: 'hlsf 1/12/2025 13:10:44'!
+doItContext
+	^ nil! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'evaluation' stamp: 'hlsf 1/12/2025 13:09:57'!
+doItReceiver
+	^ nil! !
 
 !DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 12/27/2021 10:00:29'!
 firstPage
