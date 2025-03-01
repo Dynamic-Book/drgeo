@@ -1,6 +1,6 @@
-'From Cuis6.3 [latest update: #6309] on 3 April 2024 at 5:13:43 pm'!
+'From Cuis7.3 [latest update: #7044] on 1 March 2025 at 11:55:02 am'!
 'Description '!
-!provides: 'Commander' 1 6!
+!provides: 'Commander' 1 7!
 SystemOrganization addCategory: #Commander!
 
 
@@ -95,13 +95,23 @@ newEntry: aSymbol in: parentSymbol
 	commandCollection _ commands at: parentSymbol ifAbsentPut: [self newCommandRecordCollection].
 	^ commandCollection add: (CommandRecord id: aSymbol)! !
 
-!CommandBuilder methodsFor: 'menu' stamp: 'hlsf 7/23/2022 23:07:19'!
+!CommandBuilder methodsFor: 'menu' stamp: 'hlsf 3/1/2025 11:46:01'!
+addToMenu: aMenu
+" Build the collected commands and append it to aMenu "
+	self collectCommandRecords.
+	^ self buildMenuIn: aMenu from: #root! !
+
+!CommandBuilder methodsFor: 'menu' stamp: 'hlsf 3/1/2025 11:30:50'!
 buildMenuFrom: menuId
 " Build the menu and return it "
-	| menu |
-	menu _ MenuMorph new.
+	^ self buildMenuIn: MenuMorph new from: menuId 
+	! !
+
+!CommandBuilder methodsFor: 'menu' stamp: 'hlsf 3/1/2025 11:30:50'!
+buildMenuIn: menu from: menuId
+" Append to an existing menu and the menu definiton, then return it "
 	(commands at: menuId) do: [:cmdRec | | menuItem |
-		menuItem _ MenuItemMorph new.
+		menuItem := MenuItemMorph new.
 		menuItem 
 			contents: cmdRec label;
 			setIcon: cmdRec icon;
@@ -112,8 +122,7 @@ buildMenuFrom: menuId
 		(commands 	includesKey: cmdRec id) ifTrue: [
 			" then attach its sub-menu, do it recursively " 
 			menuItem subMenu: (self buildMenuFrom: cmdRec id) ] ].
-	^ menu
-	! !
+	^ menu! !
 
 !CommandBuilder methodsFor: 'menu' stamp: 'hlsf 7/23/2022 23:02:06'!
 getMenu
