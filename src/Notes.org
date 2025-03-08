@@ -27,6 +27,9 @@ git checkout Cuis6.0.xxxx.changes
 git pull
 then git status should be clean
 
+Alternatively, try:
+git reset --hard origin/HEAD
+
 If dirty clone the repo again and start fresh
 
 * Copy to clipboard
