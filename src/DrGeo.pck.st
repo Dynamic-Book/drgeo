@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #6973] on 12 January 2025 at 1:35:51 pm'!
+'From Cuis7.3 [latest update: #7095] on 5 April 2025 at 12:50:04 pm'!
 'Description '!
-!provides: 'DrGeo' 1 752!
+!provides: 'DrGeo' 1 753!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -10700,15 +10700,15 @@ color: anObject
 		color: (Theme current adjustColor: self color);
 		redrawNeeded! !
 
-!DrGStyle methodsFor: 'accessing'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/5/2025 11:25:58'!
 feedback
 	^ feedback! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 2/12/2022 11:37:46'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/5/2025 11:07:52'!
 feedback: aBoolean
 " Do I provide feedback when mouse over me?"
 	feedback := aBoolean.
-	self changed: #feedback:! !
+	self changed: #feedback! !
 
 !DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/9/2024 10:20:49'!
 fill: boolean
@@ -10718,13 +10718,13 @@ fill: boolean
 hidden
 	^ self isHidden! !
 
-!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 2/16/2022 23:14:39'!
+!DrGStyle methodsFor: 'accessing' stamp: 'hlsf 4/5/2025 10:53:51'!
 hidden: anObject 
 	"Set the value to isHidden"
 	hidden := anObject.
 	hidden 	ifFalse: [morph color: self color].
 	morph redrawNeeded.
-	self changed: #hidden:! !
+	self changed: #hidden! !
 
 !DrGStyle methodsFor: 'accessing'!
 isHidden
@@ -10789,9 +10789,9 @@ colorIndex: index
 colorMorphCollection
 	^ DrGTypeColor colorMorphCollection! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:26:55'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 4/5/2025 11:12:23'!
 colorWidget
-	^ self 	widget: (
+	^ self widget: (
 		(DropDownButtonMorph 
 			withModel: self 
 			listGetter: #colorMorphCollection 
@@ -10802,7 +10802,7 @@ colorWidget
 		named:  'Colour' translated
 		help: 	'Set the colour.' translated! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:42:43'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 4/5/2025 11:30:28'!
 feedbackWidget
 	^ (PluggableCheckboxMorph 
 		model: self 
@@ -10822,8 +10822,9 @@ hiddenWidget
 		setBalloonText:  'Toggle to hide the object.' translated;
 		yourself! !
 
-!DrGStyle methodsFor: 'widget' stamp: 'hlsf 2/12/2022 14:43:28'!
+!DrGStyle methodsFor: 'widget' stamp: 'hlsf 4/5/2025 11:12:08'!
 lockedWidget
+	morph breakDependents.
 	^ (PluggableCheckboxMorph 
 		model: morph
 		getSelected: #locked
@@ -11102,11 +11103,11 @@ translucentWidget
 fill
 	^ self isFilled! !
 
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 5/18/2023 17:55:33'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 4/5/2025 10:53:25'!
 fill: boolean
 	fill := boolean.
 	self color: color.
-	self changed: #fill:.
+	self changed: #fill.
 	morph redrawNeeded.! !
 
 !DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 6/17/2021 18:10:25'!
@@ -11130,11 +11131,11 @@ toggleTranslucent
 translucent
 	^ self isTranslucent ! !
 
-!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 2/13/2022 22:35:25'!
+!DrGFilledStyle methodsFor: 'accessing' stamp: 'hlsf 4/5/2025 10:53:31'!
 translucent: boolean
 	translucent := boolean.
 	self color: color.
-	self changed: #translucent:.
+	self changed: #translucent.
 	morph redrawNeeded! !
 
 !DrGArcStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:23:33'!
@@ -11811,12 +11812,11 @@ saveWithinLimitedTime: aBlock
 			PopUpMenu inform: 'I can''t save the sketch.
 Check the local resource or the server.' translated].! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 4/5/2022 21:00:01'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 4/5/2025 11:56:09'!
 animate
 	selectedTool == #animate 	ifFalse: [
-		self selectTool: DrGAnimateTool.
-		selectedTool := #animate].
-	self changed! !
+		selectedTool := #animate.
+		self selectTool: DrGAnimateTool]! !
 
 !DrGeo methodsFor: 'callback canvas'!
 animate1
@@ -11859,11 +11859,11 @@ gridOnOff
 gridStuckOnOff
 	gridStuck := gridStuck not.! !
 
-!DrGeo methodsFor: 'callback canvas'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 4/5/2025 12:15:13'!
 move
-	self selectTool: DrGSelectTool.
 	selectedTool := #move.
-	self changed! !
+	self selectTool: DrGSelectTool.
+	self view redrawNeeded ! !
 
 !DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 6/19/2021 10:07:28'!
 moveOx: increment
@@ -11883,11 +11883,10 @@ redo
 scale: increment
 	self drawable scale: increment negated.! !
 
-!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 8/4/2023 11:43:07'!
+!DrGeo methodsFor: 'callback canvas' stamp: 'hlsf 4/5/2025 11:55:03'!
 style
 	selectedTool := #style.
 	self selectTool: DrGStyleTool.
-	self changed: #selectedTool.
 	self drawable redrawNeeded .
 ! !
 
@@ -11898,201 +11897,170 @@ undo
 	self domain updateAllMathItems.
 	self saved: false! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:00:13'!
 createAngleBisector
-	self selectTool: DrGFlyBuildTool with: DrGAngleBisectorBuilder.
 	selectedTool := #angleBisector.
-	self changed! !
+	self selectTool: DrGFlyBuildTool with: DrGAngleBisectorBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 12/9/2021 15:59:49'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:00:22'!
 createAngleGeometric
-	self selectTool: DrGBuildTool with: DrGAngleGeometricBuilder.
 	selectedTool := #geometricAngle.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGAngleGeometricBuilder.! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 12/9/2021 15:59:16'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:01:20'!
 createAngleOriented
-	self selectTool: DrGBuildTool with: DrGAngleOrientedBuilder.
 	selectedTool := #orientedAngle.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGAngleOrientedBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:01:29'!
 createArc
-	self selectTool: DrGFlyBuildTool with: DrGArcBuilder.
 	selectedTool := #arc.
-	self changed! !
+	self selectTool: DrGFlyBuildTool with: DrGArcBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:01:38'!
 createArcCenter
-	self selectTool: DrGFlyBuildTool with: DrGArcCenterBuilder.
 	selectedTool := #arcCenter.
-	self changed! !
+	self selectTool: DrGFlyBuildTool with: DrGArcCenterBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/23/2021 11:50:33'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:01:48'!
 createCircle
-	self selectTool: DrGFlyBuildTouchTool with: DrGCircleBuilder.
 	selectedTool := #circle.
-	self changed! !
+	self selectTool: DrGFlyBuildTouchTool with: DrGCircleBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:01:58'!
 createCoordinatePoint
-	self selectTool: DrGBuildTool with: DrGPointByCoordinatesBuilder.
 	selectedTool := #pointDefinedByCoordindates.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGPointByCoordinatesBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:02:09'!
 createCoordinates
-	self selectTool: DrGBuildTool with: DrGCoordinatesBuilder.
 	selectedTool := #coordinates.
-	self changed
+	self selectTool: DrGBuildTool with: DrGCoordinatesBuilder! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:02:19'!
+createDistance
+	selectedTool := #distance.
+	self selectTool: DrGBuildTool with: DrGValueBuilder! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:02:27'!
+createFreePoint
+	selectedTool := #freePoint.
+	self selectTool: DrGFlyPointBuildTool with: DrGFlyPointBuilder! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:02:35'!
+createHomothety
+	selectedTool := #scale.
+	self selectTool: DrGBuildTool with: DrGHomothetyBuilder! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:02:43'!
+createLine
+	selectedTool := #line.
+	self selectTool: DrGFlyBuildTouchTool with: DrGLineBuilder! !
+
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:02:53'!
+createLocus
+	selectedTool := #locus.
+	self selectTool: DrGBuildTool with: DrGLocusBuilder
 ! !
 
-!DrGeo methodsFor: 'callback create'!
-createDistance
-	self selectTool: DrGBuildTool with: DrGValueBuilder.
-	selectedTool := #distance.
-	self changed! !
-
-!DrGeo methodsFor: 'callback create'!
-createFreePoint
-	self selectTool: DrGFlyPointBuildTool with: DrGFlyPointBuilder.
-	selectedTool := #freePoint.
-	self changed! !
-
-!DrGeo methodsFor: 'callback create'!
-createHomothety
-	self selectTool: DrGBuildTool with: DrGHomothetyBuilder.
-	selectedTool := #scale.
-	self changed! !
-
-!DrGeo methodsFor: 'callback create'!
-createLine
-	self selectTool: DrGFlyBuildTouchTool with: DrGLineBuilder.
-	selectedTool := #line.
-	self changed! !
-
-!DrGeo methodsFor: 'callback create'!
-createLocus
-	self selectTool: DrGBuildTool with: DrGLocusBuilder.
-	selectedTool := #locus.
-	self changed! !
-
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:03:01'!
 createMacro
-	self selectTool: DrGMacroBuildTool with: DrGMacroBuilder.
 	selectedTool := #macroBuild.
-	self changed! !
+	self selectTool: DrGMacroBuildTool with: DrGMacroBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:03:11'!
 createMiddlePoint
-	self selectTool: DrGBuildTool with: DrGMiddleBuilder.
 	selectedTool := #middle.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGMiddleBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/23/2021 11:50:28'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:03:19'!
 createParallel
-	self selectTool: DrGFlyBuildTouchTool with: DrGParallelBuilder.
 	selectedTool := #parallel.
-	self changed! !
+	self selectTool: DrGFlyBuildTouchTool with: DrGParallelBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 9/23/2021 11:50:42'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:03:32'!
 createPerpendicular
-	self selectTool: DrGFlyBuildTouchTool with: DrGPerpendicularBuilder.
 	selectedTool := #perpendicular.
-	self changed! !
+	self selectTool: DrGFlyBuildTouchTool with: DrGPerpendicularBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:03:41'!
 createPerpendicularBisector
-	self selectTool: DrGFlyBuildTouchTool with: DrGPerpendicularBisectorBuilder.
 	selectedTool := #perpendicularBisector.
-	self changed! !
+	self selectTool: DrGFlyBuildTouchTool with: DrGPerpendicularBisectorBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:03:49'!
 createPointByCoordinates
-	self selectTool: DrGBuildTool with: DrGPointByCoordinatesBuilder.
 	selectedTool := #pointDefinedByCoordinates.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGPointByCoordinatesBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:03:58'!
 createPointIntersection
-	self selectTool: DrGBuildTool with: DrGPointIntersectionBuilder.
 	selectedTool := #intersection.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGPointIntersectionBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:04:05'!
 createPolygon
-	self selectTool: DrGFlyBuildTool with: DrGPolygonBuilder.
 	selectedTool := #polygon.
-	self changed! !
+	self selectTool: DrGFlyBuildTool with: DrGPolygonBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:04:14'!
 createPolygonRegular
-	self selectTool: DrGFlyBuildTool with: DrGPolygonRegularBuilder.
 	selectedTool := #polygonRegular.
-	self changed! !
+	self selectTool: DrGFlyBuildTool with: DrGPolygonRegularBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:04:22'!
 createRay
-	self selectTool: DrGFlyBuildTouchTool with: DrGRayBuilder.
 	selectedTool := #ray.
-	self changed! !
+	self selectTool: DrGFlyBuildTouchTool with: DrGRayBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:04:31'!
 createReflection
-	self selectTool: DrGBuildTool with: DrGReflectionBuilder.
 	selectedTool := #axialSymmetry.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGReflectionBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:04:39'!
 createRotation
-	self selectTool: DrGBuildTool with: DrGRotationBuilder.
 	selectedTool := #rotation.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGRotationBuilder! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 8/4/2023 17:38:21'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:04:52'!
 createScript
 	"We force to select/move mode as we do not interact with the sketch"	
 	self move.
-	self changed.
 	DrGScriptDesignerDialog open: self label: 'Build a new script' translated! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 8/4/2021 12:10:22'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:05:02'!
 createSegment
-	self selectTool: DrGFlyBuildTouchTool with: DrGSegmentBuilder.
 	selectedTool := #segment.
-	self changed! !
+	self selectTool: DrGFlyBuildTouchTool with: DrGSegmentBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:05:09'!
 createSymmetry
-	self selectTool: DrGBuildTool with: DrGSymmetryBuilder.
 	selectedTool := #centralSymmetry.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGSymmetryBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:05:16'!
 createText
-	self selectTool: DrGBuildTool with: DrGTextBuilder.
 	selectedTool := #text.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGTextBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:05:25'!
 createTranslation
-	self selectTool: DrGBuildTool with: DrGTranslationBuilder.
 	selectedTool := #translation.
-	self changed! !
+	self selectTool: DrGBuildTool with: DrGTranslationBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:05:32'!
 createVector
-	self selectTool: DrGFlyBuildTouchTool with: DrGVectorBuilder.
 	selectedTool := #vector.
-	self changed! !
+	self selectTool: DrGFlyBuildTouchTool with: DrGVectorBuilder! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 11:55:52'!
 deleteMacro
-	self selectTool: DrGSelectTool.
 	selectedTool := #deleteMacro.
-	self changed! !
+	self selectTool: DrGSelectTool.
+! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/7/2022 15:40:15'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:05:54'!
 editScript
 	| menu |
 	"We force to select mode, then open a browser on the script classes"
@@ -12105,8 +12073,7 @@ editScript
 			action: #editScript: 
 			argument: aScriptClass)
 			setBalloonText: aScriptClass description].
-	menu popUpInWorld.
-	self changed! !
+	menu popUpInWorld! !
 
 !DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/9/2024 15:54:00'!
 editScript: aScriptClass
@@ -12117,46 +12084,40 @@ editScript: aScriptClass
 		
 	! !
 
-!DrGeo methodsFor: 'callback create' stamp: 'hlsf 8/4/2023 11:42:31'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 11:55:43'!
 eraser
 	selectedTool := #eraser.
 	self selectTool: DrGDeleteTool.
-	self changed: #selectedTool.
-	self drawable redrawNeeded .! !
+! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:06:09'!
 executeMacro
-	self selectTool: DrGMacroPlayTool with: DrGMacroPlayer.
 	selectedTool := #macroExecute.
-	self changed! !
+	self selectTool: DrGMacroPlayTool with: DrGMacroPlayer! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:06:24'!
 executeMacro: aMacro
-	self selectTool: DrGMacroPlayTool with: DrGMacroPlayerHeadless.
 	selectedTool := #macroExecute. 
+	self selectTool: DrGMacroPlayTool with: DrGMacroPlayerHeadless.
 	self tool builder selectedMacro: aMacro.
-	self tool switchState: DrGMacroPlayToolStateSelect.
-	self changed! !
+	self tool switchState: DrGMacroPlayToolStateSelect! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 11:55:17'!
 property 
-	self selectTool: DrGPropertyTool.
 	selectedTool := #property.
-	self changed! !
+	self selectTool: DrGPropertyTool.! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:06:33'!
 useScript
-	self selectTool: DrGScriptPlayTool with: DrGScriptPlayer.
 	selectedTool := #useScript.
-	self changed! !
+	self selectTool: DrGScriptPlayTool with: DrGScriptPlayer! !
 
-!DrGeo methodsFor: 'callback create'!
+!DrGeo methodsFor: 'callback create' stamp: 'hlsf 4/5/2025 12:06:43'!
 useScript: aScript
-	self selectTool: DrGScriptPlayTool with: DrGScriptPlayerHeadless.
 	selectedTool := #useScript.
+	self selectTool: DrGScriptPlayTool with: DrGScriptPlayerHeadless.	
 	self tool builder scriptClass: aScript.
-	self tool switchState: DrGMacroPlayToolStateSelect.
-	self changed! !
+	self tool switchState: DrGMacroPlayToolStateSelect! !
 
 !DrGeo methodsFor: 'canvas' stamp: 'hlsf 8/3/2023 23:22:11'!
 previewOnFile: aFileEntry
@@ -12247,15 +12208,16 @@ isTool: symbolTool
 openTools
 	controlsManager openTools! !
 
-!DrGeo methodsFor: 'tool' stamp: 'hlsf 4/5/2022 20:59:11'!
+!DrGeo methodsFor: 'tool' stamp: 'hlsf 4/5/2025 11:58:45'!
 selectTool: aToolClassName
 	self tool: nil.
-	self tool: (aToolClassName presenter: self)! !
+	self tool: (aToolClassName presenter: self).
+	self changed: #selectedTool! !
 
-!DrGeo methodsFor: 'tool' stamp: 'hlsf 4/5/2022 20:59:06'!
+!DrGeo methodsFor: 'tool' stamp: 'hlsf 4/5/2025 12:09:49'!
 selectTool: aToolClassName with: aBuilderClass
 	self tool: (aToolClassName builder: aBuilderClass presenter: self).
-	self domain changed: #selectedTool! !
+	self changed: #isTool:! !
 
 !DrGeo methodsFor: 'tool' stamp: 'hlsf 6/19/2021 14:53:45'!
 selectToolAfterBuilding
@@ -12387,9 +12349,9 @@ aboutDrgeo
 cuisVersion
 	^ SystemVersion current versionString, ' #', SystemVersion current highestUpdate printString! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 1/28/2024 16:14:31'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/5/2025 11:39:28'!
 drgeoCopyright
-	^ 'Source code application: Copyright 1996-2024 Hilaire Fernandes
+	^ 'Source code application: Copyright 1996-2025 Hilaire Fernandes
 Icons: Copyright 1999 Frédéric Toussaint
 Icons: Copyright 2021-2022 David Caula (imppao)'! !
 
@@ -12411,12 +12373,12 @@ and programmed interactive sketches.
 LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright. self cuisVersion }.
 	^ text! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 6/1/2024 17:07:56'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/5/2025 11:42:35'!
 drgeoVersion
 	^ 'Installed version: ' translated, 
-		'24.06a beta (code revision ', 
-		(String streamContents: [:str | 	(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]),
-		')'! !
+		'25.06a beta (code revision ', 
+		(String streamContents: [:str | 
+			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
 
 !DrGeo class methodsFor: 'user interface' stamp: 'hlsf 8/3/2023 21:47:35'!
 getMenuIn: aWorld at: aHand
@@ -25204,7 +25166,7 @@ addChevron: symbolOrArray to: aToolbar
 		setBalloonText: array fourth;
 		yourself	! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 3/30/2024 08:49:34'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/5/2025 11:50:29'!
 button: symbolOrArray
 	"array first = menu label or button label
 	array second = button form = selection mode
@@ -25223,6 +25185,7 @@ button: symbolOrArray
 		selectedColor: Theme current drgeoButtonSelectedColor ;
 		borderColor: Theme current drgeoButtonColor muchDarker;
 		borderWidth: 2;
+		roundButtonStyle: false;
 		morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 		yourself	! !
 
@@ -28057,11 +28020,11 @@ labelPositionDelta
 locked
 	^ mathItem isLocked! !
 
-!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 2/12/2022 11:36:06'!
+!DrGMorph methodsFor: 'accessing' stamp: 'hlsf 4/5/2025 10:53:03'!
 locked: boolean
 	self isLockable ifTrue: [
 		mathItem locked: boolean.
-		self update: #locked:]! !
+		self changed: #locked]! !
 
 !DrGMorph methodsFor: 'accessing' stamp: 'hlsf 3/30/2021 13:54:57'!
 mathItem
@@ -30746,12 +30709,13 @@ open: model
 	^ debuggerWindow 	
 ! !
 
-!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 7/21/2024 22:59:44'!
+!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 4/5/2025 11:07:25'!
 buildMorphicWindow
 	| labelWidth widgets |
 	titleMorph showButtonsNamed: #(#close).
 	self layoutMorph separation: (Theme current scale: 4) ;
 		axisEdgeWeight: #columnTop.
+	model breakDependents.
 	widgets := model styleWidget.
 	labelWidth := widgets max: [:rowOfMorph | (self searchLabelIn: 		rowOfMorph) morphWidth].
 	widgets do: [:rowOfMorph |
