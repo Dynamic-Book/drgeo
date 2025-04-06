@@ -1,3 +1,16 @@
+2025-04-06  hilaire  <hilaire@gnu.org>
+
+	* Release 25.06 beta Details at
+	https://github.com/Dynamic-Book/drgeo/milestone/2?closed=1
+	* Build with Cuis-Smalltalk 6.3
+	* #50 Toolbar button without border
+	* #49 Check button in Style dialog not updated
+	* #48 State of the toolbar buttons
+	* #47 Style dialog not visible in specific circumstance
+	* #49 Drop down menu of the style dialog
+	* #44 Path to user resourcesbu
+	* #42 Wheel toolbar and tablet
+
 2024-06-01  hilaire  <hilaire@gnu.org>
 
 	* Release 24.06a beta

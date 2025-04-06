@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 5 April 2025 at 12:50:04 pm'!
+'From Cuis7.3 [latest update: #7095] on 6 April 2025 at 10:17:10 am'!
 'Description '!
-!provides: 'DrGeo' 1 753!
+!provides: 'DrGeo' 1 754!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -11784,11 +11784,11 @@ save
 Check the local resource or the server.' translated].
 	DrGeoSystem stopSpinner.! !
 
-!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 3/28/2022 11:24:20'!
+!DrGeo methodsFor: 'callback UI' stamp: 'hlsf 4/5/2025 15:01:49'!
 saveSketch
 	sketchName 
 		ifNil: [self saveSketchAs]
-		ifNotNil: [	self save]
+		ifNotNil: [self save]
 ! !
 
 !DrGeo methodsFor: 'callback UI' stamp: 'hlsf 3/28/2022 16:49:08'!
@@ -14701,7 +14701,7 @@ isiPad
 cleanUp
 	"Smalltalk reduceCuis "! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 6/5/2024 16:19:09'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 4/6/2025 10:13:33'!
 install
 	| world |
 	"Report by any mean installation and run time"
@@ -14720,6 +14720,7 @@ install
 	Preferences at: #defaultFontSize put: 12.
 	'Font preferences set' print.
 	"Preferences at: #logDebuggerStackToFile put: true."
+	Preferences at: #warnAndOfferLastUserChanges put: false.
 	Preferences at: #autoNumberUserChanges put: false.
 	"Set Locale and text domains"
 	Preferences at: #useLocale put: true.

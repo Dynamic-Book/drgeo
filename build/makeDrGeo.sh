@@ -8,7 +8,7 @@
 # Adjust below the rel variable to the wished Dr. Geo release number
 
 # DrGeo release number
-rel="24.06a-beta"
+rel="25.06a-beta"
 
 # Path
 drgeoRepo=./drgeo
@@ -28,7 +28,7 @@ then
 else
     smalltalk=Cuis$release-$version	
 fi
-smalltalkSources=Cuis$version.sources
+smalltalkSources=`ls CuisImage/Cuis?.?.sources | cut -d / -f2`
 
 # To build Dr. Geo we need:
 # A Cuis image, its source, the virtual machine,
