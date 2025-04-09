@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 6 April 2025 at 10:17:10 am'!
+'From Cuis7.3 [latest update: #7095] on 9 April 2025 at 8:58:06 pm'!
 'Description '!
-!provides: 'DrGeo' 1 754!
+!provides: 'DrGeo' 1 755!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -31199,6 +31199,11 @@ edit
 	self triggerEvent: #editSmalltalkSketch with: 	selectedFile.
 	self delete.! !
 
+!DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 4/9/2025 20:56:47'!
+layerNumber
+" Lower it a bit, the user may want to open alternate window as Browser "
+	^ 100! !
+
 !DrGSmalltalkSketchBrowser methodsFor: 'accessing' stamp: 'hlsf 4/9/2022 11:05:19'!
 model: aDirectoryEntry
 	model := aDirectoryEntry .
@@ -31597,6 +31602,11 @@ initialize
 !DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 10/30/2022 20:39:21'!
 isDocVisible
 	^ docView visible! !
+
+!DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 4/9/2025 20:57:24'!
+layerNumber
+" Lower it a bit, the user may want to open alternate window as Browser "
+	^ 100! !
 
 !DrGSmalltalkSketchEditor methodsFor: 'accessing' stamp: 'hlsf 4/14/2022 16:35:00'!
 model: sourceCode
