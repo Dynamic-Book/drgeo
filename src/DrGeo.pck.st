@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7095] on 9 April 2025 at 8:58:06 pm'!
+'From Cuis7.3 [latest update: #7158] on 16 May 2025 at 11:23:07 pm'!
 'Description '!
-!provides: 'DrGeo' 1 755!
+!provides: 'DrGeo' 1 756!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -29,26 +29,6 @@ SystemOrganization addCategory: #'DrGeo-System'!
 SystemOrganization addCategory: #'DrGeo-Test'!
 SystemOrganization addCategory: #DrGeo!
 
-
-!classDefinition: #DrGCommandStack category: #'DrGeo-Presenter-Command'!
-ReadWriteStream subclass: #DrGCommandStack
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Command'!
-!classDefinition: 'DrGCommandStack class' category: #'DrGeo-Presenter-Command'!
-DrGCommandStack class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGLocusSample category: #'DrGeo-Model-Item'!
-Link subclass: #DrGLocusSample
-	instanceVariableNames: 'abscissa pointScreen pointWorld offScreen exist'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Model-Item'!
-!classDefinition: 'DrGLocusSample class' category: #'DrGeo-Model-Item'!
-DrGLocusSample class
-	instanceVariableNames: ''!
 
 !classDefinition: #DrGFactory category: #'DrGeo-Factories'!
 Object subclass: #DrGFactory
@@ -2470,6 +2450,26 @@ DrGMathItemBuilder subclass: #DrGValueBuilder
 DrGValueBuilder class
 	instanceVariableNames: ''!
 
+!classDefinition: #DrGCommandStack category: #'DrGeo-Presenter-Command'!
+ReadWriteStream subclass: #DrGCommandStack
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Presenter-Command'!
+!classDefinition: 'DrGCommandStack class' category: #'DrGeo-Presenter-Command'!
+DrGCommandStack class
+	instanceVariableNames: ''!
+
+!classDefinition: #DrGLocusSample category: #'DrGeo-Model-Item'!
+Link subclass: #DrGLocusSample
+	instanceVariableNames: 'abscissa pointScreen pointWorld offScreen exist'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'DrGeo-Model-Item'!
+!classDefinition: 'DrGLocusSample class' category: #'DrGeo-Model-Item'!
+DrGLocusSample class
+	instanceVariableNames: ''!
+
 !classDefinition: #UnderMouseMorph category: #'DrGeo-View'!
 Morph subclass: #UnderMouseMorph
 	instanceVariableNames: ''
@@ -2961,14 +2961,6 @@ DrGTypeThickness class
 	instanceVariableNames: ''!
 
 
-!DrGLocusSample commentStamp: '<historical>' prior: 0!
-I am a linked sample of a locus with: 
-- the curvilinear abscissa of the free point
-- my screen coordinates
-- my world coordinates
-- offScreen is sample offScreen (the display device)
-- exist does this sample exist for  its abscissa !
-
 !DrGFactory commentStamp: '<historical>' prior: 0!
 The Factory is where are manufactured new mathematic or macro-constrcution items.
 It owns a pool of the already manufactured items. 
@@ -3380,6 +3372,14 @@ its behavior.!
 !DrGTranslationBuilder commentStamp: '' prior: 0!
 curveItem : segment, vector, circle, arc!
 
+!DrGLocusSample commentStamp: '<historical>' prior: 0!
+I am a linked sample of a locus with: 
+- the curvilinear abscissa of the free point
+- my screen coordinates
+- my world coordinates
+- offScreen is sample offScreen (the display device)
+- exist does this sample exist for  its abscissa !
+
 !UnderMouseMorph commentStamp: '' prior: 0!
 I display on the top left or right corner of my owner what is under the Active hand!
 
@@ -3532,85 +3532,6 @@ A preference type representing the different possible style of a line.!
 
 !DrGTypeThickness commentStamp: '<historical>' prior: 0!
 A preference type representing the different possible thickness of a line.!
-
-!DrGCommandStack methodsFor: 'private'!
-truncate
-	|oldReadLimit|
-	oldReadLimit := readLimit.
-	readLimit := position.
-	oldReadLimit > readLimit ifTrue:
-			[readLimit to: oldReadLimit do:
-				[:index| collection at: index + 1 put: nil]]! !
-
-!DrGCommandStack methodsFor: 'accessing'!
-nextPut: aCommand
-	super nextPut: aCommand.
-	self truncate.
-	^ aCommand ! !
-
-!DrGCommandStack methodsFor: 'accessing'!
-previous
-	self position = 0 ifTrue: [^nil].
-	self position: self position - 1.
-	^self peek.! !
-
-!DrGCommandStack class methodsFor: 'instance creation'!
-new
-	^self on: Array new! !
-
-!DrGLocusSample methodsFor: 'testing'!
-isNotValid
-	^ exist not! !
-
-!DrGLocusSample methodsFor: 'testing'!
-isValid
-	^ exist! !
-
-!DrGLocusSample methodsFor: 'testing'!
-isValidAndOnScreen
-	^ exist and: [offScreen not]! !
-
-!DrGLocusSample methodsFor: 'testing'!
-offScreen 
-	^ offScreen ! !
-
-!DrGLocusSample methodsFor: 'accessing'!
-isValid: aBoolean
-	^ exist := aBoolean ! !
-
-!DrGLocusSample methodsFor: 'accessing'!
-offScreen: aBoolean
-	offScreen  := aBoolean ! !
-
-!DrGLocusSample methodsFor: 'accessing'!
-pointScreen
-
-	^ pointScreen! !
-
-!DrGLocusSample methodsFor: 'accessing'!
-pointScreen: anObject
-
-	pointScreen := anObject! !
-
-!DrGLocusSample methodsFor: 'accessing'!
-pointWorld
-
-	^ pointWorld! !
-
-!DrGLocusSample methodsFor: 'accessing'!
-pointWorld: anObject
-
-	pointWorld := anObject! !
-
-!DrGLocusSample methodsFor: 'accessing'!
-x
-
-	^ abscissa! !
-
-!DrGLocusSample methodsFor: 'accessing'!
-x: anObject
-
-	abscissa := anObject! !
 
 !DrGFactory methodsFor: 'accessing' stamp: 'hlsf 2/10/2022 10:03:01'!
 add: item 
@@ -27984,6 +27905,85 @@ description
 title
 	^ 'Distance, length, value' translated! !
 
+!DrGCommandStack methodsFor: 'private'!
+truncate
+	|oldReadLimit|
+	oldReadLimit := readLimit.
+	readLimit := position.
+	oldReadLimit > readLimit ifTrue:
+			[readLimit to: oldReadLimit do:
+				[:index| collection at: index + 1 put: nil]]! !
+
+!DrGCommandStack methodsFor: 'accessing'!
+nextPut: aCommand
+	super nextPut: aCommand.
+	self truncate.
+	^ aCommand ! !
+
+!DrGCommandStack methodsFor: 'accessing'!
+previous
+	self position = 0 ifTrue: [^nil].
+	self position: self position - 1.
+	^self peek.! !
+
+!DrGCommandStack class methodsFor: 'instance creation'!
+new
+	^self on: Array new! !
+
+!DrGLocusSample methodsFor: 'testing'!
+isNotValid
+	^ exist not! !
+
+!DrGLocusSample methodsFor: 'testing'!
+isValid
+	^ exist! !
+
+!DrGLocusSample methodsFor: 'testing'!
+isValidAndOnScreen
+	^ exist and: [offScreen not]! !
+
+!DrGLocusSample methodsFor: 'testing'!
+offScreen 
+	^ offScreen ! !
+
+!DrGLocusSample methodsFor: 'accessing'!
+isValid: aBoolean
+	^ exist := aBoolean ! !
+
+!DrGLocusSample methodsFor: 'accessing'!
+offScreen: aBoolean
+	offScreen  := aBoolean ! !
+
+!DrGLocusSample methodsFor: 'accessing'!
+pointScreen
+
+	^ pointScreen! !
+
+!DrGLocusSample methodsFor: 'accessing'!
+pointScreen: anObject
+
+	pointScreen := anObject! !
+
+!DrGLocusSample methodsFor: 'accessing'!
+pointWorld
+
+	^ pointWorld! !
+
+!DrGLocusSample methodsFor: 'accessing'!
+pointWorld: anObject
+
+	pointWorld := anObject! !
+
+!DrGLocusSample methodsFor: 'accessing'!
+x
+
+	^ abscissa! !
+
+!DrGLocusSample methodsFor: 'accessing'!
+x: anObject
+
+	abscissa := anObject! !
+
 !UnderMouseMorph methodsFor: 'drawing' stamp: 'hlsf 12/9/2022 22:09:19'!
 drawOn: aCanvas
 "	| areaUnderHand |
@@ -29100,7 +29100,7 @@ styleClass
 isLine
 	^ true! !
 
-!DrGLineMorph class methodsFor: 'helper' stamp: 'hlsf 4/30/2021 22:13:01'!
+!DrGLineMorph class methodsFor: 'helper' stamp: 'hlsf 5/16/2025 23:13:02'!
 extend: origin inDirection: u toBorder: extent
 	| points c ex ey coordinate |
 	points := OrderedCollection new.
@@ -29108,46 +29108,25 @@ extend: origin inDirection: u toBorder: extent
 	ex := extent x.
 	ey := extent y.
 	"Intersections with horizontal borders A, B"
-	"A"
+	"A (x;ey)"
 	[coordinate := (extent y * u x + c) / u y] on: ZeroDivide do: [coordinate := -1].
 	(coordinate between: 0 and: ex) ifTrue: [points add: coordinate @ ey].
-	"B"
+	"B (x;0)"
 	[coordinate := c / u y] on: ZeroDivide do: [coordinate := -1].
 	(coordinate between: 0 and: ex) ifTrue: [points add: coordinate @ 0].
 	"Vertical borders P, Q"
-	"P"
+	"P (0;y)"
 	[coordinate := c negated / u x] on: ZeroDivide do: [coordinate := -1].
 	(coordinate between: 0 and: ey) ifTrue: [points add: 0 @ coordinate].
-	"Q"
+	"Q (ex;y)"
 	[coordinate := (ex * u y) - c / u x] on: ZeroDivide do: [coordinate := -1].
 	(coordinate between: 0 and: ey) ifTrue: [points add: ex @ coordinate].
 	^ points
 ! !
 
-!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 3/26/2022 10:43:58'!
-extendFrom: origin direction: u
-	| border r borderY |
-	r := u x asFloat / u y.
-	u y > 0
-		ifTrue: [
-			borderY := self drawable morphExtent y.
-			border := (borderY - origin y) * r + origin x @ borderY]
-		ifFalse: [ border := (0 - origin y) * r + origin x @ 0].
-	self from: origin to: border! !
-
-!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 1/3/2022 10:02:31'!
-extendHorizontally: origin direction: u
-	| border |
-	u x > 0
-		ifTrue: [ border := self drawable morphExtent x @ origin y ]
-		ifFalse: [ border := 0 @ origin y ].
-	self from: origin to: border! !
-
-!DrGRayMorph methodsFor: 'accessing'!
-from: aPoint direction: u
-	u y abs < 0.001 
-		ifTrue: [self extendHorizontally: aPoint direction: u]
-		ifFalse: [self extendFrom: aPoint direction: u]! !
+!DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 5/16/2025 23:22:18'!
+from: origin direction: u
+	self from: origin to: (self class extend: origin inDirection: u toBorder: self drawable morphExtent)! !
 
 !DrGRayMorph methodsFor: 'accessing' stamp: 'hlsf 5/30/2021 09:55:25'!
 getVertices
@@ -29163,6 +29142,34 @@ styleClass
 !DrGRayMorph methodsFor: 'testing type' stamp: 'hlsf 4/5/2021 10:38:28'!
 isRay
 	^ true! !
+
+!DrGRayMorph class methodsFor: 'as yet unclassified' stamp: 'hlsf 5/16/2025 23:19:09'!
+extend: origin inDirection: u toBorder: extent
+	| border c ex ey coordinate |
+	c := (origin x * u y - (origin y * u x)) asFloat.
+	ex := extent x.
+	ey := extent y.
+	"Intersections with horizontal borders A, B"
+	"A (x;ey)"
+	[coordinate := (extent y * u x + c) / u y] on: ZeroDivide do: [coordinate := -1].
+	(coordinate between: 0 and: ex) ifTrue: [
+		border := coordinate @ ey.
+		(u dotProduct: border - origin) >0 ifTrue: [^ border] ].
+	"B (x;0)"
+	[coordinate := c / u y] on: ZeroDivide do: [coordinate := -1].
+	(coordinate between: 0 and: ex) ifTrue: [
+		border := coordinate @ 0.
+		(u dotProduct: border - origin) >0 ifTrue: [^ border] ].
+	"Vertical borders P, Q"
+	"P (0;y)"
+	[coordinate := c negated / u x] on: ZeroDivide do: [coordinate := -1].
+	(coordinate between: 0 and: ey) ifTrue: [
+		border := 0 @ coordinate.
+		(u dotProduct: border - origin) >0 ifTrue: [^ border]].
+	"Q (ex;y)"
+	[coordinate := (ex * u y) - c / u x] on: ZeroDivide do: [coordinate := -1].
+	(coordinate between: 0 and: ey) ifTrue: [ ^ex @ coordinate]
+! !
 
 !DrGSegmentMorph methodsFor: 'accessing' stamp: 'hlsf 5/30/2021 09:56:14'!
 getVertices
@@ -34014,20 +34021,6 @@ isValueItem
 isVectorItem
 	^false! !
 
-!SequenceableCollection methodsFor: '*DrGeo' stamp: 'hlsf 2/24/2022 22:32:55'!
-shiftRight
-	^ self allButFirst, (Array with: self first)! !
-
-!LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 4/11/2024 10:35:30'!
-add: aLink after: otherLink
-	"Add otherLink  after link in the list. Answer aLink."
-	| savedLink |
-	lastLink == otherLink ifTrue: [^ self addLast: aLink].
-	savedLink := otherLink nextLink.
-	otherLink nextLink: aLink.
-	aLink nextLink:  savedLink.
-	^aLink.! !
-
 !MorphicEruditeDocRenderer methodsFor: '*DrGeo' stamp: 'MM 10/27/2022 11:00:56'!
 createButton: aForm action: aBlock balloonText: balloonText
 
@@ -34079,85 +34072,6 @@ renderCodeWithDrGeoActions: aDocCode
 someDrGeoAction: aDocCode
 
 	^ self shouldBeImplemented ! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2020 23:35:38'!
-closeTo: aPoint
- 	^ (x closeTo: aPoint x) and: [ y closeTo: aPoint y ]! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 16:31:42'!
-printCouple
-	^ String streamContents: [:str | self printCoupleOn: str]
-! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 14:17:55'!
-printCoupleOn: aStream
-" print as 'x,y' "
-	x printOn: aStream.
-	aStream nextPut: $,.
-	y printOn: aStream! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 15:52:02'!
-printMini
-	^ String streamContents: [:str | self printMinimumOn: str]
-! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 15:51:01'!
-printMinimumOn: aStream
-" print as 'x,y' "
-	x printOn: aStream.
-	aStream nextPut: Character space.
-	y printOn: aStream! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:40:16'!
-printShowingDecimalPlaces: placeDesired 
-"do not round when coordinate is a fraction"
-	|stringX stringY|
-	x isFraction
-		ifTrue: [stringX := x printString]
-		ifFalse: [stringX := x printShowingDecimalPlaces: placeDesired].
-	y isFraction
-		ifTrue: [stringY := y printString] 
-		ifFalse: [stringY := y printShowingDecimalPlaces: placeDesired].		
-	^ stringX, '@', stringY! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:38:18'!
-reflexionBy: aPoint direction: aDirection
-"the reflected point according to the axe defined by aPoint and aDirection"
-	^ ((self - aPoint) vectorReflexionBy: aDirection) + aPoint! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:44:12'!
-rotateBy: angle about: center 
-	"This method returns the point obtained after rotating myself (counter clockwise) 
-	around the #center point of an #angle given as parameter. The #angle provided as 
-	parameter is interpreted as being in radian."
-	| p r theta |
-	p := self - center.
-	r := p r.
-	theta := angle asFloat - p theta.
-	^ (center x asFloat + (r * theta cos)) @ (center y asFloat - (r * theta sin))! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:39:43'!
-rotateVector: anAngle
-|cosa sina|
-	cosa := anAngle cos.
-	sina := anAngle sin.
-	^ (x * cosa - (y * sina))@(x * sina + (y * cosa))! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 8/4/2021 12:08:01'!
-roundTo: quantum
-	^ (x roundTo: quantum) @ (y roundTo: quantum)! !
-
-!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:37:51'!
-vectorReflexionBy: aDirection
-"the reflected vector according to the direction"
-	| unit normal |
-	[unit := aDirection normalized.
-	normal := unit normal] 
-		on: ZeroDivide 
-		do: [	unit := 0@0.
-			normal := 0@0].
-	^((self dotProduct: unit) * unit) - ((self dotProduct: normal) * normal)
-! !
 
 !Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/30/2024 11:00:26'!
 adjustColor: aColor
@@ -34337,6 +34251,24 @@ openMinimalIn: aDialog debuggingProcess: process context: context
 	^ debugger openMinimalMorphicIn: aDialog.
 	! !
 
+!Color methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 11:00:59'!
+hexHtml
+	^ '#', self hexStringRGB ! !
+
+!SequenceableCollection methodsFor: '*DrGeo' stamp: 'hlsf 2/24/2022 22:32:55'!
+shiftRight
+	^ self allButFirst, (Array with: self first)! !
+
+!LinkedList methodsFor: '*DrGeo-Link' stamp: 'hlsf 4/11/2024 10:35:30'!
+add: aLink after: otherLink
+	"Add otherLink  after link in the list. Answer aLink."
+	| savedLink |
+	lastLink == otherLink ifTrue: [^ self addLast: aLink].
+	savedLink := otherLink nextLink.
+	otherLink nextLink: aLink.
+	aLink nextLink:  savedLink.
+	^aLink.! !
+
 !Number methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2020 23:32:17'!
 closeTo: num
 	"Tell whether the receiver and arguments are close from each."
@@ -34365,6 +34297,11 @@ printShowingDecimalPlaces: digits
 	^ String 
 		streamContents:  [:str | self printOn: str fractionDigits: digits]
 		estimatedSize: 10 + digits! !
+
+!Fraction methodsFor: '*DrGeo' stamp: 'hlsf 10/19/2022 17:15:34'!
+printParenthesisOn: aStream
+"No need to add parenthesis, it is handled by Fraction>>printOn:"
+	self printOn: aStream ! !
 
 !Float methodsFor: '*DrGeo' stamp: 'hlsf 1/28/2024 17:17:21'!
 asApproximateFraction
@@ -34440,14 +34377,84 @@ printParenthesisOn: aStream
 			aStream nextPut: $)]
 		ifFalse: [self printOn: aStream fractionDigits: 1]! !
 
-!Fraction methodsFor: '*DrGeo' stamp: 'hlsf 10/19/2022 17:15:34'!
-printParenthesisOn: aStream
-"No need to add parenthesis, it is handled by Fraction>>printOn:"
-	self printOn: aStream ! !
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/1/2020 23:35:38'!
+closeTo: aPoint
+ 	^ (x closeTo: aPoint x) and: [ y closeTo: aPoint y ]! !
 
-!Color methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 11:00:59'!
-hexHtml
-	^ '#', self hexStringRGB ! !
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 16:31:42'!
+printCouple
+	^ String streamContents: [:str | self printCoupleOn: str]
+! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 14:17:55'!
+printCoupleOn: aStream
+" print as 'x,y' "
+	x printOn: aStream.
+	aStream nextPut: $,.
+	y printOn: aStream! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 15:52:02'!
+printMini
+	^ String streamContents: [:str | self printMinimumOn: str]
+! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 3/18/2023 15:51:01'!
+printMinimumOn: aStream
+" print as 'x,y' "
+	x printOn: aStream.
+	aStream nextPut: Character space.
+	y printOn: aStream! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:40:16'!
+printShowingDecimalPlaces: placeDesired 
+"do not round when coordinate is a fraction"
+	|stringX stringY|
+	x isFraction
+		ifTrue: [stringX := x printString]
+		ifFalse: [stringX := x printShowingDecimalPlaces: placeDesired].
+	y isFraction
+		ifTrue: [stringY := y printString] 
+		ifFalse: [stringY := y printShowingDecimalPlaces: placeDesired].		
+	^ stringX, '@', stringY! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:38:18'!
+reflexionBy: aPoint direction: aDirection
+"the reflected point according to the axe defined by aPoint and aDirection"
+	^ ((self - aPoint) vectorReflexionBy: aDirection) + aPoint! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:44:12'!
+rotateBy: angle about: center 
+	"This method returns the point obtained after rotating myself (counter clockwise) 
+	around the #center point of an #angle given as parameter. The #angle provided as 
+	parameter is interpreted as being in radian."
+	| p r theta |
+	p := self - center.
+	r := p r.
+	theta := angle asFloat - p theta.
+	^ (center x asFloat + (r * theta cos)) @ (center y asFloat - (r * theta sin))! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:39:43'!
+rotateVector: anAngle
+|cosa sina|
+	cosa := anAngle cos.
+	sina := anAngle sin.
+	^ (x * cosa - (y * sina))@(x * sina + (y * cosa))! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 8/4/2021 12:08:01'!
+roundTo: quantum
+	^ (x roundTo: quantum) @ (y roundTo: quantum)! !
+
+!Point methodsFor: '*DrGeo' stamp: 'hlsf 5/31/2021 18:37:51'!
+vectorReflexionBy: aDirection
+"the reflected vector according to the direction"
+	| unit normal |
+	[unit := aDirection normalized.
+	normal := unit normal] 
+		on: ZeroDivide 
+		do: [	unit := 0@0.
+			normal := 0@0].
+	^((self dotProduct: unit) * unit) - ((self dotProduct: normal) * normal)
+! !
 
 !BoxMorph methodsFor: '*DrGeo' stamp: 'hlsf 9/18/2024 20:57:09'!
 morphCenter
