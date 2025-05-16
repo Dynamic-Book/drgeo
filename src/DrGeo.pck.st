@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7158] on 16 May 2025 at 11:23:07 pm'!
+'From Cuis7.3 [latest update: #7158] on 16 May 2025 at 11:39:51 pm'!
 'Description '!
-!provides: 'DrGeo' 1 756!
+!provides: 'DrGeo' 1 757!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -14314,18 +14314,27 @@ resourcesPath
 "Where are located folders for icons, fonts, sketches, scripts, documentation, images, user created resources"
 	^ self rootPath / 'Resources'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 6/8/2021 19:42:01'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 5/16/2025 23:39:42'!
 rootPath
-"When deployed, the DrGeo/ directory"
-	^ DirectoryEntry smalltalkImageDirectory parent parent! !
+" When deployed, the DrGeo/ directory
+Global variable #rootPath may be set by DrGeo start-up script to indicate it, if not try to deduce it from 
+image location  "
+	^ Smalltalk at: #rootPath ifAbsent: [DirectoryEntry smalltalkImageDirectory parent parent]! !
 
 !DrGPlatform methodsFor: 'path' stamp: 'hlsf 8/16/2022 11:36:11'!
 smalltalkSketchesPath
 	^self resourcesPath / 'SmalltalkSketches'! !
 
-!DrGPlatform methodsFor: 'path' stamp: 'hlsf 1/12/2025 13:30:47'!
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 5/16/2025 23:37:55'!
 userPath
-"Where are located user created resources as sketch, Smalltalk sketch and exported sketch to image"
+"Where are located user created resources as sketch, Smalltalk sketch and exported sketch to image
+Global variable userPath may be set by DrGeo start-up script "
+	^ Smalltalk at: #userPath ifAbsent: [self userPathFromPreference]! !
+
+!DrGPlatform methodsFor: 'path' stamp: 'hlsf 5/16/2025 23:36:23'!
+userPathFromPreference
+" Is there a user prefrerence set to save user data ?
+(e.g. sketch, Smalltalk sketch and exported sketch to picture) "
 	^ (self preferences at: #userPath) 
 		ifNotEmpty: [:userPath | | userDirectoryEntry |
 			userDirectoryEntry := userPath asDirectoryEntry .
