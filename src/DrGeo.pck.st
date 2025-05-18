@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7158] on 16 May 2025 at 11:39:51 pm'!
+'From Cuis7.3 [latest update: #7158] on 18 May 2025 at 10:56:31 am'!
 'Description '!
-!provides: 'DrGeo' 1 757!
+!provides: 'DrGeo' 1 760!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -14226,6 +14226,13 @@ backgroundImage
 		(DrGeoSystem backgroundsPath files 
 			atRandom: (Random  seed: Time now 	nanoSecond))  binaryContents ! !
 
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 5/18/2025 10:55:46'!
+launch
+	self setFontPreferences.
+	Transcript show: '[DrGeo] Font installed'; cr.
+	self setCodeCompletion.
+	Transcript show: '[DrGeo] Code completion set'; cr! !
+
 !DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:25:01'!
 reset
 	toolbarIconSize := nil.
@@ -14257,12 +14264,10 @@ setDefaultPreferences
 				value: data fifth ] ].
 	^ preferences! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 3/16/2024 19:48:39'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 5/17/2025 21:37:42'!
 splash
 | splash copy  background position path |
 	path := 	DrGeoSystem iconsPath.
-	"path := path parent / 'banner'."
-	path print.
 	splash := ImageReadWriter formFromFileEntry: path // 'splash.png'.
 	position := Display center - (splash extent // 2).
 	background := Form fromDisplay: (position extent: splash extent).
@@ -14273,13 +14278,6 @@ splash
 		(Delay forMilliseconds: 100) wait].
 	(Delay forSeconds: 2) wait.
 	background displayAt: position! !
-
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 1/12/2025 13:33:16'!
-startUp
-	self setFontPreferences.
-	Transcript show: '[DrGeo] Font installed'; cr.
-	self setCodeCompletion.
-	Transcript show: '[DrGeo] Code completion set'; cr.! !
 
 !DrGPlatform methodsFor: 'path' stamp: 'hlsf 5/24/2023 16:14:37'!
 backgroundsPath
@@ -14469,9 +14467,9 @@ initialize
 		at: #fullScreenLeavesDeskMargins put: false.
 	UISupervisor ui taskbar scale: 1/2.! !
 
-!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 2/11/2024 23:34:00'!
-startUp
-	super startUp.
+!DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 5/17/2025 20:40:48'!
+launch
+	super launch.
 	Utilities setAuthorName: 'DrGeoUser' initials: 'drgeo'.
 	self splash.
 	Transcript show: '[DrGeo] Splash done'; cr.! !
@@ -14486,34 +14484,24 @@ rootPath
 "	^ DirectoryEntry smalltalkImageDirectory / 'drgeo' / 'build' / 'bundles' / 'gnulinux' / 'DrGeo'"
 	^ super rootPath! !
 
-!DrGeoSystem class methodsFor: 'system startup'!
-addStartUp
-	Smalltalk addToStartUpList: self! !
-
-!DrGeoSystem class methodsFor: 'system startup' stamp: 'hlsf 8/16/2022 21:54:17'!
-removeStartUp
-"self removeStartUp"
-	Smalltalk removeFromStartUpList: self! !
-
-!DrGeoSystem class methodsFor: 'system startup' stamp: 'hlsf 11/19/2023 13:33:50'!
-startUp
-	Transcript show: '[DrGeo] Init startUp'; cr.
-	platform startUp
+!DrGeoSystem class methodsFor: 'system startup' stamp: 'hlsf 5/17/2025 20:42:27'!
+launch
+	Transcript show: '[DrGeo] launching started'; cr.
+	platform launch.
+	Transcript show: '[DrGeo] launching ended'; cr.
 	! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 3/12/2022 16:30:26'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 5/17/2025 20:41:20'!
 beDevelopment
 	"Be like the Cuis environment as the DrGeo development environment"
 	"self beDevelopment"
 	platform := DrGDevelopment new.
-	self removeStartUp.
-	platform startUp. "manual startUp for additional initialization occuring at system start up"! !
+	platform launch. "manual launch for additional initialization occuring right after system start up"! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'drgeo 8/27/2022 15:56:59'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 5/17/2025 20:38:29'!
 beWorkstation
 	"self beWorkstation"
-	platform := DrGWorkstation new.
-	self addStartUp! !
+	platform := DrGWorkstation new! !
 
 !DrGeoSystem class methodsFor: 'class initialization' stamp: 'Install-DrGeoFrench 12/7/2022 16:16:08'!
 initialize
@@ -14631,7 +14619,7 @@ isiPad
 cleanUp
 	"Smalltalk reduceCuis "! !
 
-!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 4/6/2025 10:13:33'!
+!DrGeoSystem class methodsFor: 'install' stamp: 'hlsf 5/18/2025 10:56:21'!
 install
 	| world |
 	"Report by any mean installation and run time"
@@ -14676,8 +14664,11 @@ install
 		(world submorphs reject: [:aMorph | aMorph is: #TaskbarMorph]) 
 			do: [:each | each delete].
 		'Morphs deleted' print.
+		'Installing App luanch sequence...' print.
+		Smalltalk at: #drgeoApp put: DrGeoSystem.
+		AppLauncher appGlobalName: #drgeoApp appSelector: #launch.
+		'Cleaning image' print.
 		Smalltalk garbageCollect.
-		'Image cleaned' print.
 		'Installation ended' print.
 		'Saving image...' print.
 		Smalltalk saveAndQuit ]

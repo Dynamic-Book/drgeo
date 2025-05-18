@@ -20,12 +20,12 @@ VM="$APP/VM/Linux-x86_64"
 RESOURCES="$APP/Resources"
 
 stockImage="$RESOURCES/image"
-userImage="$HOME/$USERDATA/image"
+userImage="$HOME/$USERDATA/Resources/image"
 
-" Does the USERDATA folder exist, if no create it and populate it"
-if ! [ -f $HOME/$USERDATA/image/drgeo.image ];
+# Does the USERDATA folder exist, if no create it and populate it"
+if ! [ -f $userImage/drgeo.image ];
 then
-    mkdir -p $HOME/$USERDATA/image
+    mkdir -p $userImage
     cp -f $stockImage/drgeo.* $userImage
     ln -s $stockImage/Cuis*.sources $userImage
     ln -s $stockImage/locale $userImage
@@ -34,11 +34,12 @@ fi
 
 # Icon (note: gvfs-set-attribute is found in gvfs-bin on Ubuntu
 # systems and it seems to require an absolute filename)
-gvfs-set-attribute \
-	"$0" \
-	"metadata::custom-icon" \
-	"file://$RESOURCES/icons/drgeo.png" \
-
+	
+gio set -t string \
+    "$0" \
+    "metadata::custom-icon-name" \
+    "file://$RESOURCES/icons/drgeo.png" 
+	
 # execute
 exec "$VM/squeak" $COMPO \
     --plugins "$VM" \
@@ -47,7 +48,8 @@ exec "$VM/squeak" $COMPO \
     --title "GNU Dr. Geo" \
     "$userImage/drgeo" \
     -d "Smalltalk at: #userPath put: '$HOME/$USERDATA' asDirectoryEntry" \
-    -d "Smalltalk at: #rootPath put: '$APP' asDirectoryEntry"
+    -d "Smalltalk at: #rootPath put: '$APP' asDirectoryEntry" \
+    -ud "$HOME/$USERDATA/Resources"
 
 
 
