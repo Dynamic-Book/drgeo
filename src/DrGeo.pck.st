@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7158] on 18 May 2025 at 10:56:31 am'!
+'From Cuis7.3 [latest update: #7248] on 27 May 2025 at 6:16:01 pm'!
 'Description '!
-!provides: 'DrGeo' 1 760!
+!provides: 'DrGeo' 1 763!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -3795,9 +3795,9 @@ strokeWidth: strokeWidth color: strokeColor fillColor: fillColor do: pathCommand
 	self pathStrokeWidth: strokeWidth color: strokeColor fillColor: fillColor.
 	self doPath: pathCommandsBlock ensureClosePath: true! !
 
-!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 5/31/2023 19:49:40'!
-strokeWidth: strokeWidth color: strokeColor strokeDashArray: sda strokeDashArrayOffset: sdao do: pathCommandsBlock
-	self pathStrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda strokeDashArrayOffset: sdao fillColor: nil.
+!DrGSvgCanvas methodsFor: 'path' stamp: 'hlsf 5/27/2025 17:44:45'!
+strokeWidth: strokeWidth color: strokeColor strokeDashArray: sda do: pathCommandsBlock
+	self pathStrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda fillColor: nil.
 	self doPath: pathCommandsBlock ensureClosePath: false! !
 
 !DrGSvgCanvas methodsFor: 'drawing' stamp: 'hlsf 3/18/2023 16:03:56'!
@@ -3986,15 +3986,14 @@ initializePath
 	currentPoint := `0.0@0.0`.
 ! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 5/31/2023 19:46:06'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 5/27/2025 17:38:12'!
 pathStrokeWidth: strokeWidth color: strokeColor fillColor: fillColor
-	self pathStrokeWidth: strokeWidth color: strokeColor 
-		strokeDashArray: nil strokeDashArrayOffset: nil fillColor: fillColor ! !
+	self pathStrokeWidth: strokeWidth color: strokeColor strokeDashArray: nil fillColor: fillColor ! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 5/31/2023 19:45:35'!
-pathStrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda strokeDashArrayOffset: sdao fillColor: fillColor
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 5/27/2025 17:37:54'!
+pathStrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda fillColor: fillColor
 	pathNode := XMLElement named: #path.
-	self styleOf: pathNode StrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda strokeDashArrayOffset: sdao fillColor: fillColor.
+	self styleOf: pathNode StrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda fillColor: fillColor.
 	^ pathNode
 ! !
 
@@ -4008,24 +4007,24 @@ rectangle: rect
 			#width -> rect width asString . #height -> rect height asString } asDictionary.
 	^ rectNode! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 5/31/2023 19:44:29'!
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 5/27/2025 17:40:29'!
 styleOf: element StrokeWidth: strokeWidth color: strokeColor fillColor: fillColor
 	self styleOf: element StrokeWidth: strokeWidth color: strokeColor 
-		strokeDashArray: nil strokeDashArrayOffset: nil fillColor: fillColor ! !
+		strokeDashArray: nil fillColor: fillColor ! !
 
-!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 11/7/2023 20:59:19'!
-styleOf: element StrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda strokeDashArrayOffset: sdao fillColor: fillColor
+!DrGSvgCanvas methodsFor: 'private' stamp: 'hlsf 5/27/2025 17:36:57'!
+styleOf: element StrokeWidth: strokeWidth color: strokeColor strokeDashArray: sda fillColor: fillColor
 "
 	Apply style to a given element (node) 
 "
 	strokeWidth ifNotNil: [element attributeAt: #'stroke-width' put: strokeWidth asString].
-	strokeColor ifNotNil: [		element attributeAt: #stroke put: 
-		(strokeColor isTransparent ifTrue: ['transparent'] ifFalse:		strokeColor hexHtml)].
+	strokeColor ifNotNil: [	element attributeAt: #stroke put: 
+		(strokeColor isTransparent ifTrue: ['transparent'] ifFalse:	strokeColor hexHtml)].
 	sda ifNotNil: [
 		element 
 			attributeAt: #'stroke-dasharray' 
 			put: (String streamContents: [:s | sda do: [:e | s store: e] separatedBy: [ s space]])].
-	sdao ifNotNil: [element attributeAt: #'stroke-dashoffset' put: sdao asString].
+"	sdao ifNotNil: [element attributeAt: #'stroke-dashoffset' put: sdao asString]."
 	fillColor 
 		ifNotNil: [
 			element attributeAt: #fill put: fillColor hexHtml.
@@ -12294,10 +12293,10 @@ and programmed interactive sketches.
 LICENSE: GPL' translated format: {self drgeoVersion. self drgeoCopyright. self cuisVersion }.
 	^ text! !
 
-!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 4/5/2025 11:42:35'!
+!DrGeo class methodsFor: 'user interface' stamp: 'hlsf 5/27/2025 17:47:01'!
 drgeoVersion
 	^ 'Installed version: ' translated, 
-		'25.06a beta (code revision ', 
+		'25.08a beta (code revision ', 
 		(String streamContents: [:str | 
 			(CodePackage installedPackages at: 'DrGeo') featureSpec provides printVersionRevisionOn: str]), ')'! !
 
@@ -14264,7 +14263,7 @@ setDefaultPreferences
 				value: data fifth ] ].
 	^ preferences! !
 
-!DrGPlatform methodsFor: 'initialize-release' stamp: 'drgeo 5/17/2025 21:37:42'!
+!DrGPlatform methodsFor: 'initialize-release' stamp: 'hlsf 5/25/2025 16:32:44'!
 splash
 | splash copy  background position path |
 	path := 	DrGeoSystem iconsPath.
@@ -14272,7 +14271,7 @@ splash
 	position := Display center - (splash extent // 2).
 	background := Form fromDisplay: (position extent: splash extent).
 	0.0 to: 1.0 by: 0.2 do: [:t |
-		copy := background copy.
+		copy := Form extent: splash extent  depth: 32.
 		copy copyBits: splash at: 0@0 translucent: t.
 		copy displayAt:  position.
 		(Delay forMilliseconds: 100) wait].
@@ -28664,7 +28663,7 @@ arrow: aSymbol
 styleClass
 	^DrGArcStyle! !
 
-!DrGArcMorph methodsFor: 'drawing' stamp: 'hlsf 5/31/2023 18:18:42'!
+!DrGArcMorph methodsFor: 'drawing' stamp: 'hlsf 5/27/2025 17:39:56'!
 drawOn: canvas
 	| center start end mid r orientation alpha1 alpha2 largeFlag |
 	self isDrawNeeded ifFalse: [^ self].
@@ -28684,13 +28683,12 @@ drawOn: canvas
 			canvas strokeWidth: borderWidth color: borderColor fillColor: color do: [
 				canvas moveTo: start;
 					arcTo: end radius: r angleOfXAxis: 0 
-					largeFlag: largeFlag sweepFlag: orientation		 ] 	]
+					largeFlag: largeFlag sweepFlag: orientation	 ] ]
 		ifFalse: [	
-			canvas strokeWidth: borderWidth color: borderColor 
-				strokeDashArray: dashedBorder strokeDashArrayOffset: 0.0 do: [
+			canvas strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder do: [
 					canvas moveTo: start;
 						arcTo: end radius: r angleOfXAxis: 0 
-						largeFlag: largeFlag sweepFlag: orientation		] 	]! !
+						largeFlag: largeFlag sweepFlag: orientation	] ]! !
 
 !DrGArcMorph methodsFor: 'drawing' stamp: 'hlsf 5/31/2023 16:55:35'!
 drawOn: canvas from: start to: end radius: r lF: largeFlag sF: orientation
@@ -28701,7 +28699,7 @@ drawOn: canvas from: start to: end radius: r lF: largeFlag sF: orientation
 containsPoint: localPoint
 	^ self containsPointInWorld: localPoint! !
 
-!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 5/31/2023 18:22:44'!
+!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 5/27/2025 17:39:43'!
 drawCircleOn: aCanvas
 	| center r |
 	center := self drawable worldToMorph: mathItem center.
@@ -28709,13 +28707,12 @@ drawCircleOn: aCanvas
 	style isFilled 
 		ifTrue: [	
 			aCanvas strokeWidth: borderWidth color: borderColor fillColor: color do: [			
-				aCanvas circleCenter: center radius: r]			]
+				aCanvas circleCenter: center radius: r]	]
 		ifFalse: [
-			aCanvas strokeWidth: borderWidth color: borderColor 
-				strokeDashArray: dashedBorder strokeDashArrayOffset: 0.0 do: [
+			aCanvas strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder do: [
 					aCanvas circleCenter: center  radius: r] ]! !
 
-!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 9/5/2024 16:29:45'!
+!DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 5/27/2025 17:39:14'!
 drawLineOn: aCanvas
 	| origin u points area |
 	area := self drawable.
@@ -28727,9 +28724,8 @@ drawLineOn: aCanvas
 		inDirection: (area vectorToMorph: u)
 		toBorder: area morphExtent.
 	points size = 2 ifTrue: [
-		aCanvas strokeWidth: borderWidth color: borderColor 
-			strokeDashArray: dashedBorder strokeDashArrayOffset: 0.0 do: [
-				aCanvas moveTo: points first; lineTo: points second				] ]! !
+		aCanvas strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder do: [
+				aCanvas moveTo: points first; lineTo: points second ] ]! !
 
 !DrGCircleMorph methodsFor: 'drawing' stamp: 'hlsf 3/9/2023 12:27:46'!
 drawOn: aCanvas
@@ -28893,7 +28889,7 @@ drawArrows: arrowsBound on: aCanvas
 		self drawArrow: arrow on: aCanvas at: vertices last from: self nextToLastPoint].
 	! !
 
-!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 5/31/2023 19:00:19'!
+!DrGPolylineMorph methodsFor: 'drawing' stamp: 'hlsf 5/27/2025 17:29:10'!
 drawOn: aCanvas 
 	| verticesAndArrows |
 	self isDrawNeeded ifFalse: [^ false].
@@ -28915,7 +28911,7 @@ drawOn: aCanvas
 		aCanvas 
 			strokeWidth: borderWidth 
 			color: borderColor 
-			strokeDashArray: dashedBorder 			strokeDashArrayOffset: 0.0 
+			strokeDashArray: dashedBorder 
 			do: [aCanvas polyLine: verticesAndArrows first]].
 	self drawArrows: verticesAndArrows second on: aCanvas.
 	^ true! !
@@ -29324,7 +29320,7 @@ initialize
 	maxScreenDelta := 64.
 	maxAbscissaDelta := 1e-1! !
 
-!DrGLocusMorph methodsFor: 'drawing' stamp: 'hlsf 5/31/2023 20:01:53'!
+!DrGLocusMorph methodsFor: 'drawing' stamp: 'hlsf 5/27/2025 17:39:31'!
 drawOn: aCanvas 
 	| prevPoint p |
 	self isDrawNeeded ifFalse: [^ self].
@@ -29332,10 +29328,9 @@ drawOn: aCanvas
 	self canBeDrawn ifFalse: [^ self].
 	self updateLabelStatus.
 	prevPoint := vertices first.
-	aCanvas strokeWidth: borderWidth color: borderColor 
-	strokeDashArray: dashedBorder strokeDashArrayOffset: 0.0  do: [
+	aCanvas strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder do: [
 		aCanvas moveTo: prevPoint.
-		2 to: vertices	 size do: [:i |
+		2 to: vertices size do: [:i |
 			p := vertices at: i.
 			(prevPoint squaredDistanceTo: p) < 900
 				ifTrue: [aCanvas lineTo: p]
@@ -34116,7 +34111,7 @@ drgeoButtonSelectedColor
 isDarkTheme
 	^ self canvasBackground = `Color black`! !
 
-!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 3/29/2024 11:09:10'!
+!Theme methodsFor: '*DrGeo-canvas' stamp: 'hlsf 5/27/2025 18:14:19'!
 lineStyleDataFor: aStyle
 	"possible lineStyle"
 	aStyle = #dot ifTrue: [^ self scale: #(1 6)].
@@ -34473,6 +34468,24 @@ arguments
 isStepping: aMorph
 " Does this morph stepping? "
 	^ stepList 		anySatisfy: [:aStepMessage | aStepMessage receiver == aMorph] ! !
+
+!AbstractVectorCanvas methodsFor: '*DrGeo' stamp: 'hlsf 5/27/2025 17:49:22'!
+strokeWidth: borderWidth color: borderColor strokeDashArray: dashedBorder 	do: pathCommandsBlock
+"
+dashedBorder = array of 2 element, for example #(1 6), one pixel on, 6 off 
+"
+	dashedBorder 
+		ifNil: [
+			self 
+			strokeWidth: borderWidth 
+			color:  borderColor 
+			do: pathCommandsBlock]
+		ifNotNil: [
+			self 
+			strokeWidth: borderWidth 
+			color:  borderColor 
+			dashedStrokeBits:  (2 raisedTo: dashedBorder first) - 1  << dashedBorder second
+			do: pathCommandsBlock ]! !
 
 !RealEstateAgent class methodsFor: '*DrGeo' stamp: 'hlsf 4/24/2020 12:36:51'!
 leftMaximumUsableArea
