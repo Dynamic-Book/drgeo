@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 27 May 2025 at 6:16:01 pm'!
+'From Cuis7.3 [latest update: #7248] on 28 May 2025 at 4:03:36 pm'!
 'Description '!
-!provides: 'DrGeo' 1 763!
+!provides: 'DrGeo' 1 764!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -11154,6 +11154,10 @@ initialize
 	self color: (DrGeoSystem preferences at: #locusColor).
 	self lineStyle: (DrGeoSystem preferences at: #locusStyle).
 	self thickness: (DrGeoSystem preferences at: #locusThickness)! !
+
+!DrGLocusStyle methodsFor: 'widget' stamp: 'hlsf 5/28/2025 15:47:36'!
+myWidgets 
+	^ OrderedCollection with: self thicknessWidget! !
 
 !DrGRayStyle methodsFor: 'initialize-release' stamp: 'hlsf 7/6/2022 09:00:27'!
 initialize
