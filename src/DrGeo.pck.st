@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 9:54:44 am'!
+'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 10:18:56 am'!
 'Description '!
-!provides: 'DrGeo' 1 765!
+!provides: 'DrGeo' 1 766!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -5223,13 +5223,13 @@ printType: aString on: aStream
 		nextPut: Character space;
 		nextPutAll: self safeName! !
 
-!DrGMathItem methodsFor: 'comparing'!
+!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:14:59'!
 = aMathItem 
 	^ aMathItem isMathItem 
 		ifFalse: [false]
 		ifTrue: [self basicType == aMathItem basicType
 				and: [self nodeType == aMathItem nodeType
-						and: [self parentsEqual: aMathItem]]]! !
+				and: [self parentsEqual: aMathItem]]]! !
 
 !DrGMathItem methodsFor: 'comparing'!
 hash
@@ -5249,10 +5249,6 @@ rehash
 	^ hash := (parents hash 
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
-
-!DrGMathItem methodsFor: 'event' stamp: 'hlsf 5/4/2020 21:23:26'!
-actionMap: anObject
-	'actionMap := anObject '! !
 
 !DrGMathItem methodsFor: 'initialize-release'!
 initialize
@@ -25688,31 +25684,28 @@ moveEvent: aMathItem inDirection: aPoint withDirty: mathItems
 		aMathItem moveEvent: aPoint.
 		self updateDirty: mathItems]! !
 
-!DrGeoDomain methodsFor: 'updating'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 5/29/2025 10:17:05'!
 mutate: aPointItem asFreeOn: aCurveItem at: aPosition
 	|item|
 	item := DrGPointOncurveItem newWith: {aCurveItem .  aPosition}.
 	item name: aPointItem name.
-	item actionMap: aPointItem actionMap.
 	aPointItem become: item.
 	self updateAllMathItems ! !
 
-!DrGeoDomain methodsFor: 'updating'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 5/29/2025 10:17:09'!
 mutate: aPointItem asIntersectionWith: curveA and: curveB at: aPosition
 	|item|
 	item :=  DrGPointIntersectionItem newWith: {curveA. curveB.  aPosition}.
 	item name: aPointItem name.
-	item actionMap: aPointItem actionMap.
 	aPointItem become: item.
 	self updateAllMathItems.! !
 
-!DrGeoDomain methodsFor: 'updating'!
+!DrGeoDomain methodsFor: 'updating' stamp: 'hlsf 5/29/2025 10:17:13'!
 mutateAsFreePoint: aPointItem
 	|freePointItem|
 	(aPointItem isFreePointItem and: [aPointItem isPointItemOnCurve not]) ifTrue: [^aPointItem].
 	freePointItem := DrGPointFreeItem new point: aPointItem point.
 	freePointItem name: aPointItem name.
-	freePointItem actionMap: aPointItem actionMap.
 	aPointItem become: freePointItem.
 	^ freePointItem! !
 
