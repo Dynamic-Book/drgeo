@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 10:56:06 am'!
+'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 11:58:38 am'!
 'Description '!
-!provides: 'DrGeo' 1 767!
+!provides: 'DrGeo' 1 768!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -6718,16 +6718,16 @@ update
 		super = aMathItem 
 		or: [ self equalOtherNodeType: aMathItem ]]! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:38:54'!
+!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 11:57:28'!
 equalOtherNodeType: aMathItem 
 " Am I equal to a perpendicular bissector defined from two points, instead of a segment? "
 	^ aMathItem isMathItem and: [
 		self basicType = aMathItem basicType
 			and: [aMathItem nodeType = #'perpendicularBisector2pts'
-					and: [(parents first extremity1 = aMathItem parents first point
-					and: [parents first extremity2 = aMathItem parents second point])
-				or: [parents first extremity1 = aMathItem parents second point
-					and: [parents first extremity2 = aMathItem parents first point]]]]]! !
+			and: [(Array with: parents first extremity1 with: parents first extremity2) asSet 
+				= (Array with: aMathItem parents first point with: aMathItem parents  second point) asSet ]
+			]
+		]! !
 
 !DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:33:03'!
 rehash
@@ -6744,33 +6744,27 @@ update
 	self origin: segment middle.
 	self exist: true! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'xml writing'!
+!DrGPerpendicularBisectorItem methodsFor: 'xml writing' stamp: 'hlsf 5/29/2025 11:37:01'!
 nodeType
-	^ #perpendicularBisector! !
+	^ #perpendicularBisectorSegment! !
 
 !DrGPerpendicularBisectorItem methodsFor: 'private'!
 adaptiveDescriptiveName
 	^ 'This perpendicular bisector %1' translated! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:37:35'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 11:37:44'!
 equalOtherNodeType: aMathItem 
 	^ aMathItem isMathItem and: [
 		self basicType = aMathItem basicType
 			and: [aMathItem nodeType = #perpendicularBisectorSegment
-					and: [(aMathItem parents first extremity1 = parents first point
-					and: [aMathItem parents first extremity2 = parents second point])
-				or: [aMathItem parents first extremity1 = parents second point
-					and: [aMathItem parents first extremity2 = parents first point]]]]]! !
+			and: [(Array with: parents first point with: parents second point) asSet 
+				= (Array with: aMathItem parents first extremity1 with: aMathItem parents first extremity2) asSet ]
+			]
+		]! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 11:29:20'!
 parentsEqual: aMathItem
-"	^ self parents asSet = aMathItem parents asSet"
-	((parents first = aMathItem parents first) and: [parents second = aMathItem parents second]) 
-		ifTrue: [^true].
-	((parents first = aMathItem parents second) and: [parents second = aMathItem parents first]) 
-		ifTrue: [^true].
-	^ false
-! !
+	^ self parents asSet = aMathItem parents asSet! !
 
 !DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:45:09'!
 rehash
@@ -7060,6 +7054,10 @@ rehash
 !DrGSegment2ptsItem methodsFor: 'xml writing'!
 nodeType
 	^#'2pts'! !
+
+!DrGSegment2ptsItem methodsFor: 'accessing' stamp: 'hlsf 5/29/2025 11:52:33'!
+extremity2
+	^ (parents at: 2) point.! !
 
 !DrGSegmentHomothetyItem methodsFor: 'updating'!
 moveParent: aPoint
