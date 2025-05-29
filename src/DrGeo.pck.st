@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 28 May 2025 at 4:03:36 pm'!
+'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 9:54:44 am'!
 'Description '!
-!provides: 'DrGeo' 1 764!
+!provides: 'DrGeo' 1 765!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -5244,9 +5244,11 @@ parentsIncludes: aMathItem
 "An idendity comparaison"
 	^ parents notNil and: [parents anySatisfy: [:each | each == aMathItem]]! !
 
-!DrGMathItem methodsFor: 'comparing'!
+!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:50:22'!
 rehash
-	^ hash := (parents hash bitXor: self nodeType hash) bitXor: self basicType hash! !
+	^ hash := (parents hash 
+	bitXor: self nodeType hash) 
+	bitXor: self basicType hash! !
 
 !DrGMathItem methodsFor: 'event' stamp: 'hlsf 5/4/2020 21:23:26'!
 actionMap: anObject
@@ -5733,10 +5735,6 @@ updateAsSegmentOrRay
 "the three point are aligned, the arc is a segment"
 	self exist: false.! !
 
-!DrGArc3ptsItem methodsFor: 'as yet unclassified'!
-rehash
- ^ hash := ((parents hash bitXor: parents reverse hash) bitXor: self nodeType hash) bitXor: self basicType hash! !
-
 !DrGArc3ptsItem methodsFor: 'xml writing'!
 nodeType
 	^#'3pts'! !
@@ -5745,6 +5743,13 @@ nodeType
 parentsEqual: aMathItem 
 	^ parents = aMathItem parents
 		or: [parents reverse = aMathItem parents]! !
+
+!DrGArc3ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:51:53'!
+rehash
+ ^ hash := ((parents hash 
+	bitXor: parents reverse hash) 
+	bitXor: self nodeType hash) 
+	bitXor: self basicType hash! !
 
 !DrGArcCenterAngleItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:48:42'!
 update
@@ -6580,6 +6585,16 @@ adaptiveDescriptiveName
 nodeType
 	^#'2pts'! !
 
+!DrGLine2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:49:49'!
+parentsEqual: aMathItem
+	^ parents asSet = aMathItem parents asSet ! !
+
+!DrGLine2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:49:42'!
+rehash
+	^ hash := (parents asSet hash 
+	bitXor: self nodeType hash) 
+	bitXor: self basicType hash! !
+
 !DrGLineAngleBisectorItem methodsFor: 'private'!
 adaptiveDescriptiveName
 	^ 'This angle bisector %1' translated! !
@@ -7025,18 +7040,16 @@ adaptiveDescriptiveName
 isSegmentItem
 	^ true! !
 
-!DrGSegment2ptsItem methodsFor: 'comparing'!
+!DrGSegment2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:53:13'!
 parentsEqual: aMathItem
-	((parents first = aMathItem parents first) and: [parents second = aMathItem parents second]) 
-		ifTrue: [^true].
-	((parents first = aMathItem parents second) and: [parents second = aMathItem parents first]) 
-		ifTrue: [^true].
-	^ false
+	^ parents asSet = aMathItem parents asSet 
 ! !
 
-!DrGSegment2ptsItem methodsFor: 'comparing'!
+!DrGSegment2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:53:25'!
 rehash
-	^ hash := ((parents sorted: [:ptA :ptB | ptA point <= ptB point]) hash bitXor: self nodeType hash) bitXor: self basicType hash! !
+	^ hash := (parents asSet hash 
+	bitXor: self nodeType hash) 
+	bitXor: self basicType hash! !
 
 !DrGSegment2ptsItem methodsFor: 'xml writing'!
 nodeType
@@ -7819,18 +7832,15 @@ newWith: theParents k: integer
 nodeType
 	^#'Middle_2pts'! !
 
-!DrGPointMiddle2ptsItem methodsFor: 'comparing'!
+!DrGPointMiddle2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:48:17'!
 parentsEqual: aMathItem
-	((parents first = aMathItem parents first) and: [parents second = aMathItem parents second]) 
-		ifTrue: [^true].
-	((parents first = aMathItem parents second) and: [parents second = aMathItem parents first]) 
-		ifTrue: [^true].
-	^ false
-! !
+	^ parents asSet = aMathItem parents asSet ! !
 
-!DrGPointMiddle2ptsItem methodsFor: 'comparing'!
+!DrGPointMiddle2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:47:57'!
 rehash
-	^ hash := ((parents sorted: [:ptA :ptB | ptA point <= ptB point]) hash bitXor: self nodeType hash) bitXor: self basicType hash! !
+	^ hash := (parents asSet hash 
+	bitXor: self nodeType hash) 
+	bitXor: self basicType hash! !
 
 !DrGPointMiddle2ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:15:06'!
 update
