@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 10:18:56 am'!
+'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 10:56:06 am'!
 'Description '!
-!provides: 'DrGeo' 1 766!
+!provides: 'DrGeo' 1 767!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -5223,13 +5223,12 @@ printType: aString on: aStream
 		nextPut: Character space;
 		nextPutAll: self safeName! !
 
-!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:14:59'!
+!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:20:46'!
 = aMathItem 
-	^ aMathItem isMathItem 
-		ifFalse: [false]
-		ifTrue: [self basicType == aMathItem basicType
-				and: [self nodeType == aMathItem nodeType
-				and: [self parentsEqual: aMathItem]]]! !
+	^ aMathItem isMathItem and: [
+		self basicType == aMathItem basicType
+			and: [self nodeType == aMathItem nodeType
+			and: [self parentsEqual: aMathItem] ] ]! !
 
 !DrGMathItem methodsFor: 'comparing'!
 hash
@@ -6713,22 +6712,28 @@ moveParent: aPoint
 update
 	self translationUpdate! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'comparing'!
+!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:27:51'!
 = aMathItem
-	^ aMathItem isMathItem 
-		ifFalse: [false]
-		ifTrue: [super = aMathItem or: [ self equalOtherNodeType: aMathItem ]]! !
+	^ aMathItem isMathItem and: [
+		super = aMathItem 
+		or: [ self equalOtherNodeType: aMathItem ]]! !
 
-!DrGPerpendicularBisectorItem methodsFor: 'comparing'!
+!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:38:54'!
 equalOtherNodeType: aMathItem 
-	^ aMathItem
-		ifNil: [false]
-		ifNotNil: [self basicType = aMathItem basicType
+" Am I equal to a perpendicular bissector defined from two points, instead of a segment? "
+	^ aMathItem isMathItem and: [
+		self basicType = aMathItem basicType
 			and: [aMathItem nodeType = #'perpendicularBisector2pts'
-				and: [(parents first extremity1 = aMathItem parents first point
-						and: [parents first extremity2 = aMathItem parents second point])
-					or: [parents first extremity1 = aMathItem parents second point
-						and: [parents first extremity2 = aMathItem parents first point]]]]]! !
+					and: [(parents first extremity1 = aMathItem parents first point
+					and: [parents first extremity2 = aMathItem parents second point])
+				or: [parents first extremity1 = aMathItem parents second point
+					and: [parents first extremity2 = aMathItem parents first point]]]]]! !
+
+!DrGPerpendicularBisectorItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:33:03'!
+rehash
+	^ hash := ( (Array with: parents first extremity1 with: parents first extremity2) asSet hash
+	bitXor: self nodeType hash) 
+	bitXor: self basicType hash! !
 
 !DrGPerpendicularBisectorItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:00:01'!
 update
@@ -6747,16 +6752,15 @@ nodeType
 adaptiveDescriptiveName
 	^ 'This perpendicular bisector %1' translated! !
 
-!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing'!
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:37:35'!
 equalOtherNodeType: aMathItem 
-	^ aMathItem
-		ifNil: [false]
-		ifNotNil: [self basicType = aMathItem basicType
+	^ aMathItem isMathItem and: [
+		self basicType = aMathItem basicType
 			and: [aMathItem nodeType = #perpendicularBisectorSegment
-				and: [(aMathItem parents first extremity1 = parents first point
-						and: [aMathItem parents first extremity2 = parents second point])
-					or: [aMathItem parents first extremity1 = parents second point
-						and: [aMathItem parents first extremity2 = parents first point]]]]]! !
+					and: [(aMathItem parents first extremity1 = parents first point
+					and: [aMathItem parents first extremity2 = parents second point])
+				or: [aMathItem parents first extremity1 = parents second point
+					and: [aMathItem parents first extremity2 = parents first point]]]]]! !
 
 !DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing'!
 parentsEqual: aMathItem
@@ -6767,6 +6771,12 @@ parentsEqual: aMathItem
 		ifTrue: [^true].
 	^ false
 ! !
+
+!DrGLinePerpendicularBisector2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:45:09'!
+rehash
+	^ hash := ( (Array with: parents first point with: parents second point) asSet hash
+	bitXor: super nodeType hash) "We really want this "
+	bitXor: self basicType hash! !
 
 !DrGLinePerpendicularBisector2ptsItem methodsFor: 'private'!
 adaptiveDescriptiveName
@@ -8225,6 +8235,12 @@ parentsEqual: aPolygon
 		shiftedCollection = aPolygon parents ifTrue: [^true].
 		shiftedCollection := shiftedCollection shiftRight].
 	^ false! !
+
+!DrGPolygonNptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:51:25'!
+rehash
+	^ hash := (parents asSet hash 
+	bitXor: self nodeType hash) 
+	bitXor: self basicType hash! !
 
 !DrGPolygonNptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:17:43'!
 update
