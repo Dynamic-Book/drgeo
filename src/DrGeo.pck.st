@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 11:58:38 am'!
+'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 12:09:41 pm'!
 'Description '!
-!provides: 'DrGeo' 1 768!
+!provides: 'DrGeo' 1 769!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -5223,12 +5223,12 @@ printType: aString on: aStream
 		nextPut: Character space;
 		nextPutAll: self safeName! !
 
-!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 10:20:46'!
+!DrGMathItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 12:02:22'!
 = aMathItem 
-	^ aMathItem isMathItem and: [
-		self basicType == aMathItem basicType
-			and: [self nodeType == aMathItem nodeType
-			and: [self parentsEqual: aMathItem] ] ]! !
+	^ aMathItem isMathItem 
+		and: [self basicType == aMathItem basicType
+		and: [self nodeType == aMathItem nodeType
+		and: [self parentsEqual: aMathItem] ] ]! !
 
 !DrGMathItem methodsFor: 'comparing'!
 hash
@@ -32996,7 +32996,7 @@ testLineTranslation
 	self assert: l2 mathItem direction = l1 mathItem direction.
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 5/29/2025 12:08:32'!
 testLineUnicity
 	| a b s1 s2|
 	a := sketch point: 788@985.
@@ -33006,7 +33006,7 @@ testLineUnicity
 	self assert: s1 mathItem == s2 mathItem.
 	"Lines are oriented"
 	s2 := sketch line: b to: a.  
-	self shouldnt: s1 mathItem == s2 mathItem.
+	self should: s1 mathItem == s2 mathItem.
 	""
 	b := sketch point: 780 @ 900.
 	s2 := sketch line: a to:  b.
@@ -33279,7 +33279,7 @@ testPolygonTranslation
 	self should: (p2 mathItem points anySatisfy: [:aPoint | aPoint closeTo: 5@3]).
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-polygon'!
+!DrGeoScriptTest methodsFor: 'testing-polygon' stamp: 'hlsf 5/29/2025 12:08:17'!
 testPolygonUnicity
 	| p1 p2 summit |
 	summit := Array withAll: {
@@ -33295,7 +33295,7 @@ testPolygonUnicity
 		sketch point: 3@3}.
 	p2 := sketch polygon: summit.
 	"we not handle polygon unicity yet"
-	self deny: p1 mathItem == p2 mathItem.
+	self should: p1 mathItem == p2 mathItem.
 	""
 	summit := Array withAll: {
 		sketch point: -3@3.
