@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 29 May 2025 at 12:09:41 pm'!
+'From Cuis7.3 [latest update: #7248] on 30 May 2025 at 3:45:38 pm'!
 'Description '!
-!provides: 'DrGeo' 1 769!
+!provides: 'DrGeo' 1 770!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -13511,7 +13511,7 @@ handleChoice: aMorphCollection
 		add: aMathItemCollection 
 		at: (self drawable gridWorldPoint: self context last).! !
 
-!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
+!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/30/2025 15:14:24'!
 handlePress: aPoint 
 	"return true if we process something (including additional user choice)"
 	| morphs |
@@ -13521,11 +13521,11 @@ handlePress: aPoint
 	morphs size = 1 	ifTrue: [
 		self handleChoice: morphs.
 		^true].
-	(morphs size = 0 and: [self context isWanted: #() ]) 		ifTrue: [
+	(morphs size = 0 and: [self context isWanted: #() ]) ifTrue: [
 		self handleChoice: morphs.
 		^true].
 	"More than one math item under mouse, user must choose one item"
-	morphs size >= 2 	ifTrue: [
+	morphs size >= 2 ifTrue: [
 		"Display a pop-up menu to select one item"
 		self context chooseMorph: morphs.
 		^true].
@@ -25807,19 +25807,18 @@ factory
 presenter: aPresenter
 	presenter := aPresenter ! !
 
-!DrGMathItemBuilder methodsFor: 'building'!
+!DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 5/29/2025 15:36:26'!
 add: aMathItemCollection at: aPoint
-"Add a math item in the selection list of the builder,
-aPoint is the position where the action took place
-Return true if mathItem accepted"
-	(self isWanted: aMathItemCollection at: aPoint) ifTrue:
-		[self addItem: aMathItemCollection at: aPoint.
-		"Are we done? If so notify our dependent"
-		self readyToBuild ifTrue: 
-			[self triggerEvent: #readyToBuild].
-		^true].
-	^false
-! !
+"
+Add a math item in the selection list of the builder, aPoint is the position where the action took place
+Return true if mathItem accepted
+"
+	^ (self isWanted: aMathItemCollection at: aPoint) 
+		and: [
+			self addItem: aMathItemCollection at: aPoint.
+			"Are we done? If so notify our dependent"
+			self readyToBuild ifTrue: [self triggerEvent: #readyToBuild].
+			true]! !
 
 !DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 8/4/2023 17:16:46'!
 buildItem
@@ -25832,12 +25831,10 @@ buildItem
 				point := point - (0@0.5).
 				class newWith: self arguments in: presenter]]! !
 
-!DrGMathItemBuilder methodsFor: 'building'!
+!DrGMathItemBuilder methodsFor: 'building' stamp: 'hlsf 5/29/2025 15:31:24'!
 getItem
 	"return an instantiated mathItem or nil if not possible"
-	self readyToBuild ifTrue:
-		[^ self buildItem].
-	^ nil.! !
+	^ self readyToBuild ifTrue: [self buildItem]! !
 
 !DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 6/20/2021 12:10:30'!
 addToFlyingItem: anItem
@@ -25856,10 +25853,10 @@ flyingMathItemArguments
 flyingMorphClass
 	self subclassResponsibility ! !
 
-!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 8/4/2023 17:15:29'!
+!DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 5/29/2025 15:39:57'!
 initializeFlyingMorph
 	flyingMorph := self flyingMorphClass for: flyingItem in: presenter drawable.
-	flyingMorph style 	color: Color lightRed! !
+	flyingMorph style color: Color lightRed! !
 
 !DrGMathItemBuilder methodsFor: 'flying objects' stamp: 'hlsf 10/14/2021 10:01:20'!
 moveFlyingMorphAt: aPoint
@@ -25984,12 +25981,12 @@ reset
 	super reset.
 	pointA := pointB := pointC := nil! !
 
-!DrGAngleGeometricBuilder methodsFor: 'testing'!
+!DrGAngleGeometricBuilder methodsFor: 'testing' stamp: 'hlsf 5/29/2025 22:18:10'!
 isWanted: aMathItemCollection
 	^aMathItemCollection notEmpty
-		and: [(aMathItemCollection first isPointItem
-				and: [aMathItemCollection first ~= pointA
-				and: [aMathItemCollection first ~= pointB]]	)]! !
+		and: [aMathItemCollection first isPointItem
+		and: [aMathItemCollection first ~= pointA
+		and: [aMathItemCollection first ~= pointB]]	]! !
 
 !DrGAngleGeometricBuilder methodsFor: 'testing'!
 readyToBuild
@@ -26387,14 +26384,14 @@ isCurveIntersectionValid: aCollection
 isWanted: aMathItemCollection
 	^self isWanted: aMathItemCollection  at: 0@0! !
 
-!DrGFlyPointBuilder methodsFor: 'testing'!
+!DrGFlyPointBuilder methodsFor: 'testing' stamp: 'hlsf 5/29/2025 15:32:52'!
 isWanted: aMathItemCollection at: aPoint
 	"click on the background?"
 	aMathItemCollection ifEmpty: [^true].
 	"click on two curves?"
 	(aMathItemCollection size >= 2
 		and: [aMathItemCollection first isIntersectableItem 
-			and: [aMathItemCollection second isIntersectableItem]])
+		and: [aMathItemCollection second isIntersectableItem]])
 	ifTrue: [^ self isCurveIntersectionValid: {aMathItemCollection first. aMathItemCollection second. aPoint}].
 	"click on one curve?"
 	^aMathItemCollection first isCurveItem		! !
@@ -26496,20 +26493,16 @@ mathItemClass
 arguments
 	^ {freePoint. constrainedPoint}! !
 
-!DrGLocusBuilder methodsFor: 'testing'!
+!DrGLocusBuilder methodsFor: 'testing' stamp: 'hlsf 5/29/2025 22:34:08'!
 isWanted: aMathItemCollection 
-	^ aMathItemCollection notEmpty
-		and: [(aMathItemCollection first isPointItemOnCurve
-				and: [aMathItemCollection first ~= freePoint
-				and: [aMathItemCollection first ~= constrainedPoint]])
-			or: [aMathItemCollection first isConstrainedPointItem 
-				and: [aMathItemCollection first ~= freePoint
-				and: [aMathItemCollection first ~= constrainedPoint]]]]! !
+	^ aMathItemCollection notEmpty and: [
+		(aMathItemCollection first isPointItemOnCurve and: [freePoint isNil])			
+		or: [	aMathItemCollection first isConstrainedPointItem and: [constrainedPoint isNil]] ]
+		! !
 
-!DrGLocusBuilder methodsFor: 'testing'!
+!DrGLocusBuilder methodsFor: 'testing' stamp: 'hlsf 5/29/2025 22:21:19'!
 readyToBuild
-	^ freePoint notNil
-		and: [constrainedPoint notNil]! !
+	^ freePoint notNil and: [constrainedPoint notNil]! !
 
 !DrGLocusBuilder class methodsFor: 'documentation'!
 description
@@ -26820,11 +26813,11 @@ arguments
 	segment ifNotNil: [^{segment}].
 	^{pointA . pointB}! !
 
-!DrGMiddleBuilder methodsFor: 'testing'!
+!DrGMiddleBuilder methodsFor: 'testing' stamp: 'hlsf 5/29/2025 15:46:31'!
 isWanted: aMathItemCollection
 	^ aMathItemCollection  notEmpty 
-		and: [(aMathItemCollection first isPointItem	
-		and: [aMathItemCollection first ~= pointA])
+		and: [
+			(aMathItemCollection first isPointItem and: [aMathItemCollection first ~= pointA])
 			or: [aMathItemCollection first isSegmentItem and: [pointA isNil]]]! !
 
 !DrGMiddleBuilder methodsFor: 'testing'!
@@ -30085,11 +30078,11 @@ handlesMouseScroll: scrollEvent
 handlesMouseStillDown: evt
 	^ true! !
 
-!DrGDrawable methodsFor: 'events' stamp: 'hlsf 6/21/2021 21:38:07'!
+!DrGDrawable methodsFor: 'events' stamp: 'hlsf 5/30/2025 14:47:24'!
 mouseButton1Down: evt localPosition: localPosition
 	evt shiftPressed 
 		ifTrue: [self tool handlePressShiftKey: localPosition ]
-		ifFalse: 	[self tool handlePress: localPosition].
+		ifFalse: [self tool handlePress: localPosition].
 	self showUnderMouseMorph! !
 
 !DrGDrawable methodsFor: 'events' stamp: 'hlsf 9/5/2024 16:32:29'!
