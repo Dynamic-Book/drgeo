@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 30 May 2025 at 3:45:38 pm'!
+'From Cuis7.3 [latest update: #7248] on 31 May 2025 at 3:57:43 pm'!
 'Description '!
-!provides: 'DrGeo' 1 770!
+!provides: 'DrGeo' 1 771!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -1898,16 +1898,6 @@ DrGSelectToolState subclass: #DrGSelectToolStateSelected
 	category: 'DrGeo-Presenter-Tool'!
 !classDefinition: 'DrGSelectToolStateSelected class' category: #'DrGeo-Presenter-Tool'!
 DrGSelectToolStateSelected class
-	instanceVariableNames: ''!
-
-!classDefinition: #DrGMutatorToolStateSelected category: #'DrGeo-Presenter-Tool'!
-DrGSelectToolStateSelected subclass: #DrGMutatorToolStateSelected
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'DrGeo-Presenter-Tool'!
-!classDefinition: 'DrGMutatorToolStateSelected class' category: #'DrGeo-Presenter-Tool'!
-DrGMutatorToolStateSelected class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGStyleToolState category: #'DrGeo-Presenter-Tool'!
@@ -12753,7 +12743,7 @@ gridPoint: ungriddedPoint
 !DrGTool methodsFor: 'updating' stamp: 'hlsf 4/11/2021 12:06:31'!
 redrawFlyingMorph! !
 
-!DrGTool methodsFor: 'updating'!
+!DrGTool methodsFor: 'updating' stamp: 'hlsf 5/31/2025 15:43:18'!
 switchState: aStateClass
 	self state: (aStateClass new context: self)! !
 
@@ -13238,12 +13228,12 @@ registerDependant: anObject
 builder
 	^ builder! !
 
-!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 6/23/2021 15:47:53'!
+!DrGSelectTool methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:09:43'!
 curvesToMutatePointIntoNear: aPoint
 "Search for the curves the point can mutate into. In priority intersectable curves, then curves."
 	| curves intersectables |
-	curves := (self myMorphsNear: aPoint) select: [:aMorph | 		aMorph mathItem isCurveItem 
-		and: [self domain factory is: aMorph mathItem before: self mathItem]].
+	curves := (self myMorphsNear: aPoint) select: [:aMorph | 
+		aMorph mathItem isCurveItem and: [self domain factory is: aMorph mathItem before: self mathItem]].
 	"if several curves check for the intersectables"
 	^ curves size > 1 
 		ifTrue: [  
@@ -13427,12 +13417,12 @@ title
 !DrGToolState methodsFor: 'handling' stamp: 'hlsf 8/4/2021 11:47:54'!
 handleChoice: aMorphCollection! !
 
-!DrGToolState methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
+!DrGToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:47:14'!
 handleMouseAt: aPoint 
 	"Return true if we can process something or we are over something"
 	| morphs aTip feedback |
 	feedback := true.
-	morphs := self context relevantMorphsNear: aPoint.
+	morphs := context relevantMorphsNear: aPoint.
 	morphs size = 1
 		ifTrue: [
 			aTip := morphs first mathItem descriptiveName.
@@ -13476,9 +13466,9 @@ handleShiftKeyMouseAt: aPoint
 handleStillPress: aPoint
 	"A 2s mouse down evt, by default do nothing"! !
 
-!DrGToolState methodsFor: 'state'!
+!DrGToolState methodsFor: 'state' stamp: 'hlsf 5/31/2025 15:47:26'!
 switchState: aStateClass
-	self context switchState: aStateClass! !
+	context switchState: aStateClass! !
 
 !DrGToolState methodsFor: 'accessing'!
 context
@@ -13488,53 +13478,51 @@ context
 context: aContext
 	context := aContext ! !
 
-!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 6/19/2021 10:07:28'!
+!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:47:08'!
 drawable
-	^self context drawable! !
+	^ context drawable! !
 
-!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 8/3/2023 20:55:47'!
+!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:47:20'!
 presenter
-	^self context presenter! !
+	^context presenter! !
 
-!DrGToolState methodsFor: 'accessing'!
+!DrGToolState methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:47:33'!
 view
-	^self context presenter view! !
+	^ context presenter view! !
 
-!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 8/4/2021 11:48:00'!
+!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:47:44'!
 handleChoice: aMorphCollection
-|aMathItemCollection|
-	aMathItemCollection := OrderedCollection new.
-	aMorphCollection do: [:aMorph|
-		aMathItemCollection add: aMorph mathItem.
-		self context add: aMorph].
-	self context builder 
-		add: aMathItemCollection 
-		at: (self drawable gridWorldPoint: self context last).! !
+	| items |
+	items := aMorphCollection collect: [:aMorph |
+		context add: aMorph.
+		aMorph mathItem].
+	context builder 
+		add: items 
+		at: (self drawable gridWorldPoint: context last).! !
 
-!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/30/2025 15:14:24'!
+!DrGBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:48:17'!
 handlePress: aPoint 
 	"return true if we process something (including additional user choice)"
 	| morphs |
 	self drawable hideTip.
-	self context last: aPoint.
-	morphs := self context relevantMorphsNear: aPoint.
-	morphs size = 1 	ifTrue: [
+	context last: aPoint.
+	morphs := context relevantMorphsNear: aPoint.
+	" Do we want to handle a click on the background OR do we select one item? "
+	( (morphs isEmpty and: [context isWanted: #()] )
+	or: [morphs size = 1] ) ifTrue: [
 		self handleChoice: morphs.
-		^true].
-	(morphs size = 0 and: [self context isWanted: #() ]) ifTrue: [
-		self handleChoice: morphs.
-		^true].
+		^ true].
 	"More than one math item under mouse, user must choose one item"
 	morphs size >= 2 ifTrue: [
 		"Display a pop-up menu to select one item"
-		self context chooseMorph: morphs.
-		^true].
-	^false! !
+		context chooseMorph: morphs.
+		^ true].
+	^ false! !
 
-!DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
+!DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:48:23'!
 handleMouseAt: aPoint 
 	| morphs aTip |
-	morphs := self context relevantMorphsNear: aPoint.
+	morphs := context relevantMorphsNear: aPoint.
 	morphs size = 1
 		ifTrue: [aTip := morphs first mathItem descriptiveName].
 	morphs size > 1
@@ -13544,100 +13532,100 @@ handleMouseAt: aPoint
 		ifNotNil: [self drawable tip: aTip at: aPoint].
 	^ aTip notNil! !
 
-!DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 8/4/2021 11:43:09'!
+!DrGFlyPointBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:48:33'!
 handlePress: aPoint 
 "return true as we always do something in this context."
 	self drawable hideTip.
-	self context last: (self context gridPoint: aPoint).
+	context last: (context gridPoint: aPoint).
 	"user clicked in the background or in one or several curve item, handle it immediately"
-	self handleChoice: (self context relevantMorphsNear: aPoint).
+	self handleChoice: (context relevantMorphsNear: aPoint).
 	^ true! !
 
-!DrGMacroBuildToolStateInput methodsFor: 'handling' stamp: 'hlsf 11/3/2021 19:08:00'!
+!DrGMacroBuildToolStateInput methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:49:00'!
 handleChoice: aMorphCollection 
-	self context builder
+	context builder
 		add: (aMorphCollection collect: [ :c | c mathItem ])	
-			at: (self drawable gridWorldPoint: self context last);
+			at: (self drawable gridWorldPoint: context last);
 		changed: #inputNames.
-	self context selectInputMorph! !
+	context selectInputMorph! !
 
-!DrGMacroBuildToolStateInput methodsFor: 'accessing' stamp: 'hlsf 4/11/2021 13:52:07'!
+!DrGMacroBuildToolStateInput methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:48:43'!
 context: aContext
 	super context: aContext.
-	self context selectInputMorph ! !
+	context selectInputMorph ! !
 
-!DrGMacroPlayToolStateSelect methodsFor: 'handling' stamp: 'hlsf 6/19/2021 10:07:28'!
+!DrGMacroPlayToolStateSelect methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:49:07'!
 handleChoice: aMorphCollection 
-	self context builder 
+	context builder 
 		add: (aMorphCollection collect: [ :c | c mathItem ])
-		at: (self drawable gridWorldPoint: self context last).
-	self context selectInputMorph! !
+		at: (self drawable gridWorldPoint: context last).
+	context selectInputMorph! !
 
-!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 4/11/2021 12:31:25'!
+!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:49:16'!
 context: aContext
 	super context: aContext.
-	self context selectOutputMorph ! !
+	context selectOutputMorph ! !
 
-!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 11/3/2021 19:10:22'!
+!DrGMacroBuildToolStateOutput methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:49:24'!
 handleChoice: aMorphCollection 
-	self context builder
+	context builder
 		add: (aMorphCollection collect: [ :c | c mathItem ])
-			at: (self drawable gridWorldPoint: self context last);
+			at: (self drawable gridWorldPoint: context last);
 		changed: #outputNames.
-	self context selectOutputMorph! !
+	context selectOutputMorph! !
 
-!DrGFlyBuildToolState methodsFor: 'processing' stamp: 'hlsf 8/4/2023 11:17:16'!
+!DrGFlyBuildToolState methodsFor: 'processing' stamp: 'hlsf 5/31/2025 15:49:36'!
 addFlyingPointToBuiltItemAt: aPoint
-	self context mathItemTool 
-		add: self context drawable lastItemView.
-	self context mathItemTool builder 
-		add: {self context domain factory last} 
+	context mathItemTool 
+		add: context drawable lastItemView.
+	context mathItemTool builder 
+		add: {context domain factory last} 
 		at: (self drawable morphToWorld: aPoint).! !
 
-!DrGFlyBuildToolState methodsFor: 'testing' stamp: 'hlsf 8/4/2021 11:50:00'!
+!DrGFlyBuildToolState methodsFor: 'testing' stamp: 'hlsf 5/31/2025 15:50:37'!
 isFlyingPointConstructedAt: aPoint
 "return true whenever a flypoint is constructed, the new point instance is then 
  ready to use, from the flyPointTool builder"
-	^ (self context mathItemTool builder isWanted: { (DrGPointItem new) }) 
-		and: [self context flyPointTool handlePress: aPoint]! !
+	^ (context mathItemTool builder isWanted: { (DrGPointItem new) }) 
+		and: [context flyPointTool handlePress: aPoint]! !
 
-!DrGFlyBuildToolState methodsFor: 'testing'!
+!DrGFlyBuildToolState methodsFor: 'testing' stamp: 'hlsf 5/31/2025 15:50:45'!
 isFlyingPointWantedAt: aPoint
 "are we interested by a point at position aPoint"
-	^ (self context mathItemTool builder isWanted: { (DrGPointItem new) }) 
-		ifTrue: [self context flyPointTool handleMouseAt: aPoint]
+	^ (context mathItemTool builder isWanted: { (DrGPointItem new) }) 
+		ifTrue: [context flyPointTool handleMouseAt: aPoint]
 		ifFalse: [false]! !
 
-!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 6/20/2021 17:10:31'!
+!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:49:46'!
 handleMouseAt: aPoint 
-	self context builder moveFlyingMorphAt: (self drawable  morphToWorld: aPoint).
-	self context last: aPoint.
+	context builder moveFlyingMorphAt: (self drawable  morphToWorld: aPoint).
+	context last: aPoint.
 	self drawable updateUnderMouseMorph.
 	"dispatch handleMouseAt"
-	^ (self context mathItemTool handleMouseAt: aPoint) 
+	^ (context mathItemTool handleMouseAt: aPoint) 
 		ifFalse: [self isFlyingPointWantedAt: aPoint]
 		ifTrue: [true]! !
 
-!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 6/21/2021 21:23:09'!
+!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:50:06'!
 handlePress: aPoint 
-	self context last: aPoint.
+	context last: aPoint.
 	"do we select an item underneath? If so we are done"
-	(self context mathItemTool handlePress: aPoint) ifTrue: [^true].
+	(context mathItemTool handlePress: aPoint) ifTrue: [^true].
 	"do we want a flyingPoint ?"
 	(self isFlyingPointConstructedAt: aPoint) ifFalse: [^false].
 	self addFlyingPointToBuiltItemAt: aPoint.
 	^ true! !
 
-!DrGFlyBuildToolState methodsFor: 'handling'!
+!DrGFlyBuildToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:50:28'!
 handleRelease: aPoint
-	self context mathItemTool handleRelease: aPoint.
-	self context flyPointTool handleRelease: aPoint.! !
+	context mathItemTool handleRelease: aPoint.
+	context flyPointTool handleRelease: aPoint.! !
 
-!DrGFlyBuildTouchToolState methodsFor: 'handling' stamp: 'hlsf 8/4/2021 15:06:04'!
+!DrGFlyBuildTouchToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:40:15'!
 handlePress: aPoint
 	| answer |
 	answer := super handlePress: aPoint.
-	answer ifTrue: [			self switchState: DrGFlyBuildTouchToolStateGrabbed].
+	answer ifTrue: [self switchState: DrGFlyBuildTouchToolStateGrabbed].
 	^ answer! !
 
 !DrGFlyBuildTouchToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 8/4/2021 15:22:19'!
@@ -13659,12 +13647,12 @@ handlePress: aPoint
 	"the finger is stuck on the screen, we cannot clic again, can't do anything"
 	^ false! !
 
-!DrGFlyBuildTouchToolStateSlided methodsFor: 'handling' stamp: 'hlsf 6/21/2021 20:11:06'!
+!DrGFlyBuildTouchToolStateSlided methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:50:51'!
 handleRelease: aPoint
 	self switchState: DrGFlyBuildTouchToolState.
-	self context last: aPoint.
+	context last: aPoint.
 	"do we select an item underneath?"
-	(self context mathItemTool handlePress: aPoint) ifTrue: [^true].
+	(context mathItemTool handlePress: aPoint) ifTrue: [^true].
 	"do we want a flyingPoint ?"
 	(self isFlyingPointConstructedAt: aPoint) ifFalse: [^false].
 	self addFlyingPointToBuiltItemAt: aPoint.
@@ -13674,90 +13662,93 @@ handleRelease: aPoint
 handleMouseAt: aPoint
 	^false! !
 
-!DrGMacroToolStateNeutral methodsFor: 'accessing' stamp: 'hlsf 4/11/2021 12:31:09'!
+!DrGMacroToolStateNeutral methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:50:56'!
 context: aContext
 	super context: aContext.
-	self context selectNoMorph! !
+	context selectNoMorph! !
 
-!DrGSelectToolState methodsFor: 'accessing'!
+!DrGSelectToolState methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:51:08'!
 mathItem 
 "the selected math item"
-	^ self context mathItem ! !
+	^ context mathItem ! !
 
-!DrGSelectToolState methodsFor: 'handling' stamp: 'hlsf 4/11/2021 13:55:12'!
+!DrGSelectToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:51:03'!
 handleChoice: aMorphCollection 
-	aMorphCollection 
-		ifNotEmpty: 
-			[self context morph: aMorphCollection first.
+	^ aMorphCollection 
+		ifEmpty: [
+			context reset.
+			false]
+		ifNotEmpty: [
+			context morph: aMorphCollection first.
 			self switchState: DrGSelectToolStateSelected.
-			^true]
-		ifEmpty: 
-			[self context reset.
-			^false]! !
+			true]
+		! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 4/12/2024 12:22:01'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:51:18'!
 handleChoice: aMorphCollection 
 "In this state, handle a choice to merge two points"
 	aMorphCollection ifNotEmpty: [
 		aMorphCollection do: [:aMorph | aMorph stopStepping " blinking"].
-		self context mathItem point: (self drawable morphToWorld: self context start).
-		self context domain 
-			merge: self context mathItem with: aMorphCollection first mathItem.
+		context mathItem point: (self drawable morphToWorld: self context start).
+		context domain 
+			merge: context mathItem with: aMorphCollection first mathItem.
 		self presenter saved: false].
-	self context reset.! !
+	context reset.! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 12/2/2021 10:57:14'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:51:43'!
 handleMouseAt: aPoint
-|gridded|
-	(self context isGridded and: [self mathItem isFreePointItem])
-		ifFalse: [gridded := self drawable gridWorldVector: aPoint - self context last.
-			self context domain 
+	| gridded |
+	(context isGridded and: [self mathItem isFreePointItem])
+		ifFalse: [
+			gridded := self drawable gridWorldVector: aPoint - context last.
+			context domain 
 				moveEvent: self mathItem
 				inDirection: gridded 
-				withDirty: self context mathItems.
+				withDirty: context mathItems.
 			"If no movement, keep previous last position in reference"
-			(gridded closeTo: 0@0) ifFalse: [self context last: (self context gridPoint: aPoint)]]
-		ifTrue: [gridded := self context gridPoint: aPoint.
-			self context domain 
+			(gridded closeTo: 0@0) ifFalse: [context last: (context gridPoint: aPoint)]]
+		ifTrue: [
+			gridded := context gridPoint: aPoint.
+			context domain 
 				moveEvent: self mathItem
 				at: (self drawable gridWorldPoint: gridded)
-				withDirty: self context mathItems.
-			self context last: gridded.].
+				withDirty: context mathItems.
+			context last: gridded].
 	self drawable updateDottedLinesToParents.
 	self drawable restartMouseStillDownHandle.
 	^ true! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/3/2023 20:56:00'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:51:54'!
 handleRelease: aPoint 
 	self switchState: DrGSelectToolStateNeutral.
 	"issue a moveCommand"
-	self context domain 
+	context domain 
 		moveMathItem: self mathItem 
-		with: (self drawable gridWorldVector: self context last - self context start).
+		with: (self drawable gridWorldVector: context last - context start).
 	self drawable removeDottedLinesToParents.
-	self context reset.
+	context reset.
 	self presenter saved: false! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 4/11/2021 12:50:56'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:01'!
 handleStillPress: aPoint
 	|merger|
-	(merger := self context pointMorphToMergeWithAt: aPoint) notEmpty  ifTrue: 
+	(merger := context pointMorphToMergeWithAt: aPoint) notEmpty  ifTrue: 
 		["I keep pressing while holding a free point"
 		merger size = 1 
 			ifTrue: [self handleChoice: merger]
-			ifFalse: [self context chooseMorph: merger title: 'Select a point to merge with' translated]]! !
+			ifFalse: [context chooseMorph: merger title: 'Select a point to merge with' translated]]! !
 
 !DrGMutatorToolStateDragged methodsFor: 'as yet unclassified'!
 isMutantFreePoint
 	^ originalPointClass = DrGPointFreeItem! !
 
-!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:47:10'!
+!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:07'!
 handleMouseAt: aPoint
 	| morphs aTip|
 	"First handle the redraw"
 	super handleMouseAt: aPoint.
 	"Detect for mutation candidate"
-	morphs := self context curvesToMutatePointIntoNear: aPoint.
+	morphs := context curvesToMutatePointIntoNear: aPoint.
 	(morphs isEmpty and: [self isMutantFreePoint not]) ifTrue: [
 		aTip := 'Change as a free point on the plane.' translated].
 	morphs size = 1 ifTrue: [
@@ -13767,28 +13758,28 @@ handleMouseAt: aPoint
 	aTip 
 		ifNil: [self drawable hideTip]
 		ifNotNil: [self drawable tip: aTip at: aPoint].
-	^ aTip isNil not! !
+	^ aTip notNil! !
 
-!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/3/2023 20:56:08'!
+!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:25'!
 handleRelease: aPoint
 	| morphs |
 	self drawable hideTip.
 	"Detect for mutation candidate"
-	morphs := self context curvesToMutatePointIntoNear: aPoint.
+	morphs := context curvesToMutatePointIntoNear: aPoint.
 	morphs size = 1 ifTrue: [
-		self context domain
+		context domain
 			mutate: self mathItem 
 			asFreeOn: morphs first mathItem 
 			at: (self drawable gridWorldPoint: aPoint)].
 	morphs size > 1 ifTrue: [
-		self context domain 
+		context domain 
 			mutate: self mathItem 
 			asIntersectionWith: morphs first mathItem  
 			and: morphs second mathItem  
 			at: (self drawable gridWorldPoint: aPoint)]. 
 	self presenter saved: false.
 	self switchState: DrGSelectToolStateNeutral.
-	self context reset
+	context reset
 ! !
 
 !DrGMutatorToolStateDragged methodsFor: 'accessing'!
@@ -13796,10 +13787,10 @@ context: aContext
 	super context: aContext.
 	originalPointClass := context mathItem class.! !
 
-!DrGSelectToolStateDraggedBitmap methodsFor: 'accessing' stamp: 'hlsf 4/11/2021 12:46:23'!
+!DrGSelectToolStateDraggedBitmap methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:52:34'!
 context: aContext
 	super context: aContext.
-	draggedCorner := self context morph isAnyCornerIn: self context start.! !
+	draggedCorner := context morph isAnyCornerIn: context start.! !
 
 !DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 6/19/2021 09:35:00'!
 handleMouseAt: aPoint 
@@ -13811,12 +13802,12 @@ handleMouseAt: aPoint
 	^ processSomething 
 ! !
 
-!DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 4/11/2021 12:46:23'!
+!DrGSelectToolStateDraggedBitmap methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:53'!
 magnifyBitmap: aPoint
 	| displacement unitVector image factor griddedPoint |
-	griddedPoint := self context gridPoint: aPoint.
-	displacement := griddedPoint - self context start.
-	image := self context morph morph.
+	griddedPoint := context gridPoint: aPoint.
+	displacement := griddedPoint - context start.
+	image := context morph morph.
 	draggedCorner = #topLeft ifTrue: [
 		corner ifNil: [corner := image position].
 		[unitVector := (image center - corner) normalized] on: ZeroDivide do: [unitVector := 0@0]].
@@ -13831,113 +13822,105 @@ magnifyBitmap: aPoint
 		[unitVector := (corner - image center) normalized] on: ZeroDivide do: [unitVector := 0@0]].
 	factor := (displacement dotProduct: unitVector) / (corner dist: image center).
 	factor > 1 ifTrue: [factor := 0.9].
-	originalMagnifyBy ifNil: [originalMagnifyBy := self context mathItem magnifyBy].
-	self context mathItem magnifyBy: (1 - factor) * originalMagnifyBy.
-	self context domain updateAllMathItems.
-	self context last: griddedPoint.! !
+	originalMagnifyBy ifNil: [originalMagnifyBy := context mathItem magnifyBy].
+	context mathItem magnifyBy: (1 - factor) * originalMagnifyBy.
+	context domain updateAllMathItems.
+	context last: griddedPoint.! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 6/19/2021 10:07:28'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:59'!
 handleMouseAt: aPoint 
 	"The user is moving, switch to dragging state"
-	self context
+	context
 		start: aPoint;
 		last: aPoint.
-	self context morph isBitmap 
+	context morph isBitmap 
 		ifTrue: [self switchState: DrGSelectToolStateDraggedBitmap] 
 		ifFalse: [self drawable dottedLinesToParentsOf: self  mathItem.
 			self switchState: DrGSelectToolStateDragged].
 	^ true! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:53:04'!
 handleRelease: aPoint 
 	self switchState: DrGSelectToolStateNeutral.
-	self context reset.
-	self context factory rehash. "After move event rehash the the free positionnable item"! !
+	context reset.
+	context factory rehash. "After move event rehash the the free positionnable item"! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:53:11'!
 handleStillPress: aPoint
 "The user keeps pressing without moving, he wants a clone"
-	self context 
+	context 
 		start: aPoint;
 		last: aPoint.
-	self context builder 
-		add: {self context mathItem}
+	context builder 
+		add: {context mathItem}
 		at: aPoint.! !
 
-!DrGMutatorToolStateGrabbed methodsFor: 'handling'!
+!DrGMutatorToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:53:18'!
 handleMouseAt: aPoint 
 	"The user is moving, detach the point as a free point and switch to dragging state"
 	|griddedPoint|
 	self switchState: DrGMutatorToolStateDragged.
-	griddedPoint := self context gridPoint: aPoint.
-	self context
+	griddedPoint := context gridPoint: aPoint.
+	context
 		start: griddedPoint;
 		last: griddedPoint.
-	self context domain mutateAsFreePoint: self mathItem.
+	context domain mutateAsFreePoint: self mathItem.
 	^ true
 
 ! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 6/21/2021 21:26:29'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:11:43'!
 handleMouseAt: aPoint
 	| processSomething |
 	(processSomething := super handleMouseAt: aPoint)
-		ifTrue: [	Cursor webLinkCursor activateCursor] 
+		ifTrue: [Cursor webLinkCursor activateCursor] 
 		ifFalse: [Cursor normalCursorWithMask activateCursor].
 	^ processSomething ! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:53:42'!
 handlePress: aPoint 
 	| morphs griddedPoint|
 	self drawable hideTip.
-	griddedPoint := self context gridPoint: aPoint.
-	morphs := self context relevantMorphsNear: aPoint.
+	griddedPoint := context gridPoint: aPoint.
+	morphs := context relevantMorphsNear: aPoint.
 	morphs size = 1 
-		ifTrue: 
-			[self context last: griddedPoint.
-			self context morph: morphs first.
-			self context updateDirtyItemsList.
-			self switchState: DrGSelectToolStateGrabbed.
-			^true].
+		ifTrue: [
+			context last: griddedPoint.
+			context morph: morphs first.
+			context updateDirtyItemsList.
+			self switchState: DrGSelectToolStateGrabbed ].
 	"More than one math item under mouse"
 	morphs size > 1 
-		ifTrue: 
-			[self context last: griddedPoint.
-			self context chooseMorph: morphs.
-			^true].
-	"The user clicked in the background, clear the selection"
-	self context reset.
-	^false! !
+		ifTrue: [ 
+			context last: griddedPoint.
+			context chooseMorph: morphs ].
+	" Do user user clicked in the background, if so reset selection"
+	^ morphs size >= 1 or: [context reset. false].! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 6/19/2021 10:07:28'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:54:05'!
 handlePressShiftKey: aPoint 
 	| morphs griddedPoint|
 	self drawable hideTip.
-	griddedPoint := self context gridPoint: aPoint.
-	morphs := self context mutableMorphsAt: aPoint.
-	morphs size = 1 
-		ifTrue: 
-			[self context last: griddedPoint.
-			self context morph: morphs first.
-			self context updateDirtyItemsList.
-			self switchState: DrGMutatorToolStateGrabbed. 
-			^true].
+	griddedPoint := context gridPoint: aPoint.
+	morphs := context mutableMorphsAt: aPoint.
+	morphs size print.
+	morphs size = 1 ifTrue: [
+			context last: griddedPoint.
+			context morph: morphs first.
+			context updateDirtyItemsList.
+			self switchState: DrGMutatorToolStateGrabbed ].
 	"More than one math item under mouse"
-	morphs size > 1 
-		ifTrue: 
-			[self context last: griddedPoint.
-			(self context chooseMorph: morphs) 
-				ifTrue: [self switchState: DrGMutatorToolStateSelected].
-			^true].
-	"The user clicked in the background, clear the selection"
-	self context reset.
-	^false! !
+	morphs size > 1 ifTrue: [
+			context last: griddedPoint.
+			context chooseMorph: morphs].
+	"Do the user clicked in the background, if so clear the selection"
+	morphs size >=1 or: [context reset. false]! !
 
-!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 6/19/2021 10:07:28'!
+!DrGSelectToolStateNeutral methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:54:10'!
 handleShiftKeyMouseAt: aPoint
 	"Let's inform about the mutate mode"
 	| morphs aTip |
-	morphs := self context mutableMorphsAt: aPoint.
+	morphs := context mutableMorphsAt: aPoint.
 	morphs ifEmpty: [
 		aTip := 'Pressing down the [Shift] key you can drag and change the nature of free point or intersection point.' translated].
 	morphs size = 1 ifTrue: [
@@ -13951,96 +13934,89 @@ handleShiftKeyMouseAt: aPoint
 isSelectNeutral
 	^ true! !
 
-!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
+!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:54:17'!
 handleMouseAt: aPoint
 	| morphs |
-	morphs := self context relevantMorphsNear: aPoint.
-	^ (morphs includes: self context morph)
+	morphs := context relevantMorphsNear: aPoint.
+	^ (morphs includes: context morph)
 		ifTrue:
-			[self drawable 	tip: self mathItem descriptiveName				at: aPoint.
+			[self drawable tip: self mathItem descriptiveName at: aPoint.
 			true]
 		ifFalse: 
 			[self drawable hideTip.
 			false]! !
 
-!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
+!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:54:27'!
 handlePress: aPoint 
 	self drawable hideTip.
-	((self context relevantMorphsNear: aPoint) includes: self context morph) 
+	^ ((context relevantMorphsNear: aPoint) includes: context morph) 
 		ifTrue: [
-			self context updateDirtyItemsList.
+			context updateDirtyItemsList.
 			self switchState: DrGSelectToolStateGrabbed.
-			^true]
+			true]
 		ifFalse: [ 
-			self context reset.
-			^false]! !
+			context reset.
+			false]! !
 
-!DrGMutatorToolStateSelected methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
-handlePress: aPoint 
+!DrGSelectToolStateSelected methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:54:38'!
+handlePressShiftKey: aPoint 
 	self drawable hideTip.
-	((self context relevantMorphsNear: aPoint) includes: self context morph) 
+	^ ((context relevantMorphsNear: aPoint) includes: context morph) 
 		ifTrue: [
-			self context updateDirtyItemsList.
+			context updateDirtyItemsList.
 			self switchState: DrGMutatorToolStateGrabbed.
-			^true]
+			true]
 		ifFalse: [ 
-			self context reset.
-			^false]! !
+			context reset.
+			false]! !
 
-!DrGStyleToolState methodsFor: 'as yet unclassified' stamp: 'hlsf 4/11/2021 12:52:56'!
+!DrGStyleToolState methodsFor: 'as yet unclassified' stamp: 'hlsf 5/31/2025 15:55:03'!
 morphStyle
-	^ self context morphStyle! !
+	^ context morphStyle! !
 
-!DrGStyleToolState methodsFor: 'handling' stamp: 'hlsf 2/13/2022 11:25:34'!
+!DrGStyleToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:54:46'!
 handleChoice: aMorphCollection
 	aMorphCollection 
-		ifNotEmpty: 
-			[self context morph: aMorphCollection first.
+		ifNotEmpty: [
+			context morph: aMorphCollection first.
 			context presenter controlsManager stylerFor: self morphStyle]
-		ifEmpty: [self context reset]! !
+		ifEmpty: [context reset]! !
 
-!DrGStyleToolState methodsFor: 'handling' stamp: 'hlsf 6/23/2021 15:39:01'!
+!DrGStyleToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:54:58'!
 handlePress: aPoint
-	|costumes|
+	| morphs |
 	self drawable hideTip.
-	costumes := self context relevantMorphsNear: aPoint.
-	costumes size = 1 ifTrue:
-		[self context last: aPoint.
-		self handleChoice: costumes.
-		^true].
+	morphs := context relevantMorphsNear: aPoint.
+	morphs size = 1 ifTrue: [
+		context last: aPoint.
+		self handleChoice: morphs].
 	"More than one math item under mouse"
-	costumes size > 1 ifTrue:
-		[self context last: aPoint.
-		self context chooseMorph: costumes.
-		^true].
-	"The user clicked in the background, clear the selection"
-	self context reset.
-	^false! !
+	morphs size > 1 ifTrue: [
+		context last: aPoint.
+		context chooseMorph: morphs].
+	" Do the user clicked in the background, if so clear the selection"
+	^ (morphs size >= 1) or: [context reset. false]! !
 
-!DrGAnimateToolState methodsFor: 'handling' stamp: 'hlsf 4/11/2021 13:53:04'!
+!DrGAnimateToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:55:16'!
 handleChoice: aMorphCollection
 	aMorphCollection 
 		ifNotEmpty: [
 			self stopAnimating.
-			self context morph: aMorphCollection first.
+			context morph: aMorphCollection first.
 			self switchState: DrGAnimateToolStateSelected.
-			self context state startAnimating.
+			context state startAnimating.
 			^ true]
 		ifEmpty: [
-			self context reset.
+			context reset.
 			^ false]! !
 
 !DrGAnimateToolState methodsFor: 'testing'!
 isAnimating
 	^ false! !
 
-!DrGAnimateToolState methodsFor: 'accessing'!
+!DrGAnimateToolState methodsFor: 'accessing' stamp: 'hlsf 5/31/2025 15:55:07'!
 animateStep 
-	^ self context animateStep  ! !
-
-!DrGAnimateToolState methodsFor: 'accessing'!
-mathItem
-	^ self context mathItem ! !
+	^ context animateStep  ! !
 
 !DrGAnimateToolState methodsFor: 'animate'!
 animate
@@ -14050,24 +14026,24 @@ animate
 stopAnimating
 	"we are not animating in this state, do nothing"! !
 
-!DrGAnimateToolStateSelected methodsFor: 'animate'!
+!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 5/31/2025 15:55:41'!
 animate
 	| a | 
 	a := self mathItem abscissa + self animateStep.
 	a > 1.0 ifTrue: [a := 0].
 	self mathItem abscissa: a.
-	self context domain updateAllMathItems ! !
+	context domain updateAllMathItems ! !
 
 !DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 6/19/2021 10:07:28'!
 startAnimating
 	abscissa := self mathItem abscissa.
 	self drawable arrangeToStartStepping.! !
 
-!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 6/19/2021 10:07:28'!
+!DrGAnimateToolStateSelected methodsFor: 'animate' stamp: 'hlsf 5/31/2025 15:55:46'!
 stopAnimating
 	self drawable stopStepping.
 	self mathItem abscissa: abscissa.
-	self context domain updateAllMathItems! !
+	context domain updateAllMathItems! !
 
 !DrGAnimateToolStateSelected methodsFor: 'accessing' stamp: 'hlsf 6/19/2021 10:07:28'!
 context: aContext
@@ -14078,20 +14054,19 @@ context: aContext
 isAnimating
 	^ true! !
 
-!DrGDeleteToolState methodsFor: 'handling' stamp: 'hlsf 4/11/2021 14:02:01'!
+!DrGDeleteToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:45:32'!
 handleChoice: aMorphCollection
-	aMorphCollection 		ifNotEmpty: 
-		[self context presenter 
+	aMorphCollection ifNotEmpty: [
+		context presenter 
 			deleteMathItem: aMorphCollection first;
 			selectToolAfterBuilding].
-	self context reset! !
+	context reset! !
 
-!DrGPropertyToolState methodsFor: 'handling' stamp: 'hlsf 3/19/2022 16:27:21'!
+!DrGPropertyToolState methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:45:21'!
 handleChoice: aMorphCollection
-	aMorphCollection 		
-		ifNotEmpty: 
-			[self context morph: aMorphCollection first.
-			context presenter controlsManager propertyFor: context mathItem]
+	aMorphCollection ifNotEmpty: [
+		context morph: aMorphCollection first.
+		context presenter controlsManager propertyFor: context mathItem]
 ! !
 
 !DrGPlatform methodsFor: 'default preferences' stamp: 'hlsf 9/25/2022 10:22:26'!
