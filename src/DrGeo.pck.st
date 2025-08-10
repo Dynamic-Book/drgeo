@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7398] on 10 August 2025 at 1:51:57 pm'!
+'From Cuis7.5 [latest update: #7398] on 10 August 2025 at 11:56:14 pm'!
 'Description '!
-!provides: 'DrGeo' 1 773!
+!provides: 'DrGeo' 1 774!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -5120,12 +5120,12 @@ descriptiveName
 exist
 	^exist! !
 
-!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 5/20/2024 15:38:36'!
+!DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 8/10/2025 23:54:28'!
 exist: aBoolean
-	exist ~= aBoolean 
-		ifTrue: [
-			exist := aBoolean.
-			self triggerEvent: #existence with: exist]! !
+	exist ~= aBoolean ifTrue: [
+		exist := aBoolean.
+		self triggerEvent: #existence with: exist].
+	exist ifTrue: [self rehash]! !
 
 !DrGMathItem methodsFor: 'accessing' stamp: 'hlsf 2/11/2022 08:56:49'!
 icon
@@ -5684,7 +5684,7 @@ isCurveItem
 isGeometricItem
 	^ true! !
 
-!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:48:13'!
+!DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 23:50:56'!
 update
 	| direction1 direction2 a b c ab |
 	self doParentsExist 	ifFalse: [^ self exist: false].
@@ -5710,9 +5710,9 @@ update
 	length = 0 ifTrue: [ ^ self exist: false].
 	length < 0 
 		ifTrue: [
-			(ab < length or: [ab > 0]) 		ifTrue: 	[length := length + Float twoPi ] ]
+			(ab < length or: [ab > 0]) ifTrue: [length := length + Float twoPi ] ]
 		ifFalse: [
-			(ab > length or: [ab < 0]) 	ifTrue:  			[length := length - Float twoPi] ].
+			(ab > length or: [ab < 0]) ifTrue: [length := length - Float twoPi] ].
 	self exist: true! !
 
 !DrGArc3ptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 11:47:52'!
