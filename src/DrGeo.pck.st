@@ -1,6 +1,6 @@
-'From Cuis7.3 [latest update: #7248] on 31 May 2025 at 3:57:43 pm'!
+'From Cuis7.5 [latest update: #7398] on 10 August 2025 at 12:21:55 pm'!
 'Description '!
-!provides: 'DrGeo' 1 771!
+!provides: 'DrGeo' 1 773!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -2701,7 +2701,7 @@ DrGDrawable class
 	instanceVariableNames: ''!
 
 !classDefinition: #DrGeoMiniView category: #'DrGeo-View'!
-LayoutMorph subclass: #DrGeoMiniView
+LinearLayoutMorph subclass: #DrGeoMiniView
 	instanceVariableNames: 'drawable presenter'
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -8199,14 +8199,14 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:17:31'!
+!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 12:08:22'!
 update
 	|center factor|
 	self doParentsExist ifFalse: [^ self exist: false].
 	center := parents second point.
 	factor := parents third valueItem.
 	points := OrderedCollection new.
-	parents first points do: [:point | 			points add: (center + (factor * (point - center)))].
+	parents first points do: [:point | points add: (center + (factor * (point - center)))].
 	self computeLength.
 	self exist: true! !
 
@@ -14450,10 +14450,10 @@ rootPath
 
 	^ DirectoryEntry smalltalkImageDirectory parent! !
 
-!DrGDevelopment methodsFor: 'font' stamp: 'hlsf 8/12/2023 14:05:12'!
+!DrGDevelopment methodsFor: 'font' stamp: 'hlsf 8/10/2025 10:38:48'!
 setFontPreferences
 	PreferenceSet setDefaultFont: 'DejaVu Sans'.
-	Preferences at: #defaultFontSize put: 11.
+	Preferences at: #defaultFontSize put: 14.
 ! !
 
 !DrGWorkstation methodsFor: 'initialize-release' stamp: 'hlsf 4/3/2024 12:12:01'!
@@ -14489,9 +14489,9 @@ launch
 	Transcript show: '[DrGeo] launching ended'; cr.
 	! !
 
-!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 5/17/2025 20:41:20'!
+!DrGeoSystem class methodsFor: 'class initialization' stamp: 'hlsf 6/1/2025 11:59:39'!
 beDevelopment
-	"Be like the Cuis environment as the DrGeo development environment"
+	" Be like the Cuis environment for DrGeo development "
 	"self beDevelopment"
 	platform := DrGDevelopment new.
 	platform launch. "manual launch for additional initialization occuring right after system start up"! !
@@ -25507,7 +25507,7 @@ updateScriptMenu
 			setBalloonText: aScript description]
 ! !
 
-!DrGUIMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 3/24/2024 15:43:02'!
+!DrGUIMinimalControlsManager methodsFor: 'initialization' stamp: 'hlsf 8/10/2025 11:52:13'!
 installTools
 " Install menu, toolbar, tree, wheels, statusbar "
 	| row col wheelHeight wheelWidth |
@@ -25521,10 +25521,10 @@ installTools
 	col := LayoutMorph newColumn name: #wheelsYZ; color: view defaultColor; yourself.
 	col 
 		addMorph: (self zoomWheel borderWidth: 2) 
-		layoutSpec: (		LayoutSpec fixedExtent: wheelWidth @ wheelHeight);
+		layoutSpec: (LayoutSpec fixedExtent: wheelWidth @ wheelHeight);
 		addMorphUseAll: self transparentMorph;
 		addMorph: (self verticalWheel borderWidth: 2) 
-		layoutSpec: (		LayoutSpec fixedExtent: wheelWidth @ wheelHeight).			
+		layoutSpec: (LayoutSpec fixedExtent: wheelWidth @ wheelHeight).			
 	""	
 	row addMorph: col layoutSpec: (LayoutSpec fixedWidth: wheelWidth proportionalHeight: 1).	
 	view addMorph: row.
@@ -30447,12 +30447,11 @@ defaultColor
 deleteWithoutConfirmation
 	self delete! !
 
-!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 3/30/2024 16:37:20'!
+!DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 8/10/2025 12:03:25'!
 initialize
 	super initialize.
 	self color: self defaultColor .
-	drawable := DrGDrawable newOn: presenter .
-	self morphExtent: 750@500! !
+	drawable := DrGDrawable newOn: presenter! !
 
 !DrGeoMiniView methodsFor: 'initialize-release' stamp: 'hlsf 6/19/2021 10:01:18'!
 installTools 
@@ -30467,12 +30466,13 @@ release
 clipsSubmorphs
 	^ false! !
 
-!DrGeoMiniView class methodsFor: 'instance creation' stamp: 'hlsf 8/4/2023 13:05:08'!
+!DrGeoMiniView class methodsFor: 'instance creation' stamp: 'hlsf 8/10/2025 12:03:40'!
 for: aPresenter
 	^ self basicNew 
 		presenter: aPresenter ;
 		initialize;
 		beColumn;
+		morphExtent: 750@500;
 		yourself! !
 
 !DrGeoMiniView class methodsFor: 'new-morph participation' stamp: 'hlsf 3/15/2022 21:34:31'!
@@ -30968,9 +30968,10 @@ buildMorphicWindow
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 4/4/2022 12:54:13'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 11:23:38'!
 newAddArgumentButton
-	^ (PluggableButtonMorph model: self action:  #addArgument label: 'Add argument' translated)
+	^ (PluggableButtonMorph model: self action: #addArgument)
+			icon: Theme current listAddIcon ;
 			setBalloonText: 'Add an argument to this script.' translated;
 			yourself! !
 
@@ -30982,7 +30983,7 @@ newArgumentMorph
 		separation: 4@0;
 		yourself! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 5/27/2023 12:01:53'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 11:17:11'!
 newButtonArea
 	buttonArea := LayoutMorph newRow
 		separation: 8@0;
@@ -30990,12 +30991,12 @@ newButtonArea
 				enableSelector: #isValid; 
 				setBalloonText: 'Build a script with these settings.' translated;
 				yourself)
-		layoutSpec: (LayoutSpec new
+		layoutSpec: (LayoutSizeSpec new
 			useMorphWidth ;
 			proportionalHeight:  1;
 			offAxisEdgeWeight: #center);
 		addMorph: (PluggableButtonMorph model: self action:  #cancel label: 'Cancel' translated)
-		layoutSpec: (LayoutSpec new
+		layoutSpec: (LayoutSizeSpec new
 			useMorphWidth ;
 			proportionalHeight:  1;
 			offAxisEdgeWeight: #center);
@@ -31003,11 +31004,12 @@ newButtonArea
 		color: Color transparent.
 	^ buttonArea ! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 4/4/2022 20:10:51'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 11:18:05'!
 newDescriptionMorph
 | morph |
 	morph := (TextModelMorph textProvider: self textGetter: #description textSetter: #description:)
 		askBeforeDiscardingEdits: false;
+		borderWidth: 1;
 		setBalloonText:  'A description of the script. To help the user, describe carefully what the script does and the input arguments to select to use it.' translated;
 		yourself	.
 	morph scroller setProperty: #keyStroke: toValue: [:event | 
@@ -31015,17 +31017,17 @@ newDescriptionMorph
 		self changed: #isValid]. 
 	^ morph! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 7/21/2024 23:45:31'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 11:05:06'!
 newPane
 	| group |
 	group := LabelGroup with: {
 		'Name' translated -> self newScriptNameMorph .
 		'Description' translated -> self newDescriptionMorph .
-		'Arguments' translated -> (argumentsMorph :=  self newArgumentMorph)	 	}.
+		'Arguments' translated -> (argumentsMorph :=  self newArgumentMorph)}.
 	group doAdoptWidgetsColor.
 	^ group! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 4/4/2022 20:10:48'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 11:18:31'!
 newScriptNameMorph
 | morph |
 	morph := (TextModelMorph textProvider: self textGetter: #scriptName textSetter:  #scriptName:)
@@ -31034,6 +31036,7 @@ newScriptNameMorph
 		acceptOnCR: true;
 		morphHeight: FontFamily defaultPointSize;
 		setBalloonText:  'The name of the script.' translated;
+		borderWidth: 1
 		yourself	.
 	morph scroller setProperty: #keyStroke: toValue: [:event | 
 		morph scroller acceptContents.
@@ -31046,7 +31049,7 @@ initialize
 	scriptName := ''.
 	description := ''! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 7/29/2024 10:38:17'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 8/10/2025 11:27:26'!
 addArgument
 	| newArgument |
 	newArgument := LayoutMorph newRow
@@ -31066,7 +31069,7 @@ addArgument
 			indexGetter:  #listIndex
 			indexSetter: #listIndex:)
 			adoptWidgetsColor: self widgetsColor).
-	argumentsMorph addMorph: newArgument.
+	argumentsMorph addMorphFront: newArgument.
 	self morphExtent: self minimumExtent ! !
 
 !DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 8/4/2023 17:38:35'!
@@ -31132,6 +31135,10 @@ isValid
 removeArgument: aRowArgument
 	argumentsMorph removeMorph: aRowArgument .
 	self morphExtent: self minimumExtent ! !
+
+!DrGScriptDesignerDialog methodsFor: 'as yet unclassified' stamp: 'hlsf 8/10/2025 11:35:21'!
+minimumExtent
+	^ (Theme current scale: 400@250) max: (super minimumExtent )! !
 
 !DrGScriptDesignerDialog class methodsFor: 'labels and classes' stamp: 'hlsf 4/2/2022 12:50:48'!
 classesAndLabels
@@ -31321,22 +31328,22 @@ newDrGeoColumn
 		addAdjusterMorph ;
 		yourself! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/12/2022 19:34:44'!
+!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 11:56:01'!
 newPane
 	^ LayoutMorph newRow
 		separation: self defaultSeparation ;
-		addMorph: self newSketchesColumn layoutSpec: (LayoutSpec new useMorphWidth );
+		addMorph: self newSketchesColumn layoutSpec: (LayoutSizeSpec new useMorphWidth );
 		addMorphUseAll: self newDrGeoColumn;
 		yourself! !
 
-!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 4/12/2022 19:27:49'!
+!DrGSmalltalkSketchBrowser methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 11:56:10'!
 newSketchesColumn
 " The list of the sketch and an option to view the code"
 	| checkGtoup |
 	checkGtoup := CheckGroup fromList: {'Code' translated}.
 	checkGtoup buttons first when: #checkSelection send: #showCode: to: self.
 	^ LayoutMorph newColumn
-		addMorph: sketchesListMorph layoutSpec: (LayoutSpec new useMorphWidth);
+		addMorph: sketchesListMorph layoutSpec: (LayoutSizeSpec new useMorphWidth);
 		addMorphKeepMorphHeight: checkGtoup ;
 		yourself
 		! !
@@ -31875,41 +31882,35 @@ firstPage
  4. Last apply the selection.' translated
 		! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 8/3/2023 00:14:46'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 8/10/2025 11:47:21'!
 fourthPage
-| pane row titleLabel descriptionLabel tMorph descrMorph labelsWidth |
-	pane := self emptyPane.
-	row := LayoutMorph newRow separation: 4.
-	titleLabel := LabelMorph contents: 'Title:' translated.
-	descriptionLabel := LabelMorph contents: 'Description:' translated.
-	labelsWidth := titleLabel morphWidth max: descriptionLabel morphWidth.
-	row addMorph: titleLabel fixedWidth: labelsWidth.
+	| page tMorph descrMorph |
 	tMorph := (TextModelMorph textProvider: model textGetter: #title textSetter: #title:)
 		hideScrollBarsIndefinitely; 
+		borderWidth: 1;
 		askBeforeDiscardingEdits: false.
 	tMorph scroller 
 		setProperty: #keyStroke: 
 		toValue: [:event | 
 			tMorph scroller acceptContents.
 			self changed: #isReadyToApply].
-	row addMorphUseAll: tMorph.
-	pane addMorph: row fixedHeight: titleLabel morphHeight.
-	row :=  LayoutMorph newRow separation: 4.
-	row addMorph: descriptionLabel fixedWidth: labelsWidth .
 	descrMorph := (TextModelMorph textProvider: model textGetter: #description textSetter: #description:)
+		borderWidth: 1;
 		askBeforeDiscardingEdits: false.
 	descrMorph scroller 
 		setProperty: #keyStroke: 
 		toValue: [:event | 
 			descrMorph scroller acceptContents.
 			self changed: #isReadyToApply].
-	row addMorphUseAll: descrMorph.
-	pane addMorphUseAll: row.
+	page := LabelGroup with: {
+		'Name' translated -> tMorph.
+		'Description' translated -> descrMorph }.
+	page doAdoptWidgetsColor.
 	^(WizardPage applyPage: 'Give a name and a description' translated on: self)
-		contents: pane;
+		contents: page;
 		yourself! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 5/20/2024 15:31:43'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 8/10/2025 11:36:43'!
 secondPage
 | list pane |
 	list := PluggableListMorph 
@@ -31917,6 +31918,7 @@ secondPage
 		listGetter: #inputNames
 		indexGetter:  nil
 		indexSetter: nil.
+	list borderWidth: 1.
 	pane := self emptyPane 
 		addMorphUseAll: list;
 		yourself.
@@ -31925,7 +31927,7 @@ secondPage
 		yourself
 	! !
 
-!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 5/20/2024 15:31:46'!
+!DrGWizardMacroBuild methodsFor: 'pages' stamp: 'hlsf 8/10/2025 11:36:55'!
 thirdPage
 | list pane |
 	list := PluggableListMorph 
@@ -31933,6 +31935,7 @@ thirdPage
 		listGetter: #outputNames
 		indexGetter:  nil
 		indexSetter: nil.
+	list borderWidth: 1.
 	pane := self emptyPane 
 		addMorphUseAll: list;
 		yourself.
@@ -31989,24 +31992,21 @@ firstPage
  automaticly executed.
  To start press the ''next'' button.' translated! !
 
-!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 5/20/2024 15:31:50'!
+!DrGWizardMacroPlay methodsFor: 'pages' stamp: 'hlsf 8/10/2025 11:48:26'!
 secondPage
-| pane morph |
-	morph := PluggableListMorph 
-		withModel: self
-		listGetter: #macroList
-		indexGetter: #selectedMacro
-		indexSetter: #selectedMacro:.
-	pane  := self emptyPane
-		addMorphKeepMorphHeight: (LabelMorph contents: 'Title:' translated);
-		addMorph: morph proportionalHeight: 0.3;
-		addMorphKeepMorphHeight: (LabelMorph contents: 'Description:' translated);		
-		yourself.
-	morph := TextModelMorph textProvider: model textGetter: #description textSetter: #description:.
-	morph hideScrollBarsIndefinitely; askBeforeDiscardingEdits: false.
-	pane addMorphUseAll: morph.
+| page list description  |
+	list := PluggableListMorph 
+		withModel: self listGetter: #macroList 	indexGetter: #selectedMacro indexSetter: #selectedMacro:.
+	list borderWidth: 1.
+	description := TextModelMorph textProvider: model textGetter: #description textSetter: #description:.
+	description borderWidth: 1.
+	description hideScrollBarsIndefinitely; askBeforeDiscardingEdits: false.
+	page := LabelGroup with: {
+		'Name' translated -> list.
+		'Description' translated -> description }.
+	page doAdoptWidgetsColor .
 	^ (WizardPage applyPage: 'Select a macro-construction then the figure items' translated on: self)
-		contents: pane;
+		contents: page ;
 		yourself
 	! !
 
@@ -32085,20 +32085,24 @@ firstPage
  inserted in the sketch, at the user selected position.
  To start press the ''next'' button.' translated! !
 
-!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 7/21/2024 23:46:15'!
+!DrGWizardScript methodsFor: 'pages' stamp: 'hlsf 8/10/2025 11:47:41'!
 secondPage
 	| list argumentList page textMorph |
-	list := PluggableListMorph 
-		withModel: self listGetter: #scriptsName indexGetter: #selectedScript 		indexSetter: #selectedScript:. 
+	list := (PluggableListMorph 
+		withModel: self listGetter: #scriptsName indexGetter: #selectedScript indexSetter: #selectedScript:)
+			borderWidth: 1;
+			yourself. 
 	argumentList := (PluggableListMorph 
 		withModel: self listGetter: #argumentsName indexGetter: nil indexSetter: nil)
 		setBalloonText: 'The arguments accepted by this script.' translated;
+		borderWidth: 1;
 		yourself.
 	textMorph := (TextModelMorph textProvider: model textGetter: #description textSetter: #description:)
 		askBeforeDiscardingEdits: false;
+		borderWidth: 1;
 		yourself.
 	page := LabelGroup with: { 
-		'Script name' translated -> list.
+		'Name' translated -> list.
 		'Description' translated -> textMorph.
 		'Arguments' translated -> argumentList}.
 	page doAdoptWidgetsColor.
