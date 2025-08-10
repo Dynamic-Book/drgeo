@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7398] on 10 August 2025 at 11:56:14 pm'!
+'From Cuis7.5 [latest update: #7398] on 10 August 2025 at 11:59:15 pm'!
 'Description '!
-!provides: 'DrGeo' 1 774!
+!provides: 'DrGeo' 1 775!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -30964,10 +30964,11 @@ buildMorphicWindow
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 11:23:38'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 23:17:49'!
 newAddArgumentButton
 	^ (PluggableButtonMorph model: self action: #addArgument)
 			icon: Theme current listAddIcon ;
+			roundButtonStyle: false;
 			setBalloonText: 'Add an argument to this script.' translated;
 			yourself! !
 
@@ -31045,7 +31046,7 @@ initialize
 	scriptName := ''.
 	description := ''! !
 
-!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 8/10/2025 11:27:26'!
+!DrGScriptDesignerDialog methodsFor: 'action' stamp: 'hlsf 8/10/2025 22:53:45'!
 addArgument
 	| newArgument |
 	newArgument := LayoutMorph newRow
@@ -31055,7 +31056,7 @@ addArgument
 	newArgument addMorph: ((PluggableButtonMorph model: self action: #removeArgument:)
 			icon: Theme current deleteIcon;
 			actionArgument: newArgument;
-			borderWidth: 0;
+			noButtonShape ;
 			color: Color transparent;
 			setBalloonText:  'Remove this script argument.' translated;
 			yourself);		
