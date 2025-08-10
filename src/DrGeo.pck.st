@@ -1,4 +1,4 @@
-'From Cuis7.5 [latest update: #7398] on 10 August 2025 at 12:21:55 pm'!
+'From Cuis7.5 [latest update: #7398] on 10 August 2025 at 1:51:57 pm'!
 'Description '!
 !provides: 'DrGeo' 1 773!
 !requires: 'Gettext' 1 17 nil!
@@ -5362,10 +5362,10 @@ update
 contains: aPoint
 	self subclassResponsibility ! !
 
-!DrGMathItem methodsFor: 'testing' stamp: 'hlsf 5/20/2024 11:25:46'!
+!DrGMathItem methodsFor: 'testing' stamp: 'hlsf 8/10/2025 12:35:50'!
 doParentsExist
 	^ parents 
-		ifNotNil: [parents allSatisfy: [:parent | 			parent exist] ]
+		ifNotNil: [parents allSatisfy: [:parent | parent exist] ]
 		ifNil: [false]! !
 
 !DrGMathItem methodsFor: 'testing'!
@@ -6062,20 +6062,20 @@ intersectionWith: aCurveItem flag: aFlag
 	aCurveItem isArcItem
 		ifTrue: [^aCurveItem intersectionWith: self flag: aFlag]! !
 
-!DrGCircleItem methodsFor: 'computing'!
+!DrGCircleItem methodsFor: 'computing' stamp: 'hlsf 8/10/2025 13:48:24'!
 intersectionWithCircle: aCircleItem flag: aFlag 
 	| directionItem aVector aRadius x d |
 	directionItem := DrGDirectionItem new.
 	aVector := aCircleItem center - center.
 	aRadius := aCircleItem radius.
 	d := aVector dotProduct: aVector.
-	d = 0 ifTrue: [ ^ nil ].
+	(d closeTo: 0) ifTrue: [ ^ nil ].
 	x := (d + radius squared - aRadius squared) / (2 * d).
 	directionItem direction: aVector normal.
 	directionItem origin: x * aVector + center.
 	^self intersectionWithDirection: directionItem flag: aFlag! !
 
-!DrGCircleItem methodsFor: 'computing'!
+!DrGCircleItem methodsFor: 'computing' stamp: 'hlsf 8/10/2025 13:10:48'!
 intersectionWithDirection: aDirectionItem flag: aFlag
 |a b c d k vector|
 	vector := aDirectionItem direction.
@@ -7367,7 +7367,7 @@ isSampled
 nodeType
 	^ #Translation! !
 
-!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:07:27'!
+!DrGLocusTranslationItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:21:53'!
 update
 	| locusPoints direction|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -7375,7 +7375,7 @@ update
 	locusPoints := parents first points.
 	samplesQty := parents first samplesQty.
 	p := Array new: samplesQty.
-	1 to: samplesQty do: [:i | 		p at: i put: (locusPoints at: i) + direction].
+	1 to: samplesQty do: [:i | p at: i put: (locusPoints at: i) + direction].
 	self exist: true! !
 
 !DrGLocusTranslationItem methodsFor: 'accessing'!
@@ -7404,7 +7404,7 @@ doParentsExist
 If not we will wait for the next round of view update"
 	^ super doParentsExist and: [parents first isSampled]! !
 
-!DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:07:53'!
+!DrGLocusHomothetyItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:22:01'!
 update
 	| locusPoints center factor|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -7413,7 +7413,7 @@ update
 	locusPoints := parents first points.
 	samplesQty := parents first samplesQty.
 	p := Array new: samplesQty.
-	1 to: samplesQty do: [:i | 			p at: i put: center + (factor * ((locusPoints at: i) - center))].
+	1 to: samplesQty do: [:i | p at: i put: center + (factor * ((locusPoints at: i) - center))].
 	self exist: true! !
 
 !DrGLocusHomothetyItem methodsFor: 'xml writing'!
@@ -7453,7 +7453,7 @@ update
 nodeType
 	^#Rotation! !
 
-!DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:08:50'!
+!DrGLocusSymmetryItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:22:19'!
 update
 	| locusPoints center|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -7461,7 +7461,7 @@ update
 	locusPoints := parents first points.
 	samplesQty := parents first samplesQty.
 	p := Array new: samplesQty.
-	1 to: samplesQty do: [:i | 			p at: i put: 2 * center - (locusPoints at: i)].
+	1 to: samplesQty do: [:i | p at: i put: 2 * center - (locusPoints at: i)].
 	self exist: true! !
 
 !DrGLocusSymmetryItem methodsFor: 'xml writing'!
@@ -7729,12 +7729,12 @@ nodeType
 isConstrainedPointItem
 	^true! !
 
-!DrGPointIntersectionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:14:26'!
+!DrGPointIntersectionItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 12:40:17'!
 update
 	|aPoint|
 	self doParentsExist ifFalse: [^ self exist: false].
 	aPoint := [(parents first intersectionWith: parents second flag: k)] on: Error do: [nil].
-	aPoint 	ifNotNil: [		self point: aPoint].
+	aPoint 	ifNotNil: [self point: aPoint].
 	self exist: aPoint notNil! !
 
 !DrGPointIntersectionItem methodsFor: 'accessing'!
@@ -8199,14 +8199,13 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 12:08:22'!
+!DrGPolygonHomothetyItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:19:16'!
 update
 	|center factor|
 	self doParentsExist ifFalse: [^ self exist: false].
 	center := parents second point.
 	factor := parents third valueItem.
-	points := OrderedCollection new.
-	parents first points do: [:point | points add: (center + (factor * (point - center)))].
+	points := parents first points collect: [:point | center + (factor * (point - center))].
 	self computeLength.
 	self exist: true! !
 
@@ -8230,11 +8229,10 @@ rehash
 	bitXor: self nodeType hash) 
 	bitXor: self basicType hash! !
 
-!DrGPolygonNptsItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:17:43'!
+!DrGPolygonNptsItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:18:02'!
 update
-	self doParentsExist ifFalse: [^ self exist: false].
-	points := OrderedCollection new.
-	parents do: [:pointItem | points add: pointItem point].
+	self doParentsExist ifFalse: [ ^ self exist: false].
+	points := parents collect: [:pointItem | pointItem point].
 	self computeLength.
 	self exist: true
 ! !
@@ -8251,14 +8249,12 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonReflexionItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:18:01'!
+!DrGPolygonReflexionItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:19:35'!
 update
 	|axe|
 	self doParentsExist ifFalse: [^ self exist: false].
 	axe := parents second.
-	points := OrderedCollection new.
-	parents first points do: [:point |
-		points add: (point reflexionBy: axe origin direction: axe direction)].
+	points := parents first points collect: [:point | point reflexionBy: axe origin direction: axe direction].
 	self computeLength.
 	self exist: true! !
 
@@ -8269,7 +8265,7 @@ moveParent: aPoint
 	parents second moveEvent: aPoint.
 	^ true! !
 
-!DrGPolygonRegularItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:18:21'!
+!DrGPolygonRegularItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:20:02'!
 update
 |center pointA angle sides|
 	self doParentsExist ifFalse: [^ self exist: false].
@@ -8279,7 +8275,7 @@ update
 	sides < 3 ifTrue: [^ self exist: false].
 	angle := Float twoPi / sides.
 	points := OrderedCollection new.
-	sides timesRepeat: [			pointA := points add: (pointA rotateBy: angle about: center)].
+	sides timesRepeat: [pointA := points add: (pointA rotateBy: angle about: center)].
 	self computeLength.
 	self exist: true! !
 
@@ -8295,14 +8291,13 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonRotationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:18:53'!
+!DrGPolygonRotationItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:20:48'!
 update
 |center angle|
 	self doParentsExist ifFalse: [^ self exist: false].
 	center := parents second point.
 	angle := parents third valueItem negated.
-	points := OrderedCollection new.
-	parents first points do: [:point |			points add: (point rotateBy: angle about: center)].
+	points := parents first points collect: [:point | point rotateBy: angle about: center].
 	self computeLength.
 	self exist: true
 ! !
@@ -8315,13 +8310,12 @@ nodeType
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonSymmetryItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:19:07'!
+!DrGPolygonSymmetryItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:21:09'!
 update
 	|center|
 	self doParentsExist ifFalse: [^ self exist: false].
 	center := parents second point.
-	points := OrderedCollection new.
-	parents first points do: [:point | points add: (2 * center - point)].
+	points := parents first points collect: [:point | 2 * center - point].
 	self computeLength.
 	self exist: true
 ! !
@@ -8330,13 +8324,12 @@ update
 moveParent: aPoint
 	^false! !
 
-!DrGPolygonTranslationItem methodsFor: 'updating' stamp: 'hlsf 5/20/2024 12:19:19'!
+!DrGPolygonTranslationItem methodsFor: 'updating' stamp: 'hlsf 8/10/2025 13:21:31'!
 update
 |translation|
 	self doParentsExist ifFalse: [^ self exist: false].
 	translation := parents second direction.
-	points := OrderedCollection new.
-	parents first points do: [:point | points add: point + translation].
+	points := parents first points collect: [:point | point + translation].
 	self computeLength.
 	self exist: true
 ! !
@@ -10016,11 +10009,10 @@ circleCenter: wrpCenter to: wrpPt
 finalizeFilledCurve: item
 	^ DrGWrappedFilledCurve wrap: (self morphOf: item)! !
 
-!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 4/16/2022 22:40:27'!
+!DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 8/10/2025 12:33:59'!
 polygon: arguments
-	^ self
-		finalizeFilledCurve: (DrGPolygonNptsItem  newWith: (arguments collect: [:wrp | 
-				(self wrappedPoint: wrp) mathItem]))! !
+	^ self finalizeFilledCurve: (
+		DrGPolygonNptsItem newWith: (arguments collect: [:wrp | (self wrappedPoint: wrp) mathItem]))! !
 
 !DrGeoSketch methodsFor: 'curve filled' stamp: 'hlsf 4/16/2022 22:40:54'!
 regularPolygonCenter: wrpCenter vertex: wrpVertex sides: wrpValue
@@ -28207,11 +28199,11 @@ stopStepping
 canBeDrawn
 	^ self visible! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 9/5/2024 16:29:40'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 8/10/2025 13:28:43'!
 containsPoint: localPoint
 	^self canBeDrawn and: [self isCloserThan: 5 toPixel: (self drawable positionInWorld + localPoint)]! !
 
-!DrGMorph methodsFor: 'testing' stamp: 'hlsf 9/5/2024 16:33:24'!
+!DrGMorph methodsFor: 'testing' stamp: 'hlsf 8/10/2025 13:28:59'!
 containsPointInWorld: localPoint
 "General expensive version done in DrGeo coordinates. Only used with some morphs.
 Other straight line morph use VectorGraphics detection, see containsPoint:"
@@ -29444,15 +29436,19 @@ constrainedLabelPosition: aPoint
 	self computeLabelPositionDelta: vector.
 ! !
 
-!DrGPolygonMorph methodsFor: 'accessing' stamp: 'hlsf 5/31/2023 18:10:34'!
+!DrGPolygonMorph methodsFor: 'accessing' stamp: 'hlsf 8/10/2025 13:33:06'!
 getVertices
-	vertices := mathItem points collect: [:point | self drawable worldToMorph: point].
+	vertices := mathItem points asOrderedCollection collect: [:point | self drawable worldToMorph: point].
 	vertices add: vertices first
 ! !
 
 !DrGPolygonMorph methodsFor: 'accessing' stamp: 'hlsf 4/7/2021 19:55:22'!
 styleClass
 	^DrGPolygonStyle ! !
+
+!DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 8/10/2025 13:15:28'!
+canBeDrawn
+	^ vertices isEmptyOrNil not! !
 
 !DrGPolygonMorph methodsFor: 'testing' stamp: 'hlsf 3/9/2023 14:36:14'!
 containsPoint: localPoint
