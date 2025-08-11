@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7398] on 10 August 2025 at 11:59:15 pm'!
+'From Cuis7.5 [latest update: #7398] on 11 August 2025 at 7:45:46 pm'!
 'Description '!
-!provides: 'DrGeo' 1 775!
+!provides: 'DrGeo' 1 776!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -3546,17 +3546,14 @@ findInPool: item
 indexOf: anItem
 	^ self indexOf: anItem in: pool! !
 
-!DrGFactory methodsFor: 'accessing'!
+!DrGFactory methodsFor: 'accessing' stamp: 'hlsf 8/11/2025 19:45:03'!
 indexOf: anItem in: aPool
 "No identity equality but hashed value to detect duplicated object we must consider as equal"
  ^ anItem 
-		ifNil: [0]
-		ifNotNil: [aPool findFirst: [ :each | 
-				each hash = anItem hash  
-					and: ["double check when hash is equal (can be a collision)"
-						 each = anItem ]  
-			]
-		]! !
+	ifNil: [0]
+	ifNotNil: [
+		aPool findFirst: [ :each | each hash = anItem hash  and: [ each = anItem ] ] ]
+			"double check when hash is equal (can be a collision)"! !
 
 !DrGFactory methodsFor: 'accessing'!
 last
@@ -6569,16 +6566,6 @@ adaptiveDescriptiveName
 !DrGLine2ptsItem methodsFor: 'xml writing'!
 nodeType
 	^#'2pts'! !
-
-!DrGLine2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:49:49'!
-parentsEqual: aMathItem
-	^ parents asSet = aMathItem parents asSet ! !
-
-!DrGLine2ptsItem methodsFor: 'comparing' stamp: 'hlsf 5/29/2025 09:49:42'!
-rehash
-	^ hash := (parents asSet hash 
-	bitXor: self nodeType hash) 
-	bitXor: self basicType hash! !
 
 !DrGLineAngleBisectorItem methodsFor: 'private'!
 adaptiveDescriptiveName
@@ -13710,7 +13697,7 @@ handleMouseAt: aPoint
 	self drawable restartMouseStillDownHandle.
 	^ true! !
 
-!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:51:54'!
+!DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/11/2025 18:34:21'!
 handleRelease: aPoint 
 	self switchState: DrGSelectToolStateNeutral.
 	"issue a moveCommand"
@@ -13719,7 +13706,9 @@ handleRelease: aPoint
 		with: (self drawable gridWorldVector: context last - context start).
 	self drawable removeDottedLinesToParents.
 	context reset.
-	self presenter saved: false! !
+	self presenter saved: false.
+	"No need here, done in model>>exist: "
+	"context factory rehash". "After move event rehash the the free positionnable item"! !
 
 !DrGSelectToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:01'!
 handleStillPress: aPoint
@@ -13734,7 +13723,7 @@ handleStillPress: aPoint
 isMutantFreePoint
 	^ originalPointClass = DrGPointFreeItem! !
 
-!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:07'!
+!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/11/2025 18:32:02'!
 handleMouseAt: aPoint
 	| morphs aTip|
 	"First handle the redraw"
@@ -13749,10 +13738,10 @@ handleMouseAt: aPoint
 		aTip := 'Change as this intersection.' translated].
 	aTip 
 		ifNil: [self drawable hideTip]
-		ifNotNil: [self drawable tip: aTip at: aPoint].
+		ifNotNil: [self drawable tip: aTip at: aPoint]
 	^ aTip notNil! !
 
-!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:25'!
+!DrGMutatorToolStateDragged methodsFor: 'handling' stamp: 'hlsf 8/11/2025 18:32:11'!
 handleRelease: aPoint
 	| morphs |
 	self drawable hideTip.
@@ -13819,7 +13808,7 @@ magnifyBitmap: aPoint
 	context domain updateAllMathItems.
 	context last: griddedPoint.! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:52:59'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 8/11/2025 18:29:14'!
 handleMouseAt: aPoint 
 	"The user is moving, switch to dragging state"
 	context
@@ -13831,11 +13820,10 @@ handleMouseAt: aPoint
 			self switchState: DrGSelectToolStateDragged].
 	^ true! !
 
-!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:53:04'!
+!DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 8/11/2025 18:29:41'!
 handleRelease: aPoint 
 	self switchState: DrGSelectToolStateNeutral.
-	context reset.
-	context factory rehash. "After move event rehash the the free positionnable item"! !
+	context reset! !
 
 !DrGSelectToolStateGrabbed methodsFor: 'handling' stamp: 'hlsf 5/31/2025 15:53:11'!
 handleStillPress: aPoint
@@ -32965,7 +32953,7 @@ testLineTranslation
 	self assert: l2 mathItem direction = l1 mathItem direction.
 ! !
 
-!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 5/29/2025 12:08:32'!
+!DrGeoScriptTest methodsFor: 'testing-line' stamp: 'hlsf 8/11/2025 19:45:29'!
 testLineUnicity
 	| a b s1 s2|
 	a := sketch point: 788@985.
@@ -32975,7 +32963,7 @@ testLineUnicity
 	self assert: s1 mathItem == s2 mathItem.
 	"Lines are oriented"
 	s2 := sketch line: b to: a.  
-	self should: s1 mathItem == s2 mathItem.
+	self shouldnt: s1 mathItem == s2 mathItem.
 	""
 	b := sketch point: 780 @ 900.
 	s2 := sketch line: a to:  b.
