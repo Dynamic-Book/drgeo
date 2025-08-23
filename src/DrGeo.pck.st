@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7398] on 11 August 2025 at 7:45:46 pm'!
+'From Cuis7.5 [latest update: #7431] on 23 August 2025 at 12:58:43 pm'!
 'Description '!
-!provides: 'DrGeo' 1 776!
+!provides: 'DrGeo' 1 777!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -11424,7 +11424,7 @@ borderWidget
 		named: 'Border' translated 
 		help: 'Set the border colour.' translated! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:30:24'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 8/23/2025 12:58:02'!
 fontSizeWidget
 	^ self widget: (
 		(DropDownButtonMorph 
@@ -11432,7 +11432,8 @@ fontSizeWidget
 			listGetter:  #fontSizesMorphCollection
 			indexGetter:  #fontSizeIndex 
 			indexSetter: #fontSizeIndex:)
-			autoDeselect: false;
+			autoDeselect: false ::
+			buttonStyle: #none;
 			yourself)
 		named: 'Font size' translated
 		help: 'Set the font size.' translated! !
@@ -25066,7 +25067,7 @@ addChevron: symbolOrArray to: aToolbar
 		setBalloonText: array fourth;
 		yourself	! !
 
-!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 4/5/2025 11:50:29'!
+!DrGUIControlsManager methodsFor: 'widget access' stamp: 'hlsf 8/23/2025 12:23:27'!
 button: symbolOrArray
 	"array first = menu label or button label
 	array second = button form = selection mode
@@ -25085,7 +25086,7 @@ button: symbolOrArray
 		selectedColor: Theme current drgeoButtonSelectedColor ;
 		borderColor: Theme current drgeoButtonColor muchDarker;
 		borderWidth: 2;
-		roundButtonStyle: false;
+		buttonStyle: #rectangle;
 		morphExtent: (Theme current toolbarIconSize + 4) asPoint;
 		yourself	! !
 
@@ -30685,11 +30686,11 @@ open: model
 	^ debuggerWindow 	
 ! !
 
-!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 4/5/2025 11:07:25'!
+!DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 8/23/2025 12:33:08'!
 buildMorphicWindow
 	| labelWidth widgets |
 	titleMorph showButtonsNamed: #(#close).
-	self layoutMorph separation: (Theme current scale: 4) ;
+	self layoutMorph separation: (Theme current scale: 10) ;
 		axisEdgeWeight: #columnTop.
 	model breakDependents.
 	widgets := model styleWidget.
@@ -30697,7 +30698,7 @@ buildMorphicWindow
 	widgets do: [:rowOfMorph |
 		(self searchLabelIn: rowOfMorph) morphWidth: labelWidth.
 		self addMorph: rowOfMorph].
-	self morphExtent: self minimumExtent. 
+	self 	morphExtent: self minimumExtent. 
 	layoutMorph adoptWidgetsColor: self widgetsColor! !
 
 !DrGStylePanel methodsFor: 'GUI building' stamp: 'hlsf 2/14/2022 11:25:48'!
@@ -30952,11 +30953,11 @@ buildMorphicWindow
 defaultColor
 	^ Theme current workspace ! !
 
-!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/10/2025 23:17:49'!
+!DrGScriptDesignerDialog methodsFor: 'GUI building' stamp: 'hlsf 8/23/2025 12:23:51'!
 newAddArgumentButton
 	^ (PluggableButtonMorph model: self action: #addArgument)
 			icon: Theme current listAddIcon ;
-			roundButtonStyle: false;
+			buttonStyle: #none;
 			setBalloonText: 'Add an argument to this script.' translated;
 			yourself! !
 
