@@ -1,6 +1,6 @@
-'From Cuis7.5 [latest update: #7431] on 23 August 2025 at 12:58:43 pm'!
+'From Cuis7.5 [latest update: #7452] on 30 August 2025 at 11:42:36 am'!
 'Description '!
-!provides: 'DrGeo' 1 777!
+!provides: 'DrGeo' 1 778!
 !requires: 'Gettext' 1 17 nil!
 !requires: 'SVG' 1 16 nil!
 !requires: 'YAXO' 1 19 nil!
@@ -11393,10 +11393,10 @@ setTranslucent: aColor
 		ifTrue: [self backgroundColor: aColor]
 ! !
 
-!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 4/26/2020 15:41:25'!
+!DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 8/30/2025 11:41:55'!
 backgroundMorphCollection
 	^ self class backgroundColors collect: [:aColor |
-		ImageMorph new image: (DrGIcons colorForm: aColor)]! !
+		ImageMorph newWith: (DrGIcons colorForm: aColor)]! !
 
 !DrGTextStyle methodsFor: 'widget' stamp: 'hlsf 5/20/2024 15:30:12'!
 backgroundWidget
@@ -33663,16 +33663,15 @@ arrowFor: index
 arrowIndexOf: aSymbol
 	^ self arrowSymbols indexOf: aSymbol! !
 
-!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 11:07:03'!
+!DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 8/30/2025 11:40:40'!
 arrowMorphCollection
 	^ self arrowSymbols collect: [:symbol |
-		ImageMorph new image: (
+		ImageMorph newWith: (
 			DrGIcons 
 				segment: (Theme current lineWidthFor: #small) 
 				color: Color black
 				dash: (Theme current  lineStyleDataFor: #plain)
-				arrow: symbol
-		)]! !
+				arrow: symbol) ]! !
 
 !DrGTypeArrow class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 14:37:42'!
 arrowSymbols
@@ -33703,10 +33702,10 @@ colorFor: index
 colorIndexOf: aColor
 	^self colors indexOf: (aColor alpha: 1)! !
 
-!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 6/3/2022 11:36:21'!
+!DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 8/30/2025 11:40:26'!
 colorMorphCollection
 	^ self colors collect: [:aColor |
-		ImageMorph new image: (DrGIcons colorForm: aColor )]! !
+		ImageMorph newWith: (DrGIcons colorForm: aColor )]! !
 
 !DrGTypeColor class methodsFor: 'accessing' stamp: 'hlsf 6/3/2022 11:36:29'!
 colorSymbols
@@ -33741,14 +33740,14 @@ markFor: index
 markIndexOf: aMark
 	^ self markSymbols indexOf: aMark! !
 
-!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 10:03:11'!
+!DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 8/30/2025 11:40:15'!
 markMorphCollection
 	^ self markSymbols collect: [:symbol |
-		ImageMorph new 	image: (
+		ImageMorph newWith: (
 			DrGIcons 	
 				segment: (Theme current lineWidthFor: #small) 
-				color: Color black mark: symbol 
-		)]! !
+				color: Color black 
+				mark: symbol) ]! !
 
 !DrGTypeMark class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 14:23:41'!
 markSymbols
@@ -33779,12 +33778,14 @@ pointShapeIndexOf: pointShape
 pointShapeSymbols
 	^ `#(#cross #round #square)`! !
 
-!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 3/26/2024 21:50:46'!
+!DrGTypePointShape class methodsFor: 'accessing' stamp: 'hlsf 8/30/2025 11:39:54'!
 shapeMorphCollection
 	^ self pointShapeSymbols collect: [:symbol |
-		ImageMorph new 
-			image: (DrGIcons 	point: (Theme current pointExtentFor: #medium) 
-			color: Color black 	shape: symbol) ].
+		ImageMorph newWith: (
+			DrGIcons 
+				point: (Theme current pointExtentFor: #medium) 
+				color: Color black
+				shape: symbol) ]
 ! !
 
 !DrGTypePointSize methodsFor: 'accessing' stamp: 'hlsf 6/4/2022 22:15:22'!
@@ -33812,10 +33813,14 @@ pointSizeIndexOf: aSize
 pointSizeSymbols
 	^ `#(#small #medium #large)`! !
 
-!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 6/4/2022 14:49:50'!
+!DrGTypePointSize class methodsFor: 'accessing' stamp: 'hlsf 8/30/2025 11:39:32'!
 sizeMorphCollection: aShape
 	^ self  pointSizeSymbols collect: [:symbol |
-		ImageMorph new image: (DrGIcons point: symbol color: Color black shape: aShape)].
+		ImageMorph newWith: (
+			DrGIcons 
+				point: symbol 
+				color: Color black 
+				shape: aShape) ]
 ! !
 
 !DrGTypeStyle methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:50:56'!
@@ -33840,14 +33845,14 @@ styleFor: index
 styleIndexOf: aLineStyle
 	^ self styleSymbols indexOf: aLineStyle! !
 
-!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 11:07:14'!
+!DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 8/30/2025 11:39:02'!
 styleMorphCollection
 	^ self styleSymbols collect: [:symbol |
-		ImageMorph new image: (
+		ImageMorph newWith: (
 			DrGIcons 
 				segment: (Theme current lineWidthFor: #small) 
-				color: Color black dash: (Theme current lineStyleDataFor: symbol)
-		)]! !
+				color: Color black 
+				dash: (Theme current lineStyleDataFor: symbol)) ]! !
 
 !DrGTypeStyle class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:38:39'!
 styleSymbols
@@ -33874,11 +33879,14 @@ thicknessFor: index
 thicknessIndexOf: thickness
 	^ self thicknessSymbols indexOf: thickness! !
 
-!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 3/29/2024 10:03:11'!
+!DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 8/30/2025 11:39:07'!
 thicknessMorphCollection
 	^ self thicknessSymbols collect: [:symbol | 		
-		ImageMorph new 
-			image: (DrGIcons 		segment: (Theme current lineWidthFor: symbol)			color: Color black			dash: nil)]! !
+		ImageMorph newWith: (
+			DrGIcons 
+				segment: (Theme current lineWidthFor: symbol) 
+				color: Color black
+				dash: nil) ]! !
 
 !DrGTypeThickness class methodsFor: 'accessing' stamp: 'hlsf 6/5/2022 12:01:35'!
 thicknessSymbols
