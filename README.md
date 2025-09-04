@@ -71,7 +71,8 @@ Fetch the Dr. Geo repository, with source and script.
 
 ```bash
 cd Cuis-Current/Cuis-Smalltalk-Dev
-git clone --depth 1 https://github.com/Dynamic-book/drgeo
+git clone --depth 1 https://github.com/Dynamic-Book/DrGeo
+git clone --depth 1 https://github.com/Dynamic-Book/DyboLib
 ```
 
 # Dr. Geo Integrated Development Environment
@@ -83,9 +84,14 @@ cd {Cuis-Stable|Cuis-Current}/{Cuis7-0|Cuis-Smalltalk-Dev}
 ./drgeo/startIDE.sh
 ```
 
-A new image **drgeoIDE.image** is built in CuisImage and started.
+A new image **drgeoIDE.image** is built in CuisImage and started. This
+is the development environment for the Dr. Geo.
 
-To open Dr. Geo window, execute:
+In the Workspace window, execute the statement `DrGeoSystem
+beDevelopment`, it will set up the paths to the resources to test
+appropriately the application.
+
+Then, to open a Dr. Geo window, execute:
 ```smalltalk
 DrGeo new
 ```
@@ -93,3 +99,7 @@ DrGeo new
 ![Dr. Geo IDE](resources/graphics/promote/DrGeoIDE.png)
 
 Have an interesting exploration!
+
+# License
+
+Copyright 1998--2025 Hilaire Fernandes
